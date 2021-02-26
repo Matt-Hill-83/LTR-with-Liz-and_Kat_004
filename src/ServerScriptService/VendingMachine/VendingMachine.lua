@@ -10,9 +10,6 @@ local module = {}
 function module.initVendingMachine(props)
     local parentFolder = props.parentFolder
 
-    -- local positioners = Utils.getDescendantsByName(parentFolder, 'Junction')
-    -- local template = Utils.getFromTemplates('HexJunction')
-
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
     for _, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
@@ -26,13 +23,21 @@ function module.initVendingMachine(props)
         newFrame.Parent = sgui
 
         local pixelsPerStud = 50
-        local scalingFactor = 1.8
+        local scalingFactor = 1
+        -- local scalingFactor = 1.8
+
+        local displayHeight = guiPart.Size.Y * pixelsPerStud * scalingFactor
+
+        local mainFrameY = displayHeight - mainFrame.Size.Y.Offset
+        local mainFramePosition = UDim2.new(0, 0, 0, 0)
+
         RenderWordGrid.renderGrid(
             {
                 sgui = sgui,
                 targetWords = targetWords,
                 levelConfig = levelConfig,
-                displayHeight = guiPart.Size.Y * pixelsPerStud * scalingFactor
+                displayHeight = displayHeight,
+                mainFramePosition = mainFramePosition
             }
         )
     end
