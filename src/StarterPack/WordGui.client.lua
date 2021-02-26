@@ -10,12 +10,8 @@ local updateGuiFromServerRE = RS:WaitForChild('updateGuiFromServer')
 -- the server can update the gui, and use all the server utilities
 
 local function onUpdateWordGuiRE(props)
-    print('onUpdateWordGuiRE' .. ' - start----------client')
-    print(onUpdateWordGuiRE)
     props.sgui = PlayerGui
     local mainGui = props.sgui:WaitForChild('MainGui')
-    print('mainGui' .. ' - start')
-    print(mainGui)
     local displayHeight = mainGui.AbsoluteSize.Y
     updateGuiFromServerRE:FireServer(mainGui, displayHeight)
 end

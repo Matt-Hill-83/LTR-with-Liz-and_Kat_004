@@ -20,12 +20,7 @@ local function styleGems(items)
 end
 
 local function sentenceComplete(touchedBlock)
-    print('touchedBlock.ParentStatue.Value' .. ' - start')
-    print(touchedBlock.ParentStatue.Value)
     local parentStatueGate = touchedBlock:FindFirstAncestor('StatueGate')
-    -- local parentStatueGate = touchedBlock:FindFirstAncestor(touchedBlock.ParentStatue.Value)
-    print('parentStatueGate' .. ' - start')
-    print(parentStatueGate)
 
     local keyWalls = Utils.getDescendantsByName(parentStatueGate, 'KeyWall')
     for _, keyWall in ipairs(keyWalls) do

@@ -94,12 +94,6 @@ local function initStraysInRegions(props)
         local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
 
         if config then
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print(config.Text)
-
             words = Utils.stringToArray(config.Text)
         end
 

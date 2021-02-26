@@ -7,10 +7,6 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local module = {}
 
 local function updateLeaderboard(player)
-    print('updateLeaderboard' .. ' - start-----------------------------------BD')
-    print('updateLeaderboard' .. ' - start-----------------------------------BD')
-    print('updateLeaderboard' .. ' - start-----------------------------------BD')
-    print(updateLeaderboard)
     local success, errorMessage =
         pcall(
         function()
@@ -58,7 +54,6 @@ local function updateLeaderboard(player)
         end
     )
     if not success then
-        print(errorMessage)
     end
 end
 

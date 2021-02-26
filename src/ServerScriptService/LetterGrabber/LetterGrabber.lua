@@ -150,8 +150,6 @@ local function applyDecalsToCharacterFromWord(props)
 end
 
 local function onTouch(tool)
-    print('onTouch' .. ' - start')
-    print(onTouch)
     local db = {value = false}
 
     local function closure(otherPart)

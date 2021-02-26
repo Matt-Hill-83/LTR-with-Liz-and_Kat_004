@@ -25,11 +25,6 @@ end
 
 function module.initRemoteEvents()
     local function onUpdateGui(player, sgui, displayHeight)
-        print('onUpdateGui' .. ' - start')
-        print(onUpdateGui)
-
-        print('sgui' .. ' - start')
-        print(sgui)
         local gameState = PlayerStatManager.getGameState(player)
         local targetWords = gameState.targetWords
         RenderWordGrid.renderGrid(
