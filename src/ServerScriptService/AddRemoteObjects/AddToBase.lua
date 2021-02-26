@@ -8,6 +8,7 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 local BeltJoint = require(Sss.Source.BeltJoint.BeltJoint)
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
+local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
@@ -108,6 +109,7 @@ local function addRemoteObjects()
         -- HexJunction.convertJunctionsToTerrain({parentFolder = level})
         SkiSlope.initSlopes({parentFolder = level})
         Entrance.initRunFasts(level)
+        VendingMachine.initVendingMachine({parentFolder = level})
 
         if true then
             local sectorConfigs = levelConfig.sectorConfigs
