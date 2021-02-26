@@ -92,8 +92,6 @@ local function wordFound(tool, player)
     local gameState = PlayerStatManager.getGameState(player)
     local targetWords = gameState.targetWords
     local targetWordObj = Utils.getListItemByPropValue(targetWords, 'word', targetWord)
-    -- local levelConfig = gameState.levelConfig
-    -- local targetWordObj = Utils.getListItemByPropValue(levelConfig.targetWords, 'word', targetWord)
 
     local fireSound = '5207654419'
     local currentWord2 = Const4.wordConfigs[targetWord]

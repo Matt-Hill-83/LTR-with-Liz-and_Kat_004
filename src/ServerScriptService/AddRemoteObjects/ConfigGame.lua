@@ -31,7 +31,6 @@ local function configPlayers()
 
         -- Wait so that gui can exists
         if gameState.initComplete == true then
-            -- targetWords = levelConfig.getTargetWords()
             wait(2)
             targetWords = gameState.targetWords
         else
