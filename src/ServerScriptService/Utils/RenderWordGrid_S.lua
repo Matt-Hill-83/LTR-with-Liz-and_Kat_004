@@ -65,9 +65,8 @@ local renderGrid = function(props)
     local mainFrameY = displayHeight - mainFrame.Size.Y.Offset
     print('test' .. ' - start')
     print(test)
-    -- local mainFrameY = displayHeight - mainFrame.Size.Y
-    mainFrame.Position = UDim2.new(0, 0, 0, mainFrameY)
     -- mainFrame.Position = UDim2.new(0, 0, 0, mainFrameY)
+    mainFrame.Position = UDim2.new(0, 0, 0, 0)
 
     Utils.addPadding(
         {
