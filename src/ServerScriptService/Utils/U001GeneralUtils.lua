@@ -24,6 +24,15 @@ local getInstancesByNameStub = function(props)
     return output
 end
 
+function module.stringToArray(s, delimiter)
+    delimiter = delimiter or ','
+    local result = {}
+    for match in (s .. delimiter):gmatch('(.-)' .. delimiter) do
+        table.insert(result, match)
+    end
+    return result
+end
+
 local function hasProperty(instance, property)
     return (pcall(
         function()

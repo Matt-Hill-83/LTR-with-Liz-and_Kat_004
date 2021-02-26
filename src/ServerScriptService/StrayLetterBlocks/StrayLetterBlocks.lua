@@ -21,11 +21,7 @@ local function createStray(char, parentFolder, props)
         modelClone = letterBlockTemplate:Clone()
     else
         local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
-        -- local letterBlockTemplate =
-        --     blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank_cupcake')
         local letterBlockTemplate2 = letterBlockTemplate:Clone(letterBlockTemplate)
-        print('letterBlockTemplate2' .. ' - start')
-        print(letterBlockTemplate2)
 
         local dummyModel = Instance.new('Model', letterBlockFolder)
         letterBlockTemplate2.Parent = dummyModel
@@ -94,10 +90,22 @@ local function initStraysInRegions(props)
         -- "SAT" --
     }
 
-    local wordLength = 3
-    local requiredLetters = #words * wordLength
-
     for _, region in ipairs(strayRegions) do
+        local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
+
+        if config then
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print(config.Text)
+
+            words = Utils.stringToArray(config.Text)
+        end
+
+        local wordLength = 3
+        local requiredLetters = #words * wordLength
+
         -- Populate random letter gems
         local strays =
             module.initStraysInRegion(
@@ -112,8 +120,6 @@ local function initStraysInRegions(props)
         )
 
         for _, stray in ipairs(strays) do
-            print('stray' .. ' - start')
-            print(stray)
             stray.CanCollide = true
 
             -- stray.Size = Vector3.new(4, 4, 4)
@@ -122,6 +128,7 @@ local function initStraysInRegions(props)
     --
     --
 end
+
 local function initStraysInRegion(props)
     local numBlocks = props.numBlocks
     local region = props.region

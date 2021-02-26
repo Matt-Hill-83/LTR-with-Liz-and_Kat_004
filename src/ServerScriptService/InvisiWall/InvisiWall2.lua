@@ -117,7 +117,6 @@ function module.setInvisiWall(props, sideName)
         }
     )
 
-    -- newWall.Transparency = transparency
     shortWall.Transparency = 0
     shortWall.Anchored = true
     shortWall.Material = Enum.Material.Cobblestone
