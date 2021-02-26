@@ -102,9 +102,13 @@ local function wordFound(tool, player)
         Utils.playSound(soundId)
     end
     if targetWordObj then
+        print('---------------------')
+        print('---------------------')
+        print('---------------------')
+        print('---------------------')
+        print('---------------------')
         targetWordObj.found = targetWordObj.found + 1
-        updateWordGuiRE:FireClient(player, {levelConfig = levelConfig})
-    -- updateWordGuiRE:FireAllClients({levelConfig = levelConfig})
+        updateWordGuiRE:FireClient(player)
     end
 
     local function destroyParts()

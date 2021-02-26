@@ -31,7 +31,6 @@ function module.initRemoteEvents()
             {
                 sgui = sgui,
                 targetWords = targetWords,
-                -- levelConfig = levelConfig,
                 displayHeight = displayHeight
             }
         )

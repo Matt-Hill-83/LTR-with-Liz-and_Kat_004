@@ -23,8 +23,8 @@ function module.initVendingMachine(props)
         newFrame.Parent = sgui
 
         local pixelsPerStud = 50
-        local scalingFactor = 1
-        -- local scalingFactor = 1.8
+        -- local scalingFactor = 1
+        local scalingFactor = 1.7
 
         local displayHeight = guiPart.Size.Y * pixelsPerStud * scalingFactor
 

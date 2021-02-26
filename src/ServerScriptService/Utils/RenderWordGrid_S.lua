@@ -11,6 +11,12 @@ local renderGrid = function(props)
 
     local words = targetWords
 
+    print('targetWords' .. ' - start')
+    print('targetWords' .. ' - start')
+    print('targetWords' .. ' - start')
+    print('targetWords' .. ' - start')
+    print(targetWords)
+
     local mainGui = sgui
     mainGui.Enabled = true
     local mainFrame = Utils.getFirstDescendantByName(mainGui, 'MainFrame')
