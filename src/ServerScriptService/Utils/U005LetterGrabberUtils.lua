@@ -99,6 +99,7 @@ local function wordFound(tool, player)
         local soundId = currentWord2.soundId or fireSound
         Utils.playSound(soundId)
     end
+
     if targetWordObj then
         print('---------------------')
         print('---------------------')
@@ -106,43 +107,47 @@ local function wordFound(tool, player)
         print('---------------------')
         print('---------------------')
         targetWordObj.found = targetWordObj.found + 1
+
         updateWordGuiRE:FireClient(player)
-    end
 
-    local function destroyParts()
-        tool:Destroy()
+        local function destroyParts()
+            tool:Destroy()
 
-        if player:FindFirstChild('leaderstats') then
-            local wins = player.leaderstats.Wins
-            wins.Value = wins.Value + 1
+            if player:FindFirstChild('leaderstats') then
+                local wins = player.leaderstats.Wins
+                wins.Value = wins.Value + 1
+            end
+
+            PlayerStatManager:ChangeStat(player, 'Gems', 1)
+            Leaderboard.updateLB()
         end
 
-        PlayerStatManager:ChangeStat(player, 'Gems', 1)
-        Leaderboard.updateLB()
+        if targetWordObj.found == targetWordObj.target then
+            delay(1, destroyParts)
+
+            local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
+            local newKey = keyTemplate:Clone()
+
+            local newTool = Utils.getFirstDescendantByType(newKey, 'Tool')
+            newTool.Name = targetWord
+
+            local keyPart = newKey.PrimaryPart
+
+            LetterUtils.applyLetterText({letterBlock = newKey, char = targetWord})
+
+            LetterUtils.createPropOnLetterBlock(
+                {
+                    letterBlock = keyPart,
+                    propName = 'KeyName',
+                    initialValue = targetWord,
+                    propType = 'StringValue'
+                }
+            )
+
+            newTool.Parent = player.Character
+            keyPart.Anchored = false
+        end
     end
-    delay(1, destroyParts)
-
-    local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
-    local newKey = keyTemplate:Clone()
-
-    local newTool = Utils.getFirstDescendantByType(newKey, 'Tool')
-    newTool.Name = targetWord
-
-    local keyPart = newKey.PrimaryPart
-
-    LetterUtils.applyLetterText({letterBlock = newKey, char = targetWord})
-
-    LetterUtils.createPropOnLetterBlock(
-        {
-            letterBlock = keyPart,
-            propName = 'KeyName',
-            initialValue = targetWord,
-            propType = 'StringValue'
-        }
-    )
-
-    newTool.Parent = player.Character
-    keyPart.Anchored = false
 end
 
 local function partTouched(touchedBlock, player)
