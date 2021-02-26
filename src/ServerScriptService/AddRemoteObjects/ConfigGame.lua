@@ -233,6 +233,7 @@ function module.configGame()
     configGamePass()
     configBadges()
 
+    --
     InvisiWall.setAllInvisiWalls(
         {
             parentFolder = workspace,
