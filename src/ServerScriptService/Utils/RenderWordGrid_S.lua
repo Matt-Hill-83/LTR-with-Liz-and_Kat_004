@@ -1,6 +1,6 @@
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-
+local ImageConst = require(Sss.Source.Constants.Const_06_Images)
 local module = {}
 
 local renderGrid = function(props)
@@ -130,9 +130,19 @@ local renderGrid = function(props)
         imageLabelTemplate:Destroy()
 
         local foundLabel = newRow.Found
-        foundLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
-        foundLabel.Size = UDim2.new(0, foundLabelWidth, 0, letterHeight)
-        foundLabel.Text = item.found .. ' of ' .. item.target
+        if item.found == item.target then
+            --
+            foundLabel.Text = item.found .. ' of ' .. item.target
+        else
+            foundLabel:Destroy()
+            --
+            local foundImageLabel = Instance.new('ImageLabel', newRow)
+            foundImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+            foundImageLabel.Size = UDim2.new(0, foundLabelWidth, 0, letterHeight)
+            local imageId = ImageConst.general.gem.imageId
+            foundImageLabel.Image = Utils.createImageUri(imageId)
+            foundImageLabel.BackgroundTransparency = 1
+        end
     end
     -- rowTemplate:Destroy()
 end

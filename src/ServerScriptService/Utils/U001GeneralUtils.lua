@@ -24,6 +24,10 @@ local getInstancesByNameStub = function(props)
     return output
 end
 
+function module.createImageUri(imageId)
+    return 'rbxassetid://' .. imageId
+end
+
 function module.stringToArray(s, delimiter)
     delimiter = delimiter or ','
     local result = {}
