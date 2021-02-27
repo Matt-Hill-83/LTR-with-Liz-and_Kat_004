@@ -104,11 +104,6 @@ local function getSessionData(player)
 end
 
 local function getGameState(player)
-    print('gameState' .. ' - start')
-    print(gameState)
-
-    print('player.UserId' .. ' - start')
-    print(player.UserId)
     return gameState[nameStub .. player.UserId]
 end
 

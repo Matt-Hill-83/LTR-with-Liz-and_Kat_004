@@ -1,6 +1,3 @@
-local Sss = game:GetService('ServerScriptService')
-local Colors = require(Sss.Source.Constants.Const_02_Colors)
-
 local module = {}
 
 local sector1Config = {
@@ -135,13 +132,21 @@ local hexIslandConfigs = {
 
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
+module.vendingMachines = {{targetWordIndex = 2}}
 
 function module.getTargetWords()
     return {
-        {word = 'RAT', target = 1, found = 0}, --
-        {word = 'CAT', target = 1, found = 0}, --
-        {word = 'BAT', target = 1, found = 0}, --
-        {word = 'HAT', target = 1, found = 0} --
+        {
+            {word = 'RAT', target = 1, found = 0},
+            {word = 'CAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0}
+        },
+        {
+            {word = 'RAT', target = 4, found = 0},
+            {word = 'CAT', target = 4, found = 0},
+            {word = 'BAT', target = 4, found = 0},
+            {word = 'HAT', target = 4, found = 0}
+        }
     }
 end
 
