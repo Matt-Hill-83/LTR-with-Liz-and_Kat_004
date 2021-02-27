@@ -23,7 +23,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'CAT'}
+                    grabbers = {'RAT'}
                 }
             },
             {item = nil},
@@ -47,7 +47,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'RAT'}
+                    grabbers = {'CAT'}
                 }
             },
             {item = nil}
@@ -63,7 +63,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'SAT'}
+                    grabbers = {'MAT'}
                 },
                 {item = nil}
             }
@@ -76,7 +76,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'PAT'}
+                    grabbers = {'RAT'}
                     -- words = {'CAT', 'RAT'}
                 }
             },
@@ -101,7 +101,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'MAT'}
+                    grabbers = {'CAT'}
                 }
             },
             {item = nil}
@@ -117,15 +117,7 @@ local hexIslandConfigs = {
                     grabbers = {'PAT'}
                 }
             },
-            {item = nil},
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'}
-                },
-                {item = nil}
-            }
+            {item = nil}
         }
     }
 }
@@ -141,10 +133,13 @@ function module.getTargetWords()
             {word = 'BAT', target = 1, found = 0}
         },
         {
-            {word = 'CAT', target = 4, found = 0},
-            {word = 'RAT', target = 4, found = 0},
-            {word = 'BAT', target = 4, found = 0},
-            {word = 'HAT', target = 4, found = 0}
+            {word = 'CAT', target = 3, found = 0},
+            {word = 'RAT', target = 3, found = 0},
+            {word = 'BAT', target = 3, found = 0},
+            {word = 'MAT', target = 3, found = 0},
+            -- {word = 'PAT', target = 3, found = 0},
+            {word = 'HAT', target = 3, found = 0}
+            -- {word = 'SAT', target = 3, found = 0}
         }
     }
 end
