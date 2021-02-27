@@ -41,7 +41,6 @@ local function configPlayers()
         end
 
         updateWordGuiRE2:FireClient(player)
-        -- updateWordGuiRE2:FireClient(player, {targetWords = targetWords})
         gameState.initComplete = true
     end
 
