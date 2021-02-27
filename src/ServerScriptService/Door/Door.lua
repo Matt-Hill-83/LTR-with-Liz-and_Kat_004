@@ -47,7 +47,6 @@ function module.initDoor(props)
     local parentFolder = props.parentFolder
     local keyName = props.keyName
     local doorWidth = props.doorWidth or 8
-    -- local width = 20
     local width = props.width or 32
     local noGem = props.noGem
 
