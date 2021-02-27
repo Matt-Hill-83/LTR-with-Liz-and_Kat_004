@@ -82,12 +82,6 @@ local function initStraysInRegions(props)
         'HAT', --
         'MAT', --
         'SAT' --
-        -- "CAT", --
-        -- "RAT", --
-        -- "BAT", --
-        -- "HAT", --
-        -- "MAT", --
-        -- "SAT" --
     }
 
     for _, region in ipairs(strayRegions) do
@@ -115,12 +109,9 @@ local function initStraysInRegions(props)
 
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
-
             -- stray.Size = Vector3.new(4, 4, 4)
         end
     end
-    --
-    --
 end
 
 local function initStraysInRegion(props)
