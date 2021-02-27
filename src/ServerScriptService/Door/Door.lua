@@ -4,12 +4,10 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
--- local Replicator = require(Sss.Source.BlockDash.Replicator)
-
 local module = {}
 
 local function openDoor(door, key)
-    -- key:Destroy()
+    key:Destroy()
 
     local doorPart = door.PrimaryPart
     local hiddenParts = Utils.hideItemAndChildren2({item = door, hide = true})
@@ -38,8 +36,7 @@ local function onTouch(door)
         end
 
         db.value = true
-        local player = Utils.getPlayerFromHumanoid(humanoid)
-        openDoor(door, key, player)
+        openDoor(door, key)
         db.value = false
     end
     return closure
