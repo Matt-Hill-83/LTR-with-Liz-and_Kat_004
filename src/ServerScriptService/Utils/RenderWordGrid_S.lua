@@ -130,18 +130,16 @@ local renderGrid = function(props)
         imageLabelTemplate:Destroy()
 
         local foundLabel = newRow.Found
+        foundLabel:Destroy()
+        local imageId = ImageConst.general.gem.imageId
+
         if item.found == item.target then
-            --
-            foundLabel.Text = item.found .. ' of ' .. item.target
-        else
-            foundLabel:Destroy()
-            --
             local foundImageLabel = Instance.new('ImageLabel', newRow)
             foundImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             foundImageLabel.Size = UDim2.new(0, foundLabelWidth, 0, letterHeight)
-            local imageId = ImageConst.general.gem.imageId
             foundImageLabel.Image = Utils.createImageUri(imageId)
             foundImageLabel.BackgroundTransparency = 1
+        else
         end
     end
     -- rowTemplate:Destroy()
