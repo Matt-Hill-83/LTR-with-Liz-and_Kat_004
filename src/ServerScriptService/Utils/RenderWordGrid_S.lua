@@ -129,7 +129,8 @@ local renderGrid = function(props)
         end
         imageLabelTemplate:Destroy()
 
-        local imageLabelGem = newRow.ImageLabelGem
+        local gemFrame = newRow.Frame
+        local imageLabelGem = newRow.Frame.ImageLabelGem
         imageLabelGem.Visible = true
 
         local gemHeight = letterHeight / 3
@@ -137,10 +138,13 @@ local renderGrid = function(props)
         local gemImageRed = Utils.createImageUri(ImageConst.general.gem_red_001.imageId)
         local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
 
-        if true then
-            -- if item.found == item.target then
+        gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+        gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
+
+        -- if true then
+        if item.found == item.target then
             local newImageLabel = imageLabelGem:Clone()
-            newImageLabel.Parent = imageLabelGem.Parent
+            newImageLabel.Parent = newRow
             newImageLabel.Image = gemImageRed
             newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
@@ -148,15 +152,22 @@ local renderGrid = function(props)
             local numRow = 3
             local numCol = 3
 
-            for colIndex = 0, numCol do
-                local positionX = colIndex * gemWidth + paddingInPx
-                for rowIndex = 0, numRow do
-                    local positionY = rowIndex * gemHeight + paddingInPx
+            local gemNum = 1
+            for rowIndex = 0, numRow - 1 do
+                local positionY = rowIndex * gemHeight + 0
+                for colIndex = 0, numCol - 1 do
+                    local positionX = colIndex * gemWidth + paddingInPx
                     local newImageLabel = imageLabelGem:Clone()
-                    newImageLabel.Parent = imageLabelGem.Parent
-                    newImageLabel.Image = gemImageGrey
-                    newImageLabel.Position = UDim2.new(0, positionX, 0, positionY)
+                    newImageLabel.Parent = newRow
+
+                    -- local gemImage = gemNum <= 3 and gemImageRed or gemImageGrey
+                    local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
+                    newImageLabel.Image = gemImage
+                    -- newImageLabel.Image = gemImageGrey
+                    newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
+                    -- newImageLabel.Size = UDim2.new(0, 0.333, 0, 0.333)
                     newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
+                    gemNum = gemNum + 1
                 end
             end
         end

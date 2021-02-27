@@ -136,19 +136,19 @@ local hexIslandConfigs = {
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
 
-module.targetWords = {
-    {word = 'RAT', target = 4, found = 0}, --
-    {word = 'CAT', target = 4, found = 0}, --
-    {word = 'BAT', target = 4, found = 0}, --
-    {word = 'HAT', target = 4, found = 0} --
-}
+-- module.targetWords = {
+--     {word = 'RAT', target = 4, found = 0}, --
+--     {word = 'CAT', target = 4, found = 0}, --
+--     {word = 'BAT', target = 4, found = 0}, --
+--     {word = 'HAT', target = 4, found = 0} --
+-- }
 
 function module.getTargetWords()
     return {
-        {word = 'RAT', target = 4, found = 0}, --
-        {word = 'CAT', target = 4, found = 0}, --
-        {word = 'BAT', target = 4, found = 0}, --
-        {word = 'HAT', target = 4, found = 0} --
+        {word = 'RAT', target = 9, found = 0}, --
+        {word = 'CAT', target = 9, found = 0}, --
+        {word = 'BAT', target = 9, found = 0}, --
+        {word = 'HAT', target = 9, found = 0} --
     }
 end
 
