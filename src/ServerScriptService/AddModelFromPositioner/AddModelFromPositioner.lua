@@ -20,25 +20,27 @@ function module.addModels(props)
 
     local newParts = {}
     for _, model in ipairs(positioners) do
-        local positioner = model.Positioner
-
         local dummy = Utils.getFirstDescendantByName(model, 'Dummy')
         if dummy then
             dummy:Destroy()
         end
 
-        local cloneProps = {
-            parentTo = parentFolder,
-            positionToPart = positioner,
-            templateName = templateName,
-            fromTemplate = true,
-            modelToClone = nil,
-            offsetConfig = offsetConfig
-        }
+        -- local positioner = model.Positioner
+        local positioner = Utils.getFirstDescendantByName(model, 'Positioner')
+        if positioner then
+            local cloneProps = {
+                parentTo = parentFolder,
+                positionToPart = positioner,
+                templateName = templateName,
+                fromTemplate = true,
+                modelToClone = nil,
+                offsetConfig = offsetConfig
+            }
 
-        local newItem = Utils.cloneModel(cloneProps)
+            local newItem = Utils.cloneModel(cloneProps)
 
-        table.insert(newParts, newItem)
+            table.insert(newParts, newItem)
+        end
     end
     return newParts
 end

@@ -16,9 +16,6 @@ function module.initCardSwaps(props)
 
     local function onTouchWrapper(item, targetWords)
         local function onTouch(otherPart)
-            print('targetWords' .. ' - start')
-            print(targetWords)
-
             local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
             if db == false then
                 if humanoid then
