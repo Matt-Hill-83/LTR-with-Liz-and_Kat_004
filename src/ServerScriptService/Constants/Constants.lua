@@ -1,6 +1,6 @@
 local isDev
-isDev = true
 isDev = false
+isDev = true
 --
 --
 --
@@ -22,6 +22,7 @@ if isDev then
     activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
+    activeSpawn = 'Spawn_Center'
 end
 
 local devGameConfig = {
