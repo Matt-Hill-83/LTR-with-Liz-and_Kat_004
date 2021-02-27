@@ -129,18 +129,38 @@ local renderGrid = function(props)
         end
         imageLabelTemplate:Destroy()
 
-        local foundLabel = newRow.Found
-        foundLabel:Destroy()
-        local imageId = ImageConst.general.gem.imageId
+        local imageLabelGem = newRow.ImageLabelGem
+        imageLabelGem.Visible = true
 
-        if item.found == item.target then
-            local foundImageLabel = Instance.new('ImageLabel', newRow)
-            foundImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
-            foundImageLabel.Size = UDim2.new(0, foundLabelWidth, 0, letterHeight)
-            foundImageLabel.Image = Utils.createImageUri(imageId)
-            foundImageLabel.BackgroundTransparency = 1
+        local gemHeight = letterHeight / 3
+        local gemWidth = gemHeight
+        local gemImageRed = Utils.createImageUri(ImageConst.general.gem_red_001.imageId)
+        local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
+
+        if true then
+            -- if item.found == item.target then
+            local newImageLabel = imageLabelGem:Clone()
+            newImageLabel.Parent = imageLabelGem.Parent
+            newImageLabel.Image = gemImageRed
+            newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+            newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
         else
+            local numRow = 3
+            local numCol = 3
+
+            for colIndex = 0, numCol do
+                local positionX = colIndex * gemWidth + paddingInPx
+                for rowIndex = 0, numRow do
+                    local positionY = rowIndex * gemHeight + paddingInPx
+                    local newImageLabel = imageLabelGem:Clone()
+                    newImageLabel.Parent = imageLabelGem.Parent
+                    newImageLabel.Image = gemImageGrey
+                    newImageLabel.Position = UDim2.new(0, positionX, 0, positionY)
+                    newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
+                end
+            end
         end
+        imageLabelGem.Visible = false
     end
     -- rowTemplate:Destroy()
 end
