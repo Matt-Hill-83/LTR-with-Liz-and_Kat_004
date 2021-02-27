@@ -63,7 +63,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'MAT'}
+                    grabbers = {'HAT'}
                 },
                 {item = nil}
             }
@@ -136,10 +136,7 @@ function module.getTargetWords()
             {word = 'CAT', target = 3, found = 0},
             {word = 'RAT', target = 3, found = 0},
             {word = 'BAT', target = 3, found = 0},
-            {word = 'MAT', target = 3, found = 0},
-            -- {word = 'PAT', target = 3, found = 0},
             {word = 'HAT', target = 3, found = 0}
-            -- {word = 'SAT', target = 3, found = 0}
         }
     }
 end

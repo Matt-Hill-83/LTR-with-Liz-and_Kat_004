@@ -14,13 +14,17 @@ function module.initCardSwaps(props)
 
     local db = false
 
-    local function onTouchWrapper(item, targetWords)
+    local function onTouchWrapper(itemNum)
+        print('onTouchWrapper')
+
         local function onTouch(otherPart)
             local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
             if db == false then
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
+                    local targetWords = levelConfig.getTargetWords()[itemNum]
+                    targetWords.test = itemNum
 
                     local gameState = PlayerStatManager.getGameState(player)
                     gameState.targetWords = targetWords
@@ -38,8 +42,7 @@ function module.initCardSwaps(props)
     Utils.sortListByObjectKey(items, 'Name')
 
     for itemNum, item in ipairs(items) do
-        local targetWords = levelConfig.getTargetWords()[itemNum]
-        item.Touched:Connect(onTouchWrapper(item, targetWords))
+        item.Touched:Connect(onTouchWrapper(itemNum))
     end
 end
 

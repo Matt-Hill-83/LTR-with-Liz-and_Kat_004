@@ -136,7 +136,7 @@ local renderGrid = function(props)
         gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
         gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
-        if item.found == item.target then
+        if item.found >= item.target then
             local newImageLabel = imageLabelGem:Clone()
             newImageLabel.Parent = newRow
             newImageLabel.Image = gemImageRed
