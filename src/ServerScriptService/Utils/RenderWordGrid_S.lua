@@ -160,12 +160,9 @@ local renderGrid = function(props)
                     local newImageLabel = imageLabelGem:Clone()
                     newImageLabel.Parent = newRow
 
-                    -- local gemImage = gemNum <= 3 and gemImageRed or gemImageGrey
                     local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
                     newImageLabel.Image = gemImage
-                    -- newImageLabel.Image = gemImageGrey
                     newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
-                    -- newImageLabel.Size = UDim2.new(0, 0.333, 0, 0.333)
                     newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
                     gemNum = gemNum + 1
                 end
@@ -173,7 +170,7 @@ local renderGrid = function(props)
         end
         imageLabelGem.Visible = false
     end
-    -- rowTemplate:Destroy()
+    rowTemplate:Destroy()
 end
 
 module.renderGrid = renderGrid

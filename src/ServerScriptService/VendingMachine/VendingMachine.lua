@@ -28,7 +28,6 @@ function module.initVendingMachine(props)
 
         local displayHeight = guiPart.Size.Y * pixelsPerStud * scalingFactor
 
-        local mainFrameY = displayHeight - mainFrame.Size.Y.Offset
         local mainFramePosition = UDim2.new(0, 0, 0, 0)
 
         RenderWordGrid.renderGrid(
