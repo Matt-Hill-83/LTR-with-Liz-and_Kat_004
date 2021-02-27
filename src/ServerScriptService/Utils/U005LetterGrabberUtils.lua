@@ -23,7 +23,6 @@ local function getActiveLetterGrabberBlock(tool)
 
     for _, block in ipairs(letterBlocks) do
         block.IsActive.Value = false
-        --
     end
 
     for _, block in ipairs(letterBlocks) do
@@ -41,7 +40,6 @@ local function setActiveLetterGrabberBlock(tool)
 
     for _, block in ipairs(letterBlocks) do
         block.IsActive.Value = false
-        --
     end
 
     for _, block in ipairs(letterBlocks) do
@@ -76,22 +74,11 @@ local function styleLetterGrabberBlocks(tool)
 end
 
 local function wordFound(tool, player)
-    print('wordFound' .. ' - start')
-    print(wordFound)
     local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
 
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
 
-    --
-    --
-    --
-    --
-    local explosionSound = '515938718'
-    Utils.playSound(explosionSound, 0.5)
-    --
-    --
-    --
     module.resetBlocks(tool)
     module.setActiveLetterGrabberBlock(tool)
     module.styleLetterGrabberBlocks(tool)
@@ -108,11 +95,6 @@ local function wordFound(tool, player)
     end
 
     if targetWordObj then
-        print('---------------------')
-        print('---------------------')
-        print('---------------------')
-        print('---------------------')
-        print('---------------------')
         targetWordObj.found = targetWordObj.found + 1
 
         updateWordGuiRE:FireClient(player)
@@ -127,6 +109,9 @@ local function wordFound(tool, player)
 
             PlayerStatManager:ChangeStat(player, 'Gems', 1)
             Leaderboard.updateLB()
+
+            local explosionSound = '515938718'
+            Utils.playSound(explosionSound, 0.5)
         end
 
         if targetWordObj.found == targetWordObj.target then

@@ -19,6 +19,7 @@ if isDev then
     activeSpawn = 'Spawn_Hex5'
     activeSpawn = 'Spawn_Hex4'
     activeSpawn = 'Spawn_Center'
+    activeSpawn = 'SpawnLocation_L3_ramp'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
 end
