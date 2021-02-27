@@ -84,6 +84,7 @@ local renderGrid = function(props)
     )
 
     local rowTemplate = Utils.getFirstDescendantByName(sgui, 'RowTemplate')
+    rowTemplate.Visible = true
     rowTemplate.Position = UDim2.new(0, -100, 0, -100)
     local rowFolder =
         Utils.getOrCreateFolder(
@@ -170,8 +171,12 @@ local renderGrid = function(props)
         end
         imageLabelGem.Visible = false
     end
-    rowTemplate:Destroy()
+    rowTemplate.Visible = false
 end
+
+-- function module.getGemFrame()
+--     --
+-- end
 
 module.renderGrid = renderGrid
 return module

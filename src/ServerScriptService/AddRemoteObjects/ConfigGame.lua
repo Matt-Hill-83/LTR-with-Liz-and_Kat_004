@@ -239,11 +239,13 @@ function module.configGame()
             thickness = 1,
             -- height = 6,
             height = 18,
-            shortHeight = 6,
+            shortHeight = 3,
+            -- shortHeight = 6,
             shortWallProps = {
-                Transparency = 0.8,
-                BrickColor = BrickColor.new('Light yellow'),
-                Material = Enum.Material.Grass
+                Transparency = 0,
+                -- Transparency = 0.8,
+                BrickColor = BrickColor.new('Maroon'),
+                Material = Enum.Material.Marble
             },
             wallProps = {Transparency = 1}
             -- wallProps = {Transparency = 0.5}
