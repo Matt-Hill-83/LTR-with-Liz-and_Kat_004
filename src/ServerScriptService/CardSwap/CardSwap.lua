@@ -22,7 +22,7 @@ function module.initCardSwaps(props)
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
                     local targetWords = levelConfig.getTargetWords()[itemNum]
-                    targetWords.test = itemNum
+                    -- targetWords.test = itemNum
 
                     local gameState = PlayerStatManager.getGameState(player)
                     gameState.targetWords = targetWords

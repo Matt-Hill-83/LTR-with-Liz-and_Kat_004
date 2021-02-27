@@ -36,7 +36,7 @@ local function configPlayers()
         else
             local levelConfig = LevelConfigs.levelConfigs[1]
             targetWords = levelConfig.getTargetWords()[1]
-            targetWords.test2 = player.Name
+            -- targetWords.test2 = player.Name
             gameState.targetWords = targetWords
         end
 

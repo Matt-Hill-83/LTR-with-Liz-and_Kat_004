@@ -7,6 +7,7 @@ local renderGrid = function(props)
     local targetWords = props.targetWords
     local sgui = props.sgui
     local displayHeight = props.displayHeight
+    local displayWidth = props.displayWidth
     local mainFramePosition = props.mainFramePosition
 
     local words = targetWords
@@ -62,12 +63,10 @@ local renderGrid = function(props)
     scrollingFrame.CanvasSize = UDim2.new(0, scrollerWidth - scrollBarThickness, 0, scrollerCanvasHeight)
 
     mainFrame.Size = UDim2.new(0, guiWidth, 0, guiHeight)
-    local test = mainFrame.Size.Y.Offset
-    local mainFrameY = displayHeight - mainFrame.Size.Y.Offset
+    local mainFrameY = displayHeight / 2 - mainFrame.Size.Y.Offset / 2
 
     local defaultPosition = UDim2.new(0, 0, 0, mainFrameY)
     mainFrame.Position = mainFramePosition or defaultPosition
-    -- mainFrame.Position = mainFramePosition
 
     Utils.addPadding(
         {
