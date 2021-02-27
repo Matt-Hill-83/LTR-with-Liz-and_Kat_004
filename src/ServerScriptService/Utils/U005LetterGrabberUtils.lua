@@ -83,8 +83,15 @@ local function wordFound(tool, player)
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
 
-    -- local explosionSound = '515938718'
-    -- Utils.playSound(explosionSound, 0.5)
+    --
+    --
+    --
+    --
+    local explosionSound = '515938718'
+    Utils.playSound(explosionSound, 0.5)
+    --
+    --
+    --
     module.resetBlocks(tool)
     module.setActiveLetterGrabberBlock(tool)
     module.styleLetterGrabberBlocks(tool)
