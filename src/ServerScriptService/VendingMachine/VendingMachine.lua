@@ -4,6 +4,8 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local RenderWordGrid = require(Sss.Source.Utils.RenderWordGrid_S)
 
+local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
+
 local module = {}
 
 function module.initVendingMachine(props)
@@ -13,6 +15,8 @@ function module.initVendingMachine(props)
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
+        local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
+        local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
@@ -38,6 +42,11 @@ function module.initVendingMachine(props)
                 displayHeight = displayHeight,
                 mainFramePosition = mainFramePosition
             }
+        )
+
+        local rewardTemplate = Utils.getFromTemplates('CupcakeToolTemplate')
+        ReplicatorFactory.createReplicator(
+            {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
         )
     end
 end

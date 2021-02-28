@@ -3,7 +3,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local module = {}
 
-local function initReplicator(replicator, callBack)
+local function initReplicator(replicator, callBack, authFunction)
     local hitBox = Utils.getFirstDescendantByName(replicator, 'HitBox')
 
     local reward
@@ -27,7 +27,17 @@ local function initReplicator(replicator, callBack)
 
     local function onItemTouched(obj)
         local player = game.Players:GetPlayerFromCharacter(obj.Parent)
+
         if not player then
+            return
+        end
+
+        local isAuth = true
+        if authFunction then
+            isAuth = authFunction(player)
+        end
+
+        if not isAuth then
             return
         end
 
