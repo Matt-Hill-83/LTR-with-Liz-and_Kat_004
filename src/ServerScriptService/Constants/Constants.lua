@@ -13,7 +13,6 @@ if isDev then
     activeSpawn = 'SpawnLocation_L2H1'
     activeSpawn = 'Spawn-L2'
     activeSpawn = 'SpawnLocation_L3H4'
-    activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_UniIsland'
     activeSpawn = 'Spawn_Hex6'
     activeSpawn = 'Spawn_Hex5'
@@ -22,6 +21,7 @@ if isDev then
     activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
+    activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_Center'
 end
 
