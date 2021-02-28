@@ -45,7 +45,7 @@ function module.initVendingMachine(props)
         )
 
         local rewardTemplate = Utils.getFromTemplates('CupcakeToolTemplate')
-        ReplicatorFactory.createReplicator(
+        ReplicatorFactory.initReplicators(
             {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
         )
     end

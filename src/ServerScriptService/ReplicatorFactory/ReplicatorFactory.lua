@@ -57,6 +57,8 @@ function module.createReplicator(props)
 
     newRewardTool.Parent = rewardFolder
     local newRewardPart = newRewardTool.Handle
+    print('newRewardPart' .. ' - start')
+    print(newRewardPart)
 
     newRewardPart.CFrame =
         Utils3.setCFrameFromDesiredEdgeOffset(
@@ -98,30 +100,32 @@ function module.createReplicator(props)
     )
 
     local tool = Utils.getFirstDescendantByType(newReplicator, 'Tool')
+    print('tool' .. ' - start')
+    print(tool)
     if tool then
         tool.Name = keyName
     end
     return newReplicator
 end
 
-function module.initKeys(props)
+function module.initReplicators(props)
     local parentFolder = props.parentFolder
     local tagName = props.tagName or 'KeyPositioner'
-    local keyPositioners = Utils.getByTagInParent({parent = parentFolder, tag = tagName})
+    -- local keyPositioners = Utils.getByTagInParent({parent = parentFolder, tag = tagName})
 
     local keys = {}
-    for _, positionerModel in ipairs(keyPositioners) do
-        local replicatorProps = {
-            rewardTemplate = Utils.getFromTemplates('HexLetterGemTool'),
-            positionerModel = positionerModel,
-            parentFolder = parentFolder
-        }
+    -- for _, positionerModel in ipairs(keyPositioners) do
+    -- local replicatorProps = {
+    --     rewardTemplate = Utils.getFromTemplates('HexLetterGemTool'),
+    --     positionerModel = positionerModel,
+    --     parentFolder = parentFolder
+    -- }
 
-        local newReplicator = module.initKey(replicatorProps)
+    local newReplicator = module.createReplicator(props)
 
-        Replicator.initReplicator(newReplicator)
-        table.insert(keys, newReplicator)
-    end
+    Replicator.initReplicator(newReplicator)
+    table.insert(keys, newReplicator)
+    -- end
     return keys
 end
 
