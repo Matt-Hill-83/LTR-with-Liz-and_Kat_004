@@ -9,16 +9,17 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local RenderWordGrid = require(Sss.Source.Utils.RenderWordGrid_S)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
+local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
 local module = {}
 
 function module.initTeleporter(part)
     local teleportPart = part
-    -- local teleportPart = script.Parent
-    local targetPlaceID = 6460817067 -- Change this to your place ID
+    local targetPlaceId = 6460817067
 
     -- Require teleport module
-    local TeleportModule = require(ServerStorage:WaitForChild('TeleportModule'))
+    print('TeleportModule' .. ' - start')
+    print(TeleportModule)
 
     local function onPartTouch(otherPart)
         -- Get player from character
@@ -28,7 +29,7 @@ function module.initTeleporter(part)
             player:SetAttribute('Teleporting', true)
 
             -- Teleport the player
-            local teleportResult = TeleportModule.teleportWithRetry(targetPlaceID, {player})
+            local teleportResult = TeleportModule.teleportWithRetry(targetPlaceId, {player})
             print('teleportResult' .. ' - start')
             print(teleportResult)
 
@@ -48,7 +49,7 @@ function module.initVendingMachine(props)
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
-        -- module.initTeleporter(teleporter)
+        module.initTeleporter(teleporter)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
