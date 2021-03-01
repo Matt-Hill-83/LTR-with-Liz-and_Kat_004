@@ -130,8 +130,8 @@ module.vendingMachines = {{targetWordIndex = 2}}
 function module.getTargetWords()
     return {
         {
-            {word = 'RAT', target = 1, found = 0},
-            {word = 'BAT', target = 1, found = 0}
+            {word = 'PAT', target = 1, found = 0},
+            {word = 'MAT', target = 1, found = 0}
         },
         {
             {word = 'CAT', target = 1, found = 0},
