@@ -23,7 +23,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'RAT'}
+                    grabbers = {'CAT'}
                 }
             },
             {item = nil},
@@ -47,7 +47,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'CAT'}
+                    grabbers = {'RAT'}
                 }
             },
             {item = nil}
@@ -63,7 +63,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HAT'}
+                    grabbers = {'BAT'}
                 },
                 {item = nil}
             }
@@ -76,7 +76,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'RAT'}
+                    grabbers = {'HAT'}
                     -- words = {'CAT', 'RAT'}
                 }
             },
@@ -134,13 +134,10 @@ function module.getTargetWords()
             {word = 'BAT', target = 1, found = 0}
         },
         {
-            {word = 'ACT', target = 1, found = 0}
-        },
-        {
-            {word = 'CAT', target = 3, found = 0},
-            {word = 'RAT', target = 3, found = 0},
-            {word = 'BAT', target = 3, found = 0},
-            {word = 'HAT', target = 3, found = 0}
+            {word = 'CAT', target = 1, found = 0},
+            {word = 'RAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0},
+            {word = 'HAT', target = 1, found = 0}
         }
     }
 end
