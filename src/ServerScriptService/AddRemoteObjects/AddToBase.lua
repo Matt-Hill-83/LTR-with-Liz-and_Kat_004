@@ -111,13 +111,10 @@ local function addRemoteObjects()
     Utils.sortListByObjectKey(levels, 'Name')
 
     local levelName = levels[1].Name
-    print('levelName' .. ' - start')
-    print(levelName)
 
     local levelIndex = tonumber(levelName)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
-    -- for levelIndex, level in ipairs(levels) do
     local level = levels[1]
     local levelConfig = LevelConfigs.levelConfigs[levelIndex]
     local hexIslandConfigs = levelConfig.hexIslandConfigs
@@ -129,7 +126,7 @@ local function addRemoteObjects()
     BeltJoint.initBeltJoints({parentFolder = level})
     HexWall.initHexWalls({parentFolder = level})
     Junction.initJunctions({parentFolder = level})
-    Junction.initJunctions2({parentFolder = level})
+    -- Junction.initJunctions2({parentFolder = level})
     SkiSlope.initSlopes({parentFolder = level})
     Entrance.initRunFasts(level)
     VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig})
@@ -139,7 +136,6 @@ local function addRemoteObjects()
         local sectorConfigs = levelConfig.sectorConfigs
         module.addConveyors(level, sectorConfigs)
     end
-    -- end
     islandTemplate:Destroy()
 
     Terrain.initTerrain({parentFolder = workspace})
