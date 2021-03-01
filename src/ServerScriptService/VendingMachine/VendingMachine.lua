@@ -14,8 +14,11 @@ local TeleportModule = require(ServerStorage.Source.TeleportModule)
 local module = {}
 
 function module.initTeleporter(part)
+    if not part then
+        return
+    end
     local teleportPart = part
-    local targetPlaceId = 6460817067
+    local targetPlaceId = 6460610480
 
     local function onPartTouch(otherPart)
         -- Get player from character

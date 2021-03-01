@@ -44,6 +44,4 @@ function TeleportModule.teleportWithRetry(targetPlaceID, playersTable, teleportO
     doTeleport(playersTable, teleportOptions)
 end
 
-print('TeleportModule' .. ' - start')
-print(TeleportModule)
 return TeleportModule
