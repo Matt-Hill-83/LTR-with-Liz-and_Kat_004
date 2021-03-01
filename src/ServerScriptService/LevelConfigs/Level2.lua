@@ -134,11 +134,14 @@ function module.getTargetWords()
             {word = 'MAT', target = 1, found = 0}
         },
         {
-            {word = 'CAT', target = 1, found = 0},
-            {word = 'RAT', target = 1, found = 0},
-            {word = 'BAT', target = 1, found = 0},
-            {word = 'HAT', target = 1, found = 0}
+            {word = 'CAT', target = 1, found = 0}
         }
+        -- {
+        --     {word = 'CAT', target = 1, found = 0},
+        --     {word = 'RAT', target = 1, found = 0},
+        --     {word = 'BAT', target = 1, found = 0},
+        --     {word = 'HAT', target = 1, found = 0}
+        -- }
     }
 end
 
