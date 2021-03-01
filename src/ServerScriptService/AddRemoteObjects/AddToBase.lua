@@ -110,12 +110,12 @@ local function addRemoteObjects()
     local levels = levelsFolder:GetChildren()
     Utils.sortListByObjectKey(levels, 'Name')
 
-    local levelName = levels[1].Name
+    local level = levels[1]
+    local levelName = level.Name
 
     local levelIndex = tonumber(levelName)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
-    local level = levels[1]
     local levelConfig = LevelConfigs.levelConfigs[levelIndex]
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 
