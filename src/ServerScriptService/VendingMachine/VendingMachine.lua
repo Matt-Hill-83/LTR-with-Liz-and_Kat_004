@@ -48,6 +48,14 @@ function module.initVendingMachine(props)
         ReplicatorFactory.initReplicators(
             {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
         )
+
+        local function hitBoxTouched()
+            print('test')
+            print('test')
+            print('test')
+        end
+
+        hitBox.Touched:Connect(Utils.onTouchHuman(hitBox, hitBoxTouched))
     end
 end
 
