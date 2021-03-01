@@ -1,5 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
 local SGUI = game:GetService('StarterGui')
+local ServerStorage = game:GetService('ServerStorage')
+local Players = game:GetService('Players')
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
@@ -10,6 +12,33 @@ local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory
 
 local module = {}
 
+function module.initTeleporter(part)
+    local teleportPart = part
+    -- local teleportPart = script.Parent
+    local targetPlaceID = 6460817067 -- Change this to your place ID
+
+    -- Require teleport module
+    local TeleportModule = require(ServerStorage:WaitForChild('TeleportModule'))
+
+    local function onPartTouch(otherPart)
+        -- Get player from character
+        local player = Players:GetPlayerFromCharacter(otherPart.Parent)
+
+        if player and not player:GetAttribute('Teleporting') then
+            player:SetAttribute('Teleporting', true)
+
+            -- Teleport the player
+            local teleportResult = TeleportModule.teleportWithRetry(targetPlaceID, {player})
+            print('teleportResult' .. ' - start')
+            print(teleportResult)
+
+            player:SetAttribute('Teleporting', nil)
+        end
+    end
+
+    teleportPart.Touched:Connect(onPartTouch)
+end
+
 function module.initVendingMachine(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
@@ -18,6 +47,8 @@ function module.initVendingMachine(props)
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
+        local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
+        -- module.initTeleporter(teleporter)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
