@@ -10,12 +10,7 @@ local module = {}
 function module.initSlopes(props)
     local parentFolder = props.parentFolder
 
-    -- local skiSlopesFolder = Utils.getFirstDescendantByName(parentFolder, 'SkiSlopes')
-    -- local slopes = Utils.getByTagInParent({parent = skiSlopesFolder, tag = 'SkiSlopeFolder'})
-
     StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
-
-    -- for _, slope in ipairs(slopes) do
 
     local slope = parentFolder
 
@@ -42,11 +37,6 @@ function module.initSlopes(props)
         newLetterBlock.CanCollide = false
     end
 
-    --
-    --
-
-    --
-    --
     local positioners =
         Utils.getByTagInParent(
         {
@@ -64,7 +54,6 @@ function module.initSlopes(props)
 
         LetterGrabber.initLetterGrabber(grabbersConfig)
     end
-    -- end
 end
 
 return module
