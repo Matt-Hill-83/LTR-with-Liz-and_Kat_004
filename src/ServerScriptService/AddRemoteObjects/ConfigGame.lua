@@ -14,7 +14,8 @@ local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
 
-local function configPlayers()
+local function configPlayers(props)
+    local level = props.level
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
@@ -34,7 +35,7 @@ local function configPlayers()
             wait(2)
             targetWords = gameState.targetWords
         else
-            local levelConfig = LevelConfigs.levelConfigs[1]
+            local levelConfig = LevelConfigs.levelConfigs[level]
             targetWords = levelConfig.getTargetWords()[1]
             gameState.targetWords = targetWords
         end
@@ -226,9 +227,9 @@ local function setVisibility()
     configNodeWalls(CS:GetTagged('PodWall'))
 end
 
-function module.configGame()
+function module.configGame(props)
     setVisibility()
-    configPlayers()
+    configPlayers(props)
     configGamePass()
     configBadges()
 

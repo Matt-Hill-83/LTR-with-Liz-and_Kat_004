@@ -41,7 +41,7 @@ function module.initAnimalSounds()
     end
 end
 
-function module.initAnimalSounds()
+function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
 
     for uniIndex, uni in ipairs(unicorns) do
@@ -66,6 +66,7 @@ function module.addConveyors(level, sectorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
     module.initAnimalSounds()
+    module.initAnimalSounds2()
 
     local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
     Utils.sortListByObjectKey(islandPositioners, 'Name')
@@ -113,10 +114,17 @@ local function addRemoteObjects()
 
     local level = levels[1]
     local levelName = level.Name
+    print('levelName' .. ' - start')
+    print(levelName)
 
     local levelIndex = tonumber(levelName)
-    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
+    print('levelIndex' .. ' - start')
+    print(levelIndex)
+
+    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
+    print('LevelConfigs.levelConfigs' .. ' - start')
+    print(LevelConfigs.levelConfigs)
     local levelConfig = LevelConfigs.levelConfigs[levelIndex]
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 
@@ -144,7 +152,7 @@ local function addRemoteObjects()
     ConfigRemoteEvents.initRemoteEvents()
 
     -- Do this last after everything has been created/deleted
-    ConfigGame.configGame()
+    ConfigGame.configGame({level = levelIndex})
 end
 
 module.addRemoteObjects = addRemoteObjects

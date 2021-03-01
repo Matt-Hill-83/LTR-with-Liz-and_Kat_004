@@ -13,12 +13,13 @@ local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
 local module = {}
 
-function module.initTeleporter(part)
+function module.initTeleporter(part, placeId)
     if not part then
         return
     end
     local teleportPart = part
-    local targetPlaceId = 6460817067
+    local targetPlaceId = placeId
+    -- local targetPlaceId = 6460817067
 
     local function onPartTouch(otherPart)
         -- Get player from character
@@ -46,7 +47,9 @@ function module.initVendingMachine(props)
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
-        module.initTeleporter(teleporter)
+        print('teleporter' .. ' - start')
+        print(teleporter)
+        module.initTeleporter(teleporter, levelConfig.teleporter)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 

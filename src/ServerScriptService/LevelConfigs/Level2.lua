@@ -122,6 +122,7 @@ local hexIslandConfigs = {
     }
 }
 
+module.teleporter = 'xxx'
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
 module.vendingMachines = {{targetWordIndex = 2}}
@@ -133,7 +134,7 @@ function module.getTargetWords()
             {word = 'BAT', target = 1, found = 0}
         },
         {
-            {word = 'CAT', target = 1, found = 0}
+            {word = 'ACT', target = 1, found = 0}
         },
         {
             {word = 'CAT', target = 3, found = 0},

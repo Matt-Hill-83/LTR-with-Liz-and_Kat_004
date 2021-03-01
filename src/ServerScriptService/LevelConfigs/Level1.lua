@@ -122,6 +122,7 @@ local hexIslandConfigs = {
     }
 }
 
+module.teleporter = '6460817067'
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
 module.vendingMachines = {{targetWordIndex = 2}}
