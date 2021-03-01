@@ -41,6 +41,27 @@ function module.initAnimalSounds()
     end
 end
 
+function module.initAnimalSounds()
+    local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
+
+    for uniIndex, uni in ipairs(unicorns) do
+        local sound = Utils.getFirstDescendantByName(uni, 'Sound')
+
+        if sound then
+            local soundId = soundConstants.animalSounds.trollNeedGold.soundId
+            sound.SoundId = 'rbxassetid://' .. soundId
+            sound.Volume = 1
+            local timePosition = 10 % uniIndex
+
+            sound.TimePosition = timePosition
+            sound.Playing = true
+            sound.Looped = true
+            sound.RollOffMode = 'Linear'
+            sound.RollOffMaxDistance = 64
+        end
+    end
+end
+
 function module.addConveyors(level, sectorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 

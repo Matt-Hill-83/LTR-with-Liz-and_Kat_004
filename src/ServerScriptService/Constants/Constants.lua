@@ -20,8 +20,8 @@ if isDev then
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
 else
-    activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_Center'
+    activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'SpawnLocation_L3_ramp'
 end
 

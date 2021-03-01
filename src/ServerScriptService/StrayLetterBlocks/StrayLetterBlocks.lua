@@ -68,6 +68,7 @@ local function createStray(char, parentFolder, props)
             letterBlockType = 'StrayLetter'
         }
     )
+
     return newLetterBlock
 end
 
@@ -109,6 +110,17 @@ local function initStraysInRegions(props)
 
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
+
+            function module.initPuck(puck)
+                local thrust = Instance.new('BodyThrust', puck)
+                thrust.Force = Vector3.new(0, 0, 12000)
+
+                local av = Instance.new('BodyAngularVelocity', puck)
+                av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
+                av.AngularVelocity = Vector3.new(0, 1, 0)
+                av.P = 1250
+            end
+            module.initPuck(stray)
             -- stray.Size = Vector3.new(4, 4, 4)
         end
     end
