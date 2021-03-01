@@ -1,6 +1,3 @@
-local Sss = game:GetService('ServerScriptService')
-local Colors = require(Sss.Source.Constants.Const_02_Colors)
-
 local module = {}
 
 local sector1Config = {
@@ -26,8 +23,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'CAT'},
-                    grabbers = {'CAT'}
+                    grabbers = {'RAT'}
+                }
+            },
+            {item = nil},
+            {item = nil},
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'BAT'}
                 }
             },
             {item = nil}
@@ -37,10 +41,12 @@ local hexIslandConfigs = {
         hexNum = 2,
         bridgeConfigs = {
             {item = nil},
+            {item = nil},
+            {item = nil},
+            {item = nil},
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'CAT'},
                     grabbers = {'CAT'}
                 }
             },
@@ -51,14 +57,16 @@ local hexIslandConfigs = {
         hexNum = 3,
         bridgeConfigs = {
             {item = nil},
+            {item = nil},
+            {item = nil},
+            {item = nil},
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'BAT'},
-                    grabbers = {'BAT'}
-                }
-            },
-            {item = nil}
+                    grabbers = {'HAT'}
+                },
+                {item = nil}
+            }
         }
     },
     {
@@ -68,7 +76,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'BUN'},
+                    grabbers = {'RAT'}
+                    -- words = {'CAT', 'RAT'}
+                }
+            },
+            {item = nil},
+            {item = nil},
+            {
+                item = 'Rink',
+                itemConfig = {
                     grabbers = {'CAT'}
                 }
             },
@@ -79,10 +95,12 @@ local hexIslandConfigs = {
         hexNum = 5,
         bridgeConfigs = {
             {item = nil},
+            {item = nil},
+            {item = nil},
+            {item = nil},
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'BUN'},
                     grabbers = {'CAT'}
                 }
             },
@@ -96,8 +114,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    words = {'RUN', 'BUN'},
-                    grabbers = {'CAT'}
+                    grabbers = {'PAT'}
                 }
             },
             {item = nil}
@@ -107,12 +124,24 @@ local hexIslandConfigs = {
 
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
+module.vendingMachines = {{targetWordIndex = 2}}
 
-module.targetWords = {
-    {word = 'RAT', target = 4, found = 0}, --
-    {word = 'CAT', target = 4, found = 0}, --
-    {word = 'BAT', target = 4, found = 0}, --
-    {word = 'HAT', target = 4, found = 0} --
-}
+function module.getTargetWords()
+    return {
+        {
+            {word = 'RAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0}
+        },
+        {
+            {word = 'CAT', target = 1, found = 0}
+        },
+        {
+            {word = 'CAT', target = 3, found = 0},
+            {word = 'RAT', target = 3, found = 0},
+            {word = 'BAT', target = 3, found = 0},
+            {word = 'HAT', target = 3, found = 0}
+        }
+    }
+end
 
 return module

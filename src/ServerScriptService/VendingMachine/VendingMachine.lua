@@ -19,8 +19,7 @@ function module.initTeleporter(part)
     end
     local teleportPart = part
     local targetPlaceId = 6460817067
-    -- local targetPlaceId = 6460610480
-    -- 6460610480
+
     local function onPartTouch(otherPart)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
@@ -30,8 +29,6 @@ function module.initTeleporter(part)
 
             -- Teleport the player
             local teleportResult = TeleportModule.teleportWithRetry(targetPlaceId, {player})
-            print('teleportResult' .. ' - start')
-            print(teleportResult)
 
             player:SetAttribute('Teleporting', nil)
         end
