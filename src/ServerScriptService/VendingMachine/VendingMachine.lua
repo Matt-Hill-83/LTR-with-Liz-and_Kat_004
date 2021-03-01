@@ -18,8 +18,9 @@ function module.initTeleporter(part)
         return
     end
     local teleportPart = part
-    local targetPlaceId = 6460610480
-
+    local targetPlaceId = 6460817067
+    -- local targetPlaceId = 6460610480
+    -- 6460610480
     local function onPartTouch(otherPart)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
