@@ -1,9 +1,11 @@
 local Sss = game:GetService('ServerScriptService')
 local SGUI = game:GetService('StarterGui')
+
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local RenderWordGrid = require(Sss.Source.Utils.RenderWordGrid_S)
-
+local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
 
 local module = {}
@@ -20,7 +22,7 @@ function module.initVendingMachine(props)
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
-        local targetWords = levelConfig.getTargetWords()[targetWordIndex]
+        local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')
         local newFrame = mainFrame:Clone()
@@ -37,7 +39,7 @@ function module.initVendingMachine(props)
         RenderWordGrid.renderGrid(
             {
                 sgui = sgui,
-                targetWords = targetWords,
+                targetWords = signTargetWords,
                 levelConfig = levelConfig,
                 displayHeight = displayHeight,
                 mainFramePosition = mainFramePosition
@@ -49,10 +51,62 @@ function module.initVendingMachine(props)
             {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
         )
 
-        local function hitBoxTouched()
-            print('test')
-            print('test')
-            print('test')
+        local function hitBoxTouched(touchedBlock, player)
+            local gameState = PlayerStatManager.getGameState(player)
+            local targetWords = gameState.targetWords
+            local gateOpened = false
+
+            local cardComplete = true
+            for _, word in ipairs(targetWords) do
+                if word.found ~= word.target then
+                    cardComplete = false
+                end
+            end
+
+            if cardComplete then
+                if gateOpened == true then
+                    return
+                end
+                gateOpened = true
+                local keyWalls = Utils.getDescendantsByName(vendingMachine, 'KeyWall')
+                local fires = Utils.getDescendantsByName(vendingMachine, 'Fire')
+                local explosionSound = '262562442'
+
+                Utils.playSound(explosionSound, 0.5)
+
+                for _, keyWall in ipairs(keyWalls) do
+                    if keyWall then
+                        LetterUtils.styleImageLabelsInBlock(keyWall, {Visible = false})
+                        keyWall.CanCollide = false
+                        keyWall.Transparency = 1
+                    end
+                end
+
+                for _, fire in ipairs(fires) do
+                    if fire then
+                        fire.Enabled = true
+                    end
+                end
+
+                local function revertStyles()
+                    for _, keyWall in ipairs(keyWalls) do
+                        if keyWall then
+                            LetterUtils.styleImageLabelsInBlock(keyWall, {Visible = true})
+                            keyWall.CanCollide = true
+                            keyWall.Transparency = 1
+                        end
+                    end
+
+                    for _, fire in ipairs(fires) do
+                        if fire then
+                            fire.Enabled = false
+                        end
+                    end
+                    gateOpened = false
+                end
+
+                delay(10, revertStyles)
+            end
         end
 
         hitBox.Touched:Connect(Utils.onTouchHuman(hitBox, hitBoxTouched))

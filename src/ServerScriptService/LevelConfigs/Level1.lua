@@ -138,6 +138,9 @@ function module.getTargetWords()
             {word = 'BAT', target = 3, found = 0},
             {word = 'HAT', target = 3, found = 0}
         }
+        -- {
+        --     {word = 'CAT', target = 1, found = 0}
+        -- }
     }
 end
 
