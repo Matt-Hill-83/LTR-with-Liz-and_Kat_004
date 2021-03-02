@@ -1,5 +1,4 @@
 local Sss = game:GetService('ServerScriptService')
-local CS = game:GetService('CollectionService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local Rink = require(Sss.Source.Rink.Rink)
@@ -8,14 +7,9 @@ local module = {}
 
 function module.getPointAlongLine(p0, p1, dist)
     local direction = (p1 - p0).Unit
-
     local distance = (p0 - p1).Magnitude
 
     local pNew = p0 + (direction * distance * dist / 100)
-    -- local newPart = Instance.new('Part', workspace)
-    -- newPart.Size = Vector3.new(16, 16, 16)
-    -- newPart.Position = pNew
-    -- newPart.Anchored = true
     return pNew
 end
 
