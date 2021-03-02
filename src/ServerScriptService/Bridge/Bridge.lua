@@ -6,6 +6,71 @@ local Rink = require(Sss.Source.Rink.Rink)
 
 local module = {}
 
+function module.getPointAlongLine(p0, p1, dist)
+    local direction = (p1 - p0).Unit
+
+    local distance = (p0 - p1).Magnitude
+
+    local pNew = p0 + (direction * distance * dist / 100)
+    -- local newPart = Instance.new('Part', workspace)
+    -- newPart.Size = Vector3.new(16, 16, 16)
+    -- newPart.Position = pNew
+    -- newPart.Anchored = true
+    return pNew
+end
+
+function module.createBridge2(props)
+    local templateName = props.templateName
+    local parentFolder = props.parentFolder
+    local bridgeConfig = props.bridgeConfig
+
+    local p0 = props.p0 + Vector3.new(0, 16, 0)
+    local p1 = props.p1 + Vector3.new(0, 16, 0)
+
+    local p2 = module.getPointAlongLine(p0, p1, 20)
+    local p3 = module.getPointAlongLine(p0, p1, 80)
+    local midPoint = module.getPointAlongLine(p0, p1, 50)
+
+    local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
+    local platformEnd = Vector3.new(p3.X, midPoint.Y, p3.Z)
+
+    local bridge1 =
+        module.createBridge(
+        {
+            p0 = p0,
+            p1 = platformStart,
+            templateName = templateName,
+            parentFolder = parentFolder
+        }
+    )
+
+    local bridge2 =
+        module.createBridge(
+        {
+            p0 = platformEnd,
+            p1 = p1,
+            templateName = templateName,
+            parentFolder = parentFolder
+        }
+    )
+
+    local material = bridgeConfig.material or Enum.Material.Grass
+
+    Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
+    Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+
+    local newBridge =
+        module.createBridge(
+        {
+            p0 = platformStart,
+            p1 = platformEnd,
+            templateName = templateName,
+            parentFolder = parentFolder
+        }
+    )
+    return newBridge
+end
+
 function module.createBridge(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
@@ -18,17 +83,16 @@ function module.createBridge(props)
     newBridge.Parent = parentFolder
     local bridgePart = newBridge.PrimaryPart
 
-    local Distance = (p0 - p1).Magnitude
-    bridgePart.CFrame = CFrame.new(p0, p1) * CFrame.new(0, 0, -Distance / 2)
-    bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, Distance)
+    local distance = (p0 - p1).Magnitude
+    bridgePart.CFrame = CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2)
+    bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
 
     bridgePart.Anchored = true
     local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
     local walls = wallFolder:getChildren()
-    -- local top = Utils.getFirstDescendantByName(newBridge, 'Top')
 
     for _, wall in ipairs(walls) do
-        wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, Distance)
+        wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
     end
     return newBridge
 end
@@ -93,6 +157,69 @@ function module.initBridges(props)
                 )
                 -- CS:AddTag(bridgeTop, 'T-Air')
 
+                local rinkProps = {
+                    bridgeConfig = bridgeConfig,
+                    bridge = bridge,
+                    parentFolder = parentFolder,
+                    size = bridgeTop.Size
+                }
+                local newRink = Rink.addRink(rinkProps)
+            else
+                if bridgeConfig and bridgeConfig.material then
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
+                    )
+                else
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
+                    )
+                end
+            end
+            table.insert(bridges, bridge)
+        end
+    end
+    return bridges
+end
+
+function module.initBridges2(props)
+    local parentFolder = props.parentFolder
+    local bridgeConfigs = props.bridgeConfigs
+    local templateName = props.templateName or 'Bridge'
+
+    local rods =
+        Utils.getInstancesByNameStub(
+        {
+            nameStub = 'RodConstraint',
+            parent = parentFolder
+        }
+    )
+
+    Utils.sortListByObjectKey(rods, 'Name')
+
+    local bridges = {}
+    for rodIndex, rod in ipairs(rods) do
+        local bridgeConfig = bridgeConfigs[rodIndex] or {}
+
+        local rodValid = module.rodIsValid(rod)
+
+        if rodValid then
+            local bridge =
+                module.createBridge2(
+                {
+                    p0 = rod.Attachment0.Parent.Position,
+                    p1 = rod.Attachment1.Parent.Position,
+                    templateName = templateName,
+                    parentFolder = parentFolder,
+                    bridgeConfig = bridgeConfig
+                }
+            )
+            rod:Destroy()
+            local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
+            if bridgeConfig.item == 'Rink' then
+                Utils.convertItemAndChildrenToTerrain(
+                    {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
+                )
+                -- CS:AddTag(bridgeTop, 'T-Air')
                 local rinkProps = {
                     bridgeConfig = bridgeConfig,
                     bridge = bridge,

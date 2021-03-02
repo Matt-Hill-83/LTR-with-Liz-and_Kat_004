@@ -64,7 +64,7 @@ function module.initJunctions2(props)
 
         local hexConfig = hexConfigs[posIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
-        Bridge.initBridges(
+        Bridge.initBridges2(
             {
                 parentFolder = parentFolder,
                 bridgeConfigs = bridgeConfigs,

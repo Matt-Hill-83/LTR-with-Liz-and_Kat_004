@@ -142,11 +142,9 @@ local function convertItemAndChildrenToTerrain(props)
     local parent = props.parent
     local ignoreKids = props.ignoreKids
     local canCollide = props.canCollide or false
-    -- local material = Enum.Material.Sand
+
     local material = props.material or Enum.Material.Sand
     local function convert(part)
-        print('material' .. ' - start')
-        print(material)
         if part:IsA('BasePart') and part.CanCollide == true then
             part.Transparency = 1
             part.CanCollide = canCollide
