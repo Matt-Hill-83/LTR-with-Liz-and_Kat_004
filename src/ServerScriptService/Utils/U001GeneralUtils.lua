@@ -142,19 +142,18 @@ local function convertItemAndChildrenToTerrain(props)
     local parent = props.parent
     local ignoreKids = props.ignoreKids
     local canCollide = props.canCollide or false
-
-    local material = props.material or Enum.Material.LeafyGrass
-
+    -- local material = Enum.Material.Sand
+    local material = props.material or Enum.Material.Sand
     local function convert(part)
+        print('material' .. ' - start')
+        print(material)
         if part:IsA('BasePart') and part.CanCollide == true then
             part.Transparency = 1
             part.CanCollide = canCollide
             game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
         end
     end
-
     convert(parent)
-
     if not ignoreKids then
         local children = parent:GetDescendants()
         for i, item in ipairs(children) do

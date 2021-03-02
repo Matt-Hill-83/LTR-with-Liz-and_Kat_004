@@ -7,21 +7,21 @@ local hexIslandConfigs = {
         hexNum = 1,
         statueConfigs = {},
         bridgeConfigs = {
-            {item = nil},
+            {item = nil, material = Enum.Material.Sand},
             {
                 item = 'Rink',
                 itemConfig = {
                     grabbers = {'CAT'}
                 }
             },
-            {item = nil}
+            {item = nil, material = Enum.Material.Sand}
         }
     },
     {
         hexNum = 2,
         statueConfigs = {},
         bridgeConfigs = {
-            {item = nil},
+            {item = nil, material = Enum.Material.Sand},
             {
                 item = 'Rink',
                 itemConfig = {
@@ -35,14 +35,14 @@ local hexIslandConfigs = {
         hexNum = 3,
         statueConfigs = {},
         bridgeConfigs = {
-            {item = nil},
+            {item = nil, material = Enum.Material.Sand},
             {
                 item = 'Rink',
                 itemConfig = {
                     grabbers = {'RAT'}
                 }
             },
-            {item = nil}
+            {item = nil, material = Enum.Material.Sand}
         }
     }
 }

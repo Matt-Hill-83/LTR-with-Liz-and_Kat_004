@@ -57,6 +57,7 @@ end
 function module.initBridges(props)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
+    local templateName = props.templateName or 'Bridge'
 
     local rods =
         Utils.getInstancesByNameStub(
@@ -80,7 +81,7 @@ function module.initBridges(props)
                 {
                     p0 = rod.Attachment0.Parent.Position,
                     p1 = rod.Attachment1.Parent.Position,
-                    templateName = 'Bridge',
+                    templateName = templateName,
                     parentFolder = parentFolder
                 }
             )
@@ -100,8 +101,15 @@ function module.initBridges(props)
                 }
                 local newRink = Rink.addRink(rinkProps)
             else
-                -- CS:AddTag(bridgeTop, 'T-Grass')
-                Utils.convertItemAndChildrenToTerrain({parent = bridgeTop, material = 'Grass', ignoreKids = true})
+                if bridgeConfig and bridgeConfig.material then
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
+                    )
+                else
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
+                    )
+                end
             end
             table.insert(bridges, bridge)
         end

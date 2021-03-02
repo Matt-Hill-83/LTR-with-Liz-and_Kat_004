@@ -8,7 +8,6 @@ function module.convertJunctionsToTerrain(props)
     local hexJunctions = Utils.getDescendantsByName(parentFolder, 'HexJunction')
 
     for _, hex in ipairs(hexJunctions) do
-        -- Utils.convertItemAndChildrenToTerrain({parent = hex})
     end
 end
 
