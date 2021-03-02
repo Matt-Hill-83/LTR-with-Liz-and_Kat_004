@@ -3,7 +3,7 @@ local module = {}
 local hexIslandConfigs = {
     {
         hexNum = 1,
-        material = Enum.Material.Sand,
+        material = Enum.Material.Grass,
         statueConfigs = {},
         bridgeConfigs = {
             {
