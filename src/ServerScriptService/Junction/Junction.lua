@@ -55,11 +55,7 @@ function module.initJunctions2(props)
     local hexConfigs = levelConfig.hexIslandConfigs
 
     local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos')
-    print('positioners' .. ' - start')
-    print(positioners)
     local template = Utils.getFromTemplates('Hex_128_32')
-    print('template' .. ' - start')
-    print(template)
 
     for posIndex, positioner in ipairs(positioners) do
         local newHex = template:Clone()
