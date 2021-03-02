@@ -145,7 +145,14 @@ local function convertItemAndChildrenToTerrain(props)
 
     local material = props.material or Enum.Material.Sand
     local function convert(part)
-        if part:IsA('BasePart') and part.CanCollide == true then
+        if part:IsA('WedgePart') and part.CanCollide == true then
+            print('wedge part')
+            print('wedge part')
+            print('wedge part')
+            print('wedge part')
+            print('wedge part')
+            game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
+        elseif part:IsA('BasePart') and part.CanCollide == true then
             part.Transparency = 1
             part.CanCollide = canCollide
             game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)

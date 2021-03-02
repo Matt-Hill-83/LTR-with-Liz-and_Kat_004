@@ -5,14 +5,15 @@ local module = {}
 local hexIslandConfigs = {
     {
         hexNum = 1,
+        material = Enum.Material.Sand,
         statueConfigs = {},
         bridgeConfigs = {
-            {item = nil, material = Enum.Material.LeafyGrass},
             {
                 item = 'Rink',
                 itemConfig = {
                     grabbers = {'CAT'}
-                }
+                },
+                material = Enum.Material.LeafyGrass
             },
             {item = nil, material = Enum.Material.LeafyGrass}
         }
