@@ -20,9 +20,11 @@ if isDev then
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'SpawnLocation_L3H1'
+    activeSpawn = 'Spawn_Start'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'SpawnLocation_L3_ramp'
+    activeSpawn = 'Spawn_Start'
 end
 
 local devGameConfig = {
