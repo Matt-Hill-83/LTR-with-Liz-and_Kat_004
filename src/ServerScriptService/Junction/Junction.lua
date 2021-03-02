@@ -90,7 +90,7 @@ function module.initJunctions2(props)
         positioner:Destroy()
 
         Utils.anchorFreedParts(freeParts)
-        local material = hexConfigs.material or Enum.Material.Grass
+        local material = hexConfig.material or Enum.Material.Grass
         -- need logic for wedgepart etc
         Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
     end

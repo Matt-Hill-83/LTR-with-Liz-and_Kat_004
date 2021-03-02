@@ -1,5 +1,3 @@
-local Sss = game:GetService('ServerScriptService')
-
 local module = {}
 
 local hexIslandConfigs = {
@@ -15,35 +13,41 @@ local hexIslandConfigs = {
                 },
                 material = Enum.Material.LeafyGrass
             },
-            {item = nil, material = Enum.Material.LeafyGrass}
-        }
-    },
-    {
-        hexNum = 2,
-        statueConfigs = {},
-        bridgeConfigs = {
-            {item = nil, material = Enum.Material.LeafyGrass},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'HAT'}
-                }
-            },
-            {item = nil}
-        }
-    },
-    {
-        hexNum = 3,
-        statueConfigs = {},
-        bridgeConfigs = {
-            {item = nil, material = Enum.Material.LeafyGrass},
             {
                 item = 'Rink',
                 itemConfig = {
                     grabbers = {'RAT'}
-                }
+                },
+                material = Enum.Material.LeafyGrass
             },
-            {item = nil, material = Enum.Material.LeafyGrass}
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'MAT'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'PAT'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'SAT'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'BAT'}
+                },
+                material = Enum.Material.LeafyGrass
+            }
         }
     }
 }
