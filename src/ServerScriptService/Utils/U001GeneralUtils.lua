@@ -145,19 +145,23 @@ local function convertItemAndChildrenToTerrain(props)
 
     local material = props.material or Enum.Material.Sand
     local function convert(part)
-        if part:IsA('WedgePart') and part.CanCollide == true then
-            print('wedge part')
-            print('wedge part')
-            print('wedge part')
-            print('wedge part')
-            print('wedge part')
-            game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
-        elseif part:IsA('BasePart') and part.CanCollide == true then
+        if part:IsA('BasePart') and part.CanCollide == true then
             part.Transparency = 1
             part.CanCollide = canCollide
-            game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
+            if part:IsA('WedgePart') and part.CanCollide == true then
+                -- elseif part.Shape == Enum.PartType.Ball then
+                --     game.Workspace.Terrain:FillBall(part.CFrame, part.Size, material)
+                -- elseif part.Shape == Enum.PartType.Cylinder then
+                --     local height = part.Size.X
+                --     local radius = part.Size.Y
+                --     game.Workspace.Terrain:FillCylinder(part.CFrame, height, radius, material)
+                game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
+            else
+                game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
+            end
         end
     end
+
     convert(parent)
     if not ignoreKids then
         local children = parent:GetDescendants()
