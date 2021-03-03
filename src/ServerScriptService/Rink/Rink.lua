@@ -150,7 +150,6 @@ function module.addRink2(props)
     local rinkModel = Utils.cloneModel(cloneProps)
     local rinkPart = rinkModel.PrimaryPart
 
-    -- local targets = Utils.getDescendantsByName(rinkModel, 'Target')
     local targets =
         Utils.getInstancesByNameStub(
         {
@@ -158,11 +157,11 @@ function module.addRink2(props)
             parent = rinkModel
         }
     )
-    print('targets' .. ' - start')
-    print(targets)
 
+    Utils.sortListByObjectKey(targets, 'Name')
     local targetAttachments = {}
-    for _, target in ipairs(targets) do
+    for targetIndex, target in ipairs(targets) do
+        target:SetAttribute('TargetIndex', targetIndex)
         LetterUtils.createPropOnLetterBlock(
             {
                 letterBlock = target,
@@ -172,14 +171,15 @@ function module.addRink2(props)
             }
         )
 
-        local attachment = Utils.getDescendantsByType(target, 'Attachment')[1]
+        local attachment = Utils.getFirstDescendantByType(target, 'Attachment')
+        attachment.Name = targetIndex
         table.insert(targetAttachments, attachment)
-
-        print('target' .. ' - start')
-        print(target)
     end
+
     print('targetAttachments' .. ' - start')
     print(targetAttachments)
+    print('targets' .. ' - start')
+    print(targets)
 
     local buffer = 0
     rinkPart.Size = Vector3.new(size.X, rinkPart.Size.Y, size.Z - buffer)
@@ -245,8 +245,11 @@ function module.addRink2(props)
         StrayLetterBlocks.initStraysInRegion(
         {
             parentFolder = parentFolder,
-            numBlocks = math.floor(requiredLetters * 1.2),
-            words = words,
+            numBlocks = 0,
+            -- numBlocks = 1,
+            words = {'I'},
+            -- numBlocks = math.floor(requiredLetters * 1.2),
+            -- words = words,
             region = strayRegion,
             blockTemplate = blockTemplatePart,
             onTouchBlock = function()
@@ -254,34 +257,52 @@ function module.addRink2(props)
         }
     )
 
+    local function setTarget(part, targetIndex)
+        local alignPosition = Utils.getFirstDescendantByType(part, 'AlignPosition')
+        alignPosition.Attachment1 = targetAttachments[targetIndex]
+    end
+
     local function partTouched(touchedBlock, otherPart)
         if Utils.hasProperty(otherPart, 'Type') then
             if otherPart.Type.Value ~= LetterUtils.letterBlockTypes.TargetLetter then
                 return
             end
-            print('found')
-            print('otherPart' .. ' - start')
-            print(otherPart)
+            local otherPartTargetIndex = otherPart:GetAttribute('TargetIndex', 1)
+            local touchedBlockTargetIndex = touchedBlock:GetAttribute('TargetIndex', 1)
+            print('otherPartTargetIndex' .. ' - start')
+            print(otherPartTargetIndex)
 
-            print('touchedBlock' .. ' - start')
-            print(touchedBlock)
+            print('touchedBlockTargetIndex' .. ' - start')
+            print(touchedBlockTargetIndex)
+
+            if otherPartTargetIndex ~= touchedBlockTargetIndex then
+                return
+            end
+
+            local targetIndex = touchedBlock:GetAttribute('TargetIndex')
+            local newIndex = targetIndex + 0
+            local newTargetIndex = (newIndex % #targetAttachments) + 1
+            print('--------------------------')
+            print('--------------------------')
+            print('--------------------------')
+            print('newTargetIndex' .. ' - start')
+            print(newTargetIndex)
+            touchedBlock:SetAttribute('TargetIndex', newTargetIndex)
+            setTarget(touchedBlock, newTargetIndex)
         end
-        -- local match = touchedBlock.Character.Value == tool.Handle.KeyName.Value
-
-        -- if match then
-        --     module.wordFound(tool, touchedBlock)
-        -- end
     end
 
     for _, stray in ipairs(strays) do
-        print('stray' .. ' - start')
-        print(stray)
-        stray.CanCollide = true
-        stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
-        -- module.initPuck(stray)
-    end
+        stray:SetAttribute('TargetIndex', 1)
+        local targetIndex = stray:GetAttribute('TargetIndex')
 
-    -- module.initRink(rinkModel)
+        stray.CanCollide = true
+        setTarget(stray, targetIndex)
+        stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
+        module.initPuck(stray)
+    end
+    blockTemplate:Destroy()
+
     return rinkModel
 end
 
