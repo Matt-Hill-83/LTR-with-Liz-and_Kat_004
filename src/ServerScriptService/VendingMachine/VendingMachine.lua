@@ -3,6 +3,8 @@ local SGUI = game:GetService('StarterGui')
 local ServerStorage = game:GetService('ServerStorage')
 local Players = game:GetService('Players')
 
+local Constants = require(Sss.Source.Constants.Constants)
+
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
@@ -11,15 +13,17 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
 local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
+local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
+
 local module = {}
 
-function module.initTeleporter(part, placeId)
+function module.initTeleporter(part, nextLevelId)
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
     if not part then
         return
     end
     local teleportPart = part
-    local targetPlaceId = placeId
-    -- local targetPlaceId = 6460817067
 
     local function onPartTouch(otherPart)
         -- Get player from character
@@ -29,7 +33,7 @@ function module.initTeleporter(part, placeId)
             player:SetAttribute('Teleporting', true)
 
             -- Teleport the player
-            local teleportResult = TeleportModule.teleportWithRetry(targetPlaceId, {player})
+            local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})
 
             player:SetAttribute('Teleporting', nil)
         end
@@ -41,13 +45,16 @@ end
 function module.initVendingMachine(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
+    local nextLevelId = props.nextLevelId
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
-        module.initTeleporter(teleporter, levelConfig.teleporter)
+
+        module.initTeleporter(teleporter, nextLevelId)
+        -- module.initTeleporter(teleporter, levelConfig.teleporter)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 

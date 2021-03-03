@@ -126,6 +126,7 @@ local function addRemoteObjects()
     print('LevelConfigs.levelConfigs' .. ' - start')
     print(LevelConfigs.levelConfigs)
     local levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    levelConfig.levelIndex = levelIndex
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
@@ -138,7 +139,9 @@ local function addRemoteObjects()
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
     Entrance.initRunFasts(level)
-    VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig})
+
+    local nextLevelId = LevelConfigs.levelDefs[levelIndex + 1]['id']
+    VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId})
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 
     if true then
