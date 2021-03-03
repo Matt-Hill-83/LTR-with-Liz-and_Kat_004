@@ -24,13 +24,7 @@ function module.addRink2(props)
     local bridgeConfig = props.bridgeConfig
     local bridge = props.bridge
     local parentFolder = props.parentFolder
-    local size = props.size
-
-    local a = Vector3.new(5, 10, 15)
-    local b = Vector3.new(5, 10, 15)
-
-    local rinkOrigSize = Vector3.new(bridge.Size.X, bridge.Size.Y, bridge.Size.Z)
-    local rinkFinalSize = Vector3.new(bridge.Size.X * 4, 2, bridge.Size.Z)
+    local bridgePartSize = props.size
 
     local cloneProps = {
         parentTo = bridge.Parent,
@@ -47,6 +41,10 @@ function module.addRink2(props)
 
     local rinkModel = Utils.cloneModel(cloneProps)
     local rinkPart = rinkModel.PrimaryPart
+
+    local rinkOrigSize = Vector3.new(rinkPart.Size.X, rinkPart.Size.Y, rinkPart.Size.Z)
+    local rinkFinalSize = Vector3.new(bridgePartSize.X * 4, 2, bridgePartSize.Z)
+    local rinkScaleFactor = rinkOrigSize / rinkFinalSize
 
     local targets =
         Utils.getInstancesByNameStub(
@@ -74,7 +72,7 @@ function module.addRink2(props)
         table.insert(targetAttachments, attachment)
     end
 
-    rinkPart.Size = Vector3.new(size.X * 4, rinkPart.Size.Y, size.Z)
+    rinkPart.Size = Vector3.new(bridgePartSize.X * 4, rinkPart.Size.Y, bridgePartSize.Z)
 
     local grabbers = bridgeConfig.itemConfig.grabbers or {}
     local words = bridgeConfig.itemConfig.words or grabbers
