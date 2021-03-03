@@ -1,6 +1,6 @@
 local isDev
-isDev = false
 isDev = true
+isDev = false
 --
 --
 --
@@ -14,13 +14,10 @@ if isDev then
     activeSpawn = 'Spawn-L2'
     activeSpawn = 'SpawnLocation_L3H4'
     activeSpawn = 'Spawn_UniIsland'
-    activeSpawn = 'Spawn_Hex6'
-    activeSpawn = 'Spawn_Hex5'
-    activeSpawn = 'Spawn_Hex4'
     activeSpawn = 'SpawnLocation_L3_ramp'
-    activeSpawn = 'Spawn_Center'
     activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'SpawnLocation_L3_ramp'

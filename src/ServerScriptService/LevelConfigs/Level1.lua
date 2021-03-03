@@ -29,6 +29,7 @@ local hexIslandConfigs = {
     }
 }
 
+-- module.teleporter = '6467713882'
 module.teleporter = '6460817067'
 module.sectorConfigs = sectorConfigs
 module.hexIslandConfigs = hexIslandConfigs
