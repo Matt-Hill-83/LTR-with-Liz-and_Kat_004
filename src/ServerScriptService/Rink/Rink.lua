@@ -245,11 +245,10 @@ function module.addRink2(props)
         StrayLetterBlocks.initStraysInRegion(
         {
             parentFolder = parentFolder,
-            numBlocks = 0,
-            -- numBlocks = 1,
-            words = {'I'},
-            -- numBlocks = math.floor(requiredLetters * 1.2),
-            -- words = words,
+            -- numBlocks = 0,
+            -- words = {'I'},
+            numBlocks = math.floor(requiredLetters * 1.2),
+            words = words,
             region = strayRegion,
             blockTemplate = blockTemplatePart,
             onTouchBlock = function()
