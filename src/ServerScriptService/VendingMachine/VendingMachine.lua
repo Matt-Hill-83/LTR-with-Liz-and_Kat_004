@@ -114,7 +114,7 @@ function module.initVendingMachine(props)
                 local fires = Utils.getDescendantsByName(vendingMachine, 'Fire')
                 local explosionSound = '262562442'
 
-                Utils.playSound(explosionSound, 0.25)
+                Utils.playSound(explosionSound, 0.1)
 
                 for _, keyWall in ipairs(keyWalls) do
                     if keyWall then
