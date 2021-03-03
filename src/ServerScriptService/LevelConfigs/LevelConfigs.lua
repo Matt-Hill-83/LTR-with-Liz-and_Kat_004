@@ -18,14 +18,14 @@ module.levelConfigs = {
 module.levelDefs = {
     {num = '1', name = 'ramps', id = '6358192824'},
     {num = '2', name = 'caveWorld', id = '6467713882'},
-    {num = '3', name = '2', id = '6460817067'},
-    {num = '4', name = '3', id = '6461486490'},
-    {num = '5', name = '5', id = '6468118694'},
-    {num = '6', name = '6', id = 'xxx'},
-    {num = '7', name = '7', id = 'xxx'},
-    {num = '8', name = '8', id = 'xxx'},
-    {num = '9', name = '9', id = 'xxx'},
-    {num = '10', name = '10', id = 'xxx'}
+    {num = 'LK-LTR-3', name = '2', id = '6460817067'},
+    {num = 'LK-LTR-4', name = '3', id = '6461486490'},
+    {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
+    {num = 'LK-LTR-6', name = '6', id = 'xxx'},
+    {num = 'LK-LTR-7', name = '7', id = 'xxx'},
+    {num = 'LK-LTR-8', name = '8', id = 'xxx'},
+    {num = 'LK-LTR-9', name = '9', id = 'xxx'},
+    {num = 'LK-LTR-10', name = '10', id = 'xxx'}
 }
 
 return module

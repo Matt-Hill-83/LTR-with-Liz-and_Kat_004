@@ -47,7 +47,6 @@ local hexIslandConfigs = {
     }
 }
 
-module.teleporter = 'xxx'
 module.vendingMachines = {{targetWordIndex = 1}}
 module.hexIslandConfigs = hexIslandConfigs
 
