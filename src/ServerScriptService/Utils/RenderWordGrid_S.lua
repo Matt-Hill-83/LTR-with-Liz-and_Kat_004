@@ -135,10 +135,6 @@ local renderGrid = function(props)
         gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
         gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
-        print('item' .. ' - start')
-        print('item' .. ' - start')
-        print('item' .. ' - start')
-        print(item)
         if item.found >= item.target then
             local newImageLabel = imageLabelGem:Clone()
             newImageLabel.Parent = newRow
