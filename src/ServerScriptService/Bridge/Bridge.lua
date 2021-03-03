@@ -220,9 +220,6 @@ function module.initBridges2(props)
                 }
                 local newRink = Rink.addRink(rinkProps)
             elseif bridgeConfig.item == 'Rink2' then
-                print('Rink2_001')
-                print('Rink2_001')
-                print('Rink2_001')
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
                 )
