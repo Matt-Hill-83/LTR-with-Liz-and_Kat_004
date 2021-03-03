@@ -23,7 +23,7 @@ module.levelDefs = {
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
     {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
     --
-    {num = 'LK-LTR-6', name = '6', id = 'xxx'},
+    {num = 'LK-LTR-6', name = '6', id = '6468893018'},
     {num = 'LK-LTR-7', name = '7', id = 'xxx'},
     {num = 'LK-LTR-8', name = '8', id = 'xxx'},
     {num = 'LK-LTR-9', name = '9', id = 'xxx'},
