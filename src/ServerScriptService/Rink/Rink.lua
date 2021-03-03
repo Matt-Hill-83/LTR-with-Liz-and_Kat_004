@@ -176,11 +176,6 @@ function module.addRink2(props)
         table.insert(targetAttachments, attachment)
     end
 
-    print('targetAttachments' .. ' - start')
-    print(targetAttachments)
-    print('targets' .. ' - start')
-    print(targets)
-
     local buffer = 0
     rinkPart.Size = Vector3.new(size.X, rinkPart.Size.Y, size.Z - buffer)
 
@@ -268,11 +263,6 @@ function module.addRink2(props)
             end
             local otherPartTargetIndex = otherPart:GetAttribute('TargetIndex', 1)
             local touchedBlockTargetIndex = touchedBlock:GetAttribute('TargetIndex', 1)
-            print('otherPartTargetIndex' .. ' - start')
-            print(otherPartTargetIndex)
-
-            print('touchedBlockTargetIndex' .. ' - start')
-            print(touchedBlockTargetIndex)
 
             if otherPartTargetIndex ~= touchedBlockTargetIndex then
                 return
@@ -281,24 +271,30 @@ function module.addRink2(props)
             local targetIndex = touchedBlock:GetAttribute('TargetIndex')
             local newIndex = targetIndex + 0
             local newTargetIndex = (newIndex % #targetAttachments) + 1
-            print('--------------------------')
-            print('--------------------------')
-            print('--------------------------')
-            print('newTargetIndex' .. ' - start')
-            print(newTargetIndex)
             touchedBlock:SetAttribute('TargetIndex', newTargetIndex)
             setTarget(touchedBlock, newTargetIndex)
         end
     end
 
     for _, stray in ipairs(strays) do
+        local alignPosition = Utils.getFirstDescendantByType(stray, 'AlignPosition')
+        alignPosition.MaxVelocity = 20
+
         stray:SetAttribute('TargetIndex', 1)
         local targetIndex = stray:GetAttribute('TargetIndex')
 
-        stray.CanCollide = true
+        -- stray.CanCollide = true
         setTarget(stray, targetIndex)
         stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
-        module.initPuck(stray)
+        -- module.initPuck(stray)
+
+        -- local thrust = Instance.new('BodyThrust', stray)
+        -- thrust.Force = Vector3.new(0, 0, 2000)
+
+        local av = Instance.new('BodyAngularVelocity', stray)
+        av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
+        av.AngularVelocity = Vector3.new(0, 1, 0)
+        av.P = 1250
     end
     blockTemplate:Destroy()
 
