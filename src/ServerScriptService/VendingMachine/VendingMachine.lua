@@ -3,7 +3,7 @@ local SGUI = game:GetService('StarterGui')
 local ServerStorage = game:GetService('ServerStorage')
 local Players = game:GetService('Players')
 
-local Constants = require(Sss.Source.Constants.Constants)
+-- local Constants = require(Sss.Source.Constants.Constants)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
@@ -13,7 +13,7 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
 local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
-local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
+-- local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 
 local module = {}
 
@@ -29,7 +29,12 @@ function module.initTeleporter(part, nextLevelId)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
 
-        if player and not player:GetAttribute('Teleporting') then
+        local teleporting = player:GetAttribute('Teleporting')
+        if player and not teleporting then
+            print('teleporting' .. ' - start')
+            print('teleporting' .. ' - start')
+            print('teleporting' .. ' - start')
+            print(teleporting)
             player:SetAttribute('Teleporting', true)
 
             -- Teleport the player
