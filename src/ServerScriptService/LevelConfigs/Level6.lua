@@ -7,19 +7,19 @@ local hexIslandConfigs = {
         statueConfigs = {},
         bridgeConfigs = {
             {
-                item = 'Rink',
+                item = 'Rink2',
                 itemConfig = {
                     grabbers = {'YAY'}
                 },
                 material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink2',
-                itemConfig = {
-                    grabbers = {'WIN'}
-                },
-                material = Enum.Material.LeafyGrass
             }
+            -- {
+            --     item = 'Rink2',
+            --     itemConfig = {
+            --         grabbers = {'WIN'}
+            --     },
+            --     material = Enum.Material.LeafyGrass
+            -- }
         }
     }
 }

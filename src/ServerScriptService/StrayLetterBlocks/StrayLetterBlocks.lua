@@ -33,17 +33,17 @@ local function createStray(char, parentFolder, props)
 
     local letterId = 'ID--R'
 
-    local name = 'strayLetter-ppp' .. char .. '-' .. letterId
+    local name = 'strayLetter' .. char .. '-' .. letterId
     newLetterBlock.Name = name
 
-    LetterUtils.createPropOnLetterBlock(
-        {
-            letterBlock = newLetterBlock,
-            propName = LetterUtils.letterBlockPropNames.IsLifted,
-            initialValue = false,
-            propType = 'BoolValue'
-        }
-    )
+    -- LetterUtils.createPropOnLetterBlock(
+    --     {
+    --         letterBlock = newLetterBlock,
+    --         propName = LetterUtils.letterBlockPropNames.IsLifted,
+    --         initialValue = false,
+    --         propType = 'BoolValue'
+    --     }
+    -- )
 
     LetterUtils.createPropOnLetterBlock(
         {
@@ -61,11 +61,9 @@ local function createStray(char, parentFolder, props)
         {
             letterBlock = newLetterBlock,
             char = char,
-            -- templateName = 'Stray_normal',
             templateName = 'BD_6_blank_cupcake',
-            -- templateName = 'Stray_available',
             isTextLetter = true,
-            letterBlockType = 'StrayLetter'
+            letterBlockType = LetterUtils.letterBlockTypes.StrayLetter
         }
     )
 

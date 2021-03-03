@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
@@ -149,13 +150,43 @@ function module.addRink2(props)
     local rinkModel = Utils.cloneModel(cloneProps)
     local rinkPart = rinkModel.PrimaryPart
 
+    -- local targets = Utils.getDescendantsByName(rinkModel, 'Target')
+    local targets =
+        Utils.getInstancesByNameStub(
+        {
+            nameStub = 'Target_',
+            parent = rinkModel
+        }
+    )
+    print('targets' .. ' - start')
+    print(targets)
+
+    local targetAttachments = {}
+    for _, target in ipairs(targets) do
+        LetterUtils.createPropOnLetterBlock(
+            {
+                letterBlock = target,
+                propName = LetterUtils.letterBlockPropNames.Type,
+                initialValue = LetterUtils.letterBlockTypes.TargetLetter,
+                propType = 'StringValue'
+            }
+        )
+
+        local attachment = Utils.getDescendantsByType(target, 'Attachment')[1]
+        table.insert(targetAttachments, attachment)
+
+        print('target' .. ' - start')
+        print(target)
+    end
+    print('targetAttachments' .. ' - start')
+    print(targetAttachments)
+
     local buffer = 0
-    -- local buffer = 10
     rinkPart.Size = Vector3.new(size.X, rinkPart.Size.Y, size.Z - buffer)
 
     local grabbers = bridgeConfig.itemConfig.grabbers or {}
     local words = bridgeConfig.itemConfig.words or grabbers
-    -- local words = bridgeConfig.itemConfig.words or {}
+
     for grabberIndex, grabberWord in ipairs(grabbers) do
         local offsetX = (grabberIndex - 1) * 10
         local positioner = Instance.new('Part', rinkModel)
@@ -181,9 +212,6 @@ function module.addRink2(props)
 
         local newGrabber = LetterGrabber.initLetterGrabber(grabbersConfig)
         positioner:Destroy()
-        -- local grabberPart = newGrabber.PrimaryPart
-
-        -- grabberPart.CFrame = grabberPart.CFrame * CFrame.Angles(0, math.rad(180), 0)
     end
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
@@ -226,9 +254,31 @@ function module.addRink2(props)
         }
     )
 
+    local function partTouched(touchedBlock, otherPart)
+        if Utils.hasProperty(otherPart, 'Type') then
+            if otherPart.Type.Value ~= LetterUtils.letterBlockTypes.TargetLetter then
+                return
+            end
+            print('found')
+            print('otherPart' .. ' - start')
+            print(otherPart)
+
+            print('touchedBlock' .. ' - start')
+            print(touchedBlock)
+        end
+        -- local match = touchedBlock.Character.Value == tool.Handle.KeyName.Value
+
+        -- if match then
+        --     module.wordFound(tool, touchedBlock)
+        -- end
+    end
+
     for _, stray in ipairs(strays) do
+        print('stray' .. ' - start')
+        print(stray)
         stray.CanCollide = true
-        module.initPuck(stray)
+        stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
+        -- module.initPuck(stray)
     end
 
     -- module.initRink(rinkModel)

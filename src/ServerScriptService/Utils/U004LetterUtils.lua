@@ -35,6 +35,10 @@ module.letterBlockPropNames = {
     Type = 'Type',
     Uuid = 'Uuid'
 }
+module.letterBlockTypes = {
+    StrayLetter = 'StrayLetter',
+    TargetLetter = 'TargetLetter'
+}
 
 module.letterBlockStyleDefs = {
     rack = {

@@ -126,10 +126,7 @@ local function partTouched(touchedBlock, player)
 
     if match then
         module.wordFound(tool, touchedBlock)
-    --
     end
-
-    -- module.styleLetterGrabberBlocks(tool)
 end
 
 module.partTouched = partTouched

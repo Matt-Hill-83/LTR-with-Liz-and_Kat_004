@@ -210,7 +210,7 @@ local function onTouchBlock(touchedBlock, callBack)
         if not db.value then
             db.value = true
 
-            callBack(touchedBlock, player)
+            callBack(touchedBlock, otherPart)
             db.value = false
         end
     end
