@@ -283,14 +283,11 @@ function module.addRink2(props)
         stray:SetAttribute('TargetIndex', 1)
         local targetIndex = stray:GetAttribute('TargetIndex')
 
-        -- stray.CanCollide = true
+        stray.CanCollide = true
         setTarget(stray, targetIndex)
         stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
-        -- module.initPuck(stray)
 
-        -- local thrust = Instance.new('BodyThrust', stray)
-        -- thrust.Force = Vector3.new(0, 0, 2000)
-
+        -- This helps is break free when there is a traffic jam
         local av = Instance.new('BodyAngularVelocity', stray)
         av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
         av.AngularVelocity = Vector3.new(0, 1, 0)
