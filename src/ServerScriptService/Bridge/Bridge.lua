@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local Rink = require(Sss.Source.Rink.Rink)
+local Rink2 = require(Sss.Source.Rink.Rink2)
 
 local module = {}
 
@@ -230,7 +231,7 @@ function module.initBridges2(props)
                     parentFolder = parentFolder,
                     size = bridgeTop.Size
                 }
-                local newRink = Rink.addRink2(rinkProps)
+                local newRink = Rink2.addRink2(rinkProps)
             else
                 if bridgeConfig and bridgeConfig.material then
                     Utils.convertItemAndChildrenToTerrain(

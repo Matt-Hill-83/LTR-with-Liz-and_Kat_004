@@ -20,16 +20,22 @@ function module.initPuck(puck)
     av.P = 1250
 end
 
-function module.addRink(props)
+function module.addRink2(props)
     local bridgeConfig = props.bridgeConfig
     local bridge = props.bridge
     local parentFolder = props.parentFolder
     local size = props.size
 
+    local a = Vector3.new(5, 10, 15)
+    local b = Vector3.new(5, 10, 15)
+
+    local rinkOrigSize = Vector3.new(bridge.Size.X, bridge.Size.Y, bridge.Size.Z)
+    local rinkFinalSize = Vector3.new(bridge.Size.X * 4, 2, bridge.Size.Z)
+
     local cloneProps = {
-        parentTo = bridge,
+        parentTo = bridge.Parent,
         positionToPart = bridge.PrimaryPart,
-        templateName = 'Rink',
+        templateName = 'Rink2_001',
         fromTemplate = true,
         modelToClone = nil,
         offsetConfig = {
@@ -42,13 +48,37 @@ function module.addRink(props)
     local rinkModel = Utils.cloneModel(cloneProps)
     local rinkPart = rinkModel.PrimaryPart
 
-    local buffer = 0
-    -- local buffer = 10
-    rinkPart.Size = Vector3.new(size.X, rinkPart.Size.Y, size.Z - buffer)
+    local targets =
+        Utils.getInstancesByNameStub(
+        {
+            nameStub = 'Target_',
+            parent = rinkModel
+        }
+    )
+
+    Utils.sortListByObjectKey(targets, 'Name')
+    local targetAttachments = {}
+    for targetIndex, target in ipairs(targets) do
+        target:SetAttribute('TargetIndex', targetIndex)
+        LetterUtils.createPropOnLetterBlock(
+            {
+                letterBlock = target,
+                propName = LetterUtils.letterBlockPropNames.Type,
+                initialValue = LetterUtils.letterBlockTypes.TargetLetter,
+                propType = 'StringValue'
+            }
+        )
+
+        local attachment = Utils.getFirstDescendantByType(target, 'Attachment')
+        attachment.Name = targetIndex
+        table.insert(targetAttachments, attachment)
+    end
+
+    rinkPart.Size = Vector3.new(size.X * 4, rinkPart.Size.Y, size.Z)
 
     local grabbers = bridgeConfig.itemConfig.grabbers or {}
     local words = bridgeConfig.itemConfig.words or grabbers
-    -- local words = bridgeConfig.itemConfig.words or {}
+
     for grabberIndex, grabberWord in ipairs(grabbers) do
         local offsetX = (grabberIndex - 1) * 10
         local positioner = Instance.new('Part', rinkModel)
@@ -74,9 +104,6 @@ function module.addRink(props)
 
         local newGrabber = LetterGrabber.initLetterGrabber(grabbersConfig)
         positioner:Destroy()
-        -- local grabberPart = newGrabber.PrimaryPart
-
-        -- grabberPart.CFrame = grabberPart.CFrame * CFrame.Angles(0, math.rad(180), 0)
     end
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
@@ -119,12 +146,50 @@ function module.addRink(props)
         }
     )
 
-    for _, stray in ipairs(strays) do
-        stray.CanCollide = true
-        module.initPuck(stray)
+    local function setTarget(part, targetIndex)
+        local alignPosition = Utils.getFirstDescendantByType(part, 'AlignPosition')
+        alignPosition.Attachment1 = targetAttachments[targetIndex]
     end
 
-    -- module.initRink(rinkModel)
+    local function partTouched(touchedBlock, otherPart)
+        if Utils.hasProperty(otherPart, 'Type') then
+            if otherPart.Type.Value ~= LetterUtils.letterBlockTypes.TargetLetter then
+                return
+            end
+            local otherPartTargetIndex = otherPart:GetAttribute('TargetIndex', 1)
+            local touchedBlockTargetIndex = touchedBlock:GetAttribute('TargetIndex', 1)
+
+            if otherPartTargetIndex ~= touchedBlockTargetIndex then
+                return
+            end
+
+            local targetIndex = touchedBlock:GetAttribute('TargetIndex')
+            local newIndex = targetIndex + 0
+            local newTargetIndex = (newIndex % #targetAttachments) + 1
+            touchedBlock:SetAttribute('TargetIndex', newTargetIndex)
+            setTarget(touchedBlock, newTargetIndex)
+        end
+    end
+
+    for strayIndex, stray in ipairs(strays) do
+        local alignPosition = Utils.getFirstDescendantByType(stray, 'AlignPosition')
+        alignPosition.MaxVelocity = 30 + strayIndex * 2
+
+        stray:SetAttribute('TargetIndex', 1)
+        local targetIndex = stray:GetAttribute('TargetIndex')
+
+        stray.CanCollide = true
+        setTarget(stray, targetIndex)
+        stray.Touched:Connect(Utils.onTouchBlock(stray, partTouched))
+
+        -- This helps it break free when there is a traffic jam
+        local av = Instance.new('BodyAngularVelocity', stray)
+        av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
+        av.AngularVelocity = Vector3.new(0, 1, 0)
+        av.P = 1250
+    end
+    blockTemplate:Destroy()
+    bridge:Destroy()
     return rinkModel
 end
 
