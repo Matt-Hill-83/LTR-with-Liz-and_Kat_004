@@ -29,12 +29,8 @@ function module.addRink2(props)
     local bridgePart = bridge.PrimaryPart
 
     -- move the bridge to the origin temporarily to scale the target positions, then move it back
-    local bridgeOrigPosition = Vector3.new(bridgePart.Position.X, bridgePart.Position.Y, bridgePart.Position.Z)
     local bridgeOrigCFrame = bridgePart.CFrame * CFrame.new(0, 0, 0)
-    print('bridgeOrigCFrame' .. ' - start')
-    print(bridgeOrigCFrame)
     bridgePart.CFrame = CFrame.new(0, 0, 0)
-    -- bridgePart.Position = Vector3.new(0, 0, 0)
 
     local cloneProps = {
         parentTo = bridge.Parent,
@@ -85,10 +81,8 @@ function module.addRink2(props)
     end
 
     rinkPart.Size = Vector3.new(bridgePartSize.X * 4, rinkPart.Size.Y, bridgePartSize.Z)
-    -- rinkPart.Position = bridgeOrigPosition
+
     local freeParts = Utils.freeAnchoredParts({item = rinkModel})
-    print('freeParts' .. ' - start')
-    print(freeParts)
     rinkPart.CFrame = bridgeOrigCFrame
     Utils.anchorFreedParts(freeParts)
 
@@ -104,9 +98,9 @@ function module.addRink2(props)
                 parent = rinkPart,
                 child = positioner,
                 offsetConfig = {
-                    useParentNearEdge = Vector3.new(0, -1, 0),
-                    useChildNearEdge = Vector3.new(0, -1, 0),
-                    offsetAdder = Vector3.new(offsetX, 0, 0)
+                    useParentNearEdge = Vector3.new(0, -1, 1),
+                    useChildNearEdge = Vector3.new(0, -1, 1),
+                    offsetAdder = Vector3.new(offsetX, 0, -20)
                 }
             }
         )
@@ -153,6 +147,7 @@ function module.addRink2(props)
         StrayLetterBlocks.initStraysInRegion(
         {
             parentFolder = parentFolder,
+            -- numBlocks = math.floor(requiredLetters * 5),
             numBlocks = math.floor(requiredLetters * 1.2),
             words = words,
             region = strayRegion,
@@ -165,6 +160,8 @@ function module.addRink2(props)
     local function setTarget(part, targetIndex)
         local alignPosition = Utils.getFirstDescendantByType(part, 'AlignPosition')
         alignPosition.Attachment1 = targetAttachments[targetIndex]
+        -- local alignOrientation = Utils.getFirstDescendantByType(part, 'AlignOrientation')
+        -- alignOrientation.Attachment1 = targetAttachments[targetIndex]
     end
 
     local function partTouched(touchedBlock, otherPart)
@@ -189,7 +186,7 @@ function module.addRink2(props)
 
     for strayIndex, stray in ipairs(strays) do
         local alignPosition = Utils.getFirstDescendantByType(stray, 'AlignPosition')
-        alignPosition.MaxVelocity = 30 + strayIndex * 2
+        alignPosition.MaxVelocity = 40 + strayIndex * 2
 
         stray:SetAttribute('TargetIndex', 1)
         local targetIndex = stray:GetAttribute('TargetIndex')

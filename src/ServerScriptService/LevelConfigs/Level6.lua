@@ -9,17 +9,17 @@ local hexIslandConfigs = {
             {
                 item = 'Rink2',
                 itemConfig = {
-                    grabbers = {'YAY'}
+                    grabbers = {'FUN', 'IN'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink2',
+                itemConfig = {
+                    grabbers = {'THE', 'SUN'}
                 },
                 material = Enum.Material.LeafyGrass
             }
-            -- {
-            --     item = 'Rink2',
-            --     itemConfig = {
-            --         grabbers = {'WIN'}
-            --     },
-            --     material = Enum.Material.LeafyGrass
-            -- }
         }
     }
 }
@@ -30,8 +30,10 @@ module.hexIslandConfigs = hexIslandConfigs
 function module.getTargetWords()
     return {
         {
-            {word = 'YAY', target = 1, found = 0},
-            {word = 'WIN', target = 1, found = 0}
+            {word = 'FUN', target = 1, found = 0},
+            {word = 'IN', target = 1, found = 0},
+            {word = 'THE', target = 1, found = 0},
+            {word = 'SUN', target = 1, found = 0}
         }
     }
 end
