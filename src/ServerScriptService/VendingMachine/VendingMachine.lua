@@ -94,6 +94,11 @@ function module.initVendingMachine(props)
             local gateOpened = false
 
             local cardComplete = true
+            -- if #targetWords == 0 then
+            --     return
+            -- end
+            print('targetWords' .. ' - start')
+            print(targetWords)
             for _, word in ipairs(targetWords) do
                 if word.found ~= word.target then
                     cardComplete = false

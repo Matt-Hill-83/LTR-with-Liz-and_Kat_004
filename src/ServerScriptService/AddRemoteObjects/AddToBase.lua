@@ -141,6 +141,14 @@ local function addRemoteObjects()
     Entrance.initRunFasts(level)
 
     local nextLevelId = LevelConfigs.levelDefs[levelIndex + 1]['id']
+    print('levelIndex' .. ' - start')
+    print('levelIndex' .. ' - start')
+    print('levelIndex' .. ' - start')
+    print(levelIndex)
+    print('nextLevelId' .. ' - start')
+    print('nextLevelId' .. ' - start')
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
     VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId})
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 
