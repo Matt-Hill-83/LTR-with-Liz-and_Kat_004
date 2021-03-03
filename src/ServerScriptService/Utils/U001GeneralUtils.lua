@@ -7,7 +7,16 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 local module = {}
 
-local getInstancesByNameStub = function(props)
+function module.shallowCopy(tab)
+    local retval = {}
+    for k, v in pairs(tab) do
+        retval[k] = v
+    end
+    return retval
+end
+
+-- local getInstancesByNameStub = function(props)
+function module.getInstancesByNameStub(props)
     local nameStub = props.nameStub
     local parent = props.parent
     local children = parent:GetDescendants()
@@ -81,6 +90,35 @@ local function cloneModel(props)
         return newChild
     end
 end
+
+-- function module.moveAnchoredModel(props)
+--     local parentTo = props.parentTo
+--     local positionToPart = props.positionToPart
+--     local templateName = props.templateName
+--     local fromTemplate = props.fromTemplate
+--     local modelToClone = props.modelToClone
+--     local offsetConfig =
+--         props.offsetConfig or
+--         {
+--             useParentNearEdge = Vector3.new(1, -1, 1),
+--             useChildNearEdge = Vector3.new(1, -1, 1),
+--             offsetAdder = Vector3.new(0, 0, 0)
+--         }
+
+--     local childPart = newChild.PrimaryPart
+--     local freeParts = module.freeAnchoredParts({item = newChild})
+
+--     childPart.CFrame =
+--         Utils3.setCFrameFromDesiredEdgeOffset(
+--         {
+--             parent = positionToPart,
+--             child = childPart,
+--             offsetConfig = offsetConfig
+--         }
+--     )
+--     module.anchorFreedParts(freeParts)
+--     return newChild
+-- end
 
 local function freeAnchoredParts(props)
     local parent = props.item
@@ -905,7 +943,7 @@ module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName
 module.getFirstDescendantByName = getFirstDescendantByName
 module.getFromMyStuff = getFromMyStuff
-module.getInstancesByNameStub = getInstancesByNameStub
+-- module.getInstancesByNameStub = getInstancesByNameStub
 module.getItemByUuid = getItemByUuid
 module.getKeysFromDict = getKeysFromDict
 module.getPlayerFromHumanoid = getPlayerFromHumanoid

@@ -26,9 +26,19 @@ function module.addRink2(props)
     local parentFolder = props.parentFolder
     local bridgePartSize = props.size
 
+    local bridgePart = bridge.PrimaryPart
+
+    -- move the bridge to the origin temporarily to scale the target positions, then move it back
+    local bridgeOrigPosition = Vector3.new(bridgePart.Position.X, bridgePart.Position.Y, bridgePart.Position.Z)
+    local bridgeOrigCFrame = bridgePart.CFrame * CFrame.new(0, 0, 0)
+    print('bridgeOrigCFrame' .. ' - start')
+    print(bridgeOrigCFrame)
+    bridgePart.CFrame = CFrame.new(0, 0, 0)
+    -- bridgePart.Position = Vector3.new(0, 0, 0)
+
     local cloneProps = {
         parentTo = bridge.Parent,
-        positionToPart = bridge.PrimaryPart,
+        positionToPart = bridgePart,
         templateName = 'Rink2_001',
         fromTemplate = true,
         modelToClone = nil,
@@ -57,6 +67,8 @@ function module.addRink2(props)
     Utils.sortListByObjectKey(targets, 'Name')
     local targetAttachments = {}
     for targetIndex, target in ipairs(targets) do
+        target.Position = target.Position / rinkScaleFactor
+
         target:SetAttribute('TargetIndex', targetIndex)
         LetterUtils.createPropOnLetterBlock(
             {
@@ -73,6 +85,12 @@ function module.addRink2(props)
     end
 
     rinkPart.Size = Vector3.new(bridgePartSize.X * 4, rinkPart.Size.Y, bridgePartSize.Z)
+    -- rinkPart.Position = bridgeOrigPosition
+    local freeParts = Utils.freeAnchoredParts({item = rinkModel})
+    print('freeParts' .. ' - start')
+    print(freeParts)
+    rinkPart.CFrame = bridgeOrigCFrame
+    Utils.anchorFreedParts(freeParts)
 
     local grabbers = bridgeConfig.itemConfig.grabbers or {}
     local words = bridgeConfig.itemConfig.words or grabbers
