@@ -4,6 +4,7 @@ local Level2 = require(Sss.Source.LevelConfigs.Level2)
 local Level3 = require(Sss.Source.LevelConfigs.Level3)
 local Level4 = require(Sss.Source.LevelConfigs.Level4)
 local Level5 = require(Sss.Source.LevelConfigs.Level5)
+local Level6 = require(Sss.Source.LevelConfigs.Level6)
 
 local module = {}
 
@@ -12,7 +13,8 @@ module.levelConfigs = {
     Level2, --
     Level3, --
     Level4, --
-    Level5 --
+    Level5, --
+    Level6 --
 }
 
 module.levelDefs = {

@@ -149,7 +149,6 @@ function module.initBridges(props)
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
                 )
-                -- CS:AddTag(bridgeTop, 'T-Air')
 
                 local rinkProps = {
                     bridgeConfig = bridgeConfig,
@@ -213,7 +212,6 @@ function module.initBridges2(props)
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
                 )
-                -- CS:AddTag(bridgeTop, 'T-Air')
                 local rinkProps = {
                     bridgeConfig = bridgeConfig,
                     bridge = bridge,
@@ -221,6 +219,21 @@ function module.initBridges2(props)
                     size = bridgeTop.Size
                 }
                 local newRink = Rink.addRink(rinkProps)
+            elseif bridgeConfig.item == 'Rink2' then
+                print('Rink2_001')
+                print('Rink2_001')
+                print('Rink2_001')
+                Utils.convertItemAndChildrenToTerrain(
+                    {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
+                )
+
+                local rinkProps = {
+                    bridgeConfig = bridgeConfig,
+                    bridge = bridge,
+                    parentFolder = parentFolder,
+                    size = bridgeTop.Size
+                }
+                local newRink = Rink.addRink2(rinkProps)
             else
                 if bridgeConfig and bridgeConfig.material then
                     Utils.convertItemAndChildrenToTerrain(

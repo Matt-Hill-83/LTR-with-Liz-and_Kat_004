@@ -9,9 +9,6 @@ local Replicator = require(Sss.Source.BlockDash.Replicator)
 local module = {}
 
 function module.createReplicator(props)
-    print('createReplicator')
-    print('props' .. ' - start')
-    print(props)
     local rewardTemplate = props.rewardTemplate
     local positionerModel = props.positionerModel
     local parentFolder = props.parentFolder
@@ -30,17 +27,6 @@ function module.createReplicator(props)
         }
     )
 
-    -- TODO: finish this
-    -- TODO: finish this
-    -- TODO: finish this
-    -- TODO: finish this
-    -- TODO: finish this
-    -- biuld a replicator that takes permissionFunction
-    -- biuld a replicator that takes permissionFunction
-    -- biuld a replicator that takes permissionFunction
-    newReplicator.Name = 'uuu'
-    print('newReplicator' .. ' - start')
-    print(newReplicator)
     local newReplicatorPart = newReplicator.PrimaryPart
 
     local rewardFolder = newReplicator.Reward
@@ -52,13 +38,9 @@ function module.createReplicator(props)
 
     --  find the Tool and pass that in, instead of the model
     local newRewardTool = Utils.getFirstDescendantByType(newReward, 'Tool')
-    print('newRewardTool' .. ' - start')
-    print(newRewardTool)
 
     newRewardTool.Parent = rewardFolder
     local newRewardPart = newRewardTool.Handle
-    print('newRewardPart' .. ' - start')
-    print(newRewardPart)
 
     newRewardPart.CFrame =
         Utils3.setCFrameFromDesiredEdgeOffset(
@@ -100,8 +82,6 @@ function module.createReplicator(props)
     )
 
     local tool = Utils.getFirstDescendantByType(newReplicator, 'Tool')
-    print('tool' .. ' - start')
-    print(tool)
     if tool then
         tool.Name = keyName
     end
