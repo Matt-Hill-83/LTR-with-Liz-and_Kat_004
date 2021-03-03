@@ -114,6 +114,10 @@ local function wordFound(tool, player)
             Utils.playSound(explosionSound, 0.5)
         end
 
+        print('targetWordObj' .. ' - start')
+        print('targetWordObj' .. ' - start')
+        print('targetWordObj' .. ' - start')
+        print(targetWordObj)
         if targetWordObj.found == targetWordObj.target then
             delay(1, destroyParts)
 

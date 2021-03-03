@@ -129,12 +129,16 @@ local renderGrid = function(props)
 
         local gemHeight = letterHeight / 3
         local gemWidth = gemHeight
-        local gemImageRed = Utils.createImageUri(ImageConst.general.gem_red_001.imageId)
+        local gemImageRed = Utils.createImageUri(ImageConst.general.gem_purple_001.imageId)
         local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
 
         gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
         gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
+        print('item' .. ' - start')
+        print('item' .. ' - start')
+        print('item' .. ' - start')
+        print(item)
         if item.found >= item.target then
             local newImageLabel = imageLabelGem:Clone()
             newImageLabel.Parent = newRow

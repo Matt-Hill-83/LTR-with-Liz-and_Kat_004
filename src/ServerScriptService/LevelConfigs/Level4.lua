@@ -9,7 +9,7 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'CAT'}
+                    grabbers = {'BAT'}
                 },
                 material = Enum.Material.LeafyGrass
             },
@@ -17,34 +17,6 @@ local hexIslandConfigs = {
                 item = 'Rink',
                 itemConfig = {
                     grabbers = {'RAT'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'MAT'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'PAT'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'SAT'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'BAT'}
                 },
                 material = Enum.Material.LeafyGrass
             }
@@ -59,8 +31,8 @@ module.hexIslandConfigs = hexIslandConfigs
 function module.getTargetWords()
     return {
         {
-            {word = 'CAT', target = 1, found = 0},
-            {word = 'HAT', target = 1, found = 0},
+            -- {word = 'CAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0},
             {word = 'RAT', target = 1, found = 0}
         }
     }
