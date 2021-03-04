@@ -15,6 +15,7 @@ local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
 local HexWall = require(Sss.Source.HexWall.HexWall)
+local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local Junction = require(Sss.Source.Junction.Junction)
 local Key = require(Sss.Source.Key.Key)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
@@ -109,7 +110,7 @@ local function addRemoteObjects()
     print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs
-    local startPlaceId = '6468893018'
+    local startPlaceId = '6473099511'
     local experienceStore = DSS:GetDataStore('MapList')
 
     if tonumber(placeId) == tonumber(startPlaceId) then
@@ -172,13 +173,13 @@ local function addRemoteObjects()
 
     local level = levels[1]
     local levelName = level.Name
-    print('levelName' .. ' - start')
-    print(levelName)
 
     local levelIndex = tonumber(levelName)
 
     print('levelIndex' .. ' - start')
     print(levelIndex)
+
+    ClearHex.initClearHexes({parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     print('LevelConfigs.levelConfigs' .. ' - start')
