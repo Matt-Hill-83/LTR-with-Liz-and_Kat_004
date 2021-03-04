@@ -30,7 +30,7 @@ local unUsed = {
     {num = 'LK-LTR-7', name = '7', id = 'xxx'},
     {num = 'LK-LTR-8', name = '8', id = 'xxx'},
     {num = 'LK-LTR-9', name = '9', id = 'xxx'},
-    {num = 'LK-LTR-10', name = '10', id = 'xxx'}
+    {num = 'LK-LTR-Main', name = '10', id = '6473099511'}
 }
 
 return module
