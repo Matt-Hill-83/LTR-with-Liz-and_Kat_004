@@ -1,6 +1,8 @@
+local RunService = game:GetService('RunService')
+
 local isDev
-isDev = false
 isDev = true
+isDev = false
 --
 --
 --
@@ -22,6 +24,11 @@ else
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
+end
+
+-- over ride isDev setting for when I forget to switch it when I deploy
+if not RunService:IsStudio() then
+    isDev = false
 end
 
 local devGameConfig = {

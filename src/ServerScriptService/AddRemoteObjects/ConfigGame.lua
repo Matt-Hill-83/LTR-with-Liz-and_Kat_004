@@ -268,12 +268,6 @@ function module.configGame(props)
 end
 
 function module.preRunConfig()
-    if RunService:IsStudio() then
-        print('I am in Roblox Studio')
-    else
-        print('I am in an online Roblox Server')
-    end
-
     if RunService:IsRunMode() then
         print('Running in Studio')
     end
