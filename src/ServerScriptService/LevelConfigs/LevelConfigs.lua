@@ -19,10 +19,10 @@ module.levelConfigs = {
 
 module.levelDefs = {
     {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
-    {num = 'LK-LTR-6', name = '6', id = '6468893018'},
     {num = 'LK-LTR-2', name = '2', id = '6460817067'},
     {num = 'LK-LTR-3', name = '3', id = '6461486490'},
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
+    {num = 'LK-LTR-6', name = '6', id = '6468893018'},
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
     {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
     --
