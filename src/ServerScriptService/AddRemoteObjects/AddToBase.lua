@@ -103,6 +103,27 @@ end
 
 --
 local function addRemoteObjects()
+    local placeId = game.PlaceId
+    print('placeId' .. ' - start')
+    print(placeId)
+
+    local levelDefs = LevelConfigs.levelDefs
+
+    local levelOrderIndex = -1
+    for levelDefIndex, levelDef in ipairs(levelDefs) do
+        if levelDef.id == placeId then
+            levelOrderIndex = levelDefIndex
+        end
+    end
+
+    local nextlLevelOrderIndex = levelOrderIndex + 1
+    if nextlLevelOrderIndex >= #LevelConfigs.levelDefs then
+        nextlLevelOrderIndex = 1
+    end
+    local nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
+
     ConfigGame.preRunConfig()
     ConfigRemoteEvents.configRemoteEvents()
 
@@ -140,8 +161,10 @@ local function addRemoteObjects()
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
     Entrance.initRunFasts(level)
-
-    local nextLevelId = LevelConfigs.levelDefs[levelIndex + 1]['id']
+    --
+    --
+    --
+    -- local nextLevelId = LevelConfigs.levelDefs[levelIndex + 1]['id']
     print('levelIndex' .. ' - start')
     print('levelIndex' .. ' - start')
     print('levelIndex' .. ' - start')

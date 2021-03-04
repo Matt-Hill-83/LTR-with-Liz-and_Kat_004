@@ -1,6 +1,8 @@
 local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
 local RS = game:GetService('ReplicatedStorage')
+local RunService = game:GetService('RunService')
+
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
 local MarketplaceService = game:GetService('MarketplaceService')
@@ -266,8 +268,6 @@ function module.configGame(props)
 end
 
 function module.preRunConfig()
-    local RunService = game:GetService('RunService')
-
     if RunService:IsStudio() then
         print('I am in Roblox Studio')
     else
