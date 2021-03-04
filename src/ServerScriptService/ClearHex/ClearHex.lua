@@ -65,9 +65,9 @@ function module.initClearHexes(props)
                         Material = Enum.Material.Grass
                     },
                     wallProps = {
-                        Transparency = .5,
+                        Transparency = 1,
                         BrickColor = BrickColor.new('NavyBlue'),
-                        Material = Enum.Material.Granite
+                        Material = Enum.Material.Concrete
                     },
                     part = stripe
                 }
@@ -83,9 +83,9 @@ function module.initClearHexes(props)
                         Material = Enum.Material.Grass
                     },
                     wallProps = {
-                        Transparency = .5,
+                        Transparency = 1,
                         BrickColor = BrickColor.new('NavyBlue'),
-                        Material = Enum.Material.Granite
+                        Material = Enum.Material.Concrete
                     },
                     part = stripe
                 }

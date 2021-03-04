@@ -1,11 +1,11 @@
 local Sss = game:GetService('ServerScriptService')
-local Statue = require(Sss.Source.Statue.Statue)
-local Key = require(Sss.Source.Key.Key)
-local Door = require(Sss.Source.Door.Door)
-local Bridge = require(Sss.Source.Bridge.Bridge)
+local ServerStorage = game:GetService('ServerStorage')
+local Players = game:GetService('Players')
+local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local Replicator = require(Sss.Source.BlockDash.Replicator)
+
+local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 
 local module = {}
 
@@ -19,51 +19,49 @@ function module.initUniIslands(props)
 
     for islandIndex, islandFolder in ipairs(islandFolders) do
         local hexConfig = hexConfigs[islandIndex] or {}
+        local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
+        local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
 
-        if hexConfig then
-            local statueConfigs = hexConfig.statueConfigs
-            if statueConfigs then
-                local statueGates = Utils.getByTagInParent({parent = islandFolder, tag = 'StatueGate'})
-                for _, gate in ipairs(statueGates) do
-                    local statuePositioners = Utils.getByTagInParent({parent = gate, tag = 'StatuePositioner'})
-                    for _, statuePositioner in ipairs(statuePositioners) do
-                        local statueName = statuePositioner.Name
-                        local config = statueConfigs[statueName] or {}
-                        Statue.initStatue(statuePositioner, config)
+        print('telepad' .. ' - start')
+        print(telepad)
 
-                        local keyPositioners = Utils.getByTagInParent({parent = gate, tag = 'KeyPositioner-Key'})
-                        local keyPositioner = keyPositioners[1]
+        local levelDefs = LevelConfigs.levelDefs
+        print('levelDefs' .. ' - start')
+        print(levelDefs)
+        local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
 
-                        local doorPositioners = Utils.getByTagInParent({parent = gate, tag = 'BasicDoorPositioner'})
-                        local doorPositioner = doorPositioners[1]
+        module.initTeleporter(telepad, placeId)
+    end
+end
 
-                        local dummy = Utils.getFirstDescendantByName(doorPositioner, 'Dummy')
-                        if dummy then
-                            dummy:Destroy()
-                        end
+function module.initTeleporter(part, nextLevelId)
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
+    if not part then
+        return
+    end
+    local teleportPart = part
 
-                        local replicatorProps = {
-                            rewardTemplate = Utils.getFromTemplates('ColorKey'),
-                            positionerModel = keyPositioner,
-                            parentFolder = parentFolder
-                        }
+    local function onPartTouch(otherPart)
+        -- Get player from character
+        local player = Players:GetPlayerFromCharacter(otherPart.Parent)
 
-                        local doorProps = {
-                            positioner = doorPositioner.Positioner,
-                            parentFolder = parentFolder,
-                            keyName = 'Yellow',
-                            width = 32
-                            -- noGem = noGem
-                        }
+        local teleporting = player:GetAttribute('Teleporting')
+        if player and not teleporting then
+            print('teleporting' .. ' - start')
+            print('teleporting' .. ' - start')
+            print('teleporting' .. ' - start')
+            print(teleporting)
+            player:SetAttribute('Teleporting', true)
 
-                        local newDoor = Door.initDoor(doorProps)
-                        local newReplicator = Key.initKey(replicatorProps)
-                        Replicator.initReplicator(newReplicator)
-                    end
-                end
-            end
+            -- Teleport the player
+            local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})
+
+            player:SetAttribute('Teleporting', nil)
         end
     end
+
+    teleportPart.Touched:Connect(onPartTouch)
 end
 
 return module
