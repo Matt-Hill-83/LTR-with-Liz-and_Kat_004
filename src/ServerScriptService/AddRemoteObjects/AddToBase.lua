@@ -1,4 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
+local DSS = game:GetService('DataStoreService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
@@ -108,19 +109,54 @@ local function addRemoteObjects()
     print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs
+    local startPlaceId = '6468893018'
+    local experienceStore = DSS:GetDataStore('MapList')
 
-    local levelOrderIndex = -1
+    if tonumber(placeId) == tonumber(startPlaceId) then
+        local StartingMapFormat = {
+            [1] = {
+                --or just get rid of [1] = entirely
+                ClassName = 'Part',
+                Name = 'Baseplate',
+                Size = Vector3.new(100, 1, 100),
+                Position = Vector3.new(0, -0.5, 0),
+                BrickColor = BrickColor.new('Medium stone grey'),
+                Material = Enum.Material.Plastic,
+                Anchored = true
+            }
+        }
+
+        experienceStore:SetAsync('LevelDefs', levelDefs)
+    else
+        levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs)
+    end
+
+    print('levelDefs' .. ' - start')
+    print(levelDefs)
+    local levelOrderIndex = -99
     for levelDefIndex, levelDef in ipairs(levelDefs) do
-        if levelDef.id == placeId then
+        if tonumber(levelDef.id) == tonumber(placeId) then
+            print('++++++++++++++++++++++++++++++++++++')
+            print('++++++++++++++++++++++++++++++++++++')
+            print('placeId' .. ' - start')
+            print(placeId)
             levelOrderIndex = levelDefIndex
         end
     end
+    print('levelOrderIndex' .. ' - start')
+    print(levelOrderIndex)
 
     local nextlLevelOrderIndex = levelOrderIndex + 1
-    if nextlLevelOrderIndex >= #LevelConfigs.levelDefs then
+    if nextlLevelOrderIndex > #levelDefs then
         nextlLevelOrderIndex = 1
     end
-    local nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]
+
+    print('nextlLevelOrderIndex' .. ' - start')
+    print(nextlLevelOrderIndex)
+    local nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+    print('-------------------')
+    print('-------------------')
+    print('-------------------')
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
 
@@ -164,15 +200,8 @@ local function addRemoteObjects()
     --
     --
     --
-    -- local nextLevelId = LevelConfigs.levelDefs[levelIndex + 1]['id']
-    print('levelIndex' .. ' - start')
-    print('levelIndex' .. ' - start')
     print('levelIndex' .. ' - start')
     print(levelIndex)
-    print('nextLevelId' .. ' - start')
-    print('nextLevelId' .. ' - start')
-    print('nextLevelId' .. ' - start')
-    print(nextLevelId)
     VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId})
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 

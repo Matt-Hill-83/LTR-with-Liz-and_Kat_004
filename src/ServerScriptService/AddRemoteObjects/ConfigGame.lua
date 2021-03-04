@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
 local RS = game:GetService('ReplicatedStorage')
 local RunService = game:GetService('RunService')
+local DSS = game:GetService('DataStoreService')
 
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
@@ -15,6 +16,10 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
+
+-- for _, enumItem in pairs(Enum.DataStoreRequestType:GetEnumItems()) do
+--     print(enumItem.Name, DSS:GetRequestBudgetForRequestType(enumItem))
+-- end
 
 local function configPlayers(props)
     local level = props.level
@@ -275,19 +280,19 @@ function module.preRunConfig()
     if RunService:IsClient() then
         print('I am a client')
     else
-        print('I am not a client')
+        -- print('I am not a client')
     end
 
     if RunService:IsServer() then
         print('I am a server')
     else
-        print('I am not a server')
+        -- print('I am not a server')
     end
 
     if RunService:IsRunning() then
-        print('The game is running')
+        -- print('The game is running')
     else
-        print('The game is stopped or paused')
+        -- print('The game is stopped or paused')
     end
 end
 
