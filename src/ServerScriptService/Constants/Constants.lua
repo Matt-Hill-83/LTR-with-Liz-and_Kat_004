@@ -1,5 +1,3 @@
-local RunService = game:GetService('RunService')
-
 local isDev
 isDev = true
 isDev = false
