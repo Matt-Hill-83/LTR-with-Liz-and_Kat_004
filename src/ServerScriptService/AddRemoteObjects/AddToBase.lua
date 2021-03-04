@@ -103,6 +103,7 @@ end
 
 --
 local function addRemoteObjects()
+    ConfigGame.preRunConfig()
     ConfigRemoteEvents.configRemoteEvents()
 
     local myStuff = workspace:FindFirstChild('MyStuff')
