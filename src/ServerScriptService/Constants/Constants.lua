@@ -27,9 +27,9 @@ else
 end
 
 -- over ride isDev setting for when I forget to switch it when I deploy
-if not RunService:IsStudio() then
-    isDev = false
-end
+-- if not RunService:IsStudio() then
+--     isDev = false
+-- end
 
 local devGameConfig = {
     singleIsland = false,
