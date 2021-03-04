@@ -22,6 +22,7 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
+local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 
 local module = {}
 
@@ -114,19 +115,6 @@ local function addRemoteObjects()
     local experienceStore = DSS:GetDataStore('MapList')
 
     if tonumber(placeId) == tonumber(startPlaceId) then
-        local StartingMapFormat = {
-            [1] = {
-                --or just get rid of [1] = entirely
-                ClassName = 'Part',
-                Name = 'Baseplate',
-                Size = Vector3.new(100, 1, 100),
-                Position = Vector3.new(0, -0.5, 0),
-                BrickColor = BrickColor.new('Medium stone grey'),
-                Material = Enum.Material.Plastic,
-                Anchored = true
-            }
-        }
-
         experienceStore:SetAsync('LevelDefs', levelDefs)
     else
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs)
@@ -180,6 +168,7 @@ local function addRemoteObjects()
     print(levelIndex)
 
     ClearHex.initClearHexes({parentFolder = level})
+    UniIsland.initUniIslands({parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     print('LevelConfigs.levelConfigs' .. ' - start')
