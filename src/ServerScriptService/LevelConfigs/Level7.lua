@@ -6,7 +6,20 @@ local hexIslandConfigs = {
         material = Enum.Material.Grass,
         statueConfigs = {},
         bridgeConfigs = {
-            {item = nil}
+            {
+                item = 'Rink2',
+                itemConfig = {
+                    grabbers = {'TROLL'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink2',
+                itemConfig = {
+                    grabbers = {'NEED', 'GOLD'}
+                },
+                material = Enum.Material.LeafyGrass
+            }
         }
     }
 }
@@ -17,10 +30,9 @@ module.hexIslandConfigs = hexIslandConfigs
 function module.getTargetWords()
     return {
         {
-            {word = 'FUN', target = 1, found = 0},
-            {word = 'IN', target = 1, found = 0},
-            {word = 'THE', target = 1, found = 0},
-            {word = 'SUN', target = 1, found = 0}
+            {word = 'TROLL', target = 1, found = 0},
+            {word = 'NEED', target = 1, found = 0},
+            {word = 'GOLD', target = 1, found = 0}
         }
     }
 end

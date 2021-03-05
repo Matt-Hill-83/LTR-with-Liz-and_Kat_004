@@ -21,6 +21,7 @@ module.levelConfigs = {
 
 module.levelDefs = {
     -- {num = 'Liz-and-Kat', name = 'pink planets', id = '6468893018'},
+    {num = 'LK-LTR-7', name = '7', id = '6477631350'},
     {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
     -- {num = 'LK-LTR-2', name = '2', id = '6460817067'},
     {num = 'LK-LTR-3', name = '3', id = '6461486490'},
@@ -31,7 +32,6 @@ module.levelDefs = {
 }
 local unUsed = {
     -- {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
-    {num = 'LK-LTR-7', name = '7', id = 'xxx'},
     {num = 'LK-LTR-8', name = '8', id = 'xxx'},
     {num = 'LK-LTR-9', name = '9', id = 'xxx'}
 }
