@@ -18,6 +18,12 @@ local TeleportModule = require(ServerStorage.Source.TeleportModule)
 local module = {}
 
 function module.initTeleporter(part, nextLevelId)
+    print('initTeleporter' .. ' - start')
+    print('initTeleporter' .. ' - start')
+    print('initTeleporter' .. ' - start')
+    print('initTeleporter' .. ' - start')
+    print('initTeleporter' .. ' - start')
+
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
     if not part then
@@ -26,6 +32,10 @@ function module.initTeleporter(part, nextLevelId)
     local teleportPart = part
 
     local function onPartTouch(otherPart)
+        print('touch teleporter')
+        print('touch teleporter')
+        print('touch teleporter')
+        print('touch teleporter')
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
 
@@ -53,15 +63,19 @@ function module.initVendingMachine(props)
     local nextLevelId = props.nextLevelId
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
+    print('parentFolder' .. ' - start')
+    print(parentFolder)
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
+        print('vendingMachine' .. ' - start')
+        print(vendingMachine)
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
 
         -- local startPlaceId = '6473099511'
         -- module.initTeleporter(teleporter, startPlaceId)
-        -- module.initTeleporter(teleporter, nextLevelId)
-        -- local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
+        module.initTeleporter(teleporter, nextLevelId)
+        local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']

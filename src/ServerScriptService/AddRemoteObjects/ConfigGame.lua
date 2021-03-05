@@ -21,8 +21,6 @@ local function configPlayers(props)
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
-        print('onCharacterAdded' .. ' - start')
-        print(onCharacterAdded)
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -47,11 +45,6 @@ local function configPlayers(props)
     end
 
     local function onPlayerAdded(player)
-        print('onPlayerAdded' .. ' - start')
-        print('onPlayerAdded' .. ' - start')
-        print('onPlayerAdded' .. ' - start')
-        print('onPlayerAdded' .. ' - start')
-        print(onPlayerAdded)
         player.CharacterAdded:Connect(onCharacterAdded)
 
         -- newPlayerEvent:FireAllClients()

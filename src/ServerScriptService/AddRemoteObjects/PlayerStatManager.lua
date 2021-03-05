@@ -38,10 +38,6 @@ end
 
 -- Function to add player to the "sessionData" table
 local function setupPlayerData(player)
-    print('setupPlayerData')
-    print('setupPlayerData')
-    print('setupPlayerData')
-    print('setupPlayerData')
     local playerUserId = nameStub .. player.UserId
     gameState[playerUserId] = {runFast = false, orbitalView = false}
 
@@ -52,10 +48,6 @@ local function setupPlayerData(player)
         end
     )
 
-    print('success' .. ' - start')
-    print(success)
-    print('data' .. ' - start')
-    print(data)
     if success then
         if data then
             -- Data exists for this player
@@ -71,7 +63,6 @@ end
 
 -- Function to save player's data
 local function savePlayerData(playerUserId)
-    print('savePlayerData')
     if sessionData[playerUserId] then
         local tries = 0
         local success
@@ -117,10 +108,6 @@ local function getGameState(player)
 end
 
 local function init(player)
-    print('PSM-init')
-    print('PSM-init')
-    print('PSM-init')
-    print('PSM-init')
     -- Start running "autoSave()" function in the background
     spawn(autoSave)
 
