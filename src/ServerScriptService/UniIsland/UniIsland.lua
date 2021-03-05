@@ -14,6 +14,9 @@ function module.initUniIslands(props)
     local parentFolder = props.parentFolder
 
     local islandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'UniIslands')
+    if not islandFolderBox then
+        return
+    end
     local islandFolders = islandFolderBox:getChildren()
     Utils.sortListByObjectKey(islandFolders, 'Name')
 

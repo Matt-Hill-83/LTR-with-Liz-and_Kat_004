@@ -47,6 +47,11 @@ local function configPlayers(props)
     end
 
     local function onPlayerAdded(player)
+        print('onPlayerAdded' .. ' - start')
+        print('onPlayerAdded' .. ' - start')
+        print('onPlayerAdded' .. ' - start')
+        print('onPlayerAdded' .. ' - start')
+        print(onPlayerAdded)
         player.CharacterAdded:Connect(onCharacterAdded)
 
         -- newPlayerEvent:FireAllClients()
@@ -230,6 +235,9 @@ local function setVisibility()
 end
 
 function module.configGame(props)
+    print('configGame')
+    print('configGame')
+    print('configGame')
     setVisibility()
     configPlayers(props)
     configGamePass()

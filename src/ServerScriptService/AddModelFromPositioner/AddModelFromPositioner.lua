@@ -56,7 +56,9 @@ function module.addModel(props)
     local positionerModel = props.positionerModel
     local templateName = props.templateName
     local offsetConfig = props.offsetConfig or defaultOffsetConfig
-
+    if not positionerModel then
+        return
+    end
     local dummy = Utils.getFirstDescendantByName(positionerModel, 'Dummy')
     if dummy then
         dummy:Destroy()

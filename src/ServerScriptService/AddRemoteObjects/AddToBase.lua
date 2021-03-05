@@ -106,6 +106,7 @@ end
 
 --
 local function addRemoteObjects()
+    PlayerStatManager.init()
     local placeId = game.PlaceId
     print('placeId' .. ' - start')
     print(placeId)
@@ -151,7 +152,20 @@ local function addRemoteObjects()
     local nextLevelId = nil
 
     if not isStartPlace then
-        nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+        if LevelConfigs.levelDefs and LevelConfigs.levelDefs[nextlLevelOrderIndex] then
+            nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+        end
+    end
+    -- if not isStartPlace then
+    --     pcall(
+    --         function()
+    --             nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+    --         end
+    --     )
+    -- end
+
+    if not nextLevelId then
+        nextLevelId = startPlaceId
     end
     print('-------------------')
     print('-------------------')
@@ -213,7 +227,7 @@ local function addRemoteObjects()
 
     Terrain.initTerrain({parentFolder = workspace})
 
-    PlayerStatManager.init()
+    -- PlayerStatManager.init()
     ConfigRemoteEvents.initRemoteEvents()
 
     -- Do this last after everything has been created/deleted

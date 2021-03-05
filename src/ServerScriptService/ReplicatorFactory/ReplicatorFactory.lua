@@ -11,6 +11,8 @@ local module = {}
 function module.createReplicator(props)
     local rewardTemplate = props.rewardTemplate
     local positionerModel = props.positionerModel
+    print('positionerModel' .. ' - start')
+    print(positionerModel)
     local parentFolder = props.parentFolder
 
     local newReplicator =
@@ -27,6 +29,9 @@ function module.createReplicator(props)
         }
     )
 
+    if not newReplicator then
+        return
+    end
     local newReplicatorPart = newReplicator.PrimaryPart
 
     local rewardFolder = newReplicator.Reward
@@ -102,6 +107,9 @@ function module.initReplicators(props)
     -- }
 
     local newReplicator = module.createReplicator(props)
+    if not newReplicator then
+        return
+    end
 
     Replicator.initReplicator(newReplicator)
     table.insert(keys, newReplicator)
