@@ -9,14 +9,14 @@ local hexIslandConfigs = {
             {
                 item = 'Rink2',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'}
+                    grabbers = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink2',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'}
+                    grabbers = {'DOG', 'LOG', 'FOG', 'DOG', 'LOG', 'FOG', 'DOG', 'LOG', 'FOG'}
                 },
                 material = Enum.Material.LeafyGrass
             }
