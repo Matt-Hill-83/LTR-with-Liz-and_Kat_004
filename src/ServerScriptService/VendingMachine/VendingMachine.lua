@@ -58,8 +58,9 @@ function module.initVendingMachine(props)
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
 
-        module.initTeleporter(teleporter, nextLevelId)
-        -- module.initTeleporter(teleporter, levelConfig.teleporter)
+        local startPlaceId = '6473099511'
+        module.initTeleporter(teleporter, startPlaceId)
+        -- module.initTeleporter(teleporter, nextLevelId)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
