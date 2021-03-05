@@ -111,7 +111,13 @@ local function addRemoteObjects()
     print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs
-    local startPlaceId = '6473099511'
+
+    local isStartPlace = Utils.isStartPlace()
+    print('isStartPlace' .. ' - start')
+    print(isStartPlace)
+    -- This place loads the map list for the other places
+    -- Other places have a TP that sends them to the next place in the TP list
+    local startPlaceId = Constants.startPlaceId
     local experienceStore = DSS:GetDataStore('MapList')
 
     if tonumber(placeId) == tonumber(startPlaceId) then
@@ -142,7 +148,11 @@ local function addRemoteObjects()
 
     print('nextlLevelOrderIndex' .. ' - start')
     print(nextlLevelOrderIndex)
-    local nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+    local nextLevelId = nil
+
+    if not isStartPlace then
+        nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+    end
     print('-------------------')
     print('-------------------')
     print('-------------------')

@@ -20,8 +20,8 @@ module.levelConfigs = {
 }
 
 module.levelDefs = {
-    {num = 'Liz-and-Kat', name = 'pink planets', id = '6468893018'},
-    {num = 'LK-LTR-6', name = 'ramps', id = '6358192824'},
+    -- {num = 'Liz-and-Kat', name = 'pink planets', id = '6468893018'},
+    -- {num = 'LK-LTR-6', name = 'ramps', id = '6358192824'},
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'}
     -- {num = 'LK-LTR-Main', name = 'Main', id = '6473099511'}

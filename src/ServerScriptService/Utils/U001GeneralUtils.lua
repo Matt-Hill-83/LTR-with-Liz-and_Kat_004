@@ -4,7 +4,9 @@ local Players = game:GetService('Players')
 local HttpService = game:GetService('HttpService')
 
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
+local Constants = require(Sss.Source.Constants.Constants)
 local Const4 = require(Sss.Source.Constants.Const_04_Characters)
+
 local module = {}
 
 function module.shallowCopy(tab)
@@ -15,7 +17,6 @@ function module.shallowCopy(tab)
     return retval
 end
 
--- local getInstancesByNameStub = function(props)
 function module.getInstancesByNameStub(props)
     local nameStub = props.nameStub
     local parent = props.parent
@@ -31,6 +32,13 @@ function module.getInstancesByNameStub(props)
         end
     end
     return output
+end
+
+function module.isStartPlace(props)
+    local startPlaceId = Constants.startPlaceId
+    local placeId = game.PlaceId
+
+    return tonumber(placeId) == tonumber(startPlaceId)
 end
 
 function module.createImageUri(imageId)

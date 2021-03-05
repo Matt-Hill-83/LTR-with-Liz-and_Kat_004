@@ -1,3 +1,5 @@
+local RunService = game:GetService('RunService')
+
 local isDev
 isDev = false
 isDev = true
@@ -25,9 +27,9 @@ else
 end
 
 -- over ride isDev setting for when I forget to switch it when I deploy
--- if not RunService:IsStudio() then
---     isDev = false
--- end
+if not RunService:IsStudio() then
+    isDev = false
+end
 
 local devGameConfig = {
     singleIsland = false,
@@ -54,7 +56,8 @@ gameConfig.isDev = isDev
 local module = {
     gameConfig = gameConfig, --
     walkSpeed = gameConfig.walkSpeed, --
-    gameData = {letterGrabbers = {}}
+    gameData = {letterGrabbers = {}},
+    startPlaceId = '6358192824'
 }
 
 return module

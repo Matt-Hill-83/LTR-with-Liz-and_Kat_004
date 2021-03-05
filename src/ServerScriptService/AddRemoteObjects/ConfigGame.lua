@@ -2,7 +2,6 @@ local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
 local RS = game:GetService('ReplicatedStorage')
 local RunService = game:GetService('RunService')
-local DSS = game:GetService('DataStoreService')
 
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
@@ -16,10 +15,6 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
-
--- for _, enumItem in pairs(Enum.DataStoreRequestType:GetEnumItems()) do
---     print(enumItem.Name, DSS:GetRequestBudgetForRequestType(enumItem))
--- end
 
 local function configPlayers(props)
     local level = props.level
