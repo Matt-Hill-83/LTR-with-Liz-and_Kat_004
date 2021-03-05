@@ -18,8 +18,8 @@ if isDev then
     activeSpawn = 'Spawn_UniIsland'
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'SpawnLocation_L3H1'
-    activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
@@ -27,9 +27,9 @@ else
 end
 
 -- over ride isDev setting for when I forget to switch it when I deploy
-if not RunService:IsStudio() then
-    isDev = false
-end
+-- if not RunService:IsStudio() then
+--     isDev = false
+-- end
 
 local devGameConfig = {
     singleIsland = false,

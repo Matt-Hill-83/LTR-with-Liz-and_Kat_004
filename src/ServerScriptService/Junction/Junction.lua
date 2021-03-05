@@ -43,7 +43,7 @@ function module.initJunctions(props)
                 }
             }
         )
-        positioner:Destroy()
+        -- positioner:Destroy()
 
         Utils.anchorFreedParts(freeParts)
     end
