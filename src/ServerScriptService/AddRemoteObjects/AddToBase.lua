@@ -7,22 +7,22 @@ local soundConstants = require(Sss.Source.Constants.Const_05_Audio)
 local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvents)
 
-local BeltJoint = require(Sss.Source.BeltJoint.BeltJoint)
+-- local BeltJoint = require(Sss.Source.BeltJoint.BeltJoint)
+-- local HexWall = require(Sss.Source.HexWall.HexWall)
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
-local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
-local HexWall = require(Sss.Source.HexWall.HexWall)
-local ClearHex = require(Sss.Source.ClearHex.ClearHex)
-local Junction = require(Sss.Source.Junction.Junction)
+local Junction = require(Sss.Source.Junction.Junction2)
 local Key = require(Sss.Source.Key.Key)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
+local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 
 local module = {}
 
@@ -154,9 +154,7 @@ local function addRemoteObjects()
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
     local level = levelsFolder:GetChildren()[1]
-    -- Utils.sortListByObjectKey(levels, 'Name')
 
-    -- local level = levels[1]
     local levelName = level.Name
     local levelIndex = tonumber(levelName)
 
@@ -175,15 +173,18 @@ local function addRemoteObjects()
     ConfigGame.preRunConfig({levelConfig = levelConfig})
     ConfigRemoteEvents.configRemoteEvents()
 
-    ClearHex.initClearHexes({parentFolder = level})
-    UniIsland.initUniIslands({parentFolder = level})
+    if isStartPlace then
+        ClearHex.initClearHexes({parentFolder = level})
+        UniIsland.initUniIslands({parentFolder = level})
+    end
+
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
 
-    BeltJoint.initBeltJoints({parentFolder = level})
-    HexWall.initHexWalls({parentFolder = level})
-    Junction.initJunctions({parentFolder = level})
+    -- BeltJoint.initBeltJoints({parentFolder = level})
+    -- HexWall.initHexWalls({parentFolder = level})
+    -- Junction.initJunctions({parentFolder = level})
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
     Entrance.initRunFasts(level)
@@ -197,16 +198,15 @@ local function addRemoteObjects()
         local sectorConfigs = levelConfig.sectorConfigs
         module.addConveyors(level, sectorConfigs)
     end
+
     islandTemplate:Destroy()
 
     Terrain.initTerrain({parentFolder = workspace})
 
-    -- PlayerStatManager.init()
     ConfigRemoteEvents.initRemoteEvents()
 
     -- Do this last after everything has been created/deleted
     ConfigGame.configGame({levelConfig = levelConfig})
-    -- ConfigGame.configGame({level = levelIndex})
 end
 
 module.addRemoteObjects = addRemoteObjects
