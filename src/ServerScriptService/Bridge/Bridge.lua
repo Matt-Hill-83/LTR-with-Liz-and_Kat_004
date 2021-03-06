@@ -10,7 +10,13 @@ function module.getPointAlongLine(p0, p1, dist)
     local direction = (p1 - p0).Unit
     local distance = (p0 - p1).Magnitude
 
-    local pNew = p0 + (direction * distance * dist / 100)
+    local distanceOffset = distance * dist / 100
+    local maxDistance = 64
+    if distanceOffset > maxDistance then
+        distanceOffset = maxDistance
+    end
+
+    local pNew = p0 + (direction * distanceOffset)
     return pNew
 end
 
@@ -23,7 +29,7 @@ function module.createBridge2(props)
     local p1 = props.p1 + Vector3.new(0, 16, 0)
 
     local p2 = module.getPointAlongLine(p0, p1, 20)
-    local p3 = module.getPointAlongLine(p0, p1, 80)
+    local p3 = module.getPointAlongLine(p1, p0, 20)
     local midPoint = module.getPointAlongLine(p0, p1, 50)
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
@@ -209,7 +215,7 @@ function module.initBridges2(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            -- rod:Destroy()
+            rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(

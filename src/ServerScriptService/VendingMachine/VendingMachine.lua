@@ -3,8 +3,6 @@ local SGUI = game:GetService('StarterGui')
 local ServerStorage = game:GetService('ServerStorage')
 local Players = game:GetService('Players')
 
--- local Constants = require(Sss.Source.Constants.Constants)
-
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
@@ -13,38 +11,20 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
 local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
--- local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
-
 local module = {}
 
 function module.initTeleporter(part, nextLevelId)
-    print('initTeleporter' .. ' - start')
-    print('initTeleporter' .. ' - start')
-    print('initTeleporter' .. ' - start')
-    print('initTeleporter' .. ' - start')
-    print('initTeleporter' .. ' - start')
-
-    print('nextLevelId' .. ' - start')
-    print(nextLevelId)
     if not part then
         return
     end
     local teleportPart = part
 
     local function onPartTouch(otherPart)
-        print('touch teleporter')
-        print('touch teleporter')
-        print('touch teleporter')
-        print('touch teleporter')
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
 
         local teleporting = player:GetAttribute('Teleporting')
         if player and not teleporting then
-            print('teleporting' .. ' - start')
-            print('teleporting' .. ' - start')
-            print('teleporting' .. ' - start')
-            print(teleporting)
             player:SetAttribute('Teleporting', true)
 
             -- Teleport the player
@@ -63,11 +43,7 @@ function module.initVendingMachine(props)
     local nextLevelId = props.nextLevelId
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
-    print('parentFolder' .. ' - start')
-    print(parentFolder)
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
-        print('vendingMachine' .. ' - start')
-        print(vendingMachine)
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
@@ -117,8 +93,6 @@ function module.initVendingMachine(props)
             -- if #targetWords == 0 then
             --     return
             -- end
-            print('targetWords' .. ' - start')
-            print(targetWords)
             for _, word in ipairs(targetWords) do
                 if word.found ~= word.target then
                     cardComplete = false
