@@ -1,4 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
+local Level000 = require(Sss.Source.LevelConfigs.Level000)
 local Level1 = require(Sss.Source.LevelConfigs.Level1)
 local Level2 = require(Sss.Source.LevelConfigs.Level2)
 local Level3 = require(Sss.Source.LevelConfigs.Level3)
@@ -11,6 +12,7 @@ local Level009 = require(Sss.Source.LevelConfigs.Level009)
 
 local module = {}
 
+module.mainLevelConfig = Level000
 module.levelConfigs = {
     Level1,
     Level2,
@@ -32,7 +34,7 @@ module.levelDefs = {
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
     {num = 'LK-LTR-6', name = 'END', id = '6468893018'},
-    {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
+    -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
     {num = 'LK-LTR-8', name = 'END', id = '6477887663'}
     -- {num = 'LK-LTR-Main', name = 'Start', id = '6473099511'},
 }

@@ -7,6 +7,7 @@ isDev = true
 --
 --
 local activeSpawn
+local startPlaceId = '6358192824'
 
 if isDev then
     activeSpawn = 'SpawnLocation_Hex3'
@@ -57,7 +58,7 @@ local module = {
     gameConfig = gameConfig, --
     walkSpeed = gameConfig.walkSpeed, --
     gameData = {letterGrabbers = {}},
-    startPlaceId = '6358192824'
+    startPlaceId = startPlaceId
 }
 
 return module

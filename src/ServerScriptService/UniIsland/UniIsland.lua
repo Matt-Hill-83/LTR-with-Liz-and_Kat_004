@@ -21,27 +21,18 @@ function module.initUniIslands(props)
     Utils.sortListByObjectKey(islandFolders, 'Name')
 
     for islandIndex, islandFolder in ipairs(islandFolders) do
-        local hexConfig = hexConfigs[islandIndex] or {}
+        -- local hexConfig = hexConfigs[islandIndex] or {}
         local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
         local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
 
-        print('telepad' .. ' - start')
-        print(telepad)
-
         local levelDefs = LevelConfigs.levelDefs
-        print('levelDefs' .. ' - start')
-        print(levelDefs)
         local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
-        print('placeId' .. ' - start')
-        print(placeId)
 
         module.initTeleporter(telepad, placeId.id)
     end
 end
 
 function module.initTeleporter(part, nextLevelId)
-    print('nextLevelId' .. ' - start')
-    print(nextLevelId)
     if not part then
         return
     end
@@ -50,19 +41,16 @@ function module.initTeleporter(part, nextLevelId)
     local function onPartTouch(otherPart)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
+        if player then
+            local teleporting = player:GetAttribute('Teleporting')
+            if not teleporting then
+                player:SetAttribute('Teleporting', true)
 
-        local teleporting = player:GetAttribute('Teleporting')
-        if player and not teleporting then
-            print('teleporting' .. ' - start')
-            print('teleporting' .. ' - start')
-            print('teleporting' .. ' - start')
-            print(teleporting)
-            player:SetAttribute('Teleporting', true)
+                -- Teleport the player
+                local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})
 
-            -- Teleport the player
-            local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})
-
-            player:SetAttribute('Teleporting', nil)
+                player:SetAttribute('Teleporting', nil)
+            end
         end
     end
 

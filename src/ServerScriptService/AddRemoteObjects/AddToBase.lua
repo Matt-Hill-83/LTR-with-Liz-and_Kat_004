@@ -111,8 +111,9 @@ local function addRemoteObjects()
     print('placeId' .. ' - start')
     print(placeId)
 
-    local levelDefs = LevelConfigs.levelDefs
+    local levelDefs = LevelConfigs.levelDefs or {}
 
+    -- local isStartPlace = true
     local isStartPlace = Utils.isStartPlace()
     print('isStartPlace' .. ' - start')
     print(isStartPlace)
@@ -124,7 +125,7 @@ local function addRemoteObjects()
     if tonumber(placeId) == tonumber(startPlaceId) then
         experienceStore:SetAsync('LevelDefs', levelDefs)
     else
-        levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs)
+        levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
     end
 
     print('levelDefs' .. ' - start')
@@ -151,7 +152,9 @@ local function addRemoteObjects()
     print(nextlLevelOrderIndex)
     local nextLevelId = nil
 
-    if not isStartPlace then
+    if isStartPlace then
+        -- mainLevelConfig  - xxxx
+    else
         if LevelConfigs.levelDefs and LevelConfigs.levelDefs[nextlLevelOrderIndex] then
             nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
         end
@@ -173,9 +176,6 @@ local function addRemoteObjects()
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
 
-    ConfigGame.preRunConfig()
-    ConfigRemoteEvents.configRemoteEvents()
-
     local myStuff = workspace:FindFirstChild('MyStuff')
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
@@ -191,16 +191,23 @@ local function addRemoteObjects()
     print('levelIndex' .. ' - start')
     print(levelIndex)
 
-    ClearHex.initClearHexes({parentFolder = level})
-    UniIsland.initUniIslands({parentFolder = level})
-
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
-    print('LevelConfigs.levelConfigs' .. ' - start')
-    print(LevelConfigs.levelConfigs)
-    local levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    local levelConfig = nil
+    if isStartPlace then
+        levelConfig = LevelConfigs.mainLevelConfig
+    else
+        levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    end
     levelConfig.levelIndex = levelIndex
     local hexIslandConfigs = levelConfig.hexIslandConfigs
+    --
+    --
+    --
+    ConfigGame.preRunConfig({levelConfig = levelConfig})
+    ConfigRemoteEvents.configRemoteEvents()
 
+    ClearHex.initClearHexes({parentFolder = level})
+    UniIsland.initUniIslands({parentFolder = level})
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
@@ -231,7 +238,8 @@ local function addRemoteObjects()
     ConfigRemoteEvents.initRemoteEvents()
 
     -- Do this last after everything has been created/deleted
-    ConfigGame.configGame({level = levelIndex})
+    ConfigGame.configGame({levelConfig = levelConfig})
+    -- ConfigGame.configGame({level = levelIndex})
 end
 
 module.addRemoteObjects = addRemoteObjects

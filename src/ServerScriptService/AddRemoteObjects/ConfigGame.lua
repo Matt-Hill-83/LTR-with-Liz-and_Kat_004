@@ -16,11 +16,20 @@ local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
 
-local function configPlayers(props)
+function module.configPlayers(props)
+    print('configPlayers')
+    print('configPlayers')
+    print('configPlayers')
+    -- local function configPlayers(props)
+    print('props' .. ' - start')
+    print(props)
     local level = props.level
+    local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
+        print('onCharacterAdded' .. ' - start')
+        print(onCharacterAdded)
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -31,12 +40,24 @@ local function configPlayers(props)
         local targetWords
 
         -- Wait so that gui can exists
+        print('gameState.initComplete' .. ' - start')
+        print('gameState.initComplete' .. ' - start')
+        print('gameState.initComplete' .. ' - start')
+        print('gameState.initComplete' .. ' - start')
+        print('gameState.initComplete' .. ' - start')
+        print(gameState.initComplete)
         if gameState.initComplete == true then
             wait(2)
             targetWords = gameState.targetWords
         else
-            local levelConfig = LevelConfigs.levelConfigs[level]
+            -- local levelConfig = LevelConfigs.levelConfigs[level]
             targetWords = levelConfig.getTargetWords()[1]
+            print('targetWords' .. ' - start')
+            print('targetWords' .. ' - start')
+            print('targetWords' .. ' - start')
+            print('targetWords' .. ' - start')
+            print('targetWords' .. ' - start')
+            print(targetWords)
             gameState.targetWords = targetWords
         end
 
@@ -232,7 +253,7 @@ function module.configGame(props)
     print('configGame')
     print('configGame')
     setVisibility()
-    configPlayers(props)
+    -- configPlayers(props)
     configGamePass()
     configBadges()
 
@@ -268,7 +289,8 @@ function module.configGame(props)
     end
 end
 
-function module.preRunConfig()
+function module.preRunConfig(props)
+    module.configPlayers(props)
     if RunService:IsRunMode() then
         print('Running in Studio')
     end
