@@ -108,15 +108,10 @@ end
 local function addRemoteObjects()
     PlayerStatManager.init()
     local placeId = game.PlaceId
-    print('placeId' .. ' - start')
-    print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs or {}
 
-    -- local isStartPlace = true
     local isStartPlace = Utils.isStartPlace()
-    print('isStartPlace' .. ' - start')
-    print(isStartPlace)
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
     local startPlaceId = Constants.startPlaceId
@@ -128,28 +123,18 @@ local function addRemoteObjects()
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
     end
 
-    print('levelDefs' .. ' - start')
-    print(levelDefs)
     local levelOrderIndex = -99
     for levelDefIndex, levelDef in ipairs(levelDefs) do
         if tonumber(levelDef.id) == tonumber(placeId) then
-            print('++++++++++++++++++++++++++++++++++++')
-            print('++++++++++++++++++++++++++++++++++++')
-            print('placeId' .. ' - start')
-            print(placeId)
             levelOrderIndex = levelDefIndex
         end
     end
-    print('levelOrderIndex' .. ' - start')
-    print(levelOrderIndex)
 
     local nextlLevelOrderIndex = levelOrderIndex + 1
     if nextlLevelOrderIndex > #levelDefs then
         nextlLevelOrderIndex = 1
     end
 
-    print('nextlLevelOrderIndex' .. ' - start')
-    print(nextlLevelOrderIndex)
     local nextLevelId = nil
 
     if isStartPlace then
@@ -159,37 +144,21 @@ local function addRemoteObjects()
             nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
         end
     end
-    -- if not isStartPlace then
-    --     pcall(
-    --         function()
-    --             nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
-    --         end
-    --     )
-    -- end
 
     if not nextLevelId then
         nextLevelId = startPlaceId
     end
-    print('-------------------')
-    print('-------------------')
-    print('-------------------')
-    print('nextLevelId' .. ' - start')
-    print(nextLevelId)
 
     local myStuff = workspace:FindFirstChild('MyStuff')
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
-    local levels = levelsFolder:GetChildren()
-    Utils.sortListByObjectKey(levels, 'Name')
+    local level = levelsFolder:GetChildren()[1]
+    -- Utils.sortListByObjectKey(levels, 'Name')
 
-    local level = levels[1]
+    -- local level = levels[1]
     local levelName = level.Name
-
     local levelIndex = tonumber(levelName)
-
-    print('levelIndex' .. ' - start')
-    print(levelIndex)
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     local levelConfig = nil
@@ -221,8 +190,6 @@ local function addRemoteObjects()
     --
     --
     --
-    print('levelIndex' .. ' - start')
-    print(levelIndex)
     VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId})
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 

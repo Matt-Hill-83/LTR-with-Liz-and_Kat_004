@@ -10,26 +10,18 @@ local Players = game:GetService('Players')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
-local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
 
 function module.configPlayers(props)
-    print('configPlayers')
-    print('configPlayers')
-    print('configPlayers')
     -- local function configPlayers(props)
-    print('props' .. ' - start')
-    print(props)
     local level = props.level
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
-        print('onCharacterAdded' .. ' - start')
-        print(onCharacterAdded)
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -40,24 +32,12 @@ function module.configPlayers(props)
         local targetWords
 
         -- Wait so that gui can exists
-        print('gameState.initComplete' .. ' - start')
-        print('gameState.initComplete' .. ' - start')
-        print('gameState.initComplete' .. ' - start')
-        print('gameState.initComplete' .. ' - start')
-        print('gameState.initComplete' .. ' - start')
-        print(gameState.initComplete)
         if gameState.initComplete == true then
             wait(2)
             targetWords = gameState.targetWords
         else
             -- local levelConfig = LevelConfigs.levelConfigs[level]
             targetWords = levelConfig.getTargetWords()[1]
-            print('targetWords' .. ' - start')
-            print('targetWords' .. ' - start')
-            print('targetWords' .. ' - start')
-            print('targetWords' .. ' - start')
-            print('targetWords' .. ' - start')
-            print(targetWords)
             gameState.targetWords = targetWords
         end
 
@@ -249,9 +229,6 @@ local function setVisibility()
 end
 
 function module.configGame(props)
-    print('configGame')
-    print('configGame')
-    print('configGame')
     setVisibility()
     -- configPlayers(props)
     configGamePass()
@@ -292,25 +269,18 @@ end
 function module.preRunConfig(props)
     module.configPlayers(props)
     if RunService:IsRunMode() then
-        print('Running in Studio')
     end
 
     if RunService:IsClient() then
-        print('I am a client')
     else
-        -- print('I am not a client')
     end
 
     if RunService:IsServer() then
-        print('I am a server')
     else
-        -- print('I am not a server')
     end
 
     if RunService:IsRunning() then
-        -- print('The game is running')
     else
-        -- print('The game is stopped or paused')
     end
 end
 
