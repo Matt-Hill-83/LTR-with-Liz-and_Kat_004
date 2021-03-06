@@ -12,6 +12,9 @@ function module.initJunctions2(props)
     local levelConfig = props.levelConfig
     local hexConfigs = levelConfig.hexIslandConfigs
 
+    if not hexConfigs then
+        return
+    end
     local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos')
     local template = Utils.getFromTemplates('Hex_128_32')
 

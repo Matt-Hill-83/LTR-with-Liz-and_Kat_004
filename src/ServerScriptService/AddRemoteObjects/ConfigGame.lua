@@ -17,11 +17,17 @@ local module = {}
 
 function module.configPlayers(props)
     -- local function configPlayers(props)
-    local level = props.level
+    -- local level = props.level
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
+        print('onCharacterAdded')
+        print('onCharacterAdded')
+        print('onCharacterAdded')
+        print('onCharacterAdded')
+        print('onCharacterAdded')
+        print('onCharacterAdded')
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)

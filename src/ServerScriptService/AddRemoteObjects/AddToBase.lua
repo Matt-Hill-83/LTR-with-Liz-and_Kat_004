@@ -108,6 +108,8 @@ end
 local function addRemoteObjects()
     PlayerStatManager.init()
     local placeId = game.PlaceId
+    print('placeId' .. ' - start')
+    print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs or {}
 
@@ -115,10 +117,14 @@ local function addRemoteObjects()
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
     local startPlaceId = Constants.startPlaceId
+    print('startPlaceId' .. ' - start')
+    print(startPlaceId)
     local experienceStore = DSS:GetDataStore('MapList')
 
-    if tonumber(placeId) == tonumber(startPlaceId) then
-        experienceStore:SetAsync('LevelDefs', levelDefs)
+    print('levelDefs' .. ' - start')
+    print(levelDefs)
+    if isStartPlace then
+        -- experienceStore:SetAsync('LevelDefs', levelDefs)
     else
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
     end
@@ -129,14 +135,17 @@ local function addRemoteObjects()
             levelOrderIndex = levelDefIndex
         end
     end
-
+    print('levelOrderIndex' .. ' - start')
+    print(levelOrderIndex)
     local nextlLevelOrderIndex = levelOrderIndex + 1
     if nextlLevelOrderIndex > #levelDefs then
         nextlLevelOrderIndex = 1
     end
-
+    print('nextlLevelOrderIndex' .. ' - start')
+    print(nextlLevelOrderIndex)
     local nextLevelId = nil
-
+    print('isStartPlace' .. ' - start')
+    print(isStartPlace)
     if isStartPlace then
         -- mainLevelConfig  - xxxx
     else
@@ -149,6 +158,8 @@ local function addRemoteObjects()
         nextLevelId = startPlaceId
     end
 
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
     local myStuff = workspace:FindFirstChild('MyStuff')
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
@@ -162,15 +173,26 @@ local function addRemoteObjects()
     local levelConfig = nil
     if isStartPlace then
         levelConfig = LevelConfigs.mainLevelConfig
+        print('LevelConfigs.mainLevelConfig' .. ' - start')
+        print(LevelConfigs.mainLevelConfig)
+        levelConfig.levelIndex = 1
     else
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
+        levelConfig.levelIndex = levelIndex
     end
-    levelConfig.levelIndex = levelIndex
     local hexIslandConfigs = levelConfig.hexIslandConfigs
+
+    print('levelConfig' .. ' - start')
+    print(levelConfig)
     --
     --
     --
     ConfigGame.preRunConfig({levelConfig = levelConfig})
+
+    -- Do this after preconfig to avoid a race
+    if isStartPlace then
+        experienceStore:SetAsync('LevelDefs', levelDefs)
+    end
     ConfigRemoteEvents.configRemoteEvents()
 
     if isStartPlace then

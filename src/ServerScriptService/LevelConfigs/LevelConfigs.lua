@@ -26,7 +26,8 @@ module.levelConfigs = {
 }
 
 module.levelDefs = {
-    -- {num = 'LK-LTR-1', name = 'ramps', id = '6358192824'},
+    -- Keep this one so we can access the config
+    {num = 'LK-LTR-Main', name = 'start', id = '6358192824'},
     {num = 'LK-LTR-7', name = '7', id = '6477631350'},
     {num = 'LK-LTR-3', name = '3', id = '6461486490'},
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
