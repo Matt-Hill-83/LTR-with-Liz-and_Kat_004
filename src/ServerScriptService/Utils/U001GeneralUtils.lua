@@ -322,10 +322,12 @@ local function listIncludes(tab, val)
 end
 
 local function playSound(soundId, emitterSize)
+    print('playSound' .. ' - start')
+    print(playSound)
     if (soundId) then
         local sound = Instance.new('Sound', workspace)
         sound.SoundId = 'rbxassetid://' .. soundId
-        sound.Volume = emitterSize or 5
+        sound.Volume = emitterSize or .5
         -- sound.EmitterSize = emitterSize or 5
         sound.Looped = false
         if not sound.IsPlaying then
