@@ -21,6 +21,7 @@ if isDev then
     activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Mesh'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
