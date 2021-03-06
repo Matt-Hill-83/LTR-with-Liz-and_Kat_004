@@ -190,6 +190,8 @@ function module.initBridges2(props)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
+    print('rods' .. ' - start')
+    print(rods)
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[rodIndex] or {}
@@ -207,7 +209,7 @@ function module.initBridges2(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            rod:Destroy()
+            -- rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
