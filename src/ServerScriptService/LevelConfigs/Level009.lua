@@ -105,6 +105,62 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
+                    grabbers = {'HOG', 'BOG'},
+                    words = {'HOG', 'BOG'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'DOG', 'LOG'},
+                    words = {'DDDDDDDDDDDDD'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'DOG', 'LOG'},
+                    words = {'DDDDDDDDDDDDD'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'HOG', 'BOG'},
+                    words = {'HOG', 'BOG'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'DOG', 'LOG'},
+                    words = {'DDDDDDDDDDDDD'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'HOG', 'BOG'},
+                    words = {'HOG', 'BOG'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'DOG', 'LOG'},
+                    words = {'DDDDDDDDDDDDD'}
+                },
+                material = Enum.Material.LeafyGrass
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
                     grabbers = {'DOG', 'LOG'},
                     words = {'DDDDDDDDDDDDD'}
                 },

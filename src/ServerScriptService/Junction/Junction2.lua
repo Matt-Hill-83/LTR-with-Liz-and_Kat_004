@@ -65,7 +65,7 @@ function module.initJunctions2(props)
                     }
                 }
             )
-            positioner:Destroy()
+            -- positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             local material = hexConfig.material or Enum.Material.Grass

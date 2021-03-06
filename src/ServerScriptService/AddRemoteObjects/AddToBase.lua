@@ -21,6 +21,7 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
+local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 
@@ -209,6 +210,7 @@ local function addRemoteObjects()
     -- Junction.initJunctions({parentFolder = level})
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
+    TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --
     --
