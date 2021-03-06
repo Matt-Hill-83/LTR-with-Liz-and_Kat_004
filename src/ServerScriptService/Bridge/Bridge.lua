@@ -25,8 +25,9 @@ function module.createBridge2(props)
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
 
-    local p0 = props.p0 + Vector3.new(0, 16, 0)
-    local p1 = props.p1 + Vector3.new(0, 16, 0)
+    local offsetY = 12
+    local p0 = props.p0 + Vector3.new(0, offsetY, 0)
+    local p1 = props.p1 + Vector3.new(0, offsetY, 0)
 
     local p2 = module.getPointAlongLine(p0, p1, 20)
     local p3 = module.getPointAlongLine(p1, p0, 20)

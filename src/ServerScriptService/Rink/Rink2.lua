@@ -12,7 +12,7 @@ local module = {}
 
 function module.initPuck(puck)
     local thrust = Instance.new('BodyThrust', puck)
-    thrust.Force = Vector3.new(0, 0, 2100)
+    thrust.Force = Vector3.new(0, 0, 2000)
 
     local av = Instance.new('BodyAngularVelocity', puck)
     av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
@@ -186,7 +186,8 @@ function module.addRink2(props)
 
     for strayIndex, stray in ipairs(strays) do
         local alignPosition = Utils.getFirstDescendantByType(stray, 'AlignPosition')
-        alignPosition.MaxVelocity = 40 + strayIndex * 2
+        alignPosition.MaxVelocity = 80
+        alignPosition.MaxForce = 100000
 
         stray:SetAttribute('TargetIndex', 1)
         local targetIndex = stray:GetAttribute('TargetIndex')

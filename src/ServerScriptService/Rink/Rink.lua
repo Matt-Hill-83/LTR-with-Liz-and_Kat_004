@@ -12,7 +12,7 @@ local module = {}
 
 function module.initPuck(puck)
     local thrust = Instance.new('BodyThrust', puck)
-    thrust.Force = Vector3.new(0, 0, 2000)
+    thrust.Force = Vector3.new(0, 0, 3000)
 
     local av = Instance.new('BodyAngularVelocity', puck)
     av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
