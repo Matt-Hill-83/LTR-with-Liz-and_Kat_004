@@ -44,13 +44,22 @@ function module.configTestArea(props)
 
     -- local hexConfig = hexConfigs[islandIndex] or {}
     local teleporter = Utils.getFirstDescendantByName(parentFolder, 'TestArea')
-    local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
-    print('telepad' .. ' - start')
-    print(telepad)
+    if teleporter then
+        local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
+        print('telepad' .. ' - start')
+        print(telepad)
 
-    local placeId = '6478277568'
+        local testAreaPlaceId = '6478277568'
+        module.initTeleporter(telepad, testAreaPlaceId)
+    end
 
-    module.initTeleporter(telepad, placeId)
+    -- For the return trip
+    local teleportToMain = Utils.getFirstDescendantByName(parentFolder, 'TeleportToMain')
+    if teleportToMain then
+        local telepad2 = Utils.getFirstDescendantByName(teleportToMain, 'Telepad')
+        local mainAreaPlaceId = '6358192824'
+        module.initTeleporter(telepad2, mainAreaPlaceId)
+    end
 end
 
 return module
