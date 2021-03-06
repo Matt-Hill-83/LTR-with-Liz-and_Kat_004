@@ -43,6 +43,7 @@ function module.initRunFasts(parent)
             if humanoid.WalkSpeed == 70 then
                 return
             end
+            -- humanoid.WalkSpeed = 200
             humanoid.WalkSpeed = 70
         end
     end
