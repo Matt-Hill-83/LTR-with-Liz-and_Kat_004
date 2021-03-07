@@ -2,22 +2,22 @@ local module = {}
 
 local hexIslandConfigs = {
     {
-        hexNum = 1,
+        hexNum = 'R1-C4',
         material = Enum.Material.Grass,
         statueConfigs = {},
         bridgeConfigs = {
             {
-                item = 'Rink',
+                item = 'Rink2',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'HOG'},
+                    words = {'HOG', 'LOG', 'DOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'MOM'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -25,15 +25,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DAD'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'CAT'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -41,15 +41,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'RAT'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'BAT'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -57,23 +57,23 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'MAT'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'SAT'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'PAT'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -81,15 +81,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'BOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -97,15 +97,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'FOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'HOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -113,23 +113,23 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'LOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'DOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -137,15 +137,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'DOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -153,31 +153,31 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'DOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -185,15 +185,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'DOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
@@ -201,15 +201,15 @@ local hexIslandConfigs = {
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'DOG', 'LOG'},
-                    words = {'DDDDDDDDDDDDD'}
+                    grabbers = {'DOG'}
+                    -- words = {'DDDDDDDDDDDDD'}
                 },
                 material = Enum.Material.LeafyGrass
             },
             {
                 item = 'Rink',
                 itemConfig = {
-                    grabbers = {'HOG', 'BOG'},
+                    grabbers = {'DOG'},
                     words = {'HOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass

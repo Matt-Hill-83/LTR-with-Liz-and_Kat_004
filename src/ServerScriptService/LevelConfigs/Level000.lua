@@ -1,5 +1,21 @@
 local module = {}
 
+local sector1Config = {
+    freezeConveyor = true,
+    words = {
+        'NAP', --
+        'TAP', --
+        'RAP', --
+        'ZAP' --
+    }
+}
+
+local sectorConfigs = {
+    sector1Config --
+}
+
+module.sectorConfigs = sectorConfigs
+
 function module.getTargetWords()
     return {
         {

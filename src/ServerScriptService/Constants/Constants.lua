@@ -10,6 +10,7 @@ local activeSpawn
 local startPlaceId = '6358192824'
 
 if isDev then
+    -- activeSpawn = 'Spawn_Start'
     activeSpawn = 'SpawnLocation_Hex3'
     activeSpawn = 'SpawnLocation_Hex1'
     activeSpawn = 'SpawnLocation_ramp'
@@ -19,9 +20,8 @@ if isDev then
     activeSpawn = 'Spawn_UniIsland'
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'SpawnLocation_L3H1'
-    activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Mesh'
-    activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'SpawnLocation_L3_ramp'
     activeSpawn = 'Spawn_Center'
