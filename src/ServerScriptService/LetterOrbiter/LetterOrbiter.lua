@@ -51,7 +51,7 @@ function module.initLetterOrbiter(props)
         local P = Vector3.new(0, 0, 0)
         local x = R * math.cos(A)
         local y = R * math.sin(A)
-        local X = P + Vector3.new(0, y, z) / 2
+        local blockPosition = P + Vector3.new(0, y, x) / 2
 
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
@@ -59,30 +59,26 @@ function module.initLetterOrbiter(props)
         --
         --
 
-        -- local newLetter = Instance.new('Part', workspace)
         local newLetter = letterBlockTemplate:Clone()
-        -- newLetter.Name = 'orbiterLetter-' .. 'letterNameStub'
+        newLetter.Name = 'orbiterLetter-' .. 'letterNameStub'
         newLetter.Size = Vector3.new(8, 8, 8)
         newLetter.Parent = newOrbiter
+        newLetter.CanCollide = false
 
-        -- CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
+        CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
         local char = 'Z'
 
-        print('newLetter' .. ' - start')
-        print(newLetter)
-        -- LetterUtils.initLetterBlock(
-        --     {
-        --         letterBlock = newLetter,
-        --         char = char,
-        --         templateName = 'Stray_available',
-        --         letterBlockType = 'WordRackLetter'
-        --     }
-        -- )
+        LetterUtils.initLetterBlock(
+            {
+                letterBlock = newLetter,
+                char = char,
+                templateName = 'Stray_available',
+                letterBlockType = 'WordRackLetter'
+            }
+        )
 
         newLetter.Anchored = false
-        -- newLetter.Position = X
-        newLetter.Name = 'zzz'
 
         newLetter.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(
@@ -92,8 +88,7 @@ function module.initLetterOrbiter(props)
                 offsetConfig = {
                     useParentNearEdge = Vector3.new(1, 0, 0),
                     useChildNearEdge = Vector3.new(1, 0, 0),
-                    -- offsetAdder = Vector3.new(0, 0, 0)
-                    offsetAdder = X
+                    offsetAdder = blockPosition
                 }
             }
         )
