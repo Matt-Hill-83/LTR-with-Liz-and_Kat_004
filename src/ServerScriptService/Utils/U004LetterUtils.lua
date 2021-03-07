@@ -53,6 +53,28 @@ module.letterBlockStyleDefs = {
     }
 }
 
+function module.getLetterSet(props)
+    local numBlocks = props.numBlocks
+    local words = props.words
+    local density = props.density or 1
+
+    local letterMatrix = {}
+    local lettersNotInWords = module.getLettersNotInWords(words)
+
+    for _ = 1, numBlocks do
+        table.insert(letterMatrix, module.getRandomLetter(lettersNotInWords))
+    end
+
+    for _, word in ipairs(words) do
+        for letterIndex = 1, #word do
+            local letter = string.sub(word, letterIndex, letterIndex)
+            table.insert(letterMatrix, letter)
+        end
+    end
+
+    return letterMatrix
+end
+
 local function playWordSound(word)
     local closure = function()
         if Const4.wordConfigs[word] then

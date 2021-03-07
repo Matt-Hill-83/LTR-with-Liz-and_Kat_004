@@ -8,7 +8,6 @@ local module = {}
 
 local function createStray(char, parentFolder, props)
     local isGem = false
-    -- local isGem = true
 
     local blockTemplate = props and props.blockTemplate
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
@@ -35,15 +34,6 @@ local function createStray(char, parentFolder, props)
 
     local name = 'strayLetter' .. char .. '-' .. letterId
     newLetterBlock.Name = name
-
-    -- LetterUtils.createPropOnLetterBlock(
-    --     {
-    --         letterBlock = newLetterBlock,
-    --         propName = LetterUtils.letterBlockPropNames.IsLifted,
-    --         initialValue = false,
-    --         propType = 'BoolValue'
-    --     }
-    -- )
 
     LetterUtils.createPropOnLetterBlock(
         {
@@ -124,7 +114,6 @@ local function initStraysInRegions(props)
                 av.P = 1250
             end
             module.initPuck(stray)
-            -- stray.Size = Vector3.new(4, 4, 4)
         end
     end
 end
@@ -138,9 +127,8 @@ local function initStraysInRegion(props)
     -- populate matrix with letters
     local letterMatrix = {}
     local lettersNotInWords = LetterUtils.getLettersNotInWords(words)
-    local totalRows = numBlocks
 
-    for _ = 1, totalRows do
+    for _ = 1, numBlocks do
         table.insert(letterMatrix, LetterUtils.getRandomLetter(lettersNotInWords))
     end
 
@@ -164,8 +152,6 @@ local function initStraysInRegion(props)
         local offsetX = Utils.genRandom(0, region.Size.X) - region.Size.X / 2
         local offsetZ = Utils.genRandom(0, region.Size.Z) - region.Size.Z / 2
 
-        -- local offsetX = Utils.genRandom(0, 20)
-        -- local offsetZ = Utils.genRandom(0, 20)
         table.insert(strays, newLetterBlock)
         newLetterBlock.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(
