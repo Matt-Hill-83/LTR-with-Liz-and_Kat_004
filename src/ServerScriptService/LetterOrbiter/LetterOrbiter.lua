@@ -87,7 +87,7 @@ function module.initLetterOrbiter(props)
                 child = newLetter,
                 offsetConfig = {
                     useParentNearEdge = Vector3.new(1, 0, 0),
-                    useChildNearEdge = Vector3.new(1, 0, 0),
+                    useChildNearEdge = Vector3.new(-1, 0, 0),
                     offsetAdder = blockPosition
                 }
             }
@@ -95,8 +95,6 @@ function module.initLetterOrbiter(props)
 
         Utils.weld2Parts(orbiterDisc, newLetter)
     end
-
-    -- (CFrame.new(P) * CFrame.Angles(0, A, 0) + CFrame.new(0, 0, -R)).Position
 end
 
 return module

@@ -75,7 +75,6 @@ local function cloneModel(props)
     local parentTo = props.parentTo
     local positionToPart = props.positionToPart
     local templateName = props.templateName
-    local freeAndSetAnchors = props.templateName
     local fromTemplate = props.fromTemplate
     local modelToClone = props.modelToClone
     local offsetConfig =
