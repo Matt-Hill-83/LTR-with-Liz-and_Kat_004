@@ -50,8 +50,8 @@ function module.initLetterOrbiter(props)
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
-            local A = angle * (letterIndex - 1)
-            local R = 32
+            local A = angle * (letterIndex - 1) * 3.141596 / 180
+            local R = 64
             local x = R * math.cos(A)
             local y = R * math.sin(A)
             local blockPosition = Vector3.new(0, y, x) / 2
@@ -93,7 +93,11 @@ function module.initLetterOrbiter(props)
                 }
             )
             -- Point letter at center
-            newLetter.CFrame = CFrame.new(newLetter.Position, orbiterDisc.Position)
+            newLetter.CFrame =
+                CFrame.new(
+                newLetter.Position,
+                Vector3.new(orbiterDisc.Position.X, newLetter.Position.Y, orbiterDisc.Position.Z)
+            )
 
             Utils.weld2Parts(orbiterDisc, newLetter)
         end
