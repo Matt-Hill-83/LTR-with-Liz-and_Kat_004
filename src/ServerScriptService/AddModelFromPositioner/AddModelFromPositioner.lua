@@ -14,6 +14,7 @@ function module.addModels(props)
     local parentFolder = props.parentFolder or workspace
     local templateName = props.templateName
     local positionerTag = props.positionerTag
+    local freeAndSetAnchors = props.freeAndSetAnchors
     local offsetConfig = props.offsetConfig or defaultOffsetConfig
 
     local positioners = Utils.getByTagInParent({parent = parentFolder, tag = positionerTag})
@@ -25,7 +26,6 @@ function module.addModels(props)
             dummy:Destroy()
         end
 
-        -- local positioner = model.Positioner
         local positioner = Utils.getFirstDescendantByName(model, 'Positioner')
         if positioner then
             local cloneProps = {
@@ -34,7 +34,8 @@ function module.addModels(props)
                 templateName = templateName,
                 fromTemplate = true,
                 modelToClone = nil,
-                offsetConfig = offsetConfig
+                offsetConfig = offsetConfig,
+                freeAndSetAnchors = freeAndSetAnchors
             }
 
             local newItem = Utils.cloneModel(cloneProps)
@@ -56,6 +57,7 @@ function module.addModel(props)
     local positionerModel = props.positionerModel
     local templateName = props.templateName
     local offsetConfig = props.offsetConfig or defaultOffsetConfig
+    local freeAndSetAnchors = props.freeAndSetAnchors
     if not positionerModel then
         return
     end
@@ -72,7 +74,8 @@ function module.addModel(props)
         templateName = templateName,
         fromTemplate = true,
         modelToClone = nil,
-        offsetConfig = offsetConfig
+        offsetConfig = offsetConfig,
+        freeAndSetAnchors = freeAndSetAnchors
     }
 
     local newItem = Utils.cloneModel(cloneProps)

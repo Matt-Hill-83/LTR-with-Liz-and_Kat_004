@@ -10,21 +10,9 @@ local activeSpawn
 local startPlaceId = '6358192824'
 
 if isDev then
-    -- activeSpawn = 'Spawn_Start'
-    activeSpawn = 'SpawnLocation_Hex3'
-    activeSpawn = 'SpawnLocation_Hex1'
-    activeSpawn = 'SpawnLocation_ramp'
-    activeSpawn = 'SpawnLocation_L2H1'
-    activeSpawn = 'Spawn-L2'
-    activeSpawn = 'SpawnLocation_L3H4'
-    activeSpawn = 'Spawn_UniIsland'
-    activeSpawn = 'SpawnLocation_L3_ramp'
-    activeSpawn = 'SpawnLocation_L3H1'
     activeSpawn = 'Spawn_Mesh'
-    activeSpawn = 'Spawn_Center'
+    activeSpawn = 'Spawn_Start'
 else
-    activeSpawn = 'SpawnLocation_L3_ramp'
-    activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
 end
 
@@ -55,9 +43,14 @@ local gameConfig = isDev and devGameConfig or prodGameConfig
 gameConfig.activeSpawn = activeSpawn
 gameConfig.isDev = isDev
 
+local packageIds = {
+    LetterOrbiter = 'xxx'
+}
+
 local module = {
-    gameConfig = gameConfig, --
-    walkSpeed = gameConfig.walkSpeed, --
+    gameConfig = gameConfig,
+    packageIds = packageIds,
+    walkSpeed = gameConfig.walkSpeed,
     gameData = {letterGrabbers = {}},
     startPlaceId = startPlaceId
 }

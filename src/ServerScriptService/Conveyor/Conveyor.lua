@@ -197,16 +197,6 @@ local function initConveyors(miniGameState)
                 }
             }
         )
-        -- backWall.CFrame = Utils3.setCFrameFromDesiredEdgeOffset(
-        --                       {
-        --         parent = floor3,
-        --         child = backWall,
-        --         offsetConfig = {
-        --             useParentNearEdge = Vector3.new(-1, -1, 0),
-        --             useChildNearEdge = Vector3.new(-1, -1, 0),
-        --             offsetAdder = Vector3.new(0, 0, 0)
-        --         }
-        --     })
 
         leftWall.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(

@@ -9,6 +9,14 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.weld2Parts(part1, part2)
+    local weld = Instance.new('WeldConstraint')
+    weld.Name = 'WeldConstraintRackBlock'
+    weld.Parent = part1
+    weld.Part0 = part2
+    weld.Part1 = part1
+end
+
 function module.shallowCopy(tab)
     local retval = {}
     for k, v in pairs(tab) do
@@ -67,6 +75,7 @@ local function cloneModel(props)
     local parentTo = props.parentTo
     local positionToPart = props.positionToPart
     local templateName = props.templateName
+    local freeAndSetAnchors = props.templateName
     local fromTemplate = props.fromTemplate
     local modelToClone = props.modelToClone
     local offsetConfig =

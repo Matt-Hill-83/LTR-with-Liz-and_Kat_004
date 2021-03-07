@@ -11,8 +11,6 @@ local module = {}
 function module.createReplicator(props)
     local rewardTemplate = props.rewardTemplate
     local positionerModel = props.positionerModel
-    print('positionerModel' .. ' - start')
-    print(positionerModel)
     local parentFolder = props.parentFolder
 
     local newReplicator =
