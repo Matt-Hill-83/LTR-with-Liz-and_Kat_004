@@ -36,7 +36,6 @@ local function initWord(props)
 
     local wordBox = Utils.getFromTemplates('WordBoxTemplate')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_word_normal')
 
     local newWord = wordBox:Clone()
