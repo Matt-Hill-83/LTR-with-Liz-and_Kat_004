@@ -56,6 +56,8 @@ function module.initVendingMachine(props)
 
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
         local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
+        print('signTargetWords----------------' .. ' - start')
+        print(signTargetWords)
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')
         local newFrame = mainFrame:Clone()

@@ -106,7 +106,6 @@ end
 
 --
 local function addRemoteObjects()
-    PlayerStatManager.init()
     local placeId = game.PlaceId
     print('placeId' .. ' - start')
     print(placeId)
@@ -114,6 +113,35 @@ local function addRemoteObjects()
     local levelDefs = LevelConfigs.levelDefs or {}
 
     local isStartPlace = Utils.isStartPlace()
+
+    --
+    --
+    --
+    local myStuff = workspace:FindFirstChild('MyStuff')
+
+    local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
+    local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
+    local level = levelsFolder:GetChildren()[1]
+
+    local levelName = level.Name
+    local levelIndex = tonumber(levelName)
+
+    local levelConfig = nil
+    if isStartPlace then
+        levelConfig = LevelConfigs.mainLevelConfig
+        print('LevelConfigs.mainLevelConfig' .. ' - start')
+        print(LevelConfigs.mainLevelConfig)
+        levelConfig.levelIndex = 1
+    else
+        levelConfig = LevelConfigs.levelConfigs[levelIndex]
+        levelConfig.levelIndex = levelIndex
+    end
+
+    PlayerStatManager.init()
+    --
+    --
+    --
+
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
     local startPlaceId = Constants.startPlaceId
@@ -160,34 +188,34 @@ local function addRemoteObjects()
 
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    -- local myStuff = workspace:FindFirstChild('MyStuff')
 
-    local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
-    local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
-    local level = levelsFolder:GetChildren()[1]
+    -- local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
+    -- local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
+    -- local level = levelsFolder:GetChildren()[1]
 
-    local levelName = level.Name
-    local levelIndex = tonumber(levelName)
+    -- local levelName = level.Name
+    -- local levelIndex = tonumber(levelName)
 
-    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
-    local levelConfig = nil
-    if isStartPlace then
-        levelConfig = LevelConfigs.mainLevelConfig
-        print('LevelConfigs.mainLevelConfig' .. ' - start')
-        print(LevelConfigs.mainLevelConfig)
-        levelConfig.levelIndex = 1
-    else
-        levelConfig = LevelConfigs.levelConfigs[levelIndex]
-        levelConfig.levelIndex = levelIndex
-    end
-    local hexIslandConfigs = levelConfig.hexIslandConfigs
+    -- local levelConfig = nil
+    -- if isStartPlace then
+    --     levelConfig = LevelConfigs.mainLevelConfig
+    --     print('LevelConfigs.mainLevelConfig' .. ' - start')
+    --     print(LevelConfigs.mainLevelConfig)
+    --     levelConfig.levelIndex = 1
+    -- else
+    --     levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    --     levelConfig.levelIndex = levelIndex
+    -- end
 
     print('levelConfig' .. ' - start')
     print(levelConfig)
-    --
-    --
-    --
     ConfigGame.preRunConfig({levelConfig = levelConfig})
+    --
+    --
+    --
+
+    local hexIslandConfigs = levelConfig.hexIslandConfigs
 
     -- Do this after preconfig to avoid a race
     if isStartPlace then
@@ -220,6 +248,7 @@ local function addRemoteObjects()
         module.addConveyors(level, sectorConfigs)
     end
 
+    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
 
     Terrain.initTerrain({parentFolder = workspace})

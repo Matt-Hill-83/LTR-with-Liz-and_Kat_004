@@ -85,6 +85,10 @@ local function wordFound(tool, player)
 
     local gameState = PlayerStatManager.getGameState(player)
     local targetWords = gameState.targetWords
+    if not targetWords then
+        return
+    end
+
     local targetWordObj = Utils.getListItemByPropValue(targetWords, 'word', targetWord)
 
     local fireSound = '5207654419'

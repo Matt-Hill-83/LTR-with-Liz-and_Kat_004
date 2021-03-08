@@ -16,6 +16,11 @@ local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 local module = {}
 
 function module.configPlayers(props)
+    print('configPlayers')
+    print('configPlayers')
+    print('configPlayers')
+    print('configPlayers')
+    print('configPlayers')
     -- local function configPlayers(props)
     -- local level = props.level
     local levelConfig = props.levelConfig
@@ -44,6 +49,8 @@ function module.configPlayers(props)
         else
             -- local levelConfig = LevelConfigs.levelConfigs[level]
             targetWords = levelConfig.getTargetWords()[1]
+            print('targetWords------------------------>>>' .. ' - start')
+            print(targetWords)
             gameState.targetWords = targetWords
         end
 
