@@ -225,37 +225,42 @@ module.orbiterConfigs = {
         words = {'HOG'},
         numBlocks = 10,
         angularVelocity = 1,
-        showDisc = true,
-        collideDisc = true,
-        diameter = 50
+        showDisc = false,
+        collideDisc = false,
+        diameter = 50,
+        collideBlock = true
     },
     {
         words = {'CAT'},
         numBlocks = 20,
         angularVelocity = 1,
         showDisc = false,
-        collideDisc = false
+        collideDisc = false,
+        collideBlock = true
     },
     {
         words = {'CAT'},
         numBlocks = 20,
         angularVelocity = -1,
         showDisc = false,
-        collideDisc = false
+        collideDisc = false,
+        collideBlock = true
     },
     {
         words = {'CAT'},
         numBlocks = 20,
         angularVelocity = 1,
         showDisc = false,
-        collideDisc = false
+        collideDisc = false,
+        collideBlock = true
     },
     {
         words = {'CAT'},
         numBlocks = 20,
         angularVelocity = -1,
         showDisc = false,
-        collideDisc = false
+        collideDisc = false,
+        collideBlock = true
     }
 }
 

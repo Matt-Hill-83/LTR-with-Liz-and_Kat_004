@@ -28,6 +28,7 @@ function module.initLetterOrbiter(props)
         local diameter = orbiterConfig.diameter
         local showDisc = orbiterConfig.showDisc
         local collideDisc = orbiterConfig.collideDisc
+        local collideBlock = orbiterConfig.collideBlock
 
         local letters = LetterUtils.getLetterSet({words = words, numBlocks = numBlocks})
 
@@ -74,7 +75,7 @@ function module.initLetterOrbiter(props)
             newLetter.Name = 'orbiterLetter-' .. char
             newLetter.Size = Vector3.new(blockSize, blockSize, blockSize)
             newLetter.Parent = newOrbiter
-            -- newLetter.CanCollide = false
+            newLetter.CanCollide = collideBlock
             newLetter.Anchored = false
 
             orbiterDisc.Size = Vector3.new(blockSize, newDiameter + blockSize / 1, newDiameter + blockSize / 1)
@@ -86,7 +87,8 @@ function module.initLetterOrbiter(props)
                     letterBlock = newLetter,
                     char = char,
                     templateName = 'Stray_available',
-                    letterBlockType = 'WordRackLetter',
+                    -- letterBlockType = 'WordRackLetter',
+                    letterBlockType = LetterUtils.letterBlockTypes.StrayLetter,
                     isTextLetter = true
                 }
             )

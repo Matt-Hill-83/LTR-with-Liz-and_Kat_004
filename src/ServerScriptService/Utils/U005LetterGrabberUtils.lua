@@ -157,6 +157,8 @@ local function partTouched(touchedBlock, player)
     end
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
+    print('activeBlock' .. ' - start')
+    print(activeBlock)
     if activeBlock then
         local strayLetterChar = touchedBlock.Character.Value
         local activeLetterChar = activeBlock.Character.Value
