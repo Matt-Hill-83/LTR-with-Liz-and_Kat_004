@@ -147,6 +147,10 @@ local function wordFound(tool, player)
 end
 
 local function partTouched(touchedBlock, player)
+    print('partTouched' .. ' - start')
+    print('partTouched' .. ' - start')
+    print('partTouched' .. ' - start')
+    print(partTouched)
     local tool = Utils.getActiveTool(player, 'LetterGrabber')
     if not tool then
         return

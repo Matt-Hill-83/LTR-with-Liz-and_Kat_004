@@ -25,7 +25,7 @@ function module.initLetterOrbiter(props)
     -- end
 
     -- local letters = {'A', 'B', 'C'}
-    local words = {'CAT'}
+    local words = {'HOG'}
 
     local letters = LetterUtils.getLetterSet({words = words, numBlocks = 10})
     for _, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
@@ -46,27 +46,25 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
-
+        print('letters' .. ' - start')
+        print(letters)
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
-            local A = angle * (letterIndex - 1) * 3.141596 / 180
-            local R = 64
-            local x = R * math.cos(A)
-            local y = R * math.sin(A)
+            local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
+            local R = 128
+            local x = R * math.cos(angleRadians)
+            local y = R * math.sin(angleRadians)
             local blockPosition = Vector3.new(0, y, x) / 2
 
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
-            --
-            --
-            --
 
             local newLetter = letterBlockTemplate:Clone()
             newLetter.Name = 'orbiterLetter-' .. char
             newLetter.Size = Vector3.new(8, 8, 8)
             newLetter.Parent = newOrbiter
-            newLetter.CanCollide = false
+            -- newLetter.CanCollide = false
             newLetter.Anchored = false
 
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
@@ -76,7 +74,8 @@ function module.initLetterOrbiter(props)
                     letterBlock = newLetter,
                     char = char,
                     templateName = 'Stray_available',
-                    letterBlockType = 'WordRackLetter'
+                    letterBlockType = 'WordRackLetter',
+                    isTextLetter = true
                 }
             )
 

@@ -82,4 +82,37 @@ function module.addModel(props)
     return newItem
 end
 
+function module.addModel(props)
+    local defaultOffsetConfig = {
+        useParentNearEdge = Vector3.new(0, 0, 0),
+        useChildNearEdge = Vector3.new(0, 0, 0),
+        offsetAdder = Vector3.new(0, 0, 0)
+    }
+
+    local parentFolder = props.parentFolder or workspace
+    local positionerModel = props.positionerModel
+    local templateName = props.templateName
+    local offsetConfig = props.offsetConfig or defaultOffsetConfig
+    if not positionerModel then
+        return
+    end
+    local dummy = Utils.getFirstDescendantByName(positionerModel, 'Dummy')
+    if dummy then
+        dummy:Destroy()
+    end
+
+    local positioner = positionerModel.Positioner
+
+    local cloneProps = {
+        parentTo = parentFolder,
+        positionToPart = positioner,
+        templateName = templateName,
+        fromTemplate = true,
+        offsetConfig = offsetConfig
+    }
+
+    local newItem = Utils.cloneModel(cloneProps)
+    return newItem
+end
+
 return module
