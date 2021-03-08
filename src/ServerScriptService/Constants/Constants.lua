@@ -13,8 +13,8 @@ if isDev then
     activeSpawn = 'Spawn_Mesh'
     activeSpawn = 'Spawn_Start'
 else
-    activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_Center'
+    activeSpawn = 'Spawn_Start'
 end
 
 -- over ride isDev setting for when I forget to switch it when I deploy
