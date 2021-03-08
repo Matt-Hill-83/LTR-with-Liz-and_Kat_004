@@ -121,8 +121,6 @@ function module.rodIsValid(rod)
 end
 
 function module.initBridges(props)
-    print('initBridges' .. ' - start')
-    print(initBridges)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
     local templateName = props.templateName or 'Bridge'
