@@ -36,13 +36,18 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
+        local sun = newOrbiter.Sun
 
         local blockSize = 8
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
+            print('letterOrbiterPositioner.Positioner.Size.X' .. ' - start')
+            print(letterOrbiterPositioner.Positioner.Size)
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
-            local radius = 40
+
+            -- Why is this not Y/2?
+            local radius = letterOrbiterPositioner.Positioner.Size.Y
             local x = radius * math.cos(angleRadians)
             local y = radius * math.sin(angleRadians)
             local blockPosition = Vector3.new(0, y, x) / 2
@@ -92,6 +97,11 @@ function module.initLetterOrbiter(props)
 
             Utils.weld2Parts(orbiterDisc, newLetter)
         end
+
+        --
+        -- Orient to positioner disc position
+        sun.CFrame = sun.CFrame * CFrame.Angles(0, 0, math.rad(90))
+        orbiterDisc.CanCollide = true
         letterOrbiterPositioner:Destroy()
     end
 end

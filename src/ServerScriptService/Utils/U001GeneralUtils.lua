@@ -176,9 +176,6 @@ local function convertItemAndChildrenToTerrain(props)
             elseif part.Shape == Enum.PartType.Ball then
                 game.Workspace.Terrain:FillBall(part.CFrame, part.Size, material)
             elseif part.Shape == Enum.PartType.Cylinder then
-                -- game.Workspace.Terrain:FillCylinder(part.CFrame, height, radius, material)
-                -- local height = part.Size.X
-                -- local radius = part.Size.Y
                 local height = part.Size.X
                 local radius = part.Size.Z / 2
                 local newCFrame = part.CFrame * CFrame.Angles(0, 0, math.rad(90))
