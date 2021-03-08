@@ -42,15 +42,16 @@ function module.initLetterOrbiter(props)
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
-            print('letterOrbiterPositioner.Positioner.Size.X' .. ' - start')
-            print(letterOrbiterPositioner.Positioner.Size)
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
 
-            -- Why is this not Y/2?
-            local radius = letterOrbiterPositioner.Positioner.Size.Y
+            local posSize = letterOrbiterPositioner.Positioner.Size
+            print('posSize' .. ' - start')
+            print(posSize)
+            local diameter = math.min(posSize.Y, posSize.Z)
+            local radius = diameter / 2
             local x = radius * math.cos(angleRadians)
             local y = radius * math.sin(angleRadians)
-            local blockPosition = Vector3.new(0, y, x) / 2
+            local blockPosition = Vector3.new(0, y, x)
 
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
@@ -62,8 +63,10 @@ function module.initLetterOrbiter(props)
             -- newLetter.CanCollide = false
             newLetter.Anchored = false
 
-            orbiterDisc.Size = Vector3.new(blockSize, radius + blockSize, radius + blockSize)
+            orbiterDisc.Size = Vector3.new(blockSize, diameter + blockSize / 1, diameter + blockSize / 1)
 
+            print('orbiterDisc.Size' .. ' - start')
+            print(orbiterDisc.Size)
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
             LetterUtils.initLetterBlock(
