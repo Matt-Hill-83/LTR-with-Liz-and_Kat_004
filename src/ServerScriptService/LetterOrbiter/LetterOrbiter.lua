@@ -28,7 +28,12 @@ function module.initLetterOrbiter(props)
     local words = {'HOG'}
 
     local letters = LetterUtils.getLetterSet({words = words, numBlocks = 10})
-    for _, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
+    print('#letterOrbiterPositioners' .. ' - start')
+    print(#letterOrbiterPositioners)
+
+    for index, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
+        print('index' .. ' - start-------------------------------------------------')
+        print(index)
         print('letterOrbiterPositioner++++++++++++' .. ' - start')
         print(letterOrbiterPositioner)
         local newOrbiter =
@@ -38,8 +43,8 @@ function module.initLetterOrbiter(props)
                 templateName = 'Orbiter_003',
                 positionerModel = letterOrbiterPositioner,
                 offsetConfig = {
-                    useParentNearEdge = Vector3.new(0, -1, 0),
-                    useChildNearEdge = Vector3.new(0, -1, 0),
+                    useParentNearEdge = Vector3.new(0, 0, 0),
+                    useChildNearEdge = Vector3.new(0, 0, 0),
                     offsetAdder = Vector3.new(0, 0, 0)
                 }
             }
@@ -52,7 +57,7 @@ function module.initLetterOrbiter(props)
             local angle = 360 / #letters
 
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
-            local R = 128
+            local R = 32
             local x = R * math.cos(angleRadians)
             local y = R * math.sin(angleRadians)
             local blockPosition = Vector3.new(0, y, x) / 2
@@ -85,8 +90,8 @@ function module.initLetterOrbiter(props)
                     parent = orbiterDisc,
                     child = newLetter,
                     offsetConfig = {
-                        useParentNearEdge = Vector3.new(1, 0, 0),
-                        useChildNearEdge = Vector3.new(-1, 0, 0),
+                        useParentNearEdge = Vector3.new(0, 0, 0),
+                        useChildNearEdge = Vector3.new(0, 0, 0),
                         offsetAdder = blockPosition
                     }
                 }
@@ -95,7 +100,7 @@ function module.initLetterOrbiter(props)
             newLetter.CFrame =
                 CFrame.new(
                 newLetter.Position,
-                Vector3.new(orbiterDisc.Position.X, newLetter.Position.Y, orbiterDisc.Position.Z)
+                Vector3.new(orbiterDisc.Position.X, orbiterDisc.Position.Y, orbiterDisc.Position.Z)
             )
 
             Utils.weld2Parts(orbiterDisc, newLetter)
