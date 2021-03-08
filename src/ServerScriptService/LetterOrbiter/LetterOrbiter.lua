@@ -20,9 +20,6 @@ function module.initLetterOrbiter(props)
     local letterOrbiterPositioners = positionerFolder:getChildren()
     Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 
-    -- local letters = {'A', 'B', 'C'}
-    -- local words = {'HOG'}
-
     for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
         local orbiterConfig = orbiterConfigs[(positionerIndex % #orbiterConfigs) + 1]
 
