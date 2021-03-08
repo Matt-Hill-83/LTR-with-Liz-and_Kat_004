@@ -12,6 +12,9 @@ local module = {}
 function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
+    local orbiterConfigs = levelConfig.orbiterConfigs
+    print('orbiterConfigs-------------------' .. ' - start')
+    print(orbiterConfigs)
 
     local letterOrbiterPositioners = Utils.getDescendantsByName(parentFolder, 'LetterOrbiterPositioner')
 
@@ -45,8 +48,6 @@ function module.initLetterOrbiter(props)
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
 
             local posSize = letterOrbiterPositioner.Positioner.Size
-            print('posSize' .. ' - start')
-            print(posSize)
             local diameter = math.min(posSize.Y, posSize.Z)
             local radius = diameter / 2
             local x = radius * math.cos(angleRadians)
@@ -65,8 +66,6 @@ function module.initLetterOrbiter(props)
 
             orbiterDisc.Size = Vector3.new(blockSize, diameter + blockSize / 1, diameter + blockSize / 1)
 
-            print('orbiterDisc.Size' .. ' - start')
-            print(orbiterDisc.Size)
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
             LetterUtils.initLetterBlock(

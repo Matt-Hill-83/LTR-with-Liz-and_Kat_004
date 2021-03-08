@@ -220,6 +220,15 @@ local hexIslandConfigs = {
 
 module.vendingMachines = {{targetWordIndex = 1}}
 module.hexIslandConfigs = hexIslandConfigs
+module.orbiterConfigs = {
+    {
+        words = {'HOG'},
+        numBlocks = 10,
+        angularVelocity = 0.66,
+        showDisc = true,
+        collideDisc = true
+    }
+}
 
 function module.getTargetWords()
     return {
