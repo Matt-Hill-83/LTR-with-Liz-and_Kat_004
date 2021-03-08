@@ -224,8 +224,16 @@ module.orbiterConfigs = {
     {
         words = {'HOG'},
         numBlocks = 10,
-        angularVelocity = 0.66,
+        angularVelocity = 1,
         showDisc = true,
+        collideDisc = true,
+        diameter = 50
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 1,
+        showDisc = false,
         collideDisc = true
     }
 }

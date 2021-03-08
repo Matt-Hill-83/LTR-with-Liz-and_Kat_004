@@ -19,11 +19,20 @@ function module.initLetterOrbiter(props)
     local letterOrbiterPositioners = Utils.getDescendantsByName(parentFolder, 'LetterOrbiterPositioner')
 
     -- local letters = {'A', 'B', 'C'}
-    local words = {'HOG'}
+    -- local words = {'HOG'}
 
-    local letters = LetterUtils.getLetterSet({words = words, numBlocks = 10})
+    for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
+        local orbiterConfig = orbiterConfigs[(positionerIndex % #orbiterConfigs) + 1]
 
-    for index, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
+        local words = orbiterConfig.words
+        local numBlocks = orbiterConfig.numBlocks
+        local angularVelocity = orbiterConfig.angularVelocity or 0.66
+        local diameter = orbiterConfig.diameter
+        local showDisc = orbiterConfig.showDisc
+        local collideDisc = orbiterConfig.collideDisc
+
+        local letters = LetterUtils.getLetterSet({words = words, numBlocks = numBlocks})
+
         local newOrbiter =
             AddModelFromPositioner.addModel(
             {
@@ -39,7 +48,11 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
+        orbiterDisc.Transparency = showDisc and 0 or 1
+        orbiterDisc.CanCollide = collideDisc
         local sun = newOrbiter.Sun
+        local discAngularVelocity = orbiterDisc.AngularVelocity
+        discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)
 
         local blockSize = 8
         for letterIndex, char in ipairs(letters) do
@@ -48,8 +61,9 @@ function module.initLetterOrbiter(props)
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
 
             local posSize = letterOrbiterPositioner.Positioner.Size
-            local diameter = math.min(posSize.Y, posSize.Z)
-            local radius = diameter / 2
+            local positionerDiameter = math.min(posSize.Y, posSize.Z)
+            local newDiameter = diameter or positionerDiameter
+            local radius = newDiameter / 2
             local x = radius * math.cos(angleRadians)
             local y = radius * math.sin(angleRadians)
             local blockPosition = Vector3.new(0, y, x)
@@ -64,7 +78,7 @@ function module.initLetterOrbiter(props)
             -- newLetter.CanCollide = false
             newLetter.Anchored = false
 
-            orbiterDisc.Size = Vector3.new(blockSize, diameter + blockSize / 1, diameter + blockSize / 1)
+            orbiterDisc.Size = Vector3.new(blockSize, newDiameter + blockSize / 1, newDiameter + blockSize / 1)
 
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
