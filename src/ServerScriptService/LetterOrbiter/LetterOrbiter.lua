@@ -124,7 +124,7 @@ function module.initLetterOrbiter(props)
         --
         -- Orient to positioner disc position
         sun.CFrame = sun.CFrame * CFrame.Angles(0, 0, math.rad(90))
-        orbiterDisc.CanCollide = true
+        -- orbiterDisc.CanCollide = true
         letterOrbiterPositioner:Destroy()
     end
 end
