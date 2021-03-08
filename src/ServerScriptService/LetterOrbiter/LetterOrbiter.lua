@@ -18,16 +18,8 @@ function module.initLetterOrbiter(props)
     local letterOrbiterPositioners = positionerFolder:getChildren()
     Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 
-    print('letterOrbiterPositioners' .. ' - start')
-    print(letterOrbiterPositioners)
-    -- local start = #orbiterConfigs
-    local test2 = #orbiterConfigs
-
     for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
         local mod = (#orbiterConfigs + positionerIndex - 1) % #orbiterConfigs
-        print('mod-------------' .. ' - start')
-        print(mod)
-
         local orbiterConfig = orbiterConfigs[mod + 1]
 
         local words = orbiterConfig.words
