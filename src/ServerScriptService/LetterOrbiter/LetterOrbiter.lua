@@ -13,8 +13,15 @@ function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local orbiterConfigs = levelConfig.orbiterConfigs
+    if not orbiterConfigs then
+        return
+    end
 
     local positionerFolder = Utils.getFirstDescendantByName(parentFolder, 'LetterOrbiterPositioners')
+    if not positionerFolder then
+        return
+    end
+
     local letterOrbiterPositioners = positionerFolder:getChildren()
     Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 

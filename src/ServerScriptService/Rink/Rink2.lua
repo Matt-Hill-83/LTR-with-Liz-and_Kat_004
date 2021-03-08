@@ -160,8 +160,6 @@ function module.addRink2(props)
     local function setTarget(part, targetIndex)
         local alignPosition = Utils.getFirstDescendantByType(part, 'AlignPosition')
         alignPosition.Attachment1 = targetAttachments[targetIndex]
-        -- local alignOrientation = Utils.getFirstDescendantByType(part, 'AlignOrientation')
-        -- alignOrientation.Attachment1 = targetAttachments[targetIndex]
     end
 
     local function partTouched(touchedBlock, otherPart)

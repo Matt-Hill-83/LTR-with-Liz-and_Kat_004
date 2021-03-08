@@ -20,6 +20,20 @@ function module.getPointAlongLine(p0, p1, dist)
     return pNew
 end
 
+function module.getPointAlongLine2(p0, p1, dist)
+    local direction = (p1 - p0).Unit
+    local distance = (p0 - p1).Magnitude
+
+    local distanceOffset = distance * dist / 100
+    -- local maxDistance = 64
+    -- if distanceOffset > maxDistance then
+    --     distanceOffset = maxDistance
+    -- end
+
+    local pNew = p0 + (direction * distanceOffset)
+    return pNew
+end
+
 function module.createBridge2(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
@@ -31,7 +45,7 @@ function module.createBridge2(props)
 
     local p2 = module.getPointAlongLine(p0, p1, 20)
     local p3 = module.getPointAlongLine(p1, p0, 20)
-    local midPoint = module.getPointAlongLine(p0, p1, 50)
+    local midPoint = module.getPointAlongLine2(p0, p1, 50)
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
     local platformEnd = Vector3.new(p3.X, midPoint.Y, p3.Z)
@@ -182,6 +196,7 @@ function module.initBridges(props)
     return bridges
 end
 
+-- 3 segment bridge
 function module.initBridges2(props)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
@@ -197,8 +212,6 @@ function module.initBridges2(props)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
-    print('rods' .. ' - start')
-    print(rods)
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[rodIndex] or {}
