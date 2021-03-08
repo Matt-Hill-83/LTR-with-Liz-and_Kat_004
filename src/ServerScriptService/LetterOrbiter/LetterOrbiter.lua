@@ -16,7 +16,9 @@ function module.initLetterOrbiter(props)
     print('orbiterConfigs-------------------' .. ' - start')
     print(orbiterConfigs)
 
-    local letterOrbiterPositioners = Utils.getDescendantsByName(parentFolder, 'LetterOrbiterPositioner')
+    local positionerFolder = Utils.getFirstDescendantByName(parentFolder, 'LetterOrbiterPositioners')
+    local letterOrbiterPositioners = positionerFolder:getChildren()
+    Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 
     -- local letters = {'A', 'B', 'C'}
     -- local words = {'HOG'}
