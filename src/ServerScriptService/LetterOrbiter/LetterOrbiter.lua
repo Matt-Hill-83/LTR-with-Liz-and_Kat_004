@@ -13,15 +13,22 @@ function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local orbiterConfigs = levelConfig.orbiterConfigs
-    print('orbiterConfigs-------------------' .. ' - start')
-    print(orbiterConfigs)
 
     local positionerFolder = Utils.getFirstDescendantByName(parentFolder, 'LetterOrbiterPositioners')
     local letterOrbiterPositioners = positionerFolder:getChildren()
     Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 
+    print('letterOrbiterPositioners' .. ' - start')
+    print(letterOrbiterPositioners)
+    -- local start = #orbiterConfigs
+    local test2 = #orbiterConfigs
+
     for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
-        local orbiterConfig = orbiterConfigs[(positionerIndex % #orbiterConfigs) + 1]
+        local mod = (#orbiterConfigs + positionerIndex - 1) % #orbiterConfigs
+        print('mod-------------' .. ' - start')
+        print(mod)
+
+        local orbiterConfig = orbiterConfigs[mod + 1]
 
         local words = orbiterConfig.words
         local numBlocks = orbiterConfig.numBlocks
@@ -49,6 +56,7 @@ function module.initLetterOrbiter(props)
         local orbiterDisc = newOrbiter.Disc
         orbiterDisc.Transparency = showDisc and 0 or 1
         orbiterDisc.CanCollide = collideDisc
+
         local sun = newOrbiter.Sun
         local discAngularVelocity = orbiterDisc.AngularVelocity
         discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)

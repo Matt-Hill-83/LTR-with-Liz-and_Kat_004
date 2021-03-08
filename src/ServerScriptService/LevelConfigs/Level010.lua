@@ -234,7 +234,28 @@ module.orbiterConfigs = {
         numBlocks = 20,
         angularVelocity = 1,
         showDisc = false,
-        collideDisc = true
+        collideDisc = false
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -1,
+        showDisc = false,
+        collideDisc = false
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 1,
+        showDisc = false,
+        collideDisc = false
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -1,
+        showDisc = false,
+        collideDisc = false
     }
 }
 
