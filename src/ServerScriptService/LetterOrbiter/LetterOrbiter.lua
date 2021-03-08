@@ -15,27 +15,12 @@ function module.initLetterOrbiter(props)
 
     local letterOrbiterPositioners = Utils.getDescendantsByName(parentFolder, 'LetterOrbiterPositioner')
 
-    -- local packageId = '6367502314'
-    -- local f = Instance.new('Folder', workspace)
-    -- f.Name = packageId
-    -- for _, id in pairs(game:GetService('AssetService'):GetAssetIdsForPackage(packageId)) do
-    --     local m = game:GetService('InsertService'):LoadAsset(id)
-    --     m.Name = id
-    --     m.Parent = f
-    -- end
-
     -- local letters = {'A', 'B', 'C'}
     local words = {'HOG'}
 
     local letters = LetterUtils.getLetterSet({words = words, numBlocks = 10})
-    print('#letterOrbiterPositioners' .. ' - start')
-    print(#letterOrbiterPositioners)
 
     for index, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
-        print('index' .. ' - start-------------------------------------------------')
-        print(index)
-        print('letterOrbiterPositioner++++++++++++' .. ' - start')
-        print(letterOrbiterPositioner)
         local newOrbiter =
             AddModelFromPositioner.addModel(
             {
@@ -51,15 +36,15 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
-        print('letters' .. ' - start')
-        print(letters)
+
+        local blockSize = 8
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
-            local R = 32
-            local x = R * math.cos(angleRadians)
-            local y = R * math.sin(angleRadians)
+            local radius = 40
+            local x = radius * math.cos(angleRadians)
+            local y = radius * math.sin(angleRadians)
             local blockPosition = Vector3.new(0, y, x) / 2
 
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
@@ -67,10 +52,12 @@ function module.initLetterOrbiter(props)
 
             local newLetter = letterBlockTemplate:Clone()
             newLetter.Name = 'orbiterLetter-' .. char
-            newLetter.Size = Vector3.new(8, 8, 8)
+            newLetter.Size = Vector3.new(blockSize, blockSize, blockSize)
             newLetter.Parent = newOrbiter
             -- newLetter.CanCollide = false
             newLetter.Anchored = false
+
+            orbiterDisc.Size = Vector3.new(blockSize, radius + blockSize, radius + blockSize)
 
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
@@ -105,6 +92,7 @@ function module.initLetterOrbiter(props)
 
             Utils.weld2Parts(orbiterDisc, newLetter)
         end
+        letterOrbiterPositioner:Destroy()
     end
 end
 return module
