@@ -14,6 +14,7 @@ if isDev then
     activeSpawn = 'Spawn_Start'
 else
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Center'
 end
 
 -- over ride isDev setting for when I forget to switch it when I deploy

@@ -203,7 +203,7 @@ local function addRemoteObjects()
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
-    LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
+    -- LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
 
     -- BeltJoint.initBeltJoints({parentFolder = level})
     -- HexWall.initHexWalls({parentFolder = level})
