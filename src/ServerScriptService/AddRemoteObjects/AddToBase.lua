@@ -9,6 +9,7 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
+local PetBox = require(Sss.Source.PetBox.PetBox)
 local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
@@ -232,6 +233,7 @@ local function addRemoteObjects()
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
     LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
+    -- PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
