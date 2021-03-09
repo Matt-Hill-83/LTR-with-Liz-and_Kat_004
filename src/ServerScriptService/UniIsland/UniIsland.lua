@@ -23,6 +23,9 @@ function module.initUniIslands(props)
     for islandIndex, islandFolder in ipairs(islandFolders) do
         -- local hexConfig = hexConfigs[islandIndex] or {}
         local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
+        if not teleporter then
+            return
+        end
         local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
 
         local levelDefs = LevelConfigs.levelDefs

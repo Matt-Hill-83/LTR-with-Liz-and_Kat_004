@@ -47,7 +47,6 @@ function module.configPlayers(props)
             wait(2)
             targetWords = gameState.targetWords
         else
-            -- local levelConfig = LevelConfigs.levelConfigs[level]
             targetWords = levelConfig.getTargetWords()[1]
             print('targetWords------------------------>>>' .. ' - start')
             print(targetWords)

@@ -16,6 +16,81 @@ local sectorConfigs = {
 
 module.sectorConfigs = sectorConfigs
 
+module.orbiterConfigs = {
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 0.25,
+        showDisc = false,
+        collideDisc = false,
+        -- diameter = 100,
+        collideBlock = true
+    }
+}
+
 function module.getTargetWords()
     return {
         {

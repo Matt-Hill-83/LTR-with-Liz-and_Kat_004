@@ -12,6 +12,7 @@ local startPlaceId = '6358192824'
 if isDev then
     activeSpawn = 'Spawn_Mesh'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Center'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'

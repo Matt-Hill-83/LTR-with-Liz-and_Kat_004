@@ -227,38 +227,51 @@ module.orbiterConfigs = {
         angularVelocity = 1,
         showDisc = false,
         collideDisc = false,
+        diameter = 60,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 1,
+        showDisc = false,
+        diameter = 50,
+        collideDisc = false,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = -1,
+        showDisc = false,
+        diameter = 50,
+        collideDisc = false,
+        collideBlock = true
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 20,
+        angularVelocity = 1,
+        showDisc = false,
+        collideDisc = false,
         diameter = 50,
         collideBlock = true
     },
     {
         words = {'CAT'},
         numBlocks = 20,
-        angularVelocity = 1,
-        showDisc = false,
-        collideDisc = false,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
         angularVelocity = -1,
         showDisc = false,
+        diameter = 50,
         collideDisc = false,
         collideBlock = true
     },
     {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = 1,
+        words = {'FIONA'},
+        numBlocks = 40,
+        angularVelocity = 0.5,
         showDisc = false,
-        collideDisc = false,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = -1,
-        showDisc = false,
+        diameter = 128,
         collideDisc = false,
         collideBlock = true
     }

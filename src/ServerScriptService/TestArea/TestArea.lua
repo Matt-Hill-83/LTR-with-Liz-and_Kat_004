@@ -15,9 +15,6 @@ function module.initTeleporter(part, nextLevelId)
     local teleportPart = part
 
     local function onPartTouch(otherPart)
-        print('onPartTouch' .. ' - start')
-        print('onPartTouch' .. ' - start')
-        print('onPartTouch' .. ' - start')
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
         if player then
@@ -37,19 +34,31 @@ function module.initTeleporter(part, nextLevelId)
 end
 
 function module.configTestArea(props)
-    print('configTestArea')
-    print('configTestArea')
-    print('configTestArea')
     local parentFolder = props.parentFolder
 
     -- local hexConfig = hexConfigs[islandIndex] or {}
-    local teleporter = Utils.getFirstDescendantByName(parentFolder, 'TestArea')
-    if teleporter then
-        local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
-        print('telepad' .. ' - start')
-        print(telepad)
+    local testArea = Utils.getFirstDescendantByName(parentFolder, 'TestArea')
+    if testArea then
+        local telepad = Utils.getFirstDescendantByName(testArea, 'Telepad')
 
+        -- local testAreaPlaceId = '6241554880'
         local testAreaPlaceId = '6478277568'
+        module.initTeleporter(telepad, testAreaPlaceId)
+    end
+
+    local wordScramble = Utils.getFirstDescendantByName(parentFolder, 'WordScramble')
+    if wordScramble then
+        local telepad = Utils.getFirstDescendantByName(wordScramble, 'Telepad')
+
+        local testAreaPlaceId = '6241554880'
+        module.initTeleporter(telepad, testAreaPlaceId)
+    end
+
+    local trollGame = Utils.getFirstDescendantByName(parentFolder, 'TrollGame')
+    if trollGame then
+        local telepad = Utils.getFirstDescendantByName(trollGame, 'Telepad')
+
+        local testAreaPlaceId = '6176867408'
         module.initTeleporter(telepad, testAreaPlaceId)
     end
 

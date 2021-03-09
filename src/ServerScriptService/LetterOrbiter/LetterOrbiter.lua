@@ -85,7 +85,7 @@ function module.initLetterOrbiter(props)
             newLetter.CanCollide = collideBlock
             newLetter.Anchored = false
 
-            orbiterDisc.Size = Vector3.new(blockSize, newDiameter + blockSize / 1, newDiameter + blockSize / 1)
+            orbiterDisc.Size = Vector3.new(blockSize - 2, newDiameter + blockSize, newDiameter + blockSize)
 
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
