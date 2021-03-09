@@ -41,15 +41,22 @@ function module.initPetBox(props)
                 -- petPart.CFrame = touchBox.CFrame
 
                 local bodyPos = Instance.new('BodyPosition', petPart)
-                bodyPos.MaxForce = Vector3.new(10000, 10000, 10000)
+                bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
                 -- bodyPos.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
 
                 local bodyGyro = Instance.new('BodyGyro', petPart)
                 bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
 
                 while wait() do
-                    bodyPos.Position = humRootPart.Position + Vector3.new(8, 20, 8)
-                    bodyGyro.CFrame = humRootPart.CFrame
+                    bodyPos.Position =
+                        humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2.4 +
+                        humRootPart.CFrame.rightVector * 4
+                    -- bodyPos.Position =
+                    --     humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * -2.4 +
+                    --     humRootPart.CFrame.rightVector * 4
+                    bodyGyro.CFrame = humRootPart.CFrame * CFrame.new(3, 0, -3)
+                    -- bodyPos.Position = humRootPart.Position + Vector3.new(8, 20, 8)
+                    -- bodyGyro.CFrame = humRootPart.CFrame
                 end
             end
         end
