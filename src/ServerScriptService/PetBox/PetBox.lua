@@ -1,11 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
 local ServerStorage = game:GetService('ServerStorage')
-local Players = game:GetService('Players')
-local TeleportModule = require(ServerStorage.Source.TeleportModule)
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-
-local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 
 local module = {}
 
@@ -13,26 +9,62 @@ function module.initPetBox(props)
     local hexConfigs = props.configs or {}
     local parentFolder = props.parentFolder
 
-    local islandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'UniIslands')
-    if not islandFolderBox then
+    local petBox = Utils.getFirstDescendantByName(parentFolder, 'PetBox')
+    if not petBox then
         return
     end
-    local islandFolders = islandFolderBox:getChildren()
-    Utils.sortListByObjectKey(islandFolders, 'Name')
 
-    for islandIndex, islandFolder in ipairs(islandFolders) do
-        -- local hexConfig = hexConfigs[islandIndex] or {}
-        local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
-        if not teleporter then
-            return
+    local pet = Utils.getFirstDescendantByName(petBox, 'Pet')
+    local petModel = Utils.getFirstDescendantByName(petBox, 'PetModel')
+    local box = Utils.getFirstDescendantByName(petBox, 'Box')
+    local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
+    local boxWalls = box:getChildren()
+    print('boxWalls' .. ' - start')
+    print(boxWalls)
+    print('pet' .. ' - start')
+    print(pet)
+
+    print('touchBox' .. ' - start')
+    print(touchBox)
+
+    -- local pet = script.Parent
+
+    function givePet(touchedBlock, player)
+        if player then
+            local character = player.Character
+            if character then
+                local humRootPart = character.HumanoidRootPart
+                local newPet = petModel:Clone()
+
+                newPet.Parent = character
+                local petPart = newPet.PrimaryPart
+                -- petPart.CFrame = touchBox.CFrame
+
+                local bodyPos = Instance.new('BodyPosition', petPart)
+                bodyPos.MaxForce = Vector3.new(10000, 10000, 10000)
+                -- bodyPos.MaxForce = Vector3.new(math.huge, math.huge, math.huge)
+
+                -- local bodyGyro = Instance.new('BodyGyro', petPart)
+                -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+
+                while wait() do
+                    bodyPos.Position = humRootPart.Position + Vector3.new(2, 2, 3)
+                    -- bodyGyro.CFrame = humRootPart.CFrame
+                end
+            end
         end
-        local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
-
-        local levelDefs = LevelConfigs.levelDefs
-        local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
-
-        module.initTeleporter(telepad, placeId.id)
     end
+
+    -- game.Players.PlayerAdded:Connect(
+    --     function(player)
+    --         player.CharacterAdded:Connect(
+    --             function(char)
+    --                 givePet(player)
+    --             end
+    --         )
+    --     end
+    -- )
+    touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
 end
 
 return module

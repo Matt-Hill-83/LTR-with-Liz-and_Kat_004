@@ -233,7 +233,7 @@ local function addRemoteObjects()
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
     LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
-    -- PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
+    PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     SkiSlope.initSlopes({parentFolder = level})
