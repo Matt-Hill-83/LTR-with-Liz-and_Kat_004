@@ -48,7 +48,7 @@ function module.initPetBox(props)
                 bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
 
                 while wait() do
-                    bodyPos.Position = humRootPart.Position + Vector3.new(8, 8, 8)
+                    bodyPos.Position = humRootPart.Position + Vector3.new(8, 20, 8)
                     bodyGyro.CFrame = humRootPart.CFrame
                 end
             end
