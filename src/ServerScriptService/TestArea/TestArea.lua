@@ -36,12 +36,10 @@ end
 function module.configTestArea(props)
     local parentFolder = props.parentFolder
 
-    -- local hexConfig = hexConfigs[islandIndex] or {}
     local testArea = Utils.getFirstDescendantByName(parentFolder, 'TestArea')
     if testArea then
         local telepad = Utils.getFirstDescendantByName(testArea, 'Telepad')
 
-        -- local testAreaPlaceId = '6241554880'
         local testAreaPlaceId = '6478277568'
         module.initTeleporter(telepad, testAreaPlaceId)
     end
