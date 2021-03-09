@@ -48,23 +48,14 @@ function module.initPetBox(props)
 
                 while wait() do
                     bodyPos.Position =
-                        humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2.4 +
-                        humRootPart.CFrame.rightVector * 4
+                        humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2 +
+                        humRootPart.CFrame.rightVector * 3
                     bodyGyro.CFrame = humRootPart.CFrame * CFrame.new(3, 0, -3)
                 end
             end
         end
     end
 
-    -- game.Players.PlayerAdded:Connect(
-    --     function(player)
-    --         player.CharacterAdded:Connect(
-    --             function(char)
-    --                 givePet(player)
-    --             end
-    --         )
-    --     end
-    -- )
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
 end
 
