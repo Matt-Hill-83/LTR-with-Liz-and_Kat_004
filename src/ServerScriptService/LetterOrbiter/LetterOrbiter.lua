@@ -36,6 +36,7 @@ function module.initLetterOrbiter(props)
         local showDisc = orbiterConfig.showDisc
         local collideDisc = orbiterConfig.collideDisc
         local collideBlock = orbiterConfig.collideBlock
+        local discTransparency = orbiterConfig.discTransparency
 
         local letters = LetterUtils.getLetterSet({words = words, numBlocks = numBlocks})
 
@@ -54,7 +55,7 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
-        orbiterDisc.Transparency = showDisc and 0 or 1
+        orbiterDisc.Transparency = showDisc and 0 or discTransparency or 1
         orbiterDisc.CanCollide = collideDisc
 
         local sun = newOrbiter.Sun

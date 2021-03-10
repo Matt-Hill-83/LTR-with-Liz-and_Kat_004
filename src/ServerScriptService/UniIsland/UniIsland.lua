@@ -10,7 +10,7 @@ local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local module = {}
 
 function module.initUniIslands(props)
-    local hexConfigs = props.configs or {}
+    -- local hexConfigs = props.configs or {}
     local parentFolder = props.parentFolder
 
     local islandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'UniIslands')
@@ -20,6 +20,8 @@ function module.initUniIslands(props)
     local islandFolders = islandFolderBox:getChildren()
     Utils.sortListByObjectKey(islandFolders, 'Name')
 
+    print('islandFolders' .. ' - start--------------------------------')
+    print(islandFolders)
     for islandIndex, islandFolder in ipairs(islandFolders) do
         -- local hexConfig = hexConfigs[islandIndex] or {}
         local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
@@ -36,18 +38,27 @@ function module.initUniIslands(props)
 end
 
 function module.initTeleporter(part, nextLevelId)
+    print('nextLevelId' .. ' - start++++++++++++++++++++++++++++++++++++++++')
+    print(nextLevelId)
     if not part then
         return
     end
     local teleportPart = part
 
     local function onPartTouch(otherPart)
+        print('onPartTouch==============================================')
+        print('onPartTouch')
+        print('onPartTouch')
+        print('onPartTouch')
+        print('otherPart' .. ' - start')
+        print(otherPart)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
         if player then
             local teleporting = player:GetAttribute('Teleporting')
             if not teleporting then
                 player:SetAttribute('Teleporting', true)
+                print('+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_ teleporting')
 
                 -- Teleport the player
                 local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})
@@ -57,7 +68,7 @@ function module.initTeleporter(part, nextLevelId)
         end
     end
 
-    teleportPart.Touched:Codnnect(onPartTouch)
+    teleportPart.Touched:Connect(onPartTouch)
 end
 
 return module

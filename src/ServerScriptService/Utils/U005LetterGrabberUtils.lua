@@ -151,18 +151,12 @@ local function wordFound(tool, player)
 end
 
 local function partTouched(touchedBlock, player)
-    print('partTouched' .. ' - start')
-    print('partTouched' .. ' - start')
-    print('partTouched' .. ' - start')
-    print(partTouched)
     local tool = Utils.getActiveTool(player, 'LetterGrabber')
     if not tool then
         return
     end
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
-    print('activeBlock' .. ' - start')
-    print(activeBlock)
     if activeBlock then
         local strayLetterChar = touchedBlock.Character.Value
         local activeLetterChar = activeBlock.Character.Value
