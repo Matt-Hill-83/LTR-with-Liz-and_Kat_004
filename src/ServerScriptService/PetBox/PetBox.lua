@@ -48,10 +48,11 @@ function module.initPetBox(props)
 
                 while wait() do
                     bodyPos.Position = humRootPart.Position
+                    petPart.CFrame = CFrame.new(petPart.Position, humRootPart.Position)
                     -- bodyPos.Position =
                     --     humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2 +
                     --     humRootPart.CFrame.rightVector * 3
-                    bodyGyro.CFrame = humRootPart.CFrame
+                    -- bodyGyro.CFrame = humRootPart.CFrame
                     -- bodyGyro.CFrame = humRootPart.CFrame * CFrame.new(3, 0, -3)
                 end
             end
