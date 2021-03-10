@@ -189,32 +189,9 @@ local function addRemoteObjects()
 
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
-    -- local myStuff = workspace:FindFirstChild('MyStuff')
-
-    -- local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
-    -- local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
-    -- local level = levelsFolder:GetChildren()[1]
-
-    -- local levelName = level.Name
-    -- local levelIndex = tonumber(levelName)
-
-    -- local levelConfig = nil
-    -- if isStartPlace then
-    --     levelConfig = LevelConfigs.mainLevelConfig
-    --     print('LevelConfigs.mainLevelConfig' .. ' - start')
-    --     print(LevelConfigs.mainLevelConfig)
-    --     levelConfig.levelIndex = 1
-    -- else
-    --     levelConfig = LevelConfigs.levelConfigs[levelIndex]
-    --     levelConfig.levelIndex = levelIndex
-    -- end
-
     print('levelConfig' .. ' - start')
     print(levelConfig)
     ConfigGame.preRunConfig({levelConfig = levelConfig})
-    --
-    --
-    --
 
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 
