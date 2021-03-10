@@ -23,8 +23,8 @@ module.vendingMachines = {{targetWordIndex = 1}}
 module.hexIslandConfigs = hexIslandConfigs
 module.orbiterConfigs = {
     {
-        words = {'HOG'},
-        numBlocks = 16,
+        words = {'CAT'},
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -34,7 +34,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -44,7 +44,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -54,7 +54,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -64,7 +64,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -74,7 +74,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -84,7 +84,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -94,7 +94,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'999999999999'},
-        numBlocks = 16,
+        numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
@@ -107,11 +107,14 @@ module.orbiterConfigs = {
 function module.getTargetWords()
     return {
         {
-            {word = 'DOG', target = 1, found = 0},
-            {word = 'LOG', target = 1, found = 0},
-            {word = 'HOG', target = 1, found = 0},
-            {word = 'BOG', target = 1, found = 0}
+            {word = 'CAT', target = 1, found = 0}
         }
+        -- {
+        --     {word = 'DOG', target = 1, found = 0},
+        --     {word = 'LOG', target = 1, found = 0},
+        --     {word = 'HOG', target = 1, found = 0},
+        --     {word = 'BOG', target = 1, found = 0}
+        -- }
     }
 end
 

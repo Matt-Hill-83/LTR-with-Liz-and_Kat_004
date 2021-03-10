@@ -92,7 +92,10 @@ local function configGamePass()
         if hasPass == true then
             -- Assign this player the ability or bonus related to the game pass
             local function onCharacterAdded(character)
-                character:WaitForChild('Humanoid').WalkSpeed = 80
+                local humanoid = character:WaitForChild('Humanoid')
+                humanoid.WalkSpeed = 80
+                -- local Hair = game.ServerStorage.Hair
+                -- humanoid:AddAccessory(Hair:Clone())
                 local function transport()
                     -- player.RespawnLocation = game.Workspace.Start
                     -- character.HumanoidRootPart.CFrame =
