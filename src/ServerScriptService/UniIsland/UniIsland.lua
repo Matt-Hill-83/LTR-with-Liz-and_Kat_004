@@ -57,7 +57,7 @@ function module.initTeleporter(part, nextLevelId)
         end
     end
 
-    teleportPart.Touched:Connect(onPartTouch)
+    teleportPart.Touched:Codnnect(onPartTouch)
 end
 
 return module
