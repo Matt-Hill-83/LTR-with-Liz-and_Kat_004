@@ -9,208 +9,9 @@ local hexIslandConfigs = {
             {
                 item = 'Rink2',
                 itemConfig = {
-                    grabbers = {'HOG'},
-                    words = {'HOG', 'LOG', 'DOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'MOM'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DAD'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'RAT'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'BAT'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'MAT'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'SAT'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'PAT'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'BOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'FOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'HOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'LOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'},
-                    words = {'HOG', 'BOG'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'}
-                    -- words = {'DDDDDDDDDDDDD'}
-                },
-                material = Enum.Material.LeafyGrass
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'DOG'},
-                    words = {'HOG', 'BOG'}
+                    grabbers = {}
+                    -- grabbers = {'HOG'},
+                    -- words = {'HOG', 'LOG', 'DOG', 'BOG'}
                 },
                 material = Enum.Material.LeafyGrass
             }
@@ -224,7 +25,7 @@ module.orbiterConfigs = {
     {
         words = {'HOG'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         collideDisc = true,
@@ -234,7 +35,7 @@ module.orbiterConfigs = {
     {
         words = {'CAT'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 32,
@@ -244,7 +45,7 @@ module.orbiterConfigs = {
     {
         words = {'CAT'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 32,
@@ -254,7 +55,7 @@ module.orbiterConfigs = {
     {
         words = {'CAT'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         collideDisc = true,
@@ -264,7 +65,7 @@ module.orbiterConfigs = {
     {
         words = {'CAT'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 32,
@@ -274,7 +75,7 @@ module.orbiterConfigs = {
     {
         words = {'FIONA'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 64,
@@ -284,7 +85,7 @@ module.orbiterConfigs = {
     {
         words = {'FIONA'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 64,
@@ -294,7 +95,7 @@ module.orbiterConfigs = {
     {
         words = {'999999999999'},
         numBlocks = 16,
-        angularVelocity = 0.5,
+        angularVelocity = 0.2,
         showDisc = true,
         discTransparency = 0.8,
         -- diameter = 64,

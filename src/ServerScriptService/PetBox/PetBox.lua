@@ -16,11 +16,7 @@ function module.initPetBox(props)
 
     local pet = Utils.getFirstDescendantByName(petBox, 'Pet')
     local petModel = Utils.getFirstDescendantByName(petBox, 'PetModel')
-    local box = Utils.getFirstDescendantByName(petBox, 'Box')
     local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
-    local boxWalls = box:getChildren()
-    print('boxWalls' .. ' - start')
-    print(boxWalls)
     print('pet' .. ' - start')
     print(pet)
 
