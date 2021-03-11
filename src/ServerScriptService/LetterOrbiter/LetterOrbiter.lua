@@ -69,7 +69,7 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
-        orbiterDisc.Transparency = showDisc and 0 or 0.8
+        orbiterDisc.Transparency = showDisc and 0 or 1
         orbiterDisc.CanCollide = collideDisc
 
         local sun = newOrbiter.Sun

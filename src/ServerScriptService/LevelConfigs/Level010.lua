@@ -53,29 +53,40 @@ local island01 = {
     },
     orbiterConfigs = {
         {
-            words = {'CAT', 'CAT', 'CAT'},
+            -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
-            angularVelocity = 0.2,
+            angularVelocity = -0.2,
             -- diameter = 32,
             showDisc = false,
             discTransparency = 0.8,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'XYZ'
+            singleWord = 'CCC'
         },
         {
-            words = {'CAT', 'CAT', 'CAT'},
+            -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
-            angularVelocity = 0.2,
+            angularVelocity = -0.2,
             -- diameter = 32,
             showDisc = false,
             discTransparency = 0.8,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'XYZ'
+            singleWord = 'BBB'
         },
         {
-            words = {'CAT', 'CAT', 'CAT'},
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'RRR'
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
@@ -83,7 +94,29 @@ local island01 = {
             discTransparency = 0.8,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'XYZ'
+            singleWord = 'HHH'
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'MMM'
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'MMM'
         }
     }
 }
