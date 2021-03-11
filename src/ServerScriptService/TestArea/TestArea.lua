@@ -40,7 +40,8 @@ function module.configTestArea(props)
     if testArea then
         local telepad = Utils.getFirstDescendantByName(testArea, 'Telepad')
 
-        local testAreaPlaceId = '6478277568'
+        -- local testAreaPlaceId = '6478277568'
+        local testAreaPlaceId = '6486874682'
         module.initTeleporter(telepad, testAreaPlaceId)
     end
 

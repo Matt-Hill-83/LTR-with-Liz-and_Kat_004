@@ -7,11 +7,11 @@ local hexIslandConfigs = {
         statueConfigs = {},
         bridgeConfigs = {
             {
-                item = 'Rink2',
+                item = 'Rink',
                 itemConfig = {
-                    grabbers = {}
+                    grabbers = {'CAT'},
                     -- grabbers = {'HOG'},
-                    -- words = {'HOG', 'LOG', 'DOG', 'BOG'}
+                    words = {'CAT', 'CAT'}
                 },
                 material = Enum.Material.LeafyGrass
             }
@@ -23,7 +23,7 @@ module.vendingMachines = {{targetWordIndex = 1}}
 module.hexIslandConfigs = hexIslandConfigs
 module.orbiterConfigs = {
     {
-        words = {'CAT'},
+        words = {'CAT', 'CAT', 'CAT'},
         numBlocks = 24,
         angularVelocity = 0.2,
         showDisc = true,
