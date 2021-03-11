@@ -73,7 +73,7 @@ function module.initLetterOrbiter(props)
         local discAngularVelocity = orbiterDisc.AngularVelocity
         discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)
 
-        local blockSize = 16
+        local blockSize = 12
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 

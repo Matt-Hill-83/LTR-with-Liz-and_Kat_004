@@ -114,10 +114,138 @@ local island01 = {
         }
     }
 }
+local island02 = {
+    hexNum = 'R1-C4',
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        }
+    }
+}
+
+local island03 = {
+    hexNum = 'R1-C4',
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 13,
+            angularVelocity = -0.2,
+            -- diameter = 32,
+            showDisc = false,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'T'
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 13,
+            angularVelocity = -0.2,
+            -- diameter = 32,
+            showDisc = false,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'A'
+        }
+    }
+}
 
 local hexIslandConfigs = {
     island01,
-    island01
+    island02,
+    island03
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}
@@ -126,7 +254,10 @@ module.hexIslandConfigs = hexIslandConfigs
 function module.getTargetWords()
     return {
         {
-            {word = 'CAT', target = 1, found = 0}
+            {word = 'CAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0},
+            {word = 'RAT', target = 1, found = 0},
+            {word = 'HAT', target = 1, found = 0}
         }
         -- {
         --     {word = 'DOG', target = 1, found = 0},
