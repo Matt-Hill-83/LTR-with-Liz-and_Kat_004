@@ -54,7 +54,7 @@ local island01 = {
     orbiterConfigs = {
         {
             words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 8,
+            numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
             showDisc = false,
@@ -65,7 +65,7 @@ local island01 = {
         },
         {
             words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 8,
+            numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
             showDisc = false,
@@ -76,7 +76,7 @@ local island01 = {
         },
         {
             words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 8,
+            numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
             showDisc = false,
@@ -144,7 +144,7 @@ local hexIslandConfigs = {
         orbiterConfigs = {
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -155,7 +155,7 @@ local hexIslandConfigs = {
             },
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -166,7 +166,7 @@ local hexIslandConfigs = {
             },
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -231,7 +231,7 @@ local hexIslandConfigs = {
         orbiterConfigs = {
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -241,7 +241,7 @@ local hexIslandConfigs = {
             },
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -251,7 +251,7 @@ local hexIslandConfigs = {
             },
             {
                 words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
+                numBlocks = 12,
                 angularVelocity = 0.2,
                 -- diameter = 32,
                 showDisc = false,
@@ -268,7 +268,7 @@ module.hexIslandConfigs = hexIslandConfigs
 module.orbiterConfigs = {
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -278,7 +278,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -288,7 +288,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -298,7 +298,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -308,7 +308,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -318,7 +318,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -328,7 +328,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -338,7 +338,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -348,7 +348,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -358,7 +358,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -368,7 +368,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -378,7 +378,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -388,7 +388,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -398,7 +398,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -408,7 +408,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -418,7 +418,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -428,7 +428,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -438,7 +438,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -448,7 +448,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'999999999999'},
-        numBlocks = 8,
+        numBlocks = 12,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
