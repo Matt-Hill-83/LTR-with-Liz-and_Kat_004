@@ -75,6 +75,25 @@ function module.getLetterSet(props)
     return letterMatrix
 end
 
+function module.getLetterSetJustWords(props)
+    local numBlocks = props.numBlocks
+    local words = props.words
+
+    local letterMatrix = {}
+    local wordLetters = {}
+
+    for _ = 1, numBlocks do
+        for _, word in ipairs(words) do
+            for letterIndex = 1, #word do
+                local letter = string.sub(word, letterIndex, letterIndex)
+                table.insert(wordLetters, letter)
+            end
+        end
+        table.insert(letterMatrix, module.getRandomLetter(wordLetters))
+    end
+    return letterMatrix
+end
+
 local function playWordSound(word)
     local closure = function()
         if Const4.wordConfigs[word] then

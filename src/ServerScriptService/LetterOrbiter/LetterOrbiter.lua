@@ -13,8 +13,9 @@ function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
     print('parentFolder----------------------------' .. ' - start')
     print(parentFolder)
-    local levelConfig = props.levelConfig
-    local orbiterConfigs = levelConfig.orbiterConfigs
+    -- local levelConfig = props.levelConfig
+    local orbiterConfigs = props.orbiterConfigs
+    -- local orbiterConfigs = levelConfig.orbiterConfigs
     print('orbiterConfigs' .. ' - start')
     print(orbiterConfigs)
     if not orbiterConfigs then
@@ -32,6 +33,7 @@ function module.initLetterOrbiter(props)
     print('letterOrbiterPositioners----------------' .. ' - start')
     print(letterOrbiterPositioners)
     for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
+        -- use mod to cycle thru configs when there are more positioners than configs
         local mod = (#orbiterConfigs + positionerIndex - 1) % #orbiterConfigs
         local orbiterConfig = orbiterConfigs[mod + 1]
 
@@ -43,8 +45,14 @@ function module.initLetterOrbiter(props)
         local collideDisc = orbiterConfig.collideDisc
         local collideBlock = orbiterConfig.collideBlock
         local discTransparency = orbiterConfig.discTransparency
+        local singleWord = orbiterConfig.singleWord
 
-        local letters = LetterUtils.getLetterSet({words = words, numBlocks = numBlocks})
+        local letters
+        if singleWord then
+            letters = LetterUtils.getLetterSetJustWords({words = {singleWord}, numBlocks = numBlocks})
+        else
+            letters = LetterUtils.getLetterSet({words = words, numBlocks = numBlocks})
+        end
 
         local newOrbiter =
             AddModelFromPositioner.addModel(
@@ -61,9 +69,6 @@ function module.initLetterOrbiter(props)
         )
 
         local orbiterDisc = newOrbiter.Disc
-        -- orbiterDisc.Transparency = showDisc and 0 or discTransparency or 1
-        -- orbiterDisc.Transparency = 0.8
-        -- orbiterDisc.Transparency = 0
         orbiterDisc.Transparency = showDisc and 0 or 0.8
         orbiterDisc.CanCollide = collideDisc
 
@@ -71,7 +76,7 @@ function module.initLetterOrbiter(props)
         local discAngularVelocity = orbiterDisc.AngularVelocity
         discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)
 
-        local blockSize = 8
+        local blockSize = 16
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 

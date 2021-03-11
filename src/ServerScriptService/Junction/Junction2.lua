@@ -4,6 +4,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local Bridge = require(Sss.Source.Bridge.Bridge)
+local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 
 local module = {}
 
@@ -32,6 +33,7 @@ function module.initJunctions2(props)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
+        local orbiterConfigs = hexConfig.orbiterConfigs or {}
 
         -- local hexConfig = hexConfigs[posIndex] or {}
         -- local bridgeConfigs = hexConfig.bridgeConfigs or {}
@@ -42,6 +44,7 @@ function module.initJunctions2(props)
                 templateName = 'Bridge2'
             }
         )
+        LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
         --
         --

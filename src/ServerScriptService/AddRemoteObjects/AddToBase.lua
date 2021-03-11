@@ -9,22 +9,21 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
-local PetBox = require(Sss.Source.PetBox.PetBox)
 local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
 local Junction = require(Sss.Source.Junction.Junction2)
 local Key = require(Sss.Source.Key.Key)
+local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
+local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
-local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
-
 local module = {}
 
 function module.initAnimalSounds()
@@ -209,7 +208,7 @@ local function addRemoteObjects()
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
-    LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
+    -- LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})

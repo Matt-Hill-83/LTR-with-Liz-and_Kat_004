@@ -174,11 +174,14 @@ local function partTouched(touchedBlock, player)
 
             touchedBlock.Anchored = true
             local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
+            local prevCanCollideValue = touchedBlock.CanCollide
+            print('prevCanCollideValue' .. ' - start')
+            print(prevCanCollideValue)
             touchedBlock.CanCollide = false
 
             function showLetter()
                 touchedBlock.Anchored = false
-                touchedBlock.CanCollide = true
+                touchedBlock.CanCollide = prevCanCollideValue
                 Utils.unhideHideItems({items = hiddenParts})
             end
             delay(2, showLetter)

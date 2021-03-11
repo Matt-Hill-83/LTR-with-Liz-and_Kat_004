@@ -51,6 +51,212 @@ local hexIslandConfigs = {
                 },
                 material = Enum.Material.Glacier
             }
+        },
+        orbiterConfigs = {
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = 'XYZ'
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = 'XYZ'
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = 'XYZ'
+            }
+        }
+    },
+    {
+        hexNum = 'R1-C4',
+        material = Enum.Material.Glacier,
+        statueConfigs = {},
+        bridgeConfigs = {
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            }
+        },
+        orbiterConfigs = {
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = false
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = 'XYZ'
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false,
+                singleWord = 'XYZ'
+            }
+        }
+    },
+    {
+        hexNum = 'R1-C4',
+        material = Enum.Material.Glacier,
+        statueConfigs = {},
+        bridgeConfigs = {
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            }
+        },
+        orbiterConfigs = {
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false
+            },
+            {
+                words = {'CAT', 'CAT', 'CAT'},
+                numBlocks = 8,
+                angularVelocity = 0.2,
+                -- diameter = 32,
+                showDisc = false,
+                discTransparency = 0.8,
+                collideDisc = false,
+                collideBlock = false
+            }
         }
     }
 }
@@ -60,7 +266,117 @@ module.hexIslandConfigs = hexIslandConfigs
 module.orbiterConfigs = {
     {
         words = {'CAT', 'CAT', 'CAT'},
-        numBlocks = 24,
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
+        angularVelocity = 0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 8,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -70,7 +386,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -80,7 +396,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -90,7 +406,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -100,7 +416,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'CAT'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -110,7 +426,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
@@ -120,7 +436,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'FIONA'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = 0.2,
         -- diameter = 32,
         showDisc = false,
@@ -130,7 +446,7 @@ module.orbiterConfigs = {
     },
     {
         words = {'999999999999'},
-        numBlocks = 24,
+        numBlocks = 8,
         angularVelocity = -0.2,
         -- diameter = 32,
         showDisc = false,
