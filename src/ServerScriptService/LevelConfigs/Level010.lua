@@ -1,93 +1,95 @@
 local module = {}
 
-local hexIslandConfigs = {
-    {
-        hexNum = 'R1-C4',
-        material = Enum.Material.Glacier,
-        statueConfigs = {},
-        bridgeConfigs = {
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    -- grabbers = {'HOG'},
-                    words = {'CAT', 'CAT'}
-                },
-                material = Enum.Material.Glacier
+local island01 = {
+    hexNum = 'R1-C4',
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
             },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    -- grabbers = {'HOG'},
-                    words = {'CAT', 'CAT'}
-                },
-                material = Enum.Material.Glacier
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    -- grabbers = {'HOG'},
-                    words = {'CAT', 'CAT'}
-                },
-                material = Enum.Material.Glacier
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    -- grabbers = {'HOG'},
-                    words = {'CAT', 'CAT'}
-                },
-                material = Enum.Material.Glacier
-            },
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'},
-                    -- grabbers = {'HOG'},
-                    words = {'CAT', 'CAT'}
-                },
-                material = Enum.Material.Glacier
-            }
+            material = Enum.Material.Glacier
         },
-        orbiterConfigs = {
-            {
-                words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
-                angularVelocity = 0.2,
-                -- diameter = 32,
-                showDisc = false,
-                discTransparency = 0.8,
-                collideDisc = false,
-                collideBlock = false,
-                singleWord = 'XYZ'
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
             },
-            {
-                words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
-                angularVelocity = 0.2,
-                -- diameter = 32,
-                showDisc = false,
-                discTransparency = 0.8,
-                collideDisc = false,
-                collideBlock = false,
-                singleWord = 'XYZ'
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
             },
-            {
-                words = {'CAT', 'CAT', 'CAT'},
-                numBlocks = 8,
-                angularVelocity = 0.2,
-                -- diameter = 32,
-                showDisc = false,
-                discTransparency = 0.8,
-                collideDisc = false,
-                collideBlock = false,
-                singleWord = 'XYZ'
-            }
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'},
+                -- grabbers = {'HOG'},
+                words = {'CAT', 'CAT'}
+            },
+            material = Enum.Material.Glacier
         }
     },
+    orbiterConfigs = {
+        {
+            words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 8,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'XYZ'
+        },
+        {
+            words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 8,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'XYZ'
+        },
+        {
+            words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 8,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            discTransparency = 0.8,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'XYZ'
+        }
+    }
+}
+
+local hexIslandConfigs = {
+    island01,
     {
         hexNum = 'R1-C4',
         material = Enum.Material.Glacier,
