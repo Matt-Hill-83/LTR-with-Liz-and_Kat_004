@@ -243,6 +243,7 @@ local island03 = {
 }
 
 local hexIslandConfigs = {
+    {},
     island01,
     island02,
     island03
