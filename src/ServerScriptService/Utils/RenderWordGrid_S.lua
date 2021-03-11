@@ -10,7 +10,7 @@ local renderGrid = function(props)
     local displayWidth = props.displayWidth
     local mainFramePosition = props.mainFramePosition
 
-    local words = targetWords
+    local words = targetWords or {}
 
     local mainGui = sgui
     mainGui.Enabled = true

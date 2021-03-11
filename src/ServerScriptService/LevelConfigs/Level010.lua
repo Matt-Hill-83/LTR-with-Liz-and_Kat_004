@@ -3,7 +3,7 @@ local module = {}
 local hexIslandConfigs = {
     {
         hexNum = 'R1-C4',
-        material = Enum.Material.Grass,
+        material = Enum.Material.Glacier,
         statueConfigs = {},
         bridgeConfigs = {
             {
@@ -13,7 +13,43 @@ local hexIslandConfigs = {
                     -- grabbers = {'HOG'},
                     words = {'CAT', 'CAT'}
                 },
-                material = Enum.Material.LeafyGrass
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
+            },
+            {
+                item = 'Rink',
+                itemConfig = {
+                    grabbers = {'CAT'},
+                    -- grabbers = {'HOG'},
+                    words = {'CAT', 'CAT'}
+                },
+                material = Enum.Material.Glacier
             }
         }
     }
@@ -26,81 +62,81 @@ module.orbiterConfigs = {
         words = {'CAT', 'CAT', 'CAT'},
         numBlocks = 24,
         angularVelocity = 0.2,
-        showDisc = true,
-        discTransparency = 0.8,
-        collideDisc = true,
         -- diameter = 32,
-        collideBlock = true
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 24,
+        angularVelocity = -0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
     },
     {
         words = {'CAT'},
         numBlocks = 24,
         angularVelocity = 0.2,
-        showDisc = true,
-        discTransparency = 0.8,
         -- diameter = 32,
-        collideDisc = true,
-        collideBlock = true
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
+    },
+    {
+        words = {'CAT'},
+        numBlocks = 24,
+        angularVelocity = -0.2,
+        -- diameter = 32,
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
     },
     {
         words = {'CAT'},
         numBlocks = 24,
         angularVelocity = 0.2,
-        showDisc = true,
-        discTransparency = 0.8,
         -- diameter = 32,
-        collideDisc = true,
-        collideBlock = true
+        showDisc = false,
+        discTransparency = 0.8,
+        collideDisc = false,
+        collideBlock = false
     },
     {
-        words = {'CAT'},
+        words = {'FIONA'},
         numBlocks = 24,
-        angularVelocity = 0.2,
-        showDisc = true,
-        discTransparency = 0.8,
-        collideDisc = true,
+        angularVelocity = -0.2,
         -- diameter = 32,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 24,
-        angularVelocity = 0.2,
-        showDisc = true,
+        showDisc = false,
         discTransparency = 0.8,
-        -- diameter = 32,
-        collideDisc = true,
-        collideBlock = true
+        collideDisc = false,
+        collideBlock = false
     },
     {
         words = {'FIONA'},
         numBlocks = 24,
         angularVelocity = 0.2,
-        showDisc = true,
+        -- diameter = 32,
+        showDisc = false,
         discTransparency = 0.8,
-        -- diameter = 64,
-        collideDisc = true,
-        collideBlock = true
-    },
-    {
-        words = {'FIONA'},
-        numBlocks = 24,
-        angularVelocity = 0.2,
-        showDisc = true,
-        discTransparency = 0.8,
-        -- diameter = 64,
-        collideDisc = true,
-        collideBlock = true
+        collideDisc = false,
+        collideBlock = false
     },
     {
         words = {'999999999999'},
         numBlocks = 24,
-        angularVelocity = 0.2,
-        showDisc = true,
+        angularVelocity = -0.2,
+        -- diameter = 32,
+        showDisc = false,
         discTransparency = 0.8,
-        -- diameter = 64,
-        collideDisc = true,
-        collideBlock = true
+        collideDisc = false,
+        collideBlock = false
     }
 }
 
