@@ -33,10 +33,8 @@ function module.initJunctions2(props)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
-        local orbiterConfigs = hexConfig.orbiterConfigs or {}
+        local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
-        -- local hexConfig = hexConfigs[posIndex] or {}
-        -- local bridgeConfigs = hexConfig.bridgeConfigs or {}
         Bridge.initBridges2(
             {
                 parentFolder = hexIslandFolder,
@@ -44,6 +42,7 @@ function module.initJunctions2(props)
                 templateName = 'Bridge2'
             }
         )
+
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
         --

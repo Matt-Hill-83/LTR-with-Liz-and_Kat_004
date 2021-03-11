@@ -11,13 +11,10 @@ local module = {}
 
 function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
-    print('parentFolder----------------------------' .. ' - start')
-    print(parentFolder)
-    -- local levelConfig = props.levelConfig
     local orbiterConfigs = props.orbiterConfigs
-    -- local orbiterConfigs = levelConfig.orbiterConfigs
     print('orbiterConfigs' .. ' - start')
     print(orbiterConfigs)
+
     if not orbiterConfigs then
         return
     end
