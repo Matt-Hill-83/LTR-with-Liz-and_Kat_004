@@ -48,8 +48,6 @@ function module.initVendingMachine(props)
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
         local teleporter = Utils.getFirstDescendantByName(vendingMachine, 'Teleporter')
 
-        -- local startPlaceId = '6473099511'
-        -- module.initTeleporter(teleporter, startPlaceId)
         module.initTeleporter(teleporter, nextLevelId)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
@@ -64,7 +62,6 @@ function module.initVendingMachine(props)
         newFrame.Parent = sgui
 
         local pixelsPerStud = 50
-        -- local scalingFactor = 1
         local scalingFactor = 1.7
 
         local displayHeight = guiPart.Size.Y * pixelsPerStud * scalingFactor

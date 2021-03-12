@@ -19,16 +19,9 @@ function module.initJunctions2(props)
     local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos')
     local template = Utils.getFromTemplates('Hex_128_32')
 
-    --
-    --
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
-
-    print('hexIslandFolders' .. ' - start')
-    print('hexIslandFolders' .. ' - start')
-    print('hexIslandFolders' .. ' - start')
-    print(hexIslandFolders)
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}

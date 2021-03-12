@@ -23,17 +23,19 @@ function module.initUniIslands(props)
     print('islandFolders' .. ' - start--------------------------------')
     print(islandFolders)
     for islandIndex, islandFolder in ipairs(islandFolders) do
-        -- local hexConfig = hexConfigs[islandIndex] or {}
+        print('islandFolder' .. ' - start')
+        print(islandFolder)
         local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
-        if not teleporter then
-            return
+        print('teleporter' .. ' - start')
+        print(teleporter)
+        if teleporter then
+            local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
+
+            local levelDefs = LevelConfigs.levelDefs
+            local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
+
+            module.initTeleporter(telepad, placeId.id)
         end
-        local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
-
-        local levelDefs = LevelConfigs.levelDefs
-        local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
-
-        module.initTeleporter(telepad, placeId.id)
     end
 end
 

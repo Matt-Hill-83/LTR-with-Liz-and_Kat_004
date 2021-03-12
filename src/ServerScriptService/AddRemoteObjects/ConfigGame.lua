@@ -16,23 +16,14 @@ local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 local module = {}
 
 function module.configPlayers(props)
-    print('configPlayers')
-    print('configPlayers')
-    print('configPlayers')
-    print('configPlayers')
-    print('configPlayers')
+    print('configPlayers---------------------------------------')
     -- local function configPlayers(props)
     -- local level = props.level
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
     local function onCharacterAdded(character)
-        print('onCharacterAdded')
-        print('onCharacterAdded')
-        print('onCharacterAdded')
-        print('onCharacterAdded')
-        print('onCharacterAdded')
-        print('onCharacterAdded')
+        print('onCharacterAdded+++++++++++++++++++++++++++++++++')
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)

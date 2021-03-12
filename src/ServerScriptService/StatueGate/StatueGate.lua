@@ -17,11 +17,6 @@ function module.initStatueGates(props)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
-    print('hexIslandFolders' .. ' - start')
-    print('hexIslandFolders' .. ' - start')
-    print('hexIslandFolders' .. ' - start')
-    print(hexIslandFolders)
-
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}

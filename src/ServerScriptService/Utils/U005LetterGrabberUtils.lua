@@ -118,10 +118,6 @@ local function wordFound(tool, player)
             Utils.playSound(explosionSound, 0.5)
         end
 
-        print('targetWordObj' .. ' - start')
-        print('targetWordObj' .. ' - start')
-        print('targetWordObj' .. ' - start')
-        print(targetWordObj)
         if targetWordObj.found == targetWordObj.target then
             delay(1, destroyParts)
 
@@ -175,8 +171,6 @@ local function partTouched(touchedBlock, player)
             -- touchedBlock.Anchored = true
             local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
             local prevCanCollideValue = touchedBlock.CanCollide
-            print('prevCanCollideValue' .. ' - start')
-            print(prevCanCollideValue)
             touchedBlock.CanCollide = false
 
             function showLetter()

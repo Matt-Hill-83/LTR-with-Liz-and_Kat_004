@@ -12,8 +12,6 @@ local module = {}
 function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
     local orbiterConfigs = props.orbiterConfigs
-    print('orbiterConfigs' .. ' - start')
-    print(orbiterConfigs)
 
     if not orbiterConfigs then
         return
@@ -27,8 +25,6 @@ function module.initLetterOrbiter(props)
     local letterOrbiterPositioners = positionerFolder:getChildren()
     Utils.sortListByObjectKey(letterOrbiterPositioners, 'Name')
 
-    print('letterOrbiterPositioners----------------' .. ' - start')
-    print(letterOrbiterPositioners)
     for positionerIndex, letterOrbiterPositioner in ipairs(letterOrbiterPositioners) do
         -- use mod to cycle thru configs when there are more positioners than configs
         local mod = (#orbiterConfigs + positionerIndex - 1) % #orbiterConfigs
