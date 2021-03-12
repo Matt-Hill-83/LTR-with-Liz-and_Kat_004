@@ -10,6 +10,7 @@ local Level7 = require(Sss.Source.LevelConfigs.Level7)
 local Level8 = require(Sss.Source.LevelConfigs.Level8)
 local Level009 = require(Sss.Source.LevelConfigs.Level009)
 local Level010 = require(Sss.Source.LevelConfigs.Level010)
+local Level011 = require(Sss.Source.LevelConfigs.Level011)
 
 local module = {}
 
@@ -24,7 +25,8 @@ module.levelConfigs = {
     Level7,
     Level8,
     Level009,
-    Level010
+    Level010,
+    Level011
 }
 
 module.levelDefs = {
@@ -36,7 +38,8 @@ module.levelDefs = {
     {num = 'LK-LTR-7', name = '7', id = '6477631350'},
     {num = 'LK-LTR-8', name = 'END', id = '6477887663'},
     -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
-    {num = 'LK-LTR-010', name = 'END', id = '6486874682'}
+    {num = 'LK-LTR-010', name = 'END', id = '6486874682'},
+    {num = 'LK-LTR-011', name = 'END', id = '6508386322'}
 }
 local unUsed = {
     {num = 'Liz-and-Kat', name = 'pink planets', id = '6468893018'}

@@ -65,7 +65,8 @@ function module.configTestArea(props)
     local teleportToMain = Utils.getFirstDescendantByName(parentFolder, 'TeleportToMain')
     if teleportToMain then
         local telepad2 = Utils.getFirstDescendantByName(teleportToMain, 'Telepad')
-        local mainAreaPlaceId = '6358192824'
+        local mainAreaPlaceId = '6508386322'
+        -- local mainAreaPlaceId = '6358192824'
         module.initTeleporter(telepad2, mainAreaPlaceId)
     end
 end
