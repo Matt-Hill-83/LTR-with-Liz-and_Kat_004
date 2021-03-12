@@ -252,7 +252,7 @@ function module.getTargetWords()
             {word = 'CAT', target = 3, found = 0},
             {word = 'BAT', target = 3, found = 0},
             {word = 'RAT', target = 3, found = 0},
-            {word = 'PAT', target = 3, found = 0},
+            -- {word = 'PAT', target = 3, found = 0},
             {word = 'HAT', target = 3, found = 0}
         }
         -- {
