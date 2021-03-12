@@ -75,7 +75,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
+            discTransparency = 0.7,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'C',
@@ -86,7 +86,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
+            discTransparency = 0.7,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'B',
@@ -97,7 +97,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
+            discTransparency = 0.7,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'R',
@@ -108,7 +108,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = -0.4,
             -- diameter = 32,
-            showDisc = false,
+            -- discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
             singleWord = 'A'
@@ -134,7 +134,7 @@ local r1c4 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
+            discTransparency = 0.7,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'S',
@@ -161,10 +161,10 @@ local r3c4 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
+            discTransparency = 0.7,
             collideDisc = true,
             collideBlock = false,
-            singleWord = 'P',
+            singleWord = 'T',
             discHeight = 1
         }
     }
@@ -181,22 +181,6 @@ local r2c5 = {
         {
             item = 'Rink',
             itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
         }
     },
     orbiterConfigs = {
@@ -205,20 +189,10 @@ local r2c5 = {
             numBlocks = 12,
             angularVelocity = -0.2,
             -- diameter = 32,
-            showDisc = false,
+            -- discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'T'
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'A'
+            singleWord = 'H'
         }
     }
 }
