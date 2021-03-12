@@ -21,7 +21,7 @@ function module.initCardSwaps(props)
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
-                    local targetWords = levelConfig.getTargetWords()[itemNum]
+                    local targetWords = levelConfig.getTargetWords()[itemNum] or levelConfig.getTargetWords()[1]
 
                     local gameState = PlayerStatManager.getGameState(player)
                     gameState.targetWords = targetWords

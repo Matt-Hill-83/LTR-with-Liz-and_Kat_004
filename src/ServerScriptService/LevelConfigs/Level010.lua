@@ -4,7 +4,20 @@ local r2c1 = {
     hexNum = 'R1-C4',
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'CAT'}
+            }
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'BAT'}
+            }
+        }
+    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -128,15 +141,15 @@ module.hexIslandConfigs = hexIslandConfigs
 
 function module.getTargetWords()
     return {
-        {
-            {word = 'CAT', target = 1, found = 0}
-        }
         -- {
-        --     {word = 'CAT', target = 1, found = 0},
-        --     {word = 'BAT', target = 1, found = 0},
-        --     {word = 'RAT', target = 1, found = 0},
-        --     {word = 'HAT', target = 1, found = 0}
+        --     {word = 'CAT', target = 1, found = 0}
         -- }
+        {
+            {word = 'CAT', target = 3, found = 0},
+            {word = 'BAT', target = 3, found = 0},
+            {word = 'RAT', target = 3, found = 0},
+            {word = 'HAT', target = 3, found = 0}
+        }
         -- {
         --     {word = 'DOG', target = 1, found = 0},
         --     {word = 'LOG', target = 1, found = 0},
