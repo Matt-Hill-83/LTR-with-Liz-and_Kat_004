@@ -18,7 +18,6 @@ function module.initJunctions3(props)
     end
     local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos_v2')
     local template = Utils.getFromTemplates('Hex_128_32_v2')
-    -- local template = Utils.getFromTemplates('Hex_128_32')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
     local hexIslandFolders = hexIslandFolderBox:getChildren()
@@ -61,7 +60,7 @@ function module.initJunctions3(props)
                     }
                 }
             )
-            -- positioner:Destroy()
+            positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             local material = hexConfig.material or Enum.Material.Grass
