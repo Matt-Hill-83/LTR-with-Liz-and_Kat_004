@@ -37,32 +37,7 @@ local r2c1 = {
     material = Enum.Material.Air,
     -- material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
+    bridgeConfigs = {},
     orbiterConfigs = {}
 }
 local r2c3 = {
@@ -198,7 +173,7 @@ local r2c5 = {
 }
 
 local hexIslandConfigs = {
-    {},
+    blank,
     r2c1,
     r2c3,
     r2c5,
