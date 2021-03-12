@@ -103,7 +103,7 @@ local r2c3 = {
             -- showDisc = false,
             collideDisc = true,
             collideBlock = false,
-            singleWord = 'D',
+            singleWord = 'R',
             discHeight = 1
         },
         {
