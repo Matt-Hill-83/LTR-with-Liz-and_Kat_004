@@ -33,6 +33,9 @@ function module.initLetterOrbiter(props)
         -- use mod to cycle thru configs when there are more positioners than configs
         local mod = (#orbiterConfigs + positionerIndex - 1) % #orbiterConfigs
         local orbiterConfig = orbiterConfigs[mod + 1]
+        if not orbiterConfig then
+            return
+        end
 
         local words = orbiterConfig.words
         local numBlocks = orbiterConfig.numBlocks
