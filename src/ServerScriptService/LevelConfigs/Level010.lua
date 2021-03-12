@@ -1,114 +1,182 @@
 local module = {}
 
+local blank = {
+    material = Enum.Material.Air,
+    -- material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        }
+    },
+    orbiterConfigs = {}
+}
+
 local r2c1 = {
-    hexNum = 'R1-C4',
+    material = Enum.Material.Air,
+    -- material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        }
+    },
+    orbiterConfigs = {}
+}
+local r2c3 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
         {
             item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'}
-            }
+            itemConfig = {}
         },
         {
             item = 'Rink',
-            itemConfig = {
-                grabbers = {'BAT'}
-            }
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
         }
     },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'CCC'
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'BBB'
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'RRR'
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
+            numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
+            showDisc = true,
+            -- showDisc = false,
+            collideDisc = true,
             collideBlock = false,
-            singleWord = 'HHH'
+            singleWord = 'C',
+            discHeight = 1
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
+            numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
+            showDisc = true,
+            -- showDisc = false,
+            collideDisc = true,
             collideBlock = false,
-            singleWord = 'MMM'
+            singleWord = 'B',
+            discHeight = 1
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
+            numBlocks = 12,
             angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = true,
+            -- showDisc = false,
+            collideDisc = true,
+            collideBlock = false,
+            singleWord = 'D',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.4,
             -- diameter = 32,
             showDisc = false,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'MMM'
-        }
-    }
-}
-local r2c3 = {
-    hexNum = 'R1-C4',
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {},
-    orbiterConfigs = {
-        {
-            words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            showDisc = false,
-            collideDisc = false,
-            collideBlock = false
-            -- singleWord = 'T'
+            singleWord = 'A'
         }
     }
 }
 
 local r2c5 = {
-    hexNum = 'R1-C4',
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        }
+    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
+            numBlocks = 12,
             angularVelocity = -0.2,
             -- diameter = 32,
             showDisc = false,
@@ -118,7 +186,7 @@ local r2c5 = {
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 13,
+            numBlocks = 12,
             angularVelocity = -0.2,
             -- diameter = 32,
             showDisc = false,
@@ -133,7 +201,12 @@ local hexIslandConfigs = {
     {},
     r2c1,
     r2c3,
-    r2c5
+    r2c5,
+    blank,
+    blank,
+    blank,
+    blank,
+    blank
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}

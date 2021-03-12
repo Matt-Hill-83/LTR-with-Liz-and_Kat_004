@@ -41,6 +41,7 @@ local function configWordLetters(props)
         newLetter.Name = 'wordLetter-' .. letterNameStub .. '-qqq-' .. letterIndex .. '-ch-' .. char
         newLetter.Anchored = false
         newLetter.CanCollide = false
+        newLetter.Massless = true
 
         LetterUtils.createPropOnLetterBlock(
             {

@@ -43,6 +43,7 @@ function module.initLetterOrbiter(props)
         local collideBlock = orbiterConfig.collideBlock
         local discTransparency = orbiterConfig.discTransparency
         local singleWord = orbiterConfig.singleWord
+        local discHeight = orbiterConfig.discHeight
 
         local letters
         if singleWord then
@@ -97,7 +98,9 @@ function module.initLetterOrbiter(props)
             newLetter.CanCollide = collideBlock
             newLetter.Anchored = false
 
-            orbiterDisc.Size = Vector3.new(blockSize - 2, newDiameter + blockSize, newDiameter + blockSize)
+            discHeight = discHeight or blockSize - 2
+
+            orbiterDisc.Size = Vector3.new(discHeight, newDiameter + blockSize, newDiameter + blockSize)
 
             CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
