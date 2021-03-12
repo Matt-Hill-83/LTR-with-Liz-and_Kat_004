@@ -172,7 +172,7 @@ local function partTouched(touchedBlock, player)
                 wordFound(tool, player)
             end
 
-            touchedBlock.Anchored = true
+            -- touchedBlock.Anchored = true
             local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
             local prevCanCollideValue = touchedBlock.CanCollide
             print('prevCanCollideValue' .. ' - start')

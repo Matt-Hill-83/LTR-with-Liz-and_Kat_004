@@ -1,56 +1,10 @@
 local module = {}
 
-local island01 = {
+local r2c1 = {
     hexNum = 'R1-C4',
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        }
-    },
+    bridgeConfigs = {},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -114,110 +68,30 @@ local island01 = {
         }
     }
 }
-local island02 = {
+local r2c3 = {
     hexNum = 'R1-C4',
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
+    bridgeConfigs = {},
+    orbiterConfigs = {
         {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
+            words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 13,
+            angularVelocity = -0.2,
+            -- diameter = 32,
+            showDisc = false,
+            collideDisc = false,
+            collideBlock = false
+            -- singleWord = 'T'
         }
     }
 }
 
-local island03 = {
+local r2c5 = {
     hexNum = 'R1-C4',
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'CAT'},
-                -- grabbers = {'HOG'},
-                words = {'CAT', 'CAT'}
-            },
-            material = Enum.Material.Glacier
-        }
-    },
+    bridgeConfigs = {},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -244,9 +118,9 @@ local island03 = {
 
 local hexIslandConfigs = {
     {},
-    island01,
-    island02,
-    island03
+    r2c1,
+    r2c3,
+    r2c5
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}
