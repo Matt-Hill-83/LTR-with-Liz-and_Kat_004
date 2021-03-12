@@ -75,8 +75,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = true,
-            -- showDisc = false,
+            showDisc = false,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'C',
@@ -87,8 +86,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = true,
-            -- showDisc = false,
+            showDisc = false,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'B',
@@ -99,8 +97,7 @@ local r2c3 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = true,
-            -- showDisc = false,
+            showDisc = false,
             collideDisc = true,
             collideBlock = false,
             singleWord = 'R',
@@ -129,15 +126,26 @@ local r1c4 = {
         {
             item = 'Rink',
             itemConfig = {}
-        },
+        }
+    },
+    orbiterConfigs = {
         {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            showDisc = false,
+            collideDisc = true,
+            collideBlock = false,
+            singleWord = 'S',
+            discHeight = 1
+        }
+    }
+}
+local r3c4 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
         {
             item = 'Rink',
             itemConfig = {}
@@ -153,11 +161,10 @@ local r1c4 = {
             numBlocks = 12,
             angularVelocity = 0.2,
             -- diameter = 32,
-            showDisc = true,
-            -- showDisc = false,
+            showDisc = false,
             collideDisc = true,
             collideBlock = false,
-            singleWord = 'C',
+            singleWord = 'P',
             discHeight = 1
         }
     }
@@ -220,7 +227,6 @@ local r2c7 = blank
 local r2c9 = blank
 local r2c9a = blank
 local r2c9b = blank
-local r3c4 = blank
 
 local hexIslandConfigs = {
     r1c4,
@@ -246,6 +252,7 @@ function module.getTargetWords()
             {word = 'CAT', target = 3, found = 0},
             {word = 'BAT', target = 3, found = 0},
             {word = 'RAT', target = 3, found = 0},
+            {word = 'PAT', target = 3, found = 0},
             {word = 'HAT', target = 3, found = 0}
         }
         -- {
