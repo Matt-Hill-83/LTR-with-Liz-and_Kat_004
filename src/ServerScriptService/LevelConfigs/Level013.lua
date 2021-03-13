@@ -1,8 +1,8 @@
 local module = {}
 
 local blank = {
-    -- material = Enum.Material.Air,
-    material = Enum.Material.Glacier,
+    material = Enum.Material.Air,
+    -- material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
         {
@@ -203,8 +203,16 @@ local r2c9a = blank
 local r2c9b = blank
 
 local hexIslandConfigs = {
+    blank,
     r1c4,
-    r1c4
+    r2c1,
+    r2c3,
+    r2c5,
+    r2c7,
+    r2c9,
+    r2c9a,
+    r2c9b,
+    r3c4
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}

@@ -40,7 +40,7 @@ function module.initJunctions3(props)
 
         --
         --
-        print('positioners' .. ' - start')
+        print('positioners' .. ' - start---------------------------------')
         print(positioners)
         for posIndex, positioner in ipairs(positioners) do
             print('positioner' .. ' - start')
