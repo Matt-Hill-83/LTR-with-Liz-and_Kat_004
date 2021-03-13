@@ -203,6 +203,7 @@ local r2c9a = blank
 local r2c9b = blank
 
 local hexIslandConfigs = {
+    blank,
     r1c4,
     r2c1,
     r2c3,

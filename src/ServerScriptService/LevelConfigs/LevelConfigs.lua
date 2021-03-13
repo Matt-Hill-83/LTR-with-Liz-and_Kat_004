@@ -44,8 +44,8 @@ module.levelDefs = {
     {num = 'LK-LTR-8', name = 'END', id = '6477887663'},
     -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
     {num = 'LK-LTR-011', name = 'END', id = '6508386322'},
-    -- {num = 'LK-LTR-012', name = 'END', id = '6510064848'},
-    {num = 'LK-LTR-013', name = 'END', id = '6512436218'}
+    {num = 'LK-LTR-012', name = 'END', id = '6510064848'}
+    -- {num = 'LK-LTR-013', name = 'END', id = '6512436218'}
 }
 local unUsed = {
     {num = 'Liz-and-Kat', name = 'pink planets', id = '6468893018'}

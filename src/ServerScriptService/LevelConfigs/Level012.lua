@@ -204,6 +204,14 @@ local r2c9b = blank
 
 local hexIslandConfigs = {
     r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
+    r1c4,
     r1c4
 }
 
