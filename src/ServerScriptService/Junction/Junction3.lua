@@ -16,13 +16,16 @@ function module.initJunctions3(props)
     if not hexConfigs then
         return
     end
-    local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos_v2')
     local template = Utils.getFromTemplates('Hex_128_32_v2')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
+    print('hexIslandFolderBox' .. ' - start')
+    print(hexIslandFolderBox)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
+    print('hexIslandFolders' .. ' - start')
+    print(hexIslandFolders)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
@@ -40,7 +43,8 @@ function module.initJunctions3(props)
 
         --
         --
-        print('positioners' .. ' - start---------------------------------')
+        local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
+        print('positioners' .. ' - start---------------------------------++++++++++')
         print(positioners)
         for posIndex, positioner in ipairs(positioners) do
             print('positioner' .. ' - start')
@@ -68,7 +72,7 @@ function module.initJunctions3(props)
                     }
                 }
             )
-            positioner:Destroy()
+            -- positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             local material = hexConfig.material or Enum.Material.Grass

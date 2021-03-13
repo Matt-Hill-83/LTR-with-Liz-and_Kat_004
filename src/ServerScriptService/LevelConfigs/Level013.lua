@@ -1,8 +1,8 @@
 local module = {}
 
 local blank = {
-    material = Enum.Material.Air,
-    -- material = Enum.Material.Glacier,
+    -- material = Enum.Material.Air,
+    material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
         {
@@ -34,8 +34,8 @@ local blank = {
 }
 
 local r2c1 = {
-    material = Enum.Material.Air,
-    -- material = Enum.Material.Glacier,
+    -- material = Enum.Material.Air,
+    material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {},
     orbiterConfigs = {}
@@ -203,7 +203,6 @@ local r2c9a = blank
 local r2c9b = blank
 
 local hexIslandConfigs = {
-    blank,
     r1c4,
     r2c1,
     r2c3,

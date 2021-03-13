@@ -16,7 +16,6 @@ function module.initJunctions2(props)
     if not hexConfigs then
         return
     end
-    local positioners = Utils.getDescendantsByName(parentFolder, 'Hex_128_32_pos')
     local template = Utils.getFromTemplates('Hex_128_32')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
@@ -40,6 +39,7 @@ function module.initJunctions2(props)
 
         --
         --
+        local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos')
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
