@@ -1,6 +1,8 @@
 local Sss = game:GetService('ServerScriptService')
 local ServerStorage = game:GetService('ServerStorage')
 
+local Constants = require(Sss.Source.Constants.Constants)
+
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local TeleportModule = require(ServerStorage.Source.TeleportModule)
@@ -40,9 +42,7 @@ function module.configTestArea(props)
     if testArea then
         local telepad = Utils.getFirstDescendantByName(testArea, 'Telepad')
 
-        -- local testAreaPlaceId = '6478277568'
-        -- local testAreaPlaceId = '6486874682'
-        local testAreaPlaceId = '6508386322'
+        local testAreaPlaceId = Constants.testAreaId
         module.initTeleporter(telepad, testAreaPlaceId)
     end
 

@@ -50,6 +50,7 @@ local packageIds = {
 }
 
 local module = {
+    testAreaId = '6508386322',
     gameConfig = gameConfig,
     packageIds = packageIds,
     walkSpeed = gameConfig.walkSpeed,
