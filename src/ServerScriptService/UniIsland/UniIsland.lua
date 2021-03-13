@@ -20,14 +20,8 @@ function module.initUniIslands(props)
     local islandFolders = islandFolderBox:getChildren()
     Utils.sortListByObjectKey(islandFolders, 'Name')
 
-    print('islandFolders' .. ' - start--------------------------------')
-    print(islandFolders)
     for islandIndex, islandFolder in ipairs(islandFolders) do
-        print('islandFolder' .. ' - start')
-        print(islandFolder)
         local teleporter = Utils.getFirstDescendantByName(islandFolder, 'Teleporter')
-        print('teleporter' .. ' - start')
-        print(teleporter)
         if teleporter then
             local telepad = Utils.getFirstDescendantByName(teleporter, 'Telepad')
 
@@ -40,27 +34,18 @@ function module.initUniIslands(props)
 end
 
 function module.initTeleporter(part, nextLevelId)
-    print('nextLevelId' .. ' - start++++++++++++++++++++++++++++++++++++++++')
-    print(nextLevelId)
     if not part then
         return
     end
     local teleportPart = part
 
     local function onPartTouch(otherPart)
-        print('onPartTouch==============================================')
-        print('onPartTouch')
-        print('onPartTouch')
-        print('onPartTouch')
-        print('otherPart' .. ' - start')
-        print(otherPart)
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
         if player then
             local teleporting = player:GetAttribute('Teleporting')
             if not teleporting then
                 player:SetAttribute('Teleporting', true)
-                print('+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_ teleporting')
 
                 -- Teleport the player
                 local teleportResult = TeleportModule.teleportWithRetry(nextLevelId, {player})

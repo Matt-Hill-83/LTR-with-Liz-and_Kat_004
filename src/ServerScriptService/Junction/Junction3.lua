@@ -19,13 +19,9 @@ function module.initJunctions3(props)
     local template = Utils.getFromTemplates('Hex_128_32_v2')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
-    print('hexIslandFolderBox' .. ' - start')
-    print(hexIslandFolderBox)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
-    print('hexIslandFolders' .. ' - start')
-    print(hexIslandFolders)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
@@ -41,16 +37,8 @@ function module.initJunctions3(props)
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
-        --
-        --
         local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
-        print('positioners' .. ' - start---------------------------------++++++++++')
-        print(positioners)
         for posIndex, positioner in ipairs(positioners) do
-            print('positioner' .. ' - start')
-            print(positioner)
-            print('posIndex' .. ' - start')
-            print(posIndex)
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
             local newHexPart = newHex.PrimaryPart
@@ -58,8 +46,6 @@ function module.initJunctions3(props)
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 
             local positionerPart = positioner.PrimaryPart
-            print('positioner.PrimaryPart' .. ' - start')
-            print(positioner.PrimaryPart)
             newHexPart.CFrame =
                 Utils3.setCFrameFromDesiredEdgeOffset(
                 {
