@@ -33,14 +33,7 @@ local blank = {
     orbiterConfigs = {}
 }
 
-local r2c1 = {
-    material = Enum.Material.Air,
-    -- material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {},
-    orbiterConfigs = {}
-}
-local r2c3 = {
+local c1r1 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
@@ -115,104 +108,20 @@ local r2c3 = {
         }
     }
 }
-local r1c4 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'S',
-            discHeight = 1
-        }
-    }
-}
-local r3c4 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'T',
-            discHeight = 1
-        }
-    }
-}
 
-local r2c5 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.2,
-            -- diameter = 32,
-            -- discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'H'
-        }
-    }
-}
-
-local r2c7 = blank
-local r2c9 = blank
-local r2c9a = blank
-local r2c9b = blank
+local c0r0 = blank
 
 local hexIslandConfigs = {
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4,
-    r1c4
+    c0r0,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}

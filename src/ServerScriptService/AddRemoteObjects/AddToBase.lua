@@ -16,7 +16,6 @@ local Entrance = require(Sss.Source.BlockDash.Entrance)
 local Junction = require(Sss.Source.Junction.Junction2)
 local Junction3 = require(Sss.Source.Junction.Junction3)
 local Key = require(Sss.Source.Key.Key)
--- local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
@@ -25,6 +24,7 @@ local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+
 local module = {}
 
 function module.initAnimalSounds()
@@ -209,7 +209,6 @@ local function addRemoteObjects()
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     Door.initDoors({parentFolder = level})
     Key.initKeys({parentFolder = level})
-    -- LetterOrbiter.initLetterOrbiter({parentFolder = level, levelConfig = levelConfig})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
