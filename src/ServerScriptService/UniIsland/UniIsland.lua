@@ -10,7 +10,6 @@ local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local module = {}
 
 function module.initUniIslands(props)
-    -- local hexConfigs = props.configs or {}
     local parentFolder = props.parentFolder
 
     local islandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'UniIslands')

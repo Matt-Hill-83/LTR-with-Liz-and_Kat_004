@@ -137,7 +137,7 @@ local function addRemoteObjects()
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
         levelConfig.levelIndex = levelIndex
     end
-
+    ConfigGame.preRunConfig({levelConfig = levelConfig})
     PlayerStatManager.init()
     --
     --
@@ -191,7 +191,7 @@ local function addRemoteObjects()
     print(nextLevelId)
     print('levelConfig' .. ' - start')
     print(levelConfig)
-    ConfigGame.preRunConfig({levelConfig = levelConfig})
+    -- ConfigGame.preRunConfig({levelConfig = levelConfig})
 
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 

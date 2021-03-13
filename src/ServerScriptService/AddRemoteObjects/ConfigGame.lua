@@ -33,7 +33,7 @@ function module.configPlayers(props)
         local gameState = PlayerStatManager.getGameState(player)
         local targetWords
 
-        -- Wait so that gui can exists
+        -- Wait so that gui can exist
         if gameState.initComplete == true then
             wait(2)
             targetWords = gameState.targetWords
@@ -236,7 +236,6 @@ end
 
 function module.configGame(props)
     setVisibility()
-    -- configPlayers(props)
     configGamePass()
     configBadges()
 
