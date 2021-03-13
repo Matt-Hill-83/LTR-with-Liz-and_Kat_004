@@ -5,6 +5,7 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
+local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 
 local module = {}
 
@@ -58,11 +59,34 @@ function module.initJunctions3(props)
                     }
                 }
             )
+
+            local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
+            for _, wall in ipairs(rightWalls) do
+                InvisiWall.setInvisiWallRight(
+                    {
+                        thickness = 1,
+                        height = 4,
+                        shortHeight = 2,
+                        shortWallProps = {
+                            -- Transparency = 1,
+                            Transparency = 0,
+                            BrickColor = BrickColor.new('Alder'),
+                            Material = Enum.Material.Cobblestone
+                        },
+                        wallProps = {
+                            Transparency = 1,
+                            BrickColor = BrickColor.new('Alder'),
+                            Material = Enum.Material.Concrete
+                        },
+                        part = wall
+                    }
+                )
+            end
             positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
-            local material = hexConfig.material or Enum.Material.Grass
-            Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
+            -- local material = hexConfig.material or Enum.Material.Grass
+            -- Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
         end
     end
 end
