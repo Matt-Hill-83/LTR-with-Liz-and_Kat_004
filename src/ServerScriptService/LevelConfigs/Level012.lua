@@ -1,8 +1,8 @@
 local module = {}
 
 local blank = {
-    material = Enum.Material.Air,
-    -- material = Enum.Material.Glacier,
+    -- material = Enum.Material.Air,
+    material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
         {

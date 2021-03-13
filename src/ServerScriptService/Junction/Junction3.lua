@@ -40,7 +40,13 @@ function module.initJunctions3(props)
 
         --
         --
+        print('positioners' .. ' - start')
+        print(positioners)
         for posIndex, positioner in ipairs(positioners) do
+            print('positioner' .. ' - start')
+            print(positioner)
+            print('posIndex' .. ' - start')
+            print(posIndex)
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
             local newHexPart = newHex.PrimaryPart
@@ -48,6 +54,8 @@ function module.initJunctions3(props)
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 
             local positionerPart = positioner.PrimaryPart
+            print('positioner.PrimaryPart' .. ' - start')
+            print(positioner.PrimaryPart)
             newHexPart.CFrame =
                 Utils3.setCFrameFromDesiredEdgeOffset(
                 {
