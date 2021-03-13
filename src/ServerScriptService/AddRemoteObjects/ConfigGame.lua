@@ -17,8 +17,6 @@ local module = {}
 
 function module.configPlayers(props)
     print('configPlayers---------------------------------------')
-    -- local function configPlayers(props)
-    -- local level = props.level
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
