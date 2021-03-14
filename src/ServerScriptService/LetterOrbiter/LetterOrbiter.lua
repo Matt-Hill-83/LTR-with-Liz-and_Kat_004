@@ -141,7 +141,8 @@ function module.initLetterOrbiter(props)
         --
         -- Orient to positioner disc position
         sun.CFrame = sun.CFrame * CFrame.Angles(0, 0, math.rad(90))
-        sizingDisc:Destroy()
+        sizingDisc.Transparency = 1
+        sizingDisc.CanCollide = false
 
         -- letterOrbiterPositioner:Destroy()
     end

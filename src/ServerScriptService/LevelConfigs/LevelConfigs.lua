@@ -36,6 +36,7 @@ module.levelConfigs = {
 module.levelDefs = {
     -- Keep this one so we can access the config
     {num = 'LK-LTR-Main', name = 'start', id = '6358192824'},
+    {num = 'LK-LTR-012', name = 'END', id = '6510064848'},
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
     {num = 'LK-LTR-6', name = 'END', id = '6468893018'},
@@ -43,8 +44,7 @@ module.levelDefs = {
     {num = 'LK-LTR-7', name = '7', id = '6477631350'},
     {num = 'LK-LTR-8', name = 'END', id = '6477887663'},
     -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
-    {num = 'LK-LTR-011', name = 'END', id = '6508386322'},
-    {num = 'LK-LTR-012', name = 'END', id = '6510064848'}
+    {num = 'LK-LTR-011', name = 'END', id = '6508386322'}
     -- {num = 'LK-LTR-013', name = 'END', id = '6512436218'}
 }
 local unUsed = {
