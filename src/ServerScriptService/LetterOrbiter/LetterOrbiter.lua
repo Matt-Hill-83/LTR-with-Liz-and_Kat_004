@@ -37,7 +37,7 @@ function module.initLetterOrbiter(props)
         local numBlocks = orbiterConfig.numBlocks
         local angularVelocity = orbiterConfig.angularVelocity or 0.66
         local diameter = orbiterConfig.diameter
-        local showDisc = orbiterConfig.showDisc
+        -- local showDisc = orbiterConfig.showDisc
         local collideDisc = orbiterConfig.collideDisc
         local collideBlock = orbiterConfig.collideBlock
         local discTransparency = orbiterConfig.discTransparency
@@ -73,13 +73,15 @@ function module.initLetterOrbiter(props)
         local discAngularVelocity = orbiterDisc.AngularVelocity
         discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)
 
+        local sizingDisc = letterOrbiterPositioner.Positioner
+
         local blockSize = 12
         for letterIndex, char in ipairs(letters) do
             local angle = 360 / #letters
 
             local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
 
-            local posSize = letterOrbiterPositioner.Positioner.Size
+            local posSize = sizingDisc.Size
             local positionerDiameter = math.min(posSize.Y, posSize.Z)
             local newDiameter = diameter or positionerDiameter
             local radius = newDiameter / 2
@@ -139,8 +141,9 @@ function module.initLetterOrbiter(props)
         --
         -- Orient to positioner disc position
         sun.CFrame = sun.CFrame * CFrame.Angles(0, 0, math.rad(90))
-        -- orbiterDisc.CanCollide = true
-        letterOrbiterPositioner:Destroy()
+        sizingDisc:Destroy()
+
+        -- letterOrbiterPositioner:Destroy()
     end
 end
 return module
