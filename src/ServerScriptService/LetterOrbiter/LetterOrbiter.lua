@@ -144,7 +144,7 @@ function module.initLetterOrbiter(props)
         sizingDisc.Transparency = 1
         sizingDisc.CanCollide = false
 
-        -- letterOrbiterPositioner:Destroy()
+        letterOrbiterPositioner:Destroy()
     end
 end
 return module
