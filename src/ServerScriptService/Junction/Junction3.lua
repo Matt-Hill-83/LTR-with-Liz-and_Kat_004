@@ -82,6 +82,29 @@ function module.initJunctions3(props)
                     }
                 )
             end
+
+            local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
+            for _, wall in ipairs(leftWalls) do
+                InvisiWall.setInvisiWallLeft(
+                    {
+                        thickness = 1,
+                        height = 4,
+                        shortHeight = 2,
+                        shortWallProps = {
+                            -- Transparency = 1,
+                            Transparency = 0,
+                            BrickColor = BrickColor.new('Alder'),
+                            Material = Enum.Material.Cobblestone
+                        },
+                        wallProps = {
+                            Transparency = 1,
+                            BrickColor = BrickColor.new('Alder'),
+                            Material = Enum.Material.Concrete
+                        },
+                        part = wall
+                    }
+                )
+            end
             positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
