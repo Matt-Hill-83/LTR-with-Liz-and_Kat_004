@@ -54,14 +54,17 @@ function module.initAnimalSounds2()
         if sound then
             local soundId = soundConstants.animalSounds.trollNeedGold.soundId
             sound.SoundId = 'rbxassetid://' .. soundId
-            sound.Volume = 1
-            local timePosition = 10 % uniIndex
+            sound.Volume = 0.5
+            local timePosition = 5 % uniIndex
+            print('timePosition' .. ' - start')
+            print(timePosition)
 
             sound.TimePosition = timePosition
             sound.Playing = true
             sound.Looped = true
             sound.RollOffMode = 'Linear'
-            sound.RollOffMaxDistance = 80
+            sound.RollOffMaxDistance = 300
+            sound.RollOffMinDistance = 80
         end
     end
 end
