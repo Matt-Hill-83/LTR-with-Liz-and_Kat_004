@@ -40,11 +40,11 @@ module.levelDefs = {
     {num = 'LK-LTR-4', name = 'caveWorld', id = '6467713882'},
     {num = 'LK-LTR-5', name = 'END', id = '6468118694'},
     {num = 'LK-LTR-6', name = 'END', id = '6468893018'},
-    -- {num = 'LK-LTR-010', name = 'END', id = '6486874682'},
     {num = 'LK-LTR-7', name = '7', id = '6477631350'},
     {num = 'LK-LTR-8', name = 'END', id = '6477887663'},
-    -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
     {num = 'LK-LTR-011', name = 'END', id = '6508386322'}
+    -- {num = 'LK-LTR-009', name = 'END', id = '6478277568'},
+    -- {num = 'LK-LTR-010', name = 'END', id = '6486874682'},
     -- {num = 'LK-LTR-013', name = 'END', id = '6512436218'}
 }
 local unUsed = {
