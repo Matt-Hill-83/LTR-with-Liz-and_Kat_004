@@ -222,7 +222,9 @@ local function addRemoteObjects()
     --
     --
     --
-    VendingMachine.initVendingMachine({parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId})
+    VendingMachine.initVendingMachine(
+        {tag = 'M-VendingMachine', parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId}
+    )
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 
     if true then

@@ -1,12 +1,13 @@
 local Sss = game:GetService('ServerScriptService')
-local ServerStorage = game:GetService('ServerStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+
+local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 
 local module = {}
 
 function module.initPetBox(props)
-    local hexConfigs = props.configs or {}
+    local levelConfig = props.levelConfig or {}
     local parentFolder = props.parentFolder
 
     local petBox = Utils.getFirstDescendantByName(parentFolder, 'PetBox')
@@ -24,14 +25,15 @@ function module.initPetBox(props)
     print(touchBox)
 
     -- local pet = script.Parent
+    local newPet2 = {pet = nil}
 
-    function givePet(touchedBlock, player)
+    local function givePet(touchedBlock, player)
         if player then
             local character = player.Character
             if character then
                 local humRootPart = character.HumanoidRootPart
                 local newPet = petModel:Clone()
-
+                newPet2.pet = newPet
                 newPet.Parent = character
                 local petPart = newPet.PrimaryPart
                 -- petPart.CFrame = touchBox.CFrame
@@ -56,6 +58,19 @@ function module.initPetBox(props)
     end
 
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
+
+    local function onComplete()
+        print('newPet2' .. ' - start')
+        print(newPet2.pet)
+        print('complete')
+        print('complete')
+        print('complete')
+        print('complete-------------')
+    end
+
+    VendingMachine.initVendingMachine(
+        {tag = 'M-VendingMachine_002', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
+    )
 end
 
 return module

@@ -41,8 +41,11 @@ function module.initVendingMachine(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local nextLevelId = props.nextLevelId
+    local onComplete = props.onComplete
+    local tag = props.tag
 
-    local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
+    local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
+    -- local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
@@ -77,11 +80,12 @@ function module.initVendingMachine(props)
                 mainFramePosition = mainFramePosition
             }
         )
-
-        local rewardTemplate = Utils.getFromTemplates('CupcakeToolTemplate')
-        ReplicatorFactory.initReplicators(
-            {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
-        )
+        if replicatorPositioner then
+            local rewardTemplate = Utils.getFromTemplates('CupcakeToolTemplate')
+            ReplicatorFactory.initReplicators(
+                {parentFolder = parentFolder, positionerModel = replicatorPositioner, rewardTemplate = rewardTemplate}
+            )
+        end
 
         local function hitBoxTouched(touchedBlock, player)
             local gameState = PlayerStatManager.getGameState(player)
@@ -89,9 +93,7 @@ function module.initVendingMachine(props)
             local gateOpened = false
 
             local cardComplete = true
-            -- if #targetWords == 0 then
-            --     return
-            -- end
+
             for _, word in ipairs(targetWords) do
                 if word.found ~= word.target then
                     cardComplete = false
@@ -103,6 +105,8 @@ function module.initVendingMachine(props)
                     return
                 end
                 gateOpened = true
+
+                onComplete()
                 local keyWalls = Utils.getDescendantsByName(vendingMachine, 'KeyWall')
                 local fires = Utils.getDescendantsByName(vendingMachine, 'Fire')
                 local explosionSound = '262562442'

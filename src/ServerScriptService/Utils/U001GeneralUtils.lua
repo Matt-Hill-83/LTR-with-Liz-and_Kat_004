@@ -327,8 +327,6 @@ local function listIncludes(tab, val)
 end
 
 local function playSound(soundId, volume)
-    print('playSound' .. ' - start')
-    print(playSound)
     if (soundId) then
         local sound = Instance.new('Sound', workspace)
         sound.SoundId = 'rbxassetid://' .. soundId
