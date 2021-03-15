@@ -30,13 +30,15 @@ function module.initPetBox(props)
 
     local function givePet(touchedBlock, player)
         if player then
-            local gameState = PlayerStatManager.getGameState(player)
             local character = player.Character
             if character then
                 local humRootPart = character.HumanoidRootPart
                 local newPet = petModel:Clone()
+                local gameState = PlayerStatManager.getGameState(player)
+                gameState.pet = newPet
                 newPet2.pet = newPet
-                newPet.Parent = character
+                newPet.Parent = petBox
+                -- newPet.Parent = character
                 local petPart = newPet.PrimaryPart
                 -- petPart.CFrame = touchBox.CFrame
 
@@ -46,14 +48,11 @@ function module.initPetBox(props)
                 local bodyGyro = Instance.new('BodyGyro', petPart)
                 bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
 
+                -- This loop needs to be broken when you release the pet
+
                 while wait() do
                     bodyPos.Position = humRootPart.Position
                     petPart.CFrame = CFrame.new(petPart.Position, humRootPart.Position)
-                    -- bodyPos.Position =
-                    --     humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2 +
-                    --     humRootPart.CFrame.rightVector * 3
-                    -- bodyGyro.CFrame = humRootPart.CFrame
-                    -- bodyGyro.CFrame = humRootPart.CFrame * CFrame.new(3, 0, -3)
                 end
             end
         end
@@ -61,13 +60,41 @@ function module.initPetBox(props)
 
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
 
-    local function onComplete()
-        print('newPet2' .. ' - start')
-        print(newPet2.pet)
-        print('complete')
-        print('complete')
-        print('complete')
-        print('complete-------------')
+    local function onComplete(player)
+        if player then
+            local character = player.Character
+            if character then
+                local humRootPart = character.HumanoidRootPart
+                local gameState = PlayerStatManager.getGameState(player)
+                local myPet = gameState.pet
+                myPet.Parent = character
+                local petPart = myPet.PrimaryPart
+                -- petPart.CFrame = touchBox.CFrame
+
+                local bodyPos = petPart.BodyPosition
+                -- local bodyPos = Instance.new('BodyPosition', petPart)
+                -- bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
+
+                local bodyGyro = petPart.BodyGyro
+                -- local bodyGyro = Instance.new('BodyGyro', petPart)
+                -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+
+                print('complete')
+                print('complete')
+                print('complete')
+                while wait() do
+                    bodyPos.Position =
+                        humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2 +
+                        humRootPart.CFrame.rightVector * 3
+                    bodyGyro.CFrame = humRootPart.CFrame
+                end
+                print('complete-------------')
+            -- while wait() do
+            --     local bodyPos = petPart.BodyPosition
+            --     bodyPos.Position = humRootPart.Position
+            -- end
+            end
+        end
     end
 
     VendingMachine.initVendingMachine(

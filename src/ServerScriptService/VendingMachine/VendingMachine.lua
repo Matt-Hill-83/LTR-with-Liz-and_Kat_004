@@ -106,12 +106,11 @@ function module.initVendingMachine(props)
                 end
                 gateOpened = true
 
-                onComplete(player)
                 local keyWalls = Utils.getDescendantsByName(vendingMachine, 'KeyWall')
                 local fires = Utils.getDescendantsByName(vendingMachine, 'Fire')
-                local explosionSound = '262562442'
 
-                Utils.playSound(explosionSound, 0.02)
+                -- local explosionSound = '262562442'
+                -- Utils.playSound(explosionSound, 0.02)
 
                 for _, keyWall in ipairs(keyWalls) do
                     if keyWall then
@@ -145,6 +144,7 @@ function module.initVendingMachine(props)
                 end
 
                 delay(10, revertStyles)
+                onComplete(player)
             end
         end
 
