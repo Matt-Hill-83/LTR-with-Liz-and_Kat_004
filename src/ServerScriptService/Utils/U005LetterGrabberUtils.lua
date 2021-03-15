@@ -168,13 +168,15 @@ local function partTouched(touchedBlock, player)
                 wordFound(tool, player)
             end
 
+            -- local prevAnchoredValue = touchedBlock.Anchored
+            -- anchor them so the don't fall thru the floor
             -- touchedBlock.Anchored = true
             local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
             local prevCanCollideValue = touchedBlock.CanCollide
             touchedBlock.CanCollide = false
 
             function showLetter()
-                touchedBlock.Anchored = false
+                -- touchedBlock.Anchored = prevAnchoredValue
                 touchedBlock.CanCollide = prevCanCollideValue
                 Utils.unhideHideItems({items = hiddenParts})
             end
