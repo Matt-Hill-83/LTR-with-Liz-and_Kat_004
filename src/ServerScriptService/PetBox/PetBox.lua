@@ -3,6 +3,7 @@ local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
 local module = {}
 
@@ -29,6 +30,7 @@ function module.initPetBox(props)
 
     local function givePet(touchedBlock, player)
         if player then
+            local gameState = PlayerStatManager.getGameState(player)
             local character = player.Character
             if character then
                 local humRootPart = character.HumanoidRootPart

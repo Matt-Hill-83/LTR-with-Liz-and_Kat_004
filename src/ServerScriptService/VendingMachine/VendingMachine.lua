@@ -106,7 +106,7 @@ function module.initVendingMachine(props)
                 end
                 gateOpened = true
 
-                onComplete()
+                onComplete(player)
                 local keyWalls = Utils.getDescendantsByName(vendingMachine, 'KeyWall')
                 local fires = Utils.getDescendantsByName(vendingMachine, 'Fire')
                 local explosionSound = '262562442'
