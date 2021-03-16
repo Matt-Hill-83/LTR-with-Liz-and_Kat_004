@@ -2,7 +2,10 @@ local Sss = game:GetService('ServerScriptService')
 local Players = game:GetService('Players')
 local CS = game:GetService('CollectionService')
 local RS = game:GetService('RunService')
+
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+
+local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
 local petTemplate = Instance.new('Model')
 petTemplate.Name = 'Pet'
@@ -45,6 +48,8 @@ end
 
 -- creates a new pet model, and sets up the constraints
 local function createPet(player, character, petInfo)
+    print('createPet' .. ' - start')
+    print(createPet)
     local petTag = getPetTag(player)
 
     local pet = petInfo.Model:Clone()
@@ -58,7 +63,6 @@ local function createPet(player, character, petInfo)
     local alignPosAttachment1 = Instance.new('Attachment', characterPrimary)
     alignPosAttachment1.Name = 'att-position-char-ppp'
     alignPosAttachment1.Position = petInfo.PosOffset
-    -- alignPosAttachment1.Position = Vector3.new(0, 1, -2)
 
     local alignOriAttachment0 = Instance.new('Attachment', petPrimary)
     local alignOriAttachment1 = Instance.new('Attachment', characterPrimary)
@@ -77,9 +81,6 @@ local function createPet(player, character, petInfo)
     alignOrientation.Attachment1 = alignOriAttachment1
     alignOrientation.Parent = petPrimary
 
-    local bodyPos = Instance.new('BodyPosition', petPrimary)
-    bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
-
     CS:AddTag(pet, petTag) -- to delete the pet when needed using :GetTagged()
     petPrimary.CanCollide = false
     -- petPrimary.CFrame = characterPrimary.CFrame -- moves the pet to the player initially so it doesnt have to fly across the map
@@ -91,11 +92,33 @@ local function createPet(player, character, petInfo)
     alignOrientation.Enabled = false
     alignPosition.Enabled = false
 
-    while true do
+    local gameState = PlayerStatManager.getGameState(player)
+    gameState.pet = pet
+
+    local bodyPos = Instance.new('BodyPosition', petPrimary)
+    bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
+
+    local function timerLoop()
+        bodyPos.Position = humRootPart.Position
+        petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
+
+        if not gameState.hasPet then
+            delay(0.01, timerLoop)
+        end
+    end
+    timerLoop()
+
+    local function stuffToDo()
         game:GetService('RunService').Heartbeat:Wait()
         bodyPos.Position = humRootPart.Position
         petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
     end
+
+    -- while true do
+    --     game:GetService('RunService').Heartbeat:Wait()
+    --     bodyPos.Position = humRootPart.Position
+    --     petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
+    -- end
 end
 
 -- deletes a player's pet model, using CS to retrieve any existing tagged pet
@@ -130,7 +153,10 @@ function PetService:UnsetPet(player)
     end
 end
 
-local function playerAdded(player)
+function PetService:PlayerAdded(player)
+    print('PlayerAdded' .. ' - start')
+    print('PlayerAdded' .. ' - start')
+    print('PlayerAdded' .. ' - start')
     local petTag = getPetTag(player)
 
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
@@ -160,10 +186,13 @@ end
 
 -- calls the playerAdded() function for all players that exist before we set up the PlayerAdded event
 for _, player in ipairs(Players:GetPlayers()) do
-    playerAdded(player)
+    -- playerAdded(player)
 end
 
-Players.PlayerAdded:Connect(playerAdded)
+-- Players.PlayerAdded:Connect(playerAdded)
 Players.PlayerRemoving:Connect(playerRemoving)
 
+-- local module = {initPet = playerAdded}
+
+-- return module
 return PetService
