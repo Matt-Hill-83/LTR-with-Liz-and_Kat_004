@@ -18,6 +18,7 @@ function module.initPetBox(props)
     end
 
     local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
+    local center = Utils.getFirstDescendantByName(petBox, 'Center')
 
     local function givePet(touchedBlock, player)
         local gameState = PlayerStatManager.getGameState(player)
@@ -26,8 +27,13 @@ function module.initPetBox(props)
         end
 
         if player then
-            PetService:PlayerAdded(player)
+            local test = PetService:PlayerAdded(player)
+            print('test' .. ' - start')
+            print(test)
         end
+        print('gameState.pet' .. ' - start')
+        print(gameState.pet)
+        gameState.pet.PrimaryPart.CFrame = center.CFrame
     end
 
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
@@ -53,7 +59,7 @@ function module.initPetBox(props)
                 local sphere = Utils.getFirstDescendantByName(myPet, 'Sphere')
                 sphere.CanCollide = false
                 sphere:Destroy()
-                -- petPart.CFrame = touchBox.CFrame
+                petPart.CFrame = center.CFrame
 
                 local bodyPos = petPart.BodyPosition
 
