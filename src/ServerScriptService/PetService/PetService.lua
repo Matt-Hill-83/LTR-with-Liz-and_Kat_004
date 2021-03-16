@@ -19,8 +19,6 @@ petPrimary.Parent = petTemplate
 petTemplate.PrimaryPart = petPrimary
 
 local corgi_001 = Utils.getFromTemplates('Corgi_002')
-print('corgi_001' .. ' - start------------------------------------>>')
-print(corgi_001)
 local petInfos = {
     Pet1 = {
         Model = petTemplate,
@@ -52,8 +50,6 @@ local function createPet(player, character, petInfo)
     local pet = petInfo.Model:Clone()
     pet.Name = 'jjj'
 
-    print('pet' .. ' - start')
-    print(pet)
     local petPrimary = pet.PrimaryPart
     local characterPrimary = character.PrimaryPart
 
@@ -81,10 +77,6 @@ local function createPet(player, character, petInfo)
     alignOrientation.Attachment1 = alignOriAttachment1
     alignOrientation.Parent = petPrimary
 
-    -- local bodyGyro = Instance.new('BodyGyro', petPrimary)
-    -- bodyGyro.Name = '999'
-    -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
 
@@ -94,15 +86,12 @@ local function createPet(player, character, petInfo)
     pet.Parent = workspace
     -- petPrimary:SetNetworkOwner(player) -- gives client control
 
-    print('pet' .. ' - start-------------------------->>>')
-    print(pet)
     local humRootPart = character.HumanoidRootPart
 
     alignOrientation.Enabled = false
     alignPosition.Enabled = false
 
     while true do
-        print('heartbeart')
         game:GetService('RunService').Heartbeat:Wait()
         bodyPos.Position = humRootPart.Position
         petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
@@ -111,9 +100,6 @@ end
 
 -- deletes a player's pet model, using CS to retrieve any existing tagged pet
 local function deletePet(player)
-    print('deletePet----------------------------')
-    print('deletePet----------------------------')
-    print('deletePet----------------------------')
     local petTag = getPetTag(player)
     for _, pet in ipairs(CS:GetTagged(petTag)) do
         pet:Destroy()
@@ -147,8 +133,6 @@ end
 local function playerAdded(player)
     local petTag = getPetTag(player)
 
-    print('PetService.PetInfos.Corgi_001' .. ' - start')
-    print(PetService.PetInfos.Corgi_001)
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
     PetService:SetPet(player, PetService.PetInfos.Corgi_001) -- set their pet, can be used outside of module, this is just here for testing
 
