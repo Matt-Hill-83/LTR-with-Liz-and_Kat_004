@@ -17,17 +17,9 @@ function module.initPetBox(props)
         return
     end
 
-    local pet = Utils.getFirstDescendantByName(petBox, 'Pet')
+    -- local pet = Utils.getFirstDescendantByName(petBox, 'Pet')
     local petModel = Utils.getFirstDescendantByName(petBox, 'PetModel')
     local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
-    print('pet' .. ' - start')
-    print(pet)
-
-    print('touchBox' .. ' - start')
-    print(touchBox)
-
-    -- local pet = script.Parent
-    -- local newPet2 = {pet = nil}
 
     local petService = nil
     local function givePet(touchedBlock, player)
@@ -57,19 +49,11 @@ function module.initPetBox(props)
                 local newPet = petModel:Clone()
                 local gameState = PlayerStatManager.getGameState(player)
                 gameState.pet = newPet
-                -- newPet2.pet = newPet
                 newPet.Parent = petBox
-                -- newPet.Parent = character
                 local petPart = newPet.PrimaryPart
-                -- petPart.CFrame = touchBox.CFrame
 
                 local bodyPos = Instance.new('BodyPosition', petPart)
                 bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
-
-                -- local bodyGyro = Instance.new('BodyGyro', petPart)
-                -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-
-                -- This loop needs to be broken when you release the pet
 
                 while true do
                     game:GetService('RunService').Heartbeat:Wait()
@@ -85,23 +69,37 @@ function module.initPetBox(props)
         print('onComplete' .. ' - start')
         print('onComplete' .. ' - start')
         print('onComplete' .. ' - start')
+
         if player then
+            local gameState3 = PlayerStatManager.getGameState(player)
+            if gameState3.hasPet then
+                return
+            end
             local character = player.Character
             if character then
-                local humRootPart = character.HumanoidRootPart
+                -- local humRootPart = character.HumanoidRootPart
+                local myPet
                 local gameState = PlayerStatManager.getGameState(player)
-                local myPet = gameState.pet
+                myPet = gameState.pet
+                if not myPet then
+                    petService = PetService:PlayerAdded(player)
+                    myPet = gameState.pet
+                end
                 myPet.Parent = character
                 local petPart = myPet.PrimaryPart
+
+                -- the sphere is there to help steer the dog when it is in the cage
+                local sphere = Utils.getFirstDescendantByName(myPet, 'Sphere')
+                print('sphere' .. ' - start')
+                print('sphere' .. ' - start')
+                print('sphere' .. ' - start')
+                print('sphere' .. ' - start')
+                print(sphere)
+                sphere.CanCollide = false
+                sphere:Destroy()
                 -- petPart.CFrame = touchBox.CFrame
 
                 local bodyPos = petPart.BodyPosition
-                -- local bodyPos = Instance.new('BodyPosition', petPart)
-                -- bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
-
-                -- local bodyGyro = petPart.BodyGyro
-                -- local bodyGyro = Instance.new('BodyGyro', petPart)
-                -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
 
                 print('complete')
                 print('complete')
@@ -109,14 +107,12 @@ function module.initPetBox(props)
 
                 gameState.hasPet = true
                 bodyPos:Destroy()
-                myPet.AlignOrientation.Enabled = true
-                myPet.AlignPosition.Enabled = true
-                -- while wait() do
-                --     bodyPos.Position =
-                --         humRootPart.Position + humRootPart.CFrame.lookVector * -1 + humRootPart.CFrame.upVector * 2 +
-                --         humRootPart.CFrame.rightVector * 3
-                --     -- bodyGyro.CFrame = humRootPart.CFrame
-                -- end
+
+                local alignOrientation = Utils.getFirstDescendantByType(myPet, 'AlignOrientation')
+                alignOrientation.Enabled = true
+                local alignPosition = Utils.getFirstDescendantByType(myPet, 'AlignPosition')
+                alignPosition.Enabled = true
+
                 print('complete-------------')
             end
         end

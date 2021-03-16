@@ -32,7 +32,7 @@ local petInfos = {
     },
     Corgi_001 = {
         Model = corgi_001,
-        PosOffset = Vector3.new(2, -3, 2), -- the attachment offset
+        PosOffset = Vector3.new(3, -3, 6), -- the attachment offset
         AlignPosMaxForce = 200000,
         AlignPosResponsiveness = 15,
         AlignOriResponsiveness = 20
@@ -69,10 +69,12 @@ local function createPet(player, character, petInfo)
     alignOriAttachment0.Name = 'att-orientation'
 
     local alignPosition = Instance.new('AlignPosition')
-    alignPosition.MaxForce = petInfo.AlignPosMaxForce
-    alignPosition.Responsiveness = petInfo.AlignPosResponsiveness
     alignPosition.Attachment0 = alignPosAttachment0
     alignPosition.Attachment1 = alignPosAttachment1
+    alignPosition.MaxForce = petInfo.AlignPosMaxForce
+    alignPosition.Responsiveness = petInfo.AlignPosResponsiveness
+    alignPosition.ApplyAtCenterOfMass = true
+    alignPosition.RigidityEnabled = true
     alignPosition.Parent = petPrimary
 
     local alignOrientation = Instance.new('AlignOrientation')
@@ -93,7 +95,12 @@ local function createPet(player, character, petInfo)
     alignPosition.Enabled = false
 
     local gameState = PlayerStatManager.getGameState(player)
+
     gameState.pet = pet
+
+    local gameState2 = PlayerStatManager.getGameState(player)
+    print('gameState2' .. ' - start')
+    print(gameState2)
 
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
@@ -107,18 +114,6 @@ local function createPet(player, character, petInfo)
         end
     end
     timerLoop()
-
-    local function stuffToDo()
-        game:GetService('RunService').Heartbeat:Wait()
-        bodyPos.Position = humRootPart.Position
-        petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
-    end
-
-    -- while true do
-    --     game:GetService('RunService').Heartbeat:Wait()
-    --     bodyPos.Position = humRootPart.Position
-    --     petPrimary.CFrame = CFrame.new(petPrimary.Position, humRootPart.Position)
-    -- end
 end
 
 -- deletes a player's pet model, using CS to retrieve any existing tagged pet
@@ -167,6 +162,11 @@ function PetService:PlayerAdded(player)
 
         if pet and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
             createPet(player, character, pet)
+
+            print('after create -----------')
+            print('after create -----------')
+            print('after create -----------')
+            print('after create -----------')
         end
 
         character.Humanoid.Died:Connect(
