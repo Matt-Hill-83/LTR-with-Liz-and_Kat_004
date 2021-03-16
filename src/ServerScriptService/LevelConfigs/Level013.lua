@@ -218,7 +218,7 @@ local c2r2 = {
         {
             words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
-            angularVelocity = 0.4,
+            angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 0.7,
             collideDisc = false,
