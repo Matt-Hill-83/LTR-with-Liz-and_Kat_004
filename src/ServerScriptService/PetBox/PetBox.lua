@@ -45,12 +45,13 @@ function module.initPetBox(props)
                 local bodyPos = Instance.new('BodyPosition', petPart)
                 bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
 
-                local bodyGyro = Instance.new('BodyGyro', petPart)
-                bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
+                -- local bodyGyro = Instance.new('BodyGyro', petPart)
+                -- bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
 
                 -- This loop needs to be broken when you release the pet
 
-                while wait() do
+                while true do
+                    game:GetService('RunService').Heartbeat:Wait()
                     bodyPos.Position = humRootPart.Position
                     petPart.CFrame = CFrame.new(petPart.Position, humRootPart.Position)
                 end
@@ -101,5 +102,14 @@ function module.initPetBox(props)
         {tag = 'M-VendingMachine_002', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
     )
 end
+
+-- local event = Instance.new('BindableEvent') -- You could use coroutines, but they're a bit finnicky
+
+-- someAsyncThing(function()
+--     -- bla bla bla
+--     event:Fire()
+-- end)
+
+-- event.Event:Wait()
 
 return module
