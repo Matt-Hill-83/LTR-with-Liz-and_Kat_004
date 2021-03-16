@@ -55,6 +55,9 @@ function module.initVendingMachine(props)
         local replicatorPositioner = Utils.getFirstDescendantByName(vendingMachine, 'ReplicatorPositioner')
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
+        if not levelConfig.vendingMachines then
+            return
+        end
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
         local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
         print('signTargetWords----------------' .. ' - start')
