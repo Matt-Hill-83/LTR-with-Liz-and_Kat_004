@@ -3,15 +3,53 @@ local module = {}
 local sector1Config = {
     freezeConveyor = true,
     words = {
-        'NAP', --
-        'TAP', --
-        'RAP', --
-        'ZAP' --
+        'NAP',
+        'TAP',
+        'RAP',
+        'ZAP',
+        'MAP',
+        'GAP',
+        'LAP'
+    }
+}
+local sector2Config = {
+    freezeConveyor = true,
+    words = {
+        'CAT',
+        'BAT',
+        'RAT',
+        'HAT',
+        'MAT',
+        'BAT',
+        'PAT',
+        'SAT'
+    }
+}
+local sector3Config = {
+    freezeConveyor = true,
+    words = {
+        'VAT',
+        'VAN',
+        'MAN',
+        'MOM'
+    }
+}
+local sector4Config = {
+    freezeConveyor = true,
+    words = {
+        'DAD',
+        'DOG',
+        'HOG',
+        'LOG',
+        'BOG'
     }
 }
 
 local sectorConfigs = {
-    sector1Config --
+    sector1Config,
+    sector2Config,
+    sector3Config,
+    sector4Config
 }
 
 local hexIslandConfigs = {

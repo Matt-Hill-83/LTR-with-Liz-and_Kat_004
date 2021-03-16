@@ -161,6 +161,9 @@ local function addRemoteObjects()
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
     end
 
+    print('levelDefs' .. ' - start')
+    print(levelDefs)
+
     local levelOrderIndex = -99
     for levelDefIndex, levelDef in ipairs(levelDefs) do
         if tonumber(levelDef.id) == tonumber(placeId) then
@@ -192,7 +195,7 @@ local function addRemoteObjects()
 
     print('nextLevelId' .. ' - start')
     print(nextLevelId)
-    print('levelConfig' .. ' - start')
+    print('levelConfig' .. ' - start--------------------------------->>>>')
     print(levelConfig)
     -- ConfigGame.preRunConfig({levelConfig = levelConfig})
 
@@ -200,6 +203,10 @@ local function addRemoteObjects()
 
     -- Do this after preconfig to avoid a race
     if isStartPlace then
+        print('experienceStore:SetAsync')
+        print('experienceStore:SetAsync')
+        print('experienceStore:SetAsync')
+        print('experienceStore:SetAsync')
         experienceStore:SetAsync('LevelDefs', levelDefs)
     end
     ConfigRemoteEvents.configRemoteEvents()
