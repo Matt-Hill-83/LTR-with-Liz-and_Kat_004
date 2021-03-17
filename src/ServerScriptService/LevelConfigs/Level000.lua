@@ -53,86 +53,85 @@ local sectorConfigs = {
 }
 module.sectorConfigs = sectorConfigs
 
-module.orbiterConfigs = {
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = 0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
+local c0r0 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        }
     },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = -0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = 0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = -0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = -0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = 0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = -0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
-    },
-    {
-        words = {'CAT'},
-        numBlocks = 20,
-        angularVelocity = 0.25,
-        showDisc = false,
-        collideDisc = false,
-        -- diameter = 100,
-        collideBlock = true
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'A',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = true,
+            collideBlock = false,
+            singleWord = 'T',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = true,
+            collideBlock = false,
+            singleWord = 'CBR',
+            discHeight = 1
+        }
     }
 }
+
+local hexIslandConfigs = {
+    c0r0
+}
+
+module.vendingMachines = {{targetWordIndex = 1}}
+module.hexIslandConfigs = hexIslandConfigs
 
 function module.getTargetWords()
     return {
         {
             {word = 'RAT', target = 1, found = 0},
-            {word = 'BAT', target = 1, found = 0}
+            {word = 'BAT', target = 1, found = 0},
+            {word = 'CAT', target = 1, found = 0}
         }
     }
 end

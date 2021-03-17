@@ -186,8 +186,8 @@ function module.initLetterGrabber(props)
     local positioner = props.positioner
     local word = props.word
 
-    local template = Utils.getFromTemplates('GrabberReplicatorTemplate_002_horse')
-    -- local template = Utils.getFromTemplates('GrabberReplicatorTemplate_001')
+    -- local template = Utils.getFromTemplates('GrabberReplicatorTemplate_002_horse')
+    local template = Utils.getFromTemplates('GrabberReplicatorTemplate_001')
 
     local newReplicator = template:Clone()
     local lettterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
