@@ -37,7 +37,6 @@ function module.initLetterOrbiter(props)
         local numBlocks = orbiterConfig.numBlocks
         local angularVelocity = orbiterConfig.angularVelocity or 0.66
         local diameter = orbiterConfig.diameter
-        -- local showDisc = orbiterConfig.showDisc
         local collideDisc = orbiterConfig.collideDisc
         local collideBlock = orbiterConfig.collideBlock
         local discTransparency = orbiterConfig.discTransparency
@@ -135,6 +134,8 @@ function module.initLetterOrbiter(props)
                 Vector3.new(orbiterDisc.Position.X, orbiterDisc.Position.Y, orbiterDisc.Position.Z)
             )
 
+            --             local targetIndex = touchedBlock:GetAttribute('TargetIndex')
+            newLetter:SetAttribute('BlockGroup', 'Orbiter')
             Utils.weld2Parts(orbiterDisc, newLetter)
         end
 

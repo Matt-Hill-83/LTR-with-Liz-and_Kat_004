@@ -104,6 +104,10 @@ local function wordFound(tool, player)
         updateWordGuiRE:FireClient(player)
 
         local function destroyParts()
+            print('destroyParts' .. ' - start')
+            print('destroyParts' .. ' - start')
+            print('destroyParts' .. ' - start')
+            print('destroyParts' .. ' - start')
             tool:Destroy()
 
             if player:FindFirstChild('leaderstats') then
@@ -168,9 +172,12 @@ local function partTouched(touchedBlock, player)
                 wordFound(tool, player)
             end
 
-            -- local prevAnchoredValue = touchedBlock.Anchored
-            -- anchor them so the don't fall thru the floor
-            -- touchedBlock.Anchored = true
+            local blockGroup = touchedBlock:GetAttribute('BlockGroup')
+            if blockGroup then
+                print('blockGroup' .. ' - start')
+                print(blockGroup)
+            end
+
             local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
             local prevCanCollideValue = touchedBlock.CanCollide
             touchedBlock.CanCollide = false

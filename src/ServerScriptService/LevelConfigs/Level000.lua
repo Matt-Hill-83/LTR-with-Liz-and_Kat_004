@@ -91,16 +91,27 @@ local c0r0 = {
             discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
+            singleWord = 'C',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
             singleWord = 'A',
             discHeight = 1
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
-            angularVelocity = 0.2,
+            angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 0.7,
-            collideDisc = true,
+            collideDisc = false,
             collideBlock = false,
             singleWord = 'T',
             discHeight = 1
@@ -108,12 +119,34 @@ local c0r0 = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
-            angularVelocity = 0.2,
+            angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 0.7,
-            collideDisc = true,
+            collideDisc = false,
             collideBlock = false,
-            singleWord = 'CBR',
+            singleWord = 'B',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'R',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'H',
             discHeight = 1
         }
     }
@@ -131,7 +164,7 @@ function module.getTargetWords()
         {
             {word = 'RAT', target = 1, found = 0},
             {word = 'BAT', target = 1, found = 0},
-            {word = 'CAT', target = 1, found = 0}
+            {word = 'CAT', target = 3, found = 0}
         }
     }
 end
