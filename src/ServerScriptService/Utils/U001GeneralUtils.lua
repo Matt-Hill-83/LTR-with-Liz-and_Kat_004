@@ -229,6 +229,18 @@ local function unhideHideItems(props)
     end
 end
 
+local function unhideHideItems2(props)
+    local items = props.items
+    for _, part in ipairs(items) do
+        if part:IsA('BasePart') then
+        -- part.CanCollide = true
+        end
+        -- if part:FindFirstChild("CanCollide") then part.CanCollide = true end
+        part.Transparency = 0
+        --
+    end
+end
+
 local function onTouchBlock(touchedBlock, callBack)
     local db = {value = false}
 
@@ -954,6 +966,7 @@ module.convertItemAndChildrenToTerrain = convertItemAndChildrenToTerrain
 
 module.hideItemAndChildren2 = hideItemAndChildren2
 module.unhideHideItems = unhideHideItems
+module.unhideHideItems2 = unhideHideItems2
 
 module.onTouchHuman = onTouchHuman
 module.hasProperty = hasProperty

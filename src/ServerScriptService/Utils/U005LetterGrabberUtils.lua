@@ -174,20 +174,27 @@ local function partTouched(touchedBlock, player)
 
             local blockGroup = touchedBlock:GetAttribute('BlockGroup')
             if blockGroup then
-                print('blockGroup' .. ' - start')
-                print(blockGroup)
-            end
+                local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
+                local prevCanCollideValue = touchedBlock.CanCollide
+                touchedBlock.CanCollide = false
 
-            local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
-            local prevCanCollideValue = touchedBlock.CanCollide
-            touchedBlock.CanCollide = false
+                local function showLetter()
+                    touchedBlock.CanCollide = prevCanCollideValue
+                    Utils.unhideHideItems2({items = hiddenParts})
+                end
+                delay(2, showLetter)
+            else
+                local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
+                local prevCanCollideValue = touchedBlock.CanCollide
+                touchedBlock.CanCollide = false
 
-            function showLetter()
-                -- touchedBlock.Anchored = prevAnchoredValue
-                touchedBlock.CanCollide = prevCanCollideValue
-                Utils.unhideHideItems({items = hiddenParts})
+                local function showLetter()
+                    -- touchedBlock.Anchored = prevAnchoredValue
+                    touchedBlock.CanCollide = prevCanCollideValue
+                    Utils.unhideHideItems({items = hiddenParts})
+                end
+                delay(2, showLetter)
             end
-            delay(2, showLetter)
         end
     end
 end
