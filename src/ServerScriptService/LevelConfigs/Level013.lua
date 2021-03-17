@@ -256,7 +256,7 @@ local c2r2 = {
             -- discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'H'
+            singleWord = '99999'
         }
     }
 }

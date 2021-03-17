@@ -64,7 +64,7 @@ function module.initAnimalSounds2()
             sound.Playing = true
             sound.Looped = true
             sound.RollOffMode = 'Linear'
-            sound.RollOffMaxDistance = 300
+            sound.RollOffMaxDistance = 150
             sound.RollOffMinDistance = 80
         end
     end
