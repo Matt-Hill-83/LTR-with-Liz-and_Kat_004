@@ -11,6 +11,8 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 local module = {}
 
+-- local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+
 local function getSortedBlocks(tool2)
     local letterBlocks = Utils.getByTagInParent({parent = tool2, tag = 'WordGrabberLetter'})
     Utils.sortListByObjectKey(letterBlocks, 'Name')
@@ -74,7 +76,7 @@ local function styleLetterGrabberBlocks(tool)
 end
 
 local function wordFound(tool, player)
-    local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+    -- local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
 
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
@@ -100,14 +102,10 @@ local function wordFound(tool, player)
 
     if targetWordObj then
         targetWordObj.found = targetWordObj.found + 1
-
+        local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
         updateWordGuiRE:FireClient(player)
 
         local function destroyParts()
-            print('destroyParts' .. ' - start')
-            print('destroyParts' .. ' - start')
-            print('destroyParts' .. ' - start')
-            print('destroyParts' .. ' - start')
             tool:Destroy()
 
             if player:FindFirstChild('leaderstats') then
@@ -162,6 +160,20 @@ local function partTouched(touchedBlock, player)
         local activeLetterChar = activeBlock.Character.Value
 
         if strayLetterChar == activeLetterChar then
+            -- letter found
+            local gameState = PlayerStatManager.getGameState(player)
+            -- local targetWords = gameState.targetWords
+            -- if not targetWords then
+            --     return
+            -- end
+
+            if not gameState.gemPoints then
+                gameState.gemPoints = 0
+            end
+            gameState.gemPoints = gameState.gemPoints + 1
+            local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+            updateWordGuiRE:FireClient(player)
+
             activeBlock.IsFound.Value = true
             activeBlock.IsActive.Value = false
 

@@ -1,6 +1,9 @@
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local ImageConst = require(Sss.Source.Constants.Const_06_Images)
+
+local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
+
 local module = {}
 
 local renderGrid = function(props)
@@ -9,8 +12,15 @@ local renderGrid = function(props)
     local displayHeight = props.displayHeight
     local displayWidth = props.displayWidth
     local mainFramePosition = props.mainFramePosition
+    local player = props.player
+
+    print('player' .. ' - start')
+    print(player)
 
     local words = targetWords or {}
+
+    print('displayWidth' .. ' - start--------------------->>>>>')
+    print(displayWidth)
 
     local mainGui = sgui
     mainGui.Enabled = true
@@ -68,6 +78,24 @@ local renderGrid = function(props)
     local defaultPosition = UDim2.new(0, 0, 0, mainFrameY)
     mainFrame.Position = mainFramePosition or defaultPosition
 
+    --
+    -- Gems frame stuff
+    local gemsFrame = Utils.getFirstDescendantByName(mainGui, 'GemsFrame')
+    local gemsFramePosition = mainFrame.Position + mainFrame.Size
+    if player then
+        local gameState = PlayerStatManager.getGameState(player)
+        local gemPoints = gameState.gemPoints
+        print('gemPoints' .. ' - start')
+        print(gemPoints)
+
+        if gemsFrame then
+            gemsFrame.Position = gemsFramePosition
+            gemsFrame.Size = mainFrame.Size
+            local gemsImageLabel = Utils.getFirstDescendantByName(mainGui, 'GemsImageLabel')
+            gemsImageLabel.Position = gemsFramePosition
+            gemsImageLabel.Size = mainFrame.Size
+        end
+    end
     Utils.addPadding(
         {
             parent = scrollingFrame,

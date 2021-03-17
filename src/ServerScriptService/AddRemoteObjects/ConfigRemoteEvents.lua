@@ -24,14 +24,16 @@ function module.configRemoteEvents()
 end
 
 function module.initRemoteEvents()
-    local function onUpdateGui(player, sgui, displayHeight)
+    local function onUpdateGui(player, sgui, displayHeight, displayWidth)
         local gameState = PlayerStatManager.getGameState(player)
         local targetWords = gameState.targetWords
         RenderWordGrid.renderGrid(
             {
                 sgui = sgui,
                 targetWords = targetWords,
-                displayHeight = displayHeight
+                displayHeight = displayHeight,
+                displayWidth = displayWidth,
+                player = player
             }
         )
     end
