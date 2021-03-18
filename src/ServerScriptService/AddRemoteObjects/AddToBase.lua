@@ -135,7 +135,12 @@ local function addRemoteObjects()
         levelConfig = LevelConfigs.mainLevelConfig
         print('LevelConfigs.mainLevelConfig' .. ' - start')
         print(LevelConfigs.mainLevelConfig)
-        levelConfig.levelIndex = 1
+
+        levelConfig = LevelConfigs.levelConfigs[levelIndex]
+        levelConfig.levelIndex = levelIndex
+        if false then
+            levelConfig.levelIndex = 1
+        end
     else
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
         levelConfig.levelIndex = levelIndex
@@ -183,10 +188,10 @@ local function addRemoteObjects()
     print(isStartPlace)
     if isStartPlace then
         -- mainLevelConfig  - xxxx
+        if levelDefs and levelDefs[nextlLevelOrderIndex] then
+            nextLevelId = levelDefs[nextlLevelOrderIndex]['id']
+        end
     else
-        -- if LevelConfigs.levelDefs and LevelConfigs.levelDefs[nextlLevelOrderIndex] then
-        --     nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
-        -- end
         if levelDefs and levelDefs[nextlLevelOrderIndex] then
             nextLevelId = levelDefs[nextlLevelOrderIndex]['id']
         end
