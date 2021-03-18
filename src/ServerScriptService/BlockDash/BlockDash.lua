@@ -86,11 +86,6 @@ local function addBlockDash(sectorConfig)
         LetterUtils.revertRackLetterBlocksToInit(miniGameState2)
         LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState2})
 
-        -- TODO: put this in DoorKey
-        -- TODO: put this in DoorKey
-        -- TODO: put this in DoorKey
-        -- TODO: put this in DoorKey
-
         local keyWalls = Utils.getDescendantsByName(sectorFolder, 'KeyWall')
 
         for _, keyWall in ipairs(keyWalls) do
@@ -113,7 +108,6 @@ local function addBlockDash(sectorConfig)
 
     LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
     initPowerUps(miniGameState)
-    -- DoorKey.init({parentFolder = sectorFolder})
 end
 
 module.addBlockDash = addBlockDash

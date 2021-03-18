@@ -64,6 +64,9 @@ function module.initLetterOrbiter(props)
             }
         )
 
+        if not newOrbiter then
+            return
+        end
         local orbiterDisc = newOrbiter.Disc
         orbiterDisc.Transparency = discTransparency or 1
         orbiterDisc.CanCollide = collideDisc

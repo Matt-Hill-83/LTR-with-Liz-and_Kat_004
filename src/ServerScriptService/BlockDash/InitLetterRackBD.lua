@@ -184,6 +184,5 @@ local function initLetterRack(miniGameState)
 end
 
 module.initLetterRack = initLetterRack
-module.createLetterPlate = createLetterPlate
 
 return module

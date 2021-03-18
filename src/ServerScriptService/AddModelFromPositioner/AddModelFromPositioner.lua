@@ -101,8 +101,10 @@ function module.addModel(props)
         dummy:Destroy()
     end
 
-    local positioner = positionerModel.Positioner
-
+    local positioner = Utils.getFirstDescendantByName(positionerModel, 'Positioner')
+    if not positioner then
+        return
+    end
     local cloneProps = {
         parentTo = parentFolder,
         positionToPart = positioner,

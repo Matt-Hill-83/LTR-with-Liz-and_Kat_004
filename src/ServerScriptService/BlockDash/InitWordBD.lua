@@ -5,7 +5,6 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
--- local BlockDashUtils = require(Sss.Source.BlockDash.BlockDashUtils)
 
 local module = {}
 local function getRunTimeWordFolder(miniGameState)
@@ -146,7 +145,6 @@ local function renderColumn(miniGameState, colIndex, words)
 end
 
 local function initWords(miniGameState)
-    -- BlockDashUtils.clearWordRack(miniGameState)
     local wordsPerCol = miniGameState.wordsPerCol
     local words = miniGameState.words
 

@@ -11,8 +11,6 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 local module = {}
 
--- local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-
 local function getSortedBlocks(tool2)
     local letterBlocks = Utils.getByTagInParent({parent = tool2, tag = 'WordGrabberLetter'})
     Utils.sortListByObjectKey(letterBlocks, 'Name')
@@ -162,10 +160,6 @@ local function partTouched(touchedBlock, player)
         if strayLetterChar == activeLetterChar then
             -- letter found
             local gameState = PlayerStatManager.getGameState(player)
-            -- local targetWords = gameState.targetWords
-            -- if not targetWords then
-            --     return
-            -- end
 
             if not gameState.gemPoints then
                 gameState.gemPoints = 0
