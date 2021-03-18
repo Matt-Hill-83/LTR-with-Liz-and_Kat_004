@@ -152,8 +152,64 @@ local c0r0 = {
     }
 }
 
+local c1r1 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        },
+        {
+            item = 'Rink',
+            itemConfig = {}
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '111',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.2,
+            -- diameter = 32,
+            discTransparency = 0.7,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '222',
+            discHeight = 1
+        }
+    }
+}
+
 local hexIslandConfigs = {
-    c0r0
+    c0r0,
+    c1r1
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}
