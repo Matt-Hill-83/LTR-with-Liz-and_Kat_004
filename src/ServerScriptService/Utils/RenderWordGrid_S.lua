@@ -81,7 +81,6 @@ local renderGrid = function(props)
     --
     -- Gems frame stuff
     local gemsFrame = Utils.getFirstDescendantByName(mainGui, 'GemsFrame')
-    local gemsFramePosition = mainFrame.Position + mainFrame.Size
     if player then
         local gameState = PlayerStatManager.getGameState(player)
         local gemPoints = gameState.gemPoints
@@ -89,11 +88,20 @@ local renderGrid = function(props)
         print(gemPoints)
 
         if gemsFrame then
-            gemsFrame.Position = gemsFramePosition
-            gemsFrame.Size = mainFrame.Size
-            local gemsImageLabel = Utils.getFirstDescendantByName(mainGui, 'GemsImageLabel')
-            gemsImageLabel.Position = gemsFramePosition
-            gemsImageLabel.Size = mainFrame.Size
+            gemsFrame.Position = UDim2.new(0, displayWidth / 2, 0, 0)
+            gemsFrame.Size = UDim2.new(0, letterHeight * 4, 0, letterHeight * 2)
+
+            local gemsImageLabel = Utils.getFirstDescendantByType(gemsFrame, 'ImageLabel')
+            local gemsTextLabel = Utils.getFirstDescendantByType(gemsFrame, 'TextBox')
+
+            gemsTextLabel.Position = UDim2.new(0.5, 0, 0, 0)
+            gemsTextLabel.Size = UDim2.new(0.5, 0, 1, 0)
+            gemsTextLabel.Text = gemPoints or 0
+            gemsTextLabel.TextScaled = true
+
+            gemsImageLabel.Position = UDim2.new(0, 0, 0, 0)
+            gemsImageLabel.Size = UDim2.new(0.5, 0, 1, 0)
+            gemsImageLabel.Image = Utils.createImageUri(ImageConst.general.coin_dragon_001.imageId)
         end
     end
     Utils.addPadding(
