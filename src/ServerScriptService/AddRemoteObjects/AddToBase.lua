@@ -132,13 +132,6 @@ local function addRemoteObjects()
 
     local levelConfig = nil
     if isStartPlace then
-        -- -- if false then
-        -- -- end
-        -- levelConfig.levelIndex = 1
-        -- levelConfig = LevelConfigs.mainLevelConfig
-        -- print('LevelConfigs.mainLevelConfig' .. ' - start')
-        -- print(LevelConfigs.mainLevelConfig)
-
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
         levelConfig.levelIndex = levelIndex
     else
@@ -147,9 +140,6 @@ local function addRemoteObjects()
     end
     ConfigGame.preRunConfig({levelConfig = levelConfig})
     PlayerStatManager.init()
-    --
-    --
-    --
 
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
