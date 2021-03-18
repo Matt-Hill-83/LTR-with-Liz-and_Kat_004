@@ -132,15 +132,15 @@ local function addRemoteObjects()
 
     local levelConfig = nil
     if isStartPlace then
-        levelConfig = LevelConfigs.mainLevelConfig
-        print('LevelConfigs.mainLevelConfig' .. ' - start')
-        print(LevelConfigs.mainLevelConfig)
+        -- -- if false then
+        -- -- end
+        -- levelConfig.levelIndex = 1
+        -- levelConfig = LevelConfigs.mainLevelConfig
+        -- print('LevelConfigs.mainLevelConfig' .. ' - start')
+        -- print(LevelConfigs.mainLevelConfig)
 
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
         levelConfig.levelIndex = levelIndex
-        if false then
-            levelConfig.levelIndex = 1
-        end
     else
         levelConfig = LevelConfigs.levelConfigs[levelIndex]
         levelConfig.levelIndex = levelIndex
@@ -205,7 +205,6 @@ local function addRemoteObjects()
     print(nextLevelId)
     print('levelConfig' .. ' - start--------------------------------->>>>')
     print(levelConfig)
-    -- ConfigGame.preRunConfig({levelConfig = levelConfig})
 
     local hexIslandConfigs = levelConfig.hexIslandConfigs
 

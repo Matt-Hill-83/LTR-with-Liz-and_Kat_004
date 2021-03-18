@@ -18,7 +18,8 @@ local module = {}
 
 module.mainLevelConfig = Level000
 module.levelConfigs = {
-    Level1,
+    Level000,
+    -- Level1,
     Level2,
     Level3,
     Level4,
