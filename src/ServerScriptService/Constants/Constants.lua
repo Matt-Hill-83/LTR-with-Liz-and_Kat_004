@@ -7,6 +7,9 @@ isDev = true
 --
 --
 local activeSpawn
+-- level 8
+-- local startPlaceId = '6477887663'
+-- main level
 local startPlaceId = '6358192824'
 
 if isDev then
