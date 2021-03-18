@@ -71,74 +71,9 @@ local c1r1 = {
             discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'C',
+            singleWord = '111',
             discHeight = 1
         },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'B',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'R',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.4,
-            -- diameter = 32,
-            -- discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'H'
-        }
-    }
-}
-
-local c1r2 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
-    orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
@@ -147,116 +82,8 @@ local c1r2 = {
             discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'A',
+            singleWord = '222',
             discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'T',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'R',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.4,
-            -- diameter = 32,
-            -- discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'H'
-        }
-    }
-}
-
-local c2r2 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        },
-        {
-            item = 'Rink',
-            itemConfig = {}
-        }
-    },
-    orbiterConfigs = {
-        {
-            words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            -- singleWord = 'A',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'T',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = true,
-            collideBlock = false,
-            singleWord = 'R',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.4,
-            -- diameter = 32,
-            -- discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = '99999'
         }
     }
 }
@@ -264,16 +91,13 @@ local c2r2 = {
 local c0r0 = blank
 
 local hexIslandConfigs = {
-    c0r0,
+    -- c0r0,
     c1r1,
-    c1r2,
-    c2r2,
-    c2r2,
-    c2r2,
-    c2r2,
-    c2r2,
-    c2r2,
-    c2r2
+    blank,
+    blank,
+    blank,
+    blank,
+    blank
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}

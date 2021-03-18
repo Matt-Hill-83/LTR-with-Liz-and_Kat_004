@@ -70,10 +70,12 @@ function module.initLetterOrbiter(props)
         local orbiterDisc = newOrbiter.Disc
         orbiterDisc.Transparency = discTransparency or 1
         orbiterDisc.CanCollide = collideDisc
+        orbiterDisc.Massless = true
 
         local sun = newOrbiter.Sun
         local discAngularVelocity = orbiterDisc.AngularVelocity
         discAngularVelocity.AngularVelocity = Vector3.new(angularVelocity, 0, 0)
+        discAngularVelocity.MaxTorque = 100000000000
 
         local sizingDisc = letterOrbiterPositioner.Positioner
 
