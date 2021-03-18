@@ -17,7 +17,6 @@ local Junction = require(Sss.Source.Junction.Junction2)
 local Junction3 = require(Sss.Source.Junction.Junction3)
 local Key = require(Sss.Source.Key.Key)
 local PetBox = require(Sss.Source.PetBox.PetBox)
-local PetService = require(Sss.Source.PetService.PetService)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
@@ -185,8 +184,11 @@ local function addRemoteObjects()
     if isStartPlace then
         -- mainLevelConfig  - xxxx
     else
-        if LevelConfigs.levelDefs and LevelConfigs.levelDefs[nextlLevelOrderIndex] then
-            nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+        -- if LevelConfigs.levelDefs and LevelConfigs.levelDefs[nextlLevelOrderIndex] then
+        --     nextLevelId = LevelConfigs.levelDefs[nextlLevelOrderIndex]['id']
+        -- end
+        if levelDefs and levelDefs[nextlLevelOrderIndex] then
+            nextLevelId = levelDefs[nextlLevelOrderIndex]['id']
         end
     end
 

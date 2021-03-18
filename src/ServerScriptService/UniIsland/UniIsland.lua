@@ -26,6 +26,11 @@ function module.initUniIslands(props)
 
             local levelDefs = LevelConfigs.levelDefs
             local placeId = levelDefs[(islandIndex % #levelDefs) + 1]
+            print('placeId' .. ' - start')
+            print('placeId' .. ' - start')
+            print('placeId' .. ' - start')
+            print('placeId' .. ' - start')
+            print(placeId)
 
             module.initTeleporter(telepad, placeId.id)
         end

@@ -14,6 +14,8 @@ local TeleportModule = require(ServerStorage.Source.TeleportModule)
 local module = {}
 
 function module.initTeleporter(part, nextLevelId)
+    print('nextLevelId' .. ' - start')
+    print(nextLevelId)
     if not part then
         return
     end
