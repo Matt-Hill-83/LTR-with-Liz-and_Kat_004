@@ -184,24 +184,38 @@ local c1r1 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
+            numBlocks = 36,
             angularVelocity = 0.2,
             -- diameter = 32,
-            discTransparency = 0.7,
+            discTransparency = 1,
+            -- discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = '111',
+            singleWord = 'FIONA',
             discHeight = 1
         },
+        -- {
+        --     -- words = {'CAT', 'CAT', 'CAT'},
+        --     numBlocks = 36,
+        --     angularVelocity = -0.2,
+        --     -- diameter = 1000,
+        --     diameter = 948,
+        --     discTransparency = 1,
+        --     -- discTransparency = 0.7,
+        --     collideDisc = false,
+        --     collideBlock = false,
+        --     singleWord = '222',
+        --     discHeight = 1
+        -- },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
+            numBlocks = 36,
             angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 0.7,
+            diameter = 1000,
+            discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = '222',
+            singleWord = 'F',
             discHeight = 1
         }
     }
@@ -223,7 +237,7 @@ function module.getTargetWords()
         {
             {word = 'RAT', target = 1, found = 0},
             {word = 'BAT', target = 1, found = 0},
-            {word = 'CAT', target = 3, found = 0}
+            {word = 'CAT', target = 1, found = 0}
         }
     }
 end

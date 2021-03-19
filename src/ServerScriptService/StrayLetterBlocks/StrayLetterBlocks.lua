@@ -67,16 +67,20 @@ local function initStraysInRegions(props)
     local words = {
         'CAT', --
         'RAT', --
-        'BAT', --
-        'HAT', --
-        'MAT', --
-        'SAT' --
+        'BAT' --
+        -- 'HAT', --
+        -- 'MAT', --
+        -- 'SAT' --
     }
 
     for _, region in ipairs(strayRegions) do
         local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
 
         if config then
+            print('config')
+            print('config')
+            print('config')
+            print('config')
             words = Utils.stringToArray(config.Text)
         end
 
