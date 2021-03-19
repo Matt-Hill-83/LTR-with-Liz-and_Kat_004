@@ -194,24 +194,11 @@ local c1r1 = {
             singleWord = 'FIONA',
             discHeight = 1
         },
-        -- {
-        --     -- words = {'CAT', 'CAT', 'CAT'},
-        --     numBlocks = 36,
-        --     angularVelocity = -0.2,
-        --     -- diameter = 1000,
-        --     diameter = 948,
-        --     discTransparency = 1,
-        --     -- discTransparency = 0.7,
-        --     collideDisc = false,
-        --     collideBlock = false,
-        --     singleWord = '222',
-        --     discHeight = 1
-        -- },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 36,
             angularVelocity = 0.2,
-            diameter = 1000,
+            diameter = 916,
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
