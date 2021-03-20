@@ -81,67 +81,67 @@ function module.initLetterOrbiter(props)
 
         local blockSize = 12
         for letterIndex, char in ipairs(letters) do
-            local angle = 360 / #letters
+            if char ~= '?' then
+                local angle = 360 / #letters
 
-            local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
+                local angleRadians = angle * (letterIndex - 1) * 3.141596 / 180
 
-            local posSize = sizingDisc.Size
-            local positionerDiameter = math.min(posSize.Y, posSize.Z)
-            local newDiameter = diameter or positionerDiameter
-            local radius = newDiameter / 2
-            local x = radius * math.cos(angleRadians)
-            local y = radius * math.sin(angleRadians)
-            local blockPosition = Vector3.new(0, y, x)
+                local posSize = sizingDisc.Size
+                local positionerDiameter = math.min(posSize.Y, posSize.Z)
+                local newDiameter = diameter or positionerDiameter
+                local radius = newDiameter / 2
+                local x = radius * math.cos(angleRadians)
+                local y = radius * math.sin(angleRadians)
+                local blockPosition = Vector3.new(0, y, x)
 
-            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-            local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
+                local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+                local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
 
-            local newLetter = letterBlockTemplate:Clone()
-            newLetter.Name = 'orbiterLetter-' .. char
-            newLetter.Size = Vector3.new(blockSize, blockSize, blockSize)
-            newLetter.Parent = newOrbiter
-            newLetter.CanCollide = collideBlock
-            newLetter.Anchored = false
+                local newLetter = letterBlockTemplate:Clone()
+                newLetter.Name = 'orbiterLetter-' .. char
+                newLetter.Size = Vector3.new(blockSize, blockSize, blockSize)
+                newLetter.Parent = newOrbiter
+                newLetter.CanCollide = collideBlock
+                newLetter.Anchored = false
 
-            discHeight = discHeight or blockSize - 2
+                discHeight = discHeight or blockSize - 2
 
-            orbiterDisc.Size = Vector3.new(discHeight, newDiameter + blockSize, newDiameter + blockSize)
+                orbiterDisc.Size = Vector3.new(discHeight, newDiameter + blockSize, newDiameter + blockSize)
 
-            CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
+                CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
-            LetterUtils.initLetterBlock(
-                {
-                    letterBlock = newLetter,
-                    char = char,
-                    templateName = 'Stray_available',
-                    -- letterBlockType = 'WordRackLetter',
-                    letterBlockType = LetterUtils.letterBlockTypes.StrayLetter,
-                    isTextLetter = true
-                }
-            )
-
-            newLetter.CFrame =
-                Utils3.setCFrameFromDesiredEdgeOffset(
-                {
-                    parent = orbiterDisc,
-                    child = newLetter,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 0, 0),
-                        useChildNearEdge = Vector3.new(0, 0, 0),
-                        offsetAdder = blockPosition
+                LetterUtils.initLetterBlock(
+                    {
+                        letterBlock = newLetter,
+                        char = char,
+                        templateName = 'Stray_available',
+                        letterBlockType = LetterUtils.letterBlockTypes.StrayLetter,
+                        isTextLetter = true
                     }
-                }
-            )
-            -- Point letter at center
-            newLetter.CFrame =
-                CFrame.new(
-                newLetter.Position,
-                Vector3.new(orbiterDisc.Position.X, orbiterDisc.Position.Y, orbiterDisc.Position.Z)
-            )
+                )
 
-            --             local targetIndex = touchedBlock:GetAttribute('TargetIndex')
-            newLetter:SetAttribute('BlockGroup', 'Orbiter')
-            Utils.weld2Parts(orbiterDisc, newLetter)
+                newLetter.CFrame =
+                    Utils3.setCFrameFromDesiredEdgeOffset(
+                    {
+                        parent = orbiterDisc,
+                        child = newLetter,
+                        offsetConfig = {
+                            useParentNearEdge = Vector3.new(0, 0, 0),
+                            useChildNearEdge = Vector3.new(0, 0, 0),
+                            offsetAdder = blockPosition
+                        }
+                    }
+                )
+                -- Point letter at center
+                newLetter.CFrame =
+                    CFrame.new(
+                    newLetter.Position,
+                    Vector3.new(orbiterDisc.Position.X, orbiterDisc.Position.Y, orbiterDisc.Position.Z)
+                )
+
+                newLetter:SetAttribute('BlockGroup', 'Orbiter')
+                Utils.weld2Parts(orbiterDisc, newLetter)
+            end
         end
 
         --

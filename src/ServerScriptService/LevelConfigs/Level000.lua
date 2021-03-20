@@ -85,25 +85,13 @@ local c0r0 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 36,
-            angularVelocity = 0.2,
-            -- diameter = 32,
-            discTransparency = 1,
-            -- discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'FIONA',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 36,
-            angularVelocity = 0.2,
-            diameter = 916,
+            numBlocks = 50,
+            angularVelocity = -0.2,
+            diameter = 780,
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'F',
+            singleWord = '1??????????',
             discHeight = 1
         }
     }
