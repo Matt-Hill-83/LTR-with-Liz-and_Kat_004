@@ -85,68 +85,25 @@ local c0r0 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
+            numBlocks = 36,
+            angularVelocity = 0.2,
             -- diameter = 32,
-            discTransparency = 0.7,
+            discTransparency = 1,
+            -- discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'C',
+            singleWord = 'FIONA',
             discHeight = 1
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
+            numBlocks = 36,
+            angularVelocity = 0.2,
+            diameter = 916,
+            discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'A',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'T',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'B',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = -0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'R',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0.7,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'H',
+            singleWord = 'F',
             discHeight = 1
         }
     }
@@ -184,25 +141,35 @@ local c1r1 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 36,
-            angularVelocity = 0.2,
+            numBlocks = 12,
+            angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 1,
-            -- discTransparency = 0.7,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'FIONA',
+            singleWord = '1',
             discHeight = 1
         },
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 36,
-            angularVelocity = 0.2,
-            diameter = 916,
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'F',
+            singleWord = '2',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '3',
             discHeight = 1
         }
     }
@@ -210,6 +177,10 @@ local c1r1 = {
 
 local hexIslandConfigs = {
     c0r0,
+    c1r1,
+    c1r1,
+    c1r1,
+    c1r1,
     c1r1
 }
 
