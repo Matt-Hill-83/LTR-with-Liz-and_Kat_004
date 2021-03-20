@@ -79,6 +79,8 @@ function module.addRink(props)
     end
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
+    print('strayRegion' .. ' - start')
+    print(strayRegion)
 
     local blockTemplate = Utils.getFirstDescendantByName(rinkModel, 'Puck')
     local blockTemplatePart = blockTemplate.PrimaryPart
