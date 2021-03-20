@@ -91,7 +91,7 @@ local c0r0 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = '1??????????',
+            singleWord = '1??????????~',
             discHeight = 1
         }
     }
