@@ -2,7 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local Statue = require(Sss.Source.Statue.Statue)
 local Key = require(Sss.Source.Key.Key)
 local Door = require(Sss.Source.Door.Door)
-local Bridge = require(Sss.Source.Bridge.Bridge)
+-- local Bridge = require(Sss.Source.Bridge.Bridge)
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Replicator = require(Sss.Source.BlockDash.Replicator)
@@ -19,7 +19,7 @@ function module.initStatueGates(props)
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
-        local bridgeConfigs = hexConfig.bridgeConfigs or {}
+        -- local bridgeConfigs = hexConfig.bridgeConfigs or {}
         -- Bridge.initBridges({parentFolder = hexIslandFolder, bridgeConfigs = bridgeConfigs})
 
         if hexConfig then

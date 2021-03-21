@@ -24,6 +24,10 @@ function module.initJunctions3(props)
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
+        print('hexIslandFolder.Name' .. ' - start')
+        print('hexIslandFolder.Name' .. ' - start')
+        print('hexIslandFolder.Name' .. ' - start')
+        print(hexIslandFolder.Name)
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
