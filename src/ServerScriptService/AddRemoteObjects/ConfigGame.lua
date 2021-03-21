@@ -171,7 +171,7 @@ function module.configPlayers(props)
     )
 end
 
-local function configGamePass()
+local function configGamePass1()
     local gamePassID = 14078170
     local function onPlayerAdded(player)
         local hasPass = false
@@ -208,6 +208,56 @@ local function configGamePass()
             player.CharacterAdded:Connect(onCharacterAdded)
         end
     end
+    Players.PlayerAdded:Connect(onPlayerAdded)
+end
+
+local function configGamePass2()
+    print('configGamePass2' .. ' - start')
+    print('configGamePass2' .. ' - start')
+    print('configGamePass2' .. ' - start')
+    print('configGamePass2' .. ' - start')
+    print('configGamePass2' .. ' - start')
+    -- local MarketplaceService = game:GetService('MarketplaceService')
+    -- local Players = game:GetService('Players')
+
+    local gamePassID = 16013032 -- Change this to your game pass ID
+
+    local function onPlayerAdded(player)
+        local hasPass = false
+
+        -- Check if the player already owns the game pass
+        local success, message =
+            pcall(
+            function()
+                hasPass = MarketplaceService:UserOwnsGamePassAsync(player.UserId, gamePassID)
+            end
+        )
+
+        -- If there's an error, issue a warning and exit the function
+        if not success then
+            warn('Error while checking if player has pass: ' .. tostring(message))
+            return
+        end
+
+        if hasPass == true then
+            -- Assign this player the ability or bonus related to the game pass
+            local function onCharacterAdded(character)
+                local humanoid = character:WaitForChild('Humanoid')
+                humanoid.WalkSpeed = 80
+                -- local Hair = game.ServerStorage.Hair
+                -- humanoid:AddAccessory(Hair:Clone())
+                local function transport()
+                    -- player.RespawnLocation = game.Workspace.Spawn_VIP
+                    -- character.HumanoidRootPart.CFrame = Spawn_VIP.CFrame
+                end
+
+                delay(1, transport)
+            end
+            player.CharacterAdded:Connect(onCharacterAdded)
+        end
+    end
+
+    -- Connect "PlayerAdded" events to the "onPlayerAdded()" function
     Players.PlayerAdded:Connect(onPlayerAdded)
 end
 
@@ -346,7 +396,6 @@ end
 
 function module.configGame(props)
     setVisibility()
-    configGamePass()
     configBadges()
 
     --
@@ -382,6 +431,8 @@ function module.configGame(props)
 end
 
 function module.preRunConfig(props)
+    configGamePass1()
+    configGamePass2()
     module.configPlayers(props)
     if RunService:IsRunMode() then
     end
