@@ -72,7 +72,7 @@ end
 function module.addConveyors(level, sectorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
-    module.initAnimalSounds()
+    -- module.initAnimalSounds()
     module.initAnimalSounds2()
 
     local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
