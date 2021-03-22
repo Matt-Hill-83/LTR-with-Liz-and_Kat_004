@@ -25,6 +25,7 @@ local renderGrid = function(props)
     local mainGui = sgui
     mainGui.Enabled = true
     local mainFrame = Utils.getFirstDescendantByName(mainGui, 'MainFrame')
+    local messageFrame = Utils.getFirstDescendantByName(mainGui, 'MessageFrame')
 
     local paddingInPx = 10
     local doublePad = paddingInPx * 2
@@ -77,6 +78,13 @@ local renderGrid = function(props)
 
     local defaultPosition = UDim2.new(0, 0, 0, mainFrameY)
     mainFrame.Position = mainFramePosition or defaultPosition
+
+    print('mainFrame.Size' .. ' - start')
+    print(mainFrame.Size)
+    if messageFrame then
+        messageFrame.Position = mainFrame.Position + UDim2.new(0, 0, 0, mainFrame.Size.Y.Offset)
+    -- messageFrame.Position = mainFrame.Position + UDim2.new(0, 0, 0, mainFrame.Size.Y)
+    end
 
     --
     -- Gems frame stuff
