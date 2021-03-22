@@ -20,6 +20,10 @@ function module.initPuck(puck)
 end
 
 function module.addRink(props)
+    print('addRink')
+    print('addRink')
+    print('addRink')
+    print('addRink')
     local bridgeConfig = props.bridgeConfig
     local bridge = props.bridge
     local parentFolder = props.parentFolder

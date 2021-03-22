@@ -114,6 +114,10 @@ function module.createBridge(props)
 end
 
 function module.rodIsValid(rod)
+    print('rodIsValid')
+    print('rodIsValid')
+    print('rodIsValid')
+    print('rodIsValid')
     local isValid = false
 
     local hasAtt0 = Utils.hasProperty(rod, 'Attachment0')
@@ -167,6 +171,11 @@ function module.initBridges(props)
             )
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
+            print('bridgeConfig.item' .. ' - start')
+            print('bridgeConfig.item' .. ' - start')
+            print('bridgeConfig.item' .. ' - start')
+            print('bridgeConfig.item' .. ' - start')
+            print(bridgeConfig.item)
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
