@@ -89,15 +89,11 @@ function module.initJunctions3(props)
 
             local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
             for _, wall in ipairs(rightWalls) do
-                -- local wallProps = Utils.mergeTables(invisiWallProps, {wall})
-                -- local invisiWallProps = getWallProps()
                 InvisiWall.setInvisiWallRight(getWallProps(wall))
             end
 
             local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
             for _, wall in ipairs(leftWalls) do
-                -- local wallProps = Utils.mergeTables(invisiWallProps, {wall})
-                -- local invisiWallProps = getWallProps()
                 InvisiWall.setInvisiWallLeft(getWallProps(wall))
             end
             positioner:Destroy()
