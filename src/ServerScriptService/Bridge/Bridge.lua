@@ -114,10 +114,6 @@ function module.createBridge(props)
 end
 
 function module.rodIsValid(rod)
-    print('rodIsValid')
-    print('rodIsValid')
-    print('rodIsValid')
-    print('rodIsValid')
     local isValid = false
 
     local hasAtt0 = Utils.hasProperty(rod, 'Attachment0')
@@ -171,11 +167,6 @@ function module.initBridges(props)
             )
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
-            print('bridgeConfig.item' .. ' - start')
-            print('bridgeConfig.item' .. ' - start')
-            print('bridgeConfig.item' .. ' - start')
-            print('bridgeConfig.item' .. ' - start')
-            print(bridgeConfig.item)
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
@@ -222,12 +213,22 @@ function module.initBridges2(props)
     Utils.sortListByObjectKey(rods, 'Name')
 
     local bridges = {}
+    print('rods' .. ' - start')
+    print(rods)
     for rodIndex, rod in ipairs(rods) do
+        print('rodIndex' .. ' - start')
+        print(rodIndex)
+        print('bridgeConfigs' .. ' - start')
+        print(bridgeConfigs)
         local bridgeConfig = bridgeConfigs[rodIndex] or {}
 
         local rodValid = module.rodIsValid(rod)
+        print('rodValid' .. ' - start')
+        print(rodValid)
 
         if rodValid then
+            print('bridgeConfig' .. ' - start')
+            print(bridgeConfig)
             local bridge =
                 module.createBridge2(
                 {
@@ -240,6 +241,11 @@ function module.initBridges2(props)
             )
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
+            print('bridgeConfig' .. ' - start')
+            print('bridgeConfig' .. ' - start')
+            print('bridgeConfig' .. ' - start')
+            print('bridgeConfig' .. ' - start')
+            print(bridgeConfig)
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
