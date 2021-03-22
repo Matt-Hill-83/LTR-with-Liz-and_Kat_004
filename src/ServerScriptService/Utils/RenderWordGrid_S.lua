@@ -83,7 +83,6 @@ local renderGrid = function(props)
     print(mainFrame.Size)
     if messageFrame then
         messageFrame.Position = mainFrame.Position + UDim2.new(0, 0, 0, mainFrame.Size.Y.Offset)
-    -- messageFrame.Position = mainFrame.Position + UDim2.new(0, 0, 0, mainFrame.Size.Y)
     end
 
     --
