@@ -68,7 +68,7 @@ function module.initJunctions3(props)
                 local invisiWallProps = {
                     thickness = 1,
                     height = 4,
-                    shortHeight = 2,
+                    shortHeight = 1,
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
