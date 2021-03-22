@@ -64,50 +64,41 @@ function module.initJunctions3(props)
                 }
             )
 
+            local function getWallProps(wall)
+                local invisiWallProps = {
+                    thickness = 1,
+                    height = 4,
+                    shortHeight = 2,
+                    shortWallProps = {
+                        -- Transparency = 1,
+                        Transparency = 0,
+                        BrickColor = BrickColor.new('Alder'),
+                        Material = Enum.Material.Cobblestone,
+                        CanCollide = false
+                    },
+                    wallProps = {
+                        Transparency = 1,
+                        BrickColor = BrickColor.new('Alder'),
+                        Material = Enum.Material.Concrete,
+                        CanCollide = false
+                    },
+                    part = wall
+                }
+                return invisiWallProps
+            end
+
             local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
             for _, wall in ipairs(rightWalls) do
-                InvisiWall.setInvisiWallRight(
-                    {
-                        thickness = 1,
-                        height = 4,
-                        shortHeight = 2,
-                        shortWallProps = {
-                            -- Transparency = 1,
-                            Transparency = 0,
-                            BrickColor = BrickColor.new('Alder'),
-                            Material = Enum.Material.Cobblestone
-                        },
-                        wallProps = {
-                            Transparency = 1,
-                            BrickColor = BrickColor.new('Alder'),
-                            Material = Enum.Material.Concrete
-                        },
-                        part = wall
-                    }
-                )
+                -- local wallProps = Utils.mergeTables(invisiWallProps, {wall})
+                -- local invisiWallProps = getWallProps()
+                InvisiWall.setInvisiWallRight(getWallProps(wall))
             end
 
             local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
             for _, wall in ipairs(leftWalls) do
-                InvisiWall.setInvisiWallLeft(
-                    {
-                        thickness = 1,
-                        height = 4,
-                        shortHeight = 2,
-                        shortWallProps = {
-                            -- Transparency = 1,
-                            Transparency = 0,
-                            BrickColor = BrickColor.new('Alder'),
-                            Material = Enum.Material.Cobblestone
-                        },
-                        wallProps = {
-                            Transparency = 1,
-                            BrickColor = BrickColor.new('Alder'),
-                            Material = Enum.Material.Concrete
-                        },
-                        part = wall
-                    }
-                )
+                -- local wallProps = Utils.mergeTables(invisiWallProps, {wall})
+                -- local invisiWallProps = getWallProps()
+                InvisiWall.setInvisiWallLeft(getWallProps(wall))
             end
             positioner:Destroy()
 
