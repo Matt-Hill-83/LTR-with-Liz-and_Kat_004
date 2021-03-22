@@ -80,6 +80,11 @@ function module.addRink(props)
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
     print('strayRegion' .. ' - start')
+    print('strayRegion' .. ' - start')
+    print('strayRegion' .. ' - start')
+    print('strayRegion' .. ' - start')
+    print('strayRegion' .. ' - start')
+    print('strayRegion' .. ' - start')
     print(strayRegion)
 
     local blockTemplate = Utils.getFirstDescendantByName(rinkModel, 'Puck')

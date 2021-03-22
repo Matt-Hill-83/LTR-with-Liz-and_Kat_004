@@ -56,22 +56,7 @@ module.sectorConfigs = sectorConfigs
 local c0r0 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'DOG', 'LOG'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'HOG', 'BOG'}
-            },
-            material = Enum.Material.LeafyGrass
-        }
-    },
+    bridgeConfigs = {},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -90,22 +75,7 @@ local c0r0 = {
 local c1r1 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'DOG', 'LOG'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'HOG', 'BOG'}
-            },
-            material = Enum.Material.LeafyGrass
-        }
-    },
+    bridgeConfigs = {},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -128,14 +98,15 @@ local c1r2 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'DOG', 'LOG'}
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'HOG', 'BOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         }
@@ -162,14 +133,14 @@ local c1r3 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'DOG', 'LOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'HOG', 'BOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         }
@@ -196,14 +167,14 @@ local c1r4 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'DOG', 'LOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'HOG', 'BOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         }
@@ -217,7 +188,7 @@ local c1r4 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'T',
+            singleWord = 'T~',
             discHeight = 1
         }
     }
@@ -230,14 +201,14 @@ local c1r5 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'DOG', 'LOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'HOG', 'BOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         }
@@ -251,7 +222,29 @@ local c1r5 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'B',
+            singleWord = '~RA',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~A~',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~RB~',
             discHeight = 1
         }
     }
@@ -264,14 +257,14 @@ local c1r6 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'DOG', 'LOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'HOG', 'BOG'}
+                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         }
@@ -285,13 +278,25 @@ local c1r6 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'B',
+            singleWord = '~T',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~RB~',
             discHeight = 1
         }
     }
 }
 
 local hexIslandConfigs = {
+    c0r0,
     c0r0,
     c1r1,
     c1r2,
