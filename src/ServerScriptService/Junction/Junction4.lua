@@ -54,8 +54,8 @@ function module.initJunctions(props)
                     parent = positionerPart,
                     child = newHexPart,
                     offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, -1, 1),
-                        useChildNearEdge = Vector3.new(0, -1, 1),
+                        useParentNearEdge = Vector3.new(0, -1, 0),
+                        useChildNearEdge = Vector3.new(0, -1, 0),
                         offsetAdder = Vector3.new(0, 0, 0)
                     }
                 }
@@ -93,7 +93,7 @@ function module.initJunctions(props)
             for _, wall in ipairs(leftWalls) do
                 InvisiWall.setInvisiWallLeft(getWallProps(wall))
             end
-            positioner:Destroy()
+            -- positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             -- local material = hexConfig.material or Enum.Material.Grass

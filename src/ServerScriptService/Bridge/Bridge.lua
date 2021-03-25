@@ -97,7 +97,18 @@ function module.createBridge_64(props)
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
 
+    local test1 = Instance.new('Part', workspace)
+    test1.Size = Vector3.new(16, 16, 16)
+    test1.Position = p0
+    test1.Anchored = true
+
     p0 = module.getPointAlongLine(p0, p1, -50)
+
+    local test2 = Instance.new('Part', workspace)
+    test2.Size = Vector3.new(16, 16, 16)
+    test2.Position = p0
+    test2.Anchored = true
+
     p1 = module.getPointAlongLine(p1, p0, -10)
     local p2 = module.getPointAlongLine(p0, p1, 5)
     local p3 = module.getPointAlongLine(p1, p0, 5)
