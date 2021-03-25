@@ -15,6 +15,7 @@ local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
 local Junction = require(Sss.Source.Junction.Junction2)
 local Junction3 = require(Sss.Source.Junction.Junction3)
+local Junction4 = require(Sss.Source.Junction.Junction4)
 local Key = require(Sss.Source.Key.Key)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
@@ -218,8 +219,12 @@ local function addRemoteObjects()
     Key.initKeys({parentFolder = level})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
-    Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
-    Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
+    if Constants.hexSize == 'small-001' then
+        Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
+        Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
+    else
+        Junction4.initJunctions({parentFolder = level, levelConfig = levelConfig})
+    end
     SkiSlope.initSlopes({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)

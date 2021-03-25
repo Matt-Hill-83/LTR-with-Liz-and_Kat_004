@@ -1,4 +1,4 @@
-local module = {}
+local module = {hexSize = 'small-001'}
 
 local sector1Config = {
     freezeConveyor = true,
