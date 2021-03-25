@@ -29,11 +29,11 @@ function module.initJunctions(props)
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
-        Bridge.initBridges2(
+        Bridge.initBridges_64(
             {
                 parentFolder = hexIslandFolder,
                 bridgeConfigs = bridgeConfigs,
-                templateName = 'Bridge_16'
+                templateName = 'Bridge_64'
             }
         )
 
