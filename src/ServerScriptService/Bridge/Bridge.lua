@@ -97,55 +97,22 @@ function module.createBridge_64(props)
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
 
-    local test1 = Instance.new('Part', workspace)
-    test1.Size = Vector3.new(16, 16, 16)
-    test1.Position = p0
-    test1.Anchored = true
-
-    local testB1 = Instance.new('Part', workspace)
-    testB1.Size = Vector3.new(16, 16, 16)
-    testB1.Position = p1
-    testB1.Anchored = true
-
     -- Create a horizontal line at the height of p0, to use to the the Z position of the
     -- translated endpoints
     local constLineEndPoint1 = Vector3.new(p1.X, p0.Y, p1.Z)
 
-    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -35)
+    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -20)
     -- elevated version of new Y
-    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -35)
+    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -20)
     -- new Y
     local p1Test2 = Vector3.new(p1Test.X, p1.Y, p1Test.Z)
 
     local p0New = p0Test
     local p1New = p1Test2
 
-    -- use the Z position of the new end points to set the displacement for the translated end points
-    -- local p0New = module.getPointAlongLine(p0, p1, -p0Test.Z)
-    -- local p1New = module.getPointAlongLine(p1, p0, -p0Test.Z)
-    -- local p0New = module.getPointAlongLine(p0, p1, -35)
-    -- local p1New = module.getPointAlongLine(p1, p0, -35)
-
-    local test2 = Instance.new('Part', workspace)
-    test2.Size = Vector3.new(16, 16, 16)
-    test2.Position = p0New
-    test2.Anchored = true
-
-    local testB2 = Instance.new('Part', workspace)
-    testB2.Size = Vector3.new(16, 16, 16)
-    testB2.Position = p1New
-    testB2.Anchored = true
-
     local p2 = module.getPointAlongLine(p0New, p1New, 5)
     local p3 = module.getPointAlongLine(p1New, p0New, 5)
-    -- local p2 = module.getPointAlongLine(p0New, p1New, 20)
-    -- local p3 = module.getPointAlongLine(p1New, p0New, 20)
     local midPoint = module.getPointAlongLine2(p0New, p1New, 50)
-
-    local mid = Instance.new('Part', workspace)
-    mid.Size = Vector3.new(16, 16, 16)
-    mid.Position = midPoint
-    mid.Anchored = true
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
     local platformEnd = Vector3.new(p3.X, midPoint.Y, p3.Z)
