@@ -93,7 +93,7 @@ function module.initJunctions(props)
             for _, wall in ipairs(leftWalls) do
                 InvisiWall.setInvisiWallLeft(getWallProps(wall))
             end
-            -- positioner:Destroy()
+            positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             -- local material = hexConfig.material or Enum.Material.Grass
