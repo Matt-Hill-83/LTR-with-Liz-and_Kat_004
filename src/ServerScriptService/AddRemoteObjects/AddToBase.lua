@@ -48,7 +48,13 @@ end
 
 function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
-    local ambient = Utils.getDescendantsByName(workspace, 'Ambient')
+    local ambient = Utils.getFirstDescendantByName(workspace, 'Ambient')
+    print('ambient' .. ' - start')
+    print('ambient' .. ' - start')
+    print('ambient' .. ' - start')
+    print('ambient' .. ' - start')
+    print('ambient' .. ' - start')
+    print(ambient)
 
     print('Constants.gameConfig.isDev' .. ' - start')
     print(Constants.gameConfig.isDev)
