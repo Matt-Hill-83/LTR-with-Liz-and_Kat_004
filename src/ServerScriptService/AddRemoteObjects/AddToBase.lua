@@ -50,6 +50,8 @@ function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
     local ambient = Utils.getDescendantsByName(workspace, 'Ambient')
 
+    print('Constants.gameConfig.isDev' .. ' - start')
+    print(Constants.gameConfig.isDev)
     if Constants.gameConfig.isDev then
         ambient.Playing = false
     else

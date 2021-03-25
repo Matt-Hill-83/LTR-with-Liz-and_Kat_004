@@ -28,11 +28,7 @@ function module.initPetBox(props)
 
         if player then
             local test = PetService:PlayerAdded(player)
-            print('test' .. ' - start')
-            print(test)
         end
-        print('gameState.pet' .. ' - start')
-        print(gameState.pet)
         gameState.pet.PrimaryPart.CFrame = center.CFrame
     end
 

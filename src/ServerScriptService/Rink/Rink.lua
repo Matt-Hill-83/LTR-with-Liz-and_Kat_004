@@ -20,10 +20,6 @@ function module.initPuck(puck)
 end
 
 function module.addRink(props)
-    print('addRink')
-    print('addRink')
-    print('addRink')
-    print('addRink')
     local bridgeConfig = props.bridgeConfig
     local bridge = props.bridge
     local parentFolder = props.parentFolder
@@ -83,13 +79,6 @@ function module.addRink(props)
     end
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
-    print('strayRegion' .. ' - start')
-    print('strayRegion' .. ' - start')
-    print('strayRegion' .. ' - start')
-    print('strayRegion' .. ' - start')
-    print('strayRegion' .. ' - start')
-    print('strayRegion' .. ' - start')
-    print(strayRegion)
 
     local blockTemplate = Utils.getFirstDescendantByName(rinkModel, 'Puck')
     local blockTemplatePart = blockTemplate.PrimaryPart

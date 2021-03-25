@@ -213,10 +213,6 @@ end
 
 local function configGamePass2()
     print('configGamePass2' .. ' - start')
-    print('configGamePass2' .. ' - start')
-    print('configGamePass2' .. ' - start')
-    print('configGamePass2' .. ' - start')
-    print('configGamePass2' .. ' - start')
     -- local MarketplaceService = game:GetService('MarketplaceService')
     -- local Players = game:GetService('Players')
 

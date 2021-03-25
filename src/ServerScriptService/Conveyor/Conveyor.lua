@@ -64,8 +64,6 @@ local function initBeltPlate(props)
     local pc = belt.PrismaticConstraint
     if false then
         -- if sectorConfig.freezeConveyor == true then
-        print('sectorConfig.freezeConveyor' .. ' - start')
-        print(sectorConfig.freezeConveyor)
 
         pc.Enabled = false
     else

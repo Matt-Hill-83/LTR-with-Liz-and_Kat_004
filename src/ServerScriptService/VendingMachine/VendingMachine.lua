@@ -47,7 +47,6 @@ function module.initVendingMachine(props)
     local tag = props.tag
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
-    -- local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = 'M-VendingMachine'})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')

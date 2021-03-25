@@ -14,13 +14,7 @@ local renderGrid = function(props)
     local mainFramePosition = props.mainFramePosition
     local player = props.player
 
-    print('player' .. ' - start')
-    print(player)
-
     local words = targetWords or {}
-
-    print('displayWidth' .. ' - start--------------------->>>>>')
-    print(displayWidth)
 
     local mainGui = sgui
     mainGui.Enabled = true
@@ -79,8 +73,6 @@ local renderGrid = function(props)
     local defaultPosition = UDim2.new(0, 0, 0, mainFrameY)
     mainFrame.Position = mainFramePosition or defaultPosition
 
-    print('mainFrame.Size' .. ' - start')
-    print(mainFrame.Size)
     if messageFrame then
         messageFrame.Position = mainFrame.Position + UDim2.new(0, 0, 0, mainFrame.Size.Y.Offset)
     end
@@ -91,8 +83,6 @@ local renderGrid = function(props)
     if player then
         local gameState = PlayerStatManager.getGameState(player)
         local gemPoints = gameState.gemPoints
-        print('gemPoints' .. ' - start')
-        print(gemPoints)
 
         if gemsFrame then
             gemsFrame.Position = UDim2.new(0, displayWidth / 2, 0, 0)

@@ -16,11 +16,6 @@ function module.initSlopes(props)
 
     -- populate specific letter gems
     local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
-    print('strayPositioners' .. ' - start')
-    print('strayPositioners' .. ' - start')
-    print('strayPositioners' .. ' - start')
-    print('strayPositioners' .. ' - start')
-    print(strayPositioners)
     for _, positioner in ipairs(strayPositioners) do
         local char = positioner.Name
         local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder)

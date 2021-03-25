@@ -48,12 +48,9 @@ end
 
 -- creates a new pet model, and sets up the constraints
 local function createPet(player, character, petInfo)
-    print('createPet' .. ' - start')
-    print(createPet)
     local petTag = getPetTag(player)
 
     local pet = petInfo.Model:Clone()
-    pet.Name = 'jjj'
 
     local petPrimary = pet.PrimaryPart
     local characterPrimary = character.PrimaryPart
@@ -99,8 +96,6 @@ local function createPet(player, character, petInfo)
     gameState.pet = pet
 
     local gameState2 = PlayerStatManager.getGameState(player)
-    print('gameState2' .. ' - start')
-    print(gameState2)
 
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
@@ -149,9 +144,6 @@ function PetService:UnsetPet(player)
 end
 
 function PetService:PlayerAdded(player)
-    print('PlayerAdded' .. ' - start')
-    print('PlayerAdded' .. ' - start')
-    print('PlayerAdded' .. ' - start')
     local petTag = getPetTag(player)
 
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
@@ -162,11 +154,6 @@ function PetService:PlayerAdded(player)
 
         if pet and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
             createPet(player, character, pet)
-
-            print('after create -----------')
-            print('after create -----------')
-            print('after create -----------')
-            print('after create -----------')
         end
 
         character.Humanoid.Died:Connect(
