@@ -219,12 +219,16 @@ local function addRemoteObjects()
     Key.initKeys({parentFolder = level})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
-    if Constants.hexSize == 'small-001' then
+    print('levelConfig.hexSize' .. ' - start')
+    print(levelConfig.hexSize)
+
+    if levelConfig.hexSize == 'small-001' then
+        Junction4.initJunctions({parentFolder = level, levelConfig = levelConfig})
+    else
         Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
         Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
-    else
-        Junction4.initJunctions({parentFolder = level, levelConfig = levelConfig})
     end
+
     SkiSlope.initSlopes({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
