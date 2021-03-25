@@ -48,6 +48,13 @@ end
 
 function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
+    local ambient = Utils.getDescendantsByName(workspace, 'Ambient')
+
+    if Constants.gameConfig.isDev then
+        ambient.Playing = false
+    else
+        ambient.Playing = true
+    end
 
     for uniIndex, uni in ipairs(unicorns) do
         local sound = Utils.getFirstDescendantByName(uni, 'Sound')

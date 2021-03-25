@@ -102,19 +102,34 @@ function module.createBridge_64(props)
     test1.Position = p0
     test1.Anchored = true
 
-    p0 = module.getPointAlongLine(p0, p1, -30)
-    p1 = module.getPointAlongLine(p1, p0, -30)
+    local testB1 = Instance.new('Part', workspace)
+    testB1.Size = Vector3.new(16, 16, 16)
+    testB1.Position = p1
+    testB1.Anchored = true
+
+    local p0New = module.getPointAlongLine(p0, p1, -35)
+    local p1New = module.getPointAlongLine(p1, p0, -35)
 
     local test2 = Instance.new('Part', workspace)
     test2.Size = Vector3.new(16, 16, 16)
-    test2.Position = p0
+    test2.Position = p0New
     test2.Anchored = true
 
-    local p2 = module.getPointAlongLine(p0, p1, 5)
-    local p3 = module.getPointAlongLine(p1, p0, 5)
-    -- local p2 = module.getPointAlongLine(p0, p1, 20)
-    -- local p3 = module.getPointAlongLine(p1, p0, 20)
-    local midPoint = module.getPointAlongLine2(p0, p1, 50)
+    local testB2 = Instance.new('Part', workspace)
+    testB2.Size = Vector3.new(16, 16, 16)
+    testB2.Position = p1New
+    testB2.Anchored = true
+
+    local p2 = module.getPointAlongLine(p0New, p1New, 5)
+    local p3 = module.getPointAlongLine(p1New, p0New, 5)
+    -- local p2 = module.getPointAlongLine(p0New, p1New, 20)
+    -- local p3 = module.getPointAlongLine(p1New, p0New, 20)
+    local midPoint = module.getPointAlongLine2(p0New, p1New, 50)
+
+    local mid = Instance.new('Part', workspace)
+    mid.Size = Vector3.new(16, 16, 16)
+    mid.Position = midPoint
+    mid.Anchored = true
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
     local platformEnd = Vector3.new(p3.X, midPoint.Y, p3.Z)
@@ -122,7 +137,7 @@ function module.createBridge_64(props)
     local bridge1 =
         module.createBridge(
         {
-            p0 = p0,
+            p0 = p0New,
             p1 = platformStart,
             templateName = templateName,
             parentFolder = parentFolder
@@ -133,7 +148,7 @@ function module.createBridge_64(props)
         module.createBridge(
         {
             p0 = platformEnd,
-            p1 = p1,
+            p1 = p1New,
             templateName = templateName,
             parentFolder = parentFolder
         }
