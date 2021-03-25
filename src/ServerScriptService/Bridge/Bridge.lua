@@ -107,8 +107,24 @@ function module.createBridge_64(props)
     testB1.Position = p1
     testB1.Anchored = true
 
-    local p0New = module.getPointAlongLine(p0, p1, -35)
-    local p1New = module.getPointAlongLine(p1, p0, -35)
+    -- Create a horizontal line at the height of p0, to use to the the Z position of the
+    -- translated endpoints
+    local constLineEndPoint1 = Vector3.new(p1.X, p0.Y, p1.Z)
+
+    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -35)
+    -- elevated version of new Y
+    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -35)
+    -- new Y
+    local p1Test2 = Vector3.new(p1Test.X, p1.Y, p1Test.Z)
+
+    local p0New = p0Test
+    local p1New = p1Test2
+
+    -- use the Z position of the new end points to set the displacement for the translated end points
+    -- local p0New = module.getPointAlongLine(p0, p1, -p0Test.Z)
+    -- local p1New = module.getPointAlongLine(p1, p0, -p0Test.Z)
+    -- local p0New = module.getPointAlongLine(p0, p1, -35)
+    -- local p1New = module.getPointAlongLine(p1, p0, -35)
 
     local test2 = Instance.new('Part', workspace)
     test2.Size = Vector3.new(16, 16, 16)
