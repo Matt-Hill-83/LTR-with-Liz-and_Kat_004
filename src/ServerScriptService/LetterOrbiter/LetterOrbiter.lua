@@ -96,9 +96,9 @@ function module.initLetterOrbiter(props)
 
                 local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-                local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
+                local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank')
                 if char == '~' then
-                    letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_troll')
+                    letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
                 end
 
                 local newLetter = letterBlockTemplate:Clone()
