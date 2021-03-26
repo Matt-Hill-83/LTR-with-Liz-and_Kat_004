@@ -18,7 +18,8 @@ function module.initJunctions(props)
         return
     end
     -- local template = Utils.getFromTemplates('Hex_128_32_v2')
-    local template = Utils.getFromTemplates('Hex_64_32_v1')
+    local template = Utils.getFromTemplates('Hex_32_32_v1')
+    -- local template = Utils.getFromTemplates('Hex_64_32_v1')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
     local hexIslandFolders = hexIslandFolderBox:getChildren()
@@ -33,13 +34,15 @@ function module.initJunctions(props)
             {
                 parentFolder = hexIslandFolder,
                 bridgeConfigs = bridgeConfigs,
-                templateName = 'Bridge_64'
+                templateName = 'Bridge_32'
+                -- templateName = 'Bridge_64'
             }
         )
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
-        local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
+        local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_32_32_pos_v2')
+        -- local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent

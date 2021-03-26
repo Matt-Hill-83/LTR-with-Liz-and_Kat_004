@@ -1,3 +1,4 @@
+-- local module = {hexSize = 'normal'}
 local module = {hexSize = 'small-001'}
 
 local sector1Config = {
@@ -317,15 +318,68 @@ local c1r6 = {
     }
 }
 
+local dummy = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {}
+}
+
 local hexIslandConfigs = {
-    c0r0,
-    c0r0,
-    c1r1,
-    c1r2,
-    c1r3,
-    c1r4,
-    c1r5,
-    c1r6
+    -- c0r0,
+    -- c0r0,
+    -- c1r1,
+    -- c1r2,
+    -- c1r3,
+    -- c1r4,
+    -- c1r5,
+    -- c1r6,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy
 }
 
 module.vendingMachines = {{targetWordIndex = 1}}

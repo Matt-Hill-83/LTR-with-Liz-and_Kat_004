@@ -45,6 +45,8 @@ function module.createBridge2(props)
 
     local p2 = module.getPointAlongLine(p0, p1, 20)
     local p3 = module.getPointAlongLine(p1, p0, 20)
+    -- local p2 = module.getPointAlongLine(p0, p1, 20)
+    -- local p3 = module.getPointAlongLine(p1, p0, 20)
     local midPoint = module.getPointAlongLine2(p0, p1, 50)
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
@@ -101,9 +103,9 @@ function module.createBridge_64(props)
     -- translated endpoints
     local constLineEndPoint1 = Vector3.new(p1.X, p0.Y, p1.Z)
 
-    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -20)
+    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -0)
     -- elevated version of new Y
-    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -20)
+    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -0)
     -- new Y
     local p1Test2 = Vector3.new(p1Test.X, p1.Y, p1Test.Z)
 
@@ -361,7 +363,8 @@ function module.initBridges_64(props)
 
         if rodValid then
             local bridge =
-                module.createBridge_64(
+                module.createBridge2(
+                -- module.createBridge_64(
                 {
                     p0 = rod.Attachment0.Parent.Position,
                     p1 = rod.Attachment1.Parent.Position,
