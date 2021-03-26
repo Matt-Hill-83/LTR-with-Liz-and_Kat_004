@@ -325,7 +325,8 @@ local dummy = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {}
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -337,7 +338,19 @@ local dummy = {
             material = Enum.Material.LeafyGrass
         }
     },
-    orbiterConfigs = {}
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'C',
+            discHeight = 1
+        }
+    }
 }
 
 local hexIslandConfigs = {
@@ -349,6 +362,66 @@ local hexIslandConfigs = {
     -- c1r4,
     -- c1r5,
     -- c1r6,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
+    dummy,
     dummy,
     dummy,
     dummy,

@@ -30,6 +30,10 @@ function module.initJunctions(props)
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
+        if hexConfigs[hexIndex] then
+            print(' hexConfigs[hexIndex]' .. ' - start')
+            print(hexConfigs[hexIndex])
+        end
         Bridge.initBridges_64(
             {
                 parentFolder = hexIslandFolder,

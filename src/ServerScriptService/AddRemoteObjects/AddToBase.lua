@@ -58,11 +58,11 @@ function module.initAnimalSounds2()
 
     print('Constants.gameConfig.isDev' .. ' - start')
     print(Constants.gameConfig.isDev)
-    if Constants.gameConfig.isDev then
-        ambient.Playing = false
-    else
-        ambient.Playing = true
-    end
+    -- if Constants.gameConfig.isDev then
+    --     ambient.Playing = false
+    -- else
+    --     ambient.Playing = true
+    -- end
 
     for uniIndex, uni in ipairs(unicorns) do
         local sound = Utils.getFirstDescendantByName(uni, 'Sound')
@@ -239,9 +239,9 @@ local function addRemoteObjects()
 
     if levelConfig.hexSize == 'small-001' then
         Junction4.initJunctions({parentFolder = level, levelConfig = levelConfig})
-    else
+        -- else
         Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
-        Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
+    -- Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
     end
 
     SkiSlope.initSlopes({parentFolder = level})
