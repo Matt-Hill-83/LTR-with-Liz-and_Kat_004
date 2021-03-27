@@ -30,15 +30,20 @@ function module.initJunctions(props)
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
-        if hexConfigs[hexIndex] then
-            print(' hexConfigs[hexIndex]' .. ' - start')
-            print(hexConfigs[hexIndex])
-        end
+        -- if the 1st letter starts with c
+        -- print('hexIslandFolder.Name' .. ' - start')
+        -- print(hexIslandFolder.Name)
+        local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
+        -- print('fistLetterOfFolder' .. ' - start')
+        print(fistLetterOfFolder)
+
+        local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
         Bridge.initBridges_64(
             {
                 parentFolder = hexIslandFolder,
                 bridgeConfigs = bridgeConfigs,
-                templateName = 'Bridge_32'
+                templateName = bridgeTemplate
+                -- templateName = 'Bridge_32'
                 -- templateName = 'Bridge_64'
             }
         )
