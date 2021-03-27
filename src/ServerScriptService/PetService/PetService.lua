@@ -81,6 +81,9 @@ local function createPet(player, character, petInfo)
     alignOrientation.Parent = petPrimary
 
     CS:AddTag(pet, petTag) -- to delete the pet when needed using :GetTagged()
+    if not petPrimary then
+        return
+    end
     petPrimary.CanCollide = false
     -- petPrimary.CFrame = characterPrimary.CFrame -- moves the pet to the player initially so it doesnt have to fly across the map
     pet.Parent = workspace
