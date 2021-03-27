@@ -347,7 +347,7 @@ local dummy = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'C',
+            singleWord = 'fiona',
             discHeight = 1
         }
     }

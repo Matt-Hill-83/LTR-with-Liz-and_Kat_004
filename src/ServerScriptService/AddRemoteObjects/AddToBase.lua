@@ -166,7 +166,8 @@ local function addRemoteObjects()
 
     print('levelDefs' .. ' - start')
     print(levelDefs)
-    if isStartPlace then
+
+    if isStartPlace and experienceStore then
         -- experienceStore:SetAsync('LevelDefs', levelDefs)
     else
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
