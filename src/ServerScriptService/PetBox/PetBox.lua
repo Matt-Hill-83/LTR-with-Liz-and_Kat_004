@@ -33,7 +33,11 @@ function module.initPetBox(props)
     end
 
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
+
     local function onComplete(player)
+        print('onComplete')
+        print('onComplete')
+        print('onComplete')
         if player then
             local gameState3 = PlayerStatManager.getGameState(player)
             if gameState3.hasPet then

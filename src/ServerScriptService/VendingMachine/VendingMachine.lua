@@ -40,6 +40,10 @@ function module.initTeleporter(part, nextLevelId)
 end
 
 function module.initVendingMachine(props)
+    print('initVendingMachine')
+    print('initVendingMachine')
+    print('initVendingMachine')
+    print('initVendingMachine')
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local nextLevelId = props.nextLevelId

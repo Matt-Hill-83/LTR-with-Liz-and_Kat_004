@@ -112,8 +112,8 @@ function module.createBridge_64(props)
     local p0New = p0Test
     local p1New = p1Test2
 
-    local p2 = module.getPointAlongLine(p0New, p1New, 5)
-    local p3 = module.getPointAlongLine(p1New, p0New, 5)
+    local p2 = module.getPointAlongLine(p0New, p1New, 10)
+    local p3 = module.getPointAlongLine(p1New, p0New, 10)
     local midPoint = module.getPointAlongLine2(p0New, p1New, 50)
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)

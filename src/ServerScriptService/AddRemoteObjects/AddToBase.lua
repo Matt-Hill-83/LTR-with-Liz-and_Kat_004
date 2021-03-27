@@ -209,10 +209,6 @@ local function addRemoteObjects()
 
     -- Do this after preconfig to avoid a race
     if isStartPlace then
-        print('experienceStore:SetAsync')
-        print('experienceStore:SetAsync')
-        print('experienceStore:SetAsync')
-        print('experienceStore:SetAsync')
         experienceStore:SetAsync('LevelDefs', levelDefs)
     end
     ConfigRemoteEvents.configRemoteEvents()

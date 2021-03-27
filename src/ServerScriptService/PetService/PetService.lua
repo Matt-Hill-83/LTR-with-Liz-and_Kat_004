@@ -48,11 +48,25 @@ end
 
 -- creates a new pet model, and sets up the constraints
 local function createPet(player, character, petInfo)
+    print('createPet')
+    print('createPet')
+    print('createPet')
+    print('createPet')
     local petTag = getPetTag(player)
 
     local pet = petInfo.Model:Clone()
+    print('pet' .. ' - start')
+    print('pet' .. ' - start')
+    print('pet' .. ' - start')
+    print('pet' .. ' - start')
+    print(pet)
 
     local petPrimary = pet.PrimaryPart
+    print('petPrimary' .. ' - start')
+    print('petPrimary' .. ' - start')
+    print('petPrimary' .. ' - start')
+    print('petPrimary' .. ' - start')
+    print(petPrimary)
     local characterPrimary = character.PrimaryPart
 
     local alignPosAttachment0 = Instance.new('Attachment', petPrimary)
@@ -81,9 +95,9 @@ local function createPet(player, character, petInfo)
     alignOrientation.Parent = petPrimary
 
     CS:AddTag(pet, petTag) -- to delete the pet when needed using :GetTagged()
-    if not petPrimary then
-        return
-    end
+    -- if not petPrimary then
+    --     return
+    -- end
     petPrimary.CanCollide = false
     -- petPrimary.CFrame = characterPrimary.CFrame -- moves the pet to the player initially so it doesnt have to fly across the map
     pet.Parent = workspace
@@ -95,10 +109,21 @@ local function createPet(player, character, petInfo)
     alignPosition.Enabled = false
 
     local gameState = PlayerStatManager.getGameState(player)
+    print('gameState' .. ' - start')
+    print('gameState' .. ' - start')
+    print('gameState' .. ' - start')
+    print('gameState' .. ' - start')
+    print('gameState' .. ' - start')
+    print(gameState)
 
     gameState.pet = pet
 
     local gameState2 = PlayerStatManager.getGameState(player)
+    print('gameState2' .. ' - start')
+    print('gameState2' .. ' - start')
+    print('gameState2' .. ' - start')
+    print('gameState2' .. ' - start')
+    print(gameState2)
 
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)

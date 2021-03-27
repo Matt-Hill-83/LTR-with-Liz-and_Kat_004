@@ -336,6 +336,34 @@ local dummy = {
                 grabbers = {}
             },
             material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
         }
     },
     orbiterConfigs = {
