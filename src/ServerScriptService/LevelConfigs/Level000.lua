@@ -354,14 +354,14 @@ local dummy = {
 }
 
 local hexIslandConfigs = {
-    -- c0r0,
-    -- c0r0,
-    -- c1r1,
-    -- c1r2,
-    -- c1r3,
-    -- c1r4,
-    -- c1r5,
-    -- c1r6,
+    c0r0,
+    c0r0,
+    c1r1,
+    c1r2,
+    c1r3,
+    c1r4,
+    c1r5,
+    c1r6,
     dummy,
     dummy,
     dummy,
