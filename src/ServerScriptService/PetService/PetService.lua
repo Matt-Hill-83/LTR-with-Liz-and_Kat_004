@@ -7,29 +7,29 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
-local petTemplate = Instance.new('Model')
-petTemplate.Name = 'Pet'
+-- local petTemplate = Instance.new('Model')
+-- petTemplate.Name = 'Pet'
 
-local petPrimary = Instance.new('Part')
-petPrimary.Material = Enum.Material.SmoothPlastic
-petPrimary.CanCollide = false
-petPrimary.Anchored = false
-petPrimary.Size = Vector3.new(3, 3, 3)
-petPrimary.Shape = Enum.PartType.Ball
-petPrimary.BrickColor = BrickColor.Green()
-petPrimary.Parent = petTemplate
+-- local petPrimary = Instance.new('Part')
+-- petPrimary.Material = Enum.Material.SmoothPlastic
+-- petPrimary.CanCollide = false
+-- petPrimary.Anchored = false
+-- petPrimary.Size = Vector3.new(3, 3, 3)
+-- petPrimary.Shape = Enum.PartType.Ball
+-- petPrimary.BrickColor = BrickColor.Green()
+-- petPrimary.Parent = petTemplate
 
-petTemplate.PrimaryPart = petPrimary
+-- petTemplate.PrimaryPart = petPrimary
 
 local corgi_001 = Utils.getFromTemplates('Corgi_002')
 local petInfos = {
-    Pet1 = {
-        Model = petTemplate,
-        PosOffset = Vector3.new(3, 3, 3), -- the attachment offset
-        AlignPosMaxForce = 20000,
-        AlignPosResponsiveness = 15,
-        AlignOriResponsiveness = 20
-    },
+    -- Pet1 = {
+    --     Model = petTemplate,
+    --     PosOffset = Vector3.new(3, 3, 3), -- the attachment offset
+    --     AlignPosMaxForce = 20000,
+    --     AlignPosResponsiveness = 15,
+    --     AlignOriResponsiveness = 20
+    -- },
     Corgi_001 = {
         Model = corgi_001,
         PosOffset = Vector3.new(3, -3, 6), -- the attachment offset

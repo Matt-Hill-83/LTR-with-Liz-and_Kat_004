@@ -14,7 +14,6 @@ local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
 local Junction = require(Sss.Source.Junction.Junction2)
-local Junction3 = require(Sss.Source.Junction.Junction3)
 local Junction4 = require(Sss.Source.Junction.Junction4)
 local Key = require(Sss.Source.Key.Key)
 local PetBox = require(Sss.Source.PetBox.PetBox)
@@ -49,20 +48,13 @@ end
 function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
     local ambient = Utils.getFirstDescendantByName(workspace, 'Ambient')
-    print('ambient' .. ' - start')
-    print('ambient' .. ' - start')
-    print('ambient' .. ' - start')
-    print('ambient' .. ' - start')
-    print('ambient' .. ' - start')
     print(ambient)
 
-    print('Constants.gameConfig.isDev' .. ' - start')
-    print(Constants.gameConfig.isDev)
-    -- if Constants.gameConfig.isDev then
-    --     ambient.Playing = false
-    -- else
-    --     ambient.Playing = true
-    -- end
+    if Constants.gameConfig.isDev then
+        ambient.Playing = false
+    else
+        ambient.Playing = true
+    end
 
     for uniIndex, uni in ipairs(unicorns) do
         local sound = Utils.getFirstDescendantByName(uni, 'Sound')
