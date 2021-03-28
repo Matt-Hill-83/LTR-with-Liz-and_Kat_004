@@ -88,18 +88,18 @@ function module.addRink(props)
 
     InvisiWall.setAllInvisiWalls(
         {
-            thickness = 3,
+            thickness = 1,
             height = 2,
+            wallProps = {
+                Transparency = 0,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Granite
+            },
             shortHeight = 0,
             shortWallProps = {
                 Transparency = 0,
                 BrickColor = BrickColor.new('Light yellow'),
                 Material = Enum.Material.Grass
-            },
-            wallProps = {
-                Transparency = 0,
-                BrickColor = BrickColor.new('Alder'),
-                Material = Enum.Material.Granite
             },
             part = rinkModel.PrimaryPart
         }
@@ -117,6 +117,9 @@ function module.addRink(props)
             end
         }
     )
+
+    print('strays' .. ' - start')
+    print(strays)
 
     for _, stray in ipairs(strays) do
         stray.CanCollide = true

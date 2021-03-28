@@ -12,13 +12,21 @@ local module = {}
 function module.initJunctions(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
+    local positionerName = props.positionerName
+    local hexTemplate = props.hexTemplate
     local hexConfigs = levelConfig.hexIslandConfigs
 
+    local template = Utils.getFromTemplates(hexTemplate)
+    print('hexConfigs' .. ' - start')
+    print('hexConfigs' .. ' - start')
+    print('hexConfigs' .. ' - start')
+    print('hexConfigs' .. ' - start')
+    print(hexConfigs)
     if not hexConfigs then
         return
     end
     -- local template = Utils.getFromTemplates('Hex_128_32_v2')
-    local template = Utils.getFromTemplates('Hex_32_32_v1')
+    -- local template = Utils.getFromTemplates('Hex_32_32_v1')
     -- local template = Utils.getFromTemplates('Hex_64_32_v1')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
@@ -50,7 +58,8 @@ function module.initJunctions(props)
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
-        local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_32_32_pos_v2')
+        local positioners = Utils.getDescendantsByName(hexIslandFolder, positionerName)
+        -- local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_32_32_pos_v2')
         -- local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()

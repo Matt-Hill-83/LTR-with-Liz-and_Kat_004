@@ -48,13 +48,12 @@ end
 function module.initAnimalSounds2()
     local unicorns = Utils.getDescendantsByName(workspace, 'Troll_001')
     local ambient = Utils.getFirstDescendantByName(workspace, 'Ambient')
-    print(ambient)
 
-    if Constants.gameConfig.isDev then
-        ambient.Playing = false
-    else
-        ambient.Playing = true
-    end
+    -- if Constants.gameConfig.isDev then
+    --     ambient.Playing = false
+    -- else
+    --     ambient.Playing = true
+    -- end
 
     for uniIndex, uni in ipairs(unicorns) do
         local sound = Utils.getFirstDescendantByName(uni, 'Sound')
@@ -227,7 +226,14 @@ local function addRemoteObjects()
     print(levelConfig.hexSize)
 
     if levelConfig.hexSize == 'small-001' then
-        Junction4.initJunctions({parentFolder = level, levelConfig = levelConfig})
+        Junction4.initJunctions(
+            {
+                parentFolder = level,
+                levelConfig = levelConfig,
+                hexTemplate = 'Hex_32_32_v1',
+                positionerName = 'Hex_32_32_pos_v2'
+            }
+        )
         -- else
         Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     -- Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
