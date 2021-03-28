@@ -89,16 +89,16 @@ function module.initJunctions(props)
                     wallProps = {
                         Transparency = 0.8,
                         BrickColor = BrickColor.new('Alder'),
-                        Material = Enum.Material.Concrete,
-                        CanCollide = true
+                        Material = Enum.Material.Concrete
+                        -- CanCollide = true
                     },
                     shortHeight = 0,
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
                         BrickColor = BrickColor.new('Alder'),
-                        Material = Enum.Material.Cobblestone,
-                        CanCollide = true
+                        Material = Enum.Material.Cobblestone
+                        -- CanCollide = true
                     },
                     part = wall
                 }
