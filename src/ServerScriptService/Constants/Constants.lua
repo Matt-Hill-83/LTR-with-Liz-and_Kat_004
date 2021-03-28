@@ -20,6 +20,7 @@ end
 if isDev then
     activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_1'
+    activeSpawn = 'Spawn_2'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
@@ -31,7 +32,7 @@ local devGameConfig = {
     -- transparency = false,
     transparency = true,
     -- walkSpeed = 200
-    walkSpeed = 80
+    walkSpeed = 70
 }
 
 local prodGameConfig = {
