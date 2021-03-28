@@ -12,17 +12,17 @@ local activeSpawn
 -- main level
 local startPlaceId = '6358192824'
 
+-- over ride isDev setting for when I forget to switch it when I deploy
+if not RunService:IsStudio() then
+    isDev = false
+end
+
 if isDev then
     activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_1'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
-end
-
--- over ride isDev setting for when I forget to switch it when I deploy
-if not RunService:IsStudio() then
-    isDev = false
 end
 
 local devGameConfig = {

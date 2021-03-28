@@ -85,20 +85,20 @@ function module.initJunctions(props)
             local function getWallProps(wall)
                 local invisiWallProps = {
                     thickness = 1,
-                    height = 4,
-                    shortHeight = 1,
+                    height = 5,
+                    wallProps = {
+                        Transparency = 0.8,
+                        BrickColor = BrickColor.new('Alder'),
+                        Material = Enum.Material.Concrete,
+                        CanCollide = true
+                    },
+                    shortHeight = 0,
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
                         BrickColor = BrickColor.new('Alder'),
                         Material = Enum.Material.Cobblestone,
-                        CanCollide = false
-                    },
-                    wallProps = {
-                        Transparency = 1,
-                        BrickColor = BrickColor.new('Alder'),
-                        Material = Enum.Material.Concrete,
-                        CanCollide = false
+                        CanCollide = true
                     },
                     part = wall
                 }
