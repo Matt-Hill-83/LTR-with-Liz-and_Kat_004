@@ -20,7 +20,6 @@ end
 if isDev then
     activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_1'
-    activeSpawn = 'Spawn_2'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
