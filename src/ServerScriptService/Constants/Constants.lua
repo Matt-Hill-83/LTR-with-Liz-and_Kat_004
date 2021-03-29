@@ -60,4 +60,13 @@ local module = {
     startPlaceId = startPlaceId
 }
 
+local islandLength = 36
+local bridgeBaseLength = 63
+local bridgeOverlap = 2
+local bridgeLength = bridgeBaseLength - 2 * bridgeOverlap
+
+module.islandLength = islandLength
+module.bridgeLength = bridgeLength
+module.totalIslandLength = islandLength + bridgeLength
+
 return module

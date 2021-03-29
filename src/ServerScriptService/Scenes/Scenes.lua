@@ -12,15 +12,17 @@ local Location = require(Sss.Source.Location.Location)
 local module = {}
 
 function module.addScenes(props)
-    local parent = props.parent
+    local parent = Instance.new('Part', workspace)
+    -- local parent = props.parent
     local sceneConfigs = props.sceneConfigs
     local questConfig = props.questConfig
     local gridPadding = props.gridPadding
-    local questFolder = props.questFolder
+    local questFolder = workspace
+    -- local questFolder = props.questFolder
     local questIndex = props.questIndex
 
-    local sceneTemplateModel = Utils.getFirstDescendantByName(questFolder, 'SceneTemplate')
-    local sceneBase = Utils.getFirstDescendantByName(questFolder, 'SceneBase')
+    local sceneTemplateModel = Utils.getFirstDescendantByName(workspace, 'SceneTemplate')
+    local sceneBase = Utils.getFirstDescendantByName(workspace, 'SceneBase')
 
     for sceneIndex, sceneConfig in ipairs(sceneConfigs) do
         local newSceneOffset =
@@ -61,22 +63,22 @@ function module.addScenes(props)
         clonedScene.Parent = sceneFolder
 
         function addCharactersToScene(charProps)
-            Characters.addCharactersToScene(charProps)
+            -- Characters.addCharactersToScene(charProps)
         end
 
-        -- local seats = Utils.getDescendantsByName(clonedScene, 'CouchSeat')
+        local seats = Utils.getDescendantsByName(clonedScene, 'CouchSeat')
 
-        -- for i, seat in ipairs(seats) do
-        --     local addSeatProps = {
-        --         seat = seat,
-        --         clonedScene = clonedScene,
-        --         sceneConfig = sceneConfig,
-        --         addCharactersToScene = addCharactersToScene,
-        --         sceneFolder = sceneFolder
-        --     }
+        for i, seat in ipairs(seats) do
+            local addSeatProps = {
+                seat = seat,
+                clonedScene = clonedScene,
+                sceneConfig = sceneConfig,
+                addCharactersToScene = addCharactersToScene,
+                sceneFolder = sceneFolder
+            }
 
-        --     TheaterSeat.addSeat(addSeatProps)
-        -- end
+            TheaterSeat.addSeat(addSeatProps)
+        end
 
         local charProps = {
             frameConfig = sceneConfig.frames[1],
@@ -84,7 +86,7 @@ function module.addScenes(props)
             sceneFolder = sceneFolder
         }
 
-        addCharactersToScene(charProps)
+        -- addCharactersToScene(charProps)
 
         Location.addLocation({scene = clonedScene, sceneConfig = sceneConfig})
 
