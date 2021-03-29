@@ -13,6 +13,7 @@ local module = {}
 
 function module.addScenes(props)
     local parent = Instance.new('Part', workspace)
+    parent.Position = Vector3.new(0, 300, 0)
     -- local parent = props.parent
     local sceneConfigs = props.sceneConfigs
     local questConfig = props.questConfig

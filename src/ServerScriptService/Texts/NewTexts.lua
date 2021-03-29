@@ -1,11 +1,13 @@
-local TextService = game:GetService("TextService")
-local StarterPlayer = game:GetService("StarterPlayer")
+local TextService = game:GetService('TextService')
+local StarterPlayer = game:GetService('StarterPlayer')
 
-local Sss = game:GetService("ServerScriptService")
+local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
+local Constants2 = require(Sss.Source.Constants.Const_02_Colors)
+local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
-local dialogColors = Constants.dialogColors
+local dialogColors = Constants2.dialogColors
 
 local module = {}
 
@@ -20,10 +22,8 @@ renderTexts = function(props)
     local fontHeight = 55
     fontHeight = math.floor(fontHeight)
 
-    local scrollingFrame =
-        Utils.getFirstDescendantByName(sgui, "DialogScroller")
-    local dialogScrollerPadding = Utils.getFirstDescendantByName(scrollingFrame,
-                                                                 "DialogScrollerPadding")
+    local scrollingFrame = Utils.getFirstDescendantByName(sgui, 'DialogScroller')
+    local dialogScrollerPadding = Utils.getFirstDescendantByName(scrollingFrame, 'DialogScrollerPadding')
 
     local scrollBarThickness = 2 * fontHeight
     scrollingFrame.ScrollBarThickness = scrollBarThickness
@@ -33,12 +33,13 @@ renderTexts = function(props)
     dialogScrollerPadding.PaddingBottom = UDim.new(0, padding)
     dialogScrollerPadding.PaddingTop = UDim.new(0, padding)
     dialogScrollerPadding.PaddingLeft = UDim.new(0, padding)
-    dialogScrollerPadding.PaddingRight =
-        UDim.new(0, scrollBarThickness + fontHeight)
+    dialogScrollerPadding.PaddingRight = UDim.new(0, scrollBarThickness + fontHeight)
 
     local children = scrollingFrame:GetChildren()
     for i, item in pairs(children) do
-        if item:IsA('TextLabel') then item:Destroy() end
+        if item:IsA('TextLabel') then
+            item:Destroy()
+        end
     end
 
     local parentWidth = viewPortSize.X * 0.4 - (2 * paddingInPx)
@@ -53,34 +54,29 @@ renderTexts = function(props)
         local dialogText = dialog['text']
 
         local backgroundColor = dialogColors[4]
-        local charConfig = Constants.characters[charName]
+        local charConfig = Const4.characters[charName]
         local displayName = Utils.getDisplayNameFromName({name = charName})
 
         if charConfig then
             backgroundColor = dialogColors[charConfig.backgroundColorIdx]
         end
 
-        if (dialogText ~= "blank") then
-            local text = "<b>" .. displayName .. ": " .. "</b>" .. dialogText
+        if (dialogText ~= 'blank') then
+            local text = '<b>' .. displayName .. ': ' .. '</b>' .. dialogText
 
             local font = Enum.Font.Arial
-            local innerLabelWidth = parentWidth - (2 * paddingInPx) -
-                                        scrollBarThickness
+            local innerLabelWidth = parentWidth - (2 * paddingInPx) - scrollBarThickness
 
-            local calcSize = TextService:GetTextSize(text, fontHeight, font,
-                                                     Vector2.new(
-                                                         innerLabelWidth,
-                                                         parentHeight))
+            local calcSize = TextService:GetTextSize(text, fontHeight, font, Vector2.new(innerLabelWidth, parentHeight))
 
             local height = calcSize.Y
 
-            local outerLabel = Instance.new("TextLabel", scrollingFrame)
+            local outerLabel = Instance.new('TextLabel', scrollingFrame)
             local outerLabelProps = {
-                Name = "Dialog-" .. i,
+                Name = 'Dialog-' .. i,
                 Position = UDim2.new(0, 0, 0, dialogY),
                 Size = UDim2.new(1, 0, 0, height + 2 * paddingInPx),
-
-                Text = "",
+                Text = '',
                 Font = font,
                 TextSize = fontHeight,
                 TextWrapped = true,
@@ -98,7 +94,7 @@ renderTexts = function(props)
             local innerLabel = outerLabel:Clone()
             local innerLabelProps = {
                 Parent = outerLabel,
-                Name = "Dialog-" .. i,
+                Name = 'Dialog-' .. i,
                 Text = text,
                 ZIndex = 2,
                 Size = UDim2.new(1, 0, 0, height),
