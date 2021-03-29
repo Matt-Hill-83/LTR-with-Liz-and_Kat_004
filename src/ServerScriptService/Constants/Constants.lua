@@ -18,8 +18,8 @@ if not RunService:IsStudio() then
 end
 
 if isDev then
-    activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_1'
+    activeSpawn = 'Spawn_Start'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
