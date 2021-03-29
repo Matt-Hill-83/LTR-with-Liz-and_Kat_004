@@ -9,6 +9,18 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.deleteInstanceByNameStub(props)
+    local nameStub = props.nameStub
+    local parent = props.parent
+    local children = parent:GetChildren()
+    for _, item in pairs(children) do
+        local match = string.match(item.Name, nameStub)
+        if item:IsA('Model') and match then
+            item:Destroy()
+        end
+    end
+end
+
 function module.weld2Parts(part1, part2)
     local weld = Instance.new('WeldConstraint')
     weld.Name = 'WeldConstraintRackBlock'

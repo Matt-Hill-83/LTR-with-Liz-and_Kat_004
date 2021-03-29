@@ -24,6 +24,8 @@ local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local Scenes = require(Sss.Source.Scenes.Scenes)
+-- local SceneConfig = require(Sss.Source.QuestConfigs.ScenesConfig)
 
 local module = {}
 
@@ -234,9 +236,7 @@ local function addRemoteObjects()
                 positionerName = 'Hex_32_32_pos_v2'
             }
         )
-        -- else
         Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
-    -- Junction3.initJunctions3({parentFolder = level, levelConfig = levelConfig})
     end
 
     SkiSlope.initSlopes({parentFolder = level})
@@ -254,6 +254,26 @@ local function addRemoteObjects()
         local sectorConfigs = levelConfig.sectorConfigs
         module.addConveyors(level, sectorConfigs)
     end
+
+    --
+    --
+
+    -- local questConfigs = SceneConfig.getScenesConfig()
+    -- local questConfig = questConfigs[1]
+    -- local addScenesProps = {
+    --     gridPadding = 10,
+    --     parent = level,
+    --     questConfig = questConfig,
+    --     questFolder = level,
+    --     questIndex = 1,
+    --     sceneConfigs = questConfig.sceneConfigs
+    -- }
+
+    -- Scenes.addScenes(addScenesProps)
+
+    --
+    --
+    --
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
