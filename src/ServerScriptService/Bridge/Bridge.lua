@@ -35,6 +35,12 @@ function module.getPointAlongLine2(p0, p1, dist)
 end
 
 function module.createBridge2(props)
+    print('createBridge2' .. ' - start')
+    print('createBridge2' .. ' - start')
+    print('createBridge2' .. ' - start')
+    print('createBridge2' .. ' - start')
+    print('createBridge2' .. ' - start')
+    print('createBridge2' .. ' - start')
     local templateName = props.templateName
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
@@ -61,6 +67,9 @@ function module.createBridge2(props)
         }
     )
 
+    local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
+    bridgeTop1.BrickColor = BrickColor.new('Pink')
+
     local bridge2 =
         module.createBridge(
         {
@@ -70,6 +79,9 @@ function module.createBridge2(props)
             parentFolder = parentFolder
         }
     )
+
+    local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
+    bridgeTop2.BrickColor = BrickColor.new('Pink')
 
     local material = bridgeConfig.material or Enum.Material.Grass
 
@@ -88,6 +100,7 @@ function module.createBridge2(props)
     return newBridge
 end
 
+-- not used
 function module.createBridge_64(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
@@ -323,11 +336,6 @@ function module.initBridges2(props)
                 }
                 local newRink = Rink2.addRink2(rinkProps)
             else
-                bridgeTop.BrickColor = BrickColor.new('Light yellow')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print(bridgeTop.BrickColor)
                 if bridgeConfig and bridgeConfig.material then
                     -- Utils.convertItemAndChildrenToTerrain(
                     --     {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
@@ -403,11 +411,6 @@ function module.initBridges_64(props)
                 }
                 local newRink = Rink2.addRink2(rinkProps)
             else
-                bridgeTop.BrickColor = BrickColor.new('Eggplant')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print('bridgeTop.BrickColor' .. ' - start')
-                print(bridgeTop.BrickColor)
                 if bridgeConfig and bridgeConfig.material then
                     -- Utils.convertItemAndChildrenToTerrain(
                     --     {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
