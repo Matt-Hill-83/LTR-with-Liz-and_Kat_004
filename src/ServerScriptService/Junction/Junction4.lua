@@ -137,12 +137,18 @@ function module.initJunctions(props)
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-
+            print('hexIndex' .. ' - start')
+            print('hexIndex' .. ' - start')
+            print('hexIndex' .. ' - start')
+            print('hexIndex' .. ' - start')
+            print('hexIndex' .. ' - start')
+            print('hexIndex' .. ' - start')
+            print(hexIndex)
             SingleStrays.initSingleStrays(
                 {
                     parentFolder = newHex,
                     blockTemplate = blockTemplate,
-                    char = letterMatrix[hexIndex] or letterMatrix[1] or '?'
+                    char = letterMatrix[hexIndex] or '?'
                 }
             )
 
