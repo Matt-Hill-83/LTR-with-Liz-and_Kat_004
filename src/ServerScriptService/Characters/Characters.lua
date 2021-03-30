@@ -65,17 +65,17 @@ renderCharacters = function(props)
             )
 
             -- point character at camera
-            newChar:SetPrimaryPartCFrame(CFrame.new(newChar.PrimaryPart.Position, cameraPath1.Position))
-            -- Point along y axis only
-            local orientation = newChar.PrimaryPart.Orientation
-            local newOrientation = Vector3.new(0, orientation.Y, 0)
+            -- newChar:SetPrimaryPartCFrame(CFrame.new(newChar.PrimaryPart.Position, cameraPath1.Position))
+            -- -- Point along y axis only
+            -- local orientation = newChar.PrimaryPart.Orientation
+            -- local newOrientation = Vector3.new(0, orientation.Y, 0)
 
-            Utils.setItemAndChildrenPropsByInst(
-                {
-                    item = newChar.PrimaryPart,
-                    props = {Orientation = newOrientation}
-                }
-            )
+            -- Utils.setItemAndChildrenPropsByInst(
+            --     {
+            --         item = newChar.PrimaryPart,
+            --         props = {Orientation = newOrientation}
+            --     }
+            -- )
 
             Utils.mergeTables(newChar, {Parent = charFolder, Name = nameStub .. i})
 

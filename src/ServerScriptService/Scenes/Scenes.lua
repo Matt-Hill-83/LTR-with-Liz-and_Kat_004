@@ -8,6 +8,7 @@ local Characters = require(Sss.Source.Characters.Characters)
 local TheaterSeat = require(Sss.Source.TheaterSeat.TheaterSeat)
 -- local Teleporters = require(Sss.Source.Teleporters.Teleporters)
 local Location = require(Sss.Source.Location.Location)
+local Bridges = require(Sss.Source.Bridges.Bridges)
 
 local module = {}
 
@@ -80,6 +81,13 @@ function module.addScenes(props)
 
             TheaterSeat.addSeat(addSeatProps)
         end
+
+        Bridges.configBridges(
+            {
+                sceneConfig = sceneConfig,
+                clonedScene = clonedScene
+            }
+        )
 
         local charProps = {
             frameConfig = sceneConfig.frames[1],
