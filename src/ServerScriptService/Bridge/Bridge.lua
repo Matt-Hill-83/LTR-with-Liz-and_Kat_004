@@ -254,9 +254,9 @@ function module.initBridges(props)
                         {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
                     )
                 else
-                    Utils.convertItemAndChildrenToTerrain(
-                        {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
-                    )
+                    -- Utils.convertItemAndChildrenToTerrain(
+                    --     {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
+                    -- )
                 end
             end
             table.insert(bridges, bridge)
@@ -298,7 +298,7 @@ function module.initBridges2(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            rod:Destroy()
+            -- rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
