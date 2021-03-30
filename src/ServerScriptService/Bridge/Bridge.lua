@@ -251,13 +251,13 @@ function module.initBridges(props)
                 local newRink = Rink.addRink(rinkProps)
             else
                 if bridgeConfig and bridgeConfig.material then
-                    -- Utils.convertItemAndChildrenToTerrain(
-                    --     {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
-                    -- )
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
+                    )
                 else
-                    -- Utils.convertItemAndChildrenToTerrain(
-                    --     {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
-                    -- )
+                    Utils.convertItemAndChildrenToTerrain(
+                        {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
+                    )
                 end
             end
             table.insert(bridges, bridge)
