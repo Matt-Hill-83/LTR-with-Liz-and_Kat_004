@@ -7,59 +7,9 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
-local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 
 local module = {}
-
-function module.initStrays(props)
-    local parentFolder = props.parentFolder
-
-    StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
-
-    local slope = parentFolder
-
-    -- populate specific letter gems
-    local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
-    for _, positioner in ipairs(strayPositioners) do
-        local char = positioner.Name
-        local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder)
-
-        newLetterBlock.CFrame =
-            Utils3.setCFrameFromDesiredEdgeOffset(
-            {
-                parent = positioner,
-                child = newLetterBlock,
-                offsetConfig = {
-                    useParentNearEdge = Vector3.new(0, -1, 0),
-                    useChildNearEdge = Vector3.new(0, -1, 0),
-                    offsetAdder = nil
-                }
-            }
-        )
-
-        newLetterBlock.Anchored = true
-        newLetterBlock.CanCollide = false
-    end
-
-    local positioners =
-        Utils.getByTagInParent(
-        {
-            parent = slope,
-            tag = 'LetterGrabberPositioner'
-        }
-    )
-
-    for _, positioner in ipairs(positioners) do
-        local grabbersConfig = {
-            word = positioner.Name,
-            parentFolder = slope,
-            positioner = positioner
-        }
-
-        LetterGrabber.initLetterGrabber(grabbersConfig)
-    end
-end
 
 function module.initJunctions(props)
     local parentFolder = props.parentFolder

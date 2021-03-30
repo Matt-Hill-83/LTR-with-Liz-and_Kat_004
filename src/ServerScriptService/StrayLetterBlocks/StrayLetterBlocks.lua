@@ -6,29 +6,14 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
-local function createStray(char, parentFolder, props)
-    local isGem = false
-
+function module.createStray(char, parentFolder, props)
+    print('char' .. ' - start')
+    print(char)
     local blockTemplate = props and props.blockTemplate
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-    local modelClone
-    local newLetterBlock
-
-    if isGem then
-        local letterBlockTemplate = Utils.getFromTemplates('HexLetterGemTemplate')
-        modelClone = letterBlockTemplate:Clone()
-    else
-        local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
-        local letterBlockTemplate2 = letterBlockTemplate:Clone(letterBlockTemplate)
-
-        local dummyModel = Instance.new('Model', letterBlockFolder)
-        letterBlockTemplate2.Parent = dummyModel
-        dummyModel.PrimaryPart = letterBlockTemplate
-
-        modelClone = dummyModel
-        newLetterBlock = letterBlockTemplate2
-    end
+    local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
+    local newLetterBlock = letterBlockTemplate:Clone()
 
     local letterId = 'ID--R'
 
@@ -44,9 +29,10 @@ local function createStray(char, parentFolder, props)
         }
     )
 
-    modelClone.Parent = parentFolder
+    newLetterBlock.Parent = parentFolder
     newLetterBlock.Anchored = false
-
+    print('char' .. ' - start')
+    print(char)
     LetterUtils.initLetterBlock(
         {
             letterBlock = newLetterBlock,
@@ -164,7 +150,7 @@ local function initStraysInRegion(props)
             blockTemplate = blockTemplate
         }
 
-        local newLetterBlock = createStray(char, parentFolder, strayProps)
+        local newLetterBlock = module.createStray(char, parentFolder, strayProps)
 
         local offsetX = Utils.genRandom(0, region.Size.X) - region.Size.X / 2
         local offsetZ = Utils.genRandom(0, region.Size.Z) - region.Size.Z / 2
@@ -199,7 +185,7 @@ local function initStraysInRegion(props)
 end
 
 module.initStraysInRegion = initStraysInRegion
-module.createStray = createStray
+-- module.createStray = createStray
 module.initStraysInRegions = initStraysInRegions
 
 return module

@@ -244,7 +244,6 @@ local function addRemoteObjects()
     end
 
     SkiSlope.initSlopes({parentFolder = level})
-    -- SingleStrays.initSingleStrays({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --
