@@ -18,7 +18,7 @@ function module.addScenes(props)
     -- local parent = props.parent
     local sceneConfigs = props.sceneConfigs
     local questConfig = props.questConfig
-    local gridPadding = props.gridPadding
+    -- local gridPadding = props.gridPadding
     local theaterPositioner = props.theaterPositioner
     local questFolder = workspace
     -- local questFolder = props.questFolder
@@ -42,8 +42,8 @@ function module.addScenes(props)
             child = clonedScene.PrimaryPart,
             offsetConfig = {
                 useParentNearEdge = Vector3.new(0, -1, 1),
-                useChildNearEdge = Vector3.new(0, -1, 1),
-                offsetAdder = Vector3.new(0, 0, -gridPadding / 2)
+                useChildNearEdge = Vector3.new(0, -1, 1)
+                -- offsetAdder = Vector3.new(0, 0, -gridPadding / 2)
             }
         }
 
@@ -108,17 +108,17 @@ end
 getInitialSceneCFrame = function(props)
     local parent = props.parent
     local child = props.child
-    local gridPadding = props.gridPadding
+    -- -- local gridPadding = props.gridPadding
 
-    local desiredOffsetFromParentEdge = Vector3.new(0, 0, -gridPadding / 2)
+    -- local desiredOffsetFromParentEdge = Vector3.new(0, 0, -gridPadding / 2)
 
     local translateCFrameProps = {
         parent = parent,
         child = child,
         offsetConfig = {
             useParentNearEdge = Vector3.new(0, -1, 1),
-            useChildNearEdge = Vector3.new(0, -1, 1),
-            offsetAdder = desiredOffsetFromParentEdge
+            useChildNearEdge = Vector3.new(0, -1, 1)
+            -- offsetAdder = desiredOffsetFromParentEdge
         }
     }
 

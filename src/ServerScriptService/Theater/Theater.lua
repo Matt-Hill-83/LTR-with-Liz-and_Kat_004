@@ -34,8 +34,7 @@ function module.initTheaters(props)
         local questConfigs = SceneConfig.getScenesConfig()
         local questConfig = questConfigs[1]
         local addScenesProps = {
-            gridPadding = 10,
-            -- parent = level,
+            -- gridPadding = 10,
             theaterPositioner = theaterPositioner,
             questConfig = questConfig,
             questFolder = parentFolder,
@@ -45,7 +44,7 @@ function module.initTheaters(props)
 
         Scenes.addScenes(addScenesProps)
 
-        theaterPositioner:Destroy()
+        -- theaterPositioner:Destroy()
     end
 end
 return module
