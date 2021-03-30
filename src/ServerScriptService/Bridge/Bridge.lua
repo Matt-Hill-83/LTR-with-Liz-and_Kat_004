@@ -39,7 +39,8 @@ function module.createBridge2(props)
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
 
-    local offsetY = 12
+    local offsetY = 14
+    -- local offsetY = 12
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
 
@@ -74,8 +75,8 @@ function module.createBridge2(props)
 
     local material = bridgeConfig.material or Enum.Material.Grass
 
-    Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
-    Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+    -- Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
+    -- Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
 
     local newBridge =
         module.createBridge(

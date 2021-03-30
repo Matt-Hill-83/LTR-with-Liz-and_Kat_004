@@ -321,7 +321,8 @@ local c1r6 = {
 local dummy = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
-    bridgeConfigs = {
+    bridgeConfigs = {},
+    xxxbridgeConfigs = {
         {
             item = 'Rink',
             itemConfig = {

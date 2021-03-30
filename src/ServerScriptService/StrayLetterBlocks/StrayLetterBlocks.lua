@@ -113,11 +113,33 @@ local function initStraysInRegions(props)
     end
 end
 
+function module.createLetterMatrix(props)
+    local words = props.words
+    local numBlocks = props.numBlocks
+
+    -- populate matrix with letters
+    local letterMatrix = {}
+    local lettersNotInWords = LetterUtils.getLettersNotInWords(words)
+
+    for _ = 1, numBlocks do
+        table.insert(letterMatrix, LetterUtils.getRandomLetter(lettersNotInWords))
+    end
+
+    for _, word in ipairs(words) do
+        for letterIndex = 1, #word do
+            local letter = string.sub(word, letterIndex, letterIndex)
+            table.insert(letterMatrix, letter)
+        end
+    end
+    return letterMatrix
+end
+
 local function initStraysInRegion(props)
     local numBlocks = props.numBlocks
-    local region = props.region
     local words = props.words
+    local region = props.region
     local blockTemplate = props.blockTemplate
+    -- local letterMatrix = module.createLetterMatrix(props)
 
     -- populate matrix with letters
     local letterMatrix = {}

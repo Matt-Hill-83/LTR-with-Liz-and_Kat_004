@@ -8,14 +8,16 @@ local module = {}
 
 function module.initSingleStrays(props)
     local parentFolder = props.parentFolder
+    local blockTemplate = props.blockTemplate
+    local char = props.char
 
     local slope = parentFolder
 
     -- populate specific letter gems
     local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
     for _, positioner in ipairs(strayPositioners) do
-        local char = positioner.Name
-        local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder)
+        char = char or positioner.Name
+        local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder, {blockTemplate = blockTemplate})
 
         newLetterBlock.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(

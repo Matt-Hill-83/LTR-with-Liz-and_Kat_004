@@ -1,7 +1,7 @@
-local Sss = game:GetService("ServerScriptService")
+local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local Constants = require(Sss.Source.Constants.Constants)
+-- local Constants = require(Sss.Source.Constants.Constants)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
@@ -36,9 +36,9 @@ function module.initArrowTool(miniGameState)
         LetterUtils.applyStyleFromTemplateBD(
             {
                 targetLetterBlock = letterPart,
-                templateName = active and miniGameState.activeStyle or
-                    miniGameState.inActiveStyle
-            })
+                templateName = active and miniGameState.activeStyle or miniGameState.inActiveStyle
+            }
+        )
     end
 
     function updateBlock(props)
@@ -52,7 +52,9 @@ function module.initArrowTool(miniGameState)
         end
 
         function funcSouth()
-            if alp.col > 1 then alp.col = alp.col - 1 end
+            if alp.col > 1 then
+                alp.col = alp.col - 1
+            end
         end
 
         function funcEast()
@@ -61,7 +63,11 @@ function module.initArrowTool(miniGameState)
             end
         end
 
-        function funcWest() if alp.row > 1 then alp.row = alp.row - 1 end end
+        function funcWest()
+            if alp.row > 1 then
+                alp.row = alp.row - 1
+            end
+        end
 
         local dict = {
             north = funcNorth,
@@ -75,32 +81,34 @@ function module.initArrowTool(miniGameState)
         styleActiveLetter({active = false})
     end
 
-    function moveLetterEastArrow() updateBlock({position = "east"}) end
+    function moveLetterEastArrow()
+        updateBlock({position = 'east'})
+    end
 
-    function moveLetterWestArrow() updateBlock({position = "west"}) end
+    function moveLetterWestArrow()
+        updateBlock({position = 'west'})
+    end
 
-    function moveLetterNorthArrow() updateBlock({position = "north"}) end
+    function moveLetterNorthArrow()
+        updateBlock({position = 'north'})
+    end
 
-    function moveLetterSouthArrow() updateBlock({position = "south"}) end
+    function moveLetterSouthArrow()
+        updateBlock({position = 'south'})
+    end
 
-    local cdRight = Utils.getFirstDescendantByName(letterFallFolder,
-                                                   "ArrowRightClickDetector")
+    local cdRight = Utils.getFirstDescendantByName(letterFallFolder, 'ArrowRightClickDetector')
     cdRight.MouseClick:Connect(moveLetterEastArrow)
     -- cdRight.MouseClick:Connect(function() updateBlock({position = "east"}) end)
 
-    local cdUp = Utils.getFirstDescendantByName(letterFallFolder,
-                                                "ArrowUpClickDetector")
+    local cdUp = Utils.getFirstDescendantByName(letterFallFolder, 'ArrowUpClickDetector')
     cdUp.MouseClick:Connect(moveLetterNorthArrow)
 
-    local cdLeft = Utils.getFirstDescendantByName(letterFallFolder,
-                                                  "ArrowLeftClickDetector")
+    local cdLeft = Utils.getFirstDescendantByName(letterFallFolder, 'ArrowLeftClickDetector')
     cdLeft.MouseClick:Connect(moveLetterWestArrow)
 
-    local cdDown = Utils.getFirstDescendantByName(letterFallFolder,
-                                                  "ArrowDownClickDetector")
+    local cdDown = Utils.getFirstDescendantByName(letterFallFolder, 'ArrowDownClickDetector')
     cdDown.MouseClick:Connect(moveLetterSouthArrow)
-
 end
 
 return module
-

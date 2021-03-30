@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
@@ -76,6 +77,28 @@ function module.initJunctions(props)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
+    --
+    --
+    local signTargetWords = levelConfig.getTargetWords()[1]
+    print('signTargetWords' .. ' - start')
+    print(signTargetWords)
+    local words = {}
+    for _, word in ipairs(signTargetWords) do
+        table.insert(words, word.word)
+    end
+
+    print('words' .. ' - start')
+    print('words' .. ' - start')
+    print('words' .. ' - start')
+    print('words' .. ' - start')
+    print(words)
+
+    local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
+    print('letterMatrix' .. ' - start')
+    print(letterMatrix)
+    --
+    --
+    --
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
@@ -116,8 +139,17 @@ function module.initJunctions(props)
                     }
                 }
             )
+            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
+            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
-            SingleStrays.initSingleStrays({parentFolder = newHex})
+            SingleStrays.initSingleStrays(
+                {
+                    parentFolder = newHex,
+                    blockTemplate = blockTemplate,
+                    char = letterMatrix[hexIndex] or letterMatrix[1] or '?'
+                }
+            )
 
             local function getWallProps(wall)
                 local invisiWallProps = {

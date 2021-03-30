@@ -95,7 +95,6 @@ function module.initLetterOrbiter(props)
                 local blockPosition = Vector3.new(0, y, x)
 
                 local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-
                 local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank')
                 if char == '~' then
                     letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
