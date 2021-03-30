@@ -134,6 +134,10 @@ local function addRemoteObjects()
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
+    local ramps = Utils.getFirstDescendantByName(blockDash, 'Ramps')
+
+    SingleStrays.initSingleStrays({parentFolder = ramps})
+
     local level = levelsFolder:GetChildren()[1]
 
     local levelName = level.Name
@@ -240,7 +244,7 @@ local function addRemoteObjects()
     end
 
     SkiSlope.initSlopes({parentFolder = level})
-    SingleStrays.initSingleStrays({parentFolder = level})
+    -- SingleStrays.initSingleStrays({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --
