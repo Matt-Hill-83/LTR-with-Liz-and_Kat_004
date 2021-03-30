@@ -35,12 +35,6 @@ function module.getPointAlongLine2(p0, p1, dist)
 end
 
 function module.createBridge2(props)
-    print('createBridge2' .. ' - start')
-    print('createBridge2' .. ' - start')
-    print('createBridge2' .. ' - start')
-    print('createBridge2' .. ' - start')
-    print('createBridge2' .. ' - start')
-    print('createBridge2' .. ' - start')
     local templateName = props.templateName
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig

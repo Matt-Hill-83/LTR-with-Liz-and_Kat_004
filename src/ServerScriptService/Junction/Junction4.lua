@@ -86,6 +86,11 @@ function module.initJunctions(props)
     end
 
     local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
+    print('letterMatrix' .. ' - start')
+    print('letterMatrix' .. ' - start')
+    print('letterMatrix' .. ' - start')
+    print('letterMatrix' .. ' - start')
+    print(letterMatrix)
     --
     --
     --

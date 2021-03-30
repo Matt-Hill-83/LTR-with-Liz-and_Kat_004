@@ -25,9 +25,9 @@ function module.createRandomLetterMatrix(props)
     local letterMatrix = {}
     local lettersNotInWords = module.getLettersNotInWords(words)
 
-    for _ = 1, numBlocks do
-        table.insert(letterMatrix, module.getRandomLetter(lettersNotInWords))
-    end
+    -- for _ = 1, numBlocks do
+    --     table.insert(letterMatrix, module.getRandomLetter(lettersNotInWords))
+    -- end
 
     for _, word in ipairs(words) do
         for letterIndex = 1, #word do
