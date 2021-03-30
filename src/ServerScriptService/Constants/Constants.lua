@@ -70,4 +70,5 @@ module.islandLength = islandLength
 module.bridgeLength = bridgeLength
 module.totalIslandLength = islandLength + bridgeLength
 
+module.buttonLabels = {PrevPage = 'Prev Page', NextPage = 'Next Page'}
 return module

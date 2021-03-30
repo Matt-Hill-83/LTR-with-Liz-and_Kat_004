@@ -32,18 +32,20 @@ function module.initTheaters(props)
         -- use mod to cycle thru configs when there are more positioners than configs
 
         local questConfigs = SceneConfig.getScenesConfig()
-        local questConfig = questConfigs[1]
-        local addScenesProps = {
-            -- gridPadding = 10,
-            theaterPositioner = theaterPositioner,
-            questConfig = questConfig,
-            questFolder = parentFolder,
-            questIndex = positionerIndex,
-            sceneConfigs = questConfig.sceneConfigs
-        }
+        local questConfig = questConfigs[positionerIndex]
 
-        Scenes.addScenes(addScenesProps)
+        if questConfig then
+            local addScenesProps = {
+                -- gridPadding = 10,
+                theaterPositioner = theaterPositioner,
+                questConfig = questConfig,
+                questFolder = parentFolder,
+                questIndex = positionerIndex,
+                sceneConfigs = questConfig.sceneConfigs
+            }
 
+            Scenes.addScenes(addScenesProps)
+        end
         -- theaterPositioner:Destroy()
     end
     sceneTemplateModel:Destroy()
