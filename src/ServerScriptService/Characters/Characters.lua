@@ -44,7 +44,7 @@ renderCharacters = function(props)
         --
     end
 
-    local cameraPath1 = Utils.getFirstDescendantByName(clonedScene, 'ScreenCameraPath1')
+    -- local cameraPath1 = Utils.getFirstDescendantByName(clonedScene, 'ScreenCameraPath1')
 
     -- For each character
     for i, itemConfig in ipairs(itemConfigs) do

@@ -236,7 +236,7 @@ local function addRemoteObjects()
                 positionerName = 'Hex_32_32_pos_v2'
             }
         )
-        Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
+    -- Junction.initJunctions2({parentFolder = level, levelConfig = levelConfig})
     end
 
     SkiSlope.initSlopes({parentFolder = level})
