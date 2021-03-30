@@ -9,16 +9,21 @@ local module = {}
 function module.initSingleStrays(props)
     local parentFolder = props.parentFolder
     local blockTemplate = props.blockTemplate
-    local char = props.char
 
     local slope = parentFolder
 
     -- populate specific letter gems
     local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
     for _, positioner in ipairs(strayPositioners) do
-        char = positioner.Name
+        local char2 = nil
+        if props.char then
+            char2 = props.char
+        else
+            char2 = positioner.Name
+        end
+
         -- char = char or positioner.Name
-        local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder, {blockTemplate = blockTemplate})
+        local newLetterBlock = StrayLetterBlocks.createStray(char2, parentFolder, {blockTemplate = blockTemplate})
 
         newLetterBlock.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(

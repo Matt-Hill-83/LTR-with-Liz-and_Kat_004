@@ -7,8 +7,6 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local module = {}
 
 function module.createStray(char, parentFolder, props)
-    print('char' .. ' - start')
-    print(char)
     local blockTemplate = props and props.blockTemplate
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
@@ -31,13 +29,11 @@ function module.createStray(char, parentFolder, props)
 
     newLetterBlock.Parent = parentFolder
     newLetterBlock.Anchored = false
-    print('char' .. ' - start')
-    print(char)
     LetterUtils.initLetterBlock(
         {
             letterBlock = newLetterBlock,
             char = char,
-            templateName = 'BD_6_blank_cupcake',
+            -- templateName = 'BD_6_blank_cupcake',
             isTextLetter = true,
             letterBlockType = LetterUtils.letterBlockTypes.StrayLetter
         }
@@ -125,7 +121,6 @@ local function initStraysInRegion(props)
     local words = props.words
     local region = props.region
     local blockTemplate = props.blockTemplate
-    -- local letterMatrix = module.createLetterMatrix(props)
 
     -- populate matrix with letters
     local letterMatrix = {}
