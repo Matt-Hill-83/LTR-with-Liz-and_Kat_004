@@ -118,15 +118,11 @@ function module.addRink(props)
         }
     )
 
-    print('strays' .. ' - start')
-    print(strays)
-
     for _, stray in ipairs(strays) do
         stray.CanCollide = true
         module.initPuck(stray)
     end
 
-    -- module.initRink(rinkModel)
     return rinkModel
 end
 
