@@ -1,6 +1,6 @@
-local CS = game:GetService("CollectionService")
-local Sss = game:GetService("ServerScriptService")
-local RS = game:GetService("ReplicatedStorage")
+local CS = game:GetService('CollectionService')
+local Sss = game:GetService('ServerScriptService')
+local RS = game:GetService('ReplicatedStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
@@ -8,13 +8,12 @@ local Constants = require(Sss.Source.Constants.Constants)
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 
-local clickBlockEvent = RS:WaitForChild("ClickBlockRE")
+local clickBlockEvent = RS:WaitForChild('ClickBlockRE')
 
 local module = {}
 
 function isDesiredLetter(availLetters, clickedLetter)
-    local textLabel = Utils.getFirstDescendantByName(clickedLetter, "BlockChar")
-                          .Text
+    local textLabel = Utils.getFirstDescendantByName(clickedLetter, 'BlockChar').Text
     local char = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
     return availLetters[char]
 end
@@ -40,9 +39,13 @@ function findFirstMatchingLetterBlock(foundChar, miniGameState)
     local matchingLetter = nil
 
     for wordIndex, word in ipairs(miniGameState.renderedWords) do
-        if matchingLetter then break end
+        if matchingLetter then
+            break
+        end
         for letterIndex, letter in ipairs(word.letters) do
-            if matchingLetter then break end
+            if matchingLetter then
+                break
+            end
             if foundChar == letter.char then
                 miniGameState.activeWord = word
                 matchingLetter = letter.instance
@@ -72,49 +75,60 @@ function handleBrick(clickedLetter, miniGameState, player)
 
     if not isChild then
         -- Anchor letters if letter is clicked is a different game instance
-        LetterFallUtils.anchorLetters({
-            parentFolder = runTimeLetterFolder,
-            anchor = true
-        })
+        LetterFallUtils.anchorLetters(
+            {
+                parentFolder = runTimeLetterFolder,
+                anchor = true
+            }
+        )
         return {}
     end
-    if isDeadLetter(clickedLetter) then return end
+    if isDeadLetter(clickedLetter) then
+        return
+    end
 
     local activeWord = miniGameState.activeWord
-    print('activeWord' .. ' - start');
-    print(activeWord);
+    print('activeWord' .. ' - start')
+    print(activeWord)
     local currentLetterIndex = miniGameState.currentLetterIndex
     local words = miniGameState.words
 
-    local rackLetters = Utils.getByTagInParent(
-                            {
+    local rackLetters =
+        Utils.getByTagInParent(
+        {
             parent = runTimeLetterFolder,
             tag = LetterFallUtils.tagNames.RackLetter
-        })
+        }
+    )
 
-    local notDeadLetters = LetterFallUtils.filterItemsByTag(
-                               {
+    local notDeadLetters =
+        LetterFallUtils.filterItemsByTag(
+        {
             items = rackLetters,
             tag = LetterFallUtils.tagNames.DeadLetter,
             include = false
-        })
+        }
+    )
 
-    LetterFallUtils.anchorLetters({
-        parentFolder = runTimeLetterFolder,
-        anchor = true
-    })
+    LetterFallUtils.anchorLetters(
+        {
+            parentFolder = runTimeLetterFolder,
+            anchor = true
+        }
+    )
 
-    local activeCol =
-        LetterFallUtils.getCoordsFromLetterName(clickedLetter.Name).col
-    LetterFallUtils.anchorColumn({
-        col = activeCol,
-        letters = notDeadLetters,
-        anchor = false
-    })
+    local activeCol = LetterFallUtils.getCoordsFromLetterName(clickedLetter.Name).col
+    LetterFallUtils.anchorColumn(
+        {
+            col = activeCol,
+            letters = notDeadLetters,
+            anchor = false
+        }
+    )
     clickedLetter.Anchored = true
 
     if not miniGameState.gemsStarted then
-        -- miniGameState.gemsStarted = true
+    -- miniGameState.gemsStarted = true
     end
 
     local foundChar = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
@@ -130,15 +144,16 @@ function handleBrick(clickedLetter, miniGameState, player)
         end
     else
         availWords = words
-        local availLetters = LetterFallUtils.getAvailLettersDict(
-                                 {
+        local availLetters =
+            LetterFallUtils.getAvailLettersDict(
+            {
                 words = words,
                 currentLetterIndex = currentLetterIndex
-            })
+            }
+        )
 
         if isDesiredLetter(availLetters, clickedLetter) then
-            targetLetterBlock = findFirstMatchingLetterBlock(foundChar,
-                                                             miniGameState)
+            targetLetterBlock = findFirstMatchingLetterBlock(foundChar, miniGameState)
         end
     end
 
@@ -147,19 +162,21 @@ function handleBrick(clickedLetter, miniGameState, player)
         CS:AddTag(clickedLetter, LetterFallUtils.tagNames.Found)
         CS:RemoveTag(clickedLetter, LetterFallUtils.tagNames.RackLetter)
 
-        local tween = Utils3.tween({
-            part = clickedLetter,
-            endPosition = targetLetterBlock.Position,
-            time = 0.4,
-            anchor = true
-        })
+        local tween =
+            Utils3.tween(
+            {
+                part = clickedLetter,
+                endPosition = targetLetterBlock.Position,
+                time = 0.4,
+                anchor = true
+            }
+        )
 
         Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
 
-        table.insert(miniGameState.foundLetters,
-                     LetterFallUtils.getCharFromLetterBlock(clickedLetter))
+        table.insert(miniGameState.foundLetters, LetterFallUtils.getCharFromLetterBlock(clickedLetter))
 
-        local currentWord = table.concat(miniGameState.foundLetters, "")
+        local currentWord = table.concat(miniGameState.foundLetters, '')
         local wordComplete = table.find(words, currentWord)
 
         if (wordComplete) then
@@ -167,11 +184,13 @@ function handleBrick(clickedLetter, miniGameState, player)
             if wordConfig then
                 local soundId = Constants.wordConfigs[currentWord]['soundId']
                 if (soundId) then
-                    local sound = Instance.new("Sound", workspace)
-                    sound.SoundId = "rbxassetid://" .. soundId
+                    local sound = Instance.new('Sound', workspace)
+                    sound.SoundId = 'rbxassetid://' .. soundId
                     sound.EmitterSize = 5
                     sound.Looped = false
-                    if not sound.IsPlaying then sound:Play() end
+                    if not sound.IsPlaying then
+                        sound:Play()
+                    end
                 end
             end
 
@@ -189,7 +208,8 @@ function handleBrick(clickedLetter, miniGameState, player)
             {
                 miniGameState = miniGameState,
                 availWords = getAvailWords(miniGameState)
-            })
+            }
+        )
 
         clickedLetter.CFrame = targetLetterBlock.CFrame
     end

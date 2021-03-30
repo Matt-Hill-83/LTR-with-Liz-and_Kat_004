@@ -35,6 +35,14 @@ local function findFirstMatchingLetterBlock(foundChar, miniGameState)
 end
 
 local function onSelectRackBlock(clickedLetter, miniGameState, player)
+    print('onSelectRackBlock' .. ' - start')
+    print('onSelectRackBlock' .. ' - start')
+    print('onSelectRackBlock' .. ' - start')
+    print('onSelectRackBlock' .. ' - start')
+    print('onSelectRackBlock' .. ' - start')
+    print('onSelectRackBlock' .. ' - start')
+    print('miniGameState' .. ' - start')
+    print(miniGameState)
     if module.processing == true then
         return
     end
