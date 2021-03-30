@@ -80,22 +80,12 @@ function module.initJunctions(props)
     --
     --
     local signTargetWords = levelConfig.getTargetWords()[1]
-    print('signTargetWords' .. ' - start')
-    print(signTargetWords)
     local words = {}
     for _, word in ipairs(signTargetWords) do
         table.insert(words, word.word)
     end
 
-    print('words' .. ' - start')
-    print('words' .. ' - start')
-    print('words' .. ' - start')
-    print('words' .. ' - start')
-    print(words)
-
     local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
-    print('letterMatrix' .. ' - start')
-    print(letterMatrix)
     --
     --
     --

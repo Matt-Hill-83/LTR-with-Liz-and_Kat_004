@@ -325,6 +325,11 @@ function module.initBridges2(props)
                 }
                 local newRink = Rink2.addRink2(rinkProps)
             else
+                bridgeTop.BrickColor = BrickColor.new('Light yellow')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print(bridgeTop.BrickColor)
                 if bridgeConfig and bridgeConfig.material then
                     -- Utils.convertItemAndChildrenToTerrain(
                     --     {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
@@ -400,6 +405,11 @@ function module.initBridges_64(props)
                 }
                 local newRink = Rink2.addRink2(rinkProps)
             else
+                bridgeTop.BrickColor = BrickColor.new('Eggplant')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print('bridgeTop.BrickColor' .. ' - start')
+                print(bridgeTop.BrickColor)
                 if bridgeConfig and bridgeConfig.material then
                     -- Utils.convertItemAndChildrenToTerrain(
                     --     {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
