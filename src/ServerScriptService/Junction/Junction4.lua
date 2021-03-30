@@ -17,17 +17,9 @@ function module.initJunctions(props)
     local hexConfigs = levelConfig.hexIslandConfigs
 
     local template = Utils.getFromTemplates(hexTemplate)
-    print('hexConfigs' .. ' - start')
-    print('hexConfigs' .. ' - start')
-    print('hexConfigs' .. ' - start')
-    print('hexConfigs' .. ' - start')
-    print(hexConfigs)
     if not hexConfigs then
         return
     end
-    -- local template = Utils.getFromTemplates('Hex_128_32_v2')
-    -- local template = Utils.getFromTemplates('Hex_32_32_v1')
-    -- local template = Utils.getFromTemplates('Hex_64_32_v1')
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
     local hexIslandFolders = hexIslandFolderBox:getChildren()
@@ -39,11 +31,7 @@ function module.initJunctions(props)
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
         -- if the 1st letter starts with c
-        -- print('hexIslandFolder.Name' .. ' - start')
-        -- print(hexIslandFolder.Name)
         local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
-        -- print('fistLetterOfFolder' .. ' - start')
-        print(fistLetterOfFolder)
 
         local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
         Bridge.initBridges_64(
@@ -51,16 +39,12 @@ function module.initJunctions(props)
                 parentFolder = hexIslandFolder,
                 bridgeConfigs = bridgeConfigs,
                 templateName = bridgeTemplate
-                -- templateName = 'Bridge_32'
-                -- templateName = 'Bridge_64'
             }
         )
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
         local positioners = Utils.getDescendantsByName(hexIslandFolder, positionerName)
-        -- local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_32_32_pos_v2')
-        -- local positioners = Utils.getDescendantsByName(hexIslandFolder, 'Hex_128_32_pos_v2')
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
