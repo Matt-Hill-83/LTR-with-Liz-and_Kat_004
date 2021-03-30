@@ -20,6 +20,7 @@ local Theater = require(Sss.Source.Theater.Theater)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
+local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
@@ -239,6 +240,7 @@ local function addRemoteObjects()
     end
 
     SkiSlope.initSlopes({parentFolder = level})
+    SingleStrays.initSingleStrays({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --

@@ -74,8 +74,8 @@ function module.createBridge2(props)
 
     local material = bridgeConfig.material or Enum.Material.Grass
 
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+    Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
+    Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
 
     local newBridge =
         module.createBridge(

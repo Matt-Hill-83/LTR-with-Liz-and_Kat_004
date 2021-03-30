@@ -15,27 +15,27 @@ function module.initSlopes(props)
     local slope = parentFolder
 
     -- populate specific letter gems
-    local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
-    for _, positioner in ipairs(strayPositioners) do
-        local char = positioner.Name
-        local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder)
+    -- local strayPositioners = Utils.getByTagInParent({parent = slope, tag = 'StrayPositioner'})
+    -- for _, positioner in ipairs(strayPositioners) do
+    --     local char = positioner.Name
+    --     local newLetterBlock = StrayLetterBlocks.createStray(char, parentFolder)
 
-        newLetterBlock.CFrame =
-            Utils3.setCFrameFromDesiredEdgeOffset(
-            {
-                parent = positioner,
-                child = newLetterBlock,
-                offsetConfig = {
-                    useParentNearEdge = Vector3.new(0, -1, 0),
-                    useChildNearEdge = Vector3.new(0, -1, 0),
-                    offsetAdder = nil
-                }
-            }
-        )
+    --     newLetterBlock.CFrame =
+    --         Utils3.setCFrameFromDesiredEdgeOffset(
+    --         {
+    --             parent = positioner,
+    --             child = newLetterBlock,
+    --             offsetConfig = {
+    --                 useParentNearEdge = Vector3.new(0, -1, 0),
+    --                 useChildNearEdge = Vector3.new(0, -1, 0),
+    --                 offsetAdder = nil
+    --             }
+    --         }
+    --     )
 
-        newLetterBlock.Anchored = true
-        newLetterBlock.CanCollide = false
-    end
+    --     newLetterBlock.Anchored = true
+    --     newLetterBlock.CanCollide = false
+    -- end
 
     local positioners =
         Utils.getByTagInParent(
