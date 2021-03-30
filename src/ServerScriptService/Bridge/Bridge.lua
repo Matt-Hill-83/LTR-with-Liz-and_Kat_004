@@ -46,8 +46,6 @@ function module.createBridge2(props)
 
     local p2 = module.getPointAlongLine(p0, p1, 20)
     local p3 = module.getPointAlongLine(p1, p0, 20)
-    -- local p2 = module.getPointAlongLine(p0, p1, 20)
-    -- local p3 = module.getPointAlongLine(p1, p0, 20)
     local midPoint = module.getPointAlongLine2(p0, p1, 50)
 
     local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
