@@ -27,7 +27,7 @@ function module.initTheaters(props)
 
     print('theaterPositioners' .. ' - start')
     print(theaterPositioners)
-
+    local sceneTemplateModel = Utils.getFirstDescendantByName(workspace, 'SceneTemplate')
     for positionerIndex, theaterPositioner in ipairs(theaterPositioners) do
         -- use mod to cycle thru configs when there are more positioners than configs
 
@@ -46,5 +46,6 @@ function module.initTheaters(props)
 
         -- theaterPositioner:Destroy()
     end
+    sceneTemplateModel:Destroy()
 end
 return module

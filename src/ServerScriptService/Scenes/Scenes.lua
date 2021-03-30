@@ -102,7 +102,7 @@ function module.addScenes(props)
         local gameTitleLabel = Utils.getFirstDescendantByName(clonedScene, 'GameTitleLabel')
         gameTitleLabel.Text = 'Quest:   ' .. (questConfig.questTitle or 'Game Title')
     end
-    sceneTemplateModel:Destroy()
+    -- sceneTemplateModel:Destroy()
 end
 
 getInitialSceneCFrame = function(props)

@@ -358,6 +358,8 @@ function module.initBridges_64(props)
             parent = parentFolder
         }
     )
+    print('rods' .. ' - start')
+    print(rods)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
