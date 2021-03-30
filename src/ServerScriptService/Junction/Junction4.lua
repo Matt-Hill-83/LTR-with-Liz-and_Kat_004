@@ -86,11 +86,6 @@ function module.initJunctions(props)
     end
 
     local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
-    print('letterMatrix' .. ' - start')
-    print('letterMatrix' .. ' - start')
-    print('letterMatrix' .. ' - start')
-    print('letterMatrix' .. ' - start')
-    print(letterMatrix)
     --
     --
     --
@@ -137,14 +132,10 @@ function module.initJunctions(props)
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-            print('hexIndex' .. ' - start')
-            print(hexIndex)
-            print('letterMatrix[hexIndex]' .. ' - start')
             -- use mod to cycle thru configs when there are more positioners than configs
             local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
             local char = letterMatrix[mod + 1]
 
-            print(letterMatrix[hexIndex])
             SingleStrays.initSingleStrays(
                 {
                     parentFolder = newHex,

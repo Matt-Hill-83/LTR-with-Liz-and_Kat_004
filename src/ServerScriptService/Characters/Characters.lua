@@ -56,7 +56,7 @@ renderCharacters = function(props)
             local z = (i - 1) * (charImageBlock.Size.Z + zGap)
 
             local newChar =
-                Utils.cloneModel(
+                Utils.cloneModel_old(
                 {
                     model = characterTemplate,
                     position = characterTemplate.PrimaryPart.CFrame * CFrame.new(Vector3.new(-x, 0, z)),

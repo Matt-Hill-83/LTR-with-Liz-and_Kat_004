@@ -65,7 +65,7 @@ function module.addScenes(props)
         clonedScene.Parent = sceneFolder
 
         function addCharactersToScene(charProps)
-            -- Characters.addCharactersToScene(charProps)
+            Characters.addCharactersToScene(charProps)
         end
 
         local seats = Utils.getDescendantsByName(clonedScene, 'CouchSeat')

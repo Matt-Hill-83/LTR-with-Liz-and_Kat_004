@@ -9,6 +9,21 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.cloneModel_old(props)
+    local model = props.model
+    local position = props.position
+    local suffix = props.suffix
+
+    local modelClone = model:Clone()
+    modelClone.Parent = model.Parent
+    modelClone.Name = model.Name .. (suffix or '-Clone')
+    if (position) then
+        modelClone:SetPrimaryPartCFrame(position)
+    --
+    end
+    return modelClone
+end
+
 function module.deleteInstanceByNameStub(props)
     local nameStub = props.nameStub
     local parent = props.parent
