@@ -7,6 +7,7 @@ local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
+local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 
 local module = {}
 
@@ -115,6 +116,8 @@ function module.initJunctions(props)
                     }
                 }
             )
+
+            SingleStrays.initSingleStrays({parentFolder = newHex})
 
             local function getWallProps(wall)
                 local invisiWallProps = {
