@@ -141,7 +141,7 @@ function module.initJunctions(props)
                     thickness = 1,
                     height = 10,
                     wallProps = {
-                        Transparency = 0.8,
+                        Transparency = 1,
                         BrickColor = BrickColor.new('Alder'),
                         Material = Enum.Material.Concrete,
                         CanCollide = true
@@ -150,7 +150,7 @@ function module.initJunctions(props)
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
-                        BrickColor = BrickColor.new('Maroon'),
+                        BrickColor = BrickColor.new('Plum'),
                         Material = Enum.Material.Cobblestone,
                         CanCollide = true
                     },
@@ -162,7 +162,8 @@ function module.initJunctions(props)
             local rightWalls = facesWithWalls
             -- local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
             for _, wall in ipairs(rightWalls) do
-                InvisiWall.setInvisiWallRight(getWallProps(wall))
+                InvisiWall.setInvisiWallLeft(getWallProps(wall))
+                -- InvisiWall.setInvisiWallRight(getWallProps(wall))
             end
 
             -- local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
