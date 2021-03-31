@@ -116,32 +116,37 @@ function module.initJunctions(props)
 
             local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 
+            local facesWithWalls = {}
+
             for _, wallPositioner in ipairs(wallPositioners) do
                 local faceHasBridge = false
                 for _, point in ipairs(Constants.validRodAttachments) do
-                    local intersects = Utils.isInsideBrick(point.WorldPosition, wallPositioner)
+                    local intersects =
+                        Utils.partIntersectsPoint(wallPositioner, point.WorldPosition, Enum.PartType.Block)
+                    -- local intersects = Utils.isInsideBrick(point.WorldPosition, wallPositioner)
 
                     if intersects then
                         faceHasBridge = true
                     end
                 end
-                if faceHasBridge == true then
-                    print('found')
-                    wallPositioner.BrickColor = BrickColor.new('Maroon')
+                if not faceHasBridge then
+                    -- print('found')
+                    -- wallPositioner.BrickColor = BrickColor.new('Maroon')
+                    table.insert(facesWithWalls, wallPositioner)
                 end
             end
 
             local function getWallProps(wall)
                 local invisiWallProps = {
                     thickness = 1,
-                    height = 1,
+                    height = 10,
                     wallProps = {
                         Transparency = 0.8,
                         BrickColor = BrickColor.new('Alder'),
                         Material = Enum.Material.Concrete,
                         CanCollide = false
                     },
-                    shortHeight = 0,
+                    shortHeight = 5,
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
@@ -154,15 +159,16 @@ function module.initJunctions(props)
                 return invisiWallProps
             end
 
-            local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
+            local rightWalls = facesWithWalls
+            -- local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
             for _, wall in ipairs(rightWalls) do
                 InvisiWall.setInvisiWallRight(getWallProps(wall))
             end
 
-            local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
-            for _, wall in ipairs(leftWalls) do
-                InvisiWall.setInvisiWallLeft(getWallProps(wall))
-            end
+            -- local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
+            -- for _, wall in ipairs(leftWalls) do
+            --     InvisiWall.setInvisiWallLeft(getWallProps(wall))
+            -- end
             -- positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)

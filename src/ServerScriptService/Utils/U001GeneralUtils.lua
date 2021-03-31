@@ -14,7 +14,7 @@ function module.partIntersectsPoint(part, point, shape)
     delta = Vector3.new(math.abs(delta.X), math.abs(delta.Y), math.abs(delta.Z))
     local halfSize = part.Size / 2
 
-    -- shape = shape or shape == Enum.PartType.Block
+    shape = shape or shape == Enum.PartType.Block
 
     if shape == Enum.PartType.Block then
         local inX = delta.X <= halfSize.X
