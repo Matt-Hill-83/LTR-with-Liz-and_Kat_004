@@ -43,7 +43,7 @@ function module.createBridge2(props)
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
 
-    local offsetY = 14
+    local offsetY = 15
     -- local offsetY = 12
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
