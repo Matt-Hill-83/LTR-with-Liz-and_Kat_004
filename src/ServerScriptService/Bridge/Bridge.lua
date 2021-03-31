@@ -4,7 +4,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
 
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
-
+local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
 
@@ -103,6 +103,17 @@ function module.createBridge2(props)
     module.createBridgeWalls(bridge1)
     module.createBridgeWalls(bridge2)
     module.createBridgeWalls(newBridge)
+
+    local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+    local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+    SingleStrays.initSingleStrays(
+        {
+            parentFolder = newBridge,
+            blockTemplate = blockTemplate,
+            char = 'Z'
+            -- char = char or '?'
+        }
+    )
     return newBridge
 end
 

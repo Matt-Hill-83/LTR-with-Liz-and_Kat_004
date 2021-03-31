@@ -63,20 +63,7 @@ function module.initJunctions(props)
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
-        -- local bridgeConfigs = hexConfig.bridgeConfigs or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
-
-        -- if the 1st letter starts with c
-        -- local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
-
-        -- local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
-        -- Bridge.initBridges_64(
-        --     {
-        --         parentFolder = hexIslandFolder,
-        --         bridgeConfigs = bridgeConfigs,
-        --         templateName = bridgeTemplate
-        --     }
-        -- )
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
@@ -101,13 +88,13 @@ function module.initJunctions(props)
                     }
                 }
             )
-            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
-            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
             -- use mod to cycle thru configs when there are more positioners than configs
             local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
             local char = letterMatrix[mod + 1]
 
+            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
             SingleStrays.initSingleStrays(
                 {
                     parentFolder = newHex,
