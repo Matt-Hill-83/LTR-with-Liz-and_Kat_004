@@ -156,6 +156,7 @@ local c1r3 = {
             collideDisc = false,
             collideBlock = false,
             singleWord = 'C',
+            -- singleWord = 'CCCCC?',
             discHeight = 1
         },
         {
@@ -166,7 +167,8 @@ local c1r3 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'B',
+            -- singleWord = '2',
+            singleWord = 'AAAAA?',
             discHeight = 1
         },
         {
@@ -177,7 +179,8 @@ local c1r3 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'R',
+            -- singleWord = '3',
+            singleWord = 'T?',
             discHeight = 1
         }
     }
@@ -211,7 +214,7 @@ local c1r4 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'T~',
+            singleWord = '4~',
             discHeight = 1
         }
     }
@@ -383,6 +386,7 @@ local dummy = {
 }
 
 local hexIslandConfigs = {
+    c0r0,
     c0r0,
     c0r0,
     c1r1,

@@ -41,6 +41,8 @@ function module.initJunctions(props)
     --
     --
     --
+    print('hexIslandFolders' .. ' - start')
+    print(hexIslandFolders)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
