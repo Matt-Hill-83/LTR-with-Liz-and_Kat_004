@@ -64,7 +64,9 @@ function module.createBridge2(props)
     )
 
     local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
-    bridgeTop1.BrickColor = BrickColor.new('Pink')
+    bridgeTop1.BrickColor = BrickColor.new('Alder')
+    bridgeTop1.Material = 'Concrete'
+    bridgeTop1.Transparency = 0
 
     local bridge2 =
         module.createBridge(
@@ -77,75 +79,9 @@ function module.createBridge2(props)
     )
 
     local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
-    bridgeTop2.BrickColor = BrickColor.new('Pink')
-
-    local material = bridgeConfig.material or Enum.Material.Grass
-
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
-
-    local newBridge =
-        module.createBridge(
-        {
-            p0 = platformStart,
-            p1 = platformEnd,
-            templateName = templateName,
-            parentFolder = parentFolder
-        }
-    )
-    return newBridge
-end
-
--- not used
-function module.createBridge_64(props)
-    local templateName = props.templateName
-    local parentFolder = props.parentFolder
-    local bridgeConfig = props.bridgeConfig
-
-    -- local offsetY = 0
-    local offsetY = 12
-    local p0 = props.p0 + Vector3.new(0, offsetY, 0)
-    local p1 = props.p1 + Vector3.new(0, offsetY, 0)
-
-    -- Create a horizontal line at the height of p0, to use to the the Z position of the
-    -- translated endpoints
-    local constLineEndPoint1 = Vector3.new(p1.X, p0.Y, p1.Z)
-
-    local p0Test = module.getPointAlongLine(p0, constLineEndPoint1, -0)
-    -- elevated version of new Y
-    local p1Test = module.getPointAlongLine(constLineEndPoint1, p0, -0)
-    -- new Y
-    local p1Test2 = Vector3.new(p1Test.X, p1.Y, p1Test.Z)
-
-    local p0New = p0Test
-    local p1New = p1Test2
-
-    local p2 = module.getPointAlongLine(p0New, p1New, 10)
-    local p3 = module.getPointAlongLine(p1New, p0New, 10)
-    local midPoint = module.getPointAlongLine2(p0New, p1New, 50)
-
-    local platformStart = Vector3.new(p2.X, midPoint.Y, p2.Z)
-    local platformEnd = Vector3.new(p3.X, midPoint.Y, p3.Z)
-
-    local bridge1 =
-        module.createBridge(
-        {
-            p0 = p0New,
-            p1 = platformStart,
-            templateName = templateName,
-            parentFolder = parentFolder
-        }
-    )
-
-    local bridge2 =
-        module.createBridge(
-        {
-            p0 = platformEnd,
-            p1 = p1New,
-            templateName = templateName,
-            parentFolder = parentFolder
-        }
-    )
+    bridgeTop2.BrickColor = BrickColor.new('Alder')
+    bridgeTop2.Material = 'Concrete'
+    bridgeTop2.Transparency = 0
 
     local material = bridgeConfig.material or Enum.Material.Grass
 
@@ -249,7 +185,7 @@ function module.initBridges(props)
                     parentFolder = parentFolder
                 }
             )
-            -- rod:Destroy()
+            rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
@@ -379,7 +315,6 @@ function module.initBridges_64(props)
         if rodValid then
             local bridge =
                 module.createBridge2(
-                -- module.createBridge_64(
                 {
                     p0 = rod.Attachment0.Parent.Position,
                     p1 = rod.Attachment1.Parent.Position,
@@ -388,7 +323,7 @@ function module.initBridges_64(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            -- rod:Destroy()
+            rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(

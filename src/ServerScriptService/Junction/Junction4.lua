@@ -144,13 +144,13 @@ function module.initJunctions(props)
                         Transparency = 0.8,
                         BrickColor = BrickColor.new('Alder'),
                         Material = Enum.Material.Concrete,
-                        CanCollide = false
+                        CanCollide = true
                     },
-                    shortHeight = 5,
+                    shortHeight = 1,
                     shortWallProps = {
                         -- Transparency = 1,
                         Transparency = 0,
-                        BrickColor = BrickColor.new('Alder'),
+                        BrickColor = BrickColor.new('Maroon'),
                         Material = Enum.Material.Cobblestone,
                         CanCollide = true
                     },
@@ -169,7 +169,7 @@ function module.initJunctions(props)
             -- for _, wall in ipairs(leftWalls) do
             --     InvisiWall.setInvisiWallLeft(getWallProps(wall))
             -- end
-            -- positioner:Destroy()
+            positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             -- local material = hexConfig.material or Enum.Material.Grass
