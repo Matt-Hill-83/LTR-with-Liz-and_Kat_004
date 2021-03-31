@@ -99,7 +99,42 @@ function module.createBridge2(props)
             parentFolder = parentFolder
         }
     )
+
+    module.createBridgeWalls(bridge1)
+    module.createBridgeWalls(bridge2)
+    module.createBridgeWalls(newBridge)
     return newBridge
+end
+
+function module.createBridgeWalls(bridge)
+    local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
+
+    local function getWallProps(wall)
+        local invisiWallProps = {
+            thickness = 1,
+            height = 16,
+            wallProps = {
+                -- Transparency = 0.6,
+                Transparency = 1,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Concrete,
+                CanCollide = true
+            },
+            shortHeight = 1,
+            shortWallProps = {
+                -- Transparency = 1,
+                Transparency = 0,
+                BrickColor = BrickColor.new('Plum'),
+                Material = Enum.Material.Cobblestone,
+                CanCollide = true
+            },
+            part = wall
+        }
+        return invisiWallProps
+    end
+
+    InvisiWall.setInvisiWallLeft(getWallProps(bridgeTop))
+    InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
 end
 
 function module.createBridge(props)
@@ -329,35 +364,35 @@ function module.initBridges_64(props)
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
-            --
-            --
-            --
-            local function getWallProps(wall)
-                local invisiWallProps = {
-                    thickness = 1,
-                    height = 16,
-                    wallProps = {
-                        Transparency = 0.6,
-                        -- Transparency = 1,
-                        BrickColor = BrickColor.new('Alder'),
-                        Material = Enum.Material.Concrete,
-                        CanCollide = true
-                    },
-                    shortHeight = 1,
-                    shortWallProps = {
-                        -- Transparency = 1,
-                        Transparency = 0,
-                        BrickColor = BrickColor.new('Plum'),
-                        Material = Enum.Material.Cobblestone,
-                        CanCollide = true
-                    },
-                    part = wall
-                }
-                return invisiWallProps
-            end
+            -- --
+            -- --
+            -- --
+            -- local function getWallProps(wall)
+            --     local invisiWallProps = {
+            --         thickness = 1,
+            --         height = 16,
+            --         wallProps = {
+            --             Transparency = 0.6,
+            --             -- Transparency = 1,
+            --             BrickColor = BrickColor.new('Alder'),
+            --             Material = Enum.Material.Concrete,
+            --             CanCollide = true
+            --         },
+            --         shortHeight = 1,
+            --         shortWallProps = {
+            --             -- Transparency = 1,
+            --             Transparency = 0,
+            --             BrickColor = BrickColor.new('Plum'),
+            --             Material = Enum.Material.Cobblestone,
+            --             CanCollide = true
+            --         },
+            --         part = wall
+            --     }
+            --     return invisiWallProps
+            -- end
 
-            InvisiWall.setInvisiWallLeft(getWallProps(bridgeTop))
-            InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
+            -- InvisiWall.setInvisiWallLeft(getWallProps(bridgeTop))
+            -- InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
             --
             --
             if bridgeConfig.item == 'Rink' then
