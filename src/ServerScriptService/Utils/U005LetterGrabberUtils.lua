@@ -154,7 +154,7 @@ function module.partTouched(touchedBlock, player)
         return
     end
 
-    HandleGrab.onGrabLetter()
+    -- HandleGrab.onGrabLetter({letterBlock = touchedBlock})
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
     if activeBlock then

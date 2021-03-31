@@ -1,16 +1,11 @@
 local Sss = game:GetService('ServerScriptService')
 local RS = game:GetService('ReplicatedStorage')
-
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
+
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
-
-local Constants2 = require(Sss.Source.Constants.Const_02_Colors)
-local Const4 = require(Sss.Source.Constants.Const_04_Characters)
-local Const_Client = require(RS.Source.Constants.Constants_Client)
-
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
-local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
+
+local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {processing = false, initComplete = false}
 
@@ -19,14 +14,14 @@ local function isDesiredLetter(availLetters, clickedLetter)
     return availLetters[char]
 end
 
-local function findFirstMatchingLetterBlock(foundChar, miniGameState)
+local function findFirstMatchingLetterBlock(foundChar, wordMenuState)
     local matchingLetter = nil
-    local availWords = LetterUtils.getAvailWords(miniGameState)
+    local availWords = LetterUtils.getAvailWords(wordMenuState)
 
     for _, word in ipairs(availWords) do
-        local letter = word.letters[miniGameState.currentLetterIndex]
+        local letter = word.letters[wordMenuState.currentLetterIndex]
         if foundChar == letter.char then
-            miniGameState.activeWord = word
+            wordMenuState.activeWord = word
             matchingLetter = letter.instance
             break
         end
@@ -34,10 +29,15 @@ local function findFirstMatchingLetterBlock(foundChar, miniGameState)
     return matchingLetter
 end
 
-function module.onGrabLetter(clickedLetter, miniGameState, player)
+function module.onGrabLetter(clickedLetter, wordMenuState, player)
     print('onGrabLetter' .. ' - start')
-    print('miniGameState' .. ' - start')
-    print(miniGameState)
+    print('wordMenuState' .. ' - start')
+    print(wordMenuState)
+
+    local gameState = PlayerStatManager.getGameState(player)
+    if not gameState.wordMenuState then
+        gameState.wordMenuState = {}
+    end
 
     if true then
         return
@@ -48,28 +48,9 @@ function module.onGrabLetter(clickedLetter, miniGameState, player)
     end
     module.processing = true
 
-    local sectorFolder = miniGameState.sectorFolder
-
-    if not module.initComplete then
-        module.initComplete = true
-    --
-    end
-
-    local isChild = clickedLetter:IsDescendantOf(sectorFolder)
-
-    if not isChild then
-        module.processing = false
-        return
-    end
-
-    if clickedLetter.IsFound.Value == true then
-        module.processing = false
-        return
-    end
-
-    local activeWord = miniGameState.activeWord
-    local currentLetterIndex = miniGameState.currentLetterIndex
-    local words = miniGameState.words
+    local activeWord = wordMenuState.activeWord
+    local currentLetterIndex = wordMenuState.currentLetterIndex
+    local words = wordMenuState.words
 
     local foundChar = LetterUtils.getCharFromLetterBlock2(clickedLetter)
 
@@ -89,9 +70,9 @@ function module.onGrabLetter(clickedLetter, miniGameState, player)
             targetLetterBlock = activeWord.letters[currentLetterIndex].instance
         end
     else
-        local availLetters = LetterUtils.getAvailLettersDict2(miniGameState)
+        local availLetters = LetterUtils.getAvailLettersDict2(wordMenuState)
         if isDesiredLetter(availLetters, clickedLetter) then
-            targetLetterBlock = findFirstMatchingLetterBlock(foundChar, miniGameState)
+            targetLetterBlock = findFirstMatchingLetterBlock(foundChar, wordMenuState)
         end
     end
 
@@ -99,56 +80,36 @@ function module.onGrabLetter(clickedLetter, miniGameState, player)
         local clickedBlockClone = clickedLetter:Clone()
         clickedBlockClone.Parent = clickedLetter.Parent
         clickedBlockClone.CanCollide = false
-        local fire = Instance.new('Fire', clickedBlockClone)
-        fire.Size = 20
+        -- local fire = Instance.new('Fire', clickedBlockClone)
+        -- fire.Size = 20
 
-        Utils.enableChildWelds({part = clickedBlockClone, enabled = false})
+        -- Utils.enableChildWelds({part = clickedBlockClone, enabled = false})
 
-        Utils.hideItemAndChildren({item = clickedLetter, hide = true})
+        -- Utils.hideItemAndChildren({item = clickedLetter, hide = true})
         clickedLetter.IsHidden.Value = true
         clickedLetter.IsFound.Value = true
-        Utils3.tween(
-            {
-                part = clickedBlockClone,
-                endPosition = targetLetterBlock.Position,
-                time = 0.6,
-                anchor = true
-            }
-        )
 
         clickedBlockClone.CFrame = targetLetterBlock.CFrame
-        LetterUtils.applyStyleFromTemplateBD(
-            {
-                targetLetterBlock = targetLetterBlock,
-                templateName = 'LBPurpleLight'
-            }
-        )
+        -- LetterUtils.applyStyleFromTemplateBD(
+        --     {
+        --         targetLetterBlock = targetLetterBlock,
+        --         templateName = 'LBPurpleLight'
+        --     }
+        -- )
 
         local clickedChar = LetterUtils.getCharFromLetterBlock2(clickedLetter)
 
         if clickedChar then
-            table.insert(miniGameState.foundLetters, LetterUtils.getCharFromLetterBlock2(clickedLetter))
+            table.insert(wordMenuState.foundLetters, LetterUtils.getCharFromLetterBlock2(clickedLetter))
         end
 
         clickedBlockClone:Destroy()
 
-        local currentWord = table.concat(miniGameState.foundLetters, '')
+        local currentWord = table.concat(wordMenuState.foundLetters, '')
         local wordComplete = table.find(words, currentWord)
         local fireSound = '5207654419'
 
-        miniGameState.currentLetterIndex = miniGameState.currentLetterIndex + 1
-
-        -- letter found
-        local gameState = PlayerStatManager.getGameState(player)
-
-        if not gameState.gemPoints then
-            gameState.gemPoints = 0
-        end
-        gameState.gemPoints = gameState.gemPoints + 1
-
-        local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-        updateWordGuiRE:FireClient(player)
-        --
+        wordMenuState.currentLetterIndex = wordMenuState.currentLetterIndex + 1
 
         if (wordComplete) then
             local currentWord2 = Const4.wordConfigs[currentWord]
@@ -159,102 +120,29 @@ function module.onGrabLetter(clickedLetter, miniGameState, player)
                 -- Utils.playSound(fireSound)
             end
 
-            local gemTemplate = Utils.getFromTemplates('GemTemplate')
-            local newGem = gemTemplate:Clone()
-            newGem.Parent = sectorFolder
-
-            newGem.Handle.CFrame =
-                Utils3.setCFrameFromDesiredEdgeOffset(
-                {
-                    parent = clickedLetter,
-                    child = newGem.Handle,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(1, -1, 0),
-                        useChildNearEdge = Vector3.new(-1, 1, 0),
-                        offsetAdder = Vector3.new(-10, 15, 0)
-                    }
-                }
-            )
-
-            newGem.Handle.Anchored = false
-
-            local rand = Utils.genRandom(1, #Constants2.gemColors)
-            newGem.Handle.Color = Constants2.gemColors[rand]
-
-            miniGameState.activeWord = nil
-            miniGameState.foundLetters = {}
-            miniGameState.currentLetterIndex = 1
-
-            if player:FindFirstChild('leaderstats') then
-                local wins = player.leaderstats.Wins
-                wins.Value = wins.Value + 1
-            end
-
-            PlayerStatManager:ChangeStat(player, 'Gems', 1)
-            Leaderboard.updateLB()
+            wordMenuState.activeWord = nil
+            wordMenuState.foundLetters = {}
+            wordMenuState.currentLetterIndex = 1
 
             activeWord.completed = true
-            local wordLetters =
-                Utils.getInstancesByNameStub(
-                {
-                    nameStub = 'wordLetter',
-                    parent = activeWord.word
-                }
-            )
-            for _, wordLetter in ipairs(wordLetters) do
-                local firePositioners = Utils.getDescendantsByName(wordLetter, 'FirePositioner')
-                for _, firePositioner in ipairs(firePositioners) do
-                    local fire2 = Instance.new('Fire', firePositioner)
-                    fire2.Size = 20
-                end
-            end
         end
 
-        LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
+        local numAvailableWords = #LetterUtils.getAvailWords(wordMenuState)
 
-        local numAvailableWords = #LetterUtils.getAvailWords(miniGameState)
-
-        local function callBack(miniGameState2)
+        local function callBack(wordMenuState2)
             local function closure()
-                miniGameState2.onWordLettersGone(miniGameState2)
+                wordMenuState2.onWordLettersGone(wordMenuState2)
             end
 
             local function wrapperForDelay()
                 delay(10, closure)
-                --
             end
             return wrapperForDelay()
         end
 
         if numAvailableWords == 0 then
-            for _, wordObj in ipairs(miniGameState.renderedWords) do
-                local wordLetters =
-                    Utils.getInstancesByNameStub(
-                    {
-                        nameStub = 'wordLetter',
-                        parent = wordObj.word
-                    }
-                )
-
-                local function destroyParts()
-                    local explosionSound = '262562442'
-                    -- Utils.playSound(explosionSound, 0.5)
-                    for _, wordLetter in ipairs(wordLetters) do
-                        Utils.hideItemAndChildren({item = wordLetter, hide = true})
-                    end
-                end
-
-                delay(1, destroyParts)
-                callBack(miniGameState)
-            end
-
-            local keyWalls = Utils.getDescendantsByName(sectorFolder, 'KeyWall')
-            for _, keyWall in ipairs(keyWalls) do
-                if keyWall then
-                    LetterUtils.styleImageLabelsInBlock(keyWall, {Visible = false})
-                    keyWall.CanCollide = false
-                    keyWall.Transparency = 1
-                end
+            for _, wordObj in ipairs(wordMenuState.renderedWords) do
+                callBack(wordMenuState)
             end
         end
     end
