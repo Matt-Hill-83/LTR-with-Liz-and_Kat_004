@@ -1,5 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
+
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+local Constants = require(Sss.Source.Constants.Constants)
 
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
@@ -206,6 +208,11 @@ function module.rodIsValid(rod)
         end
     end
 
+    if isValid then
+        table.insert(Constants.validRods, rod)
+        table.insert(Constants.validRodAttachments, rod.Attachment0)
+        table.insert(Constants.validRodAttachments, rod.Attachment1)
+    end
     return isValid
 end
 
@@ -231,6 +238,8 @@ function module.initBridges(props)
         local rodValid = module.rodIsValid(rod)
 
         if rodValid then
+            table.insert(Constants.validRods, rod)
+
             local bridge =
                 module.createBridge(
                 {
@@ -240,7 +249,7 @@ function module.initBridges(props)
                     parentFolder = parentFolder
                 }
             )
-            rod:Destroy()
+            -- rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
@@ -304,7 +313,7 @@ function module.initBridges2(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            -- rod:Destroy()
+            rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
@@ -379,7 +388,7 @@ function module.initBridges_64(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-            rod:Destroy()
+            -- rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(

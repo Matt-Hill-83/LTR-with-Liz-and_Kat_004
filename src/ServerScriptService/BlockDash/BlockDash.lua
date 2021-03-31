@@ -58,7 +58,6 @@ local function addBlockDash(sectorConfig)
         conveyorPadding = 1,
         currentLetterIndex = 1,
         foundLetters = {},
-        -- inActiveStyle = "BD_Pink", -- Rack starts with this one:
         inActiveStyle = 'BD_not_available', -- Rack starts with this one:
         initCompleted = false,
         islandPositioner = islandPositioner,

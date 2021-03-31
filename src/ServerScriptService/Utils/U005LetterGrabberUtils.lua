@@ -9,6 +9,8 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
+local HandleGrab = require(Sss.Source.LetterGrabber.HandleGrab)
+
 local module = {}
 
 local function getSortedBlocks(tool2)
@@ -146,11 +148,13 @@ local function wordFound(tool, player)
     end
 end
 
-local function partTouched(touchedBlock, player)
+function module.partTouched(touchedBlock, player)
     local tool = Utils.getActiveTool(player, 'LetterGrabber')
     if not tool then
         return
     end
+
+    HandleGrab.onGrabLetter()
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
     if activeBlock then
@@ -206,7 +210,6 @@ local function partTouched(touchedBlock, player)
 end
 
 module.getActiveLetterGrabberBlock = getActiveLetterGrabberBlock
-module.partTouched = partTouched
 module.resetBlocks = resetBlocks
 module.setActiveLetterGrabberBlock = setActiveLetterGrabberBlock
 module.styleLetterGrabberBlocks = styleLetterGrabberBlocks

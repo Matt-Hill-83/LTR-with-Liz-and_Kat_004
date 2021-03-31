@@ -34,14 +34,19 @@ local function findFirstMatchingLetterBlock(foundChar, miniGameState)
     return matchingLetter
 end
 
-local function onSelectRackBlock(clickedLetter, miniGameState, player)
+function module.onGrabLetter(clickedLetter, miniGameState, player)
+    print('onGrabLetter' .. ' - start')
+    print('miniGameState' .. ' - start')
+    print(miniGameState)
+
+    if true then
+        return
+    end
+
     if module.processing == true then
         return
     end
     module.processing = true
-    print('onSelectRackBlock' .. ' - start')
-    print('miniGameState' .. ' - start')
-    print(miniGameState)
 
     local sectorFolder = miniGameState.sectorFolder
 
@@ -256,5 +261,4 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
     module.processing = false
 end
 
-module.onSelectRackBlock = onSelectRackBlock
 return module

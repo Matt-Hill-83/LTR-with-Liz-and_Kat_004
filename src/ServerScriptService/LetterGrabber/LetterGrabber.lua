@@ -194,7 +194,6 @@ function module.initLetterGrabber(props)
 
     newReplicator.Parent = parentFolder
     local newReplicatorPart = newReplicator.PrimaryPart
-    -- lettterGrabber.Name =  word
     lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
 
     applyDecalsToCharacterFromWord({part = lettterGrabber, word = word})
@@ -228,9 +227,5 @@ function module.initLetterGrabber(props)
     Replicator.initReplicator(newReplicator, afterReplication)
     return newReplicator
 end
-
--- function module.initLetterGrabber(props)
---     initSingle(props)
--- end
 
 return module

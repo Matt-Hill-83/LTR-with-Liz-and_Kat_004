@@ -19,8 +19,8 @@ end
 
 if isDev then
     activeSpawn = 'Spawn_Theater'
-    activeSpawn = 'Spawn_1'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_1'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
@@ -58,7 +58,9 @@ local module = {
     packageIds = packageIds,
     walkSpeed = gameConfig.walkSpeed,
     gameData = {letterGrabbers = {}},
-    startPlaceId = startPlaceId
+    startPlaceId = startPlaceId,
+    validRods = {},
+    validRodAttachments = {}
 }
 
 local islandLength = 36

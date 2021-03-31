@@ -9,6 +9,32 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.partIntersectsPoint(part, point, shape)
+    local delta = part.CFrame:pointToObjectSpace(point)
+    delta = Vector3.new(math.abs(delta.X), math.abs(delta.Y), math.abs(delta.Z))
+    local halfSize = part.Size / 2
+
+    -- shape = shape or shape == Enum.PartType.Block
+
+    if shape == Enum.PartType.Block then
+        local inX = delta.X <= halfSize.X
+        local inY = delta.Y <= halfSize.Y
+        local inZ = delta.Z <= halfSize.Z
+
+        return inX and inY and inZ
+    elseif shape == Enum.PartType.Ball then
+        local inR = delta.Magnitude <= halfSize.X
+
+        return inR
+    end
+end
+
+function module.isInsideBrick(position, brick)
+    local v3 = brick.CFrame:PointToObjectSpace(position)
+    return (math.abs(v3.X) <= brick.Size.X / 2) and (math.abs(v3.Y) <= brick.Size.Y / 2) and
+        (math.abs(v3.Z) <= brick.Size.Z / 2)
+end
+
 function module.cloneModel_old(props)
     local model = props.model
     local position = props.position

@@ -9,6 +9,8 @@ local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 
+local Constants = require(Sss.Source.Constants.Constants)
+
 local module = {}
 
 function module.initJunctions(props)
@@ -42,7 +44,7 @@ function module.initJunctions(props)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
-        local orbiterConfigs = hexConfig.orbiterConfigs or nil
+        -- local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
         -- if the 1st letter starts with c
         local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
@@ -55,6 +57,24 @@ function module.initJunctions(props)
                 templateName = bridgeTemplate
             }
         )
+    end
+
+    for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
+        local hexConfig = hexConfigs[hexIndex] or {}
+        -- local bridgeConfigs = hexConfig.bridgeConfigs or {}
+        local orbiterConfigs = hexConfig.orbiterConfigs or nil
+
+        -- if the 1st letter starts with c
+        -- local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
+
+        -- local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
+        -- Bridge.initBridges_64(
+        --     {
+        --         parentFolder = hexIslandFolder,
+        --         bridgeConfigs = bridgeConfigs,
+        --         templateName = bridgeTemplate
+        --     }
+        -- )
 
         LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
@@ -94,6 +114,23 @@ function module.initJunctions(props)
                 }
             )
 
+            local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
+
+            for _, wallPositioner in ipairs(wallPositioners) do
+                local faceHasBridge = false
+                for _, point in ipairs(Constants.validRodAttachments) do
+                    local intersects = Utils.isInsideBrick(point.WorldPosition, wallPositioner)
+
+                    if intersects then
+                        faceHasBridge = true
+                    end
+                end
+                if faceHasBridge == true then
+                    print('found')
+                    wallPositioner.BrickColor = BrickColor.new('Maroon')
+                end
+            end
+
             local function getWallProps(wall)
                 local invisiWallProps = {
                     thickness = 1,
@@ -126,7 +163,7 @@ function module.initJunctions(props)
             for _, wall in ipairs(leftWalls) do
                 InvisiWall.setInvisiWallLeft(getWallProps(wall))
             end
-            positioner:Destroy()
+            -- positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
             -- local material = hexConfig.material or Enum.Material.Grass
