@@ -123,15 +123,12 @@ function module.initJunctions(props)
                 for _, point in ipairs(Constants.validRodAttachments) do
                     local intersects =
                         Utils.partIntersectsPoint(wallPositioner, point.WorldPosition, Enum.PartType.Block)
-                    -- local intersects = Utils.isInsideBrick(point.WorldPosition, wallPositioner)
 
                     if intersects then
                         faceHasBridge = true
                     end
                 end
                 if not faceHasBridge then
-                    -- print('found')
-                    -- wallPositioner.BrickColor = BrickColor.new('Maroon')
                     table.insert(facesWithWalls, wallPositioner)
                 end
             end
@@ -160,16 +157,10 @@ function module.initJunctions(props)
             end
 
             local rightWalls = facesWithWalls
-            -- local rightWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallRight_Short'})
             for _, wall in ipairs(rightWalls) do
                 InvisiWall.setInvisiWallLeft(getWallProps(wall))
-                -- InvisiWall.setInvisiWallRight(getWallProps(wall))
             end
 
-            -- local leftWalls = Utils.getByTagInParent({parent = newHex, tag = 'InvisiWallLeft_Short'})
-            -- for _, wall in ipairs(leftWalls) do
-            --     InvisiWall.setInvisiWallLeft(getWallProps(wall))
-            -- end
             positioner:Destroy()
 
             Utils.anchorFreedParts(freeParts)
