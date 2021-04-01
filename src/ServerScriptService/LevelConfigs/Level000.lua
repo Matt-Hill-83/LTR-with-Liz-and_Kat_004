@@ -69,6 +69,27 @@ local c0r0 = {
             collideBlock = false,
             singleWord = '?????????~',
             discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 50,
+            angularVelocity = 0.2,
+            diameter = 780,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '?????????~',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 16,
+            angularVelocity = 0.5,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CATRATBAT',
+            discHeight = 1
         }
     }
 }
