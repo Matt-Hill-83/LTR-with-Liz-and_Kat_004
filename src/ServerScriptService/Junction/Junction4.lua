@@ -55,6 +55,7 @@ function module.initJunctions(props)
             {
                 parentFolder = hexIslandFolder,
                 bridgeConfigs = bridgeConfigs,
+                levelConfig = levelConfig,
                 templateName = bridgeTemplate
             }
         )

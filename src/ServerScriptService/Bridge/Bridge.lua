@@ -7,6 +7,7 @@ local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
@@ -42,6 +43,7 @@ function module.createBridge2(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
+    local char = props.char
 
     local offsetY = 15
     -- local offsetY = 12
@@ -110,8 +112,8 @@ function module.createBridge2(props)
         {
             parentFolder = newBridge,
             blockTemplate = blockTemplate,
-            char = 'Z'
-            -- char = char or '?'
+            -- char = 'Z'
+            char = char or '?'
         }
     )
     return newBridge
@@ -203,6 +205,7 @@ end
 function module.initBridges_64(props)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
+    local levelConfig = props.levelConfig
     local templateName = props.templateName or 'Bridge'
 
     local rods =
@@ -215,11 +218,27 @@ function module.initBridges_64(props)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
+    --
+    --
+    local signTargetWords = levelConfig.getTargetWords()[1]
+    local words = {}
+    for _, word in ipairs(signTargetWords) do
+        table.insert(words, word.word)
+    end
+
+    local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #rods})
+    --
+    --
+    --
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[rodIndex] or {}
 
         local rodValid = module.rodIsValid(rod)
+
+        -- use mod to cycle thru configs when there are more positioners than configs
+        local mod = (#letterMatrix + rodIndex - 1) % #letterMatrix
+        local char = letterMatrix[mod + 1]
 
         if rodValid then
             local bridge =
@@ -229,6 +248,7 @@ function module.initBridges_64(props)
                     p1 = rod.Attachment1.Parent.Position,
                     templateName = templateName,
                     parentFolder = parentFolder,
+                    char = char,
                     bridgeConfig = bridgeConfig
                 }
             )
