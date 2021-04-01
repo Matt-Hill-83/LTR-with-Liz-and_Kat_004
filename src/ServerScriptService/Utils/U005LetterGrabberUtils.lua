@@ -120,7 +120,9 @@ local function wordFound(tool, player)
             Utils.playSound(explosionSound, 0.5)
         end
 
-        if targetWordObj.found == targetWordObj.target then
+        -- don't give gem
+        if false then
+            -- if targetWordObj.found == targetWordObj.target then
             delay(1, destroyParts)
 
             local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')

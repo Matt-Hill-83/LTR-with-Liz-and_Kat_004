@@ -11,6 +11,7 @@ local activeSpawn
 -- local startPlaceId = '6477887663'
 -- main level
 local startPlaceId = '6358192824'
+local playAmbient = true
 
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then
@@ -20,8 +21,8 @@ end
 if isDev then
     activeSpawn = 'Spawn_Theater'
     activeSpawn = 'Spawn_Spiral'
-    activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_1'
+    activeSpawn = 'Spawn_Start'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
@@ -61,7 +62,8 @@ local module = {
     gameData = {letterGrabbers = {}},
     startPlaceId = startPlaceId,
     validRods = {},
-    validRodAttachments = {}
+    validRodAttachments = {},
+    playAmbient = playAmbient
 }
 
 local islandLength = 36

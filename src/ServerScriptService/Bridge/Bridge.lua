@@ -106,13 +106,15 @@ function module.createBridge2(props)
     module.createBridgeWalls(bridge2)
     module.createBridgeWalls(newBridge)
 
+    print('char' .. ' - start')
+    print(char)
+
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
     SingleStrays.initSingleStrays(
         {
             parentFolder = newBridge,
             blockTemplate = blockTemplate,
-            -- char = 'Z'
             char = char or '?'
         }
     )

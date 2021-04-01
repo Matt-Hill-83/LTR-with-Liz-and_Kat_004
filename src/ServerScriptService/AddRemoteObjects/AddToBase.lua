@@ -51,7 +51,7 @@ function module.initAnimalSounds2()
     local ambient = Utils.getFirstDescendantByName(workspace, 'Ambient')
 
     if Constants.gameConfig.isDev then
-        ambient.Playing = false
+        ambient.Playing = Constants.playAmbient
     else
         ambient.Playing = true
     end
