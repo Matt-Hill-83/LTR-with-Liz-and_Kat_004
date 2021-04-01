@@ -31,13 +31,13 @@ function module.initJunctions(props)
 
     --
     --
-    local signTargetWords = levelConfig.getTargetWords()[1]
-    local words = {}
-    for _, word in ipairs(signTargetWords) do
-        table.insert(words, word.word)
-    end
+    -- local signTargetWords = levelConfig.getTargetWords()[1]
+    -- local words = {}
+    -- for _, word in ipairs(signTargetWords) do
+    --     table.insert(words, word.word)
+    -- end
 
-    local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
+    -- local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
     --
     --
     --
@@ -96,18 +96,18 @@ function module.initJunctions(props)
             )
 
             -- use mod to cycle thru configs when there are more positioners than configs
-            local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
-            local char = letterMatrix[mod + 1]
+            -- local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
+            -- local char = letterMatrix[mod + 1]
 
-            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-            SingleStrays.initSingleStrays(
-                {
-                    parentFolder = newHex,
-                    blockTemplate = blockTemplate,
-                    char = char or '?'
-                }
-            )
+            -- local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+            -- SingleStrays.initSingleStrays(
+            --     {
+            --         parentFolder = newHex,
+            --         blockTemplate = blockTemplate,
+            --         char = char or '?'
+            --     }
+            -- )
 
             local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 
