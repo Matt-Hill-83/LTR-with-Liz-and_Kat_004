@@ -46,7 +46,6 @@ function module.initJunctions(props)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
-        -- local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
         -- if the 1st letter starts with c
         local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
