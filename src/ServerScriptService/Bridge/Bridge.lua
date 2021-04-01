@@ -200,70 +200,6 @@ function module.rodIsValid(rod)
     return isValid
 end
 
-function module.initBridges(props)
-    local parentFolder = props.parentFolder
-    local bridgeConfigs = props.bridgeConfigs
-    local templateName = props.templateName or 'Bridge'
-
-    local rods =
-        Utils.getInstancesByNameStub(
-        {
-            nameStub = 'RodConstraint',
-            parent = parentFolder
-        }
-    )
-
-    Utils.sortListByObjectKey(rods, 'Name')
-
-    local bridges = {}
-    for rodIndex, rod in ipairs(rods) do
-        local bridgeConfig = bridgeConfigs[rodIndex] or {}
-
-        local rodValid = module.rodIsValid(rod)
-
-        if rodValid then
-            table.insert(Constants.validRods, rod)
-
-            local bridge =
-                module.createBridge(
-                {
-                    p0 = rod.Attachment0.Parent.Position,
-                    p1 = rod.Attachment1.Parent.Position,
-                    templateName = templateName,
-                    parentFolder = parentFolder
-                }
-            )
-            rod:Destroy()
-            local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
-            if bridgeConfig.item == 'Rink' then
-                Utils.convertItemAndChildrenToTerrain(
-                    {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
-                )
-
-                local rinkProps = {
-                    bridgeConfig = bridgeConfig,
-                    bridge = bridge,
-                    parentFolder = parentFolder,
-                    size = bridgeTop.Size
-                }
-                local newRink = Rink.addRink(rinkProps)
-            else
-                if bridgeConfig and bridgeConfig.material then
-                    Utils.convertItemAndChildrenToTerrain(
-                        {parent = bridgeTop, material = bridgeConfig.material, ignoreKids = false}
-                    )
-                else
-                    Utils.convertItemAndChildrenToTerrain(
-                        {parent = bridgeTop, material = Enum.Material.Grass, ignoreKids = true}
-                    )
-                end
-            end
-            table.insert(bridges, bridge)
-        end
-    end
-    return bridges
-end
-
 function module.initBridges_64(props)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
@@ -300,37 +236,6 @@ function module.initBridges_64(props)
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
-            -- --
-            -- --
-            -- --
-            -- local function getWallProps(wall)
-            --     local invisiWallProps = {
-            --         thickness = 1,
-            --         height = 16,
-            --         wallProps = {
-            --             Transparency = 0.6,
-            --             -- Transparency = 1,
-            --             BrickColor = BrickColor.new('Alder'),
-            --             Material = Enum.Material.Concrete,
-            --             CanCollide = true
-            --         },
-            --         shortHeight = 1,
-            --         shortWallProps = {
-            --             -- Transparency = 1,
-            --             Transparency = 0,
-            --             BrickColor = BrickColor.new('Plum'),
-            --             Material = Enum.Material.Cobblestone,
-            --             CanCollide = true
-            --         },
-            --         part = wall
-            --     }
-            --     return invisiWallProps
-            -- end
-
-            -- InvisiWall.setInvisiWallLeft(getWallProps(bridgeTop))
-            -- InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
-            --
-            --
             if bridgeConfig.item == 'Rink' then
                 Utils.convertItemAndChildrenToTerrain(
                     {parent = bridgeTop, material = 'Air', ignoreKids = true, canCollide = true}
