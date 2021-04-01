@@ -61,6 +61,12 @@ function module.initJunctions(props)
         )
     end
 
+    -- local hexIndex = 0
+    -- for subFolderIndex, subFolder in ipairs(hexIslandFolders) do
+    --     local subFolders = subFolder:getChildren()
+    --     for _, hexIslandFolder in ipairs(subFolders) do
+    --         hexIndex = hexIndex + 1
+
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local orbiterConfigs = hexConfig.orbiterConfigs or nil
