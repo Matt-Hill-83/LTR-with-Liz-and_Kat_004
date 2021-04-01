@@ -94,7 +94,7 @@ function module.initJunctions(props)
                     }
                 }
             )
-            -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_troll')
+
             -- use mod to cycle thru configs when there are more positioners than configs
             local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
             local char = letterMatrix[mod + 1]
