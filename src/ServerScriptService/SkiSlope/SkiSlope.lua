@@ -37,23 +37,23 @@ function module.initSlopes(props)
     --     newLetterBlock.CanCollide = false
     -- end
 
-    local positioners =
-        Utils.getByTagInParent(
-        {
-            parent = slope,
-            tag = 'LetterGrabberPositioner'
-        }
-    )
+    -- local positioners =
+    --     Utils.getByTagInParent(
+    --     {
+    --         parent = slope,
+    --         tag = 'LetterGrabberPositioner'
+    --     }
+    -- )
 
-    for _, positioner in ipairs(positioners) do
-        local grabbersConfig = {
-            word = positioner.Name,
-            parentFolder = slope,
-            positioner = positioner
-        }
+    -- for _, positioner in ipairs(positioners) do
+    --     local grabbersConfig = {
+    --         word = positioner.Name,
+    --         parentFolder = slope,
+    --         positioner = positioner
+    --     }
 
-        LetterGrabber.initLetterGrabber(grabbersConfig)
-    end
+    --     LetterGrabber.initLetterGrabber(grabbersConfig)
+    -- end
 end
 
 return module
