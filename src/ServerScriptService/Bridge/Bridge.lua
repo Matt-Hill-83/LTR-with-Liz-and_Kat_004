@@ -5,6 +5,7 @@ local Constants = require(Sss.Source.Constants.Constants)
 
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
@@ -217,15 +218,8 @@ function module.initBridges_64(props)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
-    --
-    --
-    local signTargetWords = levelConfig.getTargetWords()[1]
-    local words = {}
-    for _, word in ipairs(signTargetWords) do
-        table.insert(words, word.word)
-    end
+    local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #rods})
 
-    local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #rods})
     --
     --
     --

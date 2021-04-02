@@ -10,24 +10,24 @@ local Conveyor = require(Sss.Source.Conveyor.Conveyor)
 
 local module = {}
 
-local function initPowerUps(miniGameState)
-    local sectorFolder = miniGameState.sectorFolder
+-- local function initPowerUps(miniGameState)
+--     local sectorFolder = miniGameState.sectorFolder
 
-    local function onTouchAddBlocks(otherPart)
-        local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
-        if humanoid then
-            if not miniGameState.canResetBlocks then
-                miniGameState.canResetBlocks = true
-                InitLetterRack.initLetterRack(miniGameState)
-            end
-        end
-    end
+--     local function onTouchAddBlocks(otherPart)
+--         local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
+--         if humanoid then
+--             if not miniGameState.canResetBlocks then
+--                 miniGameState.canResetBlocks = true
+--                 InitLetterRack.initLetterRack(miniGameState)
+--             end
+--         end
+--     end
 
-    local addBlocks = Utils.getDescendantsByName(sectorFolder, 'AddBlocks')
-    for _, reset in ipairs(addBlocks) do
-        reset.Touched:Connect(onTouchAddBlocks)
-    end
-end
+--     local addBlocks = Utils.getDescendantsByName(sectorFolder, 'AddBlocks')
+--     for _, reset in ipairs(addBlocks) do
+--         reset.Touched:Connect(onTouchAddBlocks)
+--     end
+-- end
 
 local function addBlockDash(sectorConfig)
     -- local words = {sectorConfig.words[1]}
@@ -105,7 +105,7 @@ local function addBlockDash(sectorConfig)
     InitWord.initWords(miniGameState)
 
     LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
-    initPowerUps(miniGameState)
+    -- initPowerUps(miniGameState)
 end
 
 module.addBlockDash = addBlockDash

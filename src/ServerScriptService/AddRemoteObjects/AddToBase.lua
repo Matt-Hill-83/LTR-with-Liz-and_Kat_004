@@ -229,24 +229,24 @@ local function addRemoteObjects()
     print('levelConfig.hexSize' .. ' - start')
     print(levelConfig.hexSize)
 
-    if levelConfig.hexSize == 'small-001' then
-        Junction4.initJunctions(
-            {
-                parentFolder = level,
-                levelConfig = levelConfig,
-                hexTemplate = 'Hex_32_32_v1',
-                positionerName = 'Hex_32_32_pos_v2'
-            }
-        )
-        Junction4.initJunctions(
-            {
-                parentFolder = level,
-                levelConfig = levelConfig,
-                hexTemplate = 'Hex_128_32_v2',
-                positionerName = 'Hex_128_32_pos_v2'
-            }
-        )
-    end
+    -- if levelConfig.hexSize == 'small-001' then
+    Junction4.initJunctions(
+        {
+            parentFolder = level,
+            levelConfig = levelConfig,
+            hexTemplate = 'Hex_32_32_v1',
+            positionerName = 'Hex_32_32_pos_v2'
+        }
+    )
+    Junction4.initJunctions(
+        {
+            parentFolder = level,
+            levelConfig = levelConfig,
+            hexTemplate = 'Hex_128_32_v2',
+            positionerName = 'Hex_128_32_pos_v2'
+        }
+    )
+    -- end
 
     StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
     TestArea.configTestArea({parentFolder = level})
