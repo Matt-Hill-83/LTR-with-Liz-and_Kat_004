@@ -8,7 +8,7 @@ local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
-local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
+-- local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
@@ -109,13 +109,13 @@ function module.createBridge2(props)
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-    SingleStrays.initSingleStrays(
-        {
-            parentFolder = newBridge,
-            blockTemplate = blockTemplate,
-            char = char or '?'
-        }
-    )
+    -- SingleStrays.initSingleStrays(
+    --     {
+    --         parentFolder = newBridge,
+    --         blockTemplate = blockTemplate,
+    --         char = char or '?'
+    --     }
+    -- )
     return newBridge
 end
 
@@ -220,9 +220,6 @@ function module.initBridges_64(props)
 
     local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #rods})
 
-    --
-    --
-    --
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[rodIndex] or {}

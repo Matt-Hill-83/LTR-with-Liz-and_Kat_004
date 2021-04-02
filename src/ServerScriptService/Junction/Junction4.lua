@@ -7,7 +7,8 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
--- local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local Constants = require(Sss.Source.Constants.Constants)
 
@@ -29,18 +30,8 @@ function module.initJunctions(props)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
-    --
-    --
-    -- local signTargetWords = levelConfig.getTargetWords()[1]
-    -- local words = {}
-    -- for _, word in ipairs(signTargetWords) do
-    --     table.insert(words, word.word)
-    -- end
+    local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #hexIslandFolders})
 
-    -- local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #hexIslandFolders})
-    --
-    --
-    --
     print('hexIslandFolders' .. ' - start')
     print(hexIslandFolders)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
@@ -96,18 +87,18 @@ function module.initJunctions(props)
             )
 
             -- use mod to cycle thru configs when there are more positioners than configs
-            -- local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
-            -- local char = letterMatrix[mod + 1]
+            local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
+            local char = letterMatrix[mod + 1]
 
-            -- local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-            -- local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-            -- SingleStrays.initSingleStrays(
-            --     {
-            --         parentFolder = newHex,
-            --         blockTemplate = blockTemplate,
-            --         char = char or '?'
-            --     }
-            -- )
+            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+            SingleStrays.initSingleStrays(
+                {
+                    parentFolder = positioner,
+                    blockTemplate = blockTemplate,
+                    char = nil
+                }
+            )
 
             local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 

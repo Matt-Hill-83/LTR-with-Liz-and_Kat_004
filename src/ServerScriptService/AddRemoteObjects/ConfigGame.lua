@@ -52,40 +52,6 @@ function module.addMeetCreatorBadge()
     )
 end
 
-function module.addMeetCreatorBadge()
-    local badgeService = game:GetService('BadgeService')
-    local creatorBadgeId = 2124704156
-
-    local makerId = 304010153
-    local makerInGame = false -- This will go to true while the maker is in-game
-
-    game:GetService('Players').PlayerAdded:Connect(
-        function(plr)
-            if plr.UserId == makerId then
-                makerInGame = true -- Maker in game
-                local plrs = game:GetService('Players'):GetPlayers() -- Moved inside the event to get the up-to-date list
-                for i, v in pairs(plrs) do
-                    if not badgeService:UserHasBadgeAsync(v.UserId, creatorBadgeId) then
-                        badgeService:AwardBadge(v.UserId, creatorBadgeId) -- Added userId argument
-                    end
-                end
-            elseif makerInGame then -- If the new player isn't the maker, but the maker is in the game
-                if not badgeService:UserHasBadgeAsync(plr.UserId, creatorBadgeId) then
-                    badgeService:AwardBadge(plr.UserId, creatorBadgeId)
-                end
-            end
-        end
-    )
-
-    game:GetService('Players').PlayerRemoving:Connect(
-        function(plr)
-            if plr.UserId == makerId then
-                makerInGame = false -- Maker has left the building
-            end
-        end
-    )
-end
-
 function module.addMeetLizBadge()
     local badgeService = game:GetService('BadgeService')
     local creatorBadgeId = 2124704159
