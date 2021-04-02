@@ -25,6 +25,7 @@ local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local module = {}
 
@@ -264,6 +265,7 @@ local function addRemoteObjects()
     module.addConveyors(level, sectorConfigs)
 
     Theater.initTheaters({levelConfig = levelConfig, parentFolder = level})
+    Grabbers.initGrabbers({levelConfig = levelConfig, parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
