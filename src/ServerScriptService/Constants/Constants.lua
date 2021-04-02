@@ -12,8 +12,8 @@ local activeSpawn
 -- main level
 local startPlaceId = '6358192824'
 local playAmbient
-playAmbient = true
 playAmbient = false
+playAmbient = true
 
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then
@@ -25,6 +25,7 @@ if isDev then
     activeSpawn = 'Spawn_Spiral'
     activeSpawn = 'Spawn_1'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Snowflake'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
