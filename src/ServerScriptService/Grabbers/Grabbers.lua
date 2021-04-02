@@ -40,7 +40,6 @@ function module.getLetterMatrix(props)
 
     local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = numRods})
     return letterMatrix
-    -- local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = #rods})
 end
 
 function module.initPlayerGrabber(props)
@@ -49,18 +48,19 @@ function module.initPlayerGrabber(props)
 
     local miniGameState = {
         activeStyle = 'BD_available',
+        inActiveStyle = 'BD_not_available', -- Rack starts with this one:
+        --
         activeWord = nil,
         activeWordIndex = 1,
         availLetters = {},
         availWords = {},
         currentLetterIndex = 1,
         foundLetters = {},
-        inActiveStyle = 'BD_not_available', -- Rack starts with this one:
         initCompleted = false,
-        -- sectorConfig = sectorConfig,
         rackLetterBlockObjs = {},
-        -- rackLetterSize = rackLetterSize,
         renderedWords = {}
+        -- sectorConfig = sectorConfig,
+        -- rackLetterSize = rackLetterSize,
         -- sectorFolder = sectorFolder,
         -- wordLetterSize = 16,
     }

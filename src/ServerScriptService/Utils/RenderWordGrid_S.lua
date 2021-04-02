@@ -85,7 +85,7 @@ local renderGrid = function(props)
         local gemPoints = gameState.gemPoints
 
         if gemsFrame then
-            gemsFrame.Position = UDim2.new(0, displayWidth / 2, 0, 0)
+            gemsFrame.Position = UDim2.new(0, displayWidth * 0.75, 0, 0)
             gemsFrame.Size = UDim2.new(0, letterHeight * 4, 0, letterHeight * 2)
 
             local gemsImageLabel = Utils.getFirstDescendantByType(gemsFrame, 'ImageLabel')

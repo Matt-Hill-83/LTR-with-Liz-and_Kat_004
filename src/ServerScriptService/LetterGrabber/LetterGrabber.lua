@@ -18,13 +18,13 @@ local function configWordLetters(props)
     local wordNameStub = props.wordNameStub
 
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'LetterPositioner')
-    letterPositioner.Name = letterPositioner.Name .. 'aaaa'
+    -- letterPositioner.Name = letterPositioner.Name .. 'aaaa'
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
 
     local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
-    wordBench.Name = wordBench.Name .. 'yyyy'
+    -- wordBench.Name = wordBench.Name .. 'yyyy'
 
     local spacingFactorX = 0.05
     local letterGapX = letterBlockTemplate.Size.X * spacingFactorX
