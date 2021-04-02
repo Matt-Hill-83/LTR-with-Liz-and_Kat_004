@@ -11,7 +11,9 @@ local activeSpawn
 -- local startPlaceId = '6477887663'
 -- main level
 local startPlaceId = '6358192824'
-local playAmbient = true
+local playAmbient
+playAmbient = true
+playAmbient = false
 
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then

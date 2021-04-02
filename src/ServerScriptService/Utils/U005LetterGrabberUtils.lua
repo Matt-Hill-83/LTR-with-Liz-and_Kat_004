@@ -76,8 +76,6 @@ local function styleLetterGrabberBlocks(tool)
 end
 
 local function wordFound(tool, player)
-    -- local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
 
@@ -159,6 +157,8 @@ function module.partTouched(touchedBlock, player)
     -- HandleGrab.onGrabLetter({letterBlock = touchedBlock})
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
+    print('activeBlock' .. ' - start')
+    print(activeBlock)
     if activeBlock then
         local strayLetterChar = touchedBlock.Character.Value
         local activeLetterChar = activeBlock.Character.Value
