@@ -9,7 +9,6 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
--- local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
@@ -18,7 +17,6 @@ local Key = require(Sss.Source.Key.Key)
 local Theater = require(Sss.Source.Theater.Theater)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
--- local SkiSlope = require(Sss.Source.SkiSlope.SkiSlope)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
@@ -220,7 +218,6 @@ local function addRemoteObjects()
     ConfigRemoteEvents.configRemoteEvents()
 
     if isStartPlace then
-        -- ClearHex.initClearHexes({parentFolder = level})
         UniIsland.initUniIslands({parentFolder = level})
     end
 
@@ -252,7 +249,6 @@ local function addRemoteObjects()
     end
 
     StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
-    -- SkiSlope.initSlopes({parentFolder = level})
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --
