@@ -12,15 +12,7 @@ function module.initSingleStrays(props)
 
     -- populate specific letter gems
     local strayPositioners = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayPositioner'})
-    if #strayPositioners > 0 then
-        print('parentFolder' .. ' - start')
-        print(parentFolder)
-        print('strayPositioners' .. ' - start')
-        print('strayPositioners' .. ' - start')
-        print('strayPositioners' .. ' - start')
-        print('strayPositioners' .. ' - start')
-        print(strayPositioners)
-    end
+
     for _, positioner in ipairs(strayPositioners) do
         local char2 = nil
         if props.char then

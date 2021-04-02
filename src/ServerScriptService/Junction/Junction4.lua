@@ -94,7 +94,7 @@ function module.initJunctions(props)
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
             SingleStrays.initSingleStrays(
                 {
-                    parentFolder = positioner,
+                    parentFolder = positioner.Parent,
                     blockTemplate = blockTemplate,
                     char = nil
                 }
