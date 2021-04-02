@@ -52,7 +52,6 @@ function module.initStatueGates(props)
                             parentFolder = parentFolder,
                             keyName = 'Yellow',
                             width = 32
-                            -- noGem = noGem
                         }
 
                         local newDoor = Door.initDoor(doorProps)

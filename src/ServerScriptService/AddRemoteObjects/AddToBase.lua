@@ -9,7 +9,7 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
-local ClearHex = require(Sss.Source.ClearHex.ClearHex)
+-- local ClearHex = require(Sss.Source.ClearHex.ClearHex)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
@@ -220,13 +220,13 @@ local function addRemoteObjects()
     ConfigRemoteEvents.configRemoteEvents()
 
     if isStartPlace then
-        ClearHex.initClearHexes({parentFolder = level})
+        -- ClearHex.initClearHexes({parentFolder = level})
         UniIsland.initUniIslands({parentFolder = level})
     end
 
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
-    Door.initDoors({parentFolder = level})
-    Key.initKeys({parentFolder = level})
+    -- Door.initDoors({parentFolder = level})
+    -- Key.initKeys({parentFolder = level})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     print('levelConfig.hexSize' .. ' - start')
