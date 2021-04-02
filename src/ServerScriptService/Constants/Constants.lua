@@ -29,6 +29,7 @@ if isDev then
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
+    activeSpawn = 'Spawn_Snowflake'
 end
 
 local devGameConfig = {
@@ -77,6 +78,7 @@ local bridgeLength = bridgeBaseLength - 2 * bridgeOverlap
 module.islandLength = islandLength
 module.bridgeLength = bridgeLength
 module.totalIslandLength = islandLength + bridgeLength
+-- module.totalIslandLength = 128
 
 module.buttonLabels = {PrevPage = 'Prev Page', NextPage = 'Next Page'}
 return module
