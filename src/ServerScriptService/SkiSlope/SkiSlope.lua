@@ -10,7 +10,7 @@ local module = {}
 function module.initSlopes(props)
     local parentFolder = props.parentFolder
 
-    StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
+    -- StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
 
     local slope = parentFolder
 
