@@ -246,6 +246,15 @@ local function addRemoteObjects()
             positionerName = 'Hex_128_32_pos_v2'
         }
     )
+
+    Junction4.initJunctions(
+        {
+            parentFolder = level,
+            levelConfig = levelConfig,
+            hexTemplate = 'Hex_128_32_v3',
+            positionerName = 'Hex_128_32_pos_v2'
+        }
+    )
     -- end
 
     StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})

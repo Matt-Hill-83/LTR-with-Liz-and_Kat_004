@@ -41,6 +41,7 @@ function module.initJunctions(props)
         -- if the 1st letter starts with c
         local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
 
+        -- if the folder starts with a c, use a litle bridge
         local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
         Bridge.initBridges_64(
             {
