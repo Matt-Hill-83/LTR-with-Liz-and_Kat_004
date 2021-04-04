@@ -271,7 +271,6 @@ local function addRemoteObjects()
     local sectorConfigs = levelConfig.sectorConfigs
     module.addConveyors(level, sectorConfigs)
 
-    Theater.initTheaters({levelConfig = levelConfig, parentFolder = level})
     Grabbers.initGrabbers({levelConfig = levelConfig, parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
@@ -280,6 +279,7 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
+    Theater.initTheaters({parentFolder = level})
 
     -- Do this last after everything has been created/deleted
     ConfigGame.configGame({levelConfig = levelConfig})
