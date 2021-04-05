@@ -69,6 +69,11 @@ local c0r0 = {
             sentence = {'NOT', 'A', 'CAT'},
             character = 'katScared',
             songId = '6342102168'
+        },
+        Troll = {
+            sentence = {'TROLL', 'NEED', 'GOLD'},
+            character = 'babyTroll04'
+            -- songId = '6338745550'
         }
     },
     bridgeConfigs = {},

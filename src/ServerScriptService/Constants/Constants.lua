@@ -26,8 +26,8 @@ if isDev then
     activeSpawn = 'Spawn_1'
     activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_Theater'
-    activeSpawn = 'Spawn_Snowflake'
     activeSpawn = 'Spawn_UniPen'
+    activeSpawn = 'Spawn_Snowflake'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
