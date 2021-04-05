@@ -19,7 +19,7 @@ local petInfos = {
     },
     Uni_001 = {
         Model = uni_001,
-        PosOffset = Vector3.new(6, 0, 6), -- the attachment offset
+        PosOffset = Vector3.new(2, -2, 0), -- the attachment offset
         AlignPosMaxForce = 200000,
         AlignPosResponsiveness = 15,
         AlignOriResponsiveness = 20
@@ -174,9 +174,9 @@ function PetService:PlayerAdded(player)
     PetService:SetPet(player, PetService.PetInfos[pet]) -- set their pet, can be used outside of module, this is just here for testing
 
     local function characterAdded(character)
-        local pet = PetService.Pets[player]
+        local pet2 = PetService.Pets[player]
 
-        if pet and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
+        if pet2 and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
             createPet(player, character, pet)
         end
 
