@@ -10,10 +10,10 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
-local Door = require(Sss.Source.Door.Door)
+-- local Door = require(Sss.Source.Door.Door)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
 local Junction4 = require(Sss.Source.Junction.Junction4)
-local Key = require(Sss.Source.Key.Key)
+-- local Key = require(Sss.Source.Key.Key)
 local Theater = require(Sss.Source.Theater.Theater)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
@@ -27,6 +27,24 @@ local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local module = {}
+
+function module.initSheepSounds()
+    local unicorns = Utils.getDescendantsByName(workspace, 'Sheep-001-black')
+
+    for uniIndex, uni in ipairs(unicorns) do
+        local sound = Utils.getFirstDescendantByName(uni, 'Sound')
+
+        if sound then
+            local soundId = soundConstants.animalSounds.baaBaaBlackSheep.soundId
+            sound.SoundId = 'rbxassetid://' .. soundId
+            sound.Volume = 1
+            local timePosition = 10 % uniIndex
+
+            sound.TimePosition = timePosition
+            sound.Playing = true
+        end
+    end
+end
 
 function module.initAnimalSounds()
     local unicorns = Utils.getDescendantsByName(workspace, 'Horse_001')
@@ -221,7 +239,7 @@ local function addRemoteObjects()
         UniIsland.initUniIslands({parentFolder = level})
     end
 
-    StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
+    -- StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     -- Door.initDoors({parentFolder = level})
     -- Key.initKeys({parentFolder = level})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})

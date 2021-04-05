@@ -1,5 +1,7 @@
--- local module = {hexSize = 'normal'}
-local module = {hexSize = 'small-001'}
+local Sss = game:GetService('ServerScriptService')
+local Colors = require(Sss.Source.Constants.Const_02_Colors)
+
+local module = {}
 
 local sector1Config = {
     freezeConveyor = true,
@@ -56,7 +58,14 @@ module.sectorConfigs = sectorConfigs
 
 local c0r0 = {
     material = Enum.Material.Glacier,
-    statueConfigs = {},
+    statueConfigs = {
+        Liz = {
+            sentence = {'I', 'SEE', 'A', 'CAT'},
+            character = 'lizHappy',
+            -- songId = '6342102168',
+            keyColor = Colors.colors.yellow
+        }
+    },
     bridgeConfigs = {},
     orbiterConfigs = {
         {
@@ -344,7 +353,14 @@ local c1r6 = {
 
 local dummy = {
     material = Enum.Material.Glacier,
-    statueConfigs = {},
+    statueConfigs = {
+        Liz = {
+            sentence = {'I', 'SEE', 'A', 'CAT'},
+            character = 'lizHappy',
+            -- songId = '6342102168',
+            keyColor = Colors.colors.yellow
+        }
+    },
     bridgeConfigs = {},
     xxxbridgeConfigs = {
         {

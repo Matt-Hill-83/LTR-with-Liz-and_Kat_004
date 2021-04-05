@@ -51,6 +51,9 @@ local function initStatue(positionerModel, statusDef)
     local letterWidth = letterBlockTemplate.Size.X
     local wordSpacer = letterWidth
     local totalLetterWidth = letterWidth * 1.1
+    if not sentence then
+        return
+    end
     local sentenceLength = wordSpacer * #sentence - 1
 
     for _, word in ipairs(sentence) do

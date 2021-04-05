@@ -955,6 +955,379 @@ module.questConfigs = {
         gridSize = {rows = 1, cols = 5}
     },
     {
+        questTitle = '013 - Chocolate Milk',
+        startSceneCoords = {row = 0, col = 0},
+        endSceneCoords = {row = 0, col = 5},
+        sceneConfigs = {
+            {
+                name = 'swing',
+                frames = {
+                    {
+                        dialogs = {
+                            {
+                                char = 'liz2',
+                                text = 'Wait, your parents let you drink chocolate milk?'
+                            },
+                            {char = 'kat', text = 'Yeah, do yours?'},
+                            {
+                                char = 'liz2',
+                                text = 'Um heck no! Most certainly not!'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Wait! How have you never told me this?'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'I thought everyone’s parents let them drink chocolate milk.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'liz2',
+                                text = 'Oh please! My parents are like the sugar police.'
+                            },
+                            {char = 'kat', text = 'Wow!'},
+                            {
+                                char = 'liz2',
+                                text = 'Can we go over to your house and drink some?'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'I wish. My big brother drank it all. He’s a total milk-hog.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {row = 0, col = 0},
+                showBottomPath = false,
+                showRightPath = true,
+                showTopPath = false,
+                showLeftPath = false,
+                isEndScene = false,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 0
+            },
+            {
+                name = 'bees',
+                frames = {
+                    {
+                        dialogs = {
+                            {
+                                char = 'liz2',
+                                text = 'Oh rats! You are so lucky though! My mom says sugar rots your teeth.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Really? I thought that was cotton candy.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Yup, she read it on the internet.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Oh brother! Good luck with that.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {char = 'liz2', text = 'I know. Right?'},
+                            {
+                                char = 'kat',
+                                text = 'Hey have you ever heard of Marshmallow Fluff? My cousin Emily eats it. She showed me on Facetime.'
+                            },
+                            {char = 'liz2', text = 'Sounds cool! What is it?'},
+                            {
+                                char = 'kat',
+                                text = 'It’s like that Gloop that we made in summer camp.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'But you can eat it and it tastes like fairy magic.'
+                            },
+                            {
+                                char = 'kat',
+                                text = "You'll never want to eat real food again."
+                            },
+                            {char = 'liz2', text = 'We have to go to Boston!'},
+                            {char = 'kat', text = 'I know! For real!'}
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {row = 0, col = 1},
+                showBottomPath = false,
+                showRightPath = true,
+                showTopPath = false,
+                showLeftPath = true,
+                isEndScene = false,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 1
+            },
+            {
+                name = 'log',
+                frames = {
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'Hey, do you still have that Gloop we made?'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Sadly no. Mine grew green fuzz on it and we threw it in the compost.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Cool! That’s like something out of Zoe and Sassafras!'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'I know, I should have done some experiments with it.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'If you are Zoe, does that make me Sassafras?'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Yeah, you sit on my shoulder and talk in a made up language that only kids can understand.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'That’s not how Sassafrass talks. You’re thinking of Stick from TumbleLeaf.'
+                            },
+                            {char = 'liz2', text = 'No I’m not.'}
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {row = 0, col = 2},
+                showBottomPath = false,
+                showRightPath = true,
+                showTopPath = false,
+                showLeftPath = true,
+                isEndScene = false,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 2
+            },
+            {
+                name = 'pool',
+                frames = {
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'Well then, Pascal from Tangled.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Uh uh. Hello? I’m six years old, I think I know my TV shows.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Oh please! I’ve watched 10 times more TV than you have.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Sister, Don’t even go there! Name five Octonauts.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'Oh is this what we are doing now? Fine. Bring it. Kwazii, Barnacles, Dashi, Tunip and Professor Inkling.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Who is Kwazaii’s grandfather and where does he live?'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Trick question. He’s the pirate Calico Jack.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'But no one knows if he is still alive.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Because Kwazaii’s adventure up the Amazon River was just a dream.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Dang Kat! You’ve got skills!'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'You can really throw down TV.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {col = 3, row = 0},
+                showBottomPath = false,
+                showRightPath = true,
+                showTopPath = false,
+                showLeftPath = true,
+                isEndScene = false,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 3
+            },
+            {
+                name = 'stump',
+                frames = {
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'Yeah, my cousins figured the password to their mom’s ipad.'
+                            },
+                            {char = 'liz2', text = 'What?'},
+                            {
+                                char = 'kat',
+                                text = 'We watched like every show on Netflix.'
+                            },
+                            {char = 'liz2', text = 'But....how?'},
+                            {
+                                char = 'kat',
+                                text = 'Get this... her password was Emily’s birthday.'
+                            },
+                            {
+                                char = 'liz2',
+                                text = 'Oh man! I wish I had parents like that!'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'kat',
+                                text = 'I know! That’s like on page 1 of the Kid Book.'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'She must be a first time parent...'
+                            },
+                            {
+                                char = 'kat',
+                                text = 'Anyways, I’m sorry to be the one to tell you this, but Sassafrass talks like a regular normal cat.'
+                            },
+                            {char = 'liz2', text = 'No way.'},
+                            {
+                                char = 'kat',
+                                text = 'He’s basically the same as Cat from Peg + Cat.'
+                            },
+                            {char = 'kat', text = 'Or Bartleby in True.'}
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {row = 0, col = 4},
+                showBottomPath = false,
+                showRightPath = true,
+                showTopPath = false,
+                showLeftPath = true,
+                isEndScene = false,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 4
+            },
+            {
+                name = 'waterfall',
+                frames = {
+                    {
+                        dialogs = {
+                            {char = 'liz2', text = '1,2,3...'},
+                            {char = 'kat', text = 'Hey come on let’s go!'},
+                            {char = 'liz2', text = '...4,5,6...'},
+                            {char = 'kat', text = 'Yeah! What do ya know'}
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {char = 'liz2', text = '...7,8,9...'},
+                            {char = 'kat', text = 'What comes next?'},
+                            {
+                                char = 'liz2',
+                                text = '10! Yeah, you’re the best!'
+                            },
+                            {char = 'kat', text = 'I love you Peg.'},
+                            {char = 'liz2', text = 'I love you Kat.'}
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    },
+                    {
+                        dialogs = {
+                            {
+                                char = 'liz2',
+                                text = 'So, is it just in a regular container?'
+                            },
+                            {char = 'kat', text = 'What?'},
+                            {char = 'liz2', text = 'The chocolate milk.'},
+                            {
+                                char = 'kat',
+                                text = 'Yeah, we just keep it in the fridge. Like regular milk.'
+                            }
+                        },
+                        characters01 = {{name = 'kat'}, {name = 'liz2'}},
+                        characters02 = {{name = 'empty'}}
+                    }
+                },
+                coordinates = {row = 0, col = 5},
+                showBottomPath = false,
+                showRightPath = false,
+                showTopPath = false,
+                showLeftPath = true,
+                isEndScene = true,
+                isStartScene = true,
+                maxRow = 0,
+                maxCol = 5
+            }
+        },
+        gridSize = {rows = 1, cols = 6}
+    },
+    {
         questTitle = '005 - Kat Calls the Whaaa-mbulance',
         startSceneCoords = {col = 0, row = 0},
         endSceneCoords = {row = 0, col = 2},
