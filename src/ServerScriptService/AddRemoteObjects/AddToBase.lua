@@ -239,7 +239,7 @@ local function addRemoteObjects()
         UniIsland.initUniIslands({parentFolder = level})
     end
 
-    -- StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
+    StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     -- Door.initDoors({parentFolder = level})
     -- Key.initKeys({parentFolder = level})
     PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
