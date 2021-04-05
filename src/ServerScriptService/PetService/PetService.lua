@@ -35,25 +35,11 @@ end
 
 -- creates a new pet model, and sets up the constraints
 local function createPet(player, character, petInfo)
-    print('createPet')
-    print('createPet')
-    print('createPet')
-    print('createPet')
     local petTag = getPetTag(player)
 
     local pet = petInfo.Model:Clone()
-    print('pet' .. ' - start')
-    print('pet' .. ' - start')
-    print('pet' .. ' - start')
-    print('pet' .. ' - start')
-    print(pet)
 
     local petPrimary = pet.PrimaryPart
-    print('petPrimary' .. ' - start')
-    print('petPrimary' .. ' - start')
-    print('petPrimary' .. ' - start')
-    print('petPrimary' .. ' - start')
-    print(petPrimary)
     local characterPrimary = character.PrimaryPart
 
     local alignPosAttachment0 = Instance.new('Attachment', petPrimary)
@@ -96,21 +82,10 @@ local function createPet(player, character, petInfo)
     alignPosition.Enabled = false
 
     local gameState = PlayerStatManager.getGameState(player)
-    print('gameState' .. ' - start')
-    print('gameState' .. ' - start')
-    print('gameState' .. ' - start')
-    print('gameState' .. ' - start')
-    print('gameState' .. ' - start')
-    print(gameState)
 
     gameState.pet = pet
 
     local gameState2 = PlayerStatManager.getGameState(player)
-    print('gameState2' .. ' - start')
-    print('gameState2' .. ' - start')
-    print('gameState2' .. ' - start')
-    print('gameState2' .. ' - start')
-    print(gameState2)
 
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
@@ -163,12 +138,8 @@ function PetService:PlayerAdded(player)
 
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
     local rand = Utils.genRandom(1, 2)
-    print('rand' .. ' - start')
-    print(rand)
     local pet = false and 'Corgi_001' or 'Uni_001'
     -- local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
-    print('pet' .. ' - start')
-    print(pet)
 
     -- PetService:SetPet(player, PetService.PetInfos.Corgi_001) -- set their pet, can be used outside of module, this is just here for testing
     PetService:SetPet(player, PetService.PetInfos[pet]) -- set their pet, can be used outside of module, this is just here for testing
