@@ -42,9 +42,16 @@ function module.createStray(char, parentFolder, props)
     return newLetterBlock
 end
 
-local function initStraysInRegions(props)
+function module.initStraysInRegions(props)
+    print('initStraysInRegions' .. ' - start')
+    print('initStraysInRegions' .. ' - start')
+    print('initStraysInRegions' .. ' - start')
+    print('initStraysInRegions' .. ' - start')
+
     local parentFolder = props.parentFolder
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
+    print('strayRegions' .. ' - start')
+    print(strayRegions)
 
     local words = {
         'CAT', --
@@ -116,7 +123,7 @@ function module.createLetterMatrix(props)
     return letterMatrix
 end
 
-local function initStraysInRegion(props)
+function module.initStraysInRegion(props)
     local numBlocks = props.numBlocks
     local words = props.words
     local region = props.region
@@ -178,9 +185,5 @@ local function initStraysInRegion(props)
 
     return strays
 end
-
-module.initStraysInRegion = initStraysInRegion
--- module.createStray = createStray
-module.initStraysInRegions = initStraysInRegions
 
 return module
