@@ -15,6 +15,11 @@ local function initStatue(positionerModel, statusDef)
     local sentence = statusDef.sentence
     local character = statusDef.character
     local songId = statusDef.songId
+    print('statusDef' .. ' - start')
+    print('statusDef' .. ' - start')
+    print('statusDef' .. ' - start')
+    print('statusDef' .. ' - start')
+    print(statusDef)
 
     local newStatueScene = statueTemplate:Clone()
 

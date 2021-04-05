@@ -64,6 +64,11 @@ local c0r0 = {
             character = 'lizHappy',
             -- songId = '6342102168',
             keyColor = Colors.colors.yellow
+        },
+        Kat = {
+            sentence = {'NOT', 'A', 'CAT'},
+            character = 'katScared',
+            songId = '6342102168'
         }
     },
     bridgeConfigs = {},
@@ -359,6 +364,11 @@ local dummy = {
             character = 'lizHappy',
             -- songId = '6342102168',
             keyColor = Colors.colors.yellow
+        },
+        Kat = {
+            sentence = {'NOT', 'A', 'CAT'},
+            character = 'katScared',
+            songId = '6342102168'
         }
     },
     bridgeConfigs = {},

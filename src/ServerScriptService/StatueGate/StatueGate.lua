@@ -36,29 +36,33 @@ function module.initStatueGates(props)
                     local keyPositioner = keyPositioners[1]
 
                     local doorPositioners = Utils.getByTagInParent({parent = gate, tag = 'BasicDoorPositioner'})
-                    local doorPositioner = doorPositioners[1]
+                    if doorPositioners and doorPositioners[1] then
+                        local doorPositioner = doorPositioners[1]
 
-                    local dummy = Utils.getFirstDescendantByName(doorPositioner, 'Dummy')
-                    if dummy then
-                        dummy:Destroy()
+                        if doorPositioner then
+                            local dummy = Utils.getFirstDescendantByName(doorPositioner, 'Dummy')
+                            if dummy then
+                                dummy:Destroy()
+                            end
+
+                            local replicatorProps = {
+                                rewardTemplate = Utils.getFromTemplates('ColorKey'),
+                                positionerModel = keyPositioner,
+                                parentFolder = parentFolder
+                            }
+
+                            local doorProps = {
+                                positioner = doorPositioner.Positioner,
+                                parentFolder = parentFolder,
+                                keyName = 'Yellow',
+                                width = 32
+                            }
+
+                            local newDoor = Door.initDoor(doorProps)
+                            local newReplicator = Key.initKey(replicatorProps)
+                            Replicator.initReplicator(newReplicator)
+                        end
                     end
-
-                    local replicatorProps = {
-                        rewardTemplate = Utils.getFromTemplates('ColorKey'),
-                        positionerModel = keyPositioner,
-                        parentFolder = parentFolder
-                    }
-
-                    local doorProps = {
-                        positioner = doorPositioner.Positioner,
-                        parentFolder = parentFolder,
-                        keyName = 'Yellow',
-                        width = 32
-                    }
-
-                    local newDoor = Door.initDoor(doorProps)
-                    local newReplicator = Key.initKey(replicatorProps)
-                    Replicator.initReplicator(newReplicator)
                 end
             end
         end
