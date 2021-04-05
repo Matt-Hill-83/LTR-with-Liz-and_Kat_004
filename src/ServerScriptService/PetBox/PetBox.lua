@@ -60,6 +60,8 @@ function module.initPetBox(props)
                 sphere.CanCollide = false
                 sphere:Destroy()
                 petPart.CFrame = center.CFrame
+                local sound = Utils.getFirstDescendantByName(myPet, 'Sound')
+                sound.Playing = false
 
                 local bodyPos = petPart.BodyPosition
 

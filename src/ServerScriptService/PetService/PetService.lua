@@ -19,7 +19,7 @@ local petInfos = {
     },
     Uni_001 = {
         Model = uni_001,
-        PosOffset = Vector3.new(6, 6, 6), -- the attachment offset
+        PosOffset = Vector3.new(6, 0, 6), -- the attachment offset
         AlignPosMaxForce = 200000,
         AlignPosResponsiveness = 15,
         AlignOriResponsiveness = 20
@@ -165,7 +165,8 @@ function PetService:PlayerAdded(player)
     local rand = Utils.genRandom(1, 2)
     print('rand' .. ' - start')
     print(rand)
-    local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
+    local pet = false and 'Corgi_001' or 'Uni_001'
+    -- local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
     print('pet' .. ' - start')
     print(pet)
 
