@@ -32,8 +32,6 @@ function module.initJunctions(props)
 
     local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #hexIslandFolders})
 
-    print('hexIslandFolders' .. ' - start')
-    print(hexIslandFolders)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}

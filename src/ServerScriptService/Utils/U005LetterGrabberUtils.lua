@@ -184,10 +184,15 @@ function module.partTouched(touchedBlock, player)
                 wordFound(tool, player)
             end
 
+            local prevCanCollideValue = touchedBlock.CanCollide
+            print('prevCanCollideValue' .. ' - start')
+            print(prevCanCollideValue)
+
             local blockGroup = touchedBlock:GetAttribute('BlockGroup')
+            print('blockGroup' .. ' - start')
+            print(blockGroup)
             if blockGroup then
                 local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
-                local prevCanCollideValue = touchedBlock.CanCollide
                 touchedBlock.CanCollide = false
 
                 local function showLetter()
@@ -197,13 +202,15 @@ function module.partTouched(touchedBlock, player)
                 delay(2, showLetter)
             else
                 local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
-                local prevCanCollideValue = touchedBlock.CanCollide
+                -- local prevCanCollideValue = touchedBlock.CanCollide
                 touchedBlock.CanCollide = false
 
                 local function showLetter()
                     -- touchedBlock.Anchored = prevAnchoredValue
-                    touchedBlock.CanCollide = prevCanCollideValue
                     Utils.unhideHideItems({items = hiddenParts})
+                    print('prevCanCollideValue' .. ' - start')
+                    print(prevCanCollideValue)
+                    touchedBlock.CanCollide = prevCanCollideValue
                 end
                 delay(2, showLetter)
             end

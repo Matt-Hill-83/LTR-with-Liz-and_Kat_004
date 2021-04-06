@@ -188,14 +188,14 @@ local function anchorFreedParts(items)
     end
 end
 
-local function hideItemAndChildren2(props)
+function module.hideItemAndChildren2(props)
     local parent = props.item
     local hiddenParts = {}
 
     local function hideItem2(part)
         if part:IsA('BasePart') and part.Transparency ~= 1 then
             part.Transparency = 1
-            part.CanCollide = false
+            -- part.CanCollide = false
             table.insert(hiddenParts, part)
         end
         if part:IsA('Decal') and part.Transparency ~= 1 then
@@ -270,11 +270,11 @@ local function hideFrontLabels(parent)
     return hiddenParts
 end
 
-local function unhideHideItems(props)
+function module.unhideHideItems(props)
     local items = props.items
     for _, part in ipairs(items) do
         if part:IsA('BasePart') then
-            part.CanCollide = true
+        -- part.CanCollide = true
         end
         -- if part:FindFirstChild("CanCollide") then part.CanCollide = true end
         part.Transparency = 0
@@ -1017,8 +1017,8 @@ module.onTouchBlock = onTouchBlock
 module.getActiveTool = getActiveTool
 module.convertItemAndChildrenToTerrain = convertItemAndChildrenToTerrain
 
-module.hideItemAndChildren2 = hideItemAndChildren2
-module.unhideHideItems = unhideHideItems
+-- module.hideItemAndChildren2 = hideItemAndChildren2
+-- module.unhideHideItems = unhideHideItems
 module.unhideHideItems2 = unhideHideItems2
 
 module.onTouchHuman = onTouchHuman
