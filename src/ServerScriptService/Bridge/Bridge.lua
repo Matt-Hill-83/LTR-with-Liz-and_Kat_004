@@ -108,7 +108,7 @@ function module.createBridge2(props)
     module.createBridgeWalls(newBridge)
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-    local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+    local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
     SingleStrays.initSingleStrays(
         {
             parentFolder = newBridge,
