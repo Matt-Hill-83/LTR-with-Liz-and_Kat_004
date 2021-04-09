@@ -15,11 +15,6 @@ local function initStatue(positionerModel, statusDef)
     local sentence = statusDef.sentence
     local character = statusDef.character
     local songId = statusDef.songId
-    print('statusDef' .. ' - start')
-    print('statusDef' .. ' - start')
-    print('statusDef' .. ' - start')
-    print('statusDef' .. ' - start')
-    print(statusDef)
 
     local newStatueScene = statueTemplate:Clone()
 
@@ -129,8 +124,6 @@ end
 local function initStatues(props)
     local statusDefs = props.statusDefs
     local statuePositioners = CS:GetTagged('StatuePositioner')
-    print('statusDefs' .. ' - start')
-    print(statusDefs)
 
     for statueIndex, positionerModel in ipairs(statuePositioners) do
         local statusDef = statusDefs[(statueIndex % #statusDefs) + 1]

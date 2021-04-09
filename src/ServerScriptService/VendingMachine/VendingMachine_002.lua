@@ -18,11 +18,6 @@ function module.initVendingMachine_002(props)
     local tag = props.tag
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
-    print('vendingMachines' .. ' - start')
-    print('vendingMachines' .. ' - start')
-    print('vendingMachines' .. ' - start')
-    print('vendingMachines' .. ' - start')
-    print(vendingMachines)
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
@@ -35,8 +30,6 @@ function module.initVendingMachine_002(props)
         -- local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
         local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
         -- local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
-        print('signTargetWords----------------' .. ' - start')
-        print(signTargetWords)
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')
         local newFrame = mainFrame:Clone()
@@ -60,9 +53,6 @@ function module.initVendingMachine_002(props)
                 hideCounter = true
             }
         )
-
-        print('test.scrollingFrameSize' .. ' - start')
-        print(test.scrollingFrameSize)
 
         local pixelsPerStud2 = test.scrollingFrame.Parent.Parent.PixelsPerStud
         guiPart.Size =

@@ -23,7 +23,7 @@ local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
-local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+-- local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
@@ -243,28 +243,13 @@ local function addRemoteObjects()
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     -- Door.initDoors({parentFolder = level})
     -- Key.initKeys({parentFolder = level})
-    -- PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     print('levelConfig.hexSize' .. ' - start')
     print(levelConfig.hexSize)
 
-    -- if levelConfig.hexSize == 'small-001' then
-
-    -- end
-    print('teat')
-    print('teat')
-    print('teat')
-    print('teat')
-    print('teat')
     local regionsFolder = Utils.getFirstDescendantByName(level, 'Regions')
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
-
-    print('regions' .. ' - start')
-    print('regions' .. ' - start')
-    print('regions' .. ' - start')
-    print('regions' .. ' - start')
-    print(regions)
 
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]

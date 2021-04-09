@@ -9,39 +9,19 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local module = {}
 
 function module.initCardSwaps(props)
-    print('initCardSwaps')
-    print('initCardSwaps')
-    print('initCardSwaps')
-    print('initCardSwaps')
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
 
     local db = false
 
     local function onTouchWrapper(itemNum)
-        print('onTouchWrapper')
-        print('onTouchWrapper')
-        print('onTouchWrapper')
-        print('onTouchWrapper')
         local function onTouch(otherPart)
-            print('onTouch')
-            print('otherPart' .. ' - start')
-            print('otherPart' .. ' - start')
-            print('otherPart' .. ' - start')
-            print(otherPart)
-
             local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
             if db == false then
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
                     local targetWords = levelConfig.getTargetWords()[itemNum] or levelConfig.getTargetWords()[1]
-
-                    print('targetWords' .. ' - start')
-                    print('targetWords' .. ' - start')
-                    print('targetWords' .. ' - start')
-                    print('targetWords' .. ' - start')
-                    print(targetWords)
 
                     local gameState = PlayerStatManager.getGameState(player)
                     gameState.targetWords = targetWords
@@ -59,11 +39,6 @@ function module.initCardSwaps(props)
     Utils.sortListByObjectKey(items, 'Name')
 
     for itemNum, item in ipairs(items) do
-        print('item' .. ' - start')
-        print('item' .. ' - start')
-        print('item' .. ' - start')
-        print('item' .. ' - start')
-        print(item)
         item.Touched:Connect(onTouchWrapper(itemNum))
     end
 end

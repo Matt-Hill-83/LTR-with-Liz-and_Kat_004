@@ -43,15 +43,8 @@ function module.createStray(char, parentFolder, props)
 end
 
 function module.initStraysInRegions(props)
-    print('initStraysInRegions' .. ' - start')
-    print('initStraysInRegions' .. ' - start')
-    print('initStraysInRegions' .. ' - start')
-    print('initStraysInRegions' .. ' - start')
-
     local parentFolder = props.parentFolder
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
-    print('strayRegions' .. ' - start')
-    print(strayRegions)
 
     local words = {
         'CAT', --

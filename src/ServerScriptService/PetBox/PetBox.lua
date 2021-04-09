@@ -13,9 +13,15 @@ function module.initPetBox(props)
     local parentFolder = props.parentFolder
 
     local petBox = Utils.getFirstDescendantByName(parentFolder, 'PetBox')
+    print(petBox)
     if not petBox then
         return
     end
+    print('petBox' .. ' - start')
+    print('petBox' .. ' - start')
+    print('petBox' .. ' - start')
+    print('petBox' .. ' - start')
+    print(petBox)
 
     local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
     local center = Utils.getFirstDescendantByName(petBox, 'Center')
@@ -35,9 +41,6 @@ function module.initPetBox(props)
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
 
     local function onComplete(player)
-        print('onComplete')
-        print('onComplete')
-        print('onComplete')
         if player then
             local gameState3 = PlayerStatManager.getGameState(player)
             if gameState3.hasPet then

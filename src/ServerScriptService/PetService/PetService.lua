@@ -19,7 +19,7 @@ local petInfos = {
     },
     Uni_001 = {
         Model = uni_001,
-        PosOffset = Vector3.new(2, -2, 0), -- the attachment offset
+        PosOffset = Vector3.new(2, -2, 4), -- the attachment offset
         AlignPosMaxForce = 200000,
         AlignPosResponsiveness = 15,
         AlignOriResponsiveness = 20
