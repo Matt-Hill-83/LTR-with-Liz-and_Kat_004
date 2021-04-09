@@ -273,9 +273,9 @@ local function addRemoteObjects()
         -- VendingMachine.initVendingMachine(
         --     {tag = 'M-VendingMachine', parentFolder = level, levelConfig = config, nextLevelId = nextLevelId}
         -- )
-        -- VendingMachine2.initVendingMachine_002(
-        --     {tag = 'M-VendingMachine-003', parentFolder = level, levelConfig = config, nextLevelId = nextLevelId}
-        -- )
+        VendingMachine2.initVendingMachine_002(
+            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
+        )
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex})
         Junction4.initJunctions(

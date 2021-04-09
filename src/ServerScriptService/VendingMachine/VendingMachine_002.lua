@@ -8,7 +8,6 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local RenderWordGrid = require(Sss.Source.Utils.RenderWordGrid_S)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
--- local ReplicatorFactory = require(Sss.Source.ReplicatorFactory.ReplicatorFactory)
 
 local module = {}
 
@@ -33,8 +32,9 @@ function module.initVendingMachine_002(props)
         if not levelConfig.vendingMachines then
             return
         end
-        local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
-        local signTargetWords = levelConfig.getTargetWords()[targetWordIndex][1]
+        -- local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
+        local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
+        -- local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
         print('signTargetWords----------------' .. ' - start')
         print(signTargetWords)
 
