@@ -24,6 +24,7 @@ local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local module = {}
@@ -283,6 +284,10 @@ local function addRemoteObjects()
     --
     VendingMachine.initVendingMachine(
         {tag = 'M-VendingMachine', parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId}
+    )
+    --
+    VendingMachine2.initVendingMachine_002(
+        {tag = 'M-VendingMachine-003', parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId}
     )
     CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 

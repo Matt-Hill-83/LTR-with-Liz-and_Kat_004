@@ -701,7 +701,7 @@ module.hexIslandConfigs = hexIslandConfigs
 function module.getTargetWords()
     return {
         {
-            {word = 'CAT', target = 1, found = 0}
+            {word = 'CAT', target = 2, found = 0}
         }
         -- {
         --     {word = 'RAT', target = 1, found = 0},
