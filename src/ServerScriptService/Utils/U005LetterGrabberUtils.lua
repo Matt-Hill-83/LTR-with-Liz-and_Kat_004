@@ -9,7 +9,7 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
-local HandleGrab = require(Sss.Source.LetterGrabber.HandleGrab)
+-- local HandleGrab = require(Sss.Source.LetterGrabber.HandleGrab)
 
 local module = {}
 
@@ -85,6 +85,8 @@ local function wordFound(tool, player)
 
     local gameState = PlayerStatManager.getGameState(player)
     local targetWords = gameState.targetWords
+    print('targetWords' .. ' - start')
+    print(targetWords)
     if not targetWords then
         return
     end

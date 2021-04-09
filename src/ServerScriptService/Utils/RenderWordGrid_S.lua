@@ -46,7 +46,8 @@ local renderGrid = function(props)
     local rowGapY = paddingInPx / 2
     local rowHeight = letterHeight
     local totalRowHeight = letterHeight + rowGapY
-    local foundLabelWidth = letterWidth * 2
+    local foundLabelWidth = letterWidth * 1
+    -- local foundLabelWidth = letterWidth * 2
     local totalFoundLabelWidth = foundLabelWidth + paddingInPx
     local wordWidth = (lettersInWord * letterWidth) + (lettersInWord - 1) * letterGapX
 
