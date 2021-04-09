@@ -392,33 +392,59 @@ local dummy = {
     }
 }
 
-local hexIslandConfigs = {
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy
+local region01 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 1, found = 0}
+            }
+        }
+    end
 }
 
-local function getTargetWords01()
-    return {
-        {
-            {word = '111', target = 1, found = 0}
+local region02 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'BAT', target = 1, found = 0}
+            }
         }
-    }
-end
+    end
+}
 
-local region01 = {
+local region03 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region04 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         c0r0,
@@ -431,72 +457,40 @@ local region01 = {
         c1r5,
         c1r6
     },
-    getTargetWords = getTargetWords01
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 1, found = 0},
+                {word = 'BAT', target = 1, found = 0},
+                {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
 }
-
-local function getTargetWords02()
-    return {
-        {
-            {word = 'CAT', target = 1, found = 0}
-        }
-    }
-end
-
-local function getTargetWords03()
-    return {
-        {
-            {word = 'BAT', target = 1, found = 0}
-        },
-        {
-            {word = 'RAT', target = 1, found = 0}
-        }
-    }
-end
-
-local region02 = {
+local region05 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy
+        c0r0,
+        c0r0,
+        c0r0,
+        c1r1,
+        c1r2,
+        c1r3,
+        c1r4,
+        c1r5,
+        c1r6
     },
-    getTargetWords = getTargetWords02
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 1, found = 0},
+                {word = 'BAT', target = 1, found = 0},
+                {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
 }
 
-local region03 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
-    hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy
-    },
-    getTargetWords = getTargetWords03
-}
-
-module.regions = {region01, region02, region03}
+module.regions = {region01, region02, region03, region04, region05}
 
 return module
