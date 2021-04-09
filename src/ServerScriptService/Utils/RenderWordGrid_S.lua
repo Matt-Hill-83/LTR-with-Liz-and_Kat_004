@@ -165,6 +165,7 @@ local renderGrid = function(props)
         local gemWidth = gemHeight
         local gemImageRed = Utils.createImageUri(ImageConst.general.gem_purple_001.imageId)
         local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
+        local checkMark = Utils.createImageUri(ImageConst.general.check_mark_001.imageId)
 
         -- if not hideCounter then
         gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
@@ -173,7 +174,8 @@ local renderGrid = function(props)
         if item.found >= item.target then
             local newImageLabel = imageLabelGem:Clone()
             newImageLabel.Parent = newRow
-            newImageLabel.Image = gemImageRed
+            newImageLabel.Image = checkMark
+            -- newImageLabel.Image = gemImageRed
             newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
         else

@@ -377,51 +377,6 @@ local dummy = {
         }
     },
     bridgeConfigs = {},
-    xxxbridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {'ZZZ'},
-                words = {'YYY'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        }
-    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -438,246 +393,6 @@ local dummy = {
 }
 
 local hexIslandConfigs = {
-    c0r0,
-    c0r0,
-    c0r0,
-    c1r1,
-    c1r2,
-    c1r3,
-    c1r4,
-    c1r5,
-    c1r6,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
-    dummy,
     dummy,
     dummy,
     dummy,
@@ -695,20 +410,90 @@ local hexIslandConfigs = {
     dummy
 }
 
-module.vendingMachines = {{targetWordIndex = 1}}
-module.hexIslandConfigs = hexIslandConfigs
-
-function module.getTargetWords()
+local function getTargetWords01()
     return {
         {
-            {word = 'CAT', target = 2, found = 0}
+            {word = '111', target = 1, found = 0}
         }
-        -- {
-        --     {word = 'RAT', target = 1, found = 0},
-        --     {word = 'BAT', target = 1, found = 0},
-        --     {word = 'CAT', target = 1, found = 0}
-        -- }
     }
 end
+
+local region01 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        c0r0,
+        c0r0,
+        c0r0,
+        c1r1,
+        c1r2,
+        c1r3,
+        c1r4,
+        c1r5,
+        c1r6
+    },
+    getTargetWords = getTargetWords01
+}
+
+local function getTargetWords02()
+    return {
+        {
+            {word = '222', target = 1, found = 0}
+        }
+    }
+end
+
+local function getTargetWords03()
+    return {
+        {
+            {word = '333', target = 1, found = 0}
+        }
+    }
+end
+
+local region02 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = getTargetWords02
+}
+
+local region03 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = getTargetWords03
+}
+
+module.regions = {region01, region02, region03}
 
 return module

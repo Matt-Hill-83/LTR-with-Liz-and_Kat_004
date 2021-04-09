@@ -249,47 +249,70 @@ local function addRemoteObjects()
     print(levelConfig.hexSize)
 
     -- if levelConfig.hexSize == 'small-001' then
-    Junction4.initJunctions(
-        {
-            parentFolder = level,
-            levelConfig = levelConfig,
-            hexTemplate = 'Hex_32_32_v1',
-            positionerName = 'Hex_32_32_pos_v2'
-        }
-    )
-    Junction4.initJunctions(
-        {
-            parentFolder = level,
-            levelConfig = levelConfig,
-            hexTemplate = 'Hex_128_32_v2',
-            positionerName = 'Hex_128_32_pos_v2'
-        }
-    )
 
-    Junction4.initJunctions(
-        {
-            parentFolder = level,
-            levelConfig = levelConfig,
-            hexTemplate = 'Hex_128_32_v3',
-            positionerName = 'Hex_128_32_pos_v2'
-        }
-    )
     -- end
+    print('teat')
+    print('teat')
+    print('teat')
+    print('teat')
+    print('teat')
+    local regionsFolder = Utils.getFirstDescendantByName(level, 'Regions')
+    local regions = regionsFolder:GetChildren()
+    Utils.sortListByObjectKey(regions, 'Name')
 
-    StrayLetterBlocks.initStraysInRegions({parentFolder = workspace})
+    print('regions' .. ' - start')
+    print('regions' .. ' - start')
+    print('regions' .. ' - start')
+    print('regions' .. ' - start')
+    print(regions)
+
+    for regionIndex, region in ipairs(regions) do
+        local config = levelConfig.regions[regionIndex]
+
+        CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
+        -- VendingMachine.initVendingMachine(
+        --     {tag = 'M-VendingMachine', parentFolder = level, levelConfig = config, nextLevelId = nextLevelId}
+        -- )
+        -- VendingMachine2.initVendingMachine_002(
+        --     {tag = 'M-VendingMachine-003', parentFolder = level, levelConfig = config, nextLevelId = nextLevelId}
+        -- )
+
+        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex})
+        Junction4.initJunctions(
+            {
+                parentFolder = region,
+                levelConfig = config,
+                hexTemplate = 'Hex_32_32_v1',
+                positionerName = 'Hex_32_32_pos_v2',
+                regionIndex = regionIndex
+            }
+        )
+        Junction4.initJunctions(
+            {
+                parentFolder = region,
+                levelConfig = config,
+                hexTemplate = 'Hex_128_32_v2',
+                positionerName = 'Hex_128_32_pos_v2',
+                regionIndex = regionIndex
+            }
+        )
+
+        Junction4.initJunctions(
+            {
+                parentFolder = region,
+                levelConfig = config,
+                hexTemplate = 'Hex_128_32_v3',
+                positionerName = 'Hex_128_32_pos_v2',
+                regionIndex = regionIndex
+            }
+        )
+    end
+
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
     --
     --
     --
-    VendingMachine.initVendingMachine(
-        {tag = 'M-VendingMachine', parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId}
-    )
-    --
-    VendingMachine2.initVendingMachine_002(
-        {tag = 'M-VendingMachine-003', parentFolder = level, levelConfig = levelConfig, nextLevelId = nextLevelId}
-    )
-    CardSwap.initCardSwaps({parentFolder = level, levelConfig = levelConfig})
 
     local sectorConfigs = levelConfig.sectorConfigs
     module.addConveyors(level, sectorConfigs)
