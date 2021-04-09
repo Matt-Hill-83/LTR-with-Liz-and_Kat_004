@@ -168,53 +168,49 @@ local renderGrid = function(props)
         local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
         local checkMark = Utils.createImageUri(ImageConst.general.check_mark_001.imageId)
 
-        -- if not hideCounter then
-        gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
-        gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
+        if not hideCounter then
+            gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+            gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
-        if item.found >= item.target then
-            local newImageLabel = imageLabelGem:Clone()
-            newImageLabel.Parent = newRow
-            newImageLabel.Image = checkMark
-            -- newImageLabel.Image = gemImageRed
-            newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
-            newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
-        else
-            -- Only create blanks for as many as are required
-            local numGemsCreated = 0
+            if item.found >= item.target then
+                local newImageLabel = imageLabelGem:Clone()
+                newImageLabel.Parent = newRow
+                newImageLabel.Image = checkMark
+                -- newImageLabel.Image = gemImageRed
+                newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+                newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
+            else
+                -- Only create blanks for as many as are required
+                local numGemsCreated = 0
 
-            local numRow = 3
-            local numCol = 3
+                local numRow = 3
+                local numCol = 3
 
-            local gemNum = 1
-            for rowIndex = 0, numRow - 1 do
-                local positionY = rowIndex * gemHeight + 0
-                for colIndex = 0, numCol - 1 do
-                    if numGemsCreated < item.target then
-                        local positionX = colIndex * gemWidth + paddingInPx
-                        local newImageLabel = imageLabelGem:Clone()
-                        newImageLabel.Parent = newRow
+                local gemNum = 1
+                for rowIndex = 0, numRow - 1 do
+                    local positionY = rowIndex * gemHeight + 0
+                    for colIndex = 0, numCol - 1 do
+                        if numGemsCreated < item.target then
+                            local positionX = colIndex * gemWidth + paddingInPx
+                            local newImageLabel = imageLabelGem:Clone()
+                            newImageLabel.Parent = newRow
 
-                        local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
-                        newImageLabel.Image = gemImage
-                        newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
-                        newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
-                        gemNum = gemNum + 1
-                        numGemsCreated = numGemsCreated + 1
+                            local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
+                            newImageLabel.Image = gemImage
+                            newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
+                            newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
+                            gemNum = gemNum + 1
+                            numGemsCreated = numGemsCreated + 1
+                        end
                     end
                 end
             end
         end
-        -- end
         imageLabelGem.Visible = false
     end
     rowTemplate.Visible = false
     return {scrollingFrameSize = scrollingFrame.Size, scrollingFrame = scrollingFrame}
 end
-
--- function module.getGemFrame()
---     --
--- end
 
 module.renderGrid = renderGrid
 return module
