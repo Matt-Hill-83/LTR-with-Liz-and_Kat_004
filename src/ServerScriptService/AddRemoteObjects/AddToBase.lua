@@ -243,7 +243,7 @@ local function addRemoteObjects()
     StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     -- Door.initDoors({parentFolder = level})
     -- Key.initKeys({parentFolder = level})
-    PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
+    -- PetBox.initPetBox({parentFolder = level, levelConfig = levelConfig})
 
     print('levelConfig.hexSize' .. ' - start')
     print(levelConfig.hexSize)
@@ -276,6 +276,7 @@ local function addRemoteObjects()
         VendingMachine2.initVendingMachine_002(
             {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
         )
+        PetBox.initPetBox({parentFolder = region, levelConfig = config})
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex})
         Junction4.initJunctions(
