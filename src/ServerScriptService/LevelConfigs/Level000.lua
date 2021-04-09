@@ -446,6 +446,9 @@ local function getTargetWords03()
     return {
         {
             {word = 'BAT', target = 1, found = 0}
+        },
+        {
+            {word = 'RAT', target = 1, found = 0}
         }
     }
 end
