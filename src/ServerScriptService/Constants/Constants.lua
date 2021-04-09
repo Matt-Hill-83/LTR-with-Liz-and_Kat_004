@@ -28,11 +28,11 @@ if isDev then
     activeSpawn = 'Spawn_UniPen'
     activeSpawn = 'Spawn_Theater'
     activeSpawn = 'Spawn_Snowflake_1'
-    activeSpawn = 'Spawn_Snowflake_3'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
     activeSpawn = 'Spawn_Snowflake'
+    activeSpawn = 'Spawn_Snowflake_3'
 end
 
 local devGameConfig = {
