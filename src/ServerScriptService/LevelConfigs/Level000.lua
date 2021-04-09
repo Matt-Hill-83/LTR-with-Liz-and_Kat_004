@@ -437,7 +437,7 @@ local region01 = {
 local function getTargetWords02()
     return {
         {
-            {word = '222', target = 1, found = 0}
+            {word = 'CAT', target = 1, found = 0}
         }
     }
 end
@@ -445,7 +445,7 @@ end
 local function getTargetWords03()
     return {
         {
-            {word = '333', target = 1, found = 0}
+            {word = 'BAT', target = 1, found = 0}
         }
     }
 end
