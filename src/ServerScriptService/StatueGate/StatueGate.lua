@@ -12,13 +12,7 @@ function module.initStatueGates(props)
     local hexConfigs = props.configs or {}
     local parentFolder = props.parentFolder
 
-    -- local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
-    -- local hexIslandFolders = hexIslandFolderBox:getChildren()
-    -- Utils.sortListByObjectKey(hexIslandFolders, 'Name')
-
-    -- for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
     local hexConfig = hexConfigs[1] or nil
-    -- local hexConfig = hexConfigs[hexIndex] or {}
 
     if hexConfig then
         local statueConfigs = hexConfig.statueConfigs
