@@ -74,8 +74,10 @@ local function createPet(player, character, petInfo)
 
     local humRootPart = character.HumanoidRootPart
 
-    alignOrientation.Enabled = false
-    alignPosition.Enabled = false
+    alignOrientation.Enabled = true
+    alignPosition.Enabled = true
+    -- alignOrientation.Enabled = false
+    -- alignPosition.Enabled = false
 
     local gameState = PlayerStatManager.getGameState(player)
 
@@ -94,7 +96,7 @@ local function createPet(player, character, petInfo)
             delay(0.01, timerLoop)
         end
     end
-    -- timerLoop()
+    timerLoop()
 end
 
 -- deletes a player's pet model, using CS to retrieve any existing tagged pet
