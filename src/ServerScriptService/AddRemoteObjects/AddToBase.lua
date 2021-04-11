@@ -283,15 +283,15 @@ local function addRemoteObjects()
             }
         )
 
-        Junction4.initJunctions(
-            {
-                parentFolder = region,
-                levelConfig = config,
-                hexTemplate = 'Hex_128_32_v3',
-                positionerName = 'Hex_128_32_pos_v2',
-                regionIndex = regionIndex
-            }
-        )
+        -- Junction4.initJunctions(
+        --     {
+        --         parentFolder = region,
+        --         levelConfig = config,
+        --         hexTemplate = 'Hex_128_32_v3',
+        --         positionerName = 'Hex_128_32_pos_v2',
+        --         regionIndex = regionIndex
+        --     }
+        -- )
     end
 
     TestArea.configTestArea({parentFolder = level})
