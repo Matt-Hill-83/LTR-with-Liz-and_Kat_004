@@ -14,8 +14,21 @@ function module.initStatueGates(props)
 
     local hexConfig = hexConfigs[1] or nil
 
+    print('hexConfig' .. ' - start')
+    print('hexConfig' .. ' - start')
+    print('hexConfig' .. ' - start')
+    print('hexConfig' .. ' - start')
+    print('hexConfig' .. ' - start')
+    print(hexConfig)
+
     if hexConfig then
         local statueConfigs = hexConfig.statueConfigs
+
+        print('statueConfigs' .. ' - start')
+        print('statueConfigs' .. ' - start')
+        print('statueConfigs' .. ' - start')
+        print('statueConfigs' .. ' - start')
+        print(statueConfigs)
         if statueConfigs then
             local statueGates = Utils.getByTagInParent({parent = parentFolder, tag = 'StatueGate'})
             for _, gate in ipairs(statueGates) do
