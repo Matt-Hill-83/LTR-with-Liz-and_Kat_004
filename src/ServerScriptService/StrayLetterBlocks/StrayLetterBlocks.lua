@@ -46,14 +46,13 @@ function module.initStraysInRegions(props)
     local parentFolder = props.parentFolder
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
 
-    local words = {
-        'CAT', --
-        'RAT', --
-        'BAT' --
-        -- 'HAT', --
-        -- 'MAT', --
-        -- 'SAT' --
+    local defaultWords = {
+        'CAT',
+        'RAT',
+        'BAT'
     }
+
+    local words = props.words or defaultWords
 
     for _, region in ipairs(strayRegions) do
         local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
@@ -83,11 +82,14 @@ function module.initStraysInRegions(props)
 
             function module.initPuck(puck)
                 local thrust = Instance.new('BodyThrust', puck)
-                thrust.Force = Vector3.new(0, 0, 12000)
+                thrust.Force = Vector3.new(0, 0, 16000)
+
+                local angularVelocity = Utils.genRandom(1, 2, true)
 
                 local av = Instance.new('BodyAngularVelocity', puck)
                 av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
-                av.AngularVelocity = Vector3.new(0, 1, 0)
+                av.AngularVelocity = Vector3.new(0, angularVelocity, 0)
+                -- av.AngularVelocity = Vector3.new(0, 1, 0)
                 av.P = 1250
             end
             module.initPuck(stray)

@@ -560,9 +560,9 @@ local function disableEnabledWelds(part)
     return welds
 end
 
-function genRandom(min, max)
+function genRandom(min, max, float)
     local rand = min + math.random() * (max - min + 1)
-    return math.floor(rand)
+    return float and rand or math.floor(rand)
 end
 
 function module.clearTable(tbl)
