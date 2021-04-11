@@ -12,7 +12,7 @@ local corgi_001 = Utils.getFromTemplates('Corgi_002')
 local petInfos = {
     Corgi_001 = {
         Model = corgi_001,
-        PosOffset = Vector3.new(3, -3, 6), -- the attachment offset
+        PosOffset = Vector3.new(3, -3, 10), -- the attachment offset
         AlignPosMaxForce = 200000,
         AlignPosResponsiveness = 15,
         AlignOriResponsiveness = 20
@@ -68,11 +68,7 @@ local function createPet(player, character, petInfo)
     alignOrientation.Parent = petPrimary
 
     CS:AddTag(pet, petTag) -- to delete the pet when needed using :GetTagged()
-    -- if not petPrimary then
-    --     return
-    -- end
     petPrimary.CanCollide = false
-    -- petPrimary.CFrame = characterPrimary.CFrame -- moves the pet to the player initially so it doesnt have to fly across the map
     pet.Parent = workspace
     -- petPrimary:SetNetworkOwner(player) -- gives client control
 
@@ -85,7 +81,7 @@ local function createPet(player, character, petInfo)
 
     gameState.pet = pet
 
-    local gameState2 = PlayerStatManager.getGameState(player)
+    -- local gameState2 = PlayerStatManager.getGameState(player)
 
     local bodyPos = Instance.new('BodyPosition', petPrimary)
     bodyPos.MaxForce = Vector3.new(100000, 100000, 100000)
@@ -98,7 +94,7 @@ local function createPet(player, character, petInfo)
             delay(0.01, timerLoop)
         end
     end
-    timerLoop()
+    -- timerLoop()
 end
 
 -- deletes a player's pet model, using CS to retrieve any existing tagged pet
@@ -138,7 +134,8 @@ function PetService:PlayerAdded(player)
 
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
     local rand = Utils.genRandom(1, 2)
-    local pet = false and 'Corgi_001' or 'Uni_001'
+    local pet = true and 'Corgi_001' or 'Uni_001'
+    -- local pet = false and 'Corgi_001' or 'Uni_001'
     -- local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
 
     -- PetService:SetPet(player, PetService.PetInfos.Corgi_001) -- set their pet, can be used outside of module, this is just here for testing
