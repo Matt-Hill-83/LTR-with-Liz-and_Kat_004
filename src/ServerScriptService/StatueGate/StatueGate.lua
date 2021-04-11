@@ -24,7 +24,6 @@ function module.initStatueGates(props)
         local statueConfigs = hexConfig.statueConfigs
         if statueConfigs then
             local statueGates = Utils.getByTagInParent({parent = parentFolder, tag = 'StatueGate'})
-            -- local statueGates = Utils.getByTagInParent({parent = hexIslandFolder, tag = 'StatueGate'})
             for _, gate in ipairs(statueGates) do
                 local statuePositioners = Utils.getByTagInParent({parent = gate, tag = 'StatuePositioner'})
                 for _, statuePositioner in ipairs(statuePositioners) do

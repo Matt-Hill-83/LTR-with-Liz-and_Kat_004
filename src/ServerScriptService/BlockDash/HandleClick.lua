@@ -39,9 +39,6 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
         return
     end
     module.processing = true
-    print('onSelectRackBlock' .. ' - start')
-    print('miniGameState' .. ' - start')
-    print(miniGameState)
 
     local sectorFolder = miniGameState.sectorFolder
 
