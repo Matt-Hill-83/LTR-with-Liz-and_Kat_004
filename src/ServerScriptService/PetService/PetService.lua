@@ -138,8 +138,8 @@ function PetService:PlayerAdded(player)
 
     -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
     local rand = Utils.genRandom(1, 2)
-    local pet = true and 'Corgi_001' or 'Uni_001'
-    -- local pet = false and 'Corgi_001' or 'Uni_001'
+    -- local pet = true and 'Corgi_001' or 'Uni_001'
+    local pet = false and 'Corgi_001' or 'Uni_001'
     -- local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
 
     -- PetService:SetPet(player, PetService.PetInfos.Corgi_001) -- set their pet, can be used outside of module, this is just here for testing
