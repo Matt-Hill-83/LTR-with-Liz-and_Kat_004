@@ -69,8 +69,6 @@ function module.initVendingMachine(props)
         if not levelConfig.vendingMachines then
             return
         end
-        local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
-        -- local signTargetWords = levelConfig.getTargetWords()[targetWordIndex][1]
         local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
         print('signTargetWords----------------' .. ' - start')
         print(signTargetWords)

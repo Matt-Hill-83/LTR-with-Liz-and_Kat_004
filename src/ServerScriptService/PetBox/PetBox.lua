@@ -2,7 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
-local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
+local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine_002)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local PetService = require(Sss.Source.PetService.PetService)
 
@@ -84,8 +84,7 @@ function module.initPetBox(props)
         end
     end
 
-    VendingMachine.initVendingMachine(
-        -- {tag = 'M-VendingMachine_003', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
+    VendingMachine.initVendingMachine_002(
         {tag = 'M-VendingMachine_002', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
     )
 end

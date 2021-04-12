@@ -1,7 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
 local SGUI = game:GetService('StarterGui')
-local ServerStorage = game:GetService('ServerStorage')
-local Players = game:GetService('Players')
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
@@ -27,9 +25,7 @@ function module.initVendingMachine_002(props)
         if not levelConfig.vendingMachines then
             return
         end
-        -- local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
         local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
-        -- local signTargetWords = levelConfig.getTargetWords()[targetWordIndex]
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')
         local newFrame = mainFrame:Clone()

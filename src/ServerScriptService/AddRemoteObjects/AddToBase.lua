@@ -209,7 +209,6 @@ local function addRemoteObjects()
     print('isStartPlace' .. ' - start')
     print(isStartPlace)
     if isStartPlace then
-        -- mainLevelConfig  - xxxx
         if levelDefs and levelDefs[nextlLevelOrderIndex] then
             nextLevelId = levelDefs[nextlLevelOrderIndex]['id']
         end
@@ -255,12 +254,10 @@ local function addRemoteObjects()
         local config = levelConfig.regions[regionIndex]
 
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
-        -- VendingMachine.initVendingMachine(
-        --     {tag = 'M-VendingMachine', parentFolder = level, levelConfig = config, nextLevelId = nextLevelId}
-        -- )
-        -- VendingMachine2.initVendingMachine_002(
-        --     {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
-        -- )
+
+        VendingMachine2.initVendingMachine_002(
+            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
+        )
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex})
@@ -282,23 +279,10 @@ local function addRemoteObjects()
                 regionIndex = regionIndex
             }
         )
-
-        -- Junction4.initJunctions(
-        --     {
-        --         parentFolder = region,
-        --         levelConfig = config,
-        --         hexTemplate = 'Hex_128_32_v3',
-        --         positionerName = 'Hex_128_32_pos_v2',
-        --         regionIndex = regionIndex
-        --     }
-        -- )
     end
 
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
-    --
-    --
-    --
 
     local sectorConfigs = levelConfig.sectorConfigs
     module.addConveyors(level, sectorConfigs)
