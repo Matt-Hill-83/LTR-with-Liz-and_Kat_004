@@ -41,8 +41,12 @@ local function initReplicator(replicator, callBack, authFunction)
             return
         end
 
-        -- If it's not in the backpack and if you are not holding it, clone it
+        print('reward.Name' .. ' - start')
+        print(reward.Name)
+        -- If it's not in the backpack and if you are not holding it, clone it.
         local inBackpack = player.Backpack:FindFirstChild(reward.Name)
+        print('inBackpack' .. ' - start')
+        print(inBackpack)
 
         if player.Character then
             local humanoid = player.Character:FindFirstChildOfClass('Humanoid')
