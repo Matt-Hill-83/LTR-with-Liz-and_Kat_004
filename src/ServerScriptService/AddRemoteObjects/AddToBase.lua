@@ -227,7 +227,8 @@ local function addRemoteObjects()
     print('levelConfig' .. ' - start--------------------------------->>>>')
     print(levelConfig)
 
-    local hexIslandConfigs = levelConfig.hexIslandConfigs
+    -- local hexIslandConfigs = levelConfig.hexIslandConfigs
+    -- StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
 
     -- Do this after preconfig to avoid a race
     if isStartPlace then
@@ -239,12 +240,8 @@ local function addRemoteObjects()
         UniIsland.initUniIslands({parentFolder = level})
     end
 
-    StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
     -- Door.initDoors({parentFolder = level})
     -- Key.initKeys({parentFolder = level})
-
-    print('levelConfig.hexSize' .. ' - start')
-    print(levelConfig.hexSize)
 
     local regionsFolder = Utils.getFirstDescendantByName(level, 'Regions')
     local regions = regionsFolder:GetChildren()
@@ -253,6 +250,8 @@ local function addRemoteObjects()
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
 
+        -- local hexIslandConfigs = levelConfig.hexIslandConfigs
+        StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
         VendingMachine2.initVendingMachine_002(
