@@ -241,7 +241,6 @@ local function addRemoteObjects()
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
 
-        StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
         VendingMachine2.initVendingMachine_002(
@@ -268,6 +267,7 @@ local function addRemoteObjects()
                 regionIndex = regionIndex
             }
         )
+        StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
     end
 
     TestArea.configTestArea({parentFolder = level})
