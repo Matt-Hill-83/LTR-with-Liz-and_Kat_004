@@ -136,19 +136,17 @@ end
 function PetService:PlayerAdded(player)
     local petTag = getPetTag(player)
 
-    -- PetService:SetPet(player, PetService.PetInfos.Pet1) -- set their pet, can be used outside of module, this is just here for testing
     local rand = Utils.genRandom(1, 2)
     -- local pet = true and 'Corgi_001' or 'Uni_001'
     -- local pet = false and 'Corgi_001' or 'Uni_001'
     local pet = rand == 1 and 'Corgi_001' or 'Uni_001'
 
-    -- PetService:SetPet(player, PetService.PetInfos.Corgi_001) -- set their pet, can be used outside of module, this is just here for testing
     PetService:SetPet(player, PetService.PetInfos[pet]) -- set their pet, can be used outside of module, this is just here for testing
 
     local function characterAdded(character)
-        local pet = PetService.Pets[player]
+        local pet2 = PetService.Pets[player]
 
-        if pet and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
+        if pet2 and #CS:GetTagged(petTag) == 0 then -- if a pet is set and  no existing pet model exists, create one
             createPet(player, character, pet)
         end
 
