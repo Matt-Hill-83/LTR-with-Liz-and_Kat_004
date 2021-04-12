@@ -51,8 +51,12 @@ local renderGrid = function(props)
     local totalFoundLabelWidth = foundLabelWidth + paddingInPx
     local wordWidth = (lettersInWord * letterWidth) + (lettersInWord - 1) * letterGapX
 
-    local rowWidth = wordWidth + totalFoundLabelWidth
-
+    local rowWidth
+    if hideCounter then
+        rowWidth = wordWidth
+    else
+        rowWidth = wordWidth + totalFoundLabelWidth
+    end
     --  scroller stuff
     local scrollingFrame = Utils.getFirstDescendantByName(sgui, 'WordScroller')
     local scrollerWidth = rowWidth + scrollBarThickness + doublePad + 0
