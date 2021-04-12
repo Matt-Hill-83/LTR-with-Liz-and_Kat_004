@@ -222,14 +222,6 @@ local function addRemoteObjects()
         nextLevelId = startPlaceId
     end
 
-    print('nextLevelId' .. ' - start')
-    print(nextLevelId)
-    print('levelConfig' .. ' - start--------------------------------->>>>')
-    print(levelConfig)
-
-    -- local hexIslandConfigs = levelConfig.hexIslandConfigs
-    -- StatueGate.initStatueGates({parentFolder = level, configs = hexIslandConfigs})
-
     -- Do this after preconfig to avoid a race
     if isStartPlace then
         experienceStore:SetAsync('LevelDefs', levelDefs)
@@ -250,7 +242,6 @@ local function addRemoteObjects()
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
 
-        -- local hexIslandConfigs = levelConfig.hexIslandConfigs
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
