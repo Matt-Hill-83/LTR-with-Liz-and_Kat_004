@@ -15,6 +15,8 @@ local renderGrid = function(props)
     local hideCounter = props.hideCounter
     local player = props.player
 
+    print('props' .. ' - start')
+    print(props)
     local words = targetWords or {}
 
     local mainGui = sgui

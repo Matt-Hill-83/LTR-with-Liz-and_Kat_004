@@ -386,7 +386,7 @@ local dummy = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'fiona',
+            singleWord = 'CATBATRAT',
             discHeight = 1
         }
     }
@@ -475,6 +475,9 @@ local region03 = {
         return {
             {
                 {word = 'RAT', target = 1, found = 0}
+            },
+            {
+                {word = '222', target = 1, found = 0}
             }
         }
     end
@@ -504,30 +507,6 @@ local region04 = {
     end
 }
 
-local region05 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
-    hexIslandConfigs = {
-        c0r0,
-        c0r0,
-        c0r0,
-        c1r1,
-        c1r2,
-        c1r3,
-        c1r4,
-        c1r5,
-        c1r6
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'CAT', target = 1, found = 0},
-                {word = 'BAT', target = 1, found = 0},
-                {word = 'RAT', target = 1, found = 0}
-            }
-        }
-    end
-}
-
-module.regions = {region01, region02, region03, region04, region05}
+module.regions = {region01, region02, region03, region04}
 
 return module

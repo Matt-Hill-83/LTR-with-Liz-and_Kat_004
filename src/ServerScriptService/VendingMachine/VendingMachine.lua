@@ -40,6 +40,11 @@ function module.initTeleporter(part, nextLevelId)
 end
 
 function module.initVendingMachine(props)
+    print('initVendingMachine' .. ' - start')
+    print('initVendingMachine' .. ' - start')
+    print('initVendingMachine' .. ' - start')
+    print('initVendingMachine' .. ' - start')
+
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local nextLevelId = props.nextLevelId
@@ -47,6 +52,11 @@ function module.initVendingMachine(props)
     local tag = props.tag
 
     local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
+    print('vendingMachines' .. ' - start')
+    print('vendingMachines' .. ' - start')
+    print('vendingMachines' .. ' - start')
+    print('vendingMachines' .. ' - start')
+    print(vendingMachines)
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
@@ -60,7 +70,8 @@ function module.initVendingMachine(props)
             return
         end
         local targetWordIndex = levelConfig.vendingMachines[vendingMachineIndex]['targetWordIndex']
-        local signTargetWords = levelConfig.getTargetWords()[targetWordIndex][1]
+        -- local signTargetWords = levelConfig.getTargetWords()[targetWordIndex][1]
+        local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
         print('signTargetWords----------------' .. ' - start')
         print(signTargetWords)
 
@@ -75,15 +86,24 @@ function module.initVendingMachine(props)
 
         local mainFramePosition = UDim2.new(0, 0, 0, 0)
 
-        RenderWordGrid.renderGrid(
+        print('signTargetWords' .. ' - start')
+        print(signTargetWords)
+        local test =
+            RenderWordGrid.renderGrid(
             {
                 sgui = sgui,
                 targetWords = signTargetWords,
                 levelConfig = levelConfig,
                 displayHeight = displayHeight,
-                mainFramePosition = mainFramePosition
+                mainFramePosition = mainFramePosition,
+                hideCounter = true
             }
         )
+
+        print('test' .. ' - start')
+        print('test' .. ' - start')
+        print('test' .. ' - start')
+        print(test)
         if replicatorPositioner then
             local rewardTemplate = Utils.getFromTemplates('CupcakeToolTemplate')
             ReplicatorFactory.initReplicators(
@@ -92,11 +112,17 @@ function module.initVendingMachine(props)
         end
 
         local function hitBoxTouched(touchedBlock, player)
+            print('hitBoxTouched')
+            print('hitBoxTouched')
+            print('hitBoxTouched')
+            print('hitBoxTouched')
             local gameState = PlayerStatManager.getGameState(player)
             local targetWords = gameState.targetWords
             local gateOpened = false
 
             local cardComplete = true
+            print('cardComplete' .. ' - start')
+            print(cardComplete)
 
             for _, word in ipairs(targetWords) do
                 if word.found ~= word.target then

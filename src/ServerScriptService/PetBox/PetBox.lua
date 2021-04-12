@@ -41,6 +41,11 @@ function module.initPetBox(props)
     touchBox.Touched:Connect(Utils.onTouchHuman(touchBox, givePet))
 
     local function onComplete(player)
+        print('onComplete')
+        print('onComplete')
+        print('onComplete')
+        print('onComplete')
+        print('onComplete')
         if player then
             local gameState3 = PlayerStatManager.getGameState(player)
             if gameState3.hasPet then
@@ -80,6 +85,7 @@ function module.initPetBox(props)
     end
 
     VendingMachine.initVendingMachine(
+        -- {tag = 'M-VendingMachine_003', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
         {tag = 'M-VendingMachine_002', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
     )
 end

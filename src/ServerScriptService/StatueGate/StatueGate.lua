@@ -12,6 +12,9 @@ function module.initStatueGates(props)
     local hexConfigs = props.configs or {}
     local parentFolder = props.parentFolder
 
+    print('hexConfigs' .. ' - start')
+    print(hexConfigs)
+
     local hexConfig = hexConfigs[1] or nil
 
     print('hexConfig' .. ' - start')
