@@ -374,6 +374,11 @@ local dummy = {
             sentence = {'NOT', 'A', 'CAT'},
             character = 'katScared',
             songId = '6342102168'
+        },
+        Troll = {
+            sentence = {'TROLL', 'NEED', 'GOLD'},
+            character = 'babyTroll04',
+            songId = '6338745550'
         }
     },
     bridgeConfigs = {},
@@ -428,24 +433,6 @@ local region02 = {
 
 local region03 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
-    statueConfigs = {
-        Liz = {
-            sentence = {'I', 'SEE', 'A', 'CAT'},
-            character = 'lizHappy',
-            -- songId = '6342102168',
-            keyColor = Colors.colors.yellow
-        },
-        Kat = {
-            sentence = {'NOT', 'A', 'CAT'},
-            character = 'katScared',
-            songId = '6342102168'
-        },
-        Troll = {
-            sentence = {'TROLL', 'NEED', 'GOLD'},
-            character = 'babyTroll04'
-            -- songId = '6338745550'
-        }
-    },
     hexIslandConfigs = {
         dummy,
         dummy,

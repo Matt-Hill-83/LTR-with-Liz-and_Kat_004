@@ -23,7 +23,6 @@ local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
--- local VendingMachine = require(Sss.Source.VendingMachine.VendingMachine)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
