@@ -7,21 +7,17 @@ local sector1Config = {
     freezeConveyor = true,
     words = {
         'NAP',
-        'TAP',
+        -- 'TAP',
         'RAP',
         'ZAP',
-        'MAP',
-        'GAP',
-        'LAP'
+        'MAP'
+        -- 'GAP',
+        -- 'LAP'
     }
 }
 local sector2Config = {
     freezeConveyor = true,
     words = {
-        'CAT',
-        'BAT',
-        'RAT',
-        'HAT',
         'MAT',
         'BAT',
         'PAT',
@@ -40,17 +36,27 @@ local sector3Config = {
 local sector4Config = {
     freezeConveyor = true,
     words = {
-        'DAD',
+        -- 'DAD',
         'DOG',
         'HOG',
         'LOG',
         'BOG'
     }
 }
+local sector5Config = {
+    freezeConveyor = true,
+    words = {
+        'CAT',
+        'BAT',
+        'RAT',
+        'HAT'
+    }
+}
 
 local sectorConfigs = {
-    sector1Config,
+    sector5Config,
     sector2Config,
+    sector1Config,
     sector3Config,
     sector4Config
 }
