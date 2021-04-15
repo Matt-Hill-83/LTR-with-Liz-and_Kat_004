@@ -122,8 +122,8 @@ function module.configPlayers(props)
                 player = player
             }
 
-            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
-            humanoid:AddAccessory(acc)
+            -- LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            -- humanoid:AddAccessory(acc)
 
             --
             --
