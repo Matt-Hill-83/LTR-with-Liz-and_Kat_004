@@ -115,7 +115,6 @@ function module.configPlayers(props)
             local humanoid = character:WaitForChild('Humanoid')
 
             local acc = Utils.getFirstDescendantByName(workspace, 'LetterGrabberAcc')
-            humanoid:AddAccessory(acc)
             local letterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
             local grabbersConfig = {
                 word = 'RAT',
@@ -125,7 +124,13 @@ function module.configPlayers(props)
                 -- positioner = positioner
             }
 
-            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            local test = LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            print('test' .. ' - start')
+            print('test' .. ' - start')
+            print('test' .. ' - start')
+            print(test)
+            humanoid:AddAccessory(acc)
+
             --
             --
 

@@ -24,7 +24,6 @@ local function configWordLetters(props)
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
 
     local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
-    -- wordBench.Name = wordBench.Name .. 'yyyy'
 
     local spacingFactorX = 0.05
     local letterGapX = letterBlockTemplate.Size.X * spacingFactorX
@@ -128,8 +127,16 @@ local function configWordLetters(props)
         wordChars = word
     }
 
+    print('letterPositioner' .. ' - start')
+    print('letterPositioner' .. ' - start')
+    print('letterPositioner' .. ' - start')
+    print(letterPositioner)
+    letterPositioner.Name = 'sssss'
     letterPositioner:Destroy()
     letterPositioner.Transparency = 1
+    letterPositioner.Size = Vector3.new(0, 0, 0)
+    -- letterPositioner.Parent = nil
+    print(letterPositioner)
     return newWordObj
 end
 
@@ -191,7 +198,6 @@ local function onTouch2(grabber, player)
         end
 
         db.value = true
-        -- local player = Utils.getPlayerFromHumanoid(humanoid)
         Utils5.partTouched2(otherPart, player, grabber)
         db.value = false
     end
@@ -205,12 +211,6 @@ end
 
 function module.afterReplication2(grabber, player)
     local touchRegion = Utils.getFirstDescendantByName(grabber, 'TouchRegion')
-    print('touchRegion' .. ' - start')
-    print('touchRegion' .. ' - start')
-    print('touchRegion' .. ' - start')
-    print('touchRegion' .. ' - start')
-    print('touchRegion' .. ' - start')
-    print(touchRegion)
     touchRegion.Touched:Connect(onTouch2(grabber, player))
 end
 
@@ -219,7 +219,6 @@ function module.initLetterGrabber(props)
     local positioner = props.positioner
     local word = props.word
 
-    -- local template = Utils.getFromTemplates('GrabberReplicatorTemplate_002_horse')
     local template = Utils.getFromTemplates('GrabberReplicatorTemplate_001')
 
     local newReplicator = template:Clone()
@@ -295,6 +294,7 @@ function module.initLetterGrabberSimple(props)
     )
 
     module.afterReplication2(letterGrabber, player)
+    return letterGrabber
 end
 
 return module
