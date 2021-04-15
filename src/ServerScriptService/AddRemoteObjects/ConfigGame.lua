@@ -125,10 +125,6 @@ function module.configPlayers(props)
             }
 
             local test = LetterGrabber.initLetterGrabberSimple(grabbersConfig)
-            print('test' .. ' - start')
-            print('test' .. ' - start')
-            print('test' .. ' - start')
-            print(test)
             humanoid:AddAccessory(acc)
 
             --

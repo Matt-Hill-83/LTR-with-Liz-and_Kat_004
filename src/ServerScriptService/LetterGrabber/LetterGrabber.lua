@@ -127,16 +127,11 @@ local function configWordLetters(props)
         wordChars = word
     }
 
-    print('letterPositioner' .. ' - start')
-    print('letterPositioner' .. ' - start')
-    print('letterPositioner' .. ' - start')
-    print(letterPositioner)
     letterPositioner.Name = 'sssss'
     letterPositioner:Destroy()
     letterPositioner.Transparency = 1
     letterPositioner.Size = Vector3.new(0, 0, 0)
     -- letterPositioner.Parent = nil
-    print(letterPositioner)
     return newWordObj
 end
 
@@ -271,13 +266,6 @@ function module.initLetterGrabberSimple(props)
     local letterGrabber = props.letterGrabber
 
     letterGrabber.Name = letterGrabber.Name .. '-' .. word
-
-    print('letterGrabber' .. ' - start')
-    print('letterGrabber' .. ' - start')
-    print('letterGrabber' .. ' - start')
-    print('letterGrabber' .. ' - start')
-    print('letterGrabber' .. ' - start')
-    print(letterGrabber)
 
     applyDecalsToCharacterFromWord({part = letterGrabber, word = word})
     configWordLetters({part = letterGrabber, word = word, wordNameStub = ''})
