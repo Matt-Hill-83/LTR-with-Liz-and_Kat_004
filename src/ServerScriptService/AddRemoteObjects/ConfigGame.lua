@@ -3,6 +3,7 @@ local CS = game:GetService('CollectionService')
 local RS = game:GetService('ReplicatedStorage')
 local RunService = game:GetService('RunService')
 
+local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
 local MarketplaceService = game:GetService('MarketplaceService')
@@ -14,9 +15,6 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall)
 
 local module = {}
-
---
---
 
 function module.addMeetCreatorBadge()
     local badgeService = game:GetService('BadgeService')
@@ -114,6 +112,22 @@ function module.configPlayers(props)
             wait(2)
             targetWords = gameState.targetWords
         else
+            local humanoid = character:WaitForChild('Humanoid')
+
+            local acc = Utils.getFirstDescendantByName(workspace, 'LetterGrabberAcc')
+            humanoid:AddAccessory(acc)
+            local lettterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
+            local grabbersConfig = {
+                word = 'RAT',
+                lettterGrabber = lettterGrabber
+                -- parentFolder = parentFolder,
+                -- positioner = positioner
+            }
+
+            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            --
+            --
+
             targetWords = levelConfig.regions[1].getTargetWords()[1]
             print('targetWords------------------------>>>' .. ' - start')
             print(targetWords)

@@ -601,7 +601,6 @@ function getFirstDescendantByName(parent, name)
     for i = 1, #model do
         if model[i].Name == name then
             return model[i]
-        --
         end
     end
 end

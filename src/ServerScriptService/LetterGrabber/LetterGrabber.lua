@@ -192,7 +192,10 @@ function module.initLetterGrabber(props)
     local newReplicator = template:Clone()
     local lettterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
 
-    newReplicator.Parent = parentFolder
+    if parentFolder then
+        newReplicator.Parent = parentFolder
+    end
+
     local newReplicatorPart = newReplicator.PrimaryPart
     lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
 
@@ -210,22 +213,52 @@ function module.initLetterGrabber(props)
         }
     )
 
-    newReplicatorPart.CFrame =
-        Utils3.setCFrameFromDesiredEdgeOffset(
-        {
-            parent = positioner,
-            child = newReplicatorPart,
-            offsetConfig = {
-                useParentNearEdge = Vector3.new(-1, -1, -1),
-                useChildNearEdge = Vector3.new(-1, -1, -1),
-                offsetAdder = Vector3.new(0, 0, 0)
+    if positioner then
+        newReplicatorPart.CFrame =
+            Utils3.setCFrameFromDesiredEdgeOffset(
+            {
+                parent = positioner,
+                child = newReplicatorPart,
+                offsetConfig = {
+                    useParentNearEdge = Vector3.new(-1, -1, -1),
+                    useChildNearEdge = Vector3.new(-1, -1, -1),
+                    offsetAdder = Vector3.new(0, 0, 0)
+                }
             }
-        }
-    )
+        )
+    end
 
     newReplicatorPart.Anchored = true
     Replicator.initReplicator(newReplicator, afterReplication)
     return newReplicator
+end
+
+function module.initLetterGrabberSimple(props)
+    local word = props.word
+    local lettterGrabber = props.lettterGrabber
+
+    lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
+
+    print('lettterGrabber' .. ' - start')
+    print('lettterGrabber' .. ' - start')
+    print('lettterGrabber' .. ' - start')
+    print('lettterGrabber' .. ' - start')
+    print('lettterGrabber' .. ' - start')
+    print(lettterGrabber)
+
+    applyDecalsToCharacterFromWord({part = lettterGrabber, word = word})
+    configWordLetters({part = lettterGrabber, word = word, wordNameStub = ''})
+
+    local wordModel = lettterGrabber.Word
+
+    LetterUtils.createPropOnLetterBlock(
+        {
+            letterBlock = wordModel,
+            propName = 'TargetWord',
+            initialValue = word,
+            propType = 'StringValue'
+        }
+    )
 end
 
 return module

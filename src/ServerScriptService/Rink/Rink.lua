@@ -71,11 +71,8 @@ function module.addRink(props)
             positioner = positioner
         }
 
-        local newGrabber = LetterGrabber.initLetterGrabber(grabbersConfig)
+        LetterGrabber.initLetterGrabber(grabbersConfig)
         positioner:Destroy()
-        -- local grabberPart = newGrabber.PrimaryPart
-
-        -- grabberPart.CFrame = grabberPart.CFrame * CFrame.Angles(0, math.rad(180), 0)
     end
 
     local strayRegion = Utils.getFirstDescendantByName(rinkModel, 'StrayRegion')
