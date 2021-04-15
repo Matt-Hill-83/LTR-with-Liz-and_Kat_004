@@ -21,6 +21,7 @@ local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
+local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local TestArea = require(Sss.Source.TestArea.TestArea)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
@@ -237,6 +238,8 @@ local function addRemoteObjects()
     local regionsFolder = Utils.getFirstDescendantByName(level, 'Regions')
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
+
+    local unicornStore = UnicornStore.initUnicornStore({parentFolder = blockDash})
 
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]

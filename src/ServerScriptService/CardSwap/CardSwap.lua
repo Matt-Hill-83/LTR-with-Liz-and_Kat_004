@@ -9,6 +9,7 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local module = {}
 
 function module.initCardSwaps(props)
+    print('initCardSwaps')
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
 
@@ -39,6 +40,8 @@ function module.initCardSwaps(props)
     Utils.sortListByObjectKey(items, 'Name')
 
     for itemNum, item in ipairs(items) do
+        print('item' .. ' - start')
+        print(item)
         item.Touched:Connect(onTouchWrapper(itemNum))
     end
 end
