@@ -210,6 +210,68 @@ function module.partTouched(touchedBlock, player)
     end
 end
 
+function module.partTouched2(touchedBlock, player, grabber)
+    local tool = grabber
+    if not tool then
+        return
+    end
+
+    -- HandleGrab.onGrabLetter({letterBlock = touchedBlock})
+
+    local activeBlock = module.getActiveLetterGrabberBlock(tool)
+    if activeBlock then
+        local strayLetterChar = touchedBlock.Character.Value
+        local activeLetterChar = activeBlock.Character.Value
+
+        if strayLetterChar == activeLetterChar then
+            -- letter found
+            local gameState = PlayerStatManager.getGameState(player)
+
+            if not gameState.gemPoints then
+                gameState.gemPoints = 0
+            end
+            gameState.gemPoints = gameState.gemPoints + 1
+            local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+            updateWordGuiRE:FireClient(player)
+
+            activeBlock.IsFound.Value = true
+            activeBlock.IsActive.Value = false
+
+            module.styleLetterGrabberBlocks(tool)
+
+            local newActiveBlock = module.getActiveLetterGrabberBlock(tool)
+            if not newActiveBlock then
+                wordFound(tool, player)
+            end
+
+            local prevCanCollideValue = touchedBlock.CanCollide
+
+            local blockGroup = touchedBlock:GetAttribute('BlockGroup')
+            if blockGroup then
+                local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
+                touchedBlock.CanCollide = false
+
+                local function showLetter()
+                    touchedBlock.CanCollide = prevCanCollideValue
+                    Utils.unhideHideItems2({items = hiddenParts})
+                end
+                delay(2, showLetter)
+            else
+                local hiddenParts = Utils.hideItemAndChildren2({item = touchedBlock, hide = true})
+                -- local prevCanCollideValue = touchedBlock.CanCollide
+                touchedBlock.CanCollide = false
+
+                local function showLetter()
+                    -- touchedBlock.Anchored = prevAnchoredValue
+                    Utils.unhideHideItems({items = hiddenParts})
+                    touchedBlock.CanCollide = prevCanCollideValue
+                end
+                delay(2, showLetter)
+            end
+        end
+    end
+end
+
 module.getActiveLetterGrabberBlock = getActiveLetterGrabberBlock
 module.resetBlocks = resetBlocks
 module.setActiveLetterGrabberBlock = setActiveLetterGrabberBlock

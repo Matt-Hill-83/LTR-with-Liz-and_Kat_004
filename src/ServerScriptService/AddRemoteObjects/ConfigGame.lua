@@ -119,7 +119,8 @@ function module.configPlayers(props)
             local lettterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
             local grabbersConfig = {
                 word = 'RAT',
-                lettterGrabber = lettterGrabber
+                lettterGrabber = lettterGrabber,
+                player = player
                 -- parentFolder = parentFolder,
                 -- positioner = positioner
             }

@@ -176,9 +176,42 @@ local function onTouch(tool)
     return closure
 end
 
+local function onTouch2(grabber, player)
+    local db = {value = false}
+
+    local function closure(otherPart)
+        if not otherPart:FindFirstChild('Type') then
+            return
+        end
+        if otherPart.Type.Value ~= 'StrayLetter' then
+            return
+        end
+        if db.value == true then
+            return
+        end
+
+        db.value = true
+        -- local player = Utils.getPlayerFromHumanoid(humanoid)
+        Utils5.partTouched2(otherPart, player, grabber)
+        db.value = false
+    end
+    return closure
+end
+
 local function afterReplication(replicatedPart)
     local touchRegion = Utils.getFirstDescendantByName(replicatedPart, 'TouchRegion')
     touchRegion.Touched:Connect(onTouch(replicatedPart))
+end
+
+function module.afterReplication2(grabber, player)
+    local touchRegion = Utils.getFirstDescendantByName(grabber, 'TouchRegion')
+    print('touchRegion' .. ' - start')
+    print('touchRegion' .. ' - start')
+    print('touchRegion' .. ' - start')
+    print('touchRegion' .. ' - start')
+    print('touchRegion' .. ' - start')
+    print(touchRegion)
+    touchRegion.Touched:Connect(onTouch2(grabber, player))
 end
 
 function module.initLetterGrabber(props)
@@ -235,6 +268,7 @@ end
 
 function module.initLetterGrabberSimple(props)
     local word = props.word
+    local player = props.player
     local lettterGrabber = props.lettterGrabber
 
     lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
@@ -259,6 +293,8 @@ function module.initLetterGrabberSimple(props)
             propType = 'StringValue'
         }
     )
+
+    module.afterReplication2(lettterGrabber, player)
 end
 
 return module
