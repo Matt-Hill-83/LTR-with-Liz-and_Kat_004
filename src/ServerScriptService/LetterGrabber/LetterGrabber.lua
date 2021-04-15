@@ -223,19 +223,19 @@ function module.initLetterGrabber(props)
     local template = Utils.getFromTemplates('GrabberReplicatorTemplate_001')
 
     local newReplicator = template:Clone()
-    local lettterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
+    local letterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
 
     if parentFolder then
         newReplicator.Parent = parentFolder
     end
 
     local newReplicatorPart = newReplicator.PrimaryPart
-    lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
+    letterGrabber.Name = letterGrabber.Name .. '-' .. word
 
-    applyDecalsToCharacterFromWord({part = lettterGrabber, word = word})
-    configWordLetters({part = lettterGrabber, word = word, wordNameStub = ''})
+    applyDecalsToCharacterFromWord({part = letterGrabber, word = word})
+    configWordLetters({part = letterGrabber, word = word, wordNameStub = ''})
 
-    local wordModel = lettterGrabber.Word
+    local wordModel = letterGrabber.Word
 
     LetterUtils.createPropOnLetterBlock(
         {
@@ -269,21 +269,21 @@ end
 function module.initLetterGrabberSimple(props)
     local word = props.word
     local player = props.player
-    local lettterGrabber = props.lettterGrabber
+    local letterGrabber = props.letterGrabber
 
-    lettterGrabber.Name = lettterGrabber.Name .. '-' .. word
+    letterGrabber.Name = letterGrabber.Name .. '-' .. word
 
-    print('lettterGrabber' .. ' - start')
-    print('lettterGrabber' .. ' - start')
-    print('lettterGrabber' .. ' - start')
-    print('lettterGrabber' .. ' - start')
-    print('lettterGrabber' .. ' - start')
-    print(lettterGrabber)
+    print('letterGrabber' .. ' - start')
+    print('letterGrabber' .. ' - start')
+    print('letterGrabber' .. ' - start')
+    print('letterGrabber' .. ' - start')
+    print('letterGrabber' .. ' - start')
+    print(letterGrabber)
 
-    applyDecalsToCharacterFromWord({part = lettterGrabber, word = word})
-    configWordLetters({part = lettterGrabber, word = word, wordNameStub = ''})
+    applyDecalsToCharacterFromWord({part = letterGrabber, word = word})
+    configWordLetters({part = letterGrabber, word = word, wordNameStub = ''})
 
-    local wordModel = lettterGrabber.Word
+    local wordModel = letterGrabber.Word
 
     LetterUtils.createPropOnLetterBlock(
         {
@@ -294,7 +294,7 @@ function module.initLetterGrabberSimple(props)
         }
     )
 
-    module.afterReplication2(lettterGrabber, player)
+    module.afterReplication2(letterGrabber, player)
 end
 
 return module
