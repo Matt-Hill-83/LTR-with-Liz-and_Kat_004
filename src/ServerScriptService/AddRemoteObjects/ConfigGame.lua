@@ -120,11 +120,9 @@ function module.configPlayers(props)
                 word = 'RAT',
                 letterGrabber = letterGrabber,
                 player = player
-                -- parentFolder = parentFolder,
-                -- positioner = positioner
             }
 
-            local test = LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
             humanoid:AddAccessory(acc)
 
             --
@@ -142,8 +140,6 @@ function module.configPlayers(props)
 
     local function onPlayerAdded(player)
         player.CharacterAdded:Connect(onCharacterAdded)
-
-        -- newPlayerEvent:FireAllClients()
     end
 
     Players.PlayerAdded:Connect(onPlayerAdded)
