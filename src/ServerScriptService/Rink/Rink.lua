@@ -120,6 +120,7 @@ function module.addRink(props)
         module.initPuck(stray)
     end
 
+    blockTemplate:destroy()
     return rinkModel
 end
 
