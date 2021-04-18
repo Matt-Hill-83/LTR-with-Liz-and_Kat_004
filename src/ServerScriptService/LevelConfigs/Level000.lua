@@ -145,7 +145,7 @@ local c1r2 = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'ZZZ'},
+                -- grabbers = {'ZZZ'},
                 words = {'YYY'}
             },
             material = Enum.Material.LeafyGrass
@@ -177,13 +177,6 @@ local c1r3 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
         {
             item = 'Rink',
             itemConfig = {
@@ -242,13 +235,6 @@ local c1r4 = {
                 grabbers = {}
             },
             material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
         }
     },
     orbiterConfigs = {
@@ -270,13 +256,6 @@ local c1r5 = {
     material = Enum.Material.Glacier,
     statueConfigs = {},
     bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        },
         {
             item = 'Rink',
             itemConfig = {
@@ -332,13 +311,6 @@ local c1r6 = {
                 grabbers = {}
             },
             material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
         }
     },
     orbiterConfigs = {
@@ -387,62 +359,91 @@ local dummy = {
             songId = '6338745550'
         }
     },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CATBATRAT',
+            discHeight = 1
+        }
+    }
+}
+local dummy01 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {
+        Liz = {
+            sentence = {'I', 'SEE', 'A', 'CAT'},
+            character = 'lizHappy',
+            -- songId = '6342102168',
+            keyColor = Colors.colors.yellow
+        },
+        Kat = {
+            sentence = {'NOT', 'A', 'CAT'},
+            character = 'katScared',
+            songId = '6342102168'
+        },
+        Troll = {
+            sentence = {'TROLL', 'NEED', 'GOLD'},
+            character = 'babyTroll04',
+            songId = '6338745550'
+        }
+    },
     bridgeConfigs = {
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'ZZZ'},
+                -- grabbers = {'ZZZ'},
                 words = {'YYY'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink2',
-            itemConfig = {
-                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'ZZZ'},
+                -- grabbers = {'ZZZ'},
                 words = {'YYY'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink2',
-            itemConfig = {
-                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'ZZZ'},
+                -- grabbers = {'ZZZ'},
                 words = {'YYY'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink2',
-            itemConfig = {
-                grabbers = {}
             },
             material = Enum.Material.LeafyGrass
         },
         {
             item = 'Rink',
             itemConfig = {
-                grabbers = {'ZZZ'},
+                -- grabbers = {'ZZZ'},
                 words = {'YYY'}
             },
             material = Enum.Material.LeafyGrass
         },
         {
-            item = 'Rink2',
+            item = 'Rink',
+            itemConfig = {
+                -- grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                -- grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
             itemConfig = {
                 grabbers = {}
             },
@@ -467,10 +468,10 @@ local dummy = {
 local region01 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
     },
     getTargetWords = function()
         return {

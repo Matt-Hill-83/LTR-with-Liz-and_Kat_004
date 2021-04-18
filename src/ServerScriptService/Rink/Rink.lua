@@ -49,6 +49,8 @@ function module.addRink(props)
     local words = bridgeConfig.itemConfig.words or grabbers
     -- local words = bridgeConfig.itemConfig.words or {}
     for grabberIndex, grabberWord in ipairs(grabbers) do
+        print('grabberIndex' .. ' - start')
+        print(grabberIndex)
         local offsetX = (grabberIndex - 1) * 10
         local positioner = Instance.new('Part', rinkModel)
         positioner.CFrame =
