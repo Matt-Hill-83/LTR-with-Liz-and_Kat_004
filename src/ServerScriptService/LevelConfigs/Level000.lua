@@ -373,6 +373,7 @@ local dummy = {
         }
     }
 }
+
 local dummy01 = {
     material = Enum.Material.Glacier,
     statueConfigs = {
@@ -393,63 +394,63 @@ local dummy01 = {
             songId = '6338745550'
         }
     },
-    bridgeConfigs = {
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                -- grabbers = {'ZZZ'},
-                words = {'CAT'}
-            },
-            material = Enum.Material.LeafyGrass
-        },
-        {
-            item = 'Rink',
-            itemConfig = {
-                grabbers = {}
-            },
-            material = Enum.Material.LeafyGrass
-        }
-    },
+    -- bridgeConfigs = {
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             grabbers = {}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     }
+    -- },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -460,6 +461,45 @@ local dummy01 = {
             collideDisc = false,
             collideBlock = false,
             singleWord = 'CATBATRAT',
+            discHeight = 1
+        }
+    }
+}
+
+local dummy05 = {
+    material = Enum.Material.Glacier,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'RRR~',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'AAA~',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'TTT~',
             discHeight = 1
         }
     }
@@ -528,28 +568,7 @@ local region03 = {
                 {word = 'RAT', target = 1, found = 0}
             },
             {
-                {word = '222', target = 1, found = 0}
-            }
-        }
-    end
-}
-
-local region05 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
-    hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'RAT', target = 1, found = 0}
-            },
-            {
-                {word = '222', target = 1, found = 0}
+                {word = 'CAT', target = 1, found = 0}
             }
         }
     end
@@ -558,22 +577,66 @@ local region05 = {
 local region04 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        c0r0,
-        c0r0,
-        c0r0,
-        c1r1,
-        c1r2,
-        c1r3,
-        c1r4,
-        c1r5,
-        c1r6
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy
     },
+    -- hexIslandConfigs = {
+    --     c0r0,
+    --     c0r0,
+    --     c0r0,
+    --     c1r1,
+    --     c1r2,
+    --     c1r3,
+    --     c1r4,
+    --     c1r5,
+    --     c1r6
+    -- },
     getTargetWords = function()
         return {
             {
                 {word = 'CAT', target = 1, found = 0},
                 {word = 'BAT', target = 1, found = 0},
                 {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region05 = {
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy05,
+        dummy05,
+        dummy05,
+        dummy05,
+        dummy05
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CATBATRAT',
+            discHeight = 1
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            },
+            {
+                {word = 'CAT', target = 1, found = 0}
+            },
+            {
+                {word = 'BAT', target = 1, found = 0}
             }
         }
     end
