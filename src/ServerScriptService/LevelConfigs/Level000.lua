@@ -146,7 +146,7 @@ local c1r2 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -398,7 +398,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -406,7 +406,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -414,7 +414,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -422,7 +422,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -430,7 +430,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -438,7 +438,7 @@ local dummy01 = {
             item = 'Rink',
             itemConfig = {
                 -- grabbers = {'ZZZ'},
-                words = {'YYY'}
+                words = {'CAT'}
             },
             material = Enum.Material.LeafyGrass
         },
@@ -534,6 +534,27 @@ local region03 = {
     end
 }
 
+local region05 = {
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy,
+        dummy,
+        dummy,
+        dummy,
+        dummy
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            },
+            {
+                {word = '222', target = 1, found = 0}
+            }
+        }
+    end
+}
+
 local region04 = {
     vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
@@ -558,6 +579,6 @@ local region04 = {
     end
 }
 
-module.regions = {region01, region02, region03, region04}
+module.regions = {region01, region02, region03, region04, region05}
 
 return module
