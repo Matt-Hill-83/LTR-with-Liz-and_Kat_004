@@ -387,7 +387,68 @@ local dummy = {
             songId = '6338745550'
         }
     },
-    bridgeConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink2',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink2',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink2',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {'ZZZ'},
+                words = {'YYY'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink2',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
