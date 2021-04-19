@@ -642,6 +642,6 @@ local region05 = {
     end
 }
 
-module.regions = {region01, region02, region03, region04, region05}
+module.regions = {region01, region02, region03, region04, region05, region05}
 
 return module
