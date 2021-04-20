@@ -470,7 +470,7 @@ local dummy05 = {
     material = Enum.Material.Glacier,
     orbiterConfigs = {
         {
-            words = {'BALL', 'BAN', 'BAT', 'BAY', 'BEG'},
+            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
             -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
             numBlocks = 12,
             angularVelocity = 0,
@@ -599,11 +599,11 @@ local region04 = {
     getTargetWords = function()
         return {
             {
-                {word = 'BALL', target = 1, found = 0},
-                {word = 'BAN', target = 1, found = 0},
-                {word = 'BAT', target = 1, found = 0},
-                {word = 'BAY', target = 1, found = 0},
-                {word = 'BEG', target = 1, found = 0}
+                {word = 'CALL', target = 1, found = 0},
+                {word = 'CAN', target = 1, found = 0},
+                {word = 'CAP', target = 1, found = 0},
+                {word = 'CAT', target = 1, found = 0},
+                {word = 'DAD', target = 1, found = 0}
             }
 
             -- {'ALL', 'AT', 'BAD', 'RAT', 'AN',}
@@ -629,17 +629,19 @@ local region05 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'LNTAYBEG-666',
+            singleWord = 'LNPCATD',
             discHeight = 1
         }
     },
     getTargetWords = function()
         return {
-            {word = 'ALL', target = 1, found = 0},
-            {word = 'AN', target = 1, found = 0},
-            {word = 'AT', target = 1, found = 0},
-            {word = 'BAD', target = 1, found = 0},
-            {word = 'BEN', target = 1, found = 0}
+            {
+                {word = 'CALL', target = 1, found = 0},
+                {word = 'CAN', target = 1, found = 0},
+                {word = 'CAP', target = 1, found = 0},
+                {word = 'CAT', target = 1, found = 0},
+                {word = 'DAD', target = 1, found = 0}
+            }
         }
     end
 }
