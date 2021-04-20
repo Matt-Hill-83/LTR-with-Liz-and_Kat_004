@@ -204,28 +204,6 @@ local dummy05 = {
             collideBlock = false,
             -- singleWord = 'RRR~',
             discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'AAA~',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'TTT~',
-            discHeight = 1
         }
     }
 }
@@ -392,7 +370,7 @@ local region06 = {
     getTargetWords = function()
         return {
             {
-                {word = 'ABCDFGHIJLMNOPRST', target = 1, found = 0}
+                {word = 'ABCDFGHIJLMNOPRST~~~', target = 1, found = 0}
             }
         }
     end
