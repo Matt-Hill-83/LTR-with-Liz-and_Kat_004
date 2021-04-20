@@ -648,7 +648,37 @@ local region05 = {
         }
     end
 }
+local region06 = {
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    hexIslandConfigs = {
+        dummy05,
+        dummy05,
+        dummy05,
+        dummy05,
+        dummy05
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CATBATRAT',
+            discHeight = 1
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'ABCDFGHIJLMNOPRST', target = 1, found = 0}
+            }
+        }
+    end
+}
 
-module.regions = {region01, region02, region03, region04, region05, region05}
+module.regions = {region01, region02, region03, region04, region05, region06}
 
 return module

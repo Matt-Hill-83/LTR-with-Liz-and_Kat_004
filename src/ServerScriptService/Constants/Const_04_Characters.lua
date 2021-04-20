@@ -629,7 +629,7 @@ module.wordConfigs = {
     --
     --
     --
-    ALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 159}},
+    ALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 160}},
     AN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 105}},
     AT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 103}},
     BAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 0}},
@@ -682,7 +682,8 @@ module.wordConfigs = {
     RAG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 20}},
     RAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 51}},
     RAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 96}},
-    RAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 114}},
+    RAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 115}},
+    -- RAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 114}},
     RAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 132}},
     RED = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 185}},
     SAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 14}},
