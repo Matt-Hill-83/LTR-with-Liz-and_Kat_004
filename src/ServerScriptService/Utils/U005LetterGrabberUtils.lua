@@ -94,29 +94,32 @@ local function wordFound(tool, player)
     -- local fireSound = '5207654419'
     local currentWord2 = Const4.wordConfigs[targetWord]
     if currentWord2 then
-        local soundId = currentWord2.soundId
+        -- local soundId = currentWord2.soundId
 
-        -- TOdo - if soundConfig
-        -- TOdo - if soundConfig
-        -- TOdo - if soundConfig
-        -- TOdo - if soundConfig
-        -- TOdo - if soundConfigs
-        -- Utils.playSound(soundId)
+        if currentWord2.soundConfig then
+            local soundConfig = currentWord2.soundConfig
+            local timePosition = soundConfig.timePosition
+            local duration = soundConfig.duration
+            local soundId = soundConfig.soundId
+            print('soundId' .. ' - start')
+            print(soundId)
+            -- Utils.playSound(soundId)
 
-        local sound = Instance.new('Sound', game.Workspace)
-        sound.SoundId = 'rbxassetid://6704826658'
-        -- sound.SoundId = 'rbxassetid://6701629089'
-        sound.Looped = false
+            local sound = Instance.new('Sound', game.Workspace)
+            sound.SoundId = 'rbxassetid://' .. soundId
+            -- sound.SoundId = 'rbxassetid://6704826658'
+            -- sound.SoundId = 'rbxassetid://6701629089'
+            sound.Looped = false
 
-        function stopSound()
-            sound.Playing = false
+            function stopSound()
+                sound.Playing = false
+            end
+
+            -- function onClicked(playerWhoClicked)
+            sound.TimePosition = timePosition
+            sound.Playing = true
+            delay(duration, stopSound)
         end
-
-        -- function onClicked(playerWhoClicked)
-        sound.TimePosition = 9
-        sound.Playing = true
-        delay(4, stopSound)
-    -- end
     end
 
     if targetWordObj then

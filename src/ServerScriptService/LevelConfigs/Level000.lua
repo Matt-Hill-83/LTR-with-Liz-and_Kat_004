@@ -470,14 +470,15 @@ local dummy05 = {
     material = Enum.Material.Glacier,
     orbiterConfigs = {
         {
-            -- words = {'CAT', 'CAT', 'CAT'},
+            words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
             numBlocks = 12,
-            angularVelocity = 0.8,
+            angularVelocity = 3,
+            -- angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'RRR~',
+            -- singleWord = 'RRR~',
             discHeight = 1
         },
         {
@@ -599,8 +600,14 @@ local region04 = {
             {
                 {word = 'CAT', target = 1, found = 0},
                 {word = 'BAT', target = 1, found = 0},
-                {word = 'RAT', target = 1, found = 0}
+                {word = 'ALL', target = 1, found = 0},
+                {word = 'AT', target = 1, found = 0},
+                {word = 'BAD', target = 1, found = 0},
+                {word = 'RAT', target = 1, found = 0},
+                {word = 'AN', target = 1, found = 0}
             }
+
+            -- {'ALL', 'AT', 'BAD', 'RAT', 'AN',}
         }
     end
 }
