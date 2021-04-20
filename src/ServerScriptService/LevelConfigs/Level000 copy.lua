@@ -119,6 +119,226 @@ local c0r0 = {
     }
 }
 
+local c1r1 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {},
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'R~H~S~C~B',
+            discHeight = 1
+        }
+    }
+}
+
+local c1r2 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                -- grabbers = {'ZZZ'},
+                words = {'CAT'}
+            },
+            material = Enum.Material.LeafyGrass
+        },
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'C',
+            discHeight = 1
+        }
+    }
+}
+
+local c1r3 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'C',
+            -- singleWord = 'CCCCC?',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            -- singleWord = '2',
+            singleWord = 'AAAAA?',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            -- singleWord = '3',
+            singleWord = 'T?',
+            discHeight = 1
+        }
+    }
+}
+
+local c1r4 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '4~',
+            discHeight = 1
+        }
+    }
+}
+
+local c1r5 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~RA',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~A~',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~RB~',
+            discHeight = 1
+        }
+    }
+}
+
+local c1r6 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {},
+    bridgeConfigs = {
+        {
+            item = 'Rink',
+            itemConfig = {
+                grabbers = {}
+            },
+            material = Enum.Material.LeafyGrass
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~T',
+            discHeight = 1
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = -0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = '~RB~',
+            discHeight = 1
+        }
+    }
+}
+
 local dummy = {
     material = Enum.Material.Glacier,
     statueConfigs = {
@@ -174,6 +394,63 @@ local dummy01 = {
             songId = '6338745550'
         }
     },
+    -- bridgeConfigs = {
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             -- grabbers = {'ZZZ'},
+    --             words = {'CAT'}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     },
+    --     {
+    --         item = 'Rink',
+    --         itemConfig = {
+    --             grabbers = {}
+    --         },
+    --         material = Enum.Material.LeafyGrass
+    --     }
+    -- },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
