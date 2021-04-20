@@ -635,14 +635,20 @@ module.wordConfigs = {
     BAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 1}},
     BALL = {soundConfig = {soundId = '6704826658', duration = 3.5, volume = 3, timePosition = 163}},
     BAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 67}},
-    BAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 127}},
+    BAT = {
+        soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 127},
+        imageId = getImageId('bat')
+    },
     BAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 136}},
     BEG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 201}},
     BEN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 216}},
     CALL = {soundConfig = {soundId = '6704826658', duration = 3.5, volume = 3, timePosition = 166}},
     CAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 55}},
     CAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 76}},
-    CAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 130}},
+    CAT = {
+        soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 130},
+        imageId = getImageId('mitzyMeow01')
+    },
     DAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 3}},
     DAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 61}},
     DAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 142}},
@@ -654,7 +660,10 @@ module.wordConfigs = {
     HAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 6}},
     HALL = {soundConfig = {soundId = '6704826658', duration = 3.5, volume = 3, timePosition = 174}},
     HAM = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 37}},
-    HAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 118}},
+    HAT = {
+        soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 118},
+        imageId = getImageId('hat')
+    },
     HAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 154}},
     HEN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 213}},
     JAM = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 40}},
@@ -667,7 +676,10 @@ module.wordConfigs = {
     LEG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 198}},
     MAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 9}},
     MAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 85}},
-    MAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 124}},
+    MAT = {
+        soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 124},
+        imageId = getImageId('mat')
+    },
     MAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 145}},
     MEN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 204}},
     NAG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 30}},
@@ -682,7 +694,10 @@ module.wordConfigs = {
     RAG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 21}},
     RAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 52}},
     RAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 97}},
-    RAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 115}},
+    RAT = {
+        soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 115},
+        imageId = getImageId('rat')
+    },
     RAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 133}},
     RED = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 186}},
     SAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 15}},
