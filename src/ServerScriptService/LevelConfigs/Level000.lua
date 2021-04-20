@@ -470,9 +470,10 @@ local dummy05 = {
     material = Enum.Material.Glacier,
     orbiterConfigs = {
         {
-            words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
+            words = {'BALL', 'BAN', 'BAT', 'BAY', 'BEG'},
+            -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
             numBlocks = 12,
-            angularVelocity = 3,
+            angularVelocity = 0,
             -- angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 1,
@@ -507,7 +508,7 @@ local dummy05 = {
 }
 
 local region01 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -538,7 +539,7 @@ local region01 = {
 }
 
 local region02 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -555,7 +556,7 @@ local region02 = {
 }
 
 local region03 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -576,7 +577,7 @@ local region03 = {
 }
 
 local region04 = {
-    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -598,13 +599,11 @@ local region04 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CAT', target = 1, found = 0},
+                {word = 'BALL', target = 1, found = 0},
+                {word = 'BAN', target = 1, found = 0},
                 {word = 'BAT', target = 1, found = 0},
-                {word = 'ALL', target = 1, found = 0},
-                {word = 'AT', target = 1, found = 0},
-                {word = 'BAD', target = 1, found = 0},
-                {word = 'RAT', target = 1, found = 0},
-                {word = 'AN', target = 1, found = 0}
+                {word = 'BAY', target = 1, found = 0},
+                {word = 'BEG', target = 1, found = 0}
             }
 
             -- {'ALL', 'AT', 'BAD', 'RAT', 'AN',}
@@ -630,26 +629,21 @@ local region05 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'CATBATRAT',
+            singleWord = 'LNTAYBEG-666',
             discHeight = 1
         }
     },
     getTargetWords = function()
         return {
-            {
-                {word = 'RAT', target = 1, found = 0}
-            },
-            {
-                {word = 'CAT', target = 1, found = 0}
-            },
-            {
-                {word = 'BAT', target = 1, found = 0}
-            }
+            {word = 'ALL', target = 1, found = 0},
+            {word = 'AN', target = 1, found = 0},
+            {word = 'AT', target = 1, found = 0},
+            {word = 'BAD', target = 1, found = 0},
+            {word = 'BEN', target = 1, found = 0}
         }
     end
 }
 local region06 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy05,
         dummy05,

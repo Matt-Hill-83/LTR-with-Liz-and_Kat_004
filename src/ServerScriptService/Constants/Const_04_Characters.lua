@@ -630,15 +630,19 @@ module.wordConfigs = {
     --
     --
     ALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 160}},
-    AN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 105}},
+    AN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 106}},
     AT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 103}},
     BAD = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 0}},
-    BALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 162}},
-    BAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 66}},
+    BEN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 216}},
+    BALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 163}},
+    BAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 67}},
     BAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 126}},
-    BAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 135}},
-    BEG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 200}},
-    BEN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 215}},
+    BAY = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 136}},
+    BEG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 201}},
+    --
+    --
+    --
+    --
     CALL = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 165}},
     CAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 54}},
     CAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 75}},

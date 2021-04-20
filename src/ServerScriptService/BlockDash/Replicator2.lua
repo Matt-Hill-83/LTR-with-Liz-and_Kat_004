@@ -10,14 +10,14 @@ function module.initReplicator2(replicator, callBack, authFunction)
     print('initReplicator2' .. ' - start')
     print('initReplicator2' .. ' - start')
     local hitBox = Utils.getFirstDescendantByName(replicator, 'HitBox')
-    local grabberTest = Utils.getFirstDescendantByName(replicator, 'GrabberTest')
+    -- local grabberTest = Utils.getFirstDescendantByName(replicator, 'GrabberTest')
 
-    function module.getNewGrabber(touchedPart)
-        print('touchedPart' .. ' - start')
-        print(touchedPart)
-    end
+    -- function module.getNewGrabber(touchedPart)
+    --     print('touchedPart' .. ' - start')
+    --     print(touchedPart)
+    -- end
 
-    grabberTest.Touched:Connect(module.getNewGrabber)
+    -- grabberTest.Touched:Connect(module.getNewGrabber)
 
     local reward
 
