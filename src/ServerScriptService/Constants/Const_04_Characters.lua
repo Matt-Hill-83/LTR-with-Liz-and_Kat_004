@@ -576,7 +576,21 @@ local function getImageId(characterName)
 end
 
 module.wordConfigs = {
-    AN = {soundId = '6311422754', imageId = 'xxx'},
+    XXX = {
+        soundId = '6311422754',
+        imageId = 'xxx',
+        soundConfig = {
+            soundId = '6701578424',
+            soundGroup = '',
+            timeLength = 4,
+            timePosition = 4,
+            volume = 3
+        }
+    },
+    AN = {
+        soundId = '6311422754',
+        imageId = 'xxx'
+    },
     AT = {soundId = '6311419247', imageId = 'xxx'},
     BAT = {soundId = '6145991240', imageId = getImageId('bat')},
     BEE = {soundId = nil, imageId = getImageId('bee')},
