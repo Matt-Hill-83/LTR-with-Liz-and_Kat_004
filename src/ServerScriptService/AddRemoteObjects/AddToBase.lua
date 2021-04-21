@@ -84,8 +84,6 @@ function module.initAnimalSounds2()
             sound.SoundId = 'rbxassetid://' .. soundId
             sound.Volume = 0.5
             local timePosition = 5 % uniIndex
-            print('timePosition' .. ' - start')
-            print(timePosition)
 
             sound.TimePosition = timePosition
             sound.Playing = true
@@ -139,8 +137,6 @@ end
 --
 local function addRemoteObjects()
     local placeId = game.PlaceId
-    print('placeId' .. ' - start')
-    print(placeId)
 
     local levelDefs = LevelConfigs.levelDefs or {}
 
@@ -176,12 +172,7 @@ local function addRemoteObjects()
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
     local startPlaceId = Constants.startPlaceId
-    print('startPlaceId' .. ' - start')
-    print(startPlaceId)
     local experienceStore = DSS:GetDataStore('MapList')
-
-    print('levelDefs' .. ' - start')
-    print(levelDefs)
 
     if isStartPlace and experienceStore then
         -- experienceStore:SetAsync('LevelDefs', levelDefs)
@@ -189,26 +180,17 @@ local function addRemoteObjects()
         levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
     end
 
-    print('levelDefs' .. ' - start')
-    print(levelDefs)
-
     local levelOrderIndex = -99
     for levelDefIndex, levelDef in ipairs(levelDefs) do
         if tonumber(levelDef.id) == tonumber(placeId) then
             levelOrderIndex = levelDefIndex
         end
     end
-    print('levelOrderIndex' .. ' - start')
-    print(levelOrderIndex)
     local nextlLevelOrderIndex = levelOrderIndex + 1
     if nextlLevelOrderIndex > #levelDefs then
         nextlLevelOrderIndex = 1
     end
-    print('nextlLevelOrderIndex' .. ' - start')
-    print(nextlLevelOrderIndex)
     local nextLevelId = nil
-    print('isStartPlace' .. ' - start')
-    print(isStartPlace)
     if isStartPlace then
         if levelDefs and levelDefs[nextlLevelOrderIndex] then
             nextLevelId = levelDefs[nextlLevelOrderIndex]['id']

@@ -13,15 +13,9 @@ function module.initPetBox(props)
     local parentFolder = props.parentFolder
 
     local petBox = Utils.getFirstDescendantByName(parentFolder, 'PetBox')
-    print(petBox)
     if not petBox then
         return
     end
-    print('petBox' .. ' - start')
-    print('petBox' .. ' - start')
-    print('petBox' .. ' - start')
-    print('petBox' .. ' - start')
-    print(petBox)
 
     local touchBox = Utils.getFirstDescendantByName(petBox, 'TouchBox')
     local center = Utils.getFirstDescendantByName(petBox, 'Center')

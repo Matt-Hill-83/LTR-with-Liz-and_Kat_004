@@ -10,7 +10,8 @@ function module.createStray(char, parentFolder, props)
     local blockTemplate = props and props.blockTemplate
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-    local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
+    local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank_cupcake')
+    -- local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
     local newLetterBlock = letterBlockTemplate:Clone()
 
     local letterId = 'ID--R'
@@ -45,52 +46,59 @@ end
 function module.initStraysInRegions(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
-    print('levelConfig' .. ' - start')
-    print('levelConfig' .. ' - start')
-    print('levelConfig' .. ' - start')
-    print('levelConfig' .. ' - start')
-    print(levelConfig)
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
     Utils.sortListByObjectKey(strayRegions, 'Name')
 
     local defaultWords = {
-        '9999999999'
+        'RAT',
+        'CAT',
+        'BAT'
     }
 
     for regionIndex, region in ipairs(strayRegions) do
         local words
-        -- local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
-
-        -- if config then
-        --     words = Utils.stringToArray(config.Text)
-        -- end
-
-        local regionArea = region.Size.X * region.Size.Y
-        print('regionArea' .. ' - start')
-        print(regionArea)
         local randomLetterMultiplier = 1
+        local maxLetters
+        local blockTemplate
+
         if levelConfig.strayRegions and levelConfig.strayRegions[regionIndex] then
             local config = levelConfig.strayRegions[regionIndex]
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print('config' .. ' - start')
-            print(config)
 
+            blockTemplate = config.blockTemplate
+
+            print('blockTemplate' .. ' - start')
+            print('blockTemplate' .. ' - start')
+            print('blockTemplate' .. ' - start')
+            print('blockTemplate' .. ' - start')
+            print(blockTemplate)
             words = config.words or defaultWords
+            local useArea = config.useArea or defaultWords
+
+            if useArea then
+                local regionArea = region.Size.X * region.Size.Y
+                maxLetters = regionArea / 20
+                print('maxLetters' .. ' - start')
+                print('maxLetters' .. ' - start')
+                print('maxLetters' .. ' - start')
+                print('maxLetters' .. ' - start')
+                print(maxLetters)
+            else
+                maxLetters = config.maxLetters or 10
+            end
+
             randomLetterMultiplier = config.randomLetterMultiplier or 1
         else
             words = defaultWords
+            maxLetters = 10
         end
 
         local wordLength = 3
         local requiredLetters = #words * wordLength
-        local maxLetters = 10
         -- Populate random letter gems
         local strays =
             module.initStraysInRegion(
             {
+                -- blockTemplate = blockTemplate,
                 parentFolder = parentFolder,
                 maxLetters = maxLetters,
                 numBlocks = 0,

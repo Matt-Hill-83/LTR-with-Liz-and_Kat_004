@@ -388,7 +388,15 @@ local region06 = {
         dummy06b
     },
     orbiterConfigs = {},
-    strayRegions = {{words = {'RAT'}, randomLetterMultiplier = 1}},
+    strayRegions = {
+        {
+            words = {'RAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
     getTargetWords = function()
         return {
             {
