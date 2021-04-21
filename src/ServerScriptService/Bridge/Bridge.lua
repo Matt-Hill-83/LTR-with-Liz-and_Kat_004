@@ -109,13 +109,16 @@ function module.createBridge2(props)
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
-    SingleStrays.initSingleStrays(
-        {
-            parentFolder = newBridge,
-            blockTemplate = blockTemplate,
-            char = char or '?'
-        }
-    )
+
+    if newBridge.PrimaryPart.Size.Z > 2 then
+        SingleStrays.initSingleStrays(
+            {
+                parentFolder = newBridge,
+                blockTemplate = blockTemplate,
+                char = char or '?'
+            }
+        )
+    end
     return newBridge
 end
 
