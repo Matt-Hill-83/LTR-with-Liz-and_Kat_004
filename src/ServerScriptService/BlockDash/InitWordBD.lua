@@ -74,7 +74,7 @@ local function initWord(props)
 
     local wordNameStub = '-W' .. wordIndex
     newWord.Name = newWord.Name .. wordNameStub
-    wordBench.Anchored = true
+    -- wordBench.Anchored = true
 
     local lettersInWord = {}
     for letterIndex = 1, #word do

@@ -241,6 +241,14 @@ function module.initLetterGrabber(props)
     )
 
     if positioner then
+        print('positioner' .. ' - start')
+        print('positioner' .. ' - start')
+        print('positioner' .. ' - start')
+        print('positioner' .. ' - start')
+        print(positioner)
+
+        print('newReplicatorPart' .. ' - start')
+        print(newReplicatorPart)
         newReplicatorPart.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(
             {
@@ -255,7 +263,8 @@ function module.initLetterGrabber(props)
         )
     end
 
-    newReplicatorPart.Anchored = true
+    -- newReplicatorPart.Anchored = true
+    newReplicatorPart.Name = 'qqqqq'
     Replicator.initReplicator(newReplicator, afterReplication)
     return newReplicator
 end
