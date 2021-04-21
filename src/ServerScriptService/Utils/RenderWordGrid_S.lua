@@ -26,6 +26,14 @@ local renderGrid = function(props)
     local paddingInPx = 10
     local doublePad = paddingInPx * 2
 
+    local longestWordLength = 0
+
+    for _, word in ipairs(words) do
+        if #word > longestWordLength then
+            longestWordLength = #word
+        end
+    end
+
     local lettersInWord = 3
     local scrollBarThickness = 30
     local maxWordsInFrame = 4

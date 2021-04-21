@@ -30,11 +30,11 @@ if isDev then
     activeSpawn = 'Spawn_Snowflake_pet'
     activeSpawn = 'Spawn_Snowflake_5'
     activeSpawn = 'Spawn_Snowflake_3'
-    activeSpawn = 'Spawn_Snowflake_4'
     activeSpawn = 'Spawn_Snowflake_6'
     activeSpawn = 'Spawn_Snowflake_7'
     activeSpawn = 'Spawn_Snowflake_8'
     activeSpawn = 'Spawn_Snowflake_9'
+    activeSpawn = 'Spawn_Snowflake_4'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'

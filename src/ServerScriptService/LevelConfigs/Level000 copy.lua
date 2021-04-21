@@ -470,8 +470,8 @@ local dummy05 = {
     material = Enum.Material.Glacier,
     orbiterConfigs = {
         {
-            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
-            -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
+            -- words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
+            words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
             numBlocks = 12,
             angularVelocity = 0,
             -- angularVelocity = 0.8,
@@ -585,21 +585,10 @@ local region04 = {
         dummy,
         dummy
     },
-    -- hexIslandConfigs = {
-    --     c0r0,
-    --     c0r0,
-    --     c0r0,
-    --     c1r1,
-    --     c1r2,
-    --     c1r3,
-    --     c1r4,
-    --     c1r5,
-    --     c1r6
-    -- },
     getTargetWords = function()
         return {
             {
-                {word = 'CALL', target = 1, found = 0},
+                {word = '444', target = 1, found = 0},
                 {word = 'CAN', target = 1, found = 0},
                 {word = 'CAP', target = 1, found = 0},
                 {word = 'CAT', target = 1, found = 0},
@@ -636,7 +625,7 @@ local region05 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CALL', target = 1, found = 0},
+                {word = '555', target = 1, found = 0},
                 {word = 'CAN', target = 1, found = 0},
                 {word = 'CAP', target = 1, found = 0},
                 {word = 'CAT', target = 1, found = 0},
@@ -647,10 +636,6 @@ local region05 = {
 }
 local region06 = {
     hexIslandConfigs = {
-        dummy05,
-        dummy05,
-        dummy05,
-        dummy05,
         dummy05
     },
     orbiterConfigs = {

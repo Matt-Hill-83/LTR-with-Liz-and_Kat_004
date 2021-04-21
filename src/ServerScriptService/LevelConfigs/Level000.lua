@@ -215,35 +215,20 @@ local region04 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CALL', target = 1, found = 0},
-                {word = 'CAN', target = 1, found = 0},
-                {word = 'CAP', target = 1, found = 0},
                 {word = 'CAT', target = 1, found = 0},
-                {word = 'DAD', target = 1, found = 0}
+                {word = 'BAT', target = 1, found = 0},
+                {word = 'HAT', target = 1, found = 0},
+                {word = 'MAT', target = 1, found = 0},
+                {word = 'SAT', target = 1, found = 0},
+                {word = 'PAT', target = 1, found = 0},
+                {word = 'RAT', target = 1, found = 0}
             }
-
-            -- {'ALL', 'AT', 'BAD', 'RAT', 'AN',}
         }
     end
 }
 
 local dummy05 = {
-    material = Enum.Material.Glacier,
-    orbiterConfigs = {
-        {
-            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
-            -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
-            numBlocks = 12,
-            angularVelocity = 0,
-            -- angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            -- singleWord = 'RRR~',
-            discHeight = 1
-        }
-    }
+    material = Enum.Material.Glacier
 }
 
 local region05 = {
@@ -263,18 +248,14 @@ local region05 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'LNPCATD',
+            singleWord = '5555',
             discHeight = 1
         }
     },
     getTargetWords = function()
         return {
             {
-                {word = 'CALL', target = 1, found = 0},
-                {word = 'CAN', target = 1, found = 0},
-                {word = 'CAP', target = 1, found = 0},
-                {word = 'CAT', target = 1, found = 0},
-                {word = 'DAD', target = 1, found = 0}
+                {word = 'RAT', target = 1, found = 0}
             }
         }
     end

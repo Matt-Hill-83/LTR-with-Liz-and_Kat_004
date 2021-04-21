@@ -8,7 +8,7 @@ local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
-local Grabbers = require(Sss.Source.Grabbers.Grabbers)
+-- local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local Constants = require(Sss.Source.Constants.Constants)
 
@@ -30,7 +30,7 @@ function module.initJunctions(props)
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
-    local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #hexIslandFolders})
+    -- local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #hexIslandFolders})
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
@@ -50,12 +50,6 @@ function module.initJunctions(props)
             }
         )
     end
-
-    -- local hexIndex = 0
-    -- for subFolderIndex, subFolder in ipairs(hexIslandFolders) do
-    --     local subFolders = subFolder:getChildren()
-    --     for _, hexIslandFolder in ipairs(subFolders) do
-    --         hexIndex = hexIndex + 1
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
