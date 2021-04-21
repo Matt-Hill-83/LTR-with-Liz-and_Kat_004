@@ -44,32 +44,57 @@ end
 
 function module.initStraysInRegions(props)
     local parentFolder = props.parentFolder
+    local levelConfig = props.levelConfig
+    print('levelConfig' .. ' - start')
+    print('levelConfig' .. ' - start')
+    print('levelConfig' .. ' - start')
+    print('levelConfig' .. ' - start')
+    print(levelConfig)
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
+    Utils.sortListByObjectKey(strayRegions, 'Name')
 
     local defaultWords = {
-        'CAT',
-        'RAT',
-        'BAT'
+        '9999999999'
     }
 
-    local words = props.words or defaultWords
+    for regionIndex, region in ipairs(strayRegions) do
+        local words
+        -- local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
 
-    for _, region in ipairs(strayRegions) do
-        local config = Utils.getFirstDescendantByName(region, 'StrayConfig')
+        -- if config then
+        --     words = Utils.stringToArray(config.Text)
+        -- end
 
-        if config then
-            words = Utils.stringToArray(config.Text)
+        local regionArea = region.Size.X * region.Size.Y
+        print('regionArea' .. ' - start')
+        print(regionArea)
+        local randomLetterMultiplier = 1
+        if levelConfig.strayRegions and levelConfig.strayRegions[regionIndex] then
+            local config = levelConfig.strayRegions[regionIndex]
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print('config' .. ' - start')
+            print(config)
+
+            words = config.words or defaultWords
+            randomLetterMultiplier = config.randomLetterMultiplier or 1
+        else
+            words = defaultWords
         end
 
         local wordLength = 3
         local requiredLetters = #words * wordLength
-
+        local maxLetters = 10
         -- Populate random letter gems
         local strays =
             module.initStraysInRegion(
             {
                 parentFolder = parentFolder,
-                numBlocks = math.floor(requiredLetters * 1.2),
+                maxLetters = maxLetters,
+                numBlocks = 0,
+                -- numBlocks = math.floor(requiredLetters * randomLetterMultiplier),
                 words = words,
                 region = region,
                 onTouchBlock = function()
@@ -122,6 +147,7 @@ function module.initStraysInRegion(props)
     local numBlocks = props.numBlocks
     local words = props.words
     local region = props.region
+    local maxLetters = props.maxLetters or 16
     local blockTemplate = props.blockTemplate
 
     -- populate matrix with letters
@@ -132,10 +158,16 @@ function module.initStraysInRegion(props)
         table.insert(letterMatrix, LetterUtils.getRandomLetter(lettersNotInWords))
     end
 
-    for _, word in ipairs(words) do
-        for letterIndex = 1, #word do
-            local letter = string.sub(word, letterIndex, letterIndex)
-            table.insert(letterMatrix, letter)
+    local numLetters = 0
+    while numLetters <= maxLetters do
+        for _, word in ipairs(words) do
+            for letterIndex = 1, #word do
+                numLetters = numLetters + 1
+                if numLetters <= maxLetters then
+                    local letter = string.sub(word, letterIndex, letterIndex)
+                    table.insert(letterMatrix, letter)
+                end
+            end
         end
     end
 

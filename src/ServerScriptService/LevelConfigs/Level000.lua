@@ -388,6 +388,7 @@ local region06 = {
         dummy06b
     },
     orbiterConfigs = {},
+    strayRegions = {{words = {'123'}, randomLetterMultiplier = 1}},
     getTargetWords = function()
         return {
             {

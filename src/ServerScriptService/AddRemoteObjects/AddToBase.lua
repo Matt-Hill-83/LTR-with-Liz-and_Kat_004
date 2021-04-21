@@ -19,7 +19,7 @@ local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
-local Replicator2 = require(Sss.Source.BlockDash.Replicator2)
+-- local Replicator2 = require(Sss.Source.BlockDash.Replicator2)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
@@ -252,7 +252,7 @@ local function addRemoteObjects()
         )
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
 
-        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex})
+        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex, levelConfig = config})
         Junction4.initJunctions(
             {
                 parentFolder = region,
