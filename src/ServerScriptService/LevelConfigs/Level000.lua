@@ -336,8 +336,8 @@ local region08 = {
     strayRegions = {
         {
             words = {'RAT'},
-            randomLetterMultiplier = 1,
-            maxLetters = 6,
+            -- randomLetterMultiplier = 1,
+            -- maxLetters = 6,
             useArea = true
             -- blockTemplate = 'BD_6_blank_cupcake'
         }
