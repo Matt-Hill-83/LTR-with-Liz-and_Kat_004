@@ -189,25 +189,6 @@ local dummy01 = {
     }
 }
 
-local dummy05 = {
-    material = Enum.Material.Glacier,
-    orbiterConfigs = {
-        {
-            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
-            -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
-            numBlocks = 12,
-            angularVelocity = 0,
-            -- angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            -- singleWord = 'RRR~',
-            discHeight = 1
-        }
-    }
-}
-
 local region01 = {
     -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
@@ -312,6 +293,25 @@ local region04 = {
     end
 }
 
+local dummy05 = {
+    material = Enum.Material.Glacier,
+    orbiterConfigs = {
+        {
+            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
+            -- words = {'ALL', 'AT', 'BAD', 'RAT', 'AN'},
+            numBlocks = 12,
+            angularVelocity = 0,
+            -- angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            -- singleWord = 'RRR~',
+            discHeight = 1
+        }
+    }
+}
+
 local region05 = {
     -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
@@ -346,27 +346,48 @@ local region05 = {
         }
     end
 }
-local region06 = {
-    hexIslandConfigs = {
-        dummy05,
-        dummy05,
-        dummy05,
-        dummy05,
-        dummy05
-    },
+
+local dummy06a = {
+    material = Enum.Material.Glacier,
     orbiterConfigs = {
         {
-            -- words = {'CAT', 'CAT', 'CAT'},
+            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
             numBlocks = 12,
-            angularVelocity = 0.8,
+            angularVelocity = 0,
+            -- angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'CATBATRAT',
+            -- singleWord = 'RRR~',
             discHeight = 1
         }
+    }
+}
+local dummy06b = {
+    material = Enum.Material.Glacier,
+    orbiterConfigs = {
+        {
+            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
+            numBlocks = 12,
+            angularVelocity = 0,
+            -- angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            -- singleWord = 'RRR~',
+            discHeight = 1
+        }
+    }
+}
+
+local region06 = {
+    hexIslandConfigs = {
+        dummy06a,
+        dummy06b
     },
+    orbiterConfigs = {},
     getTargetWords = function()
         return {
             {
