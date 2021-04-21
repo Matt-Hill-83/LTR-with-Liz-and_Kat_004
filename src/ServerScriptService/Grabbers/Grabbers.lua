@@ -28,6 +28,41 @@ function module.initGrabbers(props)
     end
 end
 
+function module.initGrabbers2(props)
+    local parentFolder = props.parentFolder
+    local levelConfig = props.levelConfig
+
+    if not levelConfig.strayRegions then
+        return
+    end
+    if not levelConfig.strayRegions[1] then
+        return
+    end
+    if not levelConfig.strayRegions[1]['words'] then
+        return
+    end
+
+    local word = levelConfig.strayRegions[1]['words'][1]
+    local positioners =
+        Utils.getByTagInParent(
+        {
+            parent = parentFolder,
+            tag = 'LetterGrabberPositioner2'
+        }
+    )
+
+    for _, positioner in ipairs(positioners) do
+        local grabbersConfig = {
+            word = word,
+            -- word = positioner.Name,
+            parentFolder = parentFolder,
+            positioner = positioner
+        }
+
+        LetterGrabber.initLetterGrabber(grabbersConfig)
+    end
+end
+
 function module.getLetterMatrix(props)
     local levelConfig = props.levelConfig
     local numRods = props.numRods
@@ -40,31 +75,6 @@ function module.getLetterMatrix(props)
 
     local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = numRods})
     return letterMatrix
-end
-
-function module.initPlayerGrabber(props)
-    local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
-
-    local miniGameState = {
-        activeStyle = 'BD_available',
-        inActiveStyle = 'BD_not_available', -- Rack starts with this one:
-        --
-        activeWord = nil,
-        activeWordIndex = 1,
-        availLetters = {},
-        availWords = {},
-        currentLetterIndex = 1,
-        foundLetters = {},
-        initCompleted = false,
-        rackLetterBlockObjs = {},
-        renderedWords = {}
-        -- sectorConfig = sectorConfig,
-        -- rackLetterSize = rackLetterSize,
-        -- sectorFolder = sectorFolder,
-        -- wordLetterSize = 16,
-    }
-    -- miniGameState.words = words
 end
 
 return module

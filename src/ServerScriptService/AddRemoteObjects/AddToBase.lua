@@ -229,9 +229,6 @@ local function addRemoteObjects()
 
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
-        -- VendingMachine2.initVendingMachine_002(
-        --     {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
-        -- )
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex, levelConfig = config})
@@ -254,6 +251,8 @@ local function addRemoteObjects()
             }
         )
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
+
+        Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
     end
 
     TestArea.configTestArea({parentFolder = level})
@@ -262,7 +261,7 @@ local function addRemoteObjects()
     local sectorConfigs = levelConfig.sectorConfigs
     module.addConveyors(level, sectorConfigs)
 
-    Grabbers.initGrabbers({levelConfig = levelConfig, parentFolder = level})
+    Grabbers.initGrabbers({parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()

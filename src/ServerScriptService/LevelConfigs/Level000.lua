@@ -280,41 +280,16 @@ local region05 = {
     end
 }
 
-local region06 = {
+local region08 = {
     hexIslandConfigs = {
         dummy01,
         dummy01
     },
-    orbiterConfigs = {},
-    strayRegions = {
-        {
-            words = {'RAT'},
-            randomLetterMultiplier = 1,
-            maxLetters = 6,
-            useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
-        }
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'RAT', target = 1, found = 0}
-            }
-        }
-    end
-}
-
-local region07 = {
-    hexIslandConfigs = {
-        dummy01,
-        dummy01
-    },
-    orbiterConfigs = {},
     strayRegions = {
         {
             words = {'CAT'},
-            randomLetterMultiplier = 1,
-            maxLetters = 6,
+            -- randomLetterMultiplier = 1,
+            maxLetters = 3,
             useArea = true
             -- blockTemplate = 'BD_6_blank_cupcake'
         }
@@ -328,16 +303,15 @@ local region07 = {
     end
 }
 
-local region08 = {
+local region09 = {
     hexIslandConfigs = {
-        dummy01,
         dummy01
     },
     strayRegions = {
         {
-            words = {'RAT'},
-            -- randomLetterMultiplier = 1,
-            -- maxLetters = 6,
+            words = {'BAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
             useArea = true
             -- blockTemplate = 'BD_6_blank_cupcake'
         }
@@ -345,22 +319,87 @@ local region08 = {
     getTargetWords = function()
         return {
             {
-                {word = 'RAT', target = 1, found = 0}
+                {word = 'BAT', target = 1, found = 0}
             }
         }
     end
 }
 
-local region09 = {
+local region10 = {
     hexIslandConfigs = {
-        dummy01,
+        dummy01
+    },
+    strayRegions = {
+        {
+            words = {'HAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'HAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region11 = {
+    hexIslandConfigs = {
+        dummy01
+    },
+    strayRegions = {
+        {
+            words = {'MAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'MAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region12 = {
+    hexIslandConfigs = {
+        dummy01
+    },
+    strayRegions = {
+        {
+            words = {'PAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'PAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region13 = {
+    hexIslandConfigs = {
         dummy01
     },
     strayRegions = {
         {
             words = {'RAT'},
-            randomLetterMultiplier = 1,
-            maxLetters = 6,
+            -- randomLetterMultiplier = 1,
+            -- maxLetters = 6,
             useArea = true
             -- blockTemplate = 'BD_6_blank_cupcake'
         }
@@ -383,10 +422,10 @@ module.regions = {
     -- region06,
     region08,
     region09,
-    region09,
-    region09,
-    region09,
-    region09
+    region10,
+    region11,
+    region12,
+    region13
 }
 
 return module

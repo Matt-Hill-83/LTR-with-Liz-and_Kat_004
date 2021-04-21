@@ -575,41 +575,7 @@ local function getImageId(characterName)
     return module.characters[characterName]['decalId']
 end
 
--- AT = {soundId = '6311419247', imageId = 'xxx'},
--- CAN = {soundId = '6311423202', imageId = 'xxx'},
--- CAP = {soundId = '6311426496', imageId = 'xxx'},
--- DAN = {soundId = '6311421475', imageId = 'xxx'},
--- FAN = {soundId = '6311420882', imageId = 'xxx'},
--- GAP = {soundId = '6311425951', imageId = 'xxx'},
--- JAN = {soundId = '6311419798', imageId = 'xxx'},
--- LAP = {soundId = '6311425376', imageId = 'xxx'},
--- MAP = {soundId = '6311424769', imageId = 'xxx'},
--- NAP = {soundId = '6311428568', imageId = 'xxx'},
--- PAN = {soundId = '6311422070', imageId = 'xxx'},
--- RAN = {soundId = '6311423721', imageId = 'xxx'},
--- RAP = {soundId = '6311427488', imageId = 'xxx'},
--- TAN = {soundId = '6311420313', imageId = 'xxx'},
--- TAP = {soundId = '6311427973', imageId = 'xxx'},
--- VAN = {soundId = '6311424336', imageId = 'xxx'},
--- YES = {soundId = '6199538408', imageId = 'xxx'},
--- ZAP = {soundId = '6311449097', imageId = 'xxx'},
--- AN = {
---     soundId = '6311422754',
---     imageId = 'xxx'
--- },
-
 module.wordConfigs = {
-    XXX = {
-        soundId = '6311422754',
-        imageId = 'xxx',
-        soundConfig = {
-            soundId = '6701578424',
-            soundGroup = '',
-            timeLength = 4,
-            timePosition = 4,
-            volume = 3
-        }
-    },
     BEE = {soundId = nil, imageId = getImageId('bee')},
     BOG = {soundId = '6149925692', imageId = getImageId('bog')},
     DOG = {soundId = '6145990934', imageId = getImageId('angus01')},
@@ -617,15 +583,6 @@ module.wordConfigs = {
     VAT = {soundId = '6311418726', imageId = '6253982590'},
     --
     --
-
-    -- BAT = {soundId = '6145991240', imageId = getImageId('bat')},
-    -- CAT = {soundId = '6145990934', imageId = getImageId('mitzyMeow01')},
-    -- DAD = {soundId = '6253993637', imageId = '6253993637'},
-    -- HAT = {soundId = '6145991587', imageId = getImageId('hat')},
-    -- MAT = {soundId = '6145991865', imageId = getImageId('mat')},
-    -- PAT = {soundId = '6145992548', imageId = '6253959302'},
-    -- RAT = {soundId = '6145992816', imageId = getImageId('rat')},
-    -- SAT = {soundId = '6145993194', imageId = '6253976498'},
     --
     --
     --
@@ -704,7 +661,7 @@ module.wordConfigs = {
     SAG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 24}},
     SAM = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 46}},
     SAP = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 91}},
-    SAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 109}},
+    SAT = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 109}, imageId = '6253976498'},
     TAG = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 18}},
     TALL = {soundConfig = {soundId = '6704826658', duration = 3.5, volume = 3, timePosition = 178}},
     TAN = {soundConfig = {soundId = '6704826658', duration = 3, volume = 3, timePosition = 70}},
