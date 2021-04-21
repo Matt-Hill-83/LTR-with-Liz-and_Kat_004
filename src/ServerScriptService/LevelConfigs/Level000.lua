@@ -406,6 +406,79 @@ local region06 = {
     end
 }
 
-module.regions = {region01, region02, region03, region04, region05, region06}
+local region07 = {
+    hexIslandConfigs = {
+        dummy06a,
+        dummy06b
+    },
+    orbiterConfigs = {},
+    strayRegions = {
+        {
+            words = {'CAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region08 = {
+    hexIslandConfigs = {
+        dummy06a,
+        dummy06b
+    },
+    orbiterConfigs = {},
+    strayRegions = {
+        {
+            words = {'RAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region09 = {
+    hexIslandConfigs = {
+        dummy06a,
+        dummy06b
+    },
+    orbiterConfigs = {},
+    strayRegions = {
+        {
+            words = {'RAT'},
+            randomLetterMultiplier = 1,
+            maxLetters = 6,
+            useArea = true
+            -- blockTemplate = 'BD_6_blank_cupcake'
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+-- module.regions = {region01, region02, region03, region04, region05, region06}
+module.regions = {region08, region09, region09, region09, region09, region09, region09, region09}
 
 return module

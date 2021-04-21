@@ -66,22 +66,12 @@ function module.initStraysInRegions(props)
 
             blockTemplate = config.blockTemplate
 
-            print('blockTemplate' .. ' - start')
-            print('blockTemplate' .. ' - start')
-            print('blockTemplate' .. ' - start')
-            print('blockTemplate' .. ' - start')
-            print(blockTemplate)
             words = config.words or defaultWords
             local useArea = config.useArea or defaultWords
 
             if useArea then
                 local regionArea = region.Size.X * region.Size.Y
                 maxLetters = regionArea / 20
-                print('maxLetters' .. ' - start')
-                print('maxLetters' .. ' - start')
-                print('maxLetters' .. ' - start')
-                print('maxLetters' .. ' - start')
-                print(maxLetters)
             else
                 maxLetters = config.maxLetters or 10
             end
