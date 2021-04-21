@@ -479,6 +479,21 @@ local region09 = {
 }
 
 -- module.regions = {region01, region02, region03, region04, region05, region06}
-module.regions = {region08, region09, region09, region09, region09, region09, region09, region09}
+module.regions = {
+    region01,
+    region02,
+    region03,
+    region04,
+    region05,
+    region06,
+    region08,
+    region09,
+    region09,
+    region09,
+    region09,
+    region09,
+    region09,
+    region09
+}
 
 return module

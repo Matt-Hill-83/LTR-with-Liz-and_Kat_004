@@ -229,9 +229,9 @@ local function addRemoteObjects()
 
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
-        VendingMachine2.initVendingMachine_002(
-            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
-        )
+        -- VendingMachine2.initVendingMachine_002(
+        --     {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
+        -- )
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex, levelConfig = config})
@@ -275,6 +275,14 @@ local function addRemoteObjects()
 
     -- Do this last after everything has been created/deleted
     ConfigGame.configGame({levelConfig = levelConfig})
+
+    for regionIndex, region in ipairs(regions) do
+        local config = levelConfig.regions[regionIndex]
+
+        VendingMachine2.initVendingMachine_002(
+            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
+        )
+    end
 end
 
 module.addRemoteObjects = addRemoteObjects
