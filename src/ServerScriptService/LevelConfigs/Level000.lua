@@ -209,7 +209,7 @@ local dummy05 = {
 }
 
 local region01 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -240,7 +240,7 @@ local region01 = {
 }
 
 local region02 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -257,7 +257,7 @@ local region02 = {
 }
 
 local region03 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -278,7 +278,7 @@ local region03 = {
 }
 
 local region04 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy,
         dummy,
@@ -313,7 +313,7 @@ local region04 = {
 }
 
 local region05 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
+    vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy05,
         dummy05,
