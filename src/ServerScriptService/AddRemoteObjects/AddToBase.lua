@@ -263,7 +263,6 @@ local function addRemoteObjects()
     module.addConveyors(level, sectorConfigs)
 
     Grabbers.initGrabbers({levelConfig = levelConfig, parentFolder = level})
-    -- Replicator2.initReplicator2({levelConfig = levelConfig, parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()

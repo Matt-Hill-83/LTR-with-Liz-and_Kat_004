@@ -86,8 +86,8 @@ function module.initJunctions(props)
             )
 
             -- use mod to cycle thru configs when there are more positioners than configs
-            local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
-            local char = letterMatrix[mod + 1]
+            -- local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
+            -- local char = letterMatrix[mod + 1]
 
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')

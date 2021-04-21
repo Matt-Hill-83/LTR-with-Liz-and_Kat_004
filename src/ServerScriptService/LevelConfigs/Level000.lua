@@ -119,41 +119,6 @@ local c0r0 = {
     }
 }
 
-local dummy = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {
-        Liz = {
-            sentence = {'I', 'SEE', 'A', 'CAT'},
-            character = 'lizHappy',
-            -- songId = '6342102168',
-            keyColor = Colors.colors.yellow
-        },
-        Kat = {
-            sentence = {'NOT', 'A', 'CAT'},
-            character = 'katScared',
-            songId = '6342102168'
-        },
-        Troll = {
-            sentence = {'TROLL', 'NEED', 'GOLD'},
-            character = 'babyTroll04',
-            songId = '6338745550'
-        }
-    },
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'CATBATRAT',
-            discHeight = 1
-        }
-    }
-}
-
 local dummy01 = {
     material = Enum.Material.Glacier,
     statueConfigs = {
@@ -190,24 +155,7 @@ local dummy01 = {
 }
 
 local region01 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01,
         dummy01
     },
@@ -221,12 +169,11 @@ local region01 = {
 }
 
 local region02 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
     },
     getTargetWords = function()
         return {
@@ -238,13 +185,12 @@ local region02 = {
 }
 
 local region03 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
     },
     getTargetWords = function()
         return {
@@ -259,25 +205,13 @@ local region03 = {
 }
 
 local region04 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
-        dummy,
-        dummy,
-        dummy,
-        dummy,
-        dummy
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
     },
-    -- hexIslandConfigs = {
-    --     c0r0,
-    --     c0r0,
-    --     c0r0,
-    --     c1r1,
-    --     c1r2,
-    --     c1r3,
-    --     c1r4,
-    --     c1r5,
-    --     c1r6
-    -- },
     getTargetWords = function()
         return {
             {
@@ -313,7 +247,6 @@ local dummy05 = {
 }
 
 local region05 = {
-    -- vendingMachines = {{targetWordIndex = 1}, {targetWordIndex = 2}},
     hexIslandConfigs = {
         dummy05,
         dummy05,
@@ -347,45 +280,10 @@ local region05 = {
     end
 }
 
-local dummy06a = {
-    material = Enum.Material.Glacier,
-    orbiterConfigs = {
-        {
-            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
-            numBlocks = 12,
-            angularVelocity = 0,
-            -- angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            -- singleWord = 'RRR~',
-            discHeight = 1
-        }
-    }
-}
-local dummy06b = {
-    material = Enum.Material.Glacier,
-    orbiterConfigs = {
-        {
-            words = {'CALL', 'CAN', 'CAP', 'CAT', 'DAD'},
-            numBlocks = 12,
-            angularVelocity = 0,
-            -- angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            -- singleWord = 'RRR~',
-            discHeight = 1
-        }
-    }
-}
-
 local region06 = {
     hexIslandConfigs = {
-        dummy06a,
-        dummy06b
+        dummy01,
+        dummy01
     },
     orbiterConfigs = {},
     strayRegions = {
@@ -408,8 +306,8 @@ local region06 = {
 
 local region07 = {
     hexIslandConfigs = {
-        dummy06a,
-        dummy06b
+        dummy01,
+        dummy01
     },
     orbiterConfigs = {},
     strayRegions = {
@@ -432,10 +330,9 @@ local region07 = {
 
 local region08 = {
     hexIslandConfigs = {
-        dummy06a,
-        dummy06b
+        dummy01,
+        dummy01
     },
-    orbiterConfigs = {},
     strayRegions = {
         {
             words = {'RAT'},
@@ -456,10 +353,9 @@ local region08 = {
 
 local region09 = {
     hexIslandConfigs = {
-        dummy06a,
-        dummy06b
+        dummy01,
+        dummy01
     },
-    orbiterConfigs = {},
     strayRegions = {
         {
             words = {'RAT'},
@@ -478,7 +374,6 @@ local region09 = {
     end
 }
 
--- module.regions = {region01, region02, region03, region04, region05, region06}
 module.regions = {
     region01,
     region02,
