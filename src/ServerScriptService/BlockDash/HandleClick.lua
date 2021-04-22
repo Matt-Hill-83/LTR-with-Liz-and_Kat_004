@@ -144,13 +144,6 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
 
         if (wordComplete) then
             Utils.playWordSound2(currentWord)
-            -- local currentWord2 = Const4.wordConfigs[currentWord]
-            -- if currentWord2 then
-            -- local soundId = currentWord2.soundId or fireSound
-            -- Utils.playSound(soundId)
-            -- else
-            -- Utils.playSound(fireSound)
-            -- end
 
             local gemTemplate = Utils.getFromTemplates('GemTemplate')
             local newGem = gemTemplate:Clone()
