@@ -75,6 +75,30 @@ local function styleLetterGrabberBlocks(tool)
     end
 end
 
+function module.playWordSound(word)
+    local currentWord2 = Const4.wordConfigs[word]
+    if currentWord2 then
+        if currentWord2.soundConfig then
+            local soundConfig = currentWord2.soundConfig
+            local timePosition = soundConfig.timePosition
+            local duration = soundConfig.duration
+            local soundId = soundConfig.soundId
+
+            local sound = Instance.new('Sound', game.Workspace)
+            sound.SoundId = 'rbxassetid://' .. soundId
+            sound.Looped = false
+
+            function stopSound()
+                sound.Playing = false
+            end
+
+            sound.TimePosition = timePosition
+            sound.Playing = true
+            delay(duration, stopSound)
+        end
+    end
+end
+
 local function wordFound(tool, player)
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
@@ -91,36 +115,28 @@ local function wordFound(tool, player)
 
     local targetWordObj = Utils.getListItemByPropValue(targetWords, 'word', targetWord)
 
-    -- local fireSound = '5207654419'
-    local currentWord2 = Const4.wordConfigs[targetWord]
-    if currentWord2 then
-        -- local soundId = currentWord2.soundId
+    module.playWordSound(targetWord)
+    -- local currentWord2 = Const4.wordConfigs[targetWord]
+    -- if currentWord2 then
+    --     if currentWord2.soundConfig then
+    --         local soundConfig = currentWord2.soundConfig
+    --         local timePosition = soundConfig.timePosition
+    --         local duration = soundConfig.duration
+    --         local soundId = soundConfig.soundId
 
-        if currentWord2.soundConfig then
-            local soundConfig = currentWord2.soundConfig
-            local timePosition = soundConfig.timePosition
-            local duration = soundConfig.duration
-            local soundId = soundConfig.soundId
-            print('soundId' .. ' - start')
-            print(soundId)
-            -- Utils.playSound(soundId)
+    --         local sound = Instance.new('Sound', game.Workspace)
+    --         sound.SoundId = 'rbxassetid://' .. soundId
+    --         sound.Looped = false
 
-            local sound = Instance.new('Sound', game.Workspace)
-            sound.SoundId = 'rbxassetid://' .. soundId
-            -- sound.SoundId = 'rbxassetid://6704826658'
-            -- sound.SoundId = 'rbxassetid://6701629089'
-            sound.Looped = false
+    --         function stopSound()
+    --             sound.Playing = false
+    --         end
 
-            function stopSound()
-                sound.Playing = false
-            end
-
-            -- function onClicked(playerWhoClicked)
-            sound.TimePosition = timePosition
-            sound.Playing = true
-            delay(duration, stopSound)
-        end
-    end
+    --         sound.TimePosition = timePosition
+    --         sound.Playing = true
+    --         delay(duration, stopSound)
+    --     end
+    -- end
 
     if targetWordObj then
         targetWordObj.found = targetWordObj.found + 1
@@ -142,10 +158,9 @@ local function wordFound(tool, player)
             Utils.playSound(explosionSound, 0.5)
         end
 
-        -- don't give gem
+        --  give gem
         if true then
-            -- if targetWordObj.found == targetWordObj.target then
-            delay(1, destroyParts)
+            -- delay(1, destroyParts)
 
             local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
             local newKey = keyTemplate:Clone()
