@@ -215,13 +215,7 @@ local region04 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CAT', target = 1, found = 0},
-                {word = 'BAT', target = 1, found = 0},
-                {word = 'HAT', target = 1, found = 0},
-                {word = 'MAT', target = 1, found = 0},
-                {word = 'SAT', target = 1, found = 0},
-                {word = 'PAT', target = 1, found = 0},
-                {word = 'RAT', target = 1, found = 0}
+                {word = 'CAT', target = 1, found = 0}
             }
         }
     end
