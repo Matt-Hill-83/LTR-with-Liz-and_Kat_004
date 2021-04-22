@@ -27,20 +27,21 @@ local sector2Config = {
 local sector3Config = {
     freezeConveyor = true,
     words = {
-        'VAT',
+        -- 'VAT',
+        'TAN',
         'VAN',
-        'MAN',
-        'MOM'
+        'CAN',
+        'PAN'
+        -- 'MOM'
     }
 }
 local sector4Config = {
     freezeConveyor = true,
     words = {
-        -- 'DAD',
-        'DOG',
-        'HOG',
-        'LOG',
-        'BOG'
+        'SAD',
+        'MAD',
+        'PAD',
+        'HAD'
     }
 }
 local sector5Config = {
