@@ -118,6 +118,7 @@ local function initWord(props)
     end
 
     wordBench.CanCollide = false
+    letterPositioner.CanCollide = false
 
     local newWordObj = {
         uuid = Utils.getUuid(),
