@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local RS = game:GetService('ReplicatedStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 -- local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
@@ -135,8 +136,13 @@ local function wordFound(tool, player)
                 }
             )
 
-            newTool.Parent = player.Character
+            newTool.Parent = workspace
             keyPart.Anchored = false
+            local pp = player.Character.PrimaryPart
+
+            keyPart.CFrame =
+                CFrame.new(pp.CFrame.Position + (20 * pp.CFrame.LookVector), pp.Position) *
+                CFrame.Angles(0, math.rad(180), 0)
         end
     end
 end
@@ -208,8 +214,6 @@ function module.partTouched2(touchedBlock, player, grabber)
     if not tool then
         return
     end
-
-    -- HandleGrab.onGrabLetter({letterBlock = touchedBlock})
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
     if activeBlock then

@@ -6,7 +6,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local Constants2 = require(Sss.Source.Constants.Const_02_Colors)
-local Const4 = require(Sss.Source.Constants.Const_04_Characters)
+-- local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
@@ -126,7 +126,6 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
 
         local currentWord = table.concat(miniGameState.foundLetters, '')
         local wordComplete = table.find(words, currentWord)
-        local fireSound = '5207654419'
 
         miniGameState.currentLetterIndex = miniGameState.currentLetterIndex + 1
 

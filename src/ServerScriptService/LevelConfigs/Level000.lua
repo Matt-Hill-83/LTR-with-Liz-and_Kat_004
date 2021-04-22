@@ -255,7 +255,7 @@ local region05 = {
     getTargetWords = function()
         return {
             {
-                {word = 'RAT', target = 1, found = 0}
+                {word = 'CAT', target = 1, found = 0}
             }
         }
     end
@@ -270,9 +270,6 @@ local region08 = {
         {
             words = {'CAT', 'BAT', 'RAT'},
             useArea = true
-            -- randomLetterMultiplier = 1,
-            -- maxLetters = 3,
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()
