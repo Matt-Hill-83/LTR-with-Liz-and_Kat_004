@@ -9,6 +9,30 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.playWordSound2(word)
+    local currentWord = Const4.wordConfigs[word]
+    if currentWord then
+        if currentWord.soundConfig then
+            local soundConfig = currentWord.soundConfig
+            local timePosition = soundConfig.timePosition
+            local duration = soundConfig.duration
+            local soundId = soundConfig.soundId
+
+            local sound = Instance.new('Sound', game.Workspace)
+            sound.SoundId = 'rbxassetid://' .. soundId
+            sound.Looped = false
+
+            function stopSound()
+                sound.Playing = false
+            end
+
+            sound.TimePosition = timePosition
+            sound.Playing = true
+            delay(duration, stopSound)
+        end
+    end
+end
+
 function module.partIntersectsPoint(part, point, shape)
     local delta = part.CFrame:pointToObjectSpace(point)
     delta = Vector3.new(math.abs(delta.X), math.abs(delta.Y), math.abs(delta.Z))

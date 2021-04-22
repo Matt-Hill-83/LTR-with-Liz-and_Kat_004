@@ -3,13 +3,12 @@ local RS = game:GetService('ReplicatedStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
-local Const4 = require(Sss.Source.Constants.Const_04_Characters)
+-- local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
--- local HandleGrab = require(Sss.Source.LetterGrabber.HandleGrab)
 
 local module = {}
 
@@ -75,30 +74,6 @@ local function styleLetterGrabberBlocks(tool)
     end
 end
 
-function module.playWordSound(word)
-    local currentWord2 = Const4.wordConfigs[word]
-    if currentWord2 then
-        if currentWord2.soundConfig then
-            local soundConfig = currentWord2.soundConfig
-            local timePosition = soundConfig.timePosition
-            local duration = soundConfig.duration
-            local soundId = soundConfig.soundId
-
-            local sound = Instance.new('Sound', game.Workspace)
-            sound.SoundId = 'rbxassetid://' .. soundId
-            sound.Looped = false
-
-            function stopSound()
-                sound.Playing = false
-            end
-
-            sound.TimePosition = timePosition
-            sound.Playing = true
-            delay(duration, stopSound)
-        end
-    end
-end
-
 local function wordFound(tool, player)
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
@@ -115,28 +90,7 @@ local function wordFound(tool, player)
 
     local targetWordObj = Utils.getListItemByPropValue(targetWords, 'word', targetWord)
 
-    module.playWordSound(targetWord)
-    -- local currentWord2 = Const4.wordConfigs[targetWord]
-    -- if currentWord2 then
-    --     if currentWord2.soundConfig then
-    --         local soundConfig = currentWord2.soundConfig
-    --         local timePosition = soundConfig.timePosition
-    --         local duration = soundConfig.duration
-    --         local soundId = soundConfig.soundId
-
-    --         local sound = Instance.new('Sound', game.Workspace)
-    --         sound.SoundId = 'rbxassetid://' .. soundId
-    --         sound.Looped = false
-
-    --         function stopSound()
-    --             sound.Playing = false
-    --         end
-
-    --         sound.TimePosition = timePosition
-    --         sound.Playing = true
-    --         delay(duration, stopSound)
-    --     end
-    -- end
+    Utils.playWordSound2(targetWord)
 
     if targetWordObj then
         targetWordObj.found = targetWordObj.found + 1

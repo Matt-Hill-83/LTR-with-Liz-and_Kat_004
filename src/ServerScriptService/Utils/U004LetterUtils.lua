@@ -123,7 +123,7 @@ local function playWordSound(word)
             if (soundId) then
                 local sound = Instance.new('Sound', workspace)
                 sound.SoundId = 'rbxassetid://' .. soundId
-                sound.EmitterSize = 5
+                -- sound.EmitterSize = 5
                 sound.Looped = false
                 if not sound.IsPlaying then
                     sound:Play()
