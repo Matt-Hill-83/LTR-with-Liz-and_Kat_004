@@ -8,7 +8,8 @@ local Utils5 = require(Sss.Source.Utils.U005LetterGrabberUtils)
 
 local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
-local Replicator = require(Sss.Source.BlockDash.Replicator)
+-- local Replicator = require(Sss.Source.BlockDash.Replicator)
+local AccessoryReplicator = require(Sss.Source.BlockDash.AccessoryReplicator)
 
 local module = {}
 
@@ -256,7 +257,11 @@ function module.initLetterGrabber(props)
     end
 
     -- newReplicatorPart.Anchored = true
-    Replicator.initReplicator(newReplicator, afterReplication)
+    AccessoryReplicator.initAccessoryReplicator(newReplicator)
+    local hitBox = Utils.getFirstDescendantByName(newReplicator, 'HitBox')
+    hitBox.Name = word
+    module.initGrabberSwap({hitBox = hitBox})
+    -- Replicator.initReplicator(newReplicator, afterReplication)
     return newReplicator
 end
 

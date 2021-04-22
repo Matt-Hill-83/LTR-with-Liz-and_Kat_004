@@ -9,7 +9,6 @@ local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvent
 
 -- local Door = require(Sss.Source.Door.Door)
 -- local Key = require(Sss.Source.Key.Key)
--- local Replicator2 = require(Sss.Source.BlockDash.Replicator2)
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
@@ -252,7 +251,7 @@ local function addRemoteObjects()
             }
         )
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
-        -- Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
+        Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
         LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
     end
 
