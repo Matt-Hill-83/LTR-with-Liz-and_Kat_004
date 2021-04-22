@@ -117,13 +117,13 @@ function module.configPlayers(props)
             local acc = Utils.getFirstDescendantByName(workspace, 'LetterGrabberAcc')
             local letterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
             local grabbersConfig = {
-                word = 'RAT',
+                word = 'ZZZ',
                 letterGrabber = letterGrabber,
                 player = player
             }
 
-            -- LetterGrabber.initLetterGrabberSimple(grabbersConfig)
-            -- humanoid:AddAccessory(acc)
+            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
+            humanoid:AddAccessory(acc)
 
             --
             --
