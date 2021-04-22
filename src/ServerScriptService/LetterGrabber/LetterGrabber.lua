@@ -241,14 +241,6 @@ function module.initLetterGrabber(props)
     )
 
     if positioner then
-        print('positioner' .. ' - start')
-        print('positioner' .. ' - start')
-        print('positioner' .. ' - start')
-        print('positioner' .. ' - start')
-        print(positioner)
-
-        print('newReplicatorPart' .. ' - start')
-        print(newReplicatorPart)
         newReplicatorPart.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(
             {
@@ -264,7 +256,6 @@ function module.initLetterGrabber(props)
     end
 
     -- newReplicatorPart.Anchored = true
-    newReplicatorPart.Name = 'qqqqq'
     Replicator.initReplicator(newReplicator, afterReplication)
     return newReplicator
 end
@@ -299,23 +290,36 @@ function module.touchGrabberSwap(touchedPart, player)
 end
 
 function module.donGrabberAccessory(player, grabberConfig)
-    print('donGrabberAccessory')
-    print('donGrabberAccessory')
-    print('donGrabberAccessory')
+    local tagName = 'GrabberAccessory'
 
     grabberConfig = grabberConfig or {}
-    print('grabberConfig' .. ' - start')
-    print(grabberConfig)
     local word = grabberConfig.word or 'ZZZ'
-    -- local word = grabberConfig.word or 'CAT'
-    local grabberTemplateName = grabberConfig.grabberTemplateName or 'LetterGrabberAcc'
 
     local character = player.Character or player.CharacterAdded:Wait()
-    local humanoid = character:WaitForChild('Humanoid')
+    local kids = character:GetChildren()
 
+    for _, kid in ipairs(kids) do
+        local tagValue = kid:GetAttribute(tagName)
+        if tagValue then
+            -- if character already has grabber, return
+            if tagValue == word then
+                return
+            else
+                -- if character ahs other grabber, delete it
+                kid:Destroy()
+            end
+        end
+    end
+
+    -- add new grabber
+    local grabberTemplateName = grabberConfig.grabberTemplateName or 'LetterGrabberAcc'
+
+    local humanoid = character:WaitForChild('Humanoid')
     local template = Utils.getFromTemplates(grabberTemplateName)
-    -- local template = Utils.getFirstDescendantByName(workspace, grabberTemplateName)
+
     local acc = template:Clone()
+    CS:AddTag(acc, tagName)
+    acc:SetAttribute(tagName, word)
 
     local letterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
     local grabbersConfig = {
@@ -332,15 +336,16 @@ function module.initGrabberSwaps(props)
     local parentFolder = props.parentFolder
 
     local grabberSwaps = Utils.getByTagInParent({parent = parentFolder, tag = 'GrabberSwap'})
-    print('grabberSwaps' .. ' - start')
-    print('grabberSwaps' .. ' - start')
-    print('grabberSwaps' .. ' - start')
-    print(grabberSwaps)
     Utils.sortListByObjectKey(grabberSwaps, 'Name')
 
     for _, swap in ipairs(grabberSwaps) do
         swap.Touched:Connect(Utils.onTouchHuman(swap, module.touchGrabberSwap))
     end
+end
+
+function module.initGrabberSwap(props)
+    local hitBox = props.hitBox
+    hitBox.Touched:Connect(Utils.onTouchHuman(hitBox, module.touchGrabberSwap))
 end
 
 return module

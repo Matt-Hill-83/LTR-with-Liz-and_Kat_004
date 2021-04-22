@@ -25,6 +25,7 @@ function module.initGrabbers(props)
         }
 
         LetterGrabber.initLetterGrabber(grabbersConfig)
+        -- LetterGrabber.initGrabberSwap({hitBox = config, parentFolder = region})
     end
 end
 

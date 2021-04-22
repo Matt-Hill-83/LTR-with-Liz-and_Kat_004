@@ -268,10 +268,10 @@ local region08 = {
     },
     strayRegions = {
         {
-            words = {'CAT'},
-            -- randomLetterMultiplier = 1,
-            maxLetters = 3,
+            words = {'CAT', 'BAT', 'RAT'},
             useArea = true
+            -- randomLetterMultiplier = 1,
+            -- maxLetters = 3,
             -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
