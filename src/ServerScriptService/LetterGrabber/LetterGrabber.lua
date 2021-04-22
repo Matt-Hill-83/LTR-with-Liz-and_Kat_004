@@ -294,4 +294,53 @@ function module.initLetterGrabberSimple(props)
     return letterGrabber
 end
 
+function module.touchGrabberSwap(touchedPart, player)
+    module.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = touchedPart.Name})
+end
+
+function module.donGrabberAccessory(player, grabberConfig)
+    print('donGrabberAccessory')
+    print('donGrabberAccessory')
+    print('donGrabberAccessory')
+
+    grabberConfig = grabberConfig or {}
+    print('grabberConfig' .. ' - start')
+    print(grabberConfig)
+    local word = grabberConfig.word or 'ZZZ'
+    -- local word = grabberConfig.word or 'CAT'
+    local grabberTemplateName = grabberConfig.grabberTemplateName or 'LetterGrabberAcc'
+
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:WaitForChild('Humanoid')
+
+    local template = Utils.getFromTemplates(grabberTemplateName)
+    -- local template = Utils.getFirstDescendantByName(workspace, grabberTemplateName)
+    local acc = template:Clone()
+
+    local letterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
+    local grabbersConfig = {
+        word = word,
+        letterGrabber = letterGrabber,
+        player = player
+    }
+
+    module.initLetterGrabberSimple(grabbersConfig)
+    humanoid:AddAccessory(acc)
+end
+
+function module.initGrabberSwaps(props)
+    local parentFolder = props.parentFolder
+
+    local grabberSwaps = Utils.getByTagInParent({parent = parentFolder, tag = 'GrabberSwap'})
+    print('grabberSwaps' .. ' - start')
+    print('grabberSwaps' .. ' - start')
+    print('grabberSwaps' .. ' - start')
+    print(grabberSwaps)
+    Utils.sortListByObjectKey(grabberSwaps, 'Name')
+
+    for _, swap in ipairs(grabberSwaps) do
+        swap.Touched:Connect(Utils.onTouchHuman(swap, module.touchGrabberSwap))
+    end
+end
+
 return module

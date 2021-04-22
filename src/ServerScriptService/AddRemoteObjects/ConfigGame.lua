@@ -84,10 +84,6 @@ function module.addMeetLizBadge()
     )
 end
 
---
---
---
-
 function module.configPlayers(props)
     print('configPlayers---------------------------------------')
     local levelConfig = props.levelConfig
@@ -101,9 +97,7 @@ function module.configPlayers(props)
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
-
         local updateWordGuiRE2 = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-
         local gameState = PlayerStatManager.getGameState(player)
         local targetWords
 
@@ -112,21 +106,7 @@ function module.configPlayers(props)
             wait(2)
             targetWords = gameState.targetWords
         else
-            local humanoid = character:WaitForChild('Humanoid')
-
-            local acc = Utils.getFirstDescendantByName(workspace, 'LetterGrabberAcc')
-            local letterGrabber = Utils.getFirstDescendantByName(acc, 'LetterGrabber')
-            local grabbersConfig = {
-                word = 'ZZZ',
-                letterGrabber = letterGrabber,
-                player = player
-            }
-
-            LetterGrabber.initLetterGrabberSimple(grabbersConfig)
-            humanoid:AddAccessory(acc)
-
-            --
-            --
+            LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = '123'})
 
             targetWords = levelConfig.regions[1].getTargetWords()[1]
             print('targetWords------------------------>>>' .. ' - start')

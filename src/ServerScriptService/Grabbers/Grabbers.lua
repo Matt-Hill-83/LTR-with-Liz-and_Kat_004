@@ -28,6 +28,7 @@ function module.initGrabbers(props)
     end
 end
 
+-- this seems like a temporary thing to init some grabbers easily
 function module.initGrabbers2(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
