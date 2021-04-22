@@ -106,7 +106,7 @@ function module.configPlayers(props)
             wait(2)
             targetWords = gameState.targetWords
         else
-            LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = '123'})
+            LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
 
             targetWords = levelConfig.regions[1].getTargetWords()[1]
             print('targetWords------------------------>>>' .. ' - start')

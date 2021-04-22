@@ -143,7 +143,7 @@ local function wordFound(tool, player)
         end
 
         -- don't give gem
-        if false then
+        if true then
             -- if targetWordObj.found == targetWordObj.target then
             delay(1, destroyParts)
 

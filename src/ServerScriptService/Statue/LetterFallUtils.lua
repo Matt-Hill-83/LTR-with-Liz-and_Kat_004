@@ -514,26 +514,6 @@ function createBalls(miniGameState)
 
     local targetGemName = 'Gem-Q-zzzz' .. questIndex
 
-    -- GemHolder.initGem(
-    --     {
-    --         gemHolderName = 'GemHolder',
-    --         letterFallFolder = letterFallFolder,
-    --         questIndex = questIndex,
-    --         targetGemName = targetGemName,
-    --         isReceiver = true
-    --     }
-    -- )
-
-    -- GemHolder.initGem(
-    --     {
-    --         gemHolderName = 'MiniGemHolder',
-    --         letterFallFolder = letterFallFolder,
-    --         questIndex = questIndex,
-    --         targetGemName = targetGemName,
-    --         isReceiver = true
-    --     }
-    -- )
-
     local balls = {}
     for count = 1, 8 do
         local newBall = ball:Clone()
