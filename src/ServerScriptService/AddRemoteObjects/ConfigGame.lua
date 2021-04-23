@@ -85,7 +85,6 @@ function module.addMeetLizBadge()
 end
 
 function module.configPlayers(props)
-    print('configPlayers---------------------------------------')
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
@@ -93,7 +92,6 @@ function module.configPlayers(props)
     module.addMeetLizBadge()
 
     local function onCharacterAdded(character)
-        print('onCharacterAdded+++++++++++++++++++++++++++++++++')
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -109,8 +107,6 @@ function module.configPlayers(props)
             LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
 
             targetWords = levelConfig.regions[1].getTargetWords()[1]
-            print('targetWords------------------------>>>' .. ' - start')
-            print(targetWords)
             gameState.targetWords = targetWords
         end
 
@@ -170,7 +166,6 @@ local function configGamePass1()
 end
 
 local function configGamePass2()
-    print('configGamePass2' .. ' - start')
     -- local MarketplaceService = game:GetService('MarketplaceService')
     -- local Players = game:GetService('Players')
 
