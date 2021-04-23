@@ -8,7 +8,7 @@ local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
--- local Grabbers = require(Sss.Source.Grabbers.Grabbers)
+local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local Constants = require(Sss.Source.Constants.Constants)
 
@@ -78,10 +78,6 @@ function module.initJunctions(props)
                     }
                 }
             )
-
-            -- use mod to cycle thru configs when there are more positioners than configs
-            -- local mod = (#letterMatrix + hexIndex - 1) % #letterMatrix
-            -- local char = letterMatrix[mod + 1]
 
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
