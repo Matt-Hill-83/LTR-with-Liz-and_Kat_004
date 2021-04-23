@@ -450,8 +450,8 @@ local function initConveyors(miniGameState)
     end
     config()
 
-    -- local startAll = false
-    local startAll = true
+    local startAll = false
+    -- local startAll = true
 
     if startAll then
         local beltPlates = Utils.getDescendantsByName(conveyor, 'NewBeltPlate')
