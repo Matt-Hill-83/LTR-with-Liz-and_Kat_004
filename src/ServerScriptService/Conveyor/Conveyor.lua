@@ -71,6 +71,8 @@ local function initBeltPlate(props)
         pc.Speed = speed
 
         local function jumpBack(beltPlates2)
+            print('jumpBack' .. ' - start')
+            print(jumpBack)
             local db = true
 
             -- Enclose this so is acts on the correct belt
