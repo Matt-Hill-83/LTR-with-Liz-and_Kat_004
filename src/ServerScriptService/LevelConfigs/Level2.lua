@@ -3,66 +3,17 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
-local conveyor01 = {
-    words = {
-        'AAA',
-        'AAA',
-        'AAA',
-        'AAA',
-        'AAA',
-        'AAA',
-        'AAA',
-        'AAA'
-    }
-}
-local conveyor02 = {
-    words = {
-        'BBB',
-        'BBB',
-        'BBB',
-        'BBB',
-        'BBB',
-        'BBB',
-        'BBB',
-        'BBB'
-    }
-}
-local conveyor03 = {
-    words = {
-        'CCC',
-        'CCC',
-        'CCC',
-        'CCC',
-        'CCC',
-        'CCC',
-        'CCC',
-        'CCC'
-    }
-}
-local conveyor04 = {
-    words = {
-        'DDD',
-        'DDD',
-        'DDD',
-        'DDD',
-        'DDD',
-        'DDD',
-        'DDD',
-        'DDD'
-    }
-}
-
 local conveyorConfigs01 = {
     {
         words = {
             'CAT',
             'BAT',
             'HAT',
-            'MAT',
-            'PAT',
-            'RAT',
-            'SAT',
-            'FAT'
+            'MAT'
+            -- 'PAT',
+            -- 'RAT',
+            -- 'SAT',
+            -- 'FAT'
         }
     },
     {
@@ -70,11 +21,11 @@ local conveyorConfigs01 = {
             'FIG',
             'BIG',
             'DIG',
-            'RIG',
-            'WIG',
-            'JIG',
-            'ZIG',
-            'PIG'
+            'RIG'
+            -- 'WIG',
+            -- 'JIG',
+            -- 'ZIG',
+            -- 'PIG'
         }
     },
     {
@@ -82,11 +33,11 @@ local conveyorConfigs01 = {
             'CAP',
             'GAP',
             'LAP',
-            'MAP',
-            'SAP',
-            'TAP',
-            'RAP',
-            'ZAP'
+            'MAP'
+            -- 'SAP',
+            -- 'TAP',
+            -- 'RAP',
+            -- 'ZAP'
         }
     },
     {
@@ -94,11 +45,35 @@ local conveyorConfigs01 = {
             'VAN',
             'RAN',
             'CAN',
-            'PAN',
-            'FAN',
-            'TAN',
-            'DAN',
-            'BAN'
+            'PAN'
+            -- 'FAN',
+            -- 'TAN',
+            -- 'DAN',
+            -- 'BAN'
+        }
+    },
+    {
+        words = {
+            'CAP',
+            'GAP',
+            'LAP',
+            'MAP'
+            -- 'SAP',
+            -- 'TAP',
+            -- 'RAP',
+            -- 'ZAP'
+        }
+    },
+    {
+        words = {
+            'VAN',
+            'RAN',
+            'CAN',
+            'PAN'
+            -- 'FAN',
+            -- 'TAN',
+            -- 'DAN',
+            -- 'BAN'
         }
     }
 }
@@ -197,7 +172,7 @@ local region01 = {
 }
 
 local region02 = {
-    conveyorConfigs = {conveyor01, conveyor02, conveyor03, conveyor04},
+    conveyorConfigs = conveyorConfigs02,
     hexIslandConfigs = {
         dummy01
     },
