@@ -227,7 +227,7 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
-    Theater.initTheaters({parentFolder = level})
+    -- Theater.initTheaters({parentFolder = level})
 
     -- Do this last after everything has been created/deleted
     ConfigGame.configGame({levelConfig = levelConfig})

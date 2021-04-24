@@ -30,10 +30,6 @@ local function findFirstMatchingLetterBlock(foundChar, wordMenuState)
 end
 
 function module.onGrabLetter(clickedLetter, wordMenuState, player)
-    print('onGrabLetter' .. ' - start')
-    print('wordMenuState' .. ' - start')
-    print(wordMenuState)
-
     local gameState = PlayerStatManager.getGameState(player)
     if not gameState.wordMenuState then
         gameState.wordMenuState = {}

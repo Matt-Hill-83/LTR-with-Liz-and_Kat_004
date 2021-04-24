@@ -7,7 +7,6 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local module = {}
 
 local renderGrid = function(props)
-    print('renderGrid' .. ' - start---------------------------------->>>>>>')
     local targetWords = props.targetWords
     local sgui = props.sgui
     local displayHeight = props.displayHeight

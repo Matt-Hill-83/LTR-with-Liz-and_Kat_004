@@ -94,8 +94,6 @@ function module.addConveyors(props)
     local parentFolder = props.parentFolder
 
     local conveyorConfigs = levelConfig.conveyorConfigs
-    print('conveyorConfigs' .. ' - start')
-    print(conveyorConfigs)
 
     -- function module.addConveyors(parentFolder, conveyorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
