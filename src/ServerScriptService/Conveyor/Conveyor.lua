@@ -6,7 +6,7 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local module = {}
 
-local function initBeltPlate(props)
+function module.initBeltPlate(props)
     local beltPlateIndex = props.beltPlateIndex
     local miniGameState = props.miniGameState
 
@@ -123,7 +123,7 @@ local function initBeltPlate(props)
     end
 end
 
-local function initConveyors(miniGameState)
+function module.initConveyors(miniGameState)
     local sectorFolder = miniGameState.sectorFolder
     local beltPlateCFrames = miniGameState.beltPlateCFrames
     local rackLetterSize = miniGameState.rackLetterSize
@@ -441,7 +441,7 @@ local function initConveyors(miniGameState)
                 beltPlateIndex = beltPlateIndex,
                 miniGameState = miniGameState
             }
-            initBeltPlate(beltPlateProps)
+            module.initBeltPlate(beltPlateProps)
         end
 
         local beltPlateTemplate = Utils.getFirstDescendantByName(conveyor, 'BeltPlateTemplate')
@@ -487,5 +487,4 @@ local function initConveyors(miniGameState)
     end
 end
 
-module.initConveyors = initConveyors
 return module

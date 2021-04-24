@@ -1,7 +1,9 @@
 local Sss = game:GetService('ServerScriptService')
 
+local Constants = require(Sss.Source.Constants.Constants)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
+
 local InitLetterRack = require(Sss.Source.BlockDash.InitLetterRackBD)
 local InitWord = require(Sss.Source.BlockDash.InitWordBD)
 local Entrance = require(Sss.Source.BlockDash.Entrance)
@@ -10,7 +12,7 @@ local Conveyor = require(Sss.Source.Conveyor.Conveyor)
 
 local module = {}
 
-local function addBlockDash(sectorConfig)
+function module.addBlockDash(sectorConfig)
     -- local words = {sectorConfig.words[1]}
     local words = sectorConfig.words
 
@@ -89,5 +91,40 @@ local function addBlockDash(sectorConfig)
     -- initPowerUps(miniGameState)
 end
 
-module.addBlockDash = addBlockDash
+function module.addConveyors(level, sectorConfigs)
+    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
+
+    local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
+    Utils.sortListByObjectKey(islandPositioners, 'Name')
+    local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
+
+    for islandIndex, islandPositioner in ipairs(myPositioners) do
+        -- if islandIndex == 3 then break end
+        local newIsland = islandTemplate:Clone()
+
+        local anchoredParts = {}
+        for _, child in pairs(newIsland:GetDescendants()) do
+            if child:IsA('BasePart') then
+                if child.Anchored then
+                    child.Anchored = false
+                    table.insert(anchoredParts, child)
+                end
+            end
+        end
+
+        newIsland.Parent = level
+        newIsland.Name = 'Sector-' .. islandPositioner.Name
+        if sectorConfigs then
+            local sectorConfig = sectorConfigs[(islandIndex % #sectorConfigs) + 1]
+            sectorConfig.sectorFolder = newIsland
+            sectorConfig.islandPositioner = islandPositioner
+
+            for _, child in pairs(anchoredParts) do
+                child.Anchored = true
+            end
+            module.addBlockDash(sectorConfig)
+        end
+    end
+end
+
 return module

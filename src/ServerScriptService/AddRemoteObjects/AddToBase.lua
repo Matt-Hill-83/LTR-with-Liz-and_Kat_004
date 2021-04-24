@@ -95,44 +95,41 @@ function module.initAnimalSounds2()
     end
 end
 
-function module.addConveyors(level, sectorConfigs)
-    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
+-- function module.addConveyors(level, sectorConfigs)
+--     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
-    module.initAnimalSounds()
-    module.initAnimalSounds2()
+--     local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
+--     Utils.sortListByObjectKey(islandPositioners, 'Name')
+--     local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
 
-    local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
-    Utils.sortListByObjectKey(islandPositioners, 'Name')
-    local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
+--     for islandIndex, islandPositioner in ipairs(myPositioners) do
+--         -- if islandIndex == 3 then break end
+--         local newIsland = islandTemplate:Clone()
 
-    for islandIndex, islandPositioner in ipairs(myPositioners) do
-        -- if islandIndex == 3 then break end
-        local newIsland = islandTemplate:Clone()
+--         local anchoredParts = {}
+--         for _, child in pairs(newIsland:GetDescendants()) do
+--             if child:IsA('BasePart') then
+--                 if child.Anchored then
+--                     child.Anchored = false
+--                     table.insert(anchoredParts, child)
+--                 end
+--             end
+--         end
 
-        local anchoredParts = {}
-        for _, child in pairs(newIsland:GetDescendants()) do
-            if child:IsA('BasePart') then
-                if child.Anchored then
-                    child.Anchored = false
-                    table.insert(anchoredParts, child)
-                end
-            end
-        end
+--         newIsland.Parent = level
+--         newIsland.Name = 'Sector-' .. islandPositioner.Name
+--         if sectorConfigs then
+--             local sectorConfig = sectorConfigs[(islandIndex % #sectorConfigs) + 1]
+--             sectorConfig.sectorFolder = newIsland
+--             sectorConfig.islandPositioner = islandPositioner
 
-        newIsland.Parent = level
-        newIsland.Name = 'Sector-' .. islandPositioner.Name
-        if sectorConfigs then
-            local sectorConfig = sectorConfigs[(islandIndex % #sectorConfigs) + 1]
-            sectorConfig.sectorFolder = newIsland
-            sectorConfig.islandPositioner = islandPositioner
-
-            for _, child in pairs(anchoredParts) do
-                child.Anchored = true
-            end
-            BlockDash.addBlockDash(sectorConfig)
-        end
-    end
-end
+--             for _, child in pairs(anchoredParts) do
+--                 child.Anchored = true
+--             end
+--             BlockDash.addBlockDash(sectorConfig)
+--         end
+--     end
+-- end
 
 --
 local function addRemoteObjects()
@@ -141,6 +138,9 @@ local function addRemoteObjects()
     local levelDefs = LevelConfigs.levelDefs or {}
 
     local isStartPlace = Utils.isStartPlace()
+
+    module.initAnimalSounds()
+    module.initAnimalSounds2()
 
     --
     --
@@ -259,7 +259,7 @@ local function addRemoteObjects()
     Entrance.initRunFasts(level)
 
     local sectorConfigs = levelConfig.sectorConfigs
-    module.addConveyors(level, sectorConfigs)
+    BlockDash.addConveyors(level, sectorConfigs)
 
     Grabbers.initGrabbers({parentFolder = level})
 
