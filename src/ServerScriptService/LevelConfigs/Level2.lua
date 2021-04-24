@@ -79,26 +79,70 @@ local conveyorConfigs01 = {
     },
     {
         words = {
-            'CCC',
-            'CCC',
-            'CCC',
-            'CCC',
-            'CCC',
-            'CCC',
-            'CCC',
-            'CCC'
+            'CAP',
+            'GAP',
+            'LAP',
+            'MAP',
+            'SAP',
+            'TAP',
+            'RAP',
+            'ZAP'
         }
     },
     {
         words = {
-            'DDD',
-            'DDD',
-            'DDD',
-            'DDD',
-            'DDD',
-            'DDD',
-            'DDD',
-            'DDD'
+            'VAN',
+            'RAN',
+            'CAN',
+            'PAN',
+            'FAN',
+            'TAN',
+            'DAN',
+            'BAN'
+        }
+    }
+}
+
+local conveyorConfigs02 = {
+    {
+        words = {
+            'TAG',
+            'RAG',
+            'SAG',
+            'WAG',
+            'NAG',
+            'ZAG'
+        }
+    },
+    {
+        words = {
+            'BAD',
+            'DAD',
+            'HAD',
+            'MAD',
+            'PAD',
+            'SAD'
+        }
+    },
+    {
+        words = {
+            'HAM',
+            'JAM',
+            'PAM',
+            'SAM',
+            'RAM',
+            'BAM'
+        }
+    },
+    {
+        words = {
+            'RAY',
+            'BAY',
+            'LAY',
+            'MAY',
+            'PAY',
+            'WAY',
+            'HAY'
         }
     }
 }
