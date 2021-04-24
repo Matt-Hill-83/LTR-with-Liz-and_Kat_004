@@ -27,6 +27,7 @@ function module.addBlockDash(conveyorConfig, islandIndex)
     local numBlocksPerBeltPlate = 4
     local numBelts = totalCol / numBlocksPerBeltPlate
 
+    -- put this in workspace to avoid searching through it and triggering an execution timeout
     local runTimeFolder = Instance.new('Folder', workspace)
     runTimeFolder.Name = 'BDRuntime' .. islandIndex
 
