@@ -6,8 +6,6 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
-local LetterFallUtils = require(Sss.Source.Statue.LetterFallUtils)
-
 local module = {}
 
 local function playWordSound(word)
@@ -70,6 +68,19 @@ local function configWord(props)
     return newWord
 end
 
+function applyLetterText(props)
+    local char = props.char
+    local letterBlock = props.letterBlock
+
+    -- if not char then return end
+    local textLabels = Utils.getDescendantsByName(letterBlock, 'BlockChar')
+    if textLabels then
+        for i, label in ipairs(textLabels) do
+            label.Text = char
+        end
+    end
+end
+
 local function initWord(props)
     local wordIndex = props.wordIndex
     local word = props.word
@@ -96,8 +107,7 @@ local function initWord(props)
 
         local letterPositionX = -totalLetterWidth * (letterIndex - 1)
 
-        -- CS:AddTag(newLetter, "WordGrabberLetter")
-        LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
+        applyLetterText({letterBlock = newLetter, char = letter})
 
         newLetter.CFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(

@@ -129,7 +129,7 @@ local renderGrid = function(props)
     local rowFolder =
         Utils.getOrCreateFolder(
         {
-            name = 'RunTimeWordFolder',
+            name = 'RowFolder',
             parent = rowTemplate.Parent
         }
     )

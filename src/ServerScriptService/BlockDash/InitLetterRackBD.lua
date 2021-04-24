@@ -124,7 +124,8 @@ local function initLetterRack(miniGameState)
                     }
                 )
 
-                newLetterBlock.Parent = beltTemplate
+                -- newLetterBlock.Parent = beltTemplate
+                newLetterBlock.Parent = workspace
                 newLetterBlock.Anchored = false
 
                 local weld = Instance.new('WeldConstraint')

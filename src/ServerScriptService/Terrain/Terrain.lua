@@ -5,7 +5,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local module = {}
 
 function module.initTerrain(props)
-    local parentFolder = props.parentFolder or workspace
+    local parentFolder = props.parentFolder
     local materials = Enum.Material:GetEnumItems()
 
     for _, material in ipairs(materials) do

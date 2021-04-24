@@ -19,15 +19,11 @@ local module = {
 
 function module.createRandomLetterMatrix(props)
     local words = props.words
-    local numBlocks = props.numBlocks
+    -- local numBlocks = props.numBlocks
 
     -- populate matrix with letters
     local letterMatrix = {}
-    local lettersNotInWords = module.getLettersNotInWords(words)
-
-    -- for _ = 1, numBlocks do
-    --     table.insert(letterMatrix, module.getRandomLetter(lettersNotInWords))
-    -- end
+    -- local lettersNotInWords = module.getLettersNotInWords(words)
 
     for _, word in ipairs(words) do
         for letterIndex = 1, #word do
@@ -604,18 +600,6 @@ local function getAllLettersInRack2(miniGameState)
     return letterBlocks
 end
 
-local function getAllLettersInWords(props)
-    local runTimeWordFolder = props.runTimeWordFolder
-    local letters =
-        Utils.getByTagInParent(
-        {
-            parent = runTimeWordFolder,
-            tag = module.tagNames.WordLetter
-        }
-    )
-    return letters
-end
-
 module.applyLetterText = applyLetterText
 module.styleLetterBlock = styleLetterBlock
 module.colorLetterText = colorLetterText
@@ -637,7 +621,6 @@ module.getRandomLetter = getRandomLetter
 module.getCharFromLetterBlock2 = getCharFromLetterBlock2
 module.getLettersNotInWords = getLettersNotInWords
 module.styleImageLabelsInBlock = styleImageLabelsInBlock
-module.getAllLettersInWords = getAllLettersInWords
 module.playWordSound = playWordSound
 module.liftLetter = liftLetter
 module.revertRackLetterBlocksToInit = revertRackLetterBlocksToInit

@@ -622,11 +622,23 @@ end
 
 function getFirstDescendantByName(parent, name)
     local model = parent:GetDescendants()
-    for i = 1, #model do
-        if model[i].Name == name then
-            return model[i]
+    if #model > 30000 then
+        print('getFirstDescendantByName')
+        print(#model)
+    -- print(test.test.test)
+    end
+    for index, item in ipairs(model) do
+        if item.Name == name then
+            -- print('index' .. ' - start')
+            -- print(index)
+            return item
         end
     end
+    -- for i = 1, #model do
+    --     if model[i].Name == name then
+    --         return model[i]
+    --     end
+    -- end
 end
 
 function getDescendantsByName(parent, name)
@@ -788,7 +800,7 @@ function module.hideItemAndChildrenByName(props)
     local name = props.name
     local hide = props.hide
 
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     local item = getFirstDescendantByName(myStuff, name)
     hideItemAndChildren({item = item, hide = hide})
 end
@@ -804,7 +816,7 @@ function module.setWallHeightbyParentModelName(props)
     local name = props.name
     local height = props.height
 
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     local items = getDescendantsByName(myStuff, name)
 
     for i, item in ipairs(items) do
@@ -817,7 +829,7 @@ function module.setItemAndChildrenPropsByName(myProps)
     local name = myProps.name
     local props = myProps.props
 
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     local item = getFirstDescendantByName(myStuff, name)
     setChildrenProps(item, props)
 end
@@ -894,12 +906,12 @@ function module.deleteChildrenByName(props)
 end
 
 function getFromMyStuff(name)
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     return getFirstDescendantByName(myStuff, name)
 end
 
 function module.getFromTemplates(name)
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     local myTemplates = myStuff:FindFirstChild('MyTemplates')
     return getFirstDescendantByName(myTemplates, name)
 end

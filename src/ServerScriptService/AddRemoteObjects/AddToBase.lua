@@ -105,7 +105,7 @@ local function addRemoteObjects()
     module.initAnimalSounds()
     module.initAnimalSounds2()
 
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
@@ -182,8 +182,6 @@ local function addRemoteObjects()
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
 
-    local unicornStore = UnicornStore.initUnicornStore({parentFolder = blockDash})
-
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
 
@@ -213,24 +211,16 @@ local function addRemoteObjects()
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
         LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
-        BlockDash.addConveyors({levelConfig = config, parentFolder = region})
         Entrance.initRunFasts(region)
     end
 
     TestArea.configTestArea({parentFolder = level})
-
     Grabbers.initGrabbers({parentFolder = level})
-
-    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
-    islandTemplate:Destroy()
 
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
     -- Theater.initTheaters({parentFolder = level})
-
-    -- Do this last after everything has been created/deleted
-    ConfigGame.configGame({levelConfig = levelConfig})
 
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
@@ -239,6 +229,18 @@ local function addRemoteObjects()
             {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
         )
     end
+
+    for regionIndex, region in ipairs(regions) do
+        local config = levelConfig.regions[regionIndex]
+        BlockDash.addConveyors({levelConfig = config, parentFolder = region})
+    end
+
+    -- Do this last after everything has been created/deleted
+    ConfigGame.configGame({levelConfig = levelConfig})
+
+    local islandTemplate = Utils.getFromTemplates('IslandTemplate')
+    islandTemplate:Destroy()
+    local unicornStore = UnicornStore.initUnicornStore({parentFolder = blockDash})
 end
 
 module.addRemoteObjects = addRemoteObjects

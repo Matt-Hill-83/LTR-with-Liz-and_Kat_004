@@ -2,9 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local RS = game:GetService('ReplicatedStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
--- local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
@@ -152,8 +150,6 @@ function module.partTouched(touchedBlock, player)
     if not tool then
         return
     end
-
-    -- HandleGrab.onGrabLetter({letterBlock = touchedBlock})
 
     local activeBlock = module.getActiveLetterGrabberBlock(tool)
     if activeBlock then

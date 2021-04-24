@@ -12,7 +12,7 @@ local Conveyor = require(Sss.Source.Conveyor.Conveyor)
 
 local module = {}
 
-function module.addBlockDash(conveyorConfig)
+function module.addBlockDash(conveyorConfig, islandIndex)
     local words = conveyorConfig.words
 
     local sectorFolder = conveyorConfig.sectorFolder
@@ -26,6 +26,9 @@ function module.addBlockDash(conveyorConfig)
     -- conveyor length must be a multiple of num_blocks_per_belt_plate and blockSize
     local numBlocksPerBeltPlate = 4
     local numBelts = totalCol / numBlocksPerBeltPlate
+
+    local runTimeFolder = Instance.new('Folder', workspace)
+    runTimeFolder.Name = 'BDRuntime' .. islandIndex
 
     local miniGameState = {
         activeStyle = 'BD_available',
@@ -51,13 +54,14 @@ function module.addBlockDash(conveyorConfig)
         rackLetterBlockObjs = {},
         rackLetterSize = rackLetterSize,
         renderedWords = {},
+        runTimeFolder = runTimeFolder,
         sectorFolder = sectorFolder,
         wordLetterSize = 16,
         wordsPerCol = 2
     }
     miniGameState.words = words
 
-    local myStuff = workspace:FindFirstChild('MyStuff')
+    local myStuff = workspace.MyStuff
     miniGameState.onSelectRackBlock = HandleClick.onSelectRackBlock
     local letterFallFolder = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     miniGameState.letterFallFolder = letterFallFolder
@@ -86,7 +90,12 @@ function module.addBlockDash(conveyorConfig)
     InitLetterRack.initLetterRack(miniGameState)
     InitWord.initWords(miniGameState)
 
-    LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
+    -- TEMP
+    -- TEMP
+    -- TEMP
+    -- TEMP
+    -- TEMP
+    -- LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
 end
 
 function module.addConveyors(props)
@@ -95,7 +104,6 @@ function module.addConveyors(props)
 
     local conveyorConfigs = levelConfig.conveyorConfigs
 
-    -- function module.addConveyors(parentFolder, conveyorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
     local islandPositioners = Utils.getByTagInParent({parent = parentFolder, tag = 'IslandPositioner'})
@@ -103,7 +111,6 @@ function module.addConveyors(props)
     local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
 
     for islandIndex, islandPositioner in ipairs(myPositioners) do
-        -- if islandIndex == 3 then break end
         local newIsland = islandTemplate:Clone()
 
         local anchoredParts = {}
@@ -126,7 +133,7 @@ function module.addConveyors(props)
             for _, child in pairs(anchoredParts) do
                 child.Anchored = true
             end
-            module.addBlockDash(conveyorConfig)
+            module.addBlockDash(conveyorConfig, islandIndex)
         end
     end
 end
