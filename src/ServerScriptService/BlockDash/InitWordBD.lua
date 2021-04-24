@@ -30,9 +30,6 @@ local function initWord(props)
     local words = miniGameState.words
     local wordLetterSize = miniGameState.wordLetterSize
 
-    local runTimeWordFolder = getRunTimeWordFolder(miniGameState)
-    miniGameState.runTimeWordFolder = runTimeWordFolder
-
     local wordBox = Utils.getFromTemplates('WordBoxTemplate')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_word_normal')
@@ -41,10 +38,8 @@ local function initWord(props)
     local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'WordLetterBlockPositioner')
 
-    -- if not letterPositioner then return end
-
     local wordPositioner = Utils.getFirstDescendantByName(sectorFolder, 'WordPositioner')
-    newWord.Parent = runTimeWordFolder
+    newWord.Parent = miniGameState.bDWordLetterFolder
 
     local spacingFactorY = 1.1
     local spacingFactorX = 1.1

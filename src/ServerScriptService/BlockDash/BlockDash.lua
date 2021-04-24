@@ -59,6 +59,7 @@ function module.addBlockDash(conveyorConfig, islandIndex)
         rackLetterSize = rackLetterSize,
         renderedWords = {},
         bDRackLetterFolder = bDRackLetterFolder,
+        bDWordLetterFolder = bDWordLetterFolder,
         sectorFolder = sectorFolder,
         wordLetterSize = 16,
         wordsPerCol = 2
