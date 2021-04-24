@@ -7,7 +7,8 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
-local function initWord(props)
+function module.initWord(props)
+    print('initWord')
     local miniGameState = props.miniGameState
     local wordIndex = props.wordIndex
     local word = props.word
@@ -116,6 +117,8 @@ local function initWord(props)
 end
 
 local function renderColumn(miniGameState, colIndex, words)
+    print('renderColumn' .. ' - start')
+    print(renderColumn)
     for wordIndex, word in ipairs(words) do
         local wordProps = {
             miniGameState = miniGameState,
@@ -124,12 +127,13 @@ local function renderColumn(miniGameState, colIndex, words)
             colIndex = colIndex
         }
 
-        local newWordObj = initWord(wordProps)
+        local newWordObj = module.initWord(wordProps)
         table.insert(miniGameState.renderedWords, newWordObj)
     end
 end
 
-local function initWords(miniGameState)
+function module.initWords(miniGameState)
+    print('initWords')
     local wordsPerCol = miniGameState.wordsPerCol
     local words = miniGameState.words
 
@@ -137,12 +141,9 @@ local function initWords(miniGameState)
     for colIndex = 1, numCol do
         local startIndex = ((colIndex - 1) * wordsPerCol) + 1
         local endIndex = startIndex + wordsPerCol - 1
-        local words = {table.unpack(miniGameState.words, startIndex, endIndex)}
-        renderColumn(miniGameState, colIndex, words)
+        local words2 = {table.unpack(miniGameState.words, startIndex, endIndex)}
+        renderColumn(miniGameState, colIndex, words2)
     end
 end
-
-module.initWords = initWords
-module.initWord = initWord
 
 return module

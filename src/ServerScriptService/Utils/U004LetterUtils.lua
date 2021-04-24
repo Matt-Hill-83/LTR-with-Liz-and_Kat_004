@@ -440,23 +440,23 @@ local function filterItemsByTag(props)
     return output
 end
 
-local function getCoordsFromLetterName(name)
-    local pattern = 'ID%-%-R(%d+)C(%d+)'
-    local row, col = string.match(name, pattern)
-    return {row = tonumber(row), col = tonumber(col)}
-end
+-- local function getCoordsFromLetterName(name)
+--     local pattern = 'ID%-%-R(%d+)C(%d+)'
+--     local row, col = string.match(name, pattern)
+--     return {row = tonumber(row), col = tonumber(col)}
+-- end
 
-local function getRunTimeLetterFolder(miniGameState)
-    local sectorFolder = miniGameState.sectorFolder
-    local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
+-- local function getRunTimeLetterFolder(miniGameState)
+--     local sectorFolder = miniGameState.sectorFolder
+--     local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
 
-    return Utils.getOrCreateFolder(
-        {
-            name = 'RunTimeLetterRackFolder',
-            parent = runtimeFolder
-        }
-    )
-end
+--     return Utils.getOrCreateFolder(
+--         {
+--             name = 'RunTimeLetterRackFolder',
+--             parent = runtimeFolder
+--         }
+--     )
+-- end
 
 function module.styleLetterBlock(letterBlock, labelProps)
     local textLabels = Utils.getDescendantsByName(letterBlock, 'BlockChar')
@@ -605,9 +605,9 @@ module.isWordComplete = isWordComplete
 module.getAvailLettersDict = getAvailLettersDict
 module.colorLetterBorder = colorLetterBorder
 -- module.applyStyleFromTemplate = applyStyleFromTemplate
-module.getCoordsFromLetterName = getCoordsFromLetterName
+-- module.getCoordsFromLetterName = getCoordsFromLetterName
 module.filterItemsByTag = filterItemsByTag
-module.getRunTimeLetterFolder = getRunTimeLetterFolder
+-- module.getRunTimeLetterFolder = getRunTimeLetterFolder
 module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.applyLetterImage = applyLetterImage
 module.getAvailLettersDict2 = getAvailLettersDict2

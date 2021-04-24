@@ -17,8 +17,8 @@ local function initLetterRack(miniGameState)
     local rackLetterSize = miniGameState.rackLetterSize
     local numBelts = miniGameState.numBelts
 
-    local runTimeLetterFolder = LetterUtils.getRunTimeLetterFolder(miniGameState)
-    miniGameState.runTimeLetterFolder = runTimeLetterFolder
+    -- local runTimeLetterFolder = LetterUtils.getRunTimeLetterFolder(miniGameState)
+    -- miniGameState.runTimeLetterFolder = runTimeLetterFolder
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_8_blank')
@@ -125,7 +125,8 @@ local function initLetterRack(miniGameState)
                 )
 
                 -- newLetterBlock.Parent = beltTemplate
-                newLetterBlock.Parent = workspace
+                newLetterBlock.Parent = miniGameState.runTimeFolder
+                -- newLetterBlock.Parent = workspace
                 newLetterBlock.Anchored = false
 
                 local weld = Instance.new('WeldConstraint')
