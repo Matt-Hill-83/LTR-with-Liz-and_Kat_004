@@ -6,18 +6,6 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
-local function getRunTimeWordFolder(miniGameState)
-    local sectorFolder = miniGameState.sectorFolder
-    -- local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
-    local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = workspace})
-
-    return (Utils.getOrCreateFolder(
-        {
-            name = 'RunTimeWordFolder',
-            parent = runtimeFolder
-        }
-    ))
-end
 
 local function initWord(props)
     local miniGameState = props.miniGameState
@@ -30,9 +18,6 @@ local function initWord(props)
     local words = miniGameState.words
     local wordLetterSize = miniGameState.wordLetterSize
 
-    -- local runTimeWordFolder = getRunTimeWordFolder(miniGameState)
-    -- miniGameState.runTimeWordFolder = runTimeWordFolder
-
     local wordBox = Utils.getFromTemplates('WordBoxTemplate')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_word_normal')
@@ -41,14 +26,9 @@ local function initWord(props)
     local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'WordLetterBlockPositioner')
 
-    -- if not letterPositioner then return end
-
-    -- local wordPositioners = Utils.getByTagInParent({parent = sectorFolder, tag = 'WordPositioner'})
-    -- local wordPositioner = wordPositioners[1]
     local wordPositioner = Utils.getFirstDescendantByName(sectorFolder, 'WordPositioner')
 
     newWord.Parent = miniGameState.runTimeWordFolder
-    -- newWord.Parent = runTimeWordFolder
 
     local spacingFactorY = 1.1
     local spacingFactorX = 1.1

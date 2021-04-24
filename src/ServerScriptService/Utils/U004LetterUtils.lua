@@ -474,7 +474,7 @@ local function styleImageLabelsInBlock(letterBlock, labelProps)
     end
 end
 
-local function styleLetterBlocksBD(props)
+function module.styleLetterBlocksBD(props)
     local miniGameState = props.miniGameState
     local currentLetterIndex = miniGameState.currentLetterIndex
 
@@ -615,7 +615,7 @@ module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.applyLetterImage = applyLetterImage
 module.getAvailLettersDict2 = getAvailLettersDict2
 module.initLetterBlock = initLetterBlock
-module.styleLetterBlocksBD = styleLetterBlocksBD
+-- module.styleLetterBlocksBD = styleLetterBlocksBD
 module.getAvailWords = getAvailWords
 module.getRandomLetter = getRandomLetter
 module.getCharFromLetterBlock2 = getCharFromLetterBlock2
