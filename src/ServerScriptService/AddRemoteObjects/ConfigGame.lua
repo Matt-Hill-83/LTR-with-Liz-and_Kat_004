@@ -321,7 +321,7 @@ function module.configGame(props)
         }
     )
 
-    Utils.hideFrontLabels(workspace)
+    -- Utils.hideFrontLabels(workspace)
     local allSpawnLocations = Utils.getDescendantsByType(workspace, 'SpawnLocation')
 
     for _, item in ipairs(allSpawnLocations) do

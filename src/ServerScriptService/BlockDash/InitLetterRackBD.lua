@@ -177,7 +177,7 @@ local function initLetterRack(miniGameState)
             end
         end
 
-        LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
+        -- LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
 
         letterPositioner:Destroy()
     end

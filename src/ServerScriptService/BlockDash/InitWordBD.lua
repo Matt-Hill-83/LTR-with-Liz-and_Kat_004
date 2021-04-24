@@ -147,8 +147,8 @@ local function initWords(miniGameState)
     for colIndex = 1, numCol do
         local startIndex = ((colIndex - 1) * wordsPerCol) + 1
         local endIndex = startIndex + wordsPerCol - 1
-        local words = {table.unpack(miniGameState.words, startIndex, endIndex)}
-        renderColumn(miniGameState, colIndex, words)
+        local words2 = {table.unpack(miniGameState.words, startIndex, endIndex)}
+        renderColumn(miniGameState, colIndex, words2)
     end
 end
 

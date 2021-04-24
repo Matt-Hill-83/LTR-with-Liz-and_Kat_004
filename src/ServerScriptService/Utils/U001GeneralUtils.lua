@@ -486,8 +486,8 @@ function applyDecalsToCharacterFromWord(props)
         local imageId = Const4.wordConfigs[word]['imageId']
         if imageId then
             local decalUri = 'rbxassetid://' .. imageId
-            local decalFront = getFirstDescendantByName(part, 'CharacterDecalFront')
-            local decalBack = getFirstDescendantByName(part, 'CharacterDecalBack')
+            local decalFront = module.getFirstDescendantByName(part, 'CharacterDecalFront')
+            local decalBack = module.getFirstDescendantByName(part, 'CharacterDecalBack')
             decalFront.Image = decalUri
             decalBack.Image = decalUri
             found = true
@@ -514,8 +514,8 @@ function applyDecalsToCharacterFromConfigName(props)
 
     if imageId then
         local decalUri = 'rbxassetid://' .. imageId
-        local decalFront = getFirstDescendantByName(part, 'CharacterDecalFront')
-        local decalBack = getFirstDescendantByName(part, 'CharacterDecalBack')
+        local decalFront = module.getFirstDescendantByName(part, 'CharacterDecalFront')
+        local decalBack = module.getFirstDescendantByName(part, 'CharacterDecalBack')
         decalFront.Image = decalUri
         decalBack.Image = decalUri
     end
@@ -620,7 +620,7 @@ function module.getByTagInParent(props)
     return output
 end
 
-function getFirstDescendantByName(parent, name)
+function module.getFirstDescendantByName(parent, name)
     local model = parent:GetDescendants()
     if #model > 30000 then
         print('getFirstDescendantByName')
@@ -801,7 +801,7 @@ function module.hideItemAndChildrenByName(props)
     local hide = props.hide
 
     local myStuff = workspace.MyStuff
-    local item = getFirstDescendantByName(myStuff, name)
+    local item = module.getFirstDescendantByName(myStuff, name)
     hideItemAndChildren({item = item, hide = hide})
 end
 
@@ -830,7 +830,7 @@ function module.setItemAndChildrenPropsByName(myProps)
     local props = myProps.props
 
     local myStuff = workspace.MyStuff
-    local item = getFirstDescendantByName(myStuff, name)
+    local item = module.getFirstDescendantByName(myStuff, name)
     setChildrenProps(item, props)
 end
 
@@ -845,12 +845,12 @@ function module.getOrCreateFolder(props)
     local name = props.name
     local parent = props.parent
 
-    local runtimeQuestsFolder = getFirstDescendantByName(parent, name)
+    local runtimeQuestsFolder = module.getFirstDescendantByName(parent, name)
 
     if not runtimeQuestsFolder then
         runtimeQuestsFolder = Instance.new('Folder', parent)
         runtimeQuestsFolder.Name = name
-        runtimeQuestsFolder = getFirstDescendantByName(parent, name)
+        runtimeQuestsFolder = module.getFirstDescendantByName(parent, name)
     end
 
     return runtimeQuestsFolder
@@ -900,20 +900,20 @@ function module.deleteChildrenByName(props)
     for i, item in pairs(children) do
         if item.Name == childName then
             item:Destroy()
-        --
         end
     end
 end
 
 function getFromMyStuff(name)
     local myStuff = workspace.MyStuff
-    return getFirstDescendantByName(myStuff, name)
+    return module.getFirstDescendantByName(myStuff, name)
 end
 
 function module.getFromTemplates(name)
     local myStuff = workspace.MyStuff
-    local myTemplates = myStuff:FindFirstChild('MyTemplates')
-    return getFirstDescendantByName(myTemplates, name)
+    local myTemplates = myStuff.MyTemplates
+    -- local myTemplates = myStuff:FindFirstChild('MyTemplates')
+    return module.getFirstDescendantByName(myTemplates, name)
 end
 
 function module.unAttachAllChildParts(parent)
@@ -925,7 +925,6 @@ function module.unAttachAllChildParts(parent)
             if item.Anchored == true then
                 table.insert(output, item)
             end
-        --
         end
     end
     return output
@@ -1028,7 +1027,7 @@ module.cloneModel = cloneModel
 module.enableChildWelds = enableChildWelds
 module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName
-module.getFirstDescendantByName = getFirstDescendantByName
+-- module.getFirstDescendantByName = module.getFirstDescendantByName
 module.getFromMyStuff = getFromMyStuff
 -- module.getInstancesByNameStub = getInstancesByNameStub
 module.getItemByUuid = getItemByUuid
