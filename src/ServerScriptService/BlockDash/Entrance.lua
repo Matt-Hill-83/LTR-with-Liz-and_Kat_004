@@ -1,6 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
 local RS = game:GetService('ReplicatedStorage')
-local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
@@ -43,7 +42,6 @@ function module.initRunFasts(parent)
             if humanoid.WalkSpeed == 70 then
                 return
             end
-            -- humanoid.WalkSpeed = 200
             humanoid.WalkSpeed = 70
         end
     end
