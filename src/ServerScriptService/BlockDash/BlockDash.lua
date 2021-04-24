@@ -96,7 +96,7 @@ function module.addBlockDash(conveyorConfig, islandIndex)
     -- TEMP
     -- TEMP
     -- TEMP
-    -- LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
+    LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
 end
 
 function module.addConveyors(props)
