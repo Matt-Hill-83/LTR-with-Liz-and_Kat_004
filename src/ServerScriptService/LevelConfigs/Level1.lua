@@ -45,7 +45,7 @@ local sector4Config = {
     }
 }
 
-local sectorConfigs = {
+local conveyorConfigs = {
     sector1Config,
     sector2Config,
     sector3Config,
@@ -68,7 +68,7 @@ local hexIslandConfigs = {
 }
 
 module.teleporter = '6460817067'
-module.sectorConfigs = sectorConfigs
+module.conveyorConfigs = conveyorConfigs
 module.hexIslandConfigs = hexIslandConfigs
 module.vendingMachines = {{targetWordIndex = 2}}
 

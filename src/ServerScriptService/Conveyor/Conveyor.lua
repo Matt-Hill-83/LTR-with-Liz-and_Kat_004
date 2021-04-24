@@ -17,7 +17,7 @@ function module.initBeltPlate(props)
     local sectorFolder = miniGameState.sectorFolder
     local beltPlateCFrames = miniGameState.beltPlateCFrames
     local beltPlates = miniGameState.beltPlates
-    local sectorConfig = miniGameState.sectorConfig
+    local conveyorConfig = miniGameState.conveyorConfig
 
     local speed = 10
 
@@ -63,7 +63,7 @@ function module.initBeltPlate(props)
 
     local pc = belt.PrismaticConstraint
     if false then
-        -- if sectorConfig.freezeConveyor == true then
+        -- if conveyorConfig.freezeConveyor == true then
 
         pc.Enabled = false
     else

@@ -53,14 +53,14 @@ local sector5Config = {
     }
 }
 
-local sectorConfigs = {
+local conveyorConfigs = {
     sector5Config,
     sector2Config,
     sector1Config,
     sector3Config,
     sector4Config
 }
-module.sectorConfigs = sectorConfigs
+module.conveyorConfigs = conveyorConfigs
 
 local c0r0 = {
     material = Enum.Material.Glacier,

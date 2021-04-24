@@ -12,13 +12,12 @@ local Conveyor = require(Sss.Source.Conveyor.Conveyor)
 
 local module = {}
 
-function module.addBlockDash(sectorConfig)
-    -- local words = {sectorConfig.words[1]}
-    local words = sectorConfig.words
+function module.addBlockDash(conveyorConfig)
+    local words = conveyorConfig.words
 
-    local sectorFolder = sectorConfig.sectorFolder
+    local sectorFolder = conveyorConfig.sectorFolder
     local rackLetterSize = 8
-    local islandPositioner = sectorConfig.islandPositioner
+    local islandPositioner = conveyorConfig.islandPositioner
 
     local numRow = math.floor(islandPositioner.Size.Z / rackLetterSize)
     local totalCol = math.floor(islandPositioner.Size.X / rackLetterSize)
@@ -44,7 +43,7 @@ function module.addBlockDash(sectorConfig)
         inActiveStyle = 'BD_not_available', -- Rack starts with this one:
         initCompleted = false,
         islandPositioner = islandPositioner,
-        sectorConfig = sectorConfig,
+        conveyorConfig = conveyorConfig,
         letterSpacingFactor = 1.05,
         numBelts = numBelts,
         numCol = numBlocksPerBeltPlate,
@@ -94,11 +93,11 @@ function module.addConveyors(props)
     local levelConfig = props.levelConfig
     local parentFolder = props.parentFolder
 
-    local sectorConfigs = levelConfig.sectorConfigs
-    print('sectorConfigs' .. ' - start')
-    print(sectorConfigs)
+    local conveyorConfigs = levelConfig.conveyorConfigs
+    print('conveyorConfigs' .. ' - start')
+    print(conveyorConfigs)
 
-    -- function module.addConveyors(parentFolder, sectorConfigs)
+    -- function module.addConveyors(parentFolder, conveyorConfigs)
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
     local islandPositioners = Utils.getByTagInParent({parent = parentFolder, tag = 'IslandPositioner'})
@@ -121,15 +120,15 @@ function module.addConveyors(props)
 
         newIsland.Parent = parentFolder
         newIsland.Name = 'Sector-' .. islandPositioner.Name
-        if sectorConfigs then
-            local sectorConfig = sectorConfigs[(islandIndex % #sectorConfigs) + 1]
-            sectorConfig.sectorFolder = newIsland
-            sectorConfig.islandPositioner = islandPositioner
+        if conveyorConfigs then
+            local conveyorConfig = conveyorConfigs[(islandIndex % #conveyorConfigs) + 1]
+            conveyorConfig.sectorFolder = newIsland
+            conveyorConfig.islandPositioner = islandPositioner
 
             for _, child in pairs(anchoredParts) do
                 child.Anchored = true
             end
-            module.addBlockDash(sectorConfig)
+            module.addBlockDash(conveyorConfig)
         end
     end
 end

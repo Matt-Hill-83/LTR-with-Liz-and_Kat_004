@@ -95,43 +95,6 @@ function module.initAnimalSounds2()
     end
 end
 
--- function module.addConveyors(level, sectorConfigs)
---     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
-
---     local islandPositioners = Utils.getByTagInParent({parent = level, tag = 'IslandPositioner'})
---     Utils.sortListByObjectKey(islandPositioners, 'Name')
---     local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
-
---     for islandIndex, islandPositioner in ipairs(myPositioners) do
---         -- if islandIndex == 3 then break end
---         local newIsland = islandTemplate:Clone()
-
---         local anchoredParts = {}
---         for _, child in pairs(newIsland:GetDescendants()) do
---             if child:IsA('BasePart') then
---                 if child.Anchored then
---                     child.Anchored = false
---                     table.insert(anchoredParts, child)
---                 end
---             end
---         end
-
---         newIsland.Parent = level
---         newIsland.Name = 'Sector-' .. islandPositioner.Name
---         if sectorConfigs then
---             local sectorConfig = sectorConfigs[(islandIndex % #sectorConfigs) + 1]
---             sectorConfig.sectorFolder = newIsland
---             sectorConfig.islandPositioner = islandPositioner
-
---             for _, child in pairs(anchoredParts) do
---                 child.Anchored = true
---             end
---             BlockDash.addBlockDash(sectorConfig)
---         end
---     end
--- end
-
---
 local function addRemoteObjects()
     local placeId = game.PlaceId
 
@@ -142,9 +105,6 @@ local function addRemoteObjects()
     module.initAnimalSounds()
     module.initAnimalSounds2()
 
-    --
-    --
-    --
     local myStuff = workspace:FindFirstChild('MyStuff')
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
@@ -259,8 +219,6 @@ local function addRemoteObjects()
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
 
-    -- local sectorConfigs = levelConfig.sectorConfigs
-
     Grabbers.initGrabbers({parentFolder = level})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
@@ -269,7 +227,7 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
-    -- Theater.initTheaters({parentFolder = level})
+    Theater.initTheaters({parentFolder = level})
 
     -- Do this last after everything has been created/deleted
     ConfigGame.configGame({levelConfig = levelConfig})

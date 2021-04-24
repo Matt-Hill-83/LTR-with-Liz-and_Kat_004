@@ -3,7 +3,7 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
-local sector1Config = {
+local conveyor1Config = {
     freezeConveyor = true,
     words = {
         'NAP',
@@ -15,7 +15,7 @@ local sector1Config = {
         -- 'LAP'
     }
 }
-local sector2Config = {
+local conveyor2Config = {
     freezeConveyor = true,
     words = {
         'MAT',
@@ -24,7 +24,7 @@ local sector2Config = {
         'SAT'
     }
 }
-local sector3Config = {
+local conveyor3Config = {
     freezeConveyor = true,
     words = {
         -- 'VAT',
@@ -35,7 +35,7 @@ local sector3Config = {
         -- 'MOM'
     }
 }
-local sector4Config = {
+local conveyor4Config = {
     freezeConveyor = true,
     words = {
         'SAD',
@@ -44,7 +44,7 @@ local sector4Config = {
         'HAD'
     }
 }
-local sector5Config = {
+local conveyor5Config = {
     freezeConveyor = true,
     words = {
         'CAT',
@@ -54,14 +54,14 @@ local sector5Config = {
     }
 }
 
-local sectorConfigs = {
-    sector5Config,
-    sector2Config,
-    sector1Config,
-    sector3Config,
-    sector4Config
+local conveyorConfigs = {
+    conveyor5Config,
+    conveyor2Config,
+    conveyor1Config,
+    conveyor3Config,
+    conveyor4Config
 }
--- module.sectorConfigs = sectorConfigs
+-- module.conveyorConfigs = conveyorConfigs
 
 local c0r0 = {
     material = Enum.Material.Glacier,
@@ -156,7 +156,7 @@ local dummy01 = {
 }
 
 local region01 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01
@@ -171,7 +171,7 @@ local region01 = {
 }
 
 local region02 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -188,7 +188,7 @@ local region02 = {
 }
 
 local region03 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -209,7 +209,7 @@ local region03 = {
 }
 
 local region04 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -231,7 +231,7 @@ local dummy05 = {
 }
 
 local region05 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy05,
         dummy05,
@@ -262,7 +262,7 @@ local region05 = {
 }
 
 local region08 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01
@@ -283,7 +283,7 @@ local region08 = {
 }
 
 local region09 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -306,7 +306,7 @@ local region09 = {
 }
 
 local region10 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -329,7 +329,7 @@ local region10 = {
 }
 
 local region11 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -352,7 +352,7 @@ local region11 = {
 }
 
 local region12 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -375,7 +375,7 @@ local region12 = {
 }
 
 local region13 = {
-    sectorConfigs = sectorConfigs,
+    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },

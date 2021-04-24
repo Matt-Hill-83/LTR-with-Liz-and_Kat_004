@@ -10,7 +10,7 @@ local sector1Config = {
     }
 }
 
-local sectorConfigs = {
+local conveyorConfigs = {
     sector1Config --
 }
 
