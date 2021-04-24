@@ -177,6 +177,7 @@ local function initLetterRack(miniGameState)
             end
         end
 
+        -- causes execution timeout
         -- LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
 
         letterPositioner:Destroy()

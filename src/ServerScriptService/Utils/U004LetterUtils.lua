@@ -260,6 +260,9 @@ local function initLetterBlock(props)
 end
 
 local function applyLetterImage(letterBlock, char)
+    if not Const3.alphabet[char] then
+        return
+    end
     local imageId = Const3.alphabet[char]['decalId']
     local imageUri = 'rbxassetid://' .. imageId
 

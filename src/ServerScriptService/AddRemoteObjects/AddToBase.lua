@@ -117,6 +117,8 @@ local function addRemoteObjects()
 
     local levelName = level.Name
     local levelIndex = tonumber(levelName)
+    print('levelIndex' .. ' - start')
+    print(levelIndex)
 
     local levelConfig = nil
     if isStartPlace then

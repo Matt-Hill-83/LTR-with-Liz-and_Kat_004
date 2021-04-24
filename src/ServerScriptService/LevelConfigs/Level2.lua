@@ -1,148 +1,137 @@
+local Sss = game:GetService('ServerScriptService')
+local Colors = require(Sss.Source.Constants.Const_02_Colors)
+
 local module = {}
 
-local sector1Config = {
+local conveyor01Config = {
     freezeConveyor = true,
     words = {
-        'NAP', --
-        'TAP', --
-        'RAP', --
-        'ZAP' --
+        'AAA'
+    }
+}
+local conveyor02Config = {
+    freezeConveyor = true,
+    words = {
+        'BBB'
     }
 }
 
 local conveyorConfigs = {
-    sector1Config --
+    conveyor01Config,
+    conveyor02Config
 }
 
-local hexIslandConfigs = {
-    {
-        hexNum = 1,
-        statueConfigs = {},
-        bridgeConfigs = {
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'}
-                }
-            },
-            {item = nil},
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'BAT'}
-                }
-            },
-            {item = nil}
+local dummy01 = {
+    material = Enum.Material.Glacier,
+    statueConfigs = {
+        Liz = {
+            sentence = {'I', 'SEE', 'A', 'CAT'},
+            character = 'lizHappy',
+            -- songId = '6342102168',
+            keyColor = Colors.colors.yellow
+        },
+        Kat = {
+            sentence = {'NOT', 'A', 'CAT'},
+            character = 'katScared',
+            songId = '6342102168'
+        },
+        Troll = {
+            sentence = {'TROLL', 'NEED', 'GOLD'},
+            character = 'babyTroll04',
+            songId = '6338745550'
         }
     },
-    {
-        hexNum = 2,
-        bridgeConfigs = {
-            {item = nil},
-            {item = nil},
-            {item = nil},
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'RAT'}
-                }
-            },
-            {item = nil}
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CATBATRAT',
+            discHeight = 1
         }
+    }
+}
+
+local region01 = {
+    conveyorConfigs = conveyorConfigs,
+    hexIslandConfigs = {
+        dummy01,
+        dummy01
     },
-    {
-        hexNum = 3,
-        bridgeConfigs = {
-            {item = nil},
-            {item = nil},
-            {item = nil},
-            {item = nil},
+    getTargetWords = function()
+        return {
             {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'BAT'}
-                },
-                {item = nil}
+                {word = 'CAT', target = 1, found = 0}
             }
         }
-    },
-    {
-        hexNum = 4,
-        bridgeConfigs = {
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'HAT'}
-                    -- words = {'CAT', 'RAT'}
-                }
-            },
-            {item = nil},
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'}
-                }
-            },
-            {item = nil}
-        }
-    },
-    {
-        hexNum = 5,
-        bridgeConfigs = {
-            {item = nil},
-            {item = nil},
-            {item = nil},
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'CAT'}
-                }
-            },
-            {item = nil}
-        }
-    },
-    {
-        hexNum = 6,
-        bridgeConfigs = {
-            {item = nil},
-            {
-                item = 'Rink',
-                itemConfig = {
-                    grabbers = {'PAT'}
-                }
-            },
-            {item = nil}
-        }
-    }
+    end
 }
 
-module.teleporter = '6461486490'
-
-module.hexIslandConfigs = hexIslandConfigs
-module.vendingMachines = {{targetWordIndex = 2}}
-
-function module.getTargetWords()
-    return {
-        {
-            {word = 'PAT', target = 1, found = 0},
-            {word = 'MAT', target = 1, found = 0}
-        },
-        -- {
-        --     {word = 'CAT', target = 1, found = 0}
-        -- }
-        {
-            {word = 'CAT', target = 1, found = 0},
-            {word = 'RAT', target = 1, found = 0},
-            {word = 'BAT', target = 1, found = 0},
-            {word = 'HAT', target = 1, found = 0}
+local region02 = {
+    conveyorConfigs = conveyorConfigs,
+    hexIslandConfigs = {
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'BAT', target = 1, found = 0}
+            }
         }
-    }
-end
+    end
+}
+
+local region03 = {
+    conveyorConfigs = conveyorConfigs,
+    hexIslandConfigs = {
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'RAT', target = 1, found = 0}
+            },
+            {
+                {word = 'CAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+local region04 = {
+    conveyorConfigs = conveyorConfigs,
+    hexIslandConfigs = {
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01,
+        dummy01
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
+module.regions = {
+    region01,
+    region02,
+    region03,
+    region04
+}
 
 return module
