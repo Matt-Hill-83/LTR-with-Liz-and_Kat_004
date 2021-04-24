@@ -293,7 +293,6 @@ local region09 = {
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()
@@ -316,7 +315,6 @@ local region10 = {
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()
@@ -339,7 +337,6 @@ local region11 = {
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()
@@ -362,7 +359,6 @@ local region12 = {
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()
@@ -385,7 +381,6 @@ local region13 = {
             -- randomLetterMultiplier = 1,
             -- maxLetters = 6,
             useArea = true
-            -- blockTemplate = 'BD_6_blank_cupcake'
         }
     },
     getTargetWords = function()

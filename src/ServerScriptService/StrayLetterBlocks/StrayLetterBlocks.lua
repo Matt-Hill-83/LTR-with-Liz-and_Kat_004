@@ -11,6 +11,8 @@ function module.createStray(char, parentFolder, props)
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
     local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank_cupcake')
+    print('letterBlockTemplate' .. ' - start')
+    print(letterBlockTemplate)
     -- local letterBlockTemplate = blockTemplate or Utils.getFirstDescendantByName(letterBlockFolder, 'BD_6_blank')
     local newLetterBlock = letterBlockTemplate:Clone()
 
