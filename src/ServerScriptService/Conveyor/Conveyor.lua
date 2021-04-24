@@ -78,7 +78,7 @@ function module.initBeltPlate(props)
             local function closure(touched)
                 if db == true then
                     db = false
-                    if CS:hasTag(touched, 'stop') then
+                    if CS:HasTag(touched, 'stop') then
                         --  destroy existing PlateWelds
                         for _, beltPlate in ipairs(beltPlates2) do
                             local plateWelds = Utils.getDescendantsByName(beltPlate, 'PlateWeld')

@@ -35,7 +35,6 @@ function module.createRandomLetterMatrix(props)
 end
 
 module.letterBlockStyleNames = {
-    -- LBPinkPurple = "LBPinkPurple",
     LBPurpleOrange = 'LBPurpleOrange',
     LBPurpleLight = 'LBPurpleLight',
     LBPurpleLight2 = 'LBPurpleLight2',
@@ -358,7 +357,7 @@ local function styleGemFromTemplate(props)
     end
 end
 
-local function applyStyleFromTemplate(props)
+function module.applyStyleFromTemplate(props)
     local targetLetterBlock = props.targetLetterBlock
     local templateName = props.templateName
     local blockProps = props.blockProps or {}
@@ -403,7 +402,6 @@ local function applyStyleFromTemplate(props)
     }
 
     Utils.mergeTables(baseLabelProps, labelProps)
-    -- local mergedLabelProps = Utils.mergeTables(baseLabelProps, labelProps)
     module.styleLetterBlock(targetLetterBlock, baseLabelProps)
 end
 
@@ -428,13 +426,13 @@ local function filterItemsByTag(props)
     local output = {}
     for i, item in ipairs(items) do
         if include then
-            if CS:hasTag(item, tag) then
+            if CS:HasTag(item, tag) then
                 table.insert(output, item)
             end
         end
 
         if not include then
-            if not CS:hasTag(item, tag) then
+            if not CS:HasTag(item, tag) then
                 table.insert(output, item)
             end
         end
@@ -460,7 +458,7 @@ local function getRunTimeLetterFolder(miniGameState)
     )
 end
 
-local function styleLetterBlock(letterBlock, labelProps)
+function module.styleLetterBlock(letterBlock, labelProps)
     local textLabels = Utils.getDescendantsByName(letterBlock, 'BlockChar')
     for _, label in ipairs(textLabels) do
         Utils.mergeTables(label, labelProps)
@@ -601,13 +599,12 @@ local function getAllLettersInRack2(miniGameState)
 end
 
 module.applyLetterText = applyLetterText
-module.styleLetterBlock = styleLetterBlock
 module.colorLetterText = colorLetterText
 module.isDesiredLetter = isDesiredLetter
 module.isWordComplete = isWordComplete
 module.getAvailLettersDict = getAvailLettersDict
 module.colorLetterBorder = colorLetterBorder
-module.applyStyleFromTemplate = applyStyleFromTemplate
+-- module.applyStyleFromTemplate = applyStyleFromTemplate
 module.getCoordsFromLetterName = getCoordsFromLetterName
 module.filterItemsByTag = filterItemsByTag
 module.getRunTimeLetterFolder = getRunTimeLetterFolder
@@ -615,7 +612,6 @@ module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.applyLetterImage = applyLetterImage
 module.getAvailLettersDict2 = getAvailLettersDict2
 module.initLetterBlock = initLetterBlock
--- module.styleLetterBlocksBD = styleLetterBlocksBD
 module.getAvailWords = getAvailWords
 module.getRandomLetter = getRandomLetter
 module.getCharFromLetterBlock2 = getCharFromLetterBlock2
