@@ -95,11 +95,6 @@ function module.addBlockDash(conveyorConfig, islandIndex)
     InitLetterRack.initLetterRack(miniGameState)
     InitWord.initWords(miniGameState)
 
-    -- TEMP
-    -- TEMP
-    -- TEMP
-    -- TEMP
-    -- TEMP
     LetterUtils.styleLetterBlocksBD({miniGameState = miniGameState})
 end
 
@@ -108,14 +103,14 @@ function module.addConveyors(props)
     local parentFolder = props.parentFolder
 
     local conveyorConfigs = levelConfig.conveyorConfigs
-
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
     local islandPositioners = Utils.getByTagInParent({parent = parentFolder, tag = 'IslandPositioner'})
     Utils.sortListByObjectKey(islandPositioners, 'Name')
-    local myPositioners = Constants.gameConfig.singleIsland and {islandPositioners[1]} or islandPositioners
+    -- local myPositioners = islandPositioners
 
-    for islandIndex, islandPositioner in ipairs(myPositioners) do
+    for islandIndex, islandPositioner in ipairs(islandPositioners) do
+        -- for islandIndex, islandPositioner in ipairs(myPositioners) do
         local newIsland = islandTemplate:Clone()
 
         local anchoredParts = {}
@@ -131,7 +126,8 @@ function module.addConveyors(props)
         newIsland.Parent = parentFolder
         newIsland.Name = 'Sector-' .. islandPositioner.Name
         if conveyorConfigs then
-            local conveyorConfig = conveyorConfigs[(islandIndex % #conveyorConfigs) + 1]
+            local conveyorConfig = conveyorConfigs[islandIndex]
+            -- local conveyorConfig = conveyorConfigs[(islandIndex % #conveyorConfigs) + 1]
             conveyorConfig.sectorFolder = newIsland
             conveyorConfig.islandPositioner = islandPositioner
 

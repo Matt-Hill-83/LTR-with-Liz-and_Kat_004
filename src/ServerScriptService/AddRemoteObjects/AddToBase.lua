@@ -7,8 +7,6 @@ local soundConstants = require(Sss.Source.Constants.Const_05_Audio)
 local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvents)
 
--- local Door = require(Sss.Source.Door.Door)
--- local Key = require(Sss.Source.Key.Key)
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
@@ -97,9 +95,7 @@ end
 
 local function addRemoteObjects()
     local placeId = game.PlaceId
-
     local levelDefs = LevelConfigs.levelDefs or {}
-
     local isStartPlace = Utils.isStartPlace()
 
     module.initAnimalSounds()
@@ -117,8 +113,6 @@ local function addRemoteObjects()
 
     local levelName = level.Name
     local levelIndex = tonumber(levelName)
-    print('levelIndex' .. ' - start')
-    print(levelIndex)
 
     local levelConfig = nil
     if isStartPlace then
@@ -177,16 +171,21 @@ local function addRemoteObjects()
         UniIsland.initUniIslands({parentFolder = level})
     end
 
-    -- Door.initDoors({parentFolder = level})
-    -- Key.initKeys({parentFolder = level})
-
     local regionsFolder = Utils.getFirstDescendantByName(level, 'Regions')
+
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
+    print('regions' .. ' - start')
+    print(regions)
 
     for regionIndex, region in ipairs(regions) do
+        print('region' .. ' - start')
+        print(region)
         local config = levelConfig.regions[regionIndex]
-
+        print('config' .. ' - start')
+        print(config)
+        print('-------------->>>')
+        print('-------------->>>')
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
@@ -222,7 +221,7 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
-    -- Theater.initTheaters({parentFolder = level})
+    Theater.initTheaters({parentFolder = level})
 
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]

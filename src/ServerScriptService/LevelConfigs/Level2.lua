@@ -3,22 +3,104 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
-local conveyor01Config = {
-    freezeConveyor = true,
+local conveyor01 = {
     words = {
+        'AAA',
+        'AAA',
+        'AAA',
+        'AAA',
+        'AAA',
+        'AAA',
+        'AAA',
         'AAA'
     }
 }
-local conveyor02Config = {
-    freezeConveyor = true,
+local conveyor02 = {
     words = {
+        'BBB',
+        'BBB',
+        'BBB',
+        'BBB',
+        'BBB',
+        'BBB',
+        'BBB',
         'BBB'
     }
 }
+local conveyor03 = {
+    words = {
+        'CCC',
+        'CCC',
+        'CCC',
+        'CCC',
+        'CCC',
+        'CCC',
+        'CCC',
+        'CCC'
+    }
+}
+local conveyor04 = {
+    words = {
+        'DDD',
+        'DDD',
+        'DDD',
+        'DDD',
+        'DDD',
+        'DDD',
+        'DDD',
+        'DDD'
+    }
+}
 
-local conveyorConfigs = {
-    conveyor01Config,
-    conveyor02Config
+local conveyorConfigs01 = {
+    {
+        words = {
+            'CAT',
+            'BAT',
+            'HAT',
+            'MAT',
+            'PAT',
+            'RAT',
+            'SAT',
+            'FAT'
+        }
+    },
+    {
+        words = {
+            'FIG',
+            'BIG',
+            'DIG',
+            'RIG',
+            'WIG',
+            'JIG',
+            'ZIG',
+            'PIG'
+        }
+    },
+    {
+        words = {
+            'CCC',
+            'CCC',
+            'CCC',
+            'CCC',
+            'CCC',
+            'CCC',
+            'CCC',
+            'CCC'
+        }
+    },
+    {
+        words = {
+            'DDD',
+            'DDD',
+            'DDD',
+            'DDD',
+            'DDD',
+            'DDD',
+            'DDD',
+            'DDD'
+        }
+    }
 }
 
 local dummy01 = {
@@ -57,9 +139,8 @@ local dummy01 = {
 }
 
 local region01 = {
-    conveyorConfigs = conveyorConfigs,
+    conveyorConfigs = conveyorConfigs01,
     hexIslandConfigs = {
-        dummy01,
         dummy01
     },
     getTargetWords = function()
@@ -72,11 +153,8 @@ local region01 = {
 }
 
 local region02 = {
-    conveyorConfigs = conveyorConfigs,
+    conveyorConfigs = {conveyor01, conveyor02, conveyor03, conveyor04},
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01
     },
     getTargetWords = function()
@@ -89,33 +167,22 @@ local region02 = {
 }
 
 local region03 = {
-    conveyorConfigs = conveyorConfigs,
+    conveyorConfigs = {conveyor01, conveyor02, conveyor03, conveyor04},
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01
     },
     getTargetWords = function()
         return {
             {
                 {word = 'RAT', target = 1, found = 0}
-            },
-            {
-                {word = 'CAT', target = 1, found = 0}
             }
         }
     end
 }
 
 local region04 = {
-    conveyorConfigs = conveyorConfigs,
+    conveyorConfigs = {conveyor01, conveyor02, conveyor03, conveyor04},
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01
     },
     getTargetWords = function()
