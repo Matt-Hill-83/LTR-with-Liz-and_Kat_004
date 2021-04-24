@@ -27,6 +27,9 @@ function module.initJunctions(props)
     end
 
     local hexIslandFolderBox = Utils.getFirstDescendantByName(parentFolder, 'HexIslands')
+    if not hexIslandFolderBox then
+        return
+    end
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 

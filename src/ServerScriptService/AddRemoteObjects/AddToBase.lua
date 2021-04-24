@@ -253,13 +253,13 @@ local function addRemoteObjects()
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
         LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
+        BlockDash.addConveyors({levelConfig = config, parentFolder = region})
     end
 
     TestArea.configTestArea({parentFolder = level})
     Entrance.initRunFasts(level)
 
-    local sectorConfigs = levelConfig.sectorConfigs
-    BlockDash.addConveyors(level, sectorConfigs)
+    -- local sectorConfigs = levelConfig.sectorConfigs
 
     Grabbers.initGrabbers({parentFolder = level})
 

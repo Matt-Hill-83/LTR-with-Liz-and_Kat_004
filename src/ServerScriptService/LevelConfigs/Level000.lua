@@ -61,7 +61,7 @@ local sectorConfigs = {
     sector3Config,
     sector4Config
 }
-module.sectorConfigs = sectorConfigs
+-- module.sectorConfigs = sectorConfigs
 
 local c0r0 = {
     material = Enum.Material.Glacier,
@@ -156,6 +156,7 @@ local dummy01 = {
 }
 
 local region01 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01
@@ -170,6 +171,7 @@ local region01 = {
 }
 
 local region02 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -186,6 +188,7 @@ local region02 = {
 }
 
 local region03 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -206,6 +209,7 @@ local region03 = {
 }
 
 local region04 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -227,6 +231,7 @@ local dummy05 = {
 }
 
 local region05 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy05,
         dummy05,
@@ -257,6 +262,7 @@ local region05 = {
 }
 
 local region08 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01,
         dummy01
@@ -277,6 +283,7 @@ local region08 = {
 }
 
 local region09 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -299,6 +306,7 @@ local region09 = {
 }
 
 local region10 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -321,6 +329,7 @@ local region10 = {
 }
 
 local region11 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -343,6 +352,7 @@ local region11 = {
 }
 
 local region12 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -365,6 +375,7 @@ local region12 = {
 }
 
 local region13 = {
+    sectorConfigs = sectorConfigs,
     hexIslandConfigs = {
         dummy01
     },
