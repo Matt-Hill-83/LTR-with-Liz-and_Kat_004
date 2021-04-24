@@ -3,12 +3,23 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
+
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
+local function getRunTimeWordFolder(miniGameState)
+    local sectorFolder = miniGameState.sectorFolder
+    local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
 
-function module.initWord(props)
-    print('initWord')
+    return (Utils.getOrCreateFolder(
+        {
+            name = 'RunTimeWordFolder',
+            parent = runtimeFolder
+        }
+    ))
+end
+
+local function initWord(props)
     local miniGameState = props.miniGameState
     local wordIndex = props.wordIndex
     local word = props.word
@@ -19,6 +30,9 @@ function module.initWord(props)
     local words = miniGameState.words
     local wordLetterSize = miniGameState.wordLetterSize
 
+    local runTimeWordFolder = getRunTimeWordFolder(miniGameState)
+    miniGameState.runTimeWordFolder = runTimeWordFolder
+
     local wordBox = Utils.getFromTemplates('WordBoxTemplate')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_word_normal')
@@ -27,9 +41,10 @@ function module.initWord(props)
     local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'WordLetterBlockPositioner')
 
-    local wordPositioner = Utils.getFirstDescendantByName(sectorFolder, 'WordPositioner')
+    -- if not letterPositioner then return end
 
-    newWord.Parent = miniGameState.runTimeWordFolder
+    local wordPositioner = Utils.getFirstDescendantByName(sectorFolder, 'WordPositioner')
+    newWord.Parent = runTimeWordFolder
 
     local spacingFactorY = 1.1
     local spacingFactorX = 1.1
@@ -103,7 +118,6 @@ function module.initWord(props)
     end
 
     wordBench.CanCollide = false
-    letterPositioner.CanCollide = false
 
     local newWordObj = {
         uuid = Utils.getUuid(),
@@ -117,8 +131,6 @@ function module.initWord(props)
 end
 
 local function renderColumn(miniGameState, colIndex, words)
-    print('renderColumn' .. ' - start')
-    print(renderColumn)
     for wordIndex, word in ipairs(words) do
         local wordProps = {
             miniGameState = miniGameState,
@@ -127,13 +139,12 @@ local function renderColumn(miniGameState, colIndex, words)
             colIndex = colIndex
         }
 
-        local newWordObj = module.initWord(wordProps)
+        local newWordObj = initWord(wordProps)
         table.insert(miniGameState.renderedWords, newWordObj)
     end
 end
 
-function module.initWords(miniGameState)
-    print('initWords')
+local function initWords(miniGameState)
     local wordsPerCol = miniGameState.wordsPerCol
     local words = miniGameState.words
 
@@ -141,9 +152,12 @@ function module.initWords(miniGameState)
     for colIndex = 1, numCol do
         local startIndex = ((colIndex - 1) * wordsPerCol) + 1
         local endIndex = startIndex + wordsPerCol - 1
-        local words2 = {table.unpack(miniGameState.words, startIndex, endIndex)}
-        renderColumn(miniGameState, colIndex, words2)
+        local words = {table.unpack(miniGameState.words, startIndex, endIndex)}
+        renderColumn(miniGameState, colIndex, words)
     end
 end
+
+module.initWords = initWords
+module.initWord = initWord
 
 return module

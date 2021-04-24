@@ -28,8 +28,11 @@ function module.addBlockDash(conveyorConfig, islandIndex)
     local numBelts = totalCol / numBlocksPerBeltPlate
 
     -- put this in workspace to avoid searching through it and triggering an execution timeout
-    local runTimeFolder = Instance.new('Folder', workspace)
-    runTimeFolder.Name = 'BDRuntime' .. islandIndex
+    local bDRackLetterFolder = Instance.new('Folder', workspace)
+    bDRackLetterFolder.Name = 'BDRackLetter-' .. islandIndex
+
+    local bDWordLetterFolder = Instance.new('Folder', workspace)
+    bDWordLetterFolder.Name = 'BDwordLetter-' .. islandIndex
 
     local miniGameState = {
         activeStyle = 'BD_available',
@@ -55,7 +58,7 @@ function module.addBlockDash(conveyorConfig, islandIndex)
         rackLetterBlockObjs = {},
         rackLetterSize = rackLetterSize,
         renderedWords = {},
-        runTimeFolder = runTimeFolder,
+        bDRackLetterFolder = bDRackLetterFolder,
         sectorFolder = sectorFolder,
         wordLetterSize = 16,
         wordsPerCol = 2

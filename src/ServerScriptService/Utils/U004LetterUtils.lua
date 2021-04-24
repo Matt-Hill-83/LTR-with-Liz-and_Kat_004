@@ -448,12 +448,12 @@ end
 
 -- local function getRunTimeLetterFolder(miniGameState)
 --     local sectorFolder = miniGameState.sectorFolder
---     local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
+--     local bDRackLetterFolder = Utils.getOrCreateFolder({name = 'bDRackLetterFolder', parent = sectorFolder})
 
 --     return Utils.getOrCreateFolder(
 --         {
 --             name = 'RunTimeLetterRackFolder',
---             parent = runtimeFolder
+--             parent = bDRackLetterFolder
 --         }
 --     )
 -- end
@@ -604,10 +604,7 @@ module.isDesiredLetter = isDesiredLetter
 module.isWordComplete = isWordComplete
 module.getAvailLettersDict = getAvailLettersDict
 module.colorLetterBorder = colorLetterBorder
--- module.applyStyleFromTemplate = applyStyleFromTemplate
--- module.getCoordsFromLetterName = getCoordsFromLetterName
 module.filterItemsByTag = filterItemsByTag
--- module.getRunTimeLetterFolder = getRunTimeLetterFolder
 module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.applyLetterImage = applyLetterImage
 module.getAvailLettersDict2 = getAvailLettersDict2

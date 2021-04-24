@@ -125,7 +125,7 @@ local function initLetterRack(miniGameState)
                 )
 
                 -- newLetterBlock.Parent = beltTemplate
-                newLetterBlock.Parent = miniGameState.runTimeFolder
+                newLetterBlock.Parent = miniGameState.bDRackLetterFolder
                 -- newLetterBlock.Parent = workspace
                 newLetterBlock.Anchored = false
 
