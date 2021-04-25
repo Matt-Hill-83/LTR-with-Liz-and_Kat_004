@@ -79,6 +79,8 @@ function module.initLetterOrbiter(props)
 
         local sizingDisc = letterOrbiterPositioner.Positioner
 
+        local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, 'Stray_available')
         local blockSize = 12
         for letterIndex, char in ipairs(letters) do
             if char ~= '?' then
@@ -117,6 +119,7 @@ function module.initLetterOrbiter(props)
                     {
                         letterBlock = newLetter,
                         char = char,
+                        template = template,
                         templateName = 'Stray_available',
                         letterBlockType = LetterUtils.letterBlockTypes.StrayLetter,
                         isTextLetter = true

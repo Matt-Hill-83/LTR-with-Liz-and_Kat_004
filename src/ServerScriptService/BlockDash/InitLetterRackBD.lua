@@ -7,7 +7,7 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
-local function initLetterRack(miniGameState)
+function module.initLetterRack(miniGameState)
     local rackLetterBlockObjs = miniGameState.rackLetterBlockObjs
     local sectorFolder = miniGameState.sectorFolder
     local numRow = miniGameState.numRow
@@ -16,9 +16,6 @@ local function initLetterRack(miniGameState)
     local letterSpacingFactor = miniGameState.letterSpacingFactor
     local rackLetterSize = miniGameState.rackLetterSize
     local numBelts = miniGameState.numBelts
-
-    -- local runTimeLetterFolder = LetterUtils.getRunTimeLetterFolder(miniGameState)
-    -- miniGameState.runTimeLetterFolder = runTimeLetterFolder
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'BD_8_blank')
@@ -79,6 +76,9 @@ local function initLetterRack(miniGameState)
             table.unpack(totalLetterMatrix, startIndex, endIndex)
         }
 
+        local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local template = letterBlockTemplateFolder:FindFirstChild(miniGameState.activeStyle)
+
         for colIndex = 1, numCol do
             for rowIndex = 1, numRow do
                 local newLetterBlock = letterBlockTemplate:Clone()
@@ -138,6 +138,7 @@ local function initLetterRack(miniGameState)
                         letterBlock = newLetterBlock,
                         char = char,
                         templateName = miniGameState.activeStyle,
+                        template = template,
                         letterBlockType = 'RackLetter',
                         isTextLetter = true
                     }
@@ -183,7 +184,5 @@ local function initLetterRack(miniGameState)
         letterPositioner:Destroy()
     end
 end
-
-module.initLetterRack = initLetterRack
 
 return module

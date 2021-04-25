@@ -188,10 +188,11 @@ local function createPropOnLetterBlock(props)
     propChar.Value = initialValue
 end
 
-local function initLetterBlock(props)
+function module.initLetterBlock(props)
     local letterBlock = props.letterBlock
     local char = props.char
     local templateName = props.templateName
+    local template = props.template
     local letterBlockType = props.letterBlockType
     local isTextLetter = props.isTextLetter
 
@@ -250,11 +251,15 @@ local function initLetterBlock(props)
 
     -- This seems redundant.
     -- I assume we do this after everything is created.
-    if templateName then
+    if templateName or template then
         if isTextLetter then
-            module.applyStyleFromTemplate({targetLetterBlock = letterBlock, templateName = templateName})
+            module.applyStyleFromTemplate(
+                {targetLetterBlock = letterBlock, templateName = templateName, template = template}
+            )
         else
-            module.applyStyleFromTemplateBD({targetLetterBlock = letterBlock, templateName = templateName})
+            module.applyStyleFromTemplateBD(
+                {targetLetterBlock = letterBlock, templateName = templateName, template = template}
+            )
         end
     end
 end
@@ -270,16 +275,6 @@ local function applyLetterImage(letterBlock, char)
     for _, label in ipairs(labels) do
         label.Image = imageUri
     end
-end
-
-local function applyStyleFromTemplateBD(props)
-    local targetLetterBlock = props.targetLetterBlock
-    local templateName = props.templateName
-
-    local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
-
-    local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
-    targetLetterBlock.Color = template.Color
 end
 
 local function liftLetter(letterBlock, liftUp)
@@ -360,9 +355,23 @@ local function styleGemFromTemplate(props)
     end
 end
 
+local function applyStyleFromTemplateBD(props)
+    local targetLetterBlock = props.targetLetterBlock
+    local templateName = props.templateName
+    local template = props.template
+
+    if not template then
+        local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+
+        template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
+    end
+    targetLetterBlock.Color = template.Color
+end
+
 function module.applyStyleFromTemplate(props)
     local targetLetterBlock = props.targetLetterBlock
     local templateName = props.templateName
+    local template = props.template
     local blockProps = props.blockProps or {}
     local labelProps = props.labelProps or {}
 
@@ -389,8 +398,10 @@ function module.applyStyleFromTemplate(props)
         end
     end
 
-    local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
-    local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
+    if not template then
+        local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
+    end
 
     Utils.mergeTables(targetLetterBlock, blockProps)
 
@@ -442,24 +453,6 @@ local function filterItemsByTag(props)
     end
     return output
 end
-
--- local function getCoordsFromLetterName(name)
---     local pattern = 'ID%-%-R(%d+)C(%d+)'
---     local row, col = string.match(name, pattern)
---     return {row = tonumber(row), col = tonumber(col)}
--- end
-
--- local function getRunTimeLetterFolder(miniGameState)
---     local sectorFolder = miniGameState.sectorFolder
---     local bDRackLetterFolder = Utils.getOrCreateFolder({name = 'bDRackLetterFolder', parent = sectorFolder})
-
---     return Utils.getOrCreateFolder(
---         {
---             name = 'RunTimeLetterRackFolder',
---             parent = bDRackLetterFolder
---         }
---     )
--- end
 
 function module.styleLetterBlock(letterBlock, labelProps)
     local textLabels = Utils.getDescendantsByName(letterBlock, 'BlockChar')
@@ -611,7 +604,6 @@ module.filterItemsByTag = filterItemsByTag
 module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.applyLetterImage = applyLetterImage
 module.getAvailLettersDict2 = getAvailLettersDict2
-module.initLetterBlock = initLetterBlock
 module.getAvailWords = getAvailWords
 module.getRandomLetter = getRandomLetter
 module.getCharFromLetterBlock2 = getCharFromLetterBlock2

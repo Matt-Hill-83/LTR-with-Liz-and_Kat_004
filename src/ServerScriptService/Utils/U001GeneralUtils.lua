@@ -629,16 +629,9 @@ function module.getFirstDescendantByName(parent, name)
     end
     for index, item in ipairs(model) do
         if item.Name == name then
-            -- print('index' .. ' - start')
-            -- print(index)
             return item
         end
     end
-    -- for i = 1, #model do
-    --     if model[i].Name == name then
-    --         return model[i]
-    --     end
-    -- end
 end
 
 function getDescendantsByName(parent, name)
@@ -912,7 +905,6 @@ end
 function module.getFromTemplates(name)
     local myStuff = workspace.MyStuff
     local myTemplates = myStuff.MyTemplates
-    -- local myTemplates = myStuff:FindFirstChild('MyTemplates')
     return module.getFirstDescendantByName(myTemplates, name)
 end
 
@@ -1029,7 +1021,6 @@ module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName
 -- module.getFirstDescendantByName = module.getFirstDescendantByName
 module.getFromMyStuff = getFromMyStuff
--- module.getInstancesByNameStub = getInstancesByNameStub
 module.getItemByUuid = getItemByUuid
 module.getKeysFromDict = getKeysFromDict
 module.getPlayerFromHumanoid = getPlayerFromHumanoid
@@ -1051,8 +1042,6 @@ module.onTouchBlock = onTouchBlock
 module.getActiveTool = getActiveTool
 module.convertItemAndChildrenToTerrain = convertItemAndChildrenToTerrain
 
--- module.hideItemAndChildren2 = hideItemAndChildren2
--- module.unhideHideItems = unhideHideItems
 module.unhideHideItems2 = unhideHideItems2
 
 module.onTouchHuman = onTouchHuman
