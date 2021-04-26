@@ -23,6 +23,7 @@ end
 if isDev then
     activeSpawn = 'Spawn_Snowflake_8'
     activeSpawn = 'Spawn_Snowflake_4'
+    activeSpawn = 'SpawnLocation'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
