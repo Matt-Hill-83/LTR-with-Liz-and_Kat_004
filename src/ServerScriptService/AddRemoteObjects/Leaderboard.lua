@@ -2,6 +2,8 @@ local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local DataStoreService = game:GetService('DataStoreService')
 local WinsLeaderboard = DataStoreService:GetOrderedDataStore('WinsLeaderboard')
+print('WinsLeaderboard' .. ' - start')
+print(WinsLeaderboard)
 
 local module = {}
 
@@ -19,7 +21,7 @@ local function updateLeaderboard()
                 end
             end
 
-            local Data = WinsLeaderboard:GetSortedAsync(false, 10)
+            local Data = WinsLeaderboard:GetSortedAsync(false, 100)
             local WinsPage = Data:GetCurrentPage()
             for Rank, data in ipairs(WinsPage) do
                 local userName = game.Players:GetNameFromUserIdAsync(tonumber(data.key))

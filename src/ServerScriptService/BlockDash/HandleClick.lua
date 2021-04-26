@@ -146,7 +146,7 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
 
             local gemTemplate = Utils.getFromTemplates('GemTemplate')
             local newGem = gemTemplate:Clone()
-            newGem.Parent = sectorFolder
+            newGem.Parent = workspace
 
             newGem.Handle.CFrame =
                 Utils3.setCFrameFromDesiredEdgeOffset(
