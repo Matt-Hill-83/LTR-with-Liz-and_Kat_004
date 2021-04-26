@@ -75,7 +75,7 @@ function module.initDoor(props)
     end
 
     if noGem then
-        local lock = Utils.getFirstDescendantByName(newDoor, 'HexLetterGemTool')
+        local lock = Utils.getFirstDescendantByName(newDoor, 'HexLetterGemTool2')
         lock:Destroy()
     else
         LetterUtils.applyLetterText({letterBlock = newDoor, char = keyName})

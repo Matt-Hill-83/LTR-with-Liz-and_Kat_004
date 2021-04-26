@@ -97,12 +97,6 @@ function module.initReplicators(props)
     -- local keyPositioners = Utils.getByTagInParent({parent = parentFolder, tag = tagName})
 
     local keys = {}
-    -- for _, positionerModel in ipairs(keyPositioners) do
-    -- local replicatorProps = {
-    --     rewardTemplate = Utils.getFromTemplates('HexLetterGemTool'),
-    --     positionerModel = positionerModel,
-    --     parentFolder = parentFolder
-    -- }
 
     local newReplicator = module.createReplicator(props)
     if not newReplicator then
