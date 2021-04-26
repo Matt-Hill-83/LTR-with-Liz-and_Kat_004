@@ -622,10 +622,9 @@ end
 
 function module.getFirstDescendantByName(parent, name)
     local model = parent:GetDescendants()
-    if #model > 30000 then
+    if #model > 80000 then
         print('getFirstDescendantByName')
         print(#model)
-    -- print(test.test.test)
     end
     for index, item in ipairs(model) do
         if item.Name == name then
@@ -1019,7 +1018,6 @@ module.cloneModel = cloneModel
 module.enableChildWelds = enableChildWelds
 module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName
--- module.getFirstDescendantByName = module.getFirstDescendantByName
 module.getFromMyStuff = getFromMyStuff
 module.getItemByUuid = getItemByUuid
 module.getKeysFromDict = getKeysFromDict

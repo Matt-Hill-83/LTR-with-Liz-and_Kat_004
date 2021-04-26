@@ -402,7 +402,8 @@ function module.applyStyleFromTemplate(props)
         local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
         template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
     end
-
+    -- print('template' .. ' - start')
+    -- print(template)
     Utils.mergeTables(targetLetterBlock, blockProps)
 
     local label = Utils.getFirstDescendantByName(template, 'BlockChar')
@@ -494,23 +495,30 @@ function module.styleLetterBlocksBD(props)
     )
 
     local allLetters = module.getAllLettersInRack2(miniGameState)
+    local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+    local template1 = Utils.getFirstDescendantByName(letterBlockTemplateFolder, miniGameState.activeStyle)
+    local template2 = Utils.getFirstDescendantByName(letterBlockTemplateFolder, miniGameState.inActiveStyle)
 
     for _, letterBlock in ipairs(allLetters) do
         local char = module.getCharFromLetterBlock2(letterBlock)
         local templateName = nil
+        local template = nil
 
         if availLetters[char] then
-            module.liftLetter(letterBlock, true)
             templateName = miniGameState.activeStyle
+            module.liftLetter(letterBlock, true)
+            template = template1
         else
             module.liftLetter(letterBlock, false)
             templateName = miniGameState.inActiveStyle
+            template = template2
         end
 
         module.applyStyleFromTemplate(
             {
                 targetLetterBlock = letterBlock,
-                templateName = templateName
+                templateName = templateName,
+                template = template
             }
         )
     end
