@@ -97,23 +97,23 @@ local function wordFound(tool, player)
         updateWordGuiRE:FireClient(player)
 
         local function destroyParts()
-            tool:Destroy()
+            -- tool:Destroy()
 
             if player:FindFirstChild('leaderstats') then
                 local wins = player.leaderstats.Wins
                 wins.Value = wins.Value + 1
             end
 
-            PlayerStatManager:ChangeStat(player, 'Gems', 1)
+            -- PlayerStatManager:ChangeStat(player, 'Gems', 1)
             Leaderboard.updateLB()
 
-            local explosionSound = '515938718'
-            Utils.playSound(explosionSound, 0.5)
+            -- local explosionSound = '515938718'
+            -- Utils.playSound(explosionSound, 0.5)
         end
 
         --  give gem
         if true then
-            -- delay(1, destroyParts)
+            delay(1, destroyParts)
 
             local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
             local newKey = keyTemplate:Clone()
