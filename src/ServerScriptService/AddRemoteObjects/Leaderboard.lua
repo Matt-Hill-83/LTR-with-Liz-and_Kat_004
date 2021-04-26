@@ -11,7 +11,7 @@ local function updateLeaderboard()
     local success, errorMessage =
         pcall(
         function()
-            local globalLeaderboards = Utils.getDescendantsByName(workspace, 'GlobalLeaderboard')
+            local globalLeaderboards = Utils.getDescendantsByName(workspace, 'GlobalLeaderboard2')
 
             for _, globalLeaderboard in ipairs(globalLeaderboards) do
                 for _, frame in pairs(globalLeaderboard.LeaderboardGUI.Holder:GetChildren()) do
