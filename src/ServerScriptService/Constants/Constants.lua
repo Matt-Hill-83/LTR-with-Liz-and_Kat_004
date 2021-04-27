@@ -22,8 +22,8 @@ end
 
 if isDev then
     activeSpawn = 'Spawn_Snowflake_8'
-    activeSpawn = 'Spawn_02'
     activeSpawn = 'Spawn_Snowflake_4'
+    activeSpawn = 'Spawn_02'
 else
     activeSpawn = 'Spawn_Center'
     activeSpawn = 'Spawn_Start'
@@ -34,20 +34,13 @@ else
 end
 
 local devGameConfig = {
-    singleIsland = false,
-    -- singleIsland = true,
-    -- transparency = false,
     transparency = true,
-    -- walkSpeed = 200
     walkSpeed = 70
 }
 
 local prodGameConfig = {
-    singleIsland = false,
-    -- singleIsland = true,
     transparency = true,
     walkSpeed = 30
-    -- walkSpeed = 80
 }
 
 local gameConfig = isDev and devGameConfig or prodGameConfig
