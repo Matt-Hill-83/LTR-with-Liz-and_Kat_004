@@ -1,4 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
+local CS = game:GetService('CollectionService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
@@ -60,6 +61,8 @@ function module.initStraysInRegions(props)
         local maxLetters
         local blockTemplate
 
+        local isHoverStray = CS:HasTag(region, 'StrayRegion-Hover')
+
         if levelConfig.strayRegions and levelConfig.strayRegions[regionIndex] then
             local config = levelConfig.strayRegions[regionIndex]
 
@@ -99,22 +102,51 @@ function module.initStraysInRegions(props)
             }
         )
 
+        local hoverPuckTemplate = Utils.getFromTemplates('HoverPuck-002')
+
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
 
-            function module.initPuck(puck)
-                local thrust = Instance.new('BodyThrust', puck)
-                thrust.Force = Vector3.new(0, 0, 16000)
+            if isHoverStray then
+                local hoverPuck = hoverPuckTemplate:Clone()
+                hoverPuck.Parent = stray.Parent
+                local hoverPuckPart = hoverPuck.PrimaryPart
 
-                local angularVelocity = Utils.genRandom(1, 2, true)
+                hoverPuckPart.Name = 'kkkk'
+                hoverPuckPart.CFrame =
+                    Utils3.setCFrameFromDesiredEdgeOffset(
+                    {
+                        parent = stray,
+                        child = hoverPuckPart,
+                        offsetConfig = {
+                            useParentNearEdge = Vector3.new(0, -1, 0),
+                            useChildNearEdge = Vector3.new(0, -1, 0),
+                            offsetAdder = nil
+                        }
+                    }
+                )
 
-                local av = Instance.new('BodyAngularVelocity', puck)
-                av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
-                av.AngularVelocity = Vector3.new(0, angularVelocity, 0)
-                -- av.AngularVelocity = Vector3.new(0, 1, 0)
-                av.P = 1250
+                local weld = Instance.new('WeldConstraint')
+                weld.Name = 'WeldConstraint-hoverPuck'
+                weld.Parent = hoverPuckPart
+                weld.Part0 = hoverPuckPart
+                weld.Part1 = stray
+
+                hoverPuck.Dummy:Destroy()
+            else
+                function module.initPuck(puck)
+                    local thrust = Instance.new('BodyThrust', puck)
+                    thrust.Force = Vector3.new(0, 0, 16000)
+
+                    local angularVelocity = Utils.genRandom(1, 2, true)
+
+                    local av = Instance.new('BodyAngularVelocity', puck)
+                    av.MaxTorque = Vector3.new(1000000, 1000000, 1000000)
+                    av.AngularVelocity = Vector3.new(0, angularVelocity, 0)
+                    av.P = 1250
+                end
+                module.initPuck(stray)
             end
-            module.initPuck(stray)
         end
     end
 end
