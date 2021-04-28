@@ -251,7 +251,9 @@ local function convertItemAndChildrenToTerrain(props)
             if part:IsA('WedgePart') then
                 game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
             elseif part.Shape == Enum.PartType.Ball then
-                game.Workspace.Terrain:FillBall(part.CFrame, part.Size, material)
+                print('part.CFrame' .. ' - start')
+                print(part.CFrame)
+                game.Workspace.Terrain:FillBall(part.Position, part.Size.X / 2, material)
             elseif part.Shape == Enum.PartType.Cylinder then
                 local height = part.Size.X
                 local radius = part.Size.Z / 2
