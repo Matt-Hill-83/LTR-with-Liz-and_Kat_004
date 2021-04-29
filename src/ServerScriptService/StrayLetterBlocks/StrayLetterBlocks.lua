@@ -52,7 +52,11 @@ function module.initStraysInRegions(props)
     local defaultWords = {
         'RAT',
         'CAT',
-        'BAT'
+        'BAT',
+        'HAT',
+        'MAT',
+        'SAT',
+        'PAT'
     }
 
     for regionIndex, region in ipairs(strayRegions) do

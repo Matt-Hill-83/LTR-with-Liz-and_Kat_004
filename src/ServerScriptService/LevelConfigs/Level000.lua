@@ -190,10 +190,6 @@ local region02 = {
 local region03 = {
     conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01
     },
     getTargetWords = function()
@@ -211,16 +207,43 @@ local region03 = {
 local region04 = {
     conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01,
         dummy01
+    },
+    strayRegions = {
+        {
+            words = {
+                'RAT',
+                'CAT',
+                'BAT',
+                'HAT',
+                'MAT',
+                'SAT',
+                'PAT'
+            }
+        }
     },
     getTargetWords = function()
         return {
             {
+                {word = 'RAT', target = 1, found = 0}
+            },
+            {
                 {word = 'CAT', target = 1, found = 0}
+            },
+            {
+                {word = 'BAT', target = 1, found = 0}
+            },
+            {
+                {word = 'HAT', target = 1, found = 0}
+            },
+            {
+                {word = 'MAT', target = 1, found = 0}
+            },
+            {
+                {word = 'SAT', target = 1, found = 0}
+            },
+            {
+                {word = 'PAT', target = 1, found = 0}
             }
         }
     end
@@ -232,13 +255,7 @@ local dummy05 = {
 
 local region05 = {
     conveyorConfigs = conveyorConfigs,
-    hexIslandConfigs = {
-        dummy05,
-        dummy05,
-        dummy05,
-        dummy05,
-        dummy05
-    },
+    hexIslandConfigs = {dummy05},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -269,7 +286,8 @@ local region08 = {
     },
     strayRegions = {
         {
-            words = {'CAT', 'BAT', 'RAT'},
+            words = {'888'},
+            -- words = {'CAT', 'BAT', 'RAT'},
             useArea = true
         }
     },
@@ -289,20 +307,14 @@ local region09 = {
     },
     strayRegions = {
         {
-            words = {'999'},
-            -- words = {'BAT'},
+            words = {'BAT'},
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
         }
     },
     getTargetWords = function()
-        return {
-            {
-                {word = '999', target = 1, found = 0}
-                -- {word = 'BAT', target = 1, found = 0}
-            }
-        }
+        return {{{word = 'BAT', target = 1, found = 0}}}
     end
 }
 
@@ -414,6 +426,10 @@ local region18 = {
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'RAT'}}}
 }
+local region19 = {
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'CAT'}}}
+}
 
 module.regions = {
     region01,
@@ -433,7 +449,8 @@ module.regions = {
     region15,
     region16,
     region17,
-    region18
+    region18,
+    region19
 }
 
 return module
