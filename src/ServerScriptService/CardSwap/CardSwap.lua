@@ -15,9 +15,20 @@ function module.initCardSwaps(props)
     local db = false
 
     local function onTouchWrapper(itemNum)
+        print('onTouchWrapper')
+        print('onTouchWrapper')
+        print('onTouchWrapper')
+        print('onTouchWrapper')
         local function onTouch(otherPart)
-            local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
+            print('onTouch' .. ' - start')
+            print('onTouch' .. ' - start')
+            print('onTouch' .. ' - start')
+            print('onTouch' .. ' - start')
+
+            print('db' .. ' - start')
+            print(db)
             if db == false then
+                local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)

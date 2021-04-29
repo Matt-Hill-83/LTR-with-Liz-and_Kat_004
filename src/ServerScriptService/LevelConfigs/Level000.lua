@@ -286,7 +286,7 @@ local region08 = {
     },
     strayRegions = {
         {
-            words = {'888'},
+            words = {'PAT'},
             -- words = {'CAT', 'BAT', 'RAT'},
             useArea = true
         }
@@ -346,7 +346,7 @@ local region14 = {
 }
 local region15 = {
     hexIslandConfigs = {dummy01},
-    strayRegions = {{words = {'HAT'}}}
+    strayRegions = {{words = {'SAT'}}}
 }
 local region16 = {
     hexIslandConfigs = {dummy01},

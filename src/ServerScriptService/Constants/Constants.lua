@@ -25,10 +25,6 @@ if isDev then
     activeSpawn = 'Spawn_02'
     activeSpawn = 'Spawn_Snowflake_4'
 else
-    activeSpawn = 'Spawn_Center'
-    activeSpawn = 'Spawn_Start'
-    activeSpawn = 'Spawn_Snowflake'
-    activeSpawn = 'Spawn_Snowflake_3'
     activeSpawn = 'Spawn_Snowflake_8'
     activeSpawn = 'Spawn_Snowflake_4'
 end

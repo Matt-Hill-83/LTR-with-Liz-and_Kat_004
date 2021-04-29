@@ -108,6 +108,10 @@ function module.configPlayers(props)
             LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
 
             targetWords = levelConfig.regions[1].getTargetWords()[1]
+            print('set target words - config')
+            print('set target words - config')
+            print('set target words - config')
+            print('set target words - config')
             gameState.targetWords = targetWords
         end
 
@@ -321,8 +325,9 @@ function module.configGame(props)
             -- wallProps = {Transparency = 0.5}
         }
     )
+end
 
-    -- Utils.hideFrontLabels(workspace)
+function module.preRunConfig(props)
     local allSpawnLocations = Utils.getDescendantsByType(workspace, 'SpawnLocation')
 
     for _, item in ipairs(allSpawnLocations) do
@@ -332,9 +337,7 @@ function module.configGame(props)
             item.Enabled = false
         end
     end
-end
 
-function module.preRunConfig(props)
     module.webstersCall2()
     configGamePass1()
     configGamePass2()
