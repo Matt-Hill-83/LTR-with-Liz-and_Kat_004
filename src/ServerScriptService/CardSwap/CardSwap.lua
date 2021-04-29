@@ -37,6 +37,11 @@ function module.initCardSwaps(props)
 
     local items = Utils.getByTagInParent({parent = parentFolder, tag = 'CardSwap'})
     Utils.sortListByObjectKey(items, 'Name')
+    print('parentFolder' .. ' - start')
+    print(parentFolder)
+    print('items' .. ' - start')
+    print(items)
+    print('---------------------')
 
     for itemNum, item in ipairs(items) do
         item.Touched:Connect(onTouchWrapper(itemNum))

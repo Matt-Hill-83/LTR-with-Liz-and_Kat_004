@@ -35,7 +35,7 @@ local renderGrid = function(props)
 
     local lettersInWord = 3
     local scrollBarThickness = 30
-    local maxWordsInFrame = 4
+    local maxWordsInFrame = 6
 
     if (#words <= maxWordsInFrame) then
         scrollBarThickness = 0
