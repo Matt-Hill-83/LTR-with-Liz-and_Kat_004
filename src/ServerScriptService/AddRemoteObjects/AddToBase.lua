@@ -105,9 +105,9 @@ local function addRemoteObjects()
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
-    local ramps = Utils.getFirstDescendantByName(blockDash, 'Ramps')
+    -- local ramps = Utils.getFirstDescendantByName(blockDash, 'Ramps')
 
-    SingleStrays.initSingleStrays({parentFolder = ramps})
+    -- SingleStrays.initSingleStrays({parentFolder = ramps})
 
     local level = levelsFolder:GetChildren()[1]
 
@@ -175,17 +175,9 @@ local function addRemoteObjects()
 
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
-    print('regions' .. ' - start')
-    print(regions)
 
     for regionIndex, region in ipairs(regions) do
-        print('region' .. ' - start')
-        print(region)
         local config = levelConfig.regions[regionIndex]
-        print('config' .. ' - start')
-        print(config)
-        print('-------------->>>')
-        print('-------------->>>')
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
@@ -241,7 +233,7 @@ local function addRemoteObjects()
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
-    local unicornStore = UnicornStore.initUnicornStore({parentFolder = blockDash})
+    UnicornStore.initUnicornStore({parentFolder = blockDash})
 end
 
 module.addRemoteObjects = addRemoteObjects

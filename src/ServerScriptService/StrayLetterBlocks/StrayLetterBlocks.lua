@@ -106,7 +106,6 @@ function module.initStraysInRegions(props)
 
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
-
             if isHoverStray then
                 local hoverPuck = hoverPuckTemplate:Clone()
                 hoverPuck.Parent = stray.Parent
@@ -132,6 +131,7 @@ function module.initStraysInRegions(props)
                 weld.Part0 = hoverPuckPart
                 weld.Part1 = stray
 
+                stray.Massless = true
                 hoverPuck.Dummy:Destroy()
             else
                 function module.initPuck(puck)

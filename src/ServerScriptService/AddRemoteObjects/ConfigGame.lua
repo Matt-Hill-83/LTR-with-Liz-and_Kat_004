@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
 local RS = game:GetService('ReplicatedStorage')
 local RunService = game:GetService('RunService')
+local HttpService = game:GetService('HttpService')
 
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
@@ -334,6 +335,7 @@ function module.configGame(props)
 end
 
 function module.preRunConfig(props)
+    module.webstersCall2()
     configGamePass1()
     configGamePass2()
     module.configPlayers(props)
@@ -351,6 +353,62 @@ function module.preRunConfig(props)
     if RunService:IsRunning() then
     else
     end
+end
+
+function module.webstersCall2()
+    local word = 'think'
+    local function request()
+        local key = module.getWebsterAPIs('school')
+
+        print('key')
+        print(key)
+        local key2 = key:sub(0, -5)
+
+        print('key2')
+        print(key2)
+
+        local response =
+            HttpService:RequestAsync(
+            {
+                Url = 'https://dictionaryapi.com/api/v3/references/sd4/json/' .. word .. '?key=' .. key2
+                -- Method = 'GET'
+            }
+        )
+
+        -- Inspect the response table
+        if response.Success then
+            print('Status code:', response.StatusCode, response.StatusMessage)
+            print('Response body:\n', response.Body)
+            local data = HttpService:JSONDecode(response.Body)
+            print('data' .. ' - start')
+            print(data)
+        else
+            print('The request failed:', response.StatusCode, response.StatusMessage)
+        end
+    end
+
+    -- Remember to wrap the function in a 'pcall' to prevent the script from breaking if the request fails
+    local success, message = pcall(request)
+    if not success then
+        print('Http Request failed:', message)
+    end
+
+    local str = '1234567890'
+    local str1 = str:sub(0, -4)
+    print('str1' .. ' - start')
+    print('str1' .. ' - start')
+    print('str1' .. ' - start')
+    print('str1' .. ' - start')
+    print(str1)
+end
+
+function module.getWebsterAPIs(version)
+    local keys = {
+        school = 'fa0f7ff7-6da7-40d2-ac4f-db61a779775e-123',
+        learners = 'a5d7aa74-b81e-4932-86d2-df1fccf84216-123'
+    }
+
+    return keys[version]
 end
 
 return module
