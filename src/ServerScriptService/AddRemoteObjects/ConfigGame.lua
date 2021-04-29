@@ -356,32 +356,29 @@ function module.preRunConfig(props)
 end
 
 function module.webstersCall2()
+    -- local word = 'thinkz'
     local word = 'think'
     local function request()
         local key = module.getWebsterAPIs('school')
-
-        print('key')
-        print(key)
         local key2 = key:sub(0, -5)
-
-        print('key2')
-        print(key2)
 
         local response =
             HttpService:RequestAsync(
             {
                 Url = 'https://dictionaryapi.com/api/v3/references/sd4/json/' .. word .. '?key=' .. key2
-                -- Method = 'GET'
             }
         )
 
         -- Inspect the response table
         if response.Success then
             print('Status code:', response.StatusCode, response.StatusMessage)
-            print('Response body:\n', response.Body)
+            -- print('Response body:\n', response.Body)
             local data = HttpService:JSONDecode(response.Body)
-            print('data' .. ' - start')
-            print(data)
+            -- print('data' .. ' - start')
+            -- print(data)
+            print('data[1]' .. ' - start')
+            print(data[1])
+            print(data[1]['meta']['id'])
         else
             print('The request failed:', response.StatusCode, response.StatusMessage)
         end
@@ -392,14 +389,6 @@ function module.webstersCall2()
     if not success then
         print('Http Request failed:', message)
     end
-
-    local str = '1234567890'
-    local str1 = str:sub(0, -4)
-    print('str1' .. ' - start')
-    print('str1' .. ' - start')
-    print('str1' .. ' - start')
-    print('str1' .. ' - start')
-    print(str1)
 end
 
 function module.getWebsterAPIs(version)

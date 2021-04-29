@@ -102,7 +102,8 @@ function module.initStraysInRegions(props)
             }
         )
 
-        local hoverPuckTemplate = Utils.getFromTemplates('HoverPuck-002')
+        local hoverPuckTemplate = Utils.getFromTemplates('HoverPuck-003')
+        -- local hoverPuckTemplate = Utils.getFromTemplates('HoverPuck-002')
 
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
@@ -112,6 +113,8 @@ function module.initStraysInRegions(props)
                 local hoverPuckPart = hoverPuck.PrimaryPart
 
                 hoverPuckPart.Name = 'kkkk'
+                hoverPuckPart.Anchored = false
+
                 hoverPuckPart.CFrame =
                     Utils3.setCFrameFromDesiredEdgeOffset(
                     {
