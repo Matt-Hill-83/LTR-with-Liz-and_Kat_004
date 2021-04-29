@@ -289,7 +289,8 @@ local region09 = {
     },
     strayRegions = {
         {
-            words = {'BAT'},
+            words = {'999'},
+            -- words = {'BAT'},
             randomLetterMultiplier = 1,
             maxLetters = 6,
             useArea = true
@@ -298,7 +299,8 @@ local region09 = {
     getTargetWords = function()
         return {
             {
-                {word = 'BAT', target = 1, found = 0}
+                {word = '999', target = 1, found = 0}
+                -- {word = 'BAT', target = 1, found = 0}
             }
         }
     end
@@ -392,34 +394,39 @@ local region13 = {
     end
 }
 
+local region14 = {
+    conveyorConfigs = conveyorConfigs,
+    hexIslandConfigs = {
+        dummy01
+    },
+    strayRegions = {
+        {
+            words = {'PAT'},
+            useArea = true
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'PAT', target = 1, found = 0}
+            }
+        }
+    end
+}
+
 module.regions = {
     region01,
     region02,
     region03,
     region04,
     region05,
-    -- region06,
     region08,
     region09,
     region09,
     region09,
     region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
-    region09,
     region10,
-    region11,
-    region12,
-    region13
+    region14
 }
 
 return module
