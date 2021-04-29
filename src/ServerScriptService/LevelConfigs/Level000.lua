@@ -395,23 +395,24 @@ local region13 = {
 }
 
 local region14 = {
-    conveyorConfigs = conveyorConfigs,
-    hexIslandConfigs = {
-        dummy01
-    },
-    strayRegions = {
-        {
-            words = {'PAT'},
-            useArea = true
-        }
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'PAT', target = 1, found = 0}
-            }
-        }
-    end
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'PAT'}}}
+}
+local region15 = {
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'HAT'}}}
+}
+local region16 = {
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'MAT'}}}
+}
+local region17 = {
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'SAT'}}}
+}
+local region18 = {
+    hexIslandConfigs = {dummy01},
+    strayRegions = {{words = {'RAT'}}}
 }
 
 module.regions = {
@@ -426,7 +427,13 @@ module.regions = {
     region09,
     region09,
     region10,
-    region14
+    -- cakes on center
+
+    region14,
+    region15,
+    region16,
+    region17,
+    region18
 }
 
 return module
