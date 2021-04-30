@@ -15,18 +15,7 @@ function module.initCardSwaps(props)
     local db = false
 
     local function onTouchWrapper(itemNum)
-        print('onTouchWrapper')
-        print('onTouchWrapper')
-        print('onTouchWrapper')
-        print('onTouchWrapper')
         local function onTouch(otherPart)
-            print('onTouch' .. ' - start')
-            print('onTouch' .. ' - start')
-            print('onTouch' .. ' - start')
-            print('onTouch' .. ' - start')
-
-            print('db' .. ' - start')
-            print(db)
             if db == false then
                 local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
                 if humanoid then
@@ -48,11 +37,6 @@ function module.initCardSwaps(props)
 
     local items = Utils.getByTagInParent({parent = parentFolder, tag = 'CardSwap'})
     Utils.sortListByObjectKey(items, 'Name')
-    print('parentFolder' .. ' - start')
-    print(parentFolder)
-    print('items' .. ' - start')
-    print(items)
-    print('---------------------')
 
     for itemNum, item in ipairs(items) do
         item.Touched:Connect(onTouchWrapper(itemNum))
