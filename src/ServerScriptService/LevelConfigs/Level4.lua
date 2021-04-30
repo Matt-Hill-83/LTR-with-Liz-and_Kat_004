@@ -201,7 +201,7 @@ local region02 = {
 
 module.regions = {
     region01,
-    region02
+    region01
 }
 
 return module
