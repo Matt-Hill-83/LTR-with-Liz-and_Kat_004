@@ -86,13 +86,17 @@ function module.addMeetLizBadge()
 end
 
 function module.configPlayers(props)
+    print('configPlayers')
+    print('configPlayers')
+    print('configPlayers')
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
-    module.addMeetCreatorBadge()
-    module.addMeetLizBadge()
+    -- module.addMeetCreatorBadge()
+    -- module.addMeetLizBadge()
 
     local function onCharacterAdded(character)
+        print('onCharacterAdded')
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -102,6 +106,9 @@ function module.configPlayers(props)
 
         -- Wait so that gui can exist
         if gameState.initComplete == true then
+            print('init complete')
+            print('init complete')
+            print('init complete')
             wait(2)
             targetWords = gameState.targetWords
         else
@@ -338,9 +345,9 @@ function module.preRunConfig(props)
         end
     end
 
-    module.webstersCall2()
-    configGamePass1()
-    configGamePass2()
+    -- module.webstersCall2()
+    -- configGamePass1()
+    -- configGamePass2()
     module.configPlayers(props)
     if RunService:IsRunMode() then
     end

@@ -309,7 +309,7 @@ local region09 = {
         {
             words = {'BAT'},
             randomLetterMultiplier = 1,
-            maxLetters = 6,
+            -- maxLetters = 6,
             useArea = true
         }
     },
@@ -351,18 +351,6 @@ local region16 = {
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'MAT'}}}
 }
--- local region17 = {
---     hexIslandConfigs = {dummy01},
---     strayRegions = {{words = {'SAT'}}}
--- }
--- local region18 = {
---     hexIslandConfigs = {dummy01},
---     strayRegions = {{words = {'RAT'}}}
--- }
--- local region19 = {
---     hexIslandConfigs = {dummy01},
---     strayRegions = {{words = {'CAT'}}}
--- }
 
 module.regions = {
     region01,
@@ -381,6 +369,7 @@ module.regions = {
     region14,
     region15,
     region16,
+    --
     region10,
     region10,
     region10,
@@ -393,9 +382,6 @@ module.regions = {
     region10,
     region10,
     region10
-    -- region17,
-    -- region18,
-    -- region19
 }
 
 return module
