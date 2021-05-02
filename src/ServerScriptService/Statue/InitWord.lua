@@ -93,12 +93,16 @@ local function initWord(props)
     newWord.Name = newWord.Name .. 'zzz' .. wordNameStub
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'LetterPositioner')
 
+    local template = Utils.getFromTemplates('Grabber_normal')
+
     local lettersInWord = {}
     for letterIndex = 1, #word do
         local letterNameStub = wordNameStub .. '-L' .. letterIndex
         local letter = string.sub(word, letterIndex, letterIndex)
         local newLetter = letterBlockTemplate:Clone()
-        -- LetterUtils.applyStyleFromTemplate({targetLetterBlock = newLetter, templateName = 'Grabber_normal'})
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = newLetter, templateName = 'Grabber_normal', template = template}
+        )
 
         local cd = Instance.new('ClickDetector', newLetter)
         cd.MouseClick:Connect(playWordSound(word))

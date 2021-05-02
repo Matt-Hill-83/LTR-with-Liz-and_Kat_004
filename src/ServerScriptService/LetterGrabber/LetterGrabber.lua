@@ -28,7 +28,8 @@ local function configWordLetters(props)
     local letterGapX = letterBlockTemplate.Size.X * spacingFactorX
     local spacingIncrementX = letterGapX + letterBlockTemplate.Size.X
 
-    local template = Utils.getFromTemplates('LB_2_blank')
+    local template = Utils.getFromTemplates('Grabber_normal')
+    -- local template = Utils.getFromTemplates('LB_2_blank')
     -- local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
 
     local lettersInWord = {}

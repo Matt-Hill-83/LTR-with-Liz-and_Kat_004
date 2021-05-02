@@ -7,17 +7,6 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
-local function getRunTimeWordFolder(miniGameState)
-    local sectorFolder = miniGameState.sectorFolder
-    local runtimeFolder = Utils.getOrCreateFolder({name = 'RunTimeFolder', parent = sectorFolder})
-
-    return (Utils.getOrCreateFolder(
-        {
-            name = 'RunTimeWordFolder',
-            parent = runtimeFolder
-        }
-    ))
-end
 
 local function initWord(props)
     local miniGameState = props.miniGameState
