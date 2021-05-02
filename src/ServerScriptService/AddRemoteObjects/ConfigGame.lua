@@ -92,7 +92,7 @@ function module.configPlayers(props)
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
-    -- module.addMeetCreatorBadge()
+    module.addMeetCreatorBadge()
     -- module.addMeetLizBadge()
 
     local function onCharacterAdded(character)
