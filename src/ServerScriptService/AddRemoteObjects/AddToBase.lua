@@ -192,15 +192,7 @@ local function addRemoteObjects()
                 regionIndex = regionIndex
             }
         )
-        -- Junction4.initJunctions(
-        --     {
-        --         parentFolder = region,
-        --         levelConfig = config,
-        --         hexTemplate = 'Hex_128_32_v2',
-        --         positionerName = 'Hex_128_32_pos_v2',
-        --         regionIndex = regionIndex
-        --     }
-        -- )
+
         StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
         Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
         LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
