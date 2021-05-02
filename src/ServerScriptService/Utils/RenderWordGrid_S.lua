@@ -22,9 +22,6 @@ local renderGrid = function(props)
     local mainFrame = Utils.getFirstDescendantByName(mainGui, 'MainFrame')
     local messageFrame = Utils.getFirstDescendantByName(mainGui, 'MessageFrame')
 
-    local paddingInPx = 10
-    local doublePad = paddingInPx * 2
-
     local longestWordLength = 0
 
     for _, word in ipairs(words) do
@@ -49,6 +46,12 @@ local renderGrid = function(props)
     local letterGapX = letterWidth / 20
     local totalLetterWidth = letterWidth + letterGapX
     local letterBorderSizePixel = letterWidth / 10
+
+    --
+
+    local paddingInPx = letterHeight * 0.2
+    -- local paddingInPx = 10
+    local doublePad = paddingInPx * 2
 
     -- row stuff
     local rowGapY = paddingInPx / 2
@@ -99,8 +102,9 @@ local renderGrid = function(props)
         local gemPoints = gameState.gemPoints
 
         if gemsFrame then
-            gemsFrame.Position = UDim2.new(0, displayWidth * 0.75, 0, 0)
-            gemsFrame.Size = UDim2.new(0, letterHeight * 4, 0, letterHeight * 2)
+            local width = letterHeight * 1
+            gemsFrame.Position = UDim2.new(0, displayWidth * 0.5 - width, 0, 0)
+            gemsFrame.Size = UDim2.new(0, letterHeight * 2, 0, width)
 
             local gemsImageLabel = Utils.getFirstDescendantByType(gemsFrame, 'ImageLabel')
             local gemsTextLabel = Utils.getFirstDescendantByType(gemsFrame, 'TextBox')
@@ -193,29 +197,26 @@ local renderGrid = function(props)
                 newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
             else
                 -- Only create blanks for as many as are required
-                local numGemsCreated = 0
-
-                local numRow = 3
-                local numCol = 3
-
-                local gemNum = 1
-                for rowIndex = 0, numRow - 1 do
-                    local positionY = rowIndex * gemHeight + 0
-                    for colIndex = 0, numCol - 1 do
-                        if numGemsCreated < item.target then
-                            local positionX = colIndex * gemWidth + paddingInPx
-                            local newImageLabel = imageLabelGem:Clone()
-                            newImageLabel.Parent = newRow
-
-                            local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
-                            newImageLabel.Image = gemImage
-                            newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
-                            newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
-                            gemNum = gemNum + 1
-                            numGemsCreated = numGemsCreated + 1
-                        end
-                    end
-                end
+                -- local numGemsCreated = 0
+                -- local numRow = 3
+                -- local numCol = 3
+                -- local gemNum = 1
+                -- for rowIndex = 0, numRow - 1 do
+                --     local positionY = rowIndex * gemHeight + 0
+                --     for colIndex = 0, numCol - 1 do
+                --         if numGemsCreated < item.target then
+                --             local positionX = colIndex * gemWidth + paddingInPx
+                --             local newImageLabel = imageLabelGem:Clone()
+                --             newImageLabel.Parent = newRow
+                --             local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
+                --             newImageLabel.Image = gemImage
+                --             newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
+                --             newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
+                --             gemNum = gemNum + 1
+                --             numGemsCreated = numGemsCreated + 1
+                --         end
+                --     end
+                -- end
             end
         end
         imageLabelGem.Visible = false
