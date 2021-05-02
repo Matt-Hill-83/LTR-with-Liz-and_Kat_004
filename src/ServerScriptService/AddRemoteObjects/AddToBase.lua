@@ -200,13 +200,13 @@ local function addRemoteObjects()
     end
 
     TestArea.configTestArea({parentFolder = level})
-    Grabbers.initGrabbers({parentFolder = level})
+    -- Grabbers.initGrabbers({parentFolder = level})
 
     -- Grabbers.initGrabbers3(
     --     {parentFolder = level, tag = 'LetterGrabberPositioner3', templateName = 'GrabberReplicatorTemplate_003'}
     -- )
     Grabbers.initGrabbers3(
-        {parentFolder = level, tag = 'LetterGrabberPositioner2', templateName = 'GrabberReplicatorTemplate_001'}
+        {parentFolder = level, tag = 'LetterGrabberPositioner', templateName = 'GrabberReplicatorTemplate_001'}
     )
 
     Terrain.initTerrain({parentFolder = workspace})
