@@ -623,8 +623,8 @@ end
 function module.getFirstDescendantByName(parent, name)
     local model = parent:GetDescendants()
     if #model > 80000 then
-        print('getFirstDescendantByName')
-        print(#model)
+    -- print('getFirstDescendantByName')
+    -- print(#model)
     end
     for index, item in ipairs(model) do
         if item.Name == name then

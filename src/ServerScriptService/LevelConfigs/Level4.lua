@@ -3,81 +3,6 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
-local conveyorConfigs01 = {
-    {
-        words = {
-            'CAT',
-            'BAT',
-            'HAT',
-            'MAT'
-            -- 'PAT',
-            -- 'RAT',
-            -- 'SAT',
-            -- 'FAT'
-        }
-    },
-    {
-        words = {
-            'FIG',
-            'BIG',
-            'DIG',
-            'RIG'
-            -- 'WIG',
-            -- 'JIG',
-            -- 'ZIG',
-            -- 'PIG'
-        }
-    },
-    {
-        words = {
-            'CAP',
-            'GAP',
-            'LAP',
-            'MAP'
-            -- 'SAP',
-            -- 'TAP',
-            -- 'RAP',
-            -- 'ZAP'
-        }
-    },
-    {
-        words = {
-            'VAN',
-            'RAN',
-            'CAN',
-            'PAN'
-            -- 'FAN',
-            -- 'TAN',
-            -- 'DAN',
-            -- 'BAN'
-        }
-    },
-    {
-        words = {
-            'CAP',
-            'GAP',
-            'LAP',
-            'MAP'
-            -- 'SAP',
-            -- 'TAP',
-            -- 'RAP',
-            -- 'ZAP'
-        }
-    },
-    {
-        words = {
-            'VAN',
-            'RAN',
-            'CAN',
-            'PAN'
-            -- 'FAN',
-            -- 'TAN',
-            -- 'DAN',
-            -- 'BAN'
-        }
-    }
-}
-
 local conveyorConfigs02 = {
     {
         words = {
@@ -200,6 +125,13 @@ local region02 = {
 }
 
 module.regions = {
+    region01,
+    region01,
+    region01,
+    region01,
+    region01,
+    region01,
+    region01,
     region01,
     region01
 }

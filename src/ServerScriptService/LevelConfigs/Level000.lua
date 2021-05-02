@@ -319,7 +319,6 @@ local region09 = {
 }
 
 local region10 = {
-    conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {
         dummy01
     },
@@ -381,7 +380,19 @@ module.regions = {
 
     region14,
     region15,
-    region16
+    region16,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10,
+    region10
     -- region17,
     -- region18,
     -- region19

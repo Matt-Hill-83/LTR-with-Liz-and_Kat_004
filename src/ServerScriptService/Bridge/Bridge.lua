@@ -128,10 +128,11 @@ function module.createBridgeWalls(bridge)
     local function getWallProps(wall)
         local invisiWallProps = {
             thickness = 1,
-            height = 16,
+            height = 4,
+            -- height = 16,
             wallProps = {
-                -- Transparency = 0.6,
-                Transparency = 1,
+                Transparency = 0.8,
+                -- Transparency = 1,
                 BrickColor = BrickColor.new('Alder'),
                 Material = Enum.Material.Concrete,
                 CanCollide = true

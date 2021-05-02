@@ -84,11 +84,15 @@ local function initWord(props)
 
         CS:AddTag(newLetter, LetterUtils.tagNames.WordLetter)
 
+        local letterBlockTemplateFolder = Utils.getFromTemplates('BD_word_normal')
+        local template = letterBlockTemplateFolder:FindFirstChild(miniGameState.activeStyle)
+
         LetterUtils.initLetterBlock(
             {
                 letterBlock = newLetter,
                 char = char,
-                templateName = 'BD_word_normal',
+                -- templateName = 'BD_word_normal',
+                template = template,
                 letterBlockType = 'WordRackLetter'
             }
         )
