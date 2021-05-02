@@ -86,9 +86,6 @@ function module.addMeetLizBadge()
 end
 
 function module.configPlayers(props)
-    print('configPlayers')
-    print('configPlayers')
-    print('configPlayers')
     local levelConfig = props.levelConfig
     Players.RespawnTime = 0
 
@@ -96,7 +93,6 @@ function module.configPlayers(props)
     -- module.addMeetLizBadge()
 
     local function onCharacterAdded(character)
-        print('onCharacterAdded')
         character:WaitForChild('Humanoid').WalkSpeed = Constants.gameConfig.walkSpeed
 
         local player = Players:GetPlayerFromCharacter(character)
@@ -106,19 +102,12 @@ function module.configPlayers(props)
 
         -- Wait so that gui can exist
         if gameState.initComplete == true then
-            print('init complete')
-            print('init complete')
-            print('init complete')
             wait(2)
             targetWords = gameState.targetWords
         else
             LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
 
             targetWords = levelConfig.regions[1].getTargetWords()[1]
-            print('set target words - config')
-            print('set target words - config')
-            print('set target words - config')
-            print('set target words - config')
             gameState.targetWords = targetWords
         end
 
@@ -381,23 +370,14 @@ function module.webstersCall2()
 
         -- Inspect the response table
         if response.Success then
-            print('Status code:', response.StatusCode, response.StatusMessage)
-            -- print('Response body:\n', response.Body)
             local data = HttpService:JSONDecode(response.Body)
-            -- print('data' .. ' - start')
-            -- print(data)
-            print('data[1]' .. ' - start')
-            print(data[1])
-            print(data[1]['meta']['id'])
         else
-            print('The request failed:', response.StatusCode, response.StatusMessage)
         end
     end
 
     -- Remember to wrap the function in a 'pcall' to prevent the script from breaking if the request fails
     local success, message = pcall(request)
     if not success then
-        print('Http Request failed:', message)
     end
 end
 
