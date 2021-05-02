@@ -63,17 +63,21 @@ end
 local function wordFound(tool, touchedBlock)
     touchedBlock.IsFound.Value = true
 
-    LetterUtils.applyStyleFromTemplate(
-        {
-            targetLetterBlock = touchedBlock,
-            templateName = 'Stray_available'
-        }
-    )
+    -- LetterUtils.applyStyleFromTemplate(
+    --     {
+    --         targetLetterBlock = touchedBlock,
+    --         templateName = 'Stray_available'
+    --     }
+    -- )
+
+    local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+    local template = letterBlockTemplateFolder:FindFirstChild('Gem_yellow')
 
     LetterUtils.styleGemFromTemplate(
         {
             targetLetterBlock = touchedBlock,
-            templateName = 'Gem_yellow'
+            -- templateName = 'Gem_yellow',
+            template = template
         }
     )
 

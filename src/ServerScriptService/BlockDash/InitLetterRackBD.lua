@@ -76,8 +76,8 @@ function module.initLetterRack(miniGameState)
             table.unpack(totalLetterMatrix, startIndex, endIndex)
         }
 
-        local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
-        local template = letterBlockTemplateFolder:FindFirstChild(miniGameState.activeStyle)
+        local template = Utils.getFromTemplates(miniGameState.activeStyle)
+        -- local template = letterBlockTemplateFolder:FindFirstChild(miniGameState.activeStyle)
 
         for colIndex = 1, numCol do
             for rowIndex = 1, numRow do

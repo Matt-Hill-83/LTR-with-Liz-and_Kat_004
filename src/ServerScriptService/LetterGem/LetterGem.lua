@@ -10,6 +10,7 @@ function module.initLetterGem(props)
     local letterBlock = props.letterBlock
     local char = props.char
     local templateName = props.templateName
+    local template = props.template
     local letterBlockType = props.letterBlockType
 
     LetterUtils.applyLetterText({letterBlock = letterBlock, char = char})
@@ -69,7 +70,9 @@ function module.initLetterGem(props)
     )
 
     if templateName then
-        LetterUtils.applyStyleFromTemplate({targetLetterBlock = letterBlock, templateName = templateName})
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = letterBlock, templateName = templateName, template = template}
+        )
     end
 end
 

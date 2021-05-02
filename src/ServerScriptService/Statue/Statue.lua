@@ -106,11 +106,14 @@ local function initStatue(positionerModel, statusDef)
         local offsetY = -(gemPart.Size.Y / 2 + letterWidth / 2)
         gemPart.CFrame = orientation + Vector3.new(0, offsetY, 0)
 
+        local template = Utils.getFromTemplates('Stray_normal')
+
         LetterGem.initLetterGem(
             {
                 letterBlock = gemPart,
                 char = word,
                 templateName = 'Stray_normal',
+                template = template,
                 letterBlockType = 'StatueGem'
             }
         )

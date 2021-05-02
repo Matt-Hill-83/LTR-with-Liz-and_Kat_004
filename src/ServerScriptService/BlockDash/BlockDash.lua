@@ -68,7 +68,8 @@ function module.addBlockDash(conveyorConfig, islandIndex)
 
     local myStuff = workspace.MyStuff
     miniGameState.onSelectRackBlock = HandleClick.onSelectRackBlock
-    local letterFallFolder = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
+    local letterFallFolder = myStuff.BlockDash
+    -- local letterFallFolder = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     miniGameState.letterFallFolder = letterFallFolder
 
     local function onWordLettersGone(miniGameState2)

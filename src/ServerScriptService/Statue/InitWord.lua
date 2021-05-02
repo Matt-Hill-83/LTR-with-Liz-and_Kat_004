@@ -98,7 +98,7 @@ local function initWord(props)
         local letterNameStub = wordNameStub .. '-L' .. letterIndex
         local letter = string.sub(word, letterIndex, letterIndex)
         local newLetter = letterBlockTemplate:Clone()
-        LetterUtils.applyStyleFromTemplate({targetLetterBlock = newLetter, templateName = 'Grabber_normal'})
+        -- LetterUtils.applyStyleFromTemplate({targetLetterBlock = newLetter, templateName = 'Grabber_normal'})
 
         local cd = Instance.new('ClickDetector', newLetter)
         cd.MouseClick:Connect(playWordSound(word))

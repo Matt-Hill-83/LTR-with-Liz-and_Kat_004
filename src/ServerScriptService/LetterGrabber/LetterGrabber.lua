@@ -8,7 +8,6 @@ local Utils5 = require(Sss.Source.Utils.U005LetterGrabberUtils)
 
 local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
--- local Replicator = require(Sss.Source.BlockDash.Replicator)
 local AccessoryReplicator = require(Sss.Source.BlockDash.AccessoryReplicator)
 
 local module = {}
@@ -19,7 +18,6 @@ local function configWordLetters(props)
     local wordNameStub = props.wordNameStub
 
     local letterPositioner = Utils.getFirstDescendantByName(newWord, 'LetterPositioner')
-    -- letterPositioner.Name = letterPositioner.Name .. 'aaaa'
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
@@ -30,13 +28,18 @@ local function configWordLetters(props)
     local letterGapX = letterBlockTemplate.Size.X * spacingFactorX
     local spacingIncrementX = letterGapX + letterBlockTemplate.Size.X
 
+    local template = Utils.getFromTemplates('LB_2_blank')
+    -- local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
+
     local lettersInWord = {}
     for letterIndex = 1, #word do
         local letterNameStub = wordNameStub .. '-L' .. letterIndex
         local char = string.sub(word, letterIndex, letterIndex)
         local newLetter = letterBlockTemplate:Clone()
 
-        LetterUtils.applyStyleFromTemplate({targetLetterBlock = newLetter, templateName = 'Grabber_normal'})
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = newLetter, templateName = 'Grabber_normal', template = template}
+        )
 
         newLetter.Name = 'wordLetter-' .. letterNameStub .. '-qqq-' .. letterIndex .. '-ch-' .. char
         newLetter.Anchored = false

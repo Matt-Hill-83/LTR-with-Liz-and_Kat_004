@@ -399,6 +399,7 @@ function module.applyStyleFromTemplate(props)
     end
 
     if not template then
+        print('no template --------------------------------------------------->>>>>>')
         local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
         template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
     end
