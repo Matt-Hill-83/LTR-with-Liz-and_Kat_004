@@ -80,6 +80,10 @@ function module.initGrabbers3(props)
         tag = 'LetterGrabberPositioner'
     end
 
+    print('templateName' .. ' - start')
+    print('templateName' .. ' - start')
+    print('templateName' .. ' - start')
+    print(templateName)
     if not templateName then
         templateName = 'GrabberReplicatorTemplate_001'
     end

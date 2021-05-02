@@ -212,9 +212,11 @@ end
 function module.initLetterGrabber(props)
     local parentFolder = props.parentFolder
     local positioner = props.positioner
+    local templateName = props.templateName
     local word = props.word
 
-    local template = Utils.getFromTemplates('GrabberReplicatorTemplate_001')
+    templateName = templateName or 'GrabberReplicatorTemplate_001'
+    local template = Utils.getFromTemplates(templateName)
 
     local newReplicator = template:Clone()
     local letterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
