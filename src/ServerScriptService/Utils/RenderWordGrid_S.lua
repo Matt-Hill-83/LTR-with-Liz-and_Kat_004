@@ -207,27 +207,6 @@ local renderGrid = function(props)
                 newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
                 newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
             else
-                -- Only create blanks for as many as are required
-                -- local numGemsCreated = 0
-                -- local numRow = 3
-                -- local numCol = 3
-                -- local gemNum = 1
-                -- for rowIndex = 0, numRow - 1 do
-                --     local positionY = rowIndex * gemHeight + 0
-                --     for colIndex = 0, numCol - 1 do
-                --         if numGemsCreated < item.target then
-                --             local positionX = colIndex * gemWidth + paddingInPx
-                --             local newImageLabel = imageLabelGem:Clone()
-                --             newImageLabel.Parent = newRow
-                --             local gemImage = gemNum <= item.found and gemImageRed or gemImageGrey
-                --             newImageLabel.Image = gemImage
-                --             newImageLabel.Position = UDim2.new(0, wordWidth + positionX, 0, positionY)
-                --             newImageLabel.Size = UDim2.new(0, gemWidth, 0, gemHeight)
-                --             gemNum = gemNum + 1
-                --             numGemsCreated = numGemsCreated + 1
-                --         end
-                --     end
-                -- end
                 local newTextLabel = textLabelGem:Clone()
                 imageLabelGem.Visible = false
                 textLabelGem.Visible = false
