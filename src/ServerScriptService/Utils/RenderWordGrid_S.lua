@@ -1,8 +1,14 @@
+local Chat = game:GetService('Chat')
+
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local ImageConst = require(Sss.Source.Constants.Const_06_Images)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
+
+-- local chat = game.Players.LocalPlayer:WaitForChild('PlayerGui').Chat
+-- print('chat' .. ' - start')
+-- print(chat)
 
 local module = {}
 
@@ -49,7 +55,7 @@ local renderGrid = function(props)
 
     --
 
-    local paddingInPx = letterHeight * 0.2
+    local paddingInPx = letterHeight * 0.1
     -- local paddingInPx = 10
     local doublePad = paddingInPx * 2
 
@@ -66,7 +72,7 @@ local renderGrid = function(props)
     if hideCounter then
         rowWidth = wordWidth
     else
-        rowWidth = wordWidth + totalFoundLabelWidth
+        rowWidth = wordWidth + totalFoundLabelWidth - paddingInPx
     end
     --  scroller stuff
     local scrollingFrame = Utils.getFirstDescendantByName(sgui, 'WordScroller')
@@ -178,6 +184,9 @@ local renderGrid = function(props)
         local imageLabelGem = newRow.Frame.ImageLabelGem
         imageLabelGem.Visible = true
 
+        local textLabelGem = newRow.Frame.TextLabelGem
+        textLabelGem.Visible = true
+
         local gemHeight = letterHeight / 3
         local gemWidth = gemHeight
         local gemImageRed = Utils.createImageUri(ImageConst.general.gem_purple_001.imageId)
@@ -190,6 +199,8 @@ local renderGrid = function(props)
 
             if item.found >= item.target then
                 local newImageLabel = imageLabelGem:Clone()
+                imageLabelGem.Visible = false
+                textLabelGem.Visible = false
                 newImageLabel.Parent = newRow
                 newImageLabel.Image = checkMark
                 -- newImageLabel.Image = gemImageRed
@@ -217,9 +228,15 @@ local renderGrid = function(props)
                 --         end
                 --     end
                 -- end
+                local newTextLabel = textLabelGem:Clone()
+                imageLabelGem.Visible = false
+                textLabelGem.Visible = false
+                newTextLabel.Parent = newRow
+                newTextLabel.Text = item.found .. ' of ' .. item.target
+                newTextLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+                newTextLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
             end
         end
-        imageLabelGem.Visible = false
     end
     rowTemplate.Visible = false
     return {scrollingFrameSize = scrollingFrame.Size, scrollingFrame = scrollingFrame}
