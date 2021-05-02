@@ -35,7 +35,7 @@ local renderGrid = function(props)
 
     local lettersInWord = 3
     local scrollBarThickness = 30
-    local maxWordsInFrame = 6
+    local maxWordsInFrame = 8
 
     if (#words <= maxWordsInFrame) then
         scrollBarThickness = 0
@@ -82,7 +82,7 @@ local renderGrid = function(props)
     scrollingFrame.CanvasSize = UDim2.new(0, scrollerWidth - scrollBarThickness, 0, scrollerCanvasHeight)
 
     mainFrame.Size = UDim2.new(0, guiWidth, 0, guiHeight)
-    local mainFrameY = displayHeight / 2 - mainFrame.Size.Y.Offset / 2
+    local mainFrameY = displayHeight * 0.25 - mainFrame.Size.Y.Offset / 2
 
     local defaultPosition = UDim2.new(0, 0, 0, mainFrameY)
     mainFrame.Position = mainFramePosition or defaultPosition
