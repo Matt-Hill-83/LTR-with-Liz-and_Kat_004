@@ -71,6 +71,39 @@ function module.initGrabbers2(props)
     end
 end
 
+function module.initGrabbers3(props)
+    local parentFolder = props.parentFolder
+    local tag = props.tag
+    local templateName = props.templateName
+
+    if not tag then
+        tag = 'LetterGrabberPositioner'
+    end
+
+    if not templateName then
+        templateName = 'GrabberReplicatorTemplate_001'
+    end
+
+    local positioners =
+        Utils.getByTagInParent(
+        {
+            parent = parentFolder,
+            tag = tag
+        }
+    )
+
+    for _, positioner in ipairs(positioners) do
+        local grabbersConfig = {
+            word = positioner.Name,
+            parentFolder = parentFolder,
+            positioner = positioner,
+            templateName = templateName
+        }
+
+        LetterGrabber.initLetterGrabber(grabbersConfig)
+    end
+end
+
 function module.getLetterMatrix(props)
     local levelConfig = props.levelConfig
     local numRods = props.numRods
