@@ -291,9 +291,6 @@ function module.touchGrabberSwap(touchedPart, player)
 end
 
 function module.donGrabberAccessory(player, grabberConfig)
-    print('donGrabberAccessory')
-    print('donGrabberAccessory')
-    print('donGrabberAccessory')
     local tagName = 'GrabberAccessory'
 
     grabberConfig = grabberConfig or {}
