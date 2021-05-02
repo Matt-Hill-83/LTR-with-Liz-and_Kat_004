@@ -324,9 +324,9 @@ local region10 = {
     },
     strayRegions = {
         {
-            words = {'HAT'},
+            words = {'CATBATRATSHMP'},
             randomLetterMultiplier = 1,
-            maxLetters = 6,
+            -- maxLetters = 6,
             useArea = true
         }
     },
