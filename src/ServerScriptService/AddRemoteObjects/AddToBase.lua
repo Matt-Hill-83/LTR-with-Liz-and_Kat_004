@@ -16,8 +16,9 @@ local Junction4 = require(Sss.Source.Junction.Junction4)
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local PetBox = require(Sss.Source.PetBox.PetBox)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
-local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+-- local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
+local HexGear = require(Sss.Source.HexGear.HexGear)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local Terrain = require(Sss.Source.Terrain.Terrain)
 local TestArea = require(Sss.Source.TestArea.TestArea)
@@ -181,6 +182,9 @@ local function addRemoteObjects()
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
         PetBox.initPetBox({parentFolder = region, levelConfig = config})
+
+        -- Do this before Junctions
+        HexGear.initHexGears({parentFolder = region, levelConfig = config})
 
         StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex, levelConfig = config})
         Junction4.initJunctions(
