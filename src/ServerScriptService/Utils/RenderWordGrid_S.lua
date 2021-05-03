@@ -193,14 +193,15 @@ local renderGrid = function(props)
         local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
         local checkMark = Utils.createImageUri(ImageConst.general.check_mark_001.imageId)
 
+        imageLabelGem.Visible = false
+        textLabelGem.Visible = false
         if not hideCounter then
             gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
             if item.found >= item.target then
                 local newImageLabel = imageLabelGem:Clone()
-                imageLabelGem.Visible = false
-                textLabelGem.Visible = false
+                newImageLabel.Visible = true
                 newImageLabel.Parent = newRow
                 newImageLabel.Image = checkMark
                 -- newImageLabel.Image = gemImageRed
@@ -208,8 +209,7 @@ local renderGrid = function(props)
                 newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
             else
                 local newTextLabel = textLabelGem:Clone()
-                imageLabelGem.Visible = false
-                textLabelGem.Visible = false
+                newTextLabel.Visible = true
                 newTextLabel.Parent = newRow
                 newTextLabel.Text = item.found .. ' of ' .. item.target
                 newTextLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)

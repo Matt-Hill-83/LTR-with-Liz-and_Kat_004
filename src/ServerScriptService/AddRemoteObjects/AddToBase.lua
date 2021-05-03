@@ -177,6 +177,8 @@ local function addRemoteObjects()
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
 
+    print('regions' .. ' - start')
+    print(regions)
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
         CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
