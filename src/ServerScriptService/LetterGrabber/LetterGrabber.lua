@@ -157,32 +157,6 @@ local function applyDecalsToCharacterFromWord(props)
     end
 end
 
--- local function onTouch(tool)
---     local db = {value = false}
-
---     local function closure(otherPart)
---         local humanoid = tool.Parent:FindFirstChildWhichIsA('Humanoid')
---         if not humanoid then
---             return
---         end
---         if not otherPart:FindFirstChild('Type') then
---             return
---         end
---         if otherPart.Type.Value ~= 'StrayLetter' then
---             return
---         end
---         if db.value == true then
---             return
---         end
-
---         db.value = true
---         local player = Utils.getPlayerFromHumanoid(humanoid)
---         Utils5.partTouched(otherPart, player)
---         db.value = false
---     end
---     return closure
--- end
-
 local function onTouch2(grabber, player)
     local db = {value = false}
 
