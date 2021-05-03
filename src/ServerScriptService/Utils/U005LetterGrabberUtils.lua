@@ -105,7 +105,7 @@ local function wordFound(tool, player)
             end
 
             -- PlayerStatManager:ChangeStat(player, 'Gems', 1)
-            Leaderboard.updateLB()
+            -- Leaderboard.updateLB()
 
             -- local explosionSound = '515938718'
             -- Utils.playSound(explosionSound, 0.5)

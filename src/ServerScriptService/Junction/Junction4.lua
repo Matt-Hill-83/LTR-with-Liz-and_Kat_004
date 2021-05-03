@@ -2,13 +2,11 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
--- local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local Bridge = require(Sss.Source.Bridge.Bridge)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
--- local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 
 local Constants = require(Sss.Source.Constants.Constants)
 
@@ -32,8 +30,6 @@ function module.initJunctions(props)
     end
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
-
-    -- local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #hexIslandFolders})
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}

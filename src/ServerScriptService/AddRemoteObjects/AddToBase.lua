@@ -204,7 +204,6 @@ local function addRemoteObjects()
     end
 
     TestArea.configTestArea({parentFolder = level})
-    -- Grabbers.initGrabbers({parentFolder = level})
 
     Grabbers.initGrabbers3(
         {parentFolder = level, tag = 'LetterGrabberPositioner3', templateName = 'GrabberReplicatorTemplate_003'}

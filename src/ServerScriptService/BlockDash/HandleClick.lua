@@ -176,7 +176,7 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
             end
 
             PlayerStatManager:ChangeStat(player, 'Gems', 1)
-            Leaderboard.updateLB()
+            -- Leaderboard.updateLB()
 
             activeWord.completed = true
             local wordLetters =

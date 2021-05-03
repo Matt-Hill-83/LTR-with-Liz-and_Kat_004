@@ -3,6 +3,87 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
+local hexGearWords01 = {
+    words = {
+        'CAT',
+        'BAT',
+        'HAT',
+        'MAT',
+        'PAT',
+        'RAT',
+        'SAT',
+        'FAT',
+        --  break
+        --  break
+        'CAP',
+        'GAP',
+        'LAP',
+        'MAP',
+        'SAP',
+        'TAP',
+        'RAP',
+        'ZAP',
+        --  break
+        --  break
+        'VAN',
+        'RAN',
+        'CAN',
+        'PAN',
+        'FAN',
+        'TAN',
+        'DAN'
+    }
+}
+local hexGearWords02 = {
+    words = {
+        --  break
+        --  break
+        'TAG',
+        'RAG',
+        'SAG',
+        'WAG',
+        'NAG',
+        'ZAG',
+        --  break
+        --  break
+        'BAD',
+        'DAD',
+        'HAD',
+        'MAD',
+        'PAD',
+        'SAD',
+        --  break
+        --  break
+        'HAM',
+        'JAM',
+        'PAM',
+        'SAM',
+        'RAM',
+        'BAM',
+        --  break
+        --  break
+        'RAY',
+        'BAY',
+        'LAY',
+        'MAY',
+        'PAY'
+    }
+}
+local hexGearWords03 = {
+    words = {
+        'HAY',
+        --  break
+        --  break
+        'FIG',
+        'BIG',
+        'DIG',
+        'RIG',
+        'WIG',
+        'JIG',
+        'ZIG'
+    }
+}
+
 local conveyor1Config = {
     freezeConveyor = true,
     words = {
@@ -325,12 +406,13 @@ local region09 = {
 }
 
 local region10 = {
+    hexGearConfigs = {hexGearWords01, hexGearWords02, hexGearWords03},
     hexIslandConfigs = {
         dummy01
     },
     strayRegions = {
         {
-            words = {'CATBATRATSHMP'},
+            words = {'CAT'},
             randomLetterMultiplier = 1,
             -- maxLetters = 6,
             useArea = true

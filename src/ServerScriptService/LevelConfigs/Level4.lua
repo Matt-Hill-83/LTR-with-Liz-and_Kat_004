@@ -3,6 +3,87 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
+local hexGearWords01 = {
+    words = {
+        'CAT',
+        'BAT',
+        'HAT',
+        'MAT',
+        'PAT',
+        'RAT',
+        'SAT',
+        'FAT',
+        --  break
+        --  break
+        'CAP',
+        'GAP',
+        'LAP',
+        'MAP',
+        'SAP',
+        'TAP',
+        'RAP',
+        'ZAP',
+        --  break
+        --  break
+        'VAN',
+        'RAN',
+        'CAN',
+        'PAN',
+        'FAN',
+        'TAN',
+        'DAN'
+    }
+}
+local hexGearWords02 = {
+    words = {
+        --  break
+        --  break
+        'TAG',
+        'RAG',
+        'SAG',
+        'WAG',
+        'NAG',
+        'ZAG',
+        --  break
+        --  break
+        'BAD',
+        'DAD',
+        'HAD',
+        'MAD',
+        'PAD',
+        'SAD',
+        --  break
+        --  break
+        'HAM',
+        'JAM',
+        'PAM',
+        'SAM',
+        'RAM',
+        'BAM',
+        --  break
+        --  break
+        'RAY',
+        'BAY',
+        'LAY',
+        'MAY',
+        'PAY'
+    }
+}
+local hexGearWords03 = {
+    words = {
+        'HAY',
+        --  break
+        --  break
+        'FIG',
+        'BIG',
+        'DIG',
+        'RIG',
+        'WIG',
+        'JIG',
+        'ZIG'
+    }
+}
+
 local conveyorConfigs02 = {
     {
         words = {
@@ -88,6 +169,7 @@ local region01 = {
         dummy01,
         dummy01
     },
+    hexGearConfigs = {hexGearWords01, hexGearWords02, hexGearWords03},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -105,20 +187,6 @@ local region01 = {
         return {
             {
                 {word = 'CAT', target = 1, found = 0}
-            }
-        }
-    end
-}
-
-local region02 = {
-    conveyorConfigs = conveyorConfigs02,
-    hexIslandConfigs = {
-        dummy01
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'BAT', target = 1, found = 0}
             }
         }
     end
