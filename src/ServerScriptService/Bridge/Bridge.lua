@@ -71,7 +71,12 @@ function module.createBridge2(props)
     local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
     bridgeTop1.BrickColor = BrickColor.new('Alder')
     bridgeTop1.Material = 'Concrete'
-    bridgeTop1.Transparency = 0
+
+    if bridgeTop1.Size.Z < 2 then
+        bridgeTop1.Transparency = 1
+    else
+        bridgeTop1.Transparency = 0
+    end
 
     local bridge2 =
         module.createBridge(
@@ -86,7 +91,11 @@ function module.createBridge2(props)
     local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
     bridgeTop2.BrickColor = BrickColor.new('Alder')
     bridgeTop2.Material = 'Concrete'
-    bridgeTop2.Transparency = 0
+    if bridgeTop1.Size.Z < 2 then
+        bridgeTop1.Transparency = 1
+    else
+        bridgeTop1.Transparency = 0
+    end
 
     local material = bridgeConfig.material or Enum.Material.Grass
 
@@ -102,6 +111,13 @@ function module.createBridge2(props)
             parentFolder = parentFolder
         }
     )
+    local bridgeTop = Utils.getFirstDescendantByName(bridge2, 'Top')
+
+    if bridgeTop.Size.Z < 2 then
+        bridgeTop.Transparency = 1
+    else
+        bridgeTop.Transparency = 0
+    end
 
     module.createBridgeWalls(bridge1)
     module.createBridgeWalls(bridge2)
@@ -123,6 +139,10 @@ function module.createBridge2(props)
 end
 
 function module.createBridgeWalls(bridge)
+    if bridge.PrimaryPart.Size.Z < 2 then
+        return
+    end
+
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
     local function getWallProps(wall)
@@ -174,9 +194,18 @@ function module.createBridge(props)
     local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
     local walls = wallFolder:getChildren()
 
+    if distance < 2 then
+        bridgePart.Transparency = 1
+    end
+
     for _, wall in ipairs(walls) do
+        if distance < 2 then
+            wall.Transparency = 1
+        end
+
         wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
     end
+
     return newBridge
 end
 
