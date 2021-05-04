@@ -179,30 +179,66 @@ local function addRemoteObjects()
 
     print('regions' .. ' - start')
     print(regions)
+
+    local enabledItems = Constants.enabledItems
+
+    local cardSwap = enabledItems.cardSwap
+    local petBox = enabledItems.petBox
+    local hexGear = enabledItems.hexGear
+    local strayLetterBlocks = enabledItems.strayLetterBlocks
+    local junction4 = enabledItems.junction4
+    local statueGate = enabledItems.statueGate
+    local grabbers = enabledItems.grabbers
+    local letterGrabber = enabledItems.letterGrabber
+    local entrance = enabledItems.entrance
+
+    -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
-        CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
 
-        PetBox.initPetBox({parentFolder = region, levelConfig = config})
+        if cardSwap then
+            CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
+        end
+
+        if petBox then
+            PetBox.initPetBox({parentFolder = region, levelConfig = config})
+        end
 
         -- Do this before Junctions
-        HexGear.initHexGears({parentFolder = region, levelConfig = config})
+        if hexGear then
+            HexGear.initHexGears({parentFolder = region, levelConfig = config})
+        end
 
-        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionIndex = regionIndex, levelConfig = config})
-        Junction4.initJunctions(
-            {
-                parentFolder = region,
-                levelConfig = config,
-                hexTemplate = 'Hex_32_32_v1',
-                positionerName = 'Hex_32_32_pos_v2',
-                regionIndex = regionIndex
-            }
-        )
+        if strayLetterBlocks then
+            StrayLetterBlocks.initStraysInRegions(
+                {parentFolder = region, regionIndex = regionIndex, levelConfig = config}
+            )
+        end
 
-        StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
-        Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
-        LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
-        Entrance.initRunFasts(region)
+        if junction4 then
+            Junction4.initJunctions(
+                {
+                    parentFolder = region,
+                    levelConfig = config,
+                    hexTemplate = 'Hex_32_32_v1',
+                    positionerName = 'Hex_32_32_pos_v2',
+                    regionIndex = regionIndex
+                }
+            )
+        end
+
+        if statueGate then
+            StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
+        end
+        if grabbers then
+            Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
+        end
+        if letterGrabber then
+            LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
+        end
+        if entrance then
+            Entrance.initRunFasts(region)
+        end
     end
 
     TestArea.configTestArea({parentFolder = level})

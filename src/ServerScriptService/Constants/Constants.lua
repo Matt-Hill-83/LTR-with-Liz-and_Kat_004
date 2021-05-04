@@ -7,13 +7,36 @@ isDev = true
 --
 --
 local activeSpawn
--- level 8
--- local startPlaceId = '6477887663'
--- main level
 local startPlaceId = '6358192824'
+
 local playAmbient
 playAmbient = true
 playAmbient = false
+
+local enabledItems
+enabledItems = {
+    cardSwap = true,
+    petBox = true,
+    hexGear = true,
+    strayLetterBlocks = true,
+    junction4 = true,
+    statueGate = true,
+    grabbers = true,
+    letterGrabber = true,
+    entrance = true
+}
+
+-- enabledItems = {
+--     cardSwap = true,
+--     petBox = true,
+--     hexGear = true,
+--     strayLetterBlocks = true,
+--     junction4 = true,
+--     statueGate = true,
+--     grabbers = true,
+--     letterGrabber = true,
+--     entrance = true
+-- }
 
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then
@@ -58,8 +81,23 @@ local module = {
     startPlaceId = startPlaceId,
     validRods = {},
     validRodAttachments = {},
-    playAmbient = playAmbient
+    playAmbient = playAmbient,
+    enabledItems = {
+        cardSwap = true,
+        petBox = true,
+        hexGear = true,
+        strayLetterBlocks = true,
+        junction4 = true,
+        statueGate = true,
+        grabbers = true,
+        letterGrabber = true,
+        entrance = true
+    }
 }
+
+if isDev then
+    module.enabledItems = enabledItems
+end
 
 local islandLength = 36
 local bridgeBaseLength = 63
