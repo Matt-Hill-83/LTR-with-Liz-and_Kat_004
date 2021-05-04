@@ -73,7 +73,7 @@ local function styleLetterGrabberBlocks(tool)
     end
 end
 
-local function wordFound(tool, player)
+function module.wordFound(tool, player)
     local wordModel = tool.Word
     local targetWord = wordModel.TargetWord.Value
 
@@ -97,18 +97,27 @@ local function wordFound(tool, player)
         updateWordGuiRE:FireClient(player)
 
         local function destroyParts()
-            -- tool:Destroy()
+            local leaderstats = player.leaderstats
 
-            if player:FindFirstChild('leaderstats') then
-                local wins = player.leaderstats.Wins
-                wins.Value = wins.Value + 1
+            local function incrementMetric(metricName)
+                local numPoints = 1
+                local metric = leaderstats[metricName]
+                metric.Value = metric.Value + numPoints
             end
 
-            -- PlayerStatManager:ChangeStat(player, 'Gems', 1)
-            -- Leaderboard.updateLB()
+            if player:FindFirstChild('leaderstats') then
+                if leaderstats[targetWord] then
+                    incrementMetric(targetWord)
+                else
+                    local newMetric = Instance.new('IntValue')
+                    newMetric.Name = targetWord
+                    newMetric.Value = 0
+                    newMetric.Parent = leaderstats
+                    incrementMetric(targetWord)
+                end
+            end
 
-            -- local explosionSound = '515938718'
-            -- Utils.playSound(explosionSound, 0.5)
+            -- Leaderboard.updateLB()
         end
 
         --  give gem
@@ -269,5 +278,4 @@ module.getActiveLetterGrabberBlock = getActiveLetterGrabberBlock
 module.resetBlocks = resetBlocks
 module.setActiveLetterGrabberBlock = setActiveLetterGrabberBlock
 module.styleLetterGrabberBlocks = styleLetterGrabberBlocks
-module.wordFound = wordFound
 return module

@@ -253,7 +253,7 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
-    -- Theater.initTheaters({parentFolder = level})
+    Theater.initTheaters({parentFolder = level})
 
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]

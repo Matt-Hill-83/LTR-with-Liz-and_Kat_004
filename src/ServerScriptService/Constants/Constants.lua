@@ -15,15 +15,15 @@ playAmbient = false
 
 local enabledItems
 enabledItems = {
-    -- cardSwap = true,
-    -- petBox = true,
+    cardSwap = true,
+    petBox = true,
     hexGear = true,
     strayLetterBlocks = true,
-    junction4 = true
-    -- statueGate = true,
-    -- grabbers = true,
-    -- letterGrabber = true,
-    -- entrance = true
+    junction4 = true,
+    statueGate = true,
+    grabbers = true,
+    letterGrabber = true,
+    entrance = true
 }
 
 -- over ride isDev setting for when I forget to switch it when I deploy
@@ -84,7 +84,7 @@ local module = {
 }
 
 if isDev then
-    module.enabledItems = enabledItems
+-- module.enabledItems = enabledItems
 end
 
 local islandLength = 36
