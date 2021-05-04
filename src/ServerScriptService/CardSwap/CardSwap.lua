@@ -8,6 +8,14 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
 local module = {}
 
+function module.serializeTargetWords(targetWords)
+    local store = {}
+    for _, set in ipairs(targetWords) do
+        store[set.word] = set.target
+    end
+    return store
+end
+
 function module.initCardSwaps(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
@@ -23,10 +31,18 @@ function module.initCardSwaps(props)
                     local player = Utils.getPlayerFromHumanoid(humanoid)
                     local targetWords = levelConfig.getTargetWords()[itemNum] or levelConfig.getTargetWords()[1]
 
+                    -- check to see if they already have that card
                     local gameState = PlayerStatManager.getGameState(player)
-                    gameState.targetWords = targetWords
-                    local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-                    updateWordGuiRE:FireClient(player)
+
+                    local serial1 = module.serializeTargetWords(targetWords)
+                    local serial2 = module.serializeTargetWords(gameState.targetWords)
+
+                    local tablesMatch = Utils.deepCompare(serial1, serial2)
+                    if not tablesMatch then
+                        gameState.targetWords = targetWords
+                        local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+                        updateWordGuiRE:FireClient(player)
+                    end
                     db = false
                 end
             end
