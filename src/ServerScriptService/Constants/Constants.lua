@@ -15,28 +15,16 @@ playAmbient = false
 
 local enabledItems
 enabledItems = {
-    cardSwap = true,
-    petBox = true,
+    -- cardSwap = true,
+    -- petBox = true,
     hexGear = true,
     strayLetterBlocks = true,
-    junction4 = true,
-    statueGate = true,
-    grabbers = true,
-    letterGrabber = true,
-    entrance = true
+    junction4 = true
+    -- statueGate = true,
+    -- grabbers = true,
+    -- letterGrabber = true,
+    -- entrance = true
 }
-
--- enabledItems = {
---     cardSwap = true,
---     petBox = true,
---     hexGear = true,
---     strayLetterBlocks = true,
---     junction4 = true,
---     statueGate = true,
---     grabbers = true,
---     letterGrabber = true,
---     entrance = true
--- }
 
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then
