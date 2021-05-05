@@ -191,6 +191,7 @@ local function addRemoteObjects()
     local grabbers = enabledItems.grabbers
     local letterGrabber = enabledItems.letterGrabber
     local entrance = enabledItems.entrance
+    local theater = enabledItems.theater
 
     -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
@@ -253,8 +254,9 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace})
 
     ConfigRemoteEvents.initRemoteEvents()
-    -- Theater.initTheaters({parentFolder = level})
-
+    if theater then
+        Theater.initTheaters({parentFolder = level})
+    end
     for regionIndex, region in ipairs(regions) do
         local config = levelConfig.regions[regionIndex]
 

@@ -51,8 +51,8 @@ function module.initHexGears(props)
                     parent = grabberPart,
                     childModel = grabber,
                     offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 1, 0),
-                        useChildNearEdge = Vector3.new(0, 1, 0),
+                        useParentNearEdge = Vector3.new(0, 0, 0),
+                        useChildNearEdge = Vector3.new(0, 0, 0),
                         offsetAdder = Vector3.new(0, 0, 0)
                     }
                 }

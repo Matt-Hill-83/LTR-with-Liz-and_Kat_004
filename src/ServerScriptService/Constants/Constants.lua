@@ -16,13 +16,14 @@ playAmbient = false
 local enabledItems
 enabledItems = {
     cardSwap = true,
-    petBox = true,
+    petBox = false,
     hexGear = true,
-    strayLetterBlocks = true,
+    strayLetterBlocks = false,
     junction4 = true,
     statueGate = true,
     grabbers = true,
     letterGrabber = true,
+    theater = false,
     entrance = true
 }
 
@@ -79,6 +80,7 @@ local module = {
         statueGate = true,
         grabbers = true,
         letterGrabber = true,
+        theater = true,
         entrance = true
     }
 }
