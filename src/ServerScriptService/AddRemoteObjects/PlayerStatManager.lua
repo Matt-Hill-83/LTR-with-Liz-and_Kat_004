@@ -50,12 +50,6 @@ local function setupPlayerData(player)
 
     if success then
         if data then
-            print('data' .. ' - start')
-            print('data' .. ' - start')
-            print('data' .. ' - start')
-            print('data' .. ' - start')
-            print('data' .. ' - start')
-            print(data)
             -- Data exists for this player
             sessionData[playerUserId] = data
         else

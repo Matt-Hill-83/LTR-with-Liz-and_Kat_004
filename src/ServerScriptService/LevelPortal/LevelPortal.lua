@@ -15,18 +15,16 @@ function module.setHumanoid(userId, statue)
         pcall(
         function()
             local desc = Players:GetHumanoidDescriptionFromUserId(userId)
-
-            local test = statue.Humanoid:ApplyDescription(desc)
+            statue.Humanoid:ApplyDescription(desc)
         end
     )
 
-    -- "rbxassetid://6648691264"
-    pcall(
-        function()
-            local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-            Track:Play()
-        end
-    )
+    -- pcall(
+    --     function()
+    --         local Track = statue.Humanoid:LoadAnimation(statue.Idle)
+    --         Track:Play()
+    --     end
+    -- )
 end
 
 function module.initDataStore(props)
