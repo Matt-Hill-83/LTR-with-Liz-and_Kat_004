@@ -25,6 +25,9 @@ local function updateLeaderboard()
             local WinsPage = Data:GetCurrentPage()
             for Rank, data in ipairs(WinsPage) do
                 local userName = game.Players:GetNameFromUserIdAsync(tonumber(data.key))
+                print('userName' .. ' - start')
+                print(userName)
+
                 local Name = userName
                 local Wins = data.value
                 local isOnLeaderboard = false

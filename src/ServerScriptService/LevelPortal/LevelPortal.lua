@@ -1,14 +1,14 @@
 local Sss = game:GetService('ServerScriptService')
 local DataStore = game:GetService('DataStoreService')
-local Players = game:GetService('Players'):GetPlayers()
+local Players = game:GetService('Players')
+
+local Utils_2 = require(Sss.Source.Utils.U002InstanceUtils)
+local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 
-local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
-
 local module = {}
-local delayBase = 30
+local delayBase = 5
 local userIdMemo = {}
 
 function module.initDataStore(props)
@@ -17,13 +17,13 @@ function module.initDataStore(props)
 
     local dataStore = DataStore:GetOrderedDataStore(word)
 
-    -- local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
-    local top = Utils.getFirstDescendantByName(portal, 'Top')
-    local list = Utils.getFirstDescendantByName(portal, 'List')
-    local statue = Utils.getFirstDescendantByName(portal, 'Statue')
+    local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
+    local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
+    local list = Utils.getFirstDescendantByName(scoreSign, 'List')
+    local statue = Utils.getFirstDescendantByName(scoreSign, 'Statue')
 
     local function setHumanoid(userId)
-        statue.Humanoid:ApplyDescription(game.Players:GetHumanoidDescriptionFromUserId(userId))
+        statue.Humanoid:ApplyDescription(Players:GetHumanoidDescriptionFromUserId(userId))
         local Track = statue.Humanoid:LoadAnimation(statue.Idle)
         Track:Play()
     end
@@ -41,21 +41,24 @@ function module.initDataStore(props)
 
                 print('word' .. ' - start------------------------->>')
                 print(word)
-                if word == 'CAT' then
+                if true then
+                    -- if word == 'CAT' then
                     print('StatsPage' .. ' - start')
                     print(StatsPage)
                 end
 
                 for rankInLB, dataStored in ipairs(StatsPage) do
-                    -- memoize name table to reduce num fetches
-                    local id = tonumber(dataStored.key)
-                    local name
-                    if userIdMemo[id] then
-                        name = userIdMemo[id]
-                    else
-                        name = Players:GetNameFromUserIdAsync(id)
-                        userIdMemo[id] = name
-                    end
+                    print('dataStored' .. ' - start')
+                    print(dataStored)
+                    local id = dataStored.key
+
+                    local name = Utils_2.getUsernameFromUserId(id)
+                    -- local name = Players:GetNameFromUserIdAsync(dataStored.key)
+                    print('name' .. ' - start')
+                    print('name' .. ' - start')
+                    print('name' .. ' - start')
+                    print('name' .. ' - start')
+                    print(name)
 
                     local statsname = dataStored.value
                     wait(0.1)
@@ -70,7 +73,7 @@ function module.initDataStore(props)
                         Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                         statue.Configuration.userId.Value = id
                         statue.Tags.Container.pName.Text = name
-                        setHumanoid(id)
+                    -- setHumanoid(id)
                     end
                 end
             end
@@ -80,42 +83,6 @@ function module.initDataStore(props)
         delay(delaySec, module.updateSign)
     end
     module.updateSign()
-end
-
-function module.initGrabbers3(props)
-    local parentFolder = props.parentFolder
-    local tag = props.tag
-    local templateName = props.templateName
-    local positioners = props.positioners
-
-    local grabbers = {}
-
-    if not positioners then
-        if not tag then
-            tag = 'LetterGrabberPositioner'
-        end
-
-        positioners =
-            Utils.getByTagInParent(
-            {
-                parent = parentFolder,
-                tag = tag
-            }
-        )
-    end
-
-    for _, positioner in ipairs(positioners) do
-        local grabbersConfig = {
-            word = positioner.Name,
-            parentFolder = parentFolder,
-            positioner = positioner,
-            templateName = templateName
-        }
-
-        local newGrabber = LetterGrabber.initLetterGrabber(grabbersConfig)
-        table.insert(grabbers, newGrabber)
-    end
-    return grabbers
 end
 
 function module.initLevelPortal(props)
@@ -135,20 +102,6 @@ function module.initLevelPortal(props)
     local portal = LetterGrabber.initLetterGrabber(grabbersConfig)
     module.initDataStore({portal = portal, word = word})
     return portal
-end
-
-function module.getLetterMatrix(props)
-    local levelConfig = props.levelConfig
-    local numRods = props.numRods
-
-    local signTargetWords = levelConfig.getTargetWords()[1]
-    local words = {}
-    for _, word in ipairs(signTargetWords) do
-        table.insert(words, word.word)
-    end
-
-    local letterMatrix = LetterUtils.createRandomLetterMatrix({words = words, numBlocks = numRods})
-    return letterMatrix
 end
 
 return module
