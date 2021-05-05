@@ -2,9 +2,9 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
-local Constants = require(Sss.Source.Constants.Constants)
+-- local Constants = require(Sss.Source.Constants.Constants)
 
-local Grabbers = require(Sss.Source.Grabbers.Grabbers)
+-- local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 local LevelPortal = require(Sss.Source.LevelPortal.LevelPortal)
 
 local module = {}
@@ -25,7 +25,8 @@ function module.initHexGears(props)
 
     for hexIndex, hexGear in ipairs(hexGears) do
         local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
-        local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_pos_v2')
+        local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
+        -- local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_pos_v2')
         local positioners = {}
         for i, hex in ipairs(hexes) do
             local newPositioner = hex.PrimaryPart:Clone()
