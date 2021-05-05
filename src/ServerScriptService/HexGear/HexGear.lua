@@ -27,10 +27,10 @@ function module.initHexGears(props)
         if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
             local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
-            -- local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_pos_v2')
+
             local positioners = {}
             for i, hex in ipairs(hexes) do
-                local partToPositionTo = hex.TopCenter
+                local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
                 -- local newPositioner = hex.PrimaryPart:Clone()
                 newPositioner.Parent = hex
@@ -38,22 +38,22 @@ function module.initHexGears(props)
                 table.insert(positioners, newPositioner)
             end
 
-            local grabbers =
+            local portals =
                 LevelPortal.initGrabbers3(
                 {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
                 -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
             )
 
-            print('grabbers' .. ' - start')
-            print(grabbers)
+            print('portals' .. ' - start')
+            print(portals)
 
-            for _, grabber in ipairs(grabbers) do
-                local grabberPart = grabber.PrimaryPart
+            for _, portal in ipairs(portals) do
+                local portalPart = portal.PrimaryPart
 
                 Utils3.setCFrameFromDesiredEdgeOffset2(
                     {
-                        parent = grabberPart,
-                        childModel = grabber,
+                        parent = portalPart,
+                        childModel = portal,
                         offsetConfig = {
                             useParentNearEdge = Vector3.new(0, 0, 0),
                             useChildNearEdge = Vector3.new(0, 0, 0),
