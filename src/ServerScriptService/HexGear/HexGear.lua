@@ -24,40 +24,44 @@ function module.initHexGears(props)
     end
 
     for hexIndex, hexGear in ipairs(hexGears) do
-        local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
-        local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
-        -- local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_pos_v2')
-        local positioners = {}
-        for i, hex in ipairs(hexes) do
-            local newPositioner = hex.PrimaryPart:Clone()
-            newPositioner.Parent = hex
-            newPositioner.Name = config.words[i] or config.words[1]
-            table.insert(positioners, newPositioner)
-        end
+        if hexGearConfigs[hexIndex] then
+            local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
+            local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
+            -- local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_pos_v2')
+            local positioners = {}
+            for i, hex in ipairs(hexes) do
+                local partToPositionTo = hex.TopCenter
+                local newPositioner = partToPositionTo:Clone()
+                -- local newPositioner = hex.PrimaryPart:Clone()
+                newPositioner.Parent = hex
+                newPositioner.Name = config.words[i] or config.words[1]
+                table.insert(positioners, newPositioner)
+            end
 
-        local grabbers =
-            LevelPortal.initGrabbers3(
-            {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
-            -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
-        )
-
-        print('grabbers' .. ' - start')
-        print(grabbers)
-
-        for _, grabber in ipairs(grabbers) do
-            local grabberPart = grabber.PrimaryPart
-
-            Utils3.setCFrameFromDesiredEdgeOffset2(
-                {
-                    parent = grabberPart,
-                    childModel = grabber,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 0, 0),
-                        useChildNearEdge = Vector3.new(0, 0, 0),
-                        offsetAdder = Vector3.new(0, 0, 0)
-                    }
-                }
+            local grabbers =
+                LevelPortal.initGrabbers3(
+                {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
+                -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
             )
+
+            print('grabbers' .. ' - start')
+            print(grabbers)
+
+            for _, grabber in ipairs(grabbers) do
+                local grabberPart = grabber.PrimaryPart
+
+                Utils3.setCFrameFromDesiredEdgeOffset2(
+                    {
+                        parent = grabberPart,
+                        childModel = grabber,
+                        offsetConfig = {
+                            useParentNearEdge = Vector3.new(0, 0, 0),
+                            useChildNearEdge = Vector3.new(0, 0, 0),
+                            offsetAdder = Vector3.new(0, 0, 0)
+                        }
+                    }
+                )
+            end
         end
     end
 end

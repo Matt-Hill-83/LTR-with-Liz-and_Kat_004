@@ -205,11 +205,6 @@ local function addRemoteObjects()
             PetBox.initPetBox({parentFolder = region, levelConfig = config})
         end
 
-        -- -- Do this after Junctions
-        -- if hexGear then
-        --     HexGear.initHexGears({parentFolder = region, levelConfig = config})
-        -- end
-
         if strayLetterBlocks then
             StrayLetterBlocks.initStraysInRegions(
                 {parentFolder = region, regionIndex = regionIndex, levelConfig = config}

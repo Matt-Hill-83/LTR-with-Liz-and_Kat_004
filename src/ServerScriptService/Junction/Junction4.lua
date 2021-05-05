@@ -65,13 +65,13 @@ function module.initJunctions(props)
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 
             local positionerPart = positioner.PrimaryPart
-            newHexPart.CFrame =
-                Utils3.setCFrameFromDesiredEdgeOffset(
+
+            Utils3.setCFrameFromDesiredEdgeOffset2(
                 {
                     parent = positionerPart,
-                    child = newHexPart,
+                    childModel = newHex,
                     offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, -1, 0),
+                        useParentNearEdge = Vector3.new(0, 1, 0),
                         useChildNearEdge = Vector3.new(0, -1, 0),
                         offsetAdder = Vector3.new(0, 0, 0)
                     }
