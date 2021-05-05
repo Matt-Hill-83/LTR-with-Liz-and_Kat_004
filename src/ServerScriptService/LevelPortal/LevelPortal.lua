@@ -53,10 +53,6 @@ function module.initDataStore(props)
                     local id = dataStored.key
 
                     local name = Utils_2.getUsernameFromUserId(id)
-                    -- local name = Players:GetNameFromUserIdAsync(dataStored.key)
-                    print('name' .. ' - start')
-                    print('name' .. ' - start')
-                    print('name' .. ' - start')
                     print('name' .. ' - start')
                     print(name)
 
@@ -73,7 +69,7 @@ function module.initDataStore(props)
                         Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                         statue.Configuration.userId.Value = id
                         statue.Tags.Container.pName.Text = name
-                    -- setHumanoid(id)
+                        setHumanoid(id)
                     end
                 end
             end
