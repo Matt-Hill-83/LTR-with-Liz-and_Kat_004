@@ -16,25 +16,29 @@ function module.initDataStore(props)
 
     local dataStore = DataStore:GetOrderedDataStore(word)
 
+    local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
-    local statue = Utils.getFirstDescendantByName(scoreSign, 'Statue')
-
-    print('top' .. ' - start')
-    print('top' .. ' - start')
-    print('top' .. ' - start')
-    print(top)
 
     function module.setHumanoid(userId)
-        statue.Humanoid:ApplyDescription(Players:GetHumanoidDescriptionFromUserId(userId))
-        local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-        Track:Play()
+        print('statue.Humanoid' .. ' - start')
+        print(statue.Humanoid)
+
+        local desc = Players:GetHumanoidDescriptionFromUserId(userId)
+        print('desc' .. ' - start')
+        print(desc)
+        statue.Humanoid:ApplyDescription(desc)
+        -- local Track = statue.Humanoid:LoadAnimation(statue.Idle)
+        -- Track:Play()
     end
 
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
 
     function module.updateSign()
+        print('updateSign================================>>>')
+        print('word' .. ' - start')
+        print(word)
         for i, leaderboardRank in pairs(list:GetChildren()) do
             if leaderboardRank.ClassName == 'Frame' then
                 leaderboardRank:Destroy()
@@ -48,7 +52,8 @@ function module.initDataStore(props)
                 local StatsPage = data:GetCurrentPage()
 
                 for rankInLB, dataStored in ipairs(StatsPage) do
-                    local id = dataStored.key
+                    local id = tonumber(dataStored.key)
+
                     local name = Utils_2.getUsernameFromUserId(id)
                     local statsname = dataStored.value
                     wait(0.1)
@@ -60,10 +65,13 @@ function module.initDataStore(props)
                     Gui.Parent = list
 
                     if Gui.Rank.Text == '#1' then
+                        print('rank')
+                        print('rank')
+                        print('rank')
                         Gui.Color.Value = Color3.fromRGB(206, 206, 172)
-                        statue.Configuration.userId.Value = id
-                        statue.Tags.Container.pName.Text = name
-                    -- module.setHumanoid(id)
+                        -- statue.Configuration.userId.Value = id
+                        -- statue.Tags.Container.pName.Text = name
+                        module.setHumanoid(id)
                     end
                 end
             end
