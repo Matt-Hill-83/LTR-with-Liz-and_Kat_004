@@ -4,7 +4,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local Bridge = require(Sss.Source.Bridge.Bridge)
-local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
+-- local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 
@@ -51,16 +51,16 @@ function module.initJunctions(props)
     end
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
-        local hexConfig = hexConfigs[hexIndex] or {}
-        local orbiterConfigs = hexConfig.orbiterConfigs or nil
+        -- local hexConfig = hexConfigs[hexIndex] or {}
+        -- local orbiterConfigs = hexConfig.orbiterConfigs or nil
 
-        LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
+        -- LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
 
         local positioners = Utils.getDescendantsByName(hexIslandFolder, positionerName)
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
-            local newHexPart = newHex.PrimaryPart
+            -- local newHexPart = newHex.PrimaryPart
 
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 

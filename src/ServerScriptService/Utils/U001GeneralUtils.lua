@@ -182,7 +182,7 @@ local function hasProperty(instance, property)
     ))
 end
 
-local function cloneModel(props)
+function module.cloneModel(props)
     local parentTo = props.parentTo
     local positionToPart = props.positionToPart
     local templateName = props.templateName
@@ -202,18 +202,25 @@ local function cloneModel(props)
 
         local newChild = childTemplate:Clone()
         newChild.Parent = parentTo
-        local childPart = newChild.PrimaryPart
-        local freeParts = module.freeAnchoredParts({item = newChild})
+        -- local childPart = newChild.PrimaryPart
+        -- local freeParts = module.freeAnchoredParts({item = newChild})
 
-        childPart.CFrame =
-            Utils3.setCFrameFromDesiredEdgeOffset(
+        Utils3.setCFrameFromDesiredEdgeOffset2(
             {
                 parent = positionToPart,
-                child = childPart,
+                childModel = newChild,
                 offsetConfig = offsetConfig
             }
         )
-        module.anchorFreedParts(freeParts)
+        -- childPart.CFrame =
+        --     Utils3.setCFrameFromDesiredEdgeOffset(
+        --     {
+        --         parent = positionToPart,
+        --         child = childPart,
+        --         offsetConfig = offsetConfig
+        --     }
+        -- )
+        -- module.anchorFreedParts(freeParts)
         return newChild
     end
 end
@@ -1048,7 +1055,7 @@ end
 
 module.addcfv3 = addcfv3
 module.addPadding = addPadding
-module.cloneModel = cloneModel
+-- module.cloneModel = cloneModel
 module.enableChildWelds = enableChildWelds
 module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName

@@ -26,6 +26,7 @@ local Theater = require(Sss.Source.Theater.Theater)
 local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
+local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 
 local module = {}
 
@@ -106,10 +107,6 @@ local function addRemoteObjects()
 
     local blockDash = Utils.getFirstDescendantByName(myStuff, 'BlockDash')
     local levelsFolder = Utils.getFirstDescendantByName(blockDash, 'Levels')
-    -- local ramps = Utils.getFirstDescendantByName(blockDash, 'Ramps')
-
-    -- SingleStrays.initSingleStrays({parentFolder = ramps})
-
     local level = levelsFolder:GetChildren()[1]
 
     local levelName = level.Name
@@ -240,6 +237,7 @@ local function addRemoteObjects()
         if entrance then
             Entrance.initRunFasts(region)
         end
+        LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = config})
     end
 
     TestArea.configTestArea({parentFolder = level})

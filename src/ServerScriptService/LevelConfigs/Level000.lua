@@ -172,9 +172,9 @@ local c0r0 = {
             numBlocks = 50,
             angularVelocity = 0.2,
             diameter = 780,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
             singleWord = '?????????~',
             discHeight = 1
         },
@@ -183,9 +183,9 @@ local c0r0 = {
             numBlocks = 50,
             angularVelocity = 0.2,
             diameter = 780,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
             singleWord = '?????????~',
             discHeight = 1
         },
@@ -193,9 +193,9 @@ local c0r0 = {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 16,
             angularVelocity = 0.5,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
             singleWord = 'CATRATBAT',
             discHeight = 1
         }
@@ -221,24 +221,24 @@ local dummy01 = {
             character = 'babyTroll04',
             songId = '6338745550'
         }
-    },
+    }
+}
+
+local region01 = {
+    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
             angularVelocity = 0.8,
             -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'CATBATRAT',
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '1111',
             discHeight = 1
         }
-    }
-}
-
-local region01 = {
-    conveyorConfigs = conveyorConfigs,
+    },
     hexIslandConfigs = {
         dummy01,
         dummy01
@@ -254,6 +254,19 @@ local region01 = {
 
 local region02 = {
     conveyorConfigs = conveyorConfigs,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '222',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01,
         dummy01,
@@ -271,6 +284,19 @@ local region02 = {
 
 local region03 = {
     conveyorConfigs = conveyorConfigs,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '333',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01
     },
@@ -288,6 +314,19 @@ local region03 = {
 
 local region04 = {
     conveyorConfigs = conveyorConfigs,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '444',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01
     },
@@ -332,23 +371,19 @@ local region04 = {
     end
 }
 
-local dummy05 = {
-    material = Enum.Material.Glacier
-}
-
 local region05 = {
     conveyorConfigs = conveyorConfigs,
-    hexIslandConfigs = {dummy05},
+    hexIslandConfigs = {dummy01},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
+            numBlocks = 24,
             angularVelocity = 0.8,
             -- diameter = 32,
             discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = '5555',
+            -- collideDisc = true,
+            -- collideBlock = true,
+            singleWord = 'ABCDEFGHIJKLMNOPRSTUVWXYZ',
             discHeight = 1
         }
     },
@@ -363,6 +398,19 @@ local region05 = {
 
 local region08 = {
     conveyorConfigs = conveyorConfigs,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '888',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01
     },
@@ -384,6 +432,19 @@ local region08 = {
 
 local region09 = {
     conveyorConfigs = conveyorConfigs,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = '999',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01
     },
@@ -403,6 +464,19 @@ local region09 = {
 local region10 = {
     hexGearConfigs = {hexGearWords01},
     -- hexGearConfigs = {hexGearWords01, hexGearWords02, hexGearWords03},
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = 'ten',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {
         dummy01
     },
@@ -425,14 +499,53 @@ local region10 = {
 }
 
 local region14 = {
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = 'ft',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'PAT'}}}
 }
 local region15 = {
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = 'fvt',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'SAT'}}}
 }
 local region16 = {
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = true,
+            collideBlock = true,
+            singleWord = 'sxt',
+            discHeight = 1
+        }
+    },
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'MAT'}}}
 }

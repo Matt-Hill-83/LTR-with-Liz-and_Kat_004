@@ -23,7 +23,7 @@ enabledItems = {
     statueGate = true,
     grabbers = true,
     letterGrabber = true,
-    theater = true,
+    -- theater = true,
     entrance = true
 }
 
