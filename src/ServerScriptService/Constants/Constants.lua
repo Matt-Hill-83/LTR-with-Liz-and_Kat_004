@@ -34,8 +34,8 @@ end
 
 if isDev then
     activeSpawn = 'Spawn_Snowflake_8'
-    activeSpawn = 'Spawn_05'
     activeSpawn = 'Spawn_Snowflake_4'
+    activeSpawn = 'Spawn_05'
 else
     activeSpawn = 'Spawn_Snowflake_8'
     activeSpawn = 'Spawn_Snowflake_4'

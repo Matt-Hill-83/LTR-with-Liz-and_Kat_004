@@ -110,7 +110,7 @@ local function updateLeaderboard()
     end
 end
 
-function updateLB()
+function module.updateLB()
     print('updateLB' .. ' - start')
     print('updateLB' .. ' - start')
     print('updateLB' .. ' - start')
@@ -125,5 +125,4 @@ function updateLB()
     updateLeaderboard()
 end
 
-module.updateLB = updateLB
 return module

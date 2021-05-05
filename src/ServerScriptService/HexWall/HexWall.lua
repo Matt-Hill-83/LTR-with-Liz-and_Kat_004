@@ -49,7 +49,8 @@ function module.initHexWalls(props)
                     offsetConfig = {
                         useParentNearEdge = Vector3.new(0, 1, 0),
                         useChildNearEdge = Vector3.new(0, -1, 0),
-                        offsetAdder = Vector3.new(0, 0, 0)
+                        offsetAdder = Vector3.new(0, 0, 0),
+                        angles = Vector3.new(0, math.rad(90), 0)
                     }
                 }
             )

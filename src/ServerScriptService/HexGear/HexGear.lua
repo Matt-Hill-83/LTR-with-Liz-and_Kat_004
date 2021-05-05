@@ -2,16 +2,11 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
--- local Constants = require(Sss.Source.Constants.Constants)
 
--- local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 local LevelPortal = require(Sss.Source.LevelPortal.LevelPortal)
-
 local module = {}
 
 function module.initHexGears(props)
-    print('initHexGears' .. ' - start')
-
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local hexGearConfigs = levelConfig.hexGearConfigs
@@ -32,35 +27,31 @@ function module.initHexGears(props)
             for i, hex in ipairs(hexes) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
-                -- local newPositioner = hex.PrimaryPart:Clone()
+
+                local word = config.words[i] or config.words[1]
                 newPositioner.Parent = hex
-                newPositioner.Name = config.words[i] or config.words[1]
-                table.insert(positioners, newPositioner)
-            end
+                newPositioner.Name = word
+                -- table.insert(positioners, newPositioner)
 
-            local portals =
-                LevelPortal.initGrabbers3(
-                {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
-                -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
-            )
-
-            print('portals' .. ' - start')
-            print(portals)
-
-            for _, portal in ipairs(portals) do
-                local portalPart = portal.PrimaryPart
-
+                local portal =
+                    LevelPortal.initLevelPortal(
+                    {parentFolder = hexGear, positioner = newPositioner, templateName = 'LevelPortal-001', word = word}
+                    -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
+                )
+                portal:SetAttribute('Word', word)
                 Utils3.setCFrameFromDesiredEdgeOffset2(
                     {
-                        parent = portalPart,
+                        parent = portal.PrimaryPart,
                         childModel = portal,
                         offsetConfig = {
                             useParentNearEdge = Vector3.new(0, 0, 0),
                             useChildNearEdge = Vector3.new(0, 0, 0),
-                            offsetAdder = Vector3.new(0, 0, 0)
+                            offsetAdder = Vector3.new(0, 0, 0),
+                            angles = Vector3.new(math.rad(60), 0, 0)
                         }
                     }
                 )
+                -- LevelPortal.initLevelPortal({portal = portal, word = word})
             end
         end
     end

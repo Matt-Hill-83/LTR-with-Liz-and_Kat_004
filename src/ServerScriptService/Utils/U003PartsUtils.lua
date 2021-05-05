@@ -51,6 +51,7 @@ function module.setCFrameFromDesiredEdgeOffset2(props)
     local parent = props.parent
     local childModel = props.childModel
     local offsetConfig = props.offsetConfig
+    local angles = props.angles
 
     local childPP = childModel.PrimaryPart
     local defaultOffsetAdder = Vector3.new(0, 0, 0)
@@ -69,7 +70,10 @@ function module.setCFrameFromDesiredEdgeOffset2(props)
 
     local newCFrame = CFrame.new(offset)
     local output = parent.CFrame:ToWorldSpace(newCFrame)
-
+    if (angles) then
+        output = output * CFrame.Angles(angles)
+    end
+    -- doorPart.CFrame = doorPart.CFrame * CFrame.Angles(0, math.rad(90), 0)
     childModel:SetPrimaryPartCFrame(output)
 
     return childModel

@@ -7,40 +7,33 @@ local hexGearWords01 = {
     words = {
         'CAT',
         'BAT',
-        'HAT'
+        'HAT',
+        'MAT',
+        'PAT',
+        'RAT',
+        'SAT',
+        'FAT',
+        --  break
+        --  break
+        'CAP',
+        'GAP',
+        'LAP',
+        'MAP',
+        'SAP',
+        'TAP',
+        'RAP',
+        'ZAP',
+        --  break
+        --  break
+        'VAN',
+        'RAN',
+        'CAN',
+        'PAN',
+        'FAN',
+        'TAN',
+        'DAN'
     }
 }
--- local hexGearWords01 = {
---     words = {
---         'CAT',
---         'BAT',
---         'HAT',
---         'MAT',
---         'PAT',
---         'RAT',
---         'SAT',
---         'FAT',
---         --  break
---         --  break
---         'CAP',
---         'GAP',
---         'LAP',
---         'MAP',
---         'SAP',
---         'TAP',
---         'RAP',
---         'ZAP',
---         --  break
---         --  break
---         'VAN',
---         'RAN',
---         'CAN',
---         'PAN',
---         'FAN',
---         'TAN',
---         'DAN'
---     }
--- }
 local hexGearWords02 = {
     words = {
         --  break
