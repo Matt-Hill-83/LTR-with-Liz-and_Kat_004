@@ -173,10 +173,10 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
             if player:FindFirstChild('leaderstats') then
                 local wins = player.leaderstats.Wins
                 wins.Value = wins.Value + 1
-            end
 
-            PlayerStatManager:ChangeStat(player, 'Gems', 1)
+                PlayerStatManager:ChangeStat(player, 'Gems', 1)
             -- Leaderboard.updateLB()
+            end
 
             activeWord.completed = true
             local wordLetters =
@@ -233,14 +233,14 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
                 callBack(miniGameState)
             end
 
-            local keyWalls = Utils.getDescendantsByName(sectorFolder, 'KeyWall')
-            for _, keyWall in ipairs(keyWalls) do
-                if keyWall then
-                    LetterUtils.styleImageLabelsInBlock(keyWall, {Visible = false})
-                    keyWall.CanCollide = false
-                    keyWall.Transparency = 1
-                end
-            end
+        -- local keyWalls = Utils.getDescendantsByName(sectorFolder, 'KeyWall')
+        -- for _, keyWall in ipairs(keyWalls) do
+        --     if keyWall then
+        --         LetterUtils.styleImageLabelsInBlock(keyWall, {Visible = false})
+        --         keyWall.CanCollide = false
+        --         keyWall.Transparency = 1
+        --     end
+        -- end
         end
     end
     module.processing = false

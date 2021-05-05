@@ -35,6 +35,7 @@ function module.initHexGears(props)
 
         local grabbers =
             Grabbers.initGrabbers3(
+            -- {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
             {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
         )
 

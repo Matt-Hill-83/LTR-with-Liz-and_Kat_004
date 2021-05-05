@@ -1,12 +1,12 @@
 local Sss = game:GetService('ServerScriptService')
 local RS = game:GetService('ReplicatedStorage')
-
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
+local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 
 local module = {}
@@ -106,7 +106,8 @@ function module.wordFound(tool, player)
             end
 
             if player:FindFirstChild('leaderstats') then
-                if leaderstats[targetWord] then
+                local hasProp = Utils.hasProperty(leaderstats, targetWord)
+                if hasProp then
                     incrementMetric(targetWord)
                 else
                     local newMetric = Instance.new('IntValue')
@@ -115,9 +116,10 @@ function module.wordFound(tool, player)
                     newMetric.Parent = leaderstats
                     incrementMetric(targetWord)
                 end
-            end
-
+                -- PlayerStatManager:ChangeStat(player, targetWord, 1)
+                WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
             -- Leaderboard.updateLB()
+            end
         end
 
         --  give gem
@@ -183,7 +185,7 @@ function module.partTouched(touchedBlock, player)
 
             local newActiveBlock = module.getActiveLetterGrabberBlock(tool)
             if not newActiveBlock then
-                wordFound(tool, player)
+                module.wordFound(tool, player)
             end
 
             local prevCanCollideValue = touchedBlock.CanCollide
@@ -243,7 +245,7 @@ function module.partTouched2(touchedBlock, player, grabber)
 
             local newActiveBlock = module.getActiveLetterGrabberBlock(tool)
             if not newActiveBlock then
-                wordFound(tool, player)
+                module.wordFound(tool, player)
             end
 
             local prevCanCollideValue = touchedBlock.CanCollide
