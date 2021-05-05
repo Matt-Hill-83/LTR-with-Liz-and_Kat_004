@@ -23,9 +23,9 @@ function module.initHexGears(props)
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
             local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
 
-            local test = {hexes[1], hexes[2], hexes[3]}
-            for i, hex in ipairs(test) do
-                -- for i, hex in ipairs(hexes) do
+            -- local test = {hexes[1], hexes[2], hexes[3]}
+            -- for i, hex in ipairs(test) do
+            for i, hex in ipairs(hexes) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
 
@@ -42,7 +42,7 @@ function module.initHexGears(props)
                     {
                         parent = portal.PrimaryPart,
                         childModel = portal,
-                        angles = CFrame.Angles(0, math.rad(60), 0),
+                        angles = CFrame.Angles(0, math.rad(-30), 0),
                         offsetConfig = {
                             useParentNearEdge = Vector3.new(0, 0, 0),
                             useChildNearEdge = Vector3.new(0, 0, 0),
@@ -50,7 +50,6 @@ function module.initHexGears(props)
                         }
                     }
                 )
-                -- portal.PrimaryPart.CFrame = portal.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(90), 0)
             end
         end
     end

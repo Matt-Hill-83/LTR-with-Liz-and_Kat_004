@@ -8,7 +8,41 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 
 local module = {}
-local delayBase = 5
+local delayBase = 10
+
+function module.setHumanoid(userId, statue)
+    local success, errorMsg =
+        pcall(
+        function()
+            local desc = Players:GetHumanoidDescriptionFromUserId(userId)
+            print('statue.Humanoid' .. ' - start')
+            print(statue.Humanoid)
+
+            print('desc' .. ' - start')
+            print(desc)
+            local test = statue.Humanoid:ApplyDescription(desc)
+            print('test' .. ' - start')
+            print('test' .. ' - start')
+            print('test' .. ' - start')
+            print('test' .. ' - start')
+            print(test)
+        end
+    )
+    print('success' .. ' - start')
+    print(success)
+    print('errorMsg' .. ' - start')
+    print(errorMsg)
+
+    -- "rbxassetid://6648691264"
+    pcall(
+        function()
+            local Track = statue.Humanoid:LoadAnimation(statue.Idle)
+            print('Track' .. ' - start')
+            print(Track)
+            Track:Play()
+        end
+    )
+end
 
 function module.initDataStore(props)
     local word = props.word
@@ -21,21 +55,16 @@ function module.initDataStore(props)
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
 
-    function module.setHumanoid(userId)
-        print('statue.Humanoid' .. ' - start')
-        print(statue.Humanoid)
-
-        local desc = Players:GetHumanoidDescriptionFromUserId(userId)
-        print('desc' .. ' - start')
-        print(desc)
-        statue.Humanoid:ApplyDescription(desc)
-        -- local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-        -- Track:Play()
-    end
-
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
 
-    function module.updateSign()
+    local function closure(word)
+        function test()
+            module.updateSign(word)
+        end
+        return test
+    end
+
+    function module.updateSign(word)
         print('updateSign================================>>>')
         print('word' .. ' - start')
         print(word)
@@ -68,10 +97,10 @@ function module.initDataStore(props)
                         print('rank')
                         print('rank')
                         print('rank')
-                        Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                        -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                         -- statue.Configuration.userId.Value = id
-                        -- statue.Tags.Container.pName.Text = name
-                        module.setHumanoid(id)
+                        statue.Tags.Container.pName.Text = name
+                        module.setHumanoid(id, statue)
                     end
                 end
             end
@@ -81,9 +110,10 @@ function module.initDataStore(props)
 
         --
         -- randomize the interval, so all signs don't update on the same tick
-        delay(delaySec, module.updateSign)
+        delay(delaySec, closure(word))
+        -- delay(delaySec, module.updateSign)
     end
-    module.updateSign()
+    module.updateSign(word)
 end
 
 function module.initLevelPortal(props)
