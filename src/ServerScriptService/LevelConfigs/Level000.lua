@@ -408,7 +408,8 @@ local region10 = {
     },
     strayRegions = {
         {
-            words = {'CAT'},
+            words = {'ABCDEFGHIJKLNOPRSTUVWXYZAAAAAAAAATTTTTTT'},
+            -- words = {'CAT'},
             randomLetterMultiplier = 1,
             -- maxLetters = 6,
             useArea = true

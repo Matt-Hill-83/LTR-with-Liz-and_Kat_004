@@ -8,37 +8,22 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 
 local module = {}
-local delayBase = 10
+local delayBase = 30
 
 function module.setHumanoid(userId, statue)
     local success, errorMsg =
         pcall(
         function()
             local desc = Players:GetHumanoidDescriptionFromUserId(userId)
-            print('statue.Humanoid' .. ' - start')
-            print(statue.Humanoid)
 
-            print('desc' .. ' - start')
-            print(desc)
             local test = statue.Humanoid:ApplyDescription(desc)
-            print('test' .. ' - start')
-            print('test' .. ' - start')
-            print('test' .. ' - start')
-            print('test' .. ' - start')
-            print(test)
         end
     )
-    print('success' .. ' - start')
-    print(success)
-    print('errorMsg' .. ' - start')
-    print(errorMsg)
 
     -- "rbxassetid://6648691264"
     pcall(
         function()
             local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-            print('Track' .. ' - start')
-            print(Track)
             Track:Play()
         end
     )
@@ -65,9 +50,6 @@ function module.initDataStore(props)
     end
 
     function module.updateSign(word)
-        print('updateSign================================>>>')
-        print('word' .. ' - start')
-        print(word)
         for i, leaderboardRank in pairs(list:GetChildren()) do
             if leaderboardRank.ClassName == 'Frame' then
                 leaderboardRank:Destroy()
@@ -94,9 +76,6 @@ function module.initDataStore(props)
                     Gui.Parent = list
 
                     if Gui.Rank.Text == '#1' then
-                        print('rank')
-                        print('rank')
-                        print('rank')
                         -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                         -- statue.Configuration.userId.Value = id
                         statue.Tags.Container.pName.Text = name
