@@ -5,6 +5,7 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Constants = require(Sss.Source.Constants.Constants)
 
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
+local LevelPortal = require(Sss.Source.LevelPortal.LevelPortal)
 
 local module = {}
 
@@ -34,9 +35,9 @@ function module.initHexGears(props)
         end
 
         local grabbers =
-            Grabbers.initGrabbers3(
-            -- {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
-            {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
+            LevelPortal.initGrabbers3(
+            {parentFolder = hexGear, positioners = positioners, templateName = 'LevelPortal-001'}
+            -- {parentFolder = hexGear, positioners = positioners, templateName = 'GrabberReplicatorTemplate_003'}
         )
 
         print('grabbers' .. ' - start')
@@ -44,23 +45,19 @@ function module.initHexGears(props)
 
         for _, grabber in ipairs(grabbers) do
             local grabberPart = grabber.PrimaryPart
-            local newCFrame =
-                Utils3.setCFrameFromDesiredEdgeOffset(
+
+            Utils3.setCFrameFromDesiredEdgeOffset2(
                 {
                     parent = grabberPart,
-                    child = grabberPart,
+                    childModel = grabber,
                     offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 0, 0),
-                        useChildNearEdge = Vector3.new(0, 0, 0),
-                        offsetAdder = Vector3.new(0, 32, 0)
+                        useParentNearEdge = Vector3.new(0, 1, 0),
+                        useChildNearEdge = Vector3.new(0, 1, 0),
+                        offsetAdder = Vector3.new(0, 0, 0)
                     }
                 }
             )
-
-            grabber:SetPrimaryPartCFrame(newCFrame)
         end
-
-        -- if the folder starts with a c, use a litle bridge
     end
 end
 

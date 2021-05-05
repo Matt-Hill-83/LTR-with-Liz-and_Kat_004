@@ -1,4 +1,4 @@
-local TweenService = game:GetService("TweenService")
+local TweenService = game:GetService('TweenService')
 
 local module = {}
 
@@ -13,8 +13,7 @@ function tween(props)
     local easingDirection = props.easingDirection or Enum.EasingDirection.Out
     local anchor = props.anchor or false
 
-    local tweenInfo = TweenInfo.new(time, easingStyle, easingDirection,
-                                    repeatCount, reverses, delayTime)
+    local tweenInfo = TweenInfo.new(time, easingStyle, easingDirection, repeatCount, reverses, delayTime)
 
     local tween = TweenService:Create(part, tweenInfo, {Position = endPosition})
 
@@ -40,12 +39,40 @@ local function setCFrameFromDesiredEdgeOffset(props)
 
     offsetConfig = offsetConfig or defaultOffsetConfig
 
-    local offset = (offsetConfig.useParentNearEdge * parent.Size -
-                       offsetConfig.useChildNearEdge * child.Size) / 2 +
-                       (offsetConfig.offsetAdder or defaultOffsetAdder)
+    local offset =
+        (offsetConfig.useParentNearEdge * parent.Size - offsetConfig.useChildNearEdge * child.Size) / 2 +
+        (offsetConfig.offsetAdder or defaultOffsetAdder)
 
     local newCFrame = CFrame.new(offset)
     return parent.CFrame:ToWorldSpace(newCFrame)
+end
+
+function module.setCFrameFromDesiredEdgeOffset2(props)
+    local parent = props.parent
+    local childModel = props.childModel
+    local offsetConfig = props.offsetConfig
+
+    local childPP = childModel.PrimaryPart
+    local defaultOffsetAdder = Vector3.new(0, 0, 0)
+
+    local defaultOffsetConfig = {
+        useParentNearEdge = Vector3.new(0, 1, -1),
+        useChildNearEdge = Vector3.new(0, -1, 1),
+        offsetAdder = defaultOffsetAdder
+    }
+
+    offsetConfig = offsetConfig or defaultOffsetConfig
+
+    local offset =
+        (offsetConfig.useParentNearEdge * parent.Size - offsetConfig.useChildNearEdge * childPP.Size) / 2 +
+        (offsetConfig.offsetAdder or defaultOffsetAdder)
+
+    local newCFrame = CFrame.new(offset)
+    local output = parent.CFrame:ToWorldSpace(newCFrame)
+
+    childModel:SetPrimaryPartCFrame(output)
+
+    return childModel
 end
 
 module.setCFrameFromDesiredEdgeOffset = setCFrameFromDesiredEdgeOffset

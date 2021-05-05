@@ -200,6 +200,7 @@ function module.initLetterGrabber(props)
     end
 
     local newReplicatorPart = newReplicator.PrimaryPart
+
     letterGrabber.Name = letterGrabber.Name .. '-' .. word
 
     applyDecalsToCharacterFromWord({part = letterGrabber, word = word})
@@ -217,7 +218,7 @@ function module.initLetterGrabber(props)
     )
 
     if positioner then
-        newReplicatorPart.CFrame =
+        local newCFrame =
             Utils3.setCFrameFromDesiredEdgeOffset(
             {
                 parent = positioner,
@@ -229,6 +230,7 @@ function module.initLetterGrabber(props)
                 }
             }
         )
+        newReplicator:SetPrimaryPartCFrame(newCFrame)
     end
 
     AccessoryReplicator.initAccessoryReplicator(newReplicator)
