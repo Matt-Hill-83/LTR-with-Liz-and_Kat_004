@@ -6,6 +6,8 @@ local module = {}
 local hexGearWords01 = {
     words = {
         'CAT',
+        'CAT',
+        'CAT',
         'BAT',
         'HAT',
         'MAT',
@@ -383,7 +385,8 @@ local region05 = {
             discTransparency = 1,
             -- collideDisc = true,
             -- collideBlock = true,
-            singleWord = 'ABCDEFGHIJKLMNOPRSTUVWXYZ',
+            -- singleWord = 'ABCDEFGHIJKLMNOPRSTUVWXYZ',
+            singleWord = 'CAT',
             discHeight = 1
         }
     },

@@ -106,6 +106,7 @@ function module.wordFound(tool, player)
             end
 
             if player:FindFirstChild('leaderstats') then
+                -- incrementMetric('Wins')
                 -- local hasProp = Utils.hasProperty(leaderstats, targetWord)
                 -- if hasProp then
                 --     incrementMetric(targetWord)
@@ -116,9 +117,12 @@ function module.wordFound(tool, player)
                 --     newMetric.Parent = leaderstats
                 --     incrementMetric(targetWord)
                 -- end
-                PlayerStatManager:ChangeStat(player, 'Wins', 1)
-            -- PlayerStatManager:ChangeStat(player, targetWord, 1)
-            -- WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
+                local wins = player.leaderstats.Wins
+                wins.Value = wins.Value + 1
+
+                -- PlayerStatManager:ChangeStat(player, 'Wins', 1)
+                -- PlayerStatManager:ChangeStat(player, targetWord, 1)
+                WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
             -- Leaderboard.updateLB()
             end
         end

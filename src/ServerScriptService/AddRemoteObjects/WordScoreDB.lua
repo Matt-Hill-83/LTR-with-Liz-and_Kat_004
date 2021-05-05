@@ -11,6 +11,8 @@ function module.updateWordStore(props)
     print('updateWordStore')
     print('updateWordStore')
     print('updateWordStore')
+    print('props' .. ' - start')
+    print(props)
     local player = props.player
     local word = props.word
     local adder = props.adder
@@ -23,7 +25,7 @@ function module.updateWordStore(props)
     -- newStore:SetAsync(player.UserId, adder)
     print('module.fetchWordStore' .. ' - start')
     print(module.fetchWordStore)
-    module.fetchWordStore(word)
+    -- module.fetchWordStore(word)
     -- end
     -- end
 end
