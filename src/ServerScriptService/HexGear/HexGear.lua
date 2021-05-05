@@ -42,15 +42,15 @@ function module.initHexGears(props)
                     {
                         parent = portal.PrimaryPart,
                         childModel = portal,
+                        angles = CFrame.Angles(0, math.rad(60), 0),
                         offsetConfig = {
                             useParentNearEdge = Vector3.new(0, 0, 0),
                             useChildNearEdge = Vector3.new(0, 0, 0),
-                            offsetAdder = Vector3.new(0, 0, 0),
-                            angles = Vector3.new(math.rad(60), 0, 0)
+                            offsetAdder = Vector3.new(0, 0, 0)
                         }
                     }
                 )
-                -- portal.PrimaryPart.CFrame = portal.PrimaryPart.CFrame * CFrame.Angles(0, 0, math.rad(90))
+                -- portal.PrimaryPart.CFrame = portal.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(90), 0)
             end
         end
     end

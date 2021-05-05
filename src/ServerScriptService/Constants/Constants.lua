@@ -15,16 +15,16 @@ playAmbient = false
 
 local enabledItems
 enabledItems = {
-    cardSwap = true,
+    cardSwap = false,
     petBox = false,
     hexGear = true,
     strayLetterBlocks = false,
     junction4 = true,
-    statueGate = true,
+    statueGate = false,
     grabbers = true,
     letterGrabber = true,
     theater = false,
-    entrance = true
+    entrance = false
 }
 
 -- over ride isDev setting for when I forget to switch it when I deploy

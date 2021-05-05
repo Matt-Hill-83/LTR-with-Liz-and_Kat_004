@@ -9,7 +9,6 @@ local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 
 local module = {}
 local delayBase = 5
-local userIdMemo = {}
 
 function module.initDataStore(props)
     local word = props.word
@@ -22,40 +21,35 @@ function module.initDataStore(props)
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
     local statue = Utils.getFirstDescendantByName(scoreSign, 'Statue')
 
-    local function setHumanoid(userId)
+    print('top' .. ' - start')
+    print('top' .. ' - start')
+    print('top' .. ' - start')
+    print(top)
+
+    function module.setHumanoid(userId)
         statue.Humanoid:ApplyDescription(Players:GetHumanoidDescriptionFromUserId(userId))
         local Track = statue.Humanoid:LoadAnimation(statue.Idle)
         Track:Play()
     end
 
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
-    print('delaySec' .. ' - start')
-    print(delaySec)
+
     function module.updateSign()
-        print('updateSign++++++++++++++++++++++=======>>>' .. word)
+        for i, leaderboardRank in pairs(list:GetChildren()) do
+            if leaderboardRank.ClassName == 'Frame' then
+                leaderboardRank:Destroy()
+            end
+        end
+
         local success, errorMsg =
             pcall(
             function()
                 local data = dataStore:GetSortedAsync(false, 10)
                 local StatsPage = data:GetCurrentPage()
 
-                print('word' .. ' - start------------------------->>')
-                print(word)
-                if true then
-                    -- if word == 'CAT' then
-                    print('StatsPage' .. ' - start')
-                    print(StatsPage)
-                end
-
                 for rankInLB, dataStored in ipairs(StatsPage) do
-                    print('dataStored' .. ' - start')
-                    print(dataStored)
                     local id = dataStored.key
-
                     local name = Utils_2.getUsernameFromUserId(id)
-                    print('name' .. ' - start')
-                    print(name)
-
                     local statsname = dataStored.value
                     wait(0.1)
 
@@ -69,12 +63,15 @@ function module.initDataStore(props)
                         Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                         statue.Configuration.userId.Value = id
                         statue.Tags.Container.pName.Text = name
-                        setHumanoid(id)
+                    -- module.setHumanoid(id)
                     end
                 end
             end
         )
 
+        --
+
+        --
         -- randomize the interval, so all signs don't update on the same tick
         delay(delaySec, module.updateSign)
     end
