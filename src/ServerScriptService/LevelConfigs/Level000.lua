@@ -145,63 +145,6 @@ local conveyorConfigs = {
 }
 -- module.conveyorConfigs = conveyorConfigs
 
-local c0r0 = {
-    material = Enum.Material.Glacier,
-    statueConfigs = {
-        Liz = {
-            sentence = {'I', 'SEE', 'A', 'CAT'},
-            character = 'lizHappy',
-            -- songId = '6342102168',
-            keyColor = Colors.colors.yellow
-        },
-        Kat = {
-            sentence = {'NOT', 'A', 'CAT'},
-            character = 'katScared',
-            songId = '6342102168'
-        },
-        Troll = {
-            sentence = {'TROLL', 'NEED', 'GOLD'},
-            character = 'babyTroll04'
-            -- songId = '6338745550'
-        }
-    },
-    bridgeConfigs = {},
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 50,
-            angularVelocity = 0.2,
-            diameter = 780,
-            discTransparency = 0,
-            collideDisc = true,
-            collideBlock = true,
-            singleWord = '?????????~',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 50,
-            angularVelocity = 0.2,
-            diameter = 780,
-            discTransparency = 0,
-            collideDisc = true,
-            collideBlock = true,
-            singleWord = '?????????~',
-            discHeight = 1
-        },
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 16,
-            angularVelocity = 0.5,
-            discTransparency = 0,
-            collideDisc = true,
-            collideBlock = true,
-            singleWord = 'CATRATBAT',
-            discHeight = 1
-        }
-    }
-}
-
 local dummy01 = {
     material = Enum.Material.Glacier,
     statueConfigs = {
@@ -235,7 +178,7 @@ local region01 = {
             discTransparency = 0,
             collideDisc = true,
             collideBlock = true,
-            singleWord = '1111',
+            singleWord = 'CAT',
             discHeight = 1
         }
     },
@@ -263,7 +206,7 @@ local region02 = {
             discTransparency = 0,
             collideDisc = true,
             collideBlock = true,
-            singleWord = '222',
+            singleWord = 'CAT',
             discHeight = 1
         }
     },
@@ -293,7 +236,7 @@ local region03 = {
             discTransparency = 0,
             collideDisc = true,
             collideBlock = true,
-            singleWord = '333',
+            singleWord = 'CAT',
             discHeight = 1
         }
     },
@@ -323,7 +266,7 @@ local region04 = {
             discTransparency = 0,
             collideDisc = true,
             collideBlock = true,
-            singleWord = '444',
+            singleWord = 'CAT',
             discHeight = 1
         }
     },

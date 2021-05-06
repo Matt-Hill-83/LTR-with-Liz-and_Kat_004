@@ -18,12 +18,12 @@ function module.setHumanoid(userId, statue)
         end
     )
 
-    -- pcall(
-    --     function()
-    --         local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-    --         Track:Play()
-    --     end
-    -- )
+    pcall(
+        function()
+            local Track = statue.Humanoid:LoadAnimation(statue.Idle)
+            Track:Play()
+        end
+    )
 end
 
 function module.initDataStore(props)
@@ -32,10 +32,10 @@ function module.initDataStore(props)
 
     local dataStore = DataStore:GetOrderedDataStore(word)
 
-    local statue = Utils.getFirstDescendantByName(portal, 'Statue')
-    local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
-    local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
-    local list = Utils.getFirstDescendantByName(scoreSign, 'List')
+    -- local statue = Utils.getFirstDescendantByName(portal, 'Statue')
+    -- local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
+    -- local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
+    -- local list = Utils.getFirstDescendantByName(scoreSign, 'List')
 
     -- local function closure(word, dataStore)
     --     function test()
@@ -49,97 +49,87 @@ function module.initDataStore(props)
     local startBase = 2
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
     local ResetTime = delaySec
-    -- function module.updateSign(word, dataStore)
     local Time = startSec
-    while wait(1) do
-        Time = Time - 1
-        -- print('Time' .. ' - start')
-        -- print(Time)
-        --script.Parent.Parent.ResetTime.TextLabel.Text = "Resetting in " .. Time .. " seconds..."
-        function refreshBoard()
-            for i, leaderboardRank in pairs(list:GetChildren()) do
-                if leaderboardRank.ClassName == 'Frame' then
-                    leaderboardRank:Destroy()
-                end
+
+    function refreshBoard(dataStore, portal)
+        local statue = Utils.getFirstDescendantByName(portal, 'Statue')
+        local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
+        local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
+        local list = Utils.getFirstDescendantByName(scoreSign, 'List')
+
+        for i, leaderboardRank in pairs(list:GetChildren()) do
+            if leaderboardRank.ClassName == 'Frame' then
+                leaderboardRank:Destroy()
             end
+        end
 
-            local success, errorMsg =
-                pcall(
-                function()
-                    local data = dataStore:GetSortedAsync(false, 10)
-                    local StatsPage = data:GetCurrentPage()
+        local success, errorMsg =
+            pcall(
+            function()
+                local data = dataStore:GetSortedAsync(false, 10)
+                local StatsPage = data:GetCurrentPage()
 
-                    for rankInLB, dataStored in ipairs(StatsPage) do
-                        local id = tonumber(dataStored.key)
-                        print('dataStored' .. ' - start')
-                        print(dataStored)
-                        local name = Utils_2.getUsernameFromUserId(id)
-                        local statsname = dataStored.value
-                        -- wait()
-                        -- wait(0.05)
-                        -- wait(0.1)
+                for rankInLB, dataStored in ipairs(StatsPage) do
+                    local id = tonumber(dataStored.key)
+                    local name = Utils_2.getUsernameFromUserId(id)
+                    local statsname = dataStored.value
 
-                        local Gui = top:Clone()
-                        Gui.PlrName.Text = name
-                        Gui.Rank.Text = '#' .. rankInLB
-                        Gui.Amount.Text = statsname
-                        Gui.Parent = list
+                    local Gui = top:Clone()
+                    Gui.PlrName.Text = name
+                    Gui.Rank.Text = '#' .. rankInLB
+                    Gui.Amount.Text = statsname
+                    Gui.Parent = list
 
-                        if Gui.Rank.Text == '#1' then
-                            -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
-                            -- statue.Configuration.userId.Value = id
-                            statue.Tags.Container.pName.Text = name
-                            module.setHumanoid(id, statue)
-                        end
+                    if Gui.Rank.Text == '#1' then
+                        -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                        -- statue.Configuration.userId.Value = id
+                        statue.Tags.Container.pName.Text = name
+                        module.setHumanoid(id, statue)
                     end
                 end
-            )
-        end
+            end
+        )
+    end
+    while wait(1) do
+        Time = Time - 1
+        -- function refreshBoard()
+        --     for i, leaderboardRank in pairs(list:GetChildren()) do
+        --         if leaderboardRank.ClassName == 'Frame' then
+        --             leaderboardRank:Destroy()
+        --         end
+        --     end
+
+        --     local success, errorMsg =
+        --         pcall(
+        --         function()
+        --             local data = dataStore:GetSortedAsync(false, 10)
+        --             local StatsPage = data:GetCurrentPage()
+
+        --             for rankInLB, dataStored in ipairs(StatsPage) do
+        --                 local id = tonumber(dataStored.key)
+        --                 local name = Utils_2.getUsernameFromUserId(id)
+        --                 local statsname = dataStored.value
+
+        --                 local Gui = top:Clone()
+        --                 Gui.PlrName.Text = name
+        --                 Gui.Rank.Text = '#' .. rankInLB
+        --                 Gui.Amount.Text = statsname
+        --                 Gui.Parent = list
+
+        --                 if Gui.Rank.Text == '#1' then
+        --                     -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+        --                     -- statue.Configuration.userId.Value = id
+        --                     statue.Tags.Container.pName.Text = name
+        --                     module.setHumanoid(id, statue)
+        --                 end
+        --             end
+        --         end
+        --     )
+        -- end
         if Time <= 0 then
             Time = ResetTime
-            print('word' .. ' - start============>>>')
-            print(word)
-            -- function refreshBoard()
-            --     for i, leaderboardRank in pairs(list:GetChildren()) do
-            --         if leaderboardRank.ClassName == 'Frame' then
-            --             leaderboardRank:Destroy()
-            --         end
-            --     end
 
-            --     local success, errorMsg =
-            --         pcall(
-            --         function()
-            --             local data = dataStore:GetSortedAsync(false, 10)
-            --             local StatsPage = data:GetCurrentPage()
-
-            --             for rankInLB, dataStored in ipairs(StatsPage) do
-            --                 local id = tonumber(dataStored.key)
-            --                 print('dataStored' .. ' - start')
-            --                 print(dataStored)
-            --                 local name = Utils_2.getUsernameFromUserId(id)
-            --                 local statsname = dataStored.value
-            --                 -- wait()
-            --                 -- wait(0.05)
-            --                 -- wait(0.1)
-
-            --                 local Gui = top:Clone()
-            --                 Gui.PlrName.Text = name
-            --                 Gui.Rank.Text = '#' .. rankInLB
-            --                 Gui.Amount.Text = statsname
-            --                 Gui.Parent = list
-
-            --                 if Gui.Rank.Text == '#1' then
-            --                     -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
-            --                     -- statue.Configuration.userId.Value = id
-            --                     statue.Tags.Container.pName.Text = name
-            --                     module.setHumanoid(id, statue)
-            --                 end
-            --             end
-            --         end
-            --     )
-            -- end
-
-            refreshBoard()
+            refreshBoard(dataStore, portal)
         end
 
         --
