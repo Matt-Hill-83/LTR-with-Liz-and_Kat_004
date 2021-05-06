@@ -6,8 +6,6 @@ local module = {}
 local hexGearWords01 = {
     words = {
         'CAT',
-        'CAT',
-        'CAT',
         'BAT',
         'HAT',
         'MAT',

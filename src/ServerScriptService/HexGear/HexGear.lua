@@ -36,23 +36,34 @@ function module.initHexGears(props)
                 newPositioner.Parent = hex
                 newPositioner.Name = word
 
-                local portal =
-                    LevelPortal.initLevelPortal(
-                    {parentFolder = hexGear, positioner = newPositioner, templateName = 'LevelPortal-001', word = word}
-                )
-                portal:SetAttribute('Word', word)
-                Utils3.setCFrameFromDesiredEdgeOffset2(
-                    {
-                        parent = portal.PrimaryPart,
-                        childModel = portal,
-                        angles = CFrame.Angles(0, math.rad(-30), 0),
-                        offsetConfig = {
-                            useParentNearEdge = Vector3.new(0, 0, 0),
-                            useChildNearEdge = Vector3.new(0, 0, 0),
-                            offsetAdder = Vector3.new(0, 0, 0)
-                        }
-                    }
-                )
+                coroutine.wrap(
+                    function(n)
+                        wait(n)
+                        print('executed 2nd')
+                        local portal =
+                            LevelPortal.initLevelPortal(
+                            {
+                                parentFolder = hexGear,
+                                positioner = newPositioner,
+                                templateName = 'LevelPortal-001',
+                                word = word
+                            }
+                        )
+                        portal:SetAttribute('Word', word)
+                        Utils3.setCFrameFromDesiredEdgeOffset2(
+                            {
+                                parent = portal.PrimaryPart,
+                                childModel = portal,
+                                angles = CFrame.Angles(0, math.rad(-30), 0),
+                                offsetConfig = {
+                                    useParentNearEdge = Vector3.new(0, 0, 0),
+                                    useChildNearEdge = Vector3.new(0, 0, 0),
+                                    offsetAdder = Vector3.new(0, 0, 0)
+                                }
+                            }
+                        )
+                    end
+                )(0.1)
             end
         end
     end
