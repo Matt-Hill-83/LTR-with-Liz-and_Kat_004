@@ -61,6 +61,7 @@ local packageIds = {
 }
 
 local module = {
+    portals = {},
     testAreaId = '6508386322',
     gameConfig = gameConfig,
     packageIds = packageIds,
