@@ -32,6 +32,7 @@ function module.setHumanoid(userId, statue)
 end
 
 function module.refreshBoard(dataStore, portal, delaySec)
+    print('refreshBoard')
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')

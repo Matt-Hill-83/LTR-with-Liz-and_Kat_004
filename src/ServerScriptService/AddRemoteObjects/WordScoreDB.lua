@@ -9,6 +9,7 @@ function module.updateWordStore(props)
     local player = props.player
     local word = props.word
     local adder = props.adder
+    print('updateWordStore===========================>>>' .. word)
 
     local newStore = DataStoreService:GetOrderedDataStore(word)
 

@@ -24,8 +24,8 @@ function module.initHexGears(props)
             local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
 
             local test = {unpack(hexes, 1, 5)}
-            -- for i, hex in ipairs(test) do
-            for i, hex in ipairs(hexes) do
+            for i, hex in ipairs(test) do
+                -- for i, hex in ipairs(hexes) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
 

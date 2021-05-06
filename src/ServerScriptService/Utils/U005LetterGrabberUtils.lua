@@ -7,7 +7,7 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
-local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
+-- local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 
 local module = {}
 
@@ -93,49 +93,53 @@ function module.wordFound(tool, player)
 
     if targetWordObj then
         targetWordObj.found = targetWordObj.found + 1
-        local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
-        updateWordGuiRE:FireClient(player)
+    end
+    local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+    updateWordGuiRE:FireClient(player)
 
-        local function destroyParts()
-            if player:FindFirstChild('leaderstats') then
-                local wins = player.leaderstats.Wins
-                wins.Value = wins.Value + 1
+    local function destroyParts()
+        print('destroyParts')
+        print('destroyParts')
+        print('destroyParts')
+        print('destroyParts')
+        if player:FindFirstChild('leaderstats') then
+            local wins = player.leaderstats.Wins
+            wins.Value = wins.Value + 1
 
-                WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
-            -- Leaderboard.updateLB()
-            end
+            WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
+        -- Leaderboard.updateLB()
         end
+    end
 
-        delay(1, destroyParts)
-        --  give gem
-        if true then
-            local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
-            local newKey = keyTemplate:Clone()
+    delay(1, destroyParts)
+    --  give gem
+    if true then
+        local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
+        local newKey = keyTemplate:Clone()
 
-            local newTool = Utils.getFirstDescendantByType(newKey, 'Tool')
-            newTool.Name = targetWord
+        local newTool = Utils.getFirstDescendantByType(newKey, 'Tool')
+        newTool.Name = targetWord
 
-            local keyPart = newKey.PrimaryPart
+        local keyPart = newKey.PrimaryPart
 
-            LetterUtils.applyLetterText({letterBlock = newKey, char = targetWord})
+        LetterUtils.applyLetterText({letterBlock = newKey, char = targetWord})
 
-            LetterUtils.createPropOnLetterBlock(
-                {
-                    letterBlock = keyPart,
-                    propName = 'KeyName',
-                    initialValue = targetWord,
-                    propType = 'StringValue'
-                }
-            )
+        LetterUtils.createPropOnLetterBlock(
+            {
+                letterBlock = keyPart,
+                propName = 'KeyName',
+                initialValue = targetWord,
+                propType = 'StringValue'
+            }
+        )
 
-            newTool.Parent = workspace
-            keyPart.Anchored = false
-            local pp = player.Character.PrimaryPart
+        newTool.Parent = workspace
+        keyPart.Anchored = false
+        local pp = player.Character.PrimaryPart
 
-            keyPart.CFrame =
-                CFrame.new(pp.CFrame.Position + (20 * pp.CFrame.LookVector), pp.Position) *
-                CFrame.Angles(0, math.rad(180), 0)
-        end
+        keyPart.CFrame =
+            CFrame.new(pp.CFrame.Position + (20 * pp.CFrame.LookVector), pp.Position) *
+            CFrame.Angles(0, math.rad(180), 0)
     end
 end
 
