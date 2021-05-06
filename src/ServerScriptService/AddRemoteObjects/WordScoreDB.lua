@@ -6,11 +6,6 @@ local Constants = require(Sss.Source.Constants.Constants)
 local module = {}
 
 function module.updateWordStore(props)
-    print('updateWordStore')
-    print('updateWordStore')
-    print('updateWordStore')
-    print('props' .. ' - start')
-    print(props)
     local player = props.player
     local word = props.word
     local adder = props.adder
@@ -25,16 +20,8 @@ function module.updateWordStore(props)
     )
 
     if success then
-        print('--------------------------->>>>')
-        print('--------------------------->>>>')
-        print('--------------------------->>>>')
-        print('New Experience:', newExperience)
-        print('Constants.portals' .. ' - start')
-        print(Constants.portals)
         local refreshFunc = Constants.portals[word]['refreshFunc']
         refreshFunc(newStore)
-        print('refreshFunc' .. ' - start')
-        print(refreshFunc)
     end
 end
 

@@ -32,7 +32,6 @@ function module.setHumanoid(userId, statue)
 end
 
 function module.refreshBoard(dataStore, portal, delaySec)
-    print('refreshing!!!!')
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
@@ -77,51 +76,27 @@ function module.refreshBoard(dataStore, portal, delaySec)
 end
 
 function module.closure(dataStore, portal, delaySec)
-    print('closure')
     local function test()
-        print('test')
         module.refreshBoard(dataStore, portal, delaySec)
     end
     return test
 end
 
 function module.initDataStore(props)
-    print('initDataStore-==================================>>>>')
     local word = props.word
-    print(word)
     local portal = props.portal
 
     local dataStore = DataStore:GetOrderedDataStore(word)
+
+    -- Only set this delay if you want the updating to loop.
+    -- updating is also done when upDateWordStore is called.
 
     local delayBase = 1000
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
     local startBase = 2
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
-    -- local ResetTime = delaySec
-    -- local Time = startSec
 
-    -- local function closure(dataStore, portal)
-    --     print('closure')
-    --     local function test()
-    --         print('test')
-    --         module.refreshBoard(dataStore, portal)
-    --     end
-    --     return test
-    -- end
-
-    -- delay(2, closure(dataStore, portal))
-
-    -- Time = ResetTime
     delay(startSec, module.closure(dataStore, portal, delaySec))
-    -- module.refreshBoard(dataStore, portal)
-
-    -- while wait(1) do
-    --     Time = Time - 1
-    --     if Time <= 0 then
-    --         Time = ResetTime
-    --         module.refreshBoard(dataStore, portal)
-    --     end
-    -- end
 end
 
 function module.refreshBoardCurried(portal)
@@ -132,7 +107,6 @@ function module.refreshBoardCurried(portal)
 end
 
 function module.initLevelPortal(props)
-    print('initLevelPortal' .. ' - start')
     local parentFolder = props.parentFolder
     local templateName = props.templateName
     local positioner = props.positioner
@@ -148,17 +122,13 @@ function module.initLevelPortal(props)
     local portal = LetterGrabber.initLetterGrabber(grabbersConfig)
 
     local dataStoreProps = {portal = portal, word = word}
-    -- coroutine.wrap(
-    --     function()
     module.initDataStore(dataStoreProps)
-    -- end
-    -- )(dataStoreProps)
 
-    print('Constants.portals' .. ' - start')
-    print(Constants.portals)
+    -- pass a curried function to the data update module, so it can refresh boards.
+    -- super hacky
+    -- events would be much better
+    -- or pass a callback into grabber
     Constants.portals[word] = {portal = portal, refreshFunc = module.refreshBoardCurried(portal)}
-    print('Constants.portals' .. ' - start')
-    print(Constants.portals)
 
     return portal
 end
