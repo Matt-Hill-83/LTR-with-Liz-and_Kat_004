@@ -145,12 +145,12 @@ local function applyDecalsToCharacterFromWord(props)
     local word = props.word
 
     if Const4.wordConfigs[word] then
-        local imageId = Const4.wordConfigs[word]['imageId']
-        if imageId then
-            local decalUri = 'rbxassetid://' .. imageId
-            local decals = Utils.getDescendantsByName(part, 'ImageLabel')
+        local imageId = Const4.wordConfigs[word]['imageId'] or ''
+        local decalUri = 'rbxassetid://' .. imageId
+        local decals = Utils.getDescendantsByName(part, 'ImageLabel')
 
-            for _, decal in ipairs(decals) do
+        for _, decal in ipairs(decals) do
+            if imageId then
                 decal.Image = decalUri
             end
         end
