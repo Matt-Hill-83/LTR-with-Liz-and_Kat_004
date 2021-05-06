@@ -51,46 +51,6 @@ function module.initDataStore(props)
     local ResetTime = delaySec
     -- function module.updateSign(word, dataStore)
     local Time = startSec
-
-    function refreshBoard()
-        for i, leaderboardRank in pairs(list:GetChildren()) do
-            if leaderboardRank.ClassName == 'Frame' then
-                leaderboardRank:Destroy()
-            end
-        end
-
-        local success, errorMsg =
-            pcall(
-            function()
-                local data = dataStore:GetSortedAsync(false, 3)
-                local StatsPage = data:GetCurrentPage()
-
-                for rankInLB, dataStored in ipairs(StatsPage) do
-                    local id = tonumber(dataStored.key)
-                    print('dataStored' .. ' - start')
-                    print(dataStored)
-                    local name = Utils_2.getUsernameFromUserId(id)
-                    local statsname = dataStored.value
-                    -- wait()
-                    -- wait(0.05)
-                    -- wait(0.1)
-
-                    local Gui = top:Clone()
-                    Gui.PlrName.Text = name
-                    Gui.Rank.Text = '#' .. rankInLB
-                    Gui.Amount.Text = statsname
-                    Gui.Parent = list
-
-                    if Gui.Rank.Text == '#1' then
-                        -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
-                        -- statue.Configuration.userId.Value = id
-                        statue.Tags.Container.pName.Text = name
-                        module.setHumanoid(id, statue)
-                    end
-                end
-            end
-        )
-    end
     while wait(1) do
         Time = Time - 1
         -- print('Time' .. ' - start')
@@ -101,6 +61,45 @@ function module.initDataStore(props)
             Time = ResetTime
             print('word' .. ' - start============>>>')
             print(word)
+            function refreshBoard()
+                for i, leaderboardRank in pairs(list:GetChildren()) do
+                    if leaderboardRank.ClassName == 'Frame' then
+                        leaderboardRank:Destroy()
+                    end
+                end
+
+                local success, errorMsg =
+                    pcall(
+                    function()
+                        local data = dataStore:GetSortedAsync(false, 10)
+                        local StatsPage = data:GetCurrentPage()
+
+                        for rankInLB, dataStored in ipairs(StatsPage) do
+                            local id = tonumber(dataStored.key)
+                            print('dataStored' .. ' - start')
+                            print(dataStored)
+                            local name = Utils_2.getUsernameFromUserId(id)
+                            local statsname = dataStored.value
+                            -- wait()
+                            -- wait(0.05)
+                            -- wait(0.1)
+
+                            local Gui = top:Clone()
+                            Gui.PlrName.Text = name
+                            Gui.Rank.Text = '#' .. rankInLB
+                            Gui.Amount.Text = statsname
+                            Gui.Parent = list
+
+                            if Gui.Rank.Text == '#1' then
+                                -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                                -- statue.Configuration.userId.Value = id
+                                statue.Tags.Container.pName.Text = name
+                                module.setHumanoid(id, statue)
+                            end
+                        end
+                    end
+                )
+            end
 
             refreshBoard()
         end
