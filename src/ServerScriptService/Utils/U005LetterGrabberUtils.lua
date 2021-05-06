@@ -97,40 +97,18 @@ function module.wordFound(tool, player)
         updateWordGuiRE:FireClient(player)
 
         local function destroyParts()
-            local leaderstats = player.leaderstats
-
-            local function incrementMetric(metricName)
-                local numPoints = 1
-                local metric = leaderstats[metricName]
-                metric.Value = metric.Value + numPoints
-            end
-
             if player:FindFirstChild('leaderstats') then
-                -- incrementMetric('Wins')
-                -- local hasProp = Utils.hasProperty(leaderstats, targetWord)
-                -- if hasProp then
-                --     incrementMetric(targetWord)
-                -- else
-                --     local newMetric = Instance.new('IntValue')
-                --     newMetric.Name = targetWord
-                --     newMetric.Value = 0
-                --     newMetric.Parent = leaderstats
-                --     incrementMetric(targetWord)
-                -- end
                 local wins = player.leaderstats.Wins
                 wins.Value = wins.Value + 1
 
-                -- PlayerStatManager:ChangeStat(player, 'Wins', 1)
-                -- PlayerStatManager:ChangeStat(player, targetWord, 1)
                 WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
             -- Leaderboard.updateLB()
             end
         end
 
+        delay(1, destroyParts)
         --  give gem
         if true then
-            delay(1, destroyParts)
-
             local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
             local newKey = keyTemplate:Clone()
 

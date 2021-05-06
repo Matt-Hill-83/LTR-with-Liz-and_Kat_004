@@ -37,9 +37,9 @@ function module.initHexGears(props)
                 newPositioner.Name = word
 
                 coroutine.wrap(
-                    function(n)
-                        wait(n)
-                        print('executed 2nd')
+                    function()
+                        -- wait(n)
+                        -- print('executed 2nd')
                         local portal =
                             LevelPortal.initLevelPortal(
                             {
@@ -63,7 +63,7 @@ function module.initHexGears(props)
                             }
                         )
                     end
-                )(0.1)
+                )()
             end
         end
     end
