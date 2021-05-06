@@ -27,14 +27,28 @@ enabledItems = {
     entrance = true
 }
 
+local getTargetWordsInit = function()
+    return {
+        {
+            {word = 'RAT', target = 1, found = 0},
+            {word = 'CAT', target = 1, found = 0},
+            {word = 'BAT', target = 1, found = 0},
+            {word = 'HAT', target = 1, found = 0},
+            {word = 'MAT', target = 1, found = 0},
+            {word = 'SAT', target = 1, found = 0},
+            {word = 'PAT', target = 1, found = 0}
+        }
+    }
+end
+
 -- over ride isDev setting for when I forget to switch it when I deploy
 if not RunService:IsStudio() then
     isDev = false
 end
 
 if isDev then
-    activeSpawn = 'Spawn_Snowflake_4'
     activeSpawn = 'Spawn_05'
+    activeSpawn = 'Spawn_Snowflake_4'
 else
     activeSpawn = 'Spawn_Snowflake_4'
     activeSpawn = 'Spawn_05'
@@ -68,6 +82,7 @@ local module = {
     walkSpeed = gameConfig.walkSpeed,
     gameData = {letterGrabbers = {}},
     startPlaceId = startPlaceId,
+    getTargetWordsInit = getTargetWordsInit,
     validRods = {},
     validRodAttachments = {},
     playAmbient = playAmbient,

@@ -98,10 +98,6 @@ function module.wordFound(tool, player)
     updateWordGuiRE:FireClient(player)
 
     local function destroyParts()
-        print('destroyParts')
-        print('destroyParts')
-        print('destroyParts')
-        print('destroyParts')
         if player:FindFirstChild('leaderstats') then
             local wins = player.leaderstats.Wins
             wins.Value = wins.Value + 1

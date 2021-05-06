@@ -42,7 +42,7 @@ function module.initHexGears(props)
                     {
                         parentFolder = hexGear,
                         positioner = newPositioner,
-                        templateName = 'LevelPortal-001',
+                        templateName = 'LevelPortal-002',
                         word = word
                     }
                 )

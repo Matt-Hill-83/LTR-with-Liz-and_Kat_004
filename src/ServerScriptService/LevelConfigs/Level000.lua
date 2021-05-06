@@ -143,7 +143,6 @@ local conveyorConfigs = {
     conveyor3Config,
     conveyor4Config
 }
--- module.conveyorConfigs = conveyorConfigs
 
 local dummy01 = {
     material = Enum.Material.Glacier,
