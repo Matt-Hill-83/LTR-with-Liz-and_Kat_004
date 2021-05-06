@@ -35,6 +35,13 @@ function module.refreshBoard(dataStore, portal, delaySec)
     print('refreshBoard')
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
+
+    local winnerScoreSign = Utils.getFirstDescendantByName(portal, 'WinnerScore')
+    local winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
+
+    local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
+    local winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
+
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
 
@@ -62,10 +69,12 @@ function module.refreshBoard(dataStore, portal, delaySec)
                 Gui.Parent = list
 
                 if Gui.Rank.Text == '#1' then
-                    -- Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                    Gui.Color.Value = Color3.fromRGB(206, 206, 172)
                     -- statue.Configuration.userId.Value = id
-                    statue.Tags.Container.pName.Text = name
+                    -- statue.Tags.Container.pName.Text = name
                     module.setHumanoid(id, statue)
+                    winnerNameTextLabel.Text = name
+                    winnerScoreTextLabel.Text = statsname
                 end
             end
         end
