@@ -26,15 +26,15 @@ function PlayerStatManager:ChangeStat(player, statName, value)
 end
 
 -- Function that other scripts can call to change a player's stats
-function PlayerStatManager:ChangeGameState(player, statName, value)
-    local playerUserId = nameStub .. player.UserId
-    assert(typeof(sessionData[playerUserId][statName]) == typeof(value), 'ChangeStat error: types do not match')
-    if typeof(sessionData[playerUserId][statName]) == 'number' then
-        sessionData[playerUserId][statName] = sessionData[playerUserId][statName] + value
-    else
-        sessionData[playerUserId][statName] = value
-    end
-end
+-- function PlayerStatManager:ChangeGameState(player, statName, value)
+--     local playerUserId = nameStub .. player.UserId
+--     assert(typeof(sessionData[playerUserId][statName]) == typeof(value), 'ChangeStat error: types do not match')
+--     if typeof(sessionData[playerUserId][statName]) == 'number' then
+--         sessionData[playerUserId][statName] = sessionData[playerUserId][statName] + value
+--     else
+--         sessionData[playerUserId][statName] = value
+--     end
+-- end
 
 -- Function to add player to the "sessionData" table
 local function setupPlayerData(player)
