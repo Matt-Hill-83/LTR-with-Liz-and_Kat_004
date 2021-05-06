@@ -70,12 +70,12 @@ function module.refreshBoard(dataStore, portal, delaySec)
         end
     )
     if delaySec then
-        delay(delaySec, module.closure(dataStore, portal, delaySec))
+        delay(delaySec, module.refreshBoardClosure(dataStore, portal, delaySec))
     end
     return success
 end
 
-function module.closure(dataStore, portal, delaySec)
+function module.refreshBoardClosure(dataStore, portal, delaySec)
     local function test()
         module.refreshBoard(dataStore, portal, delaySec)
     end
@@ -90,13 +90,12 @@ function module.initDataStore(props)
 
     -- Only set this delay if you want the updating to loop.
     -- updating is also done when upDateWordStore is called.
-
     local delayBase = 1000
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
     local startBase = 2
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
 
-    delay(startSec, module.closure(dataStore, portal, delaySec))
+    delay(startSec, module.refreshBoardClosure(dataStore, portal, delaySec))
 end
 
 function module.refreshBoardCurried(portal)
