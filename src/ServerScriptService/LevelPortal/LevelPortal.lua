@@ -102,7 +102,7 @@ function module.initDataStore(props)
     -- updating is also done when upDateWordStore is called.
     local delayBase = 1000
     local delaySec = math.random() + math.random(delayBase, delayBase * 1.5)
-    local startBase = 2
+    local startBase = 10
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
 
     delay(startSec, module.refreshBoardClosure(dataStore, portal, delaySec))

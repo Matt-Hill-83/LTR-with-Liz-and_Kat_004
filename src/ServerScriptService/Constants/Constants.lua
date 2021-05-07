@@ -56,8 +56,8 @@ end
 
 local devGameConfig = {
     transparency = true,
-    walkSpeed = 120
-    -- walkSpeed = 70
+    -- walkSpeed = 120
+    walkSpeed = 70
 }
 
 local prodGameConfig = {

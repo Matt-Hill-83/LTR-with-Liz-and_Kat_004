@@ -131,7 +131,12 @@ local function addRemoteObjects()
     if isStartPlace and experienceStore then
         -- experienceStore:SetAsync('LevelDefs', levelDefs)
     else
-        levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
+        local success, message =
+            pcall(
+            function()
+                levelDefs = experienceStore:GetAsync('LevelDefs', levelDefs) or {}
+            end
+        )
     end
 
     local levelOrderIndex = -99

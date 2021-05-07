@@ -70,7 +70,6 @@ local hexGearWords02 = {
     }
 }
 local hexGearWords03 = {
-    -- local hexGearWords03 = {
     words = {
         'HAY',
         --  break
@@ -406,7 +405,16 @@ local region09 = {
 
 local region10 = {
     -- hexGearConfigs = {hexGearWords01},
-    hexGearConfigs = {hexGearWords01, hexGearWords02, hexGearWords03},
+    hexGearConfigs = {
+        hexGearWords01,
+        hexGearWords02,
+        hexGearWords03,
+        hexGearWords03,
+        hexGearWords03,
+        hexGearWords03,
+        hexGearWords03,
+        hexGearWords03
+    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
