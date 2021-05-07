@@ -108,6 +108,9 @@ function module.getLetterMatrix(props)
     local levelConfig = props.levelConfig
     local numRods = props.numRods
 
+    if not levelConfig.getTargetWords then
+        return {}
+    end
     local signTargetWords = levelConfig.getTargetWords()[1]
     local words = {}
     for _, word in ipairs(signTargetWords) do
