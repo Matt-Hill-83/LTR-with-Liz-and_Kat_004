@@ -3,6 +3,26 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 
 local module = {}
 
+local tallWalls = {
+    thickness = 1.1,
+    height = 16,
+    wallProps = {
+        Transparency = 0.8,
+        -- Transparency = 1,
+        BrickColor = BrickColor.new('Alder'),
+        Material = Enum.Material.Concrete,
+        CanCollide = true
+    },
+    shortHeight = 2,
+    shortWallProps = {
+        -- Transparency = 1,
+        Transparency = 0,
+        BrickColor = BrickColor.new('Bright blue'),
+        Material = Enum.Material.Cobblestone,
+        CanCollide = true
+    }
+}
+
 local hexGearWords01 = {
     words = {
         'CAT',
@@ -86,29 +106,29 @@ local hexGearWords03 = {
 
 local dummy01 = {
     material = Enum.Material.Glacier,
-    bridgeConfigs = {
-        {
-            invisiWallProps = {
-                thickness = 1.1,
-                height = 16,
-                wallProps = {
-                    Transparency = 0.8,
-                    -- Transparency = 1,
-                    BrickColor = BrickColor.new('Alder'),
-                    Material = Enum.Material.Concrete,
-                    CanCollide = true
-                },
-                shortHeight = 2,
-                shortWallProps = {
-                    -- Transparency = 1,
-                    Transparency = 0,
-                    BrickColor = BrickColor.new('Bright blue'),
-                    Material = Enum.Material.Cobblestone,
-                    CanCollide = true
-                }
-            }
-        }
-    },
+    -- bridgeConfigs = {
+    --     {
+    --         invisiWallProps = {
+    --             thickness = 1.1,
+    --             height = 32,
+    --             wallProps = {
+    --                 Transparency = 0.8,
+    --                 -- Transparency = 1,
+    --                 BrickColor = BrickColor.new('Alder'),
+    --                 Material = Enum.Material.Concrete,
+    --                 CanCollide = true
+    --             },
+    --             shortHeight = 2,
+    --             shortWallProps = {
+    --                 -- Transparency = 1,
+    --                 Transparency = 0,
+    --                 BrickColor = BrickColor.new('Bright blue'),
+    --                 Material = Enum.Material.Cobblestone,
+    --                 CanCollide = true
+    --             }
+    --         }
+    --     }
+    -- },
     statueConfigs = {
         Liz = {
             sentence = {'I', 'SEE', 'A', 'CAT'},
@@ -170,44 +190,29 @@ local region002 = {
             }
         }
     },
-    invisiWallProps = {
-        thickness = 1.1,
-        height = 16,
-        wallProps = {
-            Transparency = 0.8,
-            -- Transparency = 1,
-            BrickColor = BrickColor.new('Alder'),
-            Material = Enum.Material.Concrete,
-            CanCollide = true
-        },
-        shortHeight = 2,
-        shortWallProps = {
-            -- Transparency = 1,
-            Transparency = 0,
-            BrickColor = BrickColor.new('Bright blue'),
-            Material = Enum.Material.Cobblestone,
-            CanCollide = true
-        }
-    },
+    invisiWallProps = tallWalls,
+    -- invisiWallProps = {
+    --     thickness = 1.1,
+    --     height = 16,
+    --     wallProps = {
+    --         Transparency = 0.8,
+    --         -- Transparency = 1,
+    --         BrickColor = BrickColor.new('Alder'),
+    --         Material = Enum.Material.Concrete,
+    --         CanCollide = true
+    --     },
+    --     shortHeight = 2,
+    --     shortWallProps = {
+    --         -- Transparency = 1,
+    --         Transparency = 0,
+    --         BrickColor = BrickColor.new('Bright blue'),
+    --         Material = Enum.Material.Cobblestone,
+    --         CanCollide = true
+    --     }
+    -- },
     bridgeConfigs = {
-        invisiWallProps = {
-            thickness = 1.1,
-            height = 16,
-            wallProps = {
-                Transparency = 0.8,
-                -- Transparency = 1,
-                BrickColor = BrickColor.new('Alder'),
-                Material = Enum.Material.Concrete,
-                CanCollide = true
-            },
-            shortHeight = 2,
-            shortWallProps = {
-                -- Transparency = 1,
-                Transparency = 0,
-                BrickColor = BrickColor.new('Bright blue'),
-                Material = Enum.Material.Cobblestone,
-                CanCollide = true
-            }
+        {
+            invisiWallProps = tallWalls
         }
     },
     orbiterConfigs = {
@@ -287,27 +292,29 @@ local dummyRegion = {
     end
 }
 
-module.bridgeConfigs = {
-    invisiWallProps = {
-        thickness = 1.1,
-        height = 16,
-        wallProps = {
-            Transparency = 0.8,
-            -- Transparency = 1,
-            BrickColor = BrickColor.new('Alder'),
-            Material = Enum.Material.Concrete,
-            CanCollide = true
-        },
-        shortHeight = 2,
-        shortWallProps = {
-            -- Transparency = 1,
-            Transparency = 0,
-            BrickColor = BrickColor.new('Bright blue'),
-            Material = Enum.Material.Cobblestone,
-            CanCollide = true
-        }
-    }
-}
+-- module.bridgeConfigs = {
+--     {
+--         invisiWallProps = {
+--             thickness = 1.1,
+--             height = 16,
+--             wallProps = {
+--                 Transparency = 0.8,
+--                 -- Transparency = 1,
+--                 BrickColor = BrickColor.new('Alder'),
+--                 Material = Enum.Material.Concrete,
+--                 CanCollide = true
+--             },
+--             shortHeight = 2,
+--             shortWallProps = {
+--                 -- Transparency = 1,
+--                 Transparency = 0,
+--                 BrickColor = BrickColor.new('Bright blue'),
+--                 Material = Enum.Material.Cobblestone,
+--                 CanCollide = true
+--             }
+--         }
+--     }
+-- }
 
 module.regions = {
     region001,
