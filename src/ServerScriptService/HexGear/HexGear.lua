@@ -22,14 +22,32 @@ function module.initHexGears(props)
         if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
             local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
+            Utils.sortListByObjectKey(hexes, 'Name')
 
             local test = {unpack(hexes, 1, 5)}
+
+            local filteredHexes = {}
+            for _, hex in ipairs(hexes) do
+                if hex.Name ~= '0' then
+                    table.insert(filteredHexes, hex)
+                end
+            end
+
+            print('filteredHexes' .. ' - start')
+            print(filteredHexes)
+
             -- for i, hex in ipairs(test) do
-            for i, hex in ipairs(hexes) do
+            for i, hex in ipairs(filteredHexes) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
 
-                local word = config.words[i] or config.words[1]
+                -- local word = config.words[i] or config.words[1]
+                local word = config.words[i]
+
+                if not word then
+                    break
+                end
+
                 newPositioner.Parent = hex
                 newPositioner.Name = word
 

@@ -141,9 +141,9 @@ local dummyRegion = {
                 'BAT',
                 'HAT'
             }
-        },
-        hexGearWords02,
-        hexGearWords03
+        }
+        -- hexGearWords02,
+        -- hexGearWords03
     },
     orbiterConfigs = {
         {
