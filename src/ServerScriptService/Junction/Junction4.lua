@@ -63,7 +63,7 @@ function module.initJunctions(props)
             newHex.Parent = positioner.Parent
 
             CS:AddTag(newHex, 'Hex_32')
-            newHex.Name = positioner.Name
+            newHex.Name = positioner.Parent.Name
 
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 

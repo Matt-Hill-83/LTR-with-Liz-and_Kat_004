@@ -135,11 +135,22 @@ local region001 = {
 }
 
 local region002 = {
+    hexGearConfigs = {
+        {
+            words = {
+                'CAT',
+                'BAT',
+                'HAT'
+            }
+        }
+        -- hexGearWords02,
+        -- hexGearWords03
+    },
     invisiWallProps = {
-        thickness = 1,
+        thickness = 1.1,
         height = 16,
         wallProps = {
-            Transparency = 0,
+            Transparency = 0.8,
             -- Transparency = 1,
             BrickColor = BrickColor.new('Alder'),
             Material = Enum.Material.Concrete,
