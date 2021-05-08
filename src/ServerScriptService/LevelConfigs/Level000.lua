@@ -421,10 +421,10 @@ local region10 = {
             numBlocks = 12,
             angularVelocity = 0.8,
             -- diameter = 32,
-            discTransparency = 0,
+            discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'ten',
+            singleWord = 'ISEEAFOXINABOX',
             discHeight = 1
         }
     },
