@@ -1,4 +1,5 @@
 local Sss = game:GetService('ServerScriptService')
+local CS = game:GetService('CollectionService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
@@ -14,9 +15,10 @@ local module = {}
 
 function module.initJunctions(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
     local positionerName = props.positionerName
     local hexTemplate = props.hexTemplate
+
+    local levelConfig = props.levelConfig
     local hexConfigs = levelConfig.hexIslandConfigs
 
     local template = Utils.getFromTemplates(hexTemplate)
@@ -28,18 +30,21 @@ function module.initJunctions(props)
     if not hexIslandFolderBox then
         return
     end
+
     local hexIslandFolders = hexIslandFolderBox:getChildren()
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
+    -- create bridges
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
         local bridgeConfigs = hexConfig.bridgeConfigs or {}
 
         -- if the 1st letter starts with c
-        local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
+        -- local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
 
         -- if the folder starts with a c, use a litle bridge
-        local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
+        local bridgeTemplate = 'Bridge_32'
+        -- local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
         Bridge.initBridges_64(
             {
                 parentFolder = hexIslandFolder,
@@ -51,16 +56,14 @@ function module.initJunctions(props)
     end
 
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
-        -- local hexConfig = hexConfigs[hexIndex] or {}
-        -- local orbiterConfigs = hexConfig.orbiterConfigs or nil
-
-        -- LetterOrbiter.initLetterOrbiter({parentFolder = hexIslandFolder, orbiterConfigs = orbiterConfigs})
-
         local positioners = Utils.getDescendantsByName(hexIslandFolder, positionerName)
+
         for posIndex, positioner in ipairs(positioners) do
             local newHex = template:Clone()
             newHex.Parent = positioner.Parent
-            -- local newHexPart = newHex.PrimaryPart
+
+            CS:AddTag(newHex, 'Hex_32')
+            newHex.Name = positioner.Name
 
             local freeParts = Utils.freeAnchoredParts({item = newHex})
 
@@ -108,7 +111,7 @@ function module.initJunctions(props)
             end
 
             local function getWallProps(wall)
-                local invisiWallProps = {
+                local defaultInvisiWallProps = {
                     thickness = 1,
                     height = 4,
                     wallProps = {
@@ -125,9 +128,11 @@ function module.initJunctions(props)
                         BrickColor = BrickColor.new('Plum'),
                         Material = Enum.Material.Cobblestone,
                         CanCollide = true
-                    },
-                    part = wall
+                    }
                 }
+                local invisiWallProps =
+                    levelConfig.invisiWallProps or hexConfigs.invisiWallProps or defaultInvisiWallProps
+                invisiWallProps.part = wall
                 return invisiWallProps
             end
 

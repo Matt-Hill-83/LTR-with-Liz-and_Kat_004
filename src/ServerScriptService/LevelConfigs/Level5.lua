@@ -106,7 +106,54 @@ local dummy01 = {
     }
 }
 
-local region01 = {
+local region001 = {
+    invisiWallProps = nil,
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CAT',
+            discHeight = 1
+        }
+    },
+    hexIslandConfigs = {
+        dummy01,
+        dummy01
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'CAT', target = 3, found = 0}
+            }
+        }
+    end
+}
+
+local region002 = {
+    invisiWallProps = {
+        thickness = 1,
+        height = 16,
+        wallProps = {
+            Transparency = 0,
+            -- Transparency = 1,
+            BrickColor = BrickColor.new('Alder'),
+            Material = Enum.Material.Concrete,
+            CanCollide = true
+        },
+        shortHeight = 1,
+        shortWallProps = {
+            -- Transparency = 1,
+            Transparency = 0,
+            BrickColor = BrickColor.new('Plum'),
+            Material = Enum.Material.Cobblestone,
+            CanCollide = true
+        }
+    },
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -180,7 +227,8 @@ local dummyRegion = {
 }
 
 module.regions = {
-    region01,
+    region001,
+    region002,
     dummyRegion,
     dummyRegion,
     dummyRegion,
