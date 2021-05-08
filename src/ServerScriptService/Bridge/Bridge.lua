@@ -119,9 +119,9 @@ function module.createBridge2(props)
         bridgeTop.Transparency = 0
     end
 
-    module.createBridgeWalls(bridge1)
-    module.createBridgeWalls(bridge2)
-    module.createBridgeWalls(newBridge)
+    module.createBridgeWalls(bridge1, bridgeConfig)
+    module.createBridgeWalls(bridge2, bridgeConfig)
+    module.createBridgeWalls(newBridge, bridgeConfig)
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
@@ -138,18 +138,42 @@ function module.createBridge2(props)
     return newBridge
 end
 
-function module.createBridgeWalls(bridge)
+function module.createBridgeWalls(bridge, bridgeConfig)
     if bridge.PrimaryPart.Size.Z < 2 then
         return
     end
 
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
+    -- local function getWallProps(wall)
+    --     local invisiWallProps = {
+    --         thickness = 1,
+    --         height = 4,
+    --         -- height = 16,
+    --         wallProps = {
+    --             Transparency = 0.8,
+    --             -- Transparency = 1,
+    --             BrickColor = BrickColor.new('Alder'),
+    --             Material = Enum.Material.Concrete,
+    --             CanCollide = true
+    --         },
+    --         shortHeight = 1,
+    --         shortWallProps = {
+    --             -- Transparency = 1,
+    --             Transparency = 0,
+    --             BrickColor = BrickColor.new('Plum'),
+    --             Material = Enum.Material.Cobblestone,
+    --             CanCollide = true
+    --         },
+    --         part = wall
+    --     }
+    --     return invisiWallProps
+    -- end
+
     local function getWallProps(wall)
-        local invisiWallProps = {
+        local defaultInvisiWallProps = {
             thickness = 1,
             height = 4,
-            -- height = 16,
             wallProps = {
                 Transparency = 0.8,
                 -- Transparency = 1,
@@ -164,9 +188,10 @@ function module.createBridgeWalls(bridge)
                 BrickColor = BrickColor.new('Plum'),
                 Material = Enum.Material.Cobblestone,
                 CanCollide = true
-            },
-            part = wall
+            }
         }
+        local invisiWallProps = bridgeConfig.invisiWallProps or defaultInvisiWallProps
+        invisiWallProps.part = wall
         return invisiWallProps
     end
 
@@ -254,8 +279,11 @@ function module.initBridges_64(props)
     local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #rods})
 
     local bridges = {}
+    print('bridgeConfigs' .. ' - start====================>>>')
+    print(bridgeConfigs)
     for rodIndex, rod in ipairs(rods) do
-        local bridgeConfig = bridgeConfigs[rodIndex] or {}
+        local bridgeConfig = bridgeConfigs[1] or {}
+        -- local bridgeConfig = bridgeConfigs[rodIndex] or {}
 
         local rodValid = module.rodIsValid(rod)
 

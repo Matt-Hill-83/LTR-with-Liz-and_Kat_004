@@ -22,31 +22,17 @@ function module.initHexGears(props)
         if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
 
-            -- local hexes =
-            --     Utils.getInstancesByNameStub(
-            --     {
-            --         nameStub = 'Hex_32_32_v1',
-            --         parent = hexGear
-            --     }
-            -- )
-
-            -- local hexes = Utils.getDescendantsByName(hexGear, 'Hex_32_32_v1')
-
             local hexes = Utils.getByTagInParent({parent = hexGear, tag = 'Hex_32'})
 
             Utils.sortListByObjectKey(hexes, 'Name')
 
             local filteredHexes = {}
             for _, hex in ipairs(hexes) do
-                if hex.Name ~= '0' then
+                local firstChar = hex.Name:sub(1, 1)
+                if firstChar ~= '0' then
                     table.insert(filteredHexes, hex)
                 end
             end
-
-            --  filteredHexes = {unpack(filteredHexes, 1, 5)}
-
-            print('filteredHexes' .. ' - start')
-            print(filteredHexes)
 
             -- for i, hex in ipairs(test) do
             for i, hex in ipairs(filteredHexes) do

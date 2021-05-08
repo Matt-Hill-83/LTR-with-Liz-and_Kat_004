@@ -86,6 +86,29 @@ local hexGearWords03 = {
 
 local dummy01 = {
     material = Enum.Material.Glacier,
+    bridgeConfigs = {
+        {
+            invisiWallProps = {
+                thickness = 1.1,
+                height = 16,
+                wallProps = {
+                    Transparency = 0.8,
+                    -- Transparency = 1,
+                    BrickColor = BrickColor.new('Alder'),
+                    Material = Enum.Material.Concrete,
+                    CanCollide = true
+                },
+                shortHeight = 2,
+                shortWallProps = {
+                    -- Transparency = 1,
+                    Transparency = 0,
+                    BrickColor = BrickColor.new('Bright blue'),
+                    Material = Enum.Material.Cobblestone,
+                    CanCollide = true
+                }
+            }
+        }
+    },
     statueConfigs = {
         Liz = {
             sentence = {'I', 'SEE', 'A', 'CAT'},
@@ -137,14 +160,15 @@ local region001 = {
 local region002 = {
     hexGearConfigs = {
         {
+            words = {}
+        },
+        {
             words = {
-                'CAT',
-                'BAT',
-                'HAT'
+                'FOX',
+                'BOX',
+                'LOX'
             }
         }
-        -- hexGearWords02,
-        -- hexGearWords03
     },
     invisiWallProps = {
         thickness = 1.1,
@@ -156,13 +180,34 @@ local region002 = {
             Material = Enum.Material.Concrete,
             CanCollide = true
         },
-        shortHeight = 1,
+        shortHeight = 2,
         shortWallProps = {
             -- Transparency = 1,
             Transparency = 0,
-            BrickColor = BrickColor.new('Plum'),
+            BrickColor = BrickColor.new('Bright blue'),
             Material = Enum.Material.Cobblestone,
             CanCollide = true
+        }
+    },
+    bridgeConfigs = {
+        invisiWallProps = {
+            thickness = 1.1,
+            height = 16,
+            wallProps = {
+                Transparency = 0.8,
+                -- Transparency = 1,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Concrete,
+                CanCollide = true
+            },
+            shortHeight = 2,
+            shortWallProps = {
+                -- Transparency = 1,
+                Transparency = 0,
+                BrickColor = BrickColor.new('Bright blue'),
+                Material = Enum.Material.Cobblestone,
+                CanCollide = true
+            }
         }
     },
     orbiterConfigs = {
@@ -185,7 +230,12 @@ local region002 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CAT', target = 3, found = 0}
+                {word = 'FOX', target = 3, found = 0}
+            },
+            {
+                {word = 'FOX', target = 1, found = 0},
+                {word = 'LOX', target = 1, found = 0},
+                {word = 'BOX', target = 1, found = 0}
             }
         }
     end
@@ -235,6 +285,28 @@ local dummyRegion = {
             }
         }
     end
+}
+
+module.bridgeConfigs = {
+    invisiWallProps = {
+        thickness = 1.1,
+        height = 16,
+        wallProps = {
+            Transparency = 0.8,
+            -- Transparency = 1,
+            BrickColor = BrickColor.new('Alder'),
+            Material = Enum.Material.Concrete,
+            CanCollide = true
+        },
+        shortHeight = 2,
+        shortWallProps = {
+            -- Transparency = 1,
+            Transparency = 0,
+            BrickColor = BrickColor.new('Bright blue'),
+            Material = Enum.Material.Cobblestone,
+            CanCollide = true
+        }
+    }
 }
 
 module.regions = {
