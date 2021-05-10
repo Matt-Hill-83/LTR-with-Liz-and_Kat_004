@@ -74,8 +74,10 @@ function module.donGrabberAccessory(player, grabberProps)
     local tagName = 'HorseAccessory'
 
     grabberProps = grabberProps or {}
-    local accessory = grabberProps.grabber.Reward:GetChildren()[1]
-    local word = accessory.Name
+    local reward = grabberProps.grabber.Reward
+    local accessory = Utils.getFirstDescendantByType(reward, 'Accessory')
+    -- local accessory = grabberProps.grabber.Reward:GetChildren()[1]
+    local accessoryName = accessory.Name
 
     local character = player.Character or player.CharacterAdded:Wait()
     local kids = character:GetChildren()
@@ -85,7 +87,7 @@ function module.donGrabberAccessory(player, grabberProps)
         local tagValue = kid:GetAttribute(tagName)
         if tagValue then
             -- if character already has grabber, return
-            if tagValue == word then
+            if tagValue == accessoryName then
                 hasThisGrabber = true
             else
                 -- if character has other grabber, delete it
@@ -97,13 +99,23 @@ function module.donGrabberAccessory(player, grabberProps)
     if not hasThisGrabber then
         -- add new grabber
         local humanoid = character:WaitForChild('Humanoid')
-        local template = accessory
 
-        local acc = template:Clone()
+        local acc = accessory:Clone()
         CS:AddTag(acc, tagName)
-        acc:SetAttribute(tagName, word)
+        acc:SetAttribute(tagName, accessoryName)
         humanoid:AddAccessory(acc)
+
         acc.Handle.Anchored = false
+
+        local breakWeld = Utils.getFirstDescendantByName(acc, 'BreakWeld')
+
+        if breakWeld then
+            print('break weld')
+            print('break weld')
+            print('break weld')
+            print('break weld')
+            breakWeld:Destroy()
+        end
     end
 end
 
