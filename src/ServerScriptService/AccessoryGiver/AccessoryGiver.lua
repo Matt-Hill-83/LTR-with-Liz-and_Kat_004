@@ -11,11 +11,18 @@ function module.initAccessoryGivers(props)
     local configs = {
         {
             positionerTag = 'FoxGrabberPositioner',
-            templateName = 'FoxGrabberTemplate_001'
+            templateName = 'FoxGrabberTemplate_001',
+            signText = 'FOX'
         },
         {
             positionerTag = 'CorgiGrabberPositioner',
-            templateName = 'CorgiGrabberTemplate_001'
+            templateName = 'CorgiGrabberTemplate_001',
+            signText = 'DOG'
+        },
+        {
+            positionerTag = 'Positioner-Grabber-Horse-Uni',
+            templateName = 'UniGrabberTemplate_001',
+            signText = 'UNI'
         }
     }
 
@@ -50,8 +57,7 @@ function module.initAccessoryGiver(props, config)
                 }
             }
         )
-        module.initHorseSwap({grabber = newGrabber})
-
+        module.initHorseSwap({grabber = newGrabber, config = config})
         positioner:Destroy()
     end
 end
@@ -64,7 +70,12 @@ end
 
 function module.initHorseSwap(props)
     local grabber = props.grabber
+    local config = props.config
+
     local hitBox = Utils.getFirstDescendantByName(grabber, 'HitBox')
+    local sign = Utils.getFirstDescendantByName(grabber, 'sign')
+    local textLabel = Utils.getFirstDescendantByName(sign, 'TextLabel')
+    textLabel.Text = config.signText
 
     local grabberProps = {grabber = grabber}
     hitBox.Touched:Connect(
