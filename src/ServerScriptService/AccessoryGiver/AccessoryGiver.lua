@@ -10,8 +10,12 @@ local module = {}
 function module.initAccessoryGivers(props)
     local configs = {
         {
-            positionerTag = 'AccessoryGrabberPositioner',
-            templateName = 'AccessoryGrabberTemplate_001'
+            positionerTag = 'FoxGrabberPositioner',
+            templateName = 'FoxGrabberTemplate_001'
+        },
+        {
+            positionerTag = 'CorgiGrabberPositioner',
+            templateName = 'CorgiGrabberTemplate_001'
         }
     }
 
@@ -29,7 +33,7 @@ function module.initAccessoryGiver(props, config)
     local positioners = Utils.getByTagInParent({parent = parentFolder, tag = positionerTag})
     Utils.sortListByObjectKey(positioners, 'Name')
 
-    for posIndex, positioner in ipairs(positioners) do
+    for _, positioner in ipairs(positioners) do
         local newGrabber =
             AddModelFromPositioner.addModel(
             {
@@ -44,6 +48,8 @@ function module.initAccessoryGiver(props, config)
             }
         )
         module.initHorseSwap({grabber = newGrabber})
+
+        positioner:Destroy()
     end
 end
 
@@ -70,12 +76,12 @@ function module.initHorseSwap(props)
 end
 
 function module.donGrabberAccessory(player, grabberProps)
-    print('donGrabberAccessory')
+    -- print('donGrabberAccessory')
     local tagName = 'HorseAccessory'
 
     grabberProps = grabberProps or {}
-    local reward = grabberProps.grabber.Reward
-    local accessory = Utils.getFirstDescendantByType(reward, 'Accessory')
+    -- local reward = grabberProps.grabber.Reward
+    local accessory = Utils.getFirstDescendantByType(grabberProps.grabber, 'Accessory')
     -- local accessory = grabberProps.grabber.Reward:GetChildren()[1]
     local accessoryName = accessory.Name
 
@@ -105,16 +111,16 @@ function module.donGrabberAccessory(player, grabberProps)
         acc:SetAttribute(tagName, accessoryName)
         humanoid:AddAccessory(acc)
 
-        acc.Handle.Anchored = false
+        -- acc.Handle.Anchored = false
 
         local breakWeld = Utils.getFirstDescendantByName(acc, 'BreakWeld')
 
         if breakWeld then
-            print('break weld')
-            print('break weld')
-            print('break weld')
-            print('break weld')
-            breakWeld:Destroy()
+        -- print('break weld')
+        -- print('break weld')
+        -- print('break weld')
+        -- print('break weld')
+        -- breakWeld:Destroy()
         end
     end
 end
