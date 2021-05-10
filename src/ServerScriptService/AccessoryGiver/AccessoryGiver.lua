@@ -19,12 +19,13 @@ function module.initAccessoryGivers(props)
         }
     }
 
-    for _, config in ipairs(configs) do
+    for count, config in ipairs(configs) do
         module.initAccessoryGiver(props, config)
     end
 end
 
 function module.initAccessoryGiver(props, config)
+    print('initAccGiver======================>>')
     local parentFolder = props.parentFolder
 
     local positionerTag = config.positionerTag
@@ -34,6 +35,8 @@ function module.initAccessoryGiver(props, config)
     Utils.sortListByObjectKey(positioners, 'Name')
 
     for _, positioner in ipairs(positioners) do
+        print('positioner' .. ' - start')
+        print(positioner)
         local newGrabber =
             AddModelFromPositioner.addModel(
             {
@@ -49,7 +52,7 @@ function module.initAccessoryGiver(props, config)
         )
         module.initHorseSwap({grabber = newGrabber})
 
-        -- positioner:Destroy()
+        positioner:Destroy()
     end
 end
 
@@ -99,20 +102,22 @@ function module.donGrabberAccessory(player, grabberProps)
         end
     end
 
-    if not hasThisGrabber then
-        -- add new grabber
-        local humanoid = character:WaitForChild('Humanoid')
+    if hasThisGrabber then
+        return
+    end
 
-        local acc = accessory:Clone()
-        CS:AddTag(acc, tagName)
-        acc:SetAttribute(tagName, accessoryName)
-        humanoid:AddAccessory(acc)
+    -- add new grabber
+    local humanoid = character:WaitForChild('Humanoid')
 
-        local breakWeld = Utils.getFirstDescendantByName(acc, 'BreakWeld')
+    local acc = accessory:Clone()
+    CS:AddTag(acc, tagName)
+    acc:SetAttribute(tagName, accessoryName)
+    humanoid:AddAccessory(acc)
 
-        if breakWeld then
-            breakWeld:Destroy()
-        end
+    local breakWeld = Utils.getFirstDescendantByName(acc, 'BreakWeld')
+
+    if breakWeld then
+        breakWeld:Destroy()
     end
 end
 
