@@ -7,10 +7,24 @@ local AddModelFromPositioner = require(Sss.Source.AddModelFromPositioner.AddMode
 
 local module = {}
 
-function module.initAccessoryGiver(props)
+function module.initAccessoryGivers(props)
+    local configs = {
+        {
+            positionerTag = 'AccessoryGrabberPositioner',
+            templateName = 'AccessoryGrabberTemplate_001'
+        }
+    }
+
+    for _, config in ipairs(configs) do
+        module.initAccessoryGiver(props, config)
+    end
+end
+
+function module.initAccessoryGiver(props, config)
     local parentFolder = props.parentFolder
-    local positionerTag = props.positionerTag or 'AccessoryGrabberPositioner'
-    local templateName = props.templateName or 'AccessoryGrabberTemplate_001'
+
+    local positionerTag = config.positionerTag
+    local templateName = config.templateName
 
     local positioners = Utils.getByTagInParent({parent = parentFolder, tag = positionerTag})
     Utils.sortListByObjectKey(positioners, 'Name')

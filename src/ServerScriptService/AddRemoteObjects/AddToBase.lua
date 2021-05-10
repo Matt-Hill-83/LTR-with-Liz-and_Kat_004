@@ -242,7 +242,7 @@ local function addRemoteObjects()
             Entrance.initRunFasts(region)
         end
         LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = config})
-        AccessoryGiver.initAccessoryGiver({parentFolder = region, levelConfig = config})
+        AccessoryGiver.initAccessoryGivers({parentFolder = region, levelConfig = config})
     end
 
     TestArea.configTestArea({parentFolder = level})
