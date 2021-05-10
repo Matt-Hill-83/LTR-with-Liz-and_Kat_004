@@ -394,6 +394,34 @@ local function onTouchHuman(touchedBlock, callBack)
     return closure
 end
 
+function module.onTouchHuman2(props)
+    local touchedBlock = props.touchedBlock
+    local callBack = props.callBack
+    print('callBack' .. ' - start')
+    print(callBack)
+
+    local db = {value = false}
+
+    -- use a closure to wrap function with additional functionality
+    local function closure(otherPart)
+        if not otherPart.Parent then
+            return
+        end
+        local humanoid = otherPart.Parent:FindFirstChildWhichIsA('Humanoid')
+        if not humanoid then
+            return
+        end
+
+        if not db.value then
+            db.value = true
+            local player = module.getPlayerFromHumanoid(humanoid)
+            callBack({touchedBlock = touchedBlock, player = player})
+            db.value = false
+        end
+    end
+    return closure
+end
+
 function getUuid()
     return HttpService:GenerateGUID(false)
 end
