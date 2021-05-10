@@ -29,8 +29,6 @@ local function configWordLetters(props)
     local spacingIncrementX = letterGapX + letterBlockTemplate.Size.X
 
     local template = Utils.getFromTemplates('Grabber_normal')
-    -- local template = Utils.getFromTemplates('LB_2_blank')
-    -- local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_2_blank')
 
     local lettersInWord = {}
     for letterIndex = 1, #word do
@@ -285,7 +283,7 @@ function module.donGrabberAccessory(player, grabberConfig)
             if tagValue == word then
                 return
             else
-                -- if character ahs other grabber, delete it
+                -- if character has other grabber, delete it
                 kid:Destroy()
             end
         end

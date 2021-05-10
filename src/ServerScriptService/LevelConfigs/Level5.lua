@@ -191,28 +191,21 @@ local region002 = {
         }
     },
     invisiWallProps = tallWalls,
-    -- invisiWallProps = {
-    --     thickness = 1.1,
-    --     height = 16,
-    --     wallProps = {
-    --         Transparency = 0.8,
-    --         -- Transparency = 1,
-    --         BrickColor = BrickColor.new('Alder'),
-    --         Material = Enum.Material.Concrete,
-    --         CanCollide = true
-    --     },
-    --     shortHeight = 2,
-    --     shortWallProps = {
-    --         -- Transparency = 1,
-    --         Transparency = 0,
-    --         BrickColor = BrickColor.new('Bright blue'),
-    --         Material = Enum.Material.Cobblestone,
-    --         CanCollide = true
-    --     }
-    -- },
-    bridgeConfigs = {
+    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    strayRegions = {
         {
-            invisiWallProps = tallWalls
+            -- words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
+            words = {'FOX'},
+            randomLetterMultiplier = 1,
+            -- maxLetters = 6,
+            useArea = true
+        },
+        {
+            -- words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
+            words = {'FOX', 'BOX', 'LOX'},
+            randomLetterMultiplier = 1,
+            -- maxLetters = 6,
+            useArea = true
         }
     },
     orbiterConfigs = {

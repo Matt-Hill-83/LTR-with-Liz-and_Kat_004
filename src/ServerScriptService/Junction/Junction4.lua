@@ -38,17 +38,9 @@ function module.initJunctions(props)
     for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
         local hexConfig = hexConfigs[hexIndex] or {}
 
-        print('hexConfig.bridgeConfigs' .. ' - start')
-        print(hexConfig.bridgeConfigs)
-
         local bridgeConfigs = hexConfig.bridgeConfigs or levelConfig.bridgeConfigs or {}
 
-        -- if the 1st letter starts with c
-        -- local fistLetterOfFolder = string.sub(hexIslandFolder.Name, 1, 1)
-
-        -- if the folder starts with a c, use a litle bridge
         local bridgeTemplate = 'Bridge_32'
-        -- local bridgeTemplate = fistLetterOfFolder == 'c' and 'Bridge2' or 'Bridge_32'
         Bridge.initBridges_64(
             {
                 parentFolder = hexIslandFolder,

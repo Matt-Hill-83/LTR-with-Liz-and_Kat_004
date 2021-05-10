@@ -45,6 +45,7 @@ function module.createBridge2(props)
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
     local char = props.char
+    local straysOnBridges = bridgeConfig.straysOnBridges
 
     local offsetY = 15
     -- local offsetY = 12
@@ -126,7 +127,7 @@ function module.createBridge2(props)
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
-    if newBridge.PrimaryPart.Size.Z > 2 then
+    if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
         SingleStrays.initSingleStrays(
             {
                 parentFolder = newBridge,
@@ -279,8 +280,6 @@ function module.initBridges_64(props)
     local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #rods})
 
     local bridges = {}
-    print('bridgeConfigs' .. ' - start====================>>>')
-    print(bridgeConfigs)
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[1] or {}
         -- local bridgeConfig = bridgeConfigs[rodIndex] or {}

@@ -7,6 +7,7 @@ local soundConstants = require(Sss.Source.Constants.Const_05_Audio)
 local LevelConfigs = require(Sss.Source.LevelConfigs.LevelConfigs)
 local ConfigRemoteEvents = require(Sss.Source.AddRemoteObjects.ConfigRemoteEvents)
 
+local AccessoryGiver = require(Sss.Source.AccessoryGiver.AccessoryGiver)
 local BlockDash = require(Sss.Source.BlockDash.BlockDash)
 local CardSwap = require(Sss.Source.CardSwap.CardSwap)
 local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
@@ -208,9 +209,7 @@ local function addRemoteObjects()
         end
 
         if strayLetterBlocks then
-            StrayLetterBlocks.initStraysInRegions(
-                {parentFolder = region, regionIndex = regionIndex, levelConfig = config}
-            )
+            StrayLetterBlocks.initStraysInRegions({parentFolder = region, levelConfig = config})
         end
 
         if junction4 then
@@ -243,6 +242,7 @@ local function addRemoteObjects()
             Entrance.initRunFasts(region)
         end
         LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = config})
+        AccessoryGiver.initAccessoryGiver({parentFolder = region, levelConfig = config})
     end
 
     TestArea.configTestArea({parentFolder = level})
