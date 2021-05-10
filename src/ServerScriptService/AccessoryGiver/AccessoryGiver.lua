@@ -45,15 +45,14 @@ function module.initAccessoryGiver(props)
     end
 end
 
--- function module.touchGrabberSwap(touchedPart, player)
---     module.donGrabberAccessory(player, {grabberTemplateName = 'Accessory-Fox'})
--- end
+function module.touchGrabberSwap(props)
+    local player = props.player
+    local grabberProps = props.enclosedProps
+    module.donGrabberAccessory(player, grabberProps)
+end
 
 function module.touchGrabberSwapClosure(grabberProps)
-    print('touchGrabberSwapClosure')
     local function closure(props)
-        print('props' .. ' - start')
-        print(props)
         local player = props.player
         local touchedBlock = props.touchedBlock
         module.donGrabberAccessory(player, grabberProps)
@@ -62,19 +61,28 @@ function module.touchGrabberSwapClosure(grabberProps)
 end
 
 function module.initHorseSwap(props)
-    print('initHorseSwap')
-    print('initHorseSwap')
-    print('initHorseSwap')
     local grabber = props.grabber
     local hitBox = Utils.getFirstDescendantByName(grabber, 'HitBox')
 
-    print('hitBox' .. ' - start')
-    print(hitBox)
-
     local grabberProps = {grabber = grabber}
     hitBox.Touched:Connect(
-        Utils.onTouchHuman2({touchedBlock = hitBox, callBack = module.touchGrabberSwapClosure(grabberProps)})
+        Utils.onTouchHuman2(
+            {
+                touchedBlock = hitBox,
+                callBack = module.touchGrabberSwap,
+                enclosedProps = grabberProps
+            }
+        )
     )
+    -- hitBox.Touched:Connect(
+    --     Utils.onTouchHuman2(
+    --         {
+    --             touchedBlock = hitBox,
+    --             callBack = module.touchGrabberSwapClosure(grabberProps),
+    --             enclosedProps = grabberProps
+    --         }
+    --     )
+    -- )
 end
 
 function module.donGrabberAccessory(player, grabberProps)

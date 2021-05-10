@@ -397,8 +397,7 @@ end
 function module.onTouchHuman2(props)
     local touchedBlock = props.touchedBlock
     local callBack = props.callBack
-    print('callBack' .. ' - start')
-    print(callBack)
+    local enclosedProps = props.enclosedProps
 
     local db = {value = false}
 
@@ -415,7 +414,7 @@ function module.onTouchHuman2(props)
         if not db.value then
             db.value = true
             local player = module.getPlayerFromHumanoid(humanoid)
-            callBack({touchedBlock = touchedBlock, player = player})
+            callBack({touchedBlock = touchedBlock, player = player, enclosedProps = enclosedProps})
             db.value = false
         end
     end
@@ -692,8 +691,6 @@ end
 function module.getFirstDescendantByName(parent, name)
     local model = parent:GetDescendants()
     if #model > 80000 then
-    -- print('getFirstDescendantByName')
-    -- print(#model)
     end
     for index, item in ipairs(model) do
         if item.Name == name then
