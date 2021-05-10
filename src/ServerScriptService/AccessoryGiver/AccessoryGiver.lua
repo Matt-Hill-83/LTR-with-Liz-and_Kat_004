@@ -49,7 +49,7 @@ function module.initAccessoryGiver(props, config)
         )
         module.initHorseSwap({grabber = newGrabber})
 
-        positioner:Destroy()
+        -- positioner:Destroy()
     end
 end
 
@@ -76,13 +76,10 @@ function module.initHorseSwap(props)
 end
 
 function module.donGrabberAccessory(player, grabberProps)
-    -- print('donGrabberAccessory')
     local tagName = 'HorseAccessory'
 
     grabberProps = grabberProps or {}
-    -- local reward = grabberProps.grabber.Reward
     local accessory = Utils.getFirstDescendantByType(grabberProps.grabber, 'Accessory')
-    -- local accessory = grabberProps.grabber.Reward:GetChildren()[1]
     local accessoryName = accessory.Name
 
     local character = player.Character or player.CharacterAdded:Wait()
@@ -111,16 +108,10 @@ function module.donGrabberAccessory(player, grabberProps)
         acc:SetAttribute(tagName, accessoryName)
         humanoid:AddAccessory(acc)
 
-        -- acc.Handle.Anchored = false
-
         local breakWeld = Utils.getFirstDescendantByName(acc, 'BreakWeld')
 
         if breakWeld then
-        -- print('break weld')
-        -- print('break weld')
-        -- print('break weld')
-        -- print('break weld')
-        -- breakWeld:Destroy()
+            breakWeld:Destroy()
         end
     end
 end
