@@ -9,15 +9,8 @@ local module = {}
 
 function module.initAccessoryGiver(props)
     local parentFolder = props.parentFolder
-    local positionerName = props.positionerName
-
-    local levelConfig = props.levelConfig
-
-    local positionerTag = 'AccessoryGrabberPositioner'
-    local templateName = 'AccessoryGrabberTemplate_001'
-    local grabberModelName = 'AccessoryGrabber_001'
-
-    local grabberModels = Utils.getDescendantsByName(parentFolder, grabberModelName)
+    local positionerTag = props.positionerTag or 'AccessoryGrabberPositioner'
+    local templateName = props.templateName or 'AccessoryGrabberTemplate_001'
 
     local positioners = Utils.getByTagInParent({parent = parentFolder, tag = positionerTag})
     Utils.sortListByObjectKey(positioners, 'Name')
@@ -36,12 +29,7 @@ function module.initAccessoryGiver(props)
                 }
             }
         )
-
-        -- local hitBox = positioner.PrimaryPart
-        local hitBox = Utils.getFirstDescendantByName(newGrabber, 'HitBox')
-        -- hitBox.Anchored = false
         module.initHorseSwap({grabber = newGrabber})
-        -- module.initHorseSwap({hitBox = hitBox, grabber = newGrabber})
     end
 end
 
@@ -49,15 +37,6 @@ function module.touchGrabberSwap(props)
     local player = props.player
     local grabberProps = props.enclosedProps
     module.donGrabberAccessory(player, grabberProps)
-end
-
-function module.touchGrabberSwapClosure(grabberProps)
-    local function closure(props)
-        local player = props.player
-        local touchedBlock = props.touchedBlock
-        module.donGrabberAccessory(player, grabberProps)
-    end
-    return closure
 end
 
 function module.initHorseSwap(props)
@@ -74,15 +53,6 @@ function module.initHorseSwap(props)
             }
         )
     )
-    -- hitBox.Touched:Connect(
-    --     Utils.onTouchHuman2(
-    --         {
-    --             touchedBlock = hitBox,
-    --             callBack = module.touchGrabberSwapClosure(grabberProps),
-    --             enclosedProps = grabberProps
-    --         }
-    --     )
-    -- )
 end
 
 function module.donGrabberAccessory(player, grabberProps)
@@ -92,7 +62,6 @@ function module.donGrabberAccessory(player, grabberProps)
     grabberProps = grabberProps or {}
     local accessory = grabberProps.grabber.Reward:GetChildren()[1]
     local word = accessory.Name
-    -- local word = grabberProps.grabberTemplateName
 
     local character = player.Character or player.CharacterAdded:Wait()
     local kids = character:GetChildren()
@@ -113,11 +82,8 @@ function module.donGrabberAccessory(player, grabberProps)
 
     if not hasThisGrabber then
         -- add new grabber
-        local grabberTemplateName = grabberProps.grabberTemplateName
-
         local humanoid = character:WaitForChild('Humanoid')
         local template = accessory
-        -- local template = Utils.getFromTemplates(grabberTemplateName)
 
         local acc = template:Clone()
         CS:AddTag(acc, tagName)
