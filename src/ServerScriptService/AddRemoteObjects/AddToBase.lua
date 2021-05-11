@@ -180,9 +180,6 @@ local function addRemoteObjects()
     local regions = regionsFolder:GetChildren()
     Utils.sortListByObjectKey(regions, 'Name')
 
-    print('regions' .. ' - start')
-    print(regions)
-
     local enabledItems = Constants.enabledItems
 
     local cardSwap = enabledItems.cardSwap
@@ -198,10 +195,6 @@ local function addRemoteObjects()
 
     -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
-        print('levelConfig' .. ' - start')
-        print(levelConfig)
-        print('region.Name' .. ' - start')
-        print(region.Name)
         local config = levelConfig.regions[region.Name]
 
         if cardSwap then

@@ -6,9 +6,9 @@ local words01 = {
     'PAT',
     'RAT',
     'SAT',
-    'FAT',
-    --  break
-    --  break
+    'FAT'
+}
+local words02 = {
     'CAP',
     'GAP',
     'LAP',
@@ -16,9 +16,9 @@ local words01 = {
     'SAP',
     'TAP',
     'RAP',
-    'ZAP',
-    --  break
-    --  break
+    'ZAP'
+}
+local words03 = {
     'VAN',
     'RAN',
     'CAN',
@@ -27,43 +27,39 @@ local words01 = {
     'TAN',
     'DAN'
 }
-local words02 = {
-    --  break
-    --  break
+local words04 = {
     'TAG',
     'RAG',
     'SAG',
     'WAG',
     'NAG',
-    'ZAG',
-    --  break
-    --  break
+    'ZAG'
+}
+local words05 = {
     'BAD',
     'DAD',
     'HAD',
     'MAD',
     'PAD',
-    'SAD',
-    --  break
-    --  break
+    'SAD'
+}
+local words06 = {
     'HAM',
     'JAM',
     'PAM',
     'SAM',
     'RAM',
-    'BAM',
-    --  break
-    --  break
+    'BAM'
+}
+local words07 = {
     'RAY',
     'BAY',
     'LAY',
     'MAY',
-    'PAY'
+    'PAY',
+    'HAY'
 }
-local words03 = {
-    'HAY',
-    --  break
-    --  break
+local words08 = {
     'FIG',
     'BIG',
     'DIG',
@@ -76,6 +72,11 @@ local words03 = {
 local module = {
     words01 = words01,
     words02 = words02,
-    words03 = words03
+    words04 = words04,
+    words03 = words03,
+    words05 = words05,
+    words06 = words06,
+    words07 = words07,
+    words08 = words08
 }
 return module
