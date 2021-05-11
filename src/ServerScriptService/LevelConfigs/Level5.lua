@@ -187,20 +187,6 @@ local region002 = {
                 'BOX',
                 'LOX'
             }
-        },
-        {
-            words = {
-                'FOX',
-                'BOX',
-                'LOX'
-            }
-        },
-        {
-            words = {
-                'FOX',
-                'BOX',
-                'LOX'
-            }
         }
     },
     invisiWallProps = tallWalls,
@@ -208,8 +194,8 @@ local region002 = {
     strayRegions = {
         {
             words = {'FOX'},
-            maxLetters = 6
-            -- useArea = true
+            -- maxLetters = 6
+            useArea = true
         }
     },
     orbiterConfigs = {

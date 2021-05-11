@@ -6,28 +6,6 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
-function module.initGrabbers(props)
-    local parentFolder = props.parentFolder
-
-    local positioners =
-        Utils.getByTagInParent(
-        {
-            parent = parentFolder,
-            tag = 'LetterGrabberPositioner'
-        }
-    )
-
-    for _, positioner in ipairs(positioners) do
-        local grabbersConfig = {
-            word = positioner.Name,
-            parentFolder = parentFolder,
-            positioner = positioner
-        }
-
-        LetterGrabber.initLetterGrabber(grabbersConfig)
-    end
-end
-
 -- this seems like a temporary thing to init some grabbers easily
 function module.initGrabbers2(props)
     local parentFolder = props.parentFolder

@@ -101,8 +101,8 @@ local function configWordLetters(props)
                 parent = letterPositioner,
                 child = newLetter,
                 offsetConfig = {
-                    useParentNearEdge = Vector3.new(-1, -1, -1),
-                    useChildNearEdge = Vector3.new(-1, -1, -1),
+                    useParentNearEdge = Vector3.new(0, -1, -1),
+                    useChildNearEdge = Vector3.new(0, -1, -1),
                     offsetAdder = Vector3.new(0, 0, letterPositionX)
                 }
             }
@@ -216,24 +216,33 @@ function module.initLetterGrabber(props)
     )
 
     if positioner then
-        local newCFrame =
-            Utils3.setCFrameFromDesiredEdgeOffset(
+        Utils3.setCFrameFromDesiredEdgeOffset2(
             {
                 parent = positioner,
-                child = newReplicatorPart,
+                childModel = newReplicator,
                 offsetConfig = {
-                    useParentNearEdge = Vector3.new(-1, -1, -1),
-                    useChildNearEdge = Vector3.new(-1, -1, -1),
+                    useParentNearEdge = Vector3.new(0, -1, 0),
+                    useChildNearEdge = Vector3.new(0, -1, 0),
                     offsetAdder = Vector3.new(0, 0, 0)
                 }
             }
         )
-        newReplicator:SetPrimaryPartCFrame(newCFrame)
     end
 
     AccessoryReplicator.initAccessoryReplicator(newReplicator)
     local hitBox = Utils.getFirstDescendantByName(newReplicator, 'HitBox')
     hitBox.Name = word
+
+    local hitBoxVolume = hitBox.Size.X * hitBox.Size.Y * hitBox.Size.Z
+    local positionerVolume = positioner.Size.X * positioner.Size.Y * positioner.Size.Z
+
+    if positionerVolume > hitBoxVolume then
+        print('resize hitbox')
+        print('resize hitbox')
+        print('resize hitbox')
+        print('resize hitbox')
+        hitBox.Size = positioner.Size
+    end
     module.initGrabberSwap({hitBox = hitBox})
     return newReplicator
 end
