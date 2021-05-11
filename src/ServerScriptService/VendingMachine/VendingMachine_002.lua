@@ -22,6 +22,9 @@ function module.initVendingMachine_002(props)
 
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
+        if not levelConfig or not levelConfig.getTargetWords then
+            return
+        end
         local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')

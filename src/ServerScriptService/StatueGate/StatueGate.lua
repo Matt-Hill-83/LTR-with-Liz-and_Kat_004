@@ -13,7 +13,7 @@ function module.initStatueGates(props)
     local parentFolder = props.parentFolder
     local hexConfigs = levelConfig.hexIslandConfigs
 
-    local hexConfig = hexConfigs[1] or nil
+    local hexConfig = hexConfigs and hexConfigs[1] or nil
 
     if hexConfig then
         local statueConfigs = hexConfig.statueConfigs

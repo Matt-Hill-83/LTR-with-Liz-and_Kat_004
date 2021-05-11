@@ -165,7 +165,7 @@ local dummy01 = {
     }
 }
 
-local region01 = {
+local r001 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -193,7 +193,7 @@ local region01 = {
     end
 }
 
-local region02 = {
+local r002 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -223,7 +223,7 @@ local region02 = {
     end
 }
 
-local region03 = {
+local r003 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -253,7 +253,7 @@ local region03 = {
     end
 }
 
-local region04 = {
+local r004 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -312,7 +312,7 @@ local region04 = {
     end
 }
 
-local region05 = {
+local r005 = {
     conveyorConfigs = conveyorConfigs,
     hexIslandConfigs = {dummy01},
     orbiterConfigs = {
@@ -338,7 +338,7 @@ local region05 = {
     end
 }
 
-local region08 = {
+local r008 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -372,7 +372,7 @@ local region08 = {
     end
 }
 
-local region09 = {
+local r009 = {
     conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
@@ -403,7 +403,7 @@ local region09 = {
     end
 }
 
-local region10 = {
+local r010 = {
     -- hexGearConfigs = {hexGearWords01},
     hexGearConfigs = {
         hexGearWords01,
@@ -449,7 +449,7 @@ local region10 = {
     end
 }
 
-local region14 = {
+local r014 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -466,7 +466,7 @@ local region14 = {
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'PAT'}}}
 }
-local region15 = {
+local r015 = {
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -483,72 +483,27 @@ local region15 = {
     hexIslandConfigs = {dummy01},
     strayRegions = {{words = {'SAT'}}}
 }
-local region16 = {
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'sxt',
-            discHeight = 1
-        }
-    },
-    hexIslandConfigs = {dummy01},
-    strayRegions = {{words = {'MAT'}}}
+
+local regions = {
+    r001 = r001,
+    r002 = r002,
+    r003 = r003,
+    r004 = r004,
+    r005 = r005,
+    r006 = r005,
+    r007 = r005,
+    r008 = r008,
+    r009 = r009,
+    r010 = r010,
+    r014 = r014,
+    r015 = r015
 }
 
-module.regions = {
-    region01,
-    region02,
-    region03,
-    region04,
-    region05,
-    region08,
-    region09,
-    region09,
-    region09,
-    region09,
-    region10,
-    -- cakes on center
+for _, region in ipairs(regions) do
+    if not region.hexIslandConfigs then
+        region.hexIslandConfigs = {dummy01}
+    end
+end
 
-    region14,
-    region15,
-    region16,
-    --
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10,
-    region10
-}
-
+module.regions = regions
 return module

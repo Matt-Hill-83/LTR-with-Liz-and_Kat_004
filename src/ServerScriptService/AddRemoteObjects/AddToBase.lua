@@ -198,7 +198,11 @@ local function addRemoteObjects()
 
     -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
-        local config = levelConfig.regions[regionIndex]
+        print('levelConfig' .. ' - start')
+        print(levelConfig)
+        print('region.Name' .. ' - start')
+        print(region.Name)
+        local config = levelConfig.regions[region.Name]
 
         if cardSwap then
             CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
@@ -260,16 +264,16 @@ local function addRemoteObjects()
     if theater then
         Theater.initTheaters({parentFolder = level})
     end
-    for regionIndex, region in ipairs(regions) do
-        local config = levelConfig.regions[regionIndex]
+    for _, region in ipairs(regions) do
+        local config = levelConfig.regions[region.Name]
 
         VendingMachine2.initVendingMachine_002(
             {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
         )
     end
 
-    for regionIndex, region in ipairs(regions) do
-        local config = levelConfig.regions[regionIndex]
+    for _, region in ipairs(regions) do
+        local config = levelConfig.regions[region.Name]
         BlockDash.addConveyors({levelConfig = config, parentFolder = region})
     end
 
