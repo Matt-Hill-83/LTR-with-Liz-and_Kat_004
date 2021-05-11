@@ -461,9 +461,9 @@ print('test')
 print('test')
 print('test')
 
-for k, v in pairs(regions) do
-    print(k, v[1], v[2], v[3])
-end
+-- for k, v in pairs(regions) do
+--     print(k, v[1], v[2], v[3])
+-- end
 
 for _, region in pairs(regions) do
     print('region' .. ' - start=================================>>')
