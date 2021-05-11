@@ -9,6 +9,20 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.concatArray(a, b)
+    local result = {table.unpack(a)}
+    table.move(b, 1, #b, #result + 1, result)
+    return result
+end
+
+function module.concatArrays(arrays)
+    local output = {}
+    for _, array in ipairs(arrays) do
+        output = module.concatArray(output, array)
+    end
+    return output
+end
+
 function module.doTablesMatch(a, b)
     return table.concat(a) == table.concat(b)
 end
