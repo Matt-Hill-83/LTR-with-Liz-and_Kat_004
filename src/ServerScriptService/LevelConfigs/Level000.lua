@@ -1,88 +1,12 @@
 local Sss = game:GetService('ServerScriptService')
 local Colors = require(Sss.Source.Constants.Const_02_Colors)
+local Words = require(Sss.Source.Constants.Const_07_Words)
 
 local module = {}
 
-local hexGearWords01 = {
-    words = {
-        'CAT',
-        'BAT',
-        'HAT',
-        'MAT',
-        'PAT',
-        'RAT',
-        'SAT',
-        'FAT',
-        --  break
-        --  break
-        'CAP',
-        'GAP',
-        'LAP',
-        'MAP',
-        'SAP',
-        'TAP',
-        'RAP',
-        'ZAP',
-        --  break
-        --  break
-        'VAN',
-        'RAN',
-        'CAN',
-        'PAN',
-        'FAN',
-        'TAN',
-        'DAN'
-    }
-}
-local hexGearWords02 = {
-    words = {
-        --  break
-        --  break
-        'TAG',
-        'RAG',
-        'SAG',
-        'WAG',
-        'NAG',
-        'ZAG',
-        --  break
-        --  break
-        'BAD',
-        'DAD',
-        'HAD',
-        'MAD',
-        'PAD',
-        'SAD',
-        --  break
-        --  break
-        'HAM',
-        'JAM',
-        'PAM',
-        'SAM',
-        'RAM',
-        'BAM',
-        --  break
-        --  break
-        'RAY',
-        'BAY',
-        'LAY',
-        'MAY',
-        'PAY'
-    }
-}
-local hexGearWords03 = {
-    words = {
-        'HAY',
-        --  break
-        --  break
-        'FIG',
-        'BIG',
-        'DIG',
-        'RIG',
-        'WIG',
-        'JIG',
-        'ZIG'
-    }
-}
+local hexGearWords01 = Words.words01
+local hexGearWords02 = Words.words02
+local hexGearWords03 = Words.words03
 
 local conveyor1Config = {
     freezeConveyor = true,
@@ -404,15 +328,6 @@ local r010 = {
             discHeight = 1
         }
     },
-    strayRegions = {
-        {
-            words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
-            -- words = {'CAT'},
-            randomLetterMultiplier = 1,
-            -- maxLetters = 6,
-            useArea = true
-        }
-    },
     getTargetWords = function()
         return {
             {
@@ -439,7 +354,25 @@ local orbiterConfigs_default = {
     }
 }
 
+local strayRegions_default = {
+    {
+        words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
+        -- words = {'CAT'},
+        randomLetterMultiplier = 1,
+        -- maxLetters = 6,
+        useArea = true
+    }
+}
+
 local hexGearConfigs_default = {hexGearWords01}
+
+local getTargetWords_default = function()
+    return {
+        {
+            {word = 'HAT', target = 1, found = 0}
+        }
+    }
+end
 
 local regions = {
     r001 = r001,
@@ -455,26 +388,14 @@ local regions = {
     r014 = r014,
     r015 = r015
 }
-print('test')
-print('test')
-print('test')
-print('test')
-print('test')
-
--- for k, v in pairs(regions) do
---     print(k, v[1], v[2], v[3])
--- end
 
 for _, region in pairs(regions) do
-    print('region' .. ' - start=================================>>')
-    print(region)
     region.hexIslandConfigs = region.hexIslandConfigs or {dummy01}
     region.conveyorConfigs = region.conveyorConfigs or conveyorConfigs_default
     region.orbiterConfigs = region.orbiterConfigs or orbiterConfigs_default
     region.hexGearConfigs = region.hexGearConfigs or hexGearConfigs_default
-
-    print('region' .. ' - start')
-    print(region)
+    region.strayRegions = region.strayRegions or strayRegions_default
+    region.getTargetWords = region.getTargetWords or getTargetWords_default
 end
 
 module.regions = regions
