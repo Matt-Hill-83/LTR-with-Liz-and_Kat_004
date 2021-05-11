@@ -63,7 +63,7 @@ function module.initVendingMachine_002(props)
             local cardComplete = true
 
             for _, word in ipairs(targetWords) do
-                if word.found ~= word.target then
+                if word.found < word.target then
                     cardComplete = false
                 end
             end

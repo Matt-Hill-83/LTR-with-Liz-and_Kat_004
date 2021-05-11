@@ -127,6 +127,7 @@ local dummy01 = {
 }
 
 local region001 = {
+    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     invisiWallProps = tallWalls,
     orbiterConfigs = {
         {
@@ -137,7 +138,7 @@ local region001 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'FFFFFFFFFFF?',
+            singleWord = 'FFFFFFFFFFF~',
             discHeight = 1,
             blockSize = 8
         },
@@ -172,7 +173,7 @@ local region001 = {
     getTargetWords = function()
         return {
             {
-                {word = 'CAT', target = 3, found = 0}
+                {word = 'FOX', target = 3, found = 0}
             }
         }
     end
@@ -181,7 +182,18 @@ local region001 = {
 local region002 = {
     hexGearConfigs = {
         {
-            words = {}
+            words = {
+                'FOX',
+                'BOX',
+                'LOX'
+            }
+        },
+        {
+            words = {
+                'FOX',
+                'BOX',
+                'LOX'
+            }
         },
         {
             words = {
@@ -195,18 +207,9 @@ local region002 = {
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     strayRegions = {
         {
-            -- words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
             words = {'FOX'},
-            randomLetterMultiplier = 1,
-            -- maxLetters = 6,
-            useArea = true
-        },
-        {
-            -- words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
-            words = {'FOX', 'BOX', 'LOX'},
-            randomLetterMultiplier = 1,
-            -- maxLetters = 6,
-            useArea = true
+            maxLetters = 6
+            -- useArea = true
         }
     },
     orbiterConfigs = {
@@ -229,12 +232,7 @@ local region002 = {
     getTargetWords = function()
         return {
             {
-                {word = 'FOX', target = 3, found = 0}
-            },
-            {
-                {word = 'FOX', target = 1, found = 0},
-                {word = 'LOX', target = 1, found = 0},
-                {word = 'BOX', target = 1, found = 0}
+                {word = 'FOX', target = 1, found = 0}
             }
         }
     end
@@ -285,30 +283,6 @@ local dummyRegion = {
         }
     end
 }
-
--- module.bridgeConfigs = {
---     {
---         invisiWallProps = {
---             thickness = 1.1,
---             height = 16,
---             wallProps = {
---                 Transparency = 0.8,
---                 -- Transparency = 1,
---                 BrickColor = BrickColor.new('Alder'),
---                 Material = Enum.Material.Concrete,
---                 CanCollide = true
---             },
---             shortHeight = 2,
---             shortWallProps = {
---                 -- Transparency = 1,
---                 Transparency = 0,
---                 BrickColor = BrickColor.new('Bright blue'),
---                 Material = Enum.Material.Cobblestone,
---                 CanCollide = true
---             }
---         }
---     }
--- }
 
 module.regions = {
     region001,

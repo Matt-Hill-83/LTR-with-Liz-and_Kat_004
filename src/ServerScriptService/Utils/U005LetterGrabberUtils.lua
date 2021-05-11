@@ -109,7 +109,7 @@ function module.wordFound(tool, player)
 
     delay(1, destroyParts)
     --  give gem
-    if true then
+    if false then
         local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')
         local newKey = keyTemplate:Clone()
 
