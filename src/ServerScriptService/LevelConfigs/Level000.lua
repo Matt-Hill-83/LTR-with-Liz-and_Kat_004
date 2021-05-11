@@ -143,6 +143,14 @@ local conveyorConfigs = {
     conveyor4Config
 }
 
+local conveyorConfigs_default = {
+    conveyor5Config,
+    conveyor2Config,
+    conveyor1Config,
+    conveyor3Config,
+    conveyor4Config
+}
+
 local dummy01 = {
     material = Enum.Material.Glacier,
     statueConfigs = {
@@ -166,7 +174,6 @@ local dummy01 = {
 }
 
 local r001 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -179,10 +186,6 @@ local r001 = {
             singleWord = 'CAT',
             discHeight = 1
         }
-    },
-    hexIslandConfigs = {
-        dummy01,
-        dummy01
     },
     getTargetWords = function()
         return {
@@ -194,7 +197,6 @@ local r001 = {
 }
 
 local r002 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -207,12 +209,6 @@ local r002 = {
             singleWord = 'CAT',
             discHeight = 1
         }
-    },
-    hexIslandConfigs = {
-        dummy01,
-        dummy01,
-        dummy01,
-        dummy01
     },
     getTargetWords = function()
         return {
@@ -224,7 +220,6 @@ local r002 = {
 }
 
 local r003 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -237,9 +232,6 @@ local r003 = {
             singleWord = 'CAT',
             discHeight = 1
         }
-    },
-    hexIslandConfigs = {
-        dummy01
     },
     getTargetWords = function()
         return {
@@ -254,7 +246,6 @@ local r003 = {
 }
 
 local r004 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -267,9 +258,6 @@ local r004 = {
             singleWord = 'CAT',
             discHeight = 1
         }
-    },
-    hexIslandConfigs = {
-        dummy01
     },
     strayRegions = {
         {
@@ -313,8 +301,6 @@ local r004 = {
 }
 
 local r005 = {
-    conveyorConfigs = conveyorConfigs,
-    hexIslandConfigs = {dummy01},
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -339,7 +325,6 @@ local r005 = {
 }
 
 local r008 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -353,13 +338,9 @@ local r008 = {
             discHeight = 1
         }
     },
-    hexIslandConfigs = {
-        dummy01
-    },
     strayRegions = {
         {
             words = {'PAT'},
-            -- words = {'CAT', 'BAT', 'RAT'},
             useArea = true
         }
     },
@@ -373,7 +354,6 @@ local r008 = {
 }
 
 local r009 = {
-    conveyorConfigs = conveyorConfigs,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
@@ -386,9 +366,6 @@ local r009 = {
             singleWord = '999',
             discHeight = 1
         }
-    },
-    hexIslandConfigs = {
-        dummy01
     },
     strayRegions = {
         {
@@ -404,7 +381,6 @@ local r009 = {
 }
 
 local r010 = {
-    -- hexGearConfigs = {hexGearWords01},
     hexGearConfigs = {
         hexGearWords01,
         hexGearWords02,
@@ -428,9 +404,6 @@ local r010 = {
             discHeight = 1
         }
     },
-    hexIslandConfigs = {
-        dummy01
-    },
     strayRegions = {
         {
             words = {'ABCDEFGHIJKLMNOPQRSTUVWXYZAAAAAAAAATTTTTTT'},
@@ -449,40 +422,24 @@ local r010 = {
     end
 }
 
-local r014 = {
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'ft',
-            discHeight = 1
-        }
-    },
-    hexIslandConfigs = {dummy01},
-    strayRegions = {{words = {'PAT'}}}
+local r014 = {strayRegions = {{words = {'PAT'}}}}
+local r015 = {strayRegions = {{words = {'SAT'}}}}
+
+local orbiterConfigs_default = {
+    {
+        -- words = {'CAT', 'CAT', 'CAT'},
+        numBlocks = 12,
+        angularVelocity = 0.8,
+        -- diameter = 32,
+        discTransparency = 0,
+        collideDisc = false,
+        collideBlock = false,
+        singleWord = '~~~',
+        discHeight = 1
+    }
 }
-local r015 = {
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 0,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'fvt',
-            discHeight = 1
-        }
-    },
-    hexIslandConfigs = {dummy01},
-    strayRegions = {{words = {'SAT'}}}
-}
+
+local hexGearConfigs_default = {hexGearWords01}
 
 local regions = {
     r001 = r001,
@@ -498,11 +455,26 @@ local regions = {
     r014 = r014,
     r015 = r015
 }
+print('test')
+print('test')
+print('test')
+print('test')
+print('test')
 
-for _, region in ipairs(regions) do
-    if not region.hexIslandConfigs then
-        region.hexIslandConfigs = {dummy01}
-    end
+for k, v in pairs(regions) do
+    print(k, v[1], v[2], v[3])
+end
+
+for _, region in pairs(regions) do
+    print('region' .. ' - start=================================>>')
+    print(region)
+    region.hexIslandConfigs = region.hexIslandConfigs or {dummy01}
+    region.conveyorConfigs = region.conveyorConfigs or conveyorConfigs_default
+    region.orbiterConfigs = region.orbiterConfigs or orbiterConfigs_default
+    region.hexGearConfigs = region.hexGearConfigs or hexGearConfigs_default
+
+    print('region' .. ' - start')
+    print(region)
 end
 
 module.regions = regions
