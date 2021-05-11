@@ -10,6 +10,8 @@ function module.initHexGears(props)
     local parentFolder = props.parentFolder
     local levelConfig = props.levelConfig
     local hexGearConfigs = levelConfig.hexGearConfigs
+    local positioners = levelConfig.positioners
+    local templateName = levelConfig.templateName
 
     local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = 'HexGear_001'})
     Utils.sortListByObjectKey(hexGears, 'Name')
@@ -22,24 +24,27 @@ function module.initHexGears(props)
         if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
 
-            local hexes = Utils.getByTagInParent({parent = hexGear, tag = 'Hex_32'})
+            if not positioners then
+                local hexes = Utils.getByTagInParent({parent = hexGear, tag = 'Hex_32'})
 
-            Utils.sortListByObjectKey(hexes, 'Name')
+                Utils.sortListByObjectKey(hexes, 'Name')
 
-            local filteredHexes = {}
-            for _, hex in ipairs(hexes) do
-                local firstChar = hex.Name:sub(1, 1)
-                if firstChar ~= '0' then
-                    table.insert(filteredHexes, hex)
+                local filteredHexes = {}
+                for _, hex in ipairs(hexes) do
+                    local firstChar = hex.Name:sub(1, 1)
+                    if firstChar ~= '0' then
+                        table.insert(filteredHexes, hex)
+                    end
                 end
+
+                positioners = filteredHexes
             end
 
             -- for i, hex in ipairs(test) do
-            for i, hex in ipairs(filteredHexes) do
+            for i, hex in ipairs(positioners) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()
 
-                -- local word = config.words[i] or config.words[1]
                 local word = config.words[i]
 
                 if not word then
@@ -58,8 +63,7 @@ function module.initHexGears(props)
                     {
                         parentFolder = hexGear,
                         positioner = newPositioner,
-                        templateName = 'LevelPortal-003',
-                        -- templateName = 'LevelPortal-002',
+                        templateName = templateName,
                         word = word
                     }
                 )
