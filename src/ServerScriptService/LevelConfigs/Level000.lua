@@ -5,12 +5,9 @@ local Words = require(Sss.Source.Constants.Const_07_Words)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local test = Utils.concatArrays({{1, 2, 3}, {10, 20, 30}, {100, 200, 300}})
-print('test' .. ' - start')
-print(test)
 local module = {}
 
 local hexGearWords01 = {words = Words.allWords}
--- local hexGearWords01 = {words = Utils.concatArrays({Words.words01, Words.words02, Words.words03})}
 
 local conveyor1Config = {
     freezeConveyor = true,
@@ -61,14 +58,6 @@ local conveyor5Config = {
         'RAT',
         'HAT'
     }
-}
-
-local conveyorConfigs = {
-    conveyor5Config,
-    conveyor2Config,
-    conveyor1Config,
-    conveyor3Config,
-    conveyor4Config
 }
 
 local conveyorConfigs_default = {
