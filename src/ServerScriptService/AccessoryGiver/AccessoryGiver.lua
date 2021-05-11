@@ -32,7 +32,6 @@ function module.initAccessoryGivers(props)
 end
 
 function module.initAccessoryGiver(props, config)
-    print('initAccGiver======================>>')
     local parentFolder = props.parentFolder
 
     local positionerTag = config.positionerTag
@@ -42,8 +41,6 @@ function module.initAccessoryGiver(props, config)
     Utils.sortListByObjectKey(positioners, 'Name')
 
     for _, positioner in ipairs(positioners) do
-        print('positioner' .. ' - start')
-        print(positioner)
         local newGrabber =
             AddModelFromPositioner.addModel(
             {

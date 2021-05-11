@@ -9,9 +9,9 @@ print('test' .. ' - start')
 print(test)
 local module = {}
 
-local hexGearWords01 = Words.words01
-local hexGearWords02 = Words.words02
-local hexGearWords03 = Words.words03
+local hexGearWords01 = {words = Words.words01}
+local hexGearWords02 = {words = Words.words02}
+local hexGearWords03 = {words = Words.words03}
 
 local conveyor1Config = {
     freezeConveyor = true,
