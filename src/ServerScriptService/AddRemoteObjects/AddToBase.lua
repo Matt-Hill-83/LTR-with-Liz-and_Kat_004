@@ -222,7 +222,14 @@ local function addRemoteObjects()
 
             -- Do this after Junctions
             if hexGear then
-                HexGear.initHexGears({parentFolder = region, levelConfig = config, templateName = 'LevelPortal-003'})
+                HexGear.initHexGears(
+                    {
+                        parentFolder = region,
+                        levelConfig = config,
+                        templateName = 'LevelPortal-003',
+                        positionerTag = 'Hex_32'
+                    }
+                )
             end
         end
 

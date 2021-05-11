@@ -8,10 +8,12 @@ local module = {}
 
 function module.initHexGears(props)
     local parentFolder = props.parentFolder
+    local templateName = props.templateName
+    local positionerTag = props.positionerTag
+
     local levelConfig = props.levelConfig
     local hexGearConfigs = levelConfig.hexGearConfigs
     local positioners = levelConfig.positioners
-    local templateName = levelConfig.templateName
 
     local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = 'HexGear_001'})
     Utils.sortListByObjectKey(hexGears, 'Name')
@@ -25,7 +27,7 @@ function module.initHexGears(props)
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
 
             if not positioners then
-                local hexes = Utils.getByTagInParent({parent = hexGear, tag = 'Hex_32'})
+                local hexes = Utils.getByTagInParent({parent = hexGear, tag = positionerTag})
 
                 Utils.sortListByObjectKey(hexes, 'Name')
 
