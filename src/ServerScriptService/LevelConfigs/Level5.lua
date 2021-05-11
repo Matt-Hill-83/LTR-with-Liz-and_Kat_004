@@ -224,6 +224,51 @@ local region002 = {
     end
 }
 
+local region003 = {
+    hexGearConfigs = {
+        {
+            words = {
+                'FOX',
+                'BOX',
+                'LOX'
+            }
+        }
+    },
+    invisiWallProps = tallWalls,
+    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    strayRegions = {
+        {
+            words = {'FOX'},
+            -- maxLetters = 6
+            useArea = true
+        }
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 0,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'CAT',
+            discHeight = 1
+        }
+    },
+    hexIslandConfigs = {
+        dummy01,
+        dummy01
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'FOX', target = 1, found = 0}
+            }
+        }
+    end
+}
+
 local dummyRegion = {
     hexGearConfigs = {
         {
@@ -273,6 +318,7 @@ local dummyRegion = {
 module.regions = {
     region001,
     region002,
+    region003,
     dummyRegion,
     dummyRegion,
     dummyRegion,
