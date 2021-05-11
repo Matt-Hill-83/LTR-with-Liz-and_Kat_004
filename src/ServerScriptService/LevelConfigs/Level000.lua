@@ -9,9 +9,8 @@ print('test' .. ' - start')
 print(test)
 local module = {}
 
-local hexGearWords01 = {words = Words.words01, Words.words02, Words.words03}
-local hexGearWords02 = {words = Words.words04, Words.words04, Words.words06}
-local hexGearWords03 = {words = Words.words07, Words.words08, Words.words09}
+local hexGearWords01 = {words = Words.allWords}
+-- local hexGearWords01 = {words = Utils.concatArrays({Words.words01, Words.words02, Words.words03})}
 
 local conveyor1Config = {
     freezeConveyor = true,
@@ -309,42 +308,6 @@ local r009 = {
     end
 }
 
-local r010 = {
-    hexGearConfigs = {
-        hexGearWords01,
-        hexGearWords02,
-        hexGearWords03,
-        hexGearWords03,
-        hexGearWords03,
-        hexGearWords03,
-        hexGearWords03,
-        hexGearWords03
-    },
-    orbiterConfigs = {
-        {
-            -- words = {'CAT', 'CAT', 'CAT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'ISEEAFOXINABOX',
-            discHeight = 1
-        }
-    },
-    getTargetWords = function()
-        return {
-            {
-                {word = 'HAT', target = 1, found = 0}
-            }
-        }
-    end
-}
-
-local r014 = {strayRegions = {{words = {'PAT'}}}}
-local r015 = {strayRegions = {{words = {'SAT'}}}}
-
 local orbiterConfigs_default = {
     {
         -- words = {'CAT', 'CAT', 'CAT'},
@@ -388,10 +351,7 @@ local regions = {
     r006 = r005,
     r007 = r005,
     r008 = r008,
-    r009 = r009,
-    r010 = r010,
-    r014 = r014,
-    r015 = r015
+    r009 = r009
 }
 
 for _, region in pairs(regions) do
