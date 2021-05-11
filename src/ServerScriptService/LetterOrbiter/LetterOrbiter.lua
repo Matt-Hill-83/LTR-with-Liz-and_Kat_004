@@ -40,6 +40,7 @@ function module.initLetterOrbiter(props)
         local discTransparency = orbiterConfig.discTransparency
         local singleWord = orbiterConfig.singleWord
         local discHeight = orbiterConfig.discHeight
+        local blockSize = orbiterConfig.blockSize or 12
 
         local letters
         if singleWord then
@@ -79,7 +80,7 @@ function module.initLetterOrbiter(props)
 
         local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, 'Stray_available')
-        local blockSize = 12
+        -- local blockSize = 12
         for letterIndex, char in ipairs(letters) do
             if char ~= '?' then
                 local angle = 360 / #letters

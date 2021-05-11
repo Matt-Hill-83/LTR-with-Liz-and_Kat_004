@@ -106,29 +106,6 @@ local hexGearWords03 = {
 
 local dummy01 = {
     material = Enum.Material.Glacier,
-    -- bridgeConfigs = {
-    --     {
-    --         invisiWallProps = {
-    --             thickness = 1.1,
-    --             height = 32,
-    --             wallProps = {
-    --                 Transparency = 0.8,
-    --                 -- Transparency = 1,
-    --                 BrickColor = BrickColor.new('Alder'),
-    --                 Material = Enum.Material.Concrete,
-    --                 CanCollide = true
-    --             },
-    --             shortHeight = 2,
-    --             shortWallProps = {
-    --                 -- Transparency = 1,
-    --                 Transparency = 0,
-    --                 BrickColor = BrickColor.new('Bright blue'),
-    --                 Material = Enum.Material.Cobblestone,
-    --                 CanCollide = true
-    --             }
-    --         }
-    --     }
-    -- },
     statueConfigs = {
         Liz = {
             sentence = {'I', 'SEE', 'A', 'CAT'},
@@ -150,17 +127,41 @@ local dummy01 = {
 }
 
 local region001 = {
-    invisiWallProps = nil,
+    invisiWallProps = tallWalls,
     orbiterConfigs = {
         {
             -- words = {'CAT', 'CAT', 'CAT'},
             numBlocks = 12,
             angularVelocity = 0.8,
             -- diameter = 32,
-            discTransparency = 0,
+            discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'CAT',
+            singleWord = 'FFFFFFFFFFF?',
+            discHeight = 1,
+            blockSize = 8
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'O',
+            discHeight = 1,
+            blockSize = 8
+        },
+        {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'X',
             discHeight = 1
         }
     },
