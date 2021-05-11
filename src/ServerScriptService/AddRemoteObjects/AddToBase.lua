@@ -226,8 +226,18 @@ local function addRemoteObjects()
                     {
                         parentFolder = region,
                         levelConfig = config,
-                        templateName = 'LevelPortal-003',
-                        positionerTag = 'Hex_32'
+                        templateName = 'LevelPortal-004',
+                        -- templateName = 'LevelPortal-003',
+                        positionerTag = 'Hex_32',
+                        offsetAngle = CFrame.Angles(0, math.rad(-30), 0)
+                    }
+                )
+                HexGear.initHexGears(
+                    {
+                        parentFolder = region,
+                        levelConfig = config,
+                        templateName = 'LevelPortal-004',
+                        positionerTag = 'Positioner-Trophy-001'
                     }
                 )
             end

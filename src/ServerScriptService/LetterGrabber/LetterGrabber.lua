@@ -237,10 +237,6 @@ function module.initLetterGrabber(props)
     local positionerVolume = positioner.Size.X * positioner.Size.Y * positioner.Size.Z
 
     if positionerVolume > hitBoxVolume then
-        print('resize hitbox')
-        print('resize hitbox')
-        print('resize hitbox')
-        print('resize hitbox')
         hitBox.Size = positioner.Size
     end
     module.initGrabberSwap({hitBox = hitBox})

@@ -10,6 +10,7 @@ function module.initHexGears(props)
     local parentFolder = props.parentFolder
     local templateName = props.templateName
     local positionerTag = props.positionerTag
+    local offsetAngle = props.offsetAngle
 
     local levelConfig = props.levelConfig
     local hexGearConfigs = levelConfig.hexGearConfigs
@@ -28,8 +29,13 @@ function module.initHexGears(props)
 
             if not positioners then
                 local hexes = Utils.getByTagInParent({parent = hexGear, tag = positionerTag})
-
                 Utils.sortListByObjectKey(hexes, 'Name')
+
+                print('hexes' .. ' - start')
+                print('hexes' .. ' - start')
+                print('hexes' .. ' - start')
+                print('hexes' .. ' - start')
+                print(hexes)
 
                 local filteredHexes = {}
                 for _, hex in ipairs(hexes) do
@@ -56,10 +62,6 @@ function module.initHexGears(props)
                 newPositioner.Parent = hex
                 newPositioner.Name = word
 
-                -- coroutine.wrap(
-                --     function()
-                -- wait(n)
-                -- print('executed 2nd')
                 local portal =
                     LevelPortal.initLevelPortal(
                     {
@@ -74,7 +76,7 @@ function module.initHexGears(props)
                     {
                         parent = portal.PrimaryPart,
                         childModel = portal,
-                        angles = CFrame.Angles(0, math.rad(-30), 0),
+                        angles = offsetAngle,
                         offsetConfig = {
                             useParentNearEdge = Vector3.new(0, 0, 0),
                             useChildNearEdge = Vector3.new(0, 0, 0),
@@ -82,8 +84,8 @@ function module.initHexGears(props)
                         }
                     }
                 )
-                --     end
-                -- )()
+
+                newPositioner:Destroy()
             end
         end
     end
