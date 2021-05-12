@@ -37,14 +37,17 @@ function module.getPointAlongLine2(p0, p1, dist)
 end
 
 function module.createBridge2(props)
-    local templateName = props.templateName
+    local bridgeTemplate = props.bridgeTemplate
     local parentFolder = props.parentFolder
     local char = props.char
 
     local bridgeConfig = props.bridgeConfig
     local straysOnBridges = bridgeConfig.straysOnBridges
 
-    local offsetY = 15
+    local bridgeTop = Utils.getFirstDescendantByName(bridgeTemplate, 'Top')
+    local offsetY = 15 - bridgeTop.Size.Y / 2
+
+    -- local offsetY = 15
     -- local offsetY = 12
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
@@ -61,7 +64,8 @@ function module.createBridge2(props)
         {
             p0 = p0,
             p1 = platformStart,
-            templateName = templateName,
+            -- templateName = templateName,
+            bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
         }
@@ -78,7 +82,8 @@ function module.createBridge2(props)
         {
             p0 = platformEnd,
             p1 = p1,
-            templateName = templateName,
+            -- templateName = templateName,
+            bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
         }
@@ -100,7 +105,8 @@ function module.createBridge2(props)
         {
             p0 = platformStart,
             p1 = platformEnd,
-            templateName = templateName,
+            -- templateName = templateName,
+            bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
         }
@@ -137,9 +143,9 @@ function module.createBridgeWalls(bridge, bridgeConfig)
 end
 
 function module.createBridge(props)
-    local templateName = props.templateName
     local parentFolder = props.parentFolder
     local bridgeConfig = props.bridgeConfig
+    local bridgeTemplate = props.bridgeTemplate
 
     local p0 = props.p0
     local p1 = props.p1
@@ -150,7 +156,7 @@ function module.createBridge(props)
         return nil
     end
 
-    local bridgeTemplate = Utils.getFromTemplates(templateName)
+    -- local bridgeTemplate = Utils.getFromTemplates(templateName)
 
     local newBridge = bridgeTemplate:Clone()
     newBridge.Parent = parentFolder
@@ -226,12 +232,14 @@ function module.initBridges_64(props)
         local char = letterMatrix[mod + 1]
 
         if rodValid then
+            local bridgeTemplate = Utils.getFromTemplates(templateName)
             local bridge =
                 module.createBridge2(
                 {
                     p0 = rod.Attachment0.Parent.Position,
                     p1 = rod.Attachment1.Parent.Position,
-                    templateName = templateName,
+                    -- templateName = templateName,
+                    bridgeTemplate = bridgeTemplate,
                     parentFolder = parentFolder,
                     char = char,
                     bridgeConfig = bridgeConfig
