@@ -9,7 +9,6 @@ local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local Grabbers = require(Sss.Source.Grabbers.Grabbers)
 local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
--- local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {count = 0}
 
@@ -72,7 +71,6 @@ function module.createBridge2(props)
         local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
         bridgeTop1.BrickColor = BrickColor.new('Alder')
         bridgeTop1.Material = 'Concrete'
-    -- module.createBridgeWalls(bridge1, bridgeConfig)
     end
 
     local bridge2 =
@@ -90,7 +88,6 @@ function module.createBridge2(props)
         local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
         bridgeTop2.BrickColor = BrickColor.new('Alder')
         bridgeTop2.Material = 'Concrete'
-    -- module.createBridgeWalls(bridge2, bridgeConfig)
     end
 
     local material = bridgeConfig.material or Enum.Material.Grass
@@ -110,8 +107,6 @@ function module.createBridge2(props)
     )
 
     if newBridge then
-        -- module.createBridgeWalls(newBridge, bridgeConfig)
-
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
@@ -129,9 +124,9 @@ function module.createBridge2(props)
 end
 
 function module.createBridgeWalls(bridge, bridgeConfig)
-    if module.isBridgeTiny(bridge) then
-        return
-    end
+    -- if module.isBridgeTiny(bridge) then
+    --     return
+    -- end
 
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
@@ -146,19 +141,8 @@ function module.createBridgeWalls(bridge, bridgeConfig)
 end
 
 function module.isBridgeTiny(bridgeModel)
-    -- local bridgeTop1 = Utils.getFirstDescendantByName(bridgeModel, 'Top')
-    -- local bridgeLength = bridgeTop1.Size.Z
     local bridgeLength = bridgeModel.PrimaryPart.Size.Z
-
     local isTiny = bridgeLength < 2
-    print('bridgeLength' .. ' - start==================>')
-    print(bridgeLength)
-    if isTiny then
-        print('tiny-------------------------------------')
-    else
-        print('big-------------------------------------')
-        bridgeModel.Name = bridgeModel.Name .. '7777'
-    end
     return isTiny
 end
 
@@ -170,22 +154,27 @@ function module.createBridge(props)
     local p0 = props.p0
     local p1 = props.p1
 
+    local distance = (p0 - p1).Magnitude
+
+    -- Don't make tiny bridges
+    if distance < 2 then
+        return nil
+    end
+
     local bridgeTemplate = Utils.getFromTemplates(templateName)
 
     local newBridge = bridgeTemplate:Clone()
     newBridge.Parent = parentFolder
     local bridgePart = newBridge.PrimaryPart
 
-    local distance = (p0 - p1).Magnitude
+    -- local distance = (p0 - p1).Magnitude
+
+    -- if distance < 2 then
+    --     return nil
+    -- end
 
     newBridge:SetPrimaryPartCFrame(CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2))
     bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
-
-    if module.isBridgeTiny(newBridge) then
-        print('destroy')
-        newBridge:Destroy()
-        return nil
-    end
 
     bridgePart.Anchored = true
     local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
@@ -195,12 +184,6 @@ function module.createBridge(props)
         wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
     end
     module.createBridgeWalls(newBridge, bridgeConfig)
-
-    -- if module.isBridgeTiny(newBridge) then
-    --     print('destroy')
-    --     newBridge:Destroy()
-    --     return nil
-    -- end
 
     return newBridge
 end
@@ -252,7 +235,6 @@ function module.initBridges_64(props)
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs[1] or {}
-        -- local bridgeConfig = bridgeConfigs[rodIndex] or {}
 
         local rodValid = module.rodIsValid(rod)
 
