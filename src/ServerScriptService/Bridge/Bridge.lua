@@ -74,8 +74,10 @@ function module.createBridge2(props)
 
         if module.isBridgeTiny(bridge1) then
             bridgeTop1.Transparency = 1
+            bridge1:Destroy()
         else
             bridgeTop1.Transparency = 0
+            module.createBridgeWalls(bridge1, bridgeConfig)
         end
     end
 
@@ -95,9 +97,12 @@ function module.createBridge2(props)
         bridgeTop2.Material = 'Concrete'
 
         if module.isBridgeTiny(bridge2) then
+            bridge2.Name = bridge2.Name .. '6666'
             bridgeTop2.Transparency = 1
+            bridge2:Destroy()
         else
             bridgeTop2.Transparency = 0
+            module.createBridgeWalls(bridge2, bridgeConfig)
         end
     end
 
@@ -117,29 +122,27 @@ function module.createBridge2(props)
     )
 
     if newBridge then
-        local bridgeTop = Utils.getFirstDescendantByName(bridge2, 'Top')
+        local bridgeTop = Utils.getFirstDescendantByName(newBridge, 'Top')
 
         if module.isBridgeTiny(newBridge) then
             bridgeTop.Transparency = 1
+            newBridge:Destroy()
         else
             bridgeTop.Transparency = 0
-        end
+            module.createBridgeWalls(newBridge, bridgeConfig)
 
-        module.createBridgeWalls(bridge1, bridgeConfig)
-        module.createBridgeWalls(bridge2, bridgeConfig)
-        module.createBridgeWalls(newBridge, bridgeConfig)
+            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
-        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
-
-        if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
-            SingleStrays.initSingleStrays(
-                {
-                    parentFolder = newBridge,
-                    blockTemplate = blockTemplate,
-                    char = char or '?'
-                }
-            )
+            if straysOnBridges ~= false then
+                SingleStrays.initSingleStrays(
+                    {
+                        parentFolder = newBridge,
+                        blockTemplate = blockTemplate,
+                        char = char or '?'
+                    }
+                )
+            end
         end
     end
     return newBridge
@@ -167,14 +170,15 @@ function module.isBridgeTiny(bridgeModel)
     local bridgeLength = bridgeTop1.Size.Z
 
     local isTiny = bridgeLength < 2
+    print('bridgeLength' .. ' - start==================>')
+    print(bridgeLength)
     if isTiny then
+        print('tiny-------------------------------------')
     else
-        print('bridgeLength' .. ' - start==================>')
-        print(bridgeLength)
+        print('big-------------------------------------')
         bridgeModel.Name = bridgeModel.Name .. '7777'
     end
     return isTiny
-    -- return bridgeModel.PrimaryPart.Size.Z < 2
 end
 
 function module.createBridge(props)
@@ -210,6 +214,16 @@ function module.createBridge(props)
 
     if module.isBridgeTiny(newBridge) then
         bridgePart.Transparency = 1
+    end
+
+    if module.isBridgeTiny(newBridge) then
+    -- print('destroy')
+    -- print('newBridge.Size.Z' .. ' - start')
+    -- print(bridgePart.Size.Z)
+    -- print('newBridge' .. ' - start')
+    -- print(newBridge)
+    -- newBridge:Destroy()
+    -- return nil
     end
 
     return newBridge
@@ -282,7 +296,9 @@ function module.initBridges_64(props)
                     bridgeConfig = bridgeConfig
                 }
             )
-
+            if not bridge then
+                return
+            end
             rod:Destroy()
             local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 

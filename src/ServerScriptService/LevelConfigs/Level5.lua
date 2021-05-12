@@ -6,7 +6,11 @@ local module = {}
 local tallWalls = Configs.tallWalls
 
 local r007 = {
-    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false, bridgeTemplateName = Configs.bridges.default},
+    bridgeConfigs = {
+        invisiWallProps = tallWalls,
+        straysOnBridges = false,
+        bridgeTemplateName = Configs.bridges.default
+    },
     invisiWallProps = tallWalls
 }
 
