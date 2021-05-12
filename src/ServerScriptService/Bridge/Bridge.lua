@@ -67,14 +67,16 @@ function module.createBridge2(props)
         }
     )
 
-    local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
-    bridgeTop1.BrickColor = BrickColor.new('Alder')
-    bridgeTop1.Material = 'Concrete'
+    if bridge1 then
+        local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
+        bridgeTop1.BrickColor = BrickColor.new('Alder')
+        bridgeTop1.Material = 'Concrete'
 
-    if module.isBridgeTiny(bridge1) then
-        bridgeTop1.Transparency = 1
-    else
-        bridgeTop1.Transparency = 0
+        if module.isBridgeTiny(bridge1) then
+            bridgeTop1.Transparency = 1
+        else
+            bridgeTop1.Transparency = 0
+        end
     end
 
     local bridge2 =
@@ -87,14 +89,16 @@ function module.createBridge2(props)
         }
     )
 
-    local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
-    bridgeTop2.BrickColor = BrickColor.new('Alder')
-    bridgeTop2.Material = 'Concrete'
+    if bridge2 then
+        local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
+        bridgeTop2.BrickColor = BrickColor.new('Alder')
+        bridgeTop2.Material = 'Concrete'
 
-    if module.isBridgeTiny(bridge2) then
-        bridgeTop1.Transparency = 1
-    else
-        bridgeTop1.Transparency = 0
+        if module.isBridgeTiny(bridge2) then
+            bridgeTop2.Transparency = 1
+        else
+            bridgeTop2.Transparency = 0
+        end
     end
 
     local material = bridgeConfig.material or Enum.Material.Grass
@@ -111,29 +115,32 @@ function module.createBridge2(props)
             parentFolder = parentFolder
         }
     )
-    local bridgeTop = Utils.getFirstDescendantByName(bridge2, 'Top')
 
-    if module.isBridgeTiny(newBridge) then
-        bridgeTop.Transparency = 1
-    else
-        bridgeTop.Transparency = 0
-    end
+    if newBridge then
+        local bridgeTop = Utils.getFirstDescendantByName(bridge2, 'Top')
 
-    module.createBridgeWalls(bridge1, bridgeConfig)
-    module.createBridgeWalls(bridge2, bridgeConfig)
-    module.createBridgeWalls(newBridge, bridgeConfig)
+        if module.isBridgeTiny(newBridge) then
+            bridgeTop.Transparency = 1
+        else
+            bridgeTop.Transparency = 0
+        end
 
-    local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-    local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
+        module.createBridgeWalls(bridge1, bridgeConfig)
+        module.createBridgeWalls(bridge2, bridgeConfig)
+        module.createBridgeWalls(newBridge, bridgeConfig)
 
-    if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
-        SingleStrays.initSingleStrays(
-            {
-                parentFolder = newBridge,
-                blockTemplate = blockTemplate,
-                char = char or '?'
-            }
-        )
+        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
+
+        if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
+            SingleStrays.initSingleStrays(
+                {
+                    parentFolder = newBridge,
+                    blockTemplate = blockTemplate,
+                    char = char or '?'
+                }
+            )
+        end
     end
     return newBridge
 end
