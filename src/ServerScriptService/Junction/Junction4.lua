@@ -4,6 +4,8 @@ local CS = game:GetService('CollectionService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
+local Configs = require(Sss.Source.Constants.Const_08_Configs)
+
 local Bridge = require(Sss.Source.Bridge.Bridge)
 
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
@@ -35,14 +37,22 @@ function module.initJunctions(props)
 
     -- create bridges
     local bridgeConfigs = levelConfig.bridgeConfigs or {}
+    local bridgeTemplateName = bridgeConfigs.bridgeTemplateName
+    print('bridgeTemplateName' .. ' - start')
+    print(bridgeTemplateName)
+    bridgeTemplateName = bridgeTemplateName or 'Bridge_32'
 
-    local bridgeTemplate = 'Bridge_32'
+    print('bridgeTemplateName' .. ' - start')
+    print('bridgeTemplateName' .. ' - start')
+    print('bridgeTemplateName' .. ' - start')
+    print('bridgeTemplateName' .. ' - start')
+    print(bridgeTemplateName)
     Bridge.initBridges_64(
         {
             parentFolder = hexIslandFolderBox,
             bridgeConfigs = bridgeConfigs,
             levelConfig = levelConfig,
-            templateName = bridgeTemplate
+            templateName = bridgeTemplateName
         }
     )
     --
@@ -92,7 +102,7 @@ function module.initJunctions(props)
 
         local function getWallProps(wall)
             local invisiWallProps =
-                hexConfigs.invisiWallProps or levelConfig.invisiWallProps or Constants.wallProps_default
+                hexConfigs.invisiWallProps or levelConfig.invisiWallProps or Configs.wallProps_default
             invisiWallProps.part = wall
             return invisiWallProps
         end

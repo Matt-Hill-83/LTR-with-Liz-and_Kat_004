@@ -5,9 +5,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
 local Configs = require(Sss.Source.Constants.Const_08_Configs)
 
-local test = Utils.concatArrays({{1, 2, 3}, {10, 20, 30}, {100, 200, 300}})
-
-local tallWalls = Constants.tallWalls
+local tallWalls = Configs.tallWalls
 local module = {}
 
 local hexGearWords01 = {words = Words.allWords}
@@ -97,7 +95,7 @@ local r006 = {
 }
 
 local r007 = {
-    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false},
     invisiWallProps = tallWalls
 }
 
@@ -116,7 +114,7 @@ local r008 = {
     },
     -- invisiWallProps = tallWalls,
     -- hexIslandConfigs = {invisiWallProps = tallWalls},
-    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false},
     strayRegions = {
         {
             words = {'FOX'},

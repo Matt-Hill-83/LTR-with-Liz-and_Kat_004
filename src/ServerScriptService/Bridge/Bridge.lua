@@ -2,6 +2,7 @@ local Sss = game:GetService('ServerScriptService')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Constants = require(Sss.Source.Constants.Constants)
+local Configs = require(Sss.Source.Constants.Const_08_Configs)
 
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
@@ -148,7 +149,7 @@ function module.createBridgeWalls(bridge, bridgeConfig)
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
     local function getWallProps(wall)
-        local invisiWallProps = bridgeConfig.invisiWallProps or Constants.wallProps_default
+        local invisiWallProps = bridgeConfig.invisiWallProps or Configs.wallProps_default
         invisiWallProps.part = wall
         return invisiWallProps
     end

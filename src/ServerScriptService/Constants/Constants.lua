@@ -114,43 +114,4 @@ module.bridgeLength = bridgeLength
 module.totalIslandLength = islandLength + bridgeLength
 module.buttonLabels = {PrevPage = 'Prev Page', NextPage = 'Next Page'}
 
-module.tallWalls = {
-    thickness = 1.1,
-    height = 16,
-    wallProps = {
-        Transparency = 0.9,
-        -- Transparency = 1,
-        BrickColor = BrickColor.new('Alder'),
-        Material = Enum.Material.Concrete,
-        CanCollide = true
-    },
-    shortHeight = 1,
-    shortWallProps = {
-        -- Transparency = 1,
-        Transparency = 0,
-        BrickColor = BrickColor.new('Bright blue'),
-        Material = Enum.Material.Cobblestone,
-        CanCollide = true
-    }
-}
-module.wallProps_default = {
-    thickness = 1.1,
-    height = 4,
-    wallProps = {
-        Transparency = 0.8,
-        -- Transparency = 1,
-        BrickColor = BrickColor.new('Alder'),
-        Material = Enum.Material.Concrete,
-        CanCollide = true
-    },
-    shortHeight = 1,
-    shortWallProps = {
-        -- Transparency = 1,
-        Transparency = 0,
-        BrickColor = BrickColor.new('Alder'),
-        Material = Enum.Material.Cobblestone,
-        CanCollide = true
-    }
-}
-
 return module

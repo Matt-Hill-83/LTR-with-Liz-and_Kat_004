@@ -4,6 +4,14 @@ local Colors = require(Sss.Source.Constants.Const_02_Colors)
 local Words = require(Sss.Source.Constants.Const_07_Words)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
+local bridges = {
+    default = 'Bridge_32',
+    thick = 'Bridge_32_002'
+}
+local bridgeColors = {
+    blue = {BrickColor.new('Alder'), BrickColor.new('Alder')}
+}
+
 local conveyor1Config = {
     freezeConveyor = true,
     words = {
@@ -86,10 +94,51 @@ local getTargetWords_default = function()
 end
 
 local module = {
-    orbiterConfigs_default,
-    strayRegions_default,
-    hexGearConfigs_default,
-    getTargetWords_default
+    orbiterConfigs_default = orbiterConfigs_default,
+    strayRegions_default = strayRegions_default,
+    hexGearConfigs_default = hexGearConfigs_default,
+    getTargetWords_default = getTargetWords_default,
+    bridges = bridges,
+    bridgeColors = bridgeColors
+}
+
+module.tallWalls = {
+    thickness = 1.1,
+    height = 16,
+    wallProps = {
+        Transparency = 0.9,
+        -- Transparency = 1,
+        BrickColor = BrickColor.new('Alder'),
+        Material = Enum.Material.Concrete,
+        CanCollide = true
+    },
+    shortHeight = 1,
+    shortWallProps = {
+        -- Transparency = 1,
+        Transparency = 0,
+        BrickColor = BrickColor.new('Bright blue'),
+        Material = Enum.Material.Cobblestone,
+        CanCollide = true
+    }
+}
+module.wallProps_default = {
+    thickness = 1.1,
+    height = 4,
+    wallProps = {
+        Transparency = 0.8,
+        -- Transparency = 1,
+        BrickColor = BrickColor.new('Alder'),
+        Material = Enum.Material.Concrete,
+        CanCollide = true
+    },
+    shortHeight = 1,
+    shortWallProps = {
+        -- Transparency = 1,
+        Transparency = 0,
+        BrickColor = BrickColor.new('Alder'),
+        Material = Enum.Material.Cobblestone,
+        CanCollide = true
+    }
 }
 
 local dummy01 = {
@@ -115,6 +164,10 @@ local dummy01 = {
     }
 }
 
+local bridgeConfigs_default = {
+    {invisiWallProps = module.tallWalls, straysOnBridges = false, bridgeTemplateName = 'Bridge_32_002'}
+}
+
 local conveyorConfigs_default = {
     conveyor5Config,
     conveyor2Config,
@@ -131,6 +184,7 @@ function module.addDefaults(regions)
         region.hexGearConfigs = region.hexGearConfigs or hexGearConfigs_default
         region.strayRegions = region.strayRegions or strayRegions_default
         region.getTargetWords = region.getTargetWords or getTargetWords_default
+        region.bridgeConfigs = region.bridgeConfigs or bridgeConfigs_default
     end
 end
 return module
