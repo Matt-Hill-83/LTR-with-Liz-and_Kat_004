@@ -97,6 +97,7 @@ local module = {
 }
 
 local dummy01 = {
+    -- invisiWallProps = tallWalls,
     material = Enum.Material.Glacier,
     statueConfigs = {
         Liz = {

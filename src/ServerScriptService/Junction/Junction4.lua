@@ -101,7 +101,7 @@ function module.initJunctions(props)
 
         local function getWallProps(wall)
             local invisiWallProps =
-                levelConfig.invisiWallProps or hexConfigs.invisiWallProps or Constants.wallProps_default
+                hexConfigs.invisiWallProps or levelConfig.invisiWallProps or Constants.wallProps_default
             invisiWallProps.part = wall
             return invisiWallProps
         end
