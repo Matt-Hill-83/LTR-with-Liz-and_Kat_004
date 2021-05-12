@@ -20,8 +20,8 @@ local r002 = {
                 '',
                 '',
                 'FOX',
-                'BOX',
-                'LOX'
+                'FOX',
+                'FOX'
             }
         }
     },
@@ -30,19 +30,13 @@ local r002 = {
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     strayRegions = {
         {
-            words = {'FOX', 'BOX', 'LOX'},
+            words = {'FOX'},
             -- maxLetters = 6
             useArea = true
         }
     },
     getTargetWords = function()
-        return {
-            {
-                {word = 'FOX', target = 1, found = 0},
-                {word = 'BOX', target = 1, found = 0},
-                {word = 'LOX', target = 1, found = 0}
-            }
-        }
+        return {{{word = 'FOX', target = 1, found = 0}}}
     end
 }
 

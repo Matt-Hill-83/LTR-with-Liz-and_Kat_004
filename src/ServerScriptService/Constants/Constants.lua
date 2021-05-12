@@ -118,7 +118,7 @@ module.tallWalls = {
     thickness = 1.1,
     height = 16,
     wallProps = {
-        Transparency = 0.8,
+        Transparency = 0.9,
         -- Transparency = 1,
         BrickColor = BrickColor.new('Alder'),
         Material = Enum.Material.Concrete,
@@ -135,7 +135,7 @@ module.tallWalls = {
 }
 module.wallProps_default = {
     thickness = 1.1,
-    height = 16,
+    height = 4,
     wallProps = {
         Transparency = 0.8,
         -- Transparency = 1,

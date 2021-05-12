@@ -63,7 +63,8 @@ local renderGrid = function(props)
     local wordWidth = (lettersInWord * letterWidth) + (lettersInWord - 1) * letterGapX
 
     local rowWidth
-    if hideCounter then
+    if false then
+        -- if hideCounter then
         rowWidth = wordWidth
     else
         rowWidth = wordWidth + totalFoundLabelWidth - paddingInPx
@@ -185,19 +186,25 @@ local renderGrid = function(props)
 
         imageLabelGem.Visible = false
         textLabelGem.Visible = false
-        if not hideCounter then
+        if true then
+            -- if not hideCounter then
             gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
             local newTextLabel = textLabelGem:Clone()
             newTextLabel.Visible = true
             newTextLabel.Parent = newRow
-            newTextLabel.Text = item.found .. ' of ' .. item.target
+
+            if hideCounter then
+                newTextLabel.Text = item.target
+            else
+                newTextLabel.Text = item.found .. ' of ' .. item.target
+            end
+
             newTextLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             newTextLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
             if item.found >= item.target then
-                -- newTextLabel.TextTransparency = 0.6
                 newTextLabel.TextYAlignment = 'Bottom'
 
                 local newImageLabel = imageLabelGem:Clone()

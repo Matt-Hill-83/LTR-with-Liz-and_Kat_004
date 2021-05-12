@@ -95,6 +95,43 @@ local r006 = {
         return {{{word = 'CAT', target = 1, found = 0}}}
     end
 }
+local r007 = {
+    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    invisiWallProps = tallWalls
+}
+local r008 = {
+    hexGearConfigs = {
+        {
+            words = {
+                '',
+                '',
+                '',
+                'FOX',
+                'BOX',
+                'LOX'
+            }
+        }
+    },
+    -- invisiWallProps = tallWalls,
+    hexIslandConfigs = {invisiWallProps = tallWalls},
+    bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
+    strayRegions = {
+        {
+            words = {'FOX', 'BOX', 'LOX'},
+            -- maxLetters = 6
+            useArea = true
+        }
+    },
+    getTargetWords = function()
+        return {
+            {
+                {word = 'FOX', target = 1, found = 0},
+                {word = 'BOX', target = 1, found = 0},
+                {word = 'LOX', target = 1, found = 0}
+            }
+        }
+    end
+}
 
 local regions = {
     r001 = r001,
@@ -102,7 +139,9 @@ local regions = {
     r003 = r003,
     r004 = r004,
     r005 = r005,
-    r006 = r006
+    r006 = r006,
+    r007 = r007,
+    r008 = r008
 }
 
 Configs.addDefaults(regions)

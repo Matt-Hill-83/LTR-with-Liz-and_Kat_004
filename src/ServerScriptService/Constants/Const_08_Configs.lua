@@ -82,11 +82,7 @@ local strayRegions_default = {
 local hexGearConfigs_default = {{words = Words.allWords}}
 
 local getTargetWords_default = function()
-    return {
-        {
-            {word = 'HAT', target = 1, found = 0}
-        }
-    }
+    return {{{word = 'HAT', target = 1, found = 0}}}
 end
 
 local module = {
