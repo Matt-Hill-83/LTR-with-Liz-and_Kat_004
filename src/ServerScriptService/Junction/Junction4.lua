@@ -15,6 +15,10 @@ local Constants = require(Sss.Source.Constants.Constants)
 local module = {}
 
 function module.initJunctions(props)
+    print('initJunctions')
+    print('initJunctions')
+    print('initJunctions')
+    print('initJunctions')
     local parentFolder = props.parentFolder
     local positionerName = props.positionerName
     local hexTemplate = props.hexTemplate

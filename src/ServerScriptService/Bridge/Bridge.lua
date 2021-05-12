@@ -11,7 +11,7 @@ local Rink = require(Sss.Source.Rink.Rink)
 local Rink2 = require(Sss.Source.Rink.Rink2)
 -- local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
-local module = {}
+local module = {count = 0}
 
 function module.getPointAlongLine(p0, p1, dist)
     local direction = (p1 - p0).Unit
@@ -32,10 +32,6 @@ function module.getPointAlongLine2(p0, p1, dist)
     local distance = (p0 - p1).Magnitude
 
     local distanceOffset = distance * dist / 100
-    -- local maxDistance = 64
-    -- if distanceOffset > maxDistance then
-    --     distanceOffset = maxDistance
-    -- end
 
     local pNew = p0 + (direction * distanceOffset)
     return pNew
@@ -75,12 +71,7 @@ function module.createBridge2(props)
     bridgeTop1.BrickColor = BrickColor.new('Alder')
     bridgeTop1.Material = 'Concrete'
 
-    print('bridgeTop1.Size' .. ' - start')
-    print('bridgeTop1.Size' .. ' - start')
-    print('bridgeTop1.Size' .. ' - start')
-    print(bridgeTop1.Size)
-
-    if bridgeTop1.Size.Z < 2 then
+    if module.isBridgeTiny(bridge1) then
         bridgeTop1.Transparency = 1
     else
         bridgeTop1.Transparency = 0
@@ -99,7 +90,8 @@ function module.createBridge2(props)
     local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
     bridgeTop2.BrickColor = BrickColor.new('Alder')
     bridgeTop2.Material = 'Concrete'
-    if bridgeTop1.Size.Z < 2 then
+
+    if module.isBridgeTiny(bridge2) then
         bridgeTop1.Transparency = 1
     else
         bridgeTop1.Transparency = 0
@@ -121,7 +113,7 @@ function module.createBridge2(props)
     )
     local bridgeTop = Utils.getFirstDescendantByName(bridge2, 'Top')
 
-    if bridgeTop.Size.Z < 2 then
+    if module.isBridgeTiny(newBridge) then
         bridgeTop.Transparency = 1
     else
         bridgeTop.Transparency = 0
@@ -147,7 +139,7 @@ function module.createBridge2(props)
 end
 
 function module.createBridgeWalls(bridge, bridgeConfig)
-    if bridge.PrimaryPart.Size.Z < 2 then
+    if module.isBridgeTiny(bridge) then
         return
     end
 
@@ -161,6 +153,21 @@ function module.createBridgeWalls(bridge, bridgeConfig)
 
     InvisiWall.setInvisiWallLeft(getWallProps(bridgeTop))
     InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
+end
+
+function module.isBridgeTiny(bridgeModel)
+    local bridgeTop1 = Utils.getFirstDescendantByName(bridgeModel, 'Top')
+    local bridgeLength = bridgeTop1.Size.Z
+
+    local isTiny = bridgeLength < 2
+    if isTiny then
+    else
+        print('bridgeLength' .. ' - start==================>')
+        print(bridgeLength)
+        bridgeModel.Name = bridgeModel.Name .. '7777'
+    end
+    return isTiny
+    -- return bridgeModel.PrimaryPart.Size.Z < 2
 end
 
 function module.createBridge(props)
@@ -178,23 +185,24 @@ function module.createBridge(props)
     local distance = (p0 - p1).Magnitude
 
     newBridge:SetPrimaryPartCFrame(CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2))
-    -- bridgePart.CFrame = CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2)
     bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
 
     bridgePart.Anchored = true
     local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
     local walls = wallFolder:getChildren()
 
-    if distance < 2 then
-        bridgePart.Transparency = 1
-    end
+    -- local bridgeLength = math.abs(p0.Z - p1.Z)
 
     for _, wall in ipairs(walls) do
         if distance < 2 then
-            wall.Transparency = 1
+        -- wall.Transparency = 1
         end
 
         wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
+    end
+
+    if module.isBridgeTiny(newBridge) then
+        bridgePart.Transparency = 1
     end
 
     return newBridge

@@ -1,13 +1,12 @@
 local Sss = game:GetService('ServerScriptService')
 
 local Configs = require(Sss.Source.Constants.Const_08_Configs)
--- local Constants = require(Sss.Source.Constants.Constants)
 local module = {}
 
 local tallWalls = Configs.tallWalls
 
 local r007 = {
-    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false, bridgeTemplateName = Configs.bridges.thick},
+    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false, bridgeTemplateName = Configs.bridges.default},
     invisiWallProps = tallWalls
 }
 
@@ -26,7 +25,11 @@ local r008 = {
     },
     -- invisiWallProps = tallWalls,
     -- hexIslandConfigs = {invisiWallProps = tallWalls},
-    bridgeConfigs = {invisiWallProps = tallWalls, straysOnBridges = false, bridgeTemplateName = Configs.bridges.thick},
+    bridgeConfigs = {
+        invisiWallProps = tallWalls,
+        straysOnBridges = false,
+        bridgeTemplateName = Configs.bridges.default
+    },
     strayRegions = {
         {
             words = {'FOX'},
