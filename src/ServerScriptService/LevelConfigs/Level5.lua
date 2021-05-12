@@ -42,7 +42,11 @@ local r008 = {
 
 local regions = {
     r007 = r007,
-    r008 = r008
+    r008 = r008,
+    r009 = r008,
+    r010 = r008,
+    r011 = r008,
+    r012 = r008
 }
 
 Configs.addDefaults(regions)

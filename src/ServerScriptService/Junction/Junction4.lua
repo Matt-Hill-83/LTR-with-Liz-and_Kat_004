@@ -7,7 +7,6 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Bridge = require(Sss.Source.Bridge.Bridge)
 
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
-local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 
 local Constants = require(Sss.Source.Constants.Constants)
 
@@ -72,16 +71,6 @@ function module.initJunctions(props)
                 }
             }
         )
-
-        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-        -- SingleStrays.initSingleStrays(
-        --     {
-        --         parentFolder = positioner.Parent,
-        --         blockTemplate = blockTemplate,
-        --         char = nil
-        --     }
-        -- )
 
         local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 

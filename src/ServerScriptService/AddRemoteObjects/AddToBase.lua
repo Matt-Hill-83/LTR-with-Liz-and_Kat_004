@@ -197,7 +197,7 @@ local function addRemoteObjects()
 
     -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
-        local config = levelConfig.regions[region.Name]
+        local config = levelConfig.regions[region.Name] or levelConfig.regions['r001']
 
         if cardSwap then
             CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
