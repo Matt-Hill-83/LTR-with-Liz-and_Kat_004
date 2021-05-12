@@ -165,7 +165,11 @@ local dummy01 = {
 }
 
 local bridgeConfigs_default = {
-    {invisiWallProps = module.tallWalls, straysOnBridges = false, bridgeTemplateName = 'Bridge_32_002'}
+    {
+        invisiWallProps = module.tallWalls,
+        straysOnBridges = false,
+        bridgeTemplateName = module.bridges.default
+    }
 }
 
 local conveyorConfigs_default = {

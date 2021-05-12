@@ -38,15 +38,8 @@ function module.initJunctions(props)
     -- create bridges
     local bridgeConfigs = levelConfig.bridgeConfigs or {}
     local bridgeTemplateName = bridgeConfigs.bridgeTemplateName
-    print('bridgeTemplateName' .. ' - start')
-    print(bridgeTemplateName)
-    bridgeTemplateName = bridgeTemplateName or 'Bridge_32'
+    bridgeTemplateName = bridgeTemplateName or Configs.bridges.default
 
-    print('bridgeTemplateName' .. ' - start')
-    print('bridgeTemplateName' .. ' - start')
-    print('bridgeTemplateName' .. ' - start')
-    print('bridgeTemplateName' .. ' - start')
-    print(bridgeTemplateName)
     Bridge.initBridges_64(
         {
             parentFolder = hexIslandFolderBox,

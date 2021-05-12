@@ -75,6 +75,11 @@ function module.createBridge2(props)
     bridgeTop1.BrickColor = BrickColor.new('Alder')
     bridgeTop1.Material = 'Concrete'
 
+    print('bridgeTop1.Size' .. ' - start')
+    print('bridgeTop1.Size' .. ' - start')
+    print('bridgeTop1.Size' .. ' - start')
+    print(bridgeTop1.Size)
+
     if bridgeTop1.Size.Z < 2 then
         bridgeTop1.Transparency = 1
     else
@@ -171,7 +176,9 @@ function module.createBridge(props)
     local bridgePart = newBridge.PrimaryPart
 
     local distance = (p0 - p1).Magnitude
-    bridgePart.CFrame = CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2)
+
+    newBridge:SetPrimaryPartCFrame(CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2))
+    -- bridgePart.CFrame = CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2)
     bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
 
     bridgePart.Anchored = true
