@@ -1,14 +1,8 @@
-local Chat = game:GetService('Chat')
-
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local ImageConst = require(Sss.Source.Constants.Const_06_Images)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
-
--- local chat = game.Players.LocalPlayer:WaitForChild('PlayerGui').Chat
--- print('chat' .. ' - start')
--- print(chat)
 
 local module = {}
 
@@ -187,10 +181,6 @@ local renderGrid = function(props)
         local textLabelGem = newRow.Frame.TextLabelGem
         textLabelGem.Visible = true
 
-        local gemHeight = letterHeight / 3
-        local gemWidth = gemHeight
-        local gemImageRed = Utils.createImageUri(ImageConst.general.gem_purple_001.imageId)
-        local gemImageGrey = Utils.createImageUri(ImageConst.general.gem_grey_001.imageId)
         local checkMark = Utils.createImageUri(ImageConst.general.check_mark_001.imageId)
 
         imageLabelGem.Visible = false
@@ -199,21 +189,24 @@ local renderGrid = function(props)
             gemFrame.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
             gemFrame.Size = UDim2.new(0, letterHeight, 0, letterHeight)
 
+            local newTextLabel = textLabelGem:Clone()
+            newTextLabel.Visible = true
+            newTextLabel.Parent = newRow
+            newTextLabel.Text = item.found .. ' of ' .. item.target
+            newTextLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
+            newTextLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
+
             if item.found >= item.target then
+                -- newTextLabel.TextTransparency = 0.6
+                newTextLabel.TextYAlignment = 'Bottom'
+
                 local newImageLabel = imageLabelGem:Clone()
                 newImageLabel.Visible = true
                 newImageLabel.Parent = newRow
                 newImageLabel.Image = checkMark
-                -- newImageLabel.Image = gemImageRed
                 newImageLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
                 newImageLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
-            else
-                local newTextLabel = textLabelGem:Clone()
-                newTextLabel.Visible = true
-                newTextLabel.Parent = newRow
-                newTextLabel.Text = item.found .. ' of ' .. item.target
-                newTextLabel.Position = UDim2.new(0, wordWidth + paddingInPx, 0, 0)
-                newTextLabel.Size = UDim2.new(0, letterHeight, 0, letterHeight)
+                newImageLabel.ZIndex = 0
             end
         end
     end

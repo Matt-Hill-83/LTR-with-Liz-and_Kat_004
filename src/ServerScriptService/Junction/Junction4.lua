@@ -35,116 +35,87 @@ function module.initJunctions(props)
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
     -- create bridges
-    for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
-        local hexConfig = hexConfigs[hexIndex] or {}
+    local bridgeConfigs = levelConfig.bridgeConfigs or {}
 
-        local bridgeConfigs = hexConfig.bridgeConfigs or levelConfig.bridgeConfigs or {}
-        print('bridgeConfigs' .. ' - start===================================>>>')
-        print(bridgeConfigs)
+    local bridgeTemplate = 'Bridge_32'
+    Bridge.initBridges_64(
+        {
+            parentFolder = hexIslandFolderBox,
+            bridgeConfigs = bridgeConfigs,
+            levelConfig = levelConfig,
+            templateName = bridgeTemplate
+        }
+    )
+    local positioners = Utils.getDescendantsByName(hexIslandFolderBox, positionerName)
 
-        local bridgeTemplate = 'Bridge_32'
-        Bridge.initBridges_64(
+    for _, positioner in ipairs(positioners) do
+        local newHex = template:Clone()
+        newHex.Parent = positioner.Parent
+
+        CS:AddTag(newHex, 'Hex_32')
+        newHex.Name = positioner.Parent.Name
+
+        local freeParts = Utils.freeAnchoredParts({item = newHex})
+
+        local positionerPart = positioner.PrimaryPart
+
+        Utils3.setCFrameFromDesiredEdgeOffset2(
             {
-                parentFolder = hexIslandFolder,
-                bridgeConfigs = bridgeConfigs,
-                levelConfig = levelConfig,
-                templateName = bridgeTemplate
+                parent = positionerPart,
+                childModel = newHex,
+                offsetConfig = {
+                    useParentNearEdge = Vector3.new(0, 1, 0),
+                    useChildNearEdge = Vector3.new(0, -1, 0),
+                    offsetAdder = Vector3.new(0, 0, 0)
+                }
             }
         )
-    end
 
-    for hexIndex, hexIslandFolder in ipairs(hexIslandFolders) do
-        local positioners = Utils.getDescendantsByName(hexIslandFolder, positionerName)
+        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+        SingleStrays.initSingleStrays(
+            {
+                parentFolder = positioner.Parent,
+                blockTemplate = blockTemplate,
+                char = nil
+            }
+        )
 
-        for posIndex, positioner in ipairs(positioners) do
-            local newHex = template:Clone()
-            newHex.Parent = positioner.Parent
+        local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 
-            CS:AddTag(newHex, 'Hex_32')
-            newHex.Name = positioner.Parent.Name
+        local facesWithWalls = {}
 
-            local freeParts = Utils.freeAnchoredParts({item = newHex})
+        for _, wallPositioner in ipairs(wallPositioners) do
+            local faceHasBridge = false
+            for _, point in ipairs(Constants.validRodAttachments) do
+                local intersects = Utils.partIntersectsPoint(wallPositioner, point.WorldPosition, Enum.PartType.Block)
 
-            local positionerPart = positioner.PrimaryPart
-
-            Utils3.setCFrameFromDesiredEdgeOffset2(
-                {
-                    parent = positionerPart,
-                    childModel = newHex,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 1, 0),
-                        useChildNearEdge = Vector3.new(0, -1, 0),
-                        offsetAdder = Vector3.new(0, 0, 0)
-                    }
-                }
-            )
-
-            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-            SingleStrays.initSingleStrays(
-                {
-                    parentFolder = positioner.Parent,
-                    blockTemplate = blockTemplate,
-                    char = nil
-                }
-            )
-
-            local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
-
-            local facesWithWalls = {}
-
-            for _, wallPositioner in ipairs(wallPositioners) do
-                local faceHasBridge = false
-                for _, point in ipairs(Constants.validRodAttachments) do
-                    local intersects =
-                        Utils.partIntersectsPoint(wallPositioner, point.WorldPosition, Enum.PartType.Block)
-
-                    if intersects then
-                        faceHasBridge = true
-                    end
-                end
-                if not faceHasBridge then
-                    table.insert(facesWithWalls, wallPositioner)
+                if intersects then
+                    faceHasBridge = true
                 end
             end
-
-            local function getWallProps(wall)
-                local defaultInvisiWallProps = {
-                    thickness = 1,
-                    height = 4,
-                    wallProps = {
-                        Transparency = 0.8,
-                        -- Transparency = 1,
-                        BrickColor = BrickColor.new('Alder'),
-                        Material = Enum.Material.Concrete,
-                        CanCollide = true
-                    },
-                    shortHeight = 1,
-                    shortWallProps = {
-                        -- Transparency = 1,
-                        Transparency = 0,
-                        BrickColor = BrickColor.new('Plum'),
-                        Material = Enum.Material.Cobblestone,
-                        CanCollide = true
-                    }
-                }
-                local invisiWallProps =
-                    levelConfig.invisiWallProps or hexConfigs.invisiWallProps or defaultInvisiWallProps
-                invisiWallProps.part = wall
-                return invisiWallProps
+            if not faceHasBridge then
+                table.insert(facesWithWalls, wallPositioner)
             end
-
-            local rightWalls = facesWithWalls
-            for _, wall in ipairs(rightWalls) do
-                InvisiWall.setInvisiWallLeft(getWallProps(wall))
-            end
-
-            positioner:Destroy()
-
-            Utils.anchorFreedParts(freeParts)
-            -- local material = hexConfig.material or Enum.Material.Grass
-            -- Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
         end
+
+        local function getWallProps(wall)
+            local invisiWallProps =
+                levelConfig.invisiWallProps or hexConfigs.invisiWallProps or Constants.wallProps_default
+            invisiWallProps.part = wall
+            return invisiWallProps
+        end
+
+        local rightWalls = facesWithWalls
+        for _, wall in ipairs(rightWalls) do
+            InvisiWall.setInvisiWallLeft(getWallProps(wall))
+        end
+
+        positioner:Destroy()
+
+        Utils.anchorFreedParts(freeParts)
+        -- local material = hexConfig.material or Enum.Material.Grass
+        -- Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
     end
 end
 

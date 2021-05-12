@@ -128,14 +128,6 @@ function module.createBridge2(props)
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
-    if straysOnBridges then
-        print('straysOnBridges')
-        print('straysOnBridges')
-        print('straysOnBridges')
-        print('straysOnBridges')
-        print('straysOnBridges')
-    end
-
     if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
         SingleStrays.initSingleStrays(
             {
@@ -155,52 +147,8 @@ function module.createBridgeWalls(bridge, bridgeConfig)
 
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
-    -- local function getWallProps(wall)
-    --     local invisiWallProps = {
-    --         thickness = 1,
-    --         height = 4,
-    --         -- height = 16,
-    --         wallProps = {
-    --             Transparency = 0.8,
-    --             -- Transparency = 1,
-    --             BrickColor = BrickColor.new('Alder'),
-    --             Material = Enum.Material.Concrete,
-    --             CanCollide = true
-    --         },
-    --         shortHeight = 1,
-    --         shortWallProps = {
-    --             -- Transparency = 1,
-    --             Transparency = 0,
-    --             BrickColor = BrickColor.new('Plum'),
-    --             Material = Enum.Material.Cobblestone,
-    --             CanCollide = true
-    --         },
-    --         part = wall
-    --     }
-    --     return invisiWallProps
-    -- end
-
     local function getWallProps(wall)
-        local defaultInvisiWallProps = {
-            thickness = 1,
-            height = 4,
-            wallProps = {
-                Transparency = 0.8,
-                -- Transparency = 1,
-                BrickColor = BrickColor.new('Alder'),
-                Material = Enum.Material.Concrete,
-                CanCollide = true
-            },
-            shortHeight = 1,
-            shortWallProps = {
-                -- Transparency = 1,
-                Transparency = 0,
-                BrickColor = BrickColor.new('Plum'),
-                Material = Enum.Material.Cobblestone,
-                CanCollide = true
-            }
-        }
-        local invisiWallProps = bridgeConfig.invisiWallProps or defaultInvisiWallProps
+        local invisiWallProps = bridgeConfig.invisiWallProps or Constants.wallProps_default
         invisiWallProps.part = wall
         return invisiWallProps
     end

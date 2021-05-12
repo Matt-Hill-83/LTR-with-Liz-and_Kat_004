@@ -73,6 +73,10 @@ function module.initStraysInRegions(props)
             blockTemplate = config.blockTemplate
 
             words = config.words or defaultWords
+
+            print('config.useArea' .. ' - start')
+            print(config.useArea)
+
             local useArea = config.useArea or defaultWords
 
             if useArea then

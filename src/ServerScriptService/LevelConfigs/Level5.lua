@@ -9,16 +9,16 @@ local tallWalls = Constants.tallWalls
 
 local r001 = {
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
-    invisiWallProps = tallWalls,
-    getTargetWords = function()
-        return {{{word = 'FOX', target = 3, found = 0}}}
-    end
+    invisiWallProps = tallWalls
 }
 
 local r002 = {
     hexGearConfigs = {
         {
             words = {
+                '',
+                '',
+                '',
                 'FOX',
                 'BOX',
                 'LOX'
