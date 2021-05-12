@@ -31,12 +31,6 @@ function module.initHexGears(props)
                 local hexes = Utils.getByTagInParent({parent = hexGear, tag = positionerTag})
                 Utils.sortListByObjectKey(hexes, 'Name')
 
-                print('hexes' .. ' - start')
-                print('hexes' .. ' - start')
-                print('hexes' .. ' - start')
-                print('hexes' .. ' - start')
-                print(hexes)
-
                 local filteredHexes = {}
                 for _, hex in ipairs(hexes) do
                     local firstChar = hex.Name:sub(1, 1)

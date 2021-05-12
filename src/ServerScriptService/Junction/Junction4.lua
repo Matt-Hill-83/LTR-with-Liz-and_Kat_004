@@ -39,6 +39,8 @@ function module.initJunctions(props)
         local hexConfig = hexConfigs[hexIndex] or {}
 
         local bridgeConfigs = hexConfig.bridgeConfigs or levelConfig.bridgeConfigs or {}
+        print('bridgeConfigs' .. ' - start===================================>>>')
+        print(bridgeConfigs)
 
         local bridgeTemplate = 'Bridge_32'
         Bridge.initBridges_64(

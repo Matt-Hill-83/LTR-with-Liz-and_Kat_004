@@ -43,8 +43,9 @@ end
 function module.createBridge2(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
-    local bridgeConfig = props.bridgeConfig
     local char = props.char
+
+    local bridgeConfig = props.bridgeConfig
     local straysOnBridges = bridgeConfig.straysOnBridges
 
     local offsetY = 15
@@ -126,6 +127,14 @@ function module.createBridge2(props)
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
     local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
+
+    if straysOnBridges then
+        print('straysOnBridges')
+        print('straysOnBridges')
+        print('straysOnBridges')
+        print('straysOnBridges')
+        print('straysOnBridges')
+    end
 
     if newBridge.PrimaryPart.Size.Z > 2 and straysOnBridges ~= false then
         SingleStrays.initSingleStrays(
