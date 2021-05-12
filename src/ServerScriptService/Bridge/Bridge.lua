@@ -124,10 +124,6 @@ function module.createBridge2(props)
 end
 
 function module.createBridgeWalls(bridge, bridgeConfig)
-    -- if module.isBridgeTiny(bridge) then
-    --     return
-    -- end
-
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
     local function getWallProps(wall)
@@ -140,12 +136,6 @@ function module.createBridgeWalls(bridge, bridgeConfig)
     InvisiWall.setInvisiWallRight(getWallProps(bridgeTop))
 end
 
-function module.isBridgeTiny(bridgeModel)
-    local bridgeLength = bridgeModel.PrimaryPart.Size.Z
-    local isTiny = bridgeLength < 2
-    return isTiny
-end
-
 function module.createBridge(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
@@ -153,7 +143,6 @@ function module.createBridge(props)
 
     local p0 = props.p0
     local p1 = props.p1
-
     local distance = (p0 - p1).Magnitude
 
     -- Don't make tiny bridges
@@ -166,12 +155,6 @@ function module.createBridge(props)
     local newBridge = bridgeTemplate:Clone()
     newBridge.Parent = parentFolder
     local bridgePart = newBridge.PrimaryPart
-
-    -- local distance = (p0 - p1).Magnitude
-
-    -- if distance < 2 then
-    --     return nil
-    -- end
 
     newBridge:SetPrimaryPartCFrame(CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2))
     bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
