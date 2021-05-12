@@ -63,7 +63,8 @@ function module.createBridge2(props)
             p0 = p0,
             p1 = platformStart,
             templateName = templateName,
-            parentFolder = parentFolder
+            parentFolder = parentFolder,
+            bridgeConfig = bridgeConfig
         }
     )
 
@@ -71,14 +72,7 @@ function module.createBridge2(props)
         local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
         bridgeTop1.BrickColor = BrickColor.new('Alder')
         bridgeTop1.Material = 'Concrete'
-
-        if module.isBridgeTiny(bridge1) then
-            bridgeTop1.Transparency = 1
-            bridge1:Destroy()
-        else
-            bridgeTop1.Transparency = 0
-            module.createBridgeWalls(bridge1, bridgeConfig)
-        end
+    -- module.createBridgeWalls(bridge1, bridgeConfig)
     end
 
     local bridge2 =
@@ -87,7 +81,8 @@ function module.createBridge2(props)
             p0 = platformEnd,
             p1 = p1,
             templateName = templateName,
-            parentFolder = parentFolder
+            parentFolder = parentFolder,
+            bridgeConfig = bridgeConfig
         }
     )
 
@@ -95,15 +90,7 @@ function module.createBridge2(props)
         local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
         bridgeTop2.BrickColor = BrickColor.new('Alder')
         bridgeTop2.Material = 'Concrete'
-
-        if module.isBridgeTiny(bridge2) then
-            bridge2.Name = bridge2.Name .. '6666'
-            bridgeTop2.Transparency = 1
-            bridge2:Destroy()
-        else
-            bridgeTop2.Transparency = 0
-            module.createBridgeWalls(bridge2, bridgeConfig)
-        end
+    -- module.createBridgeWalls(bridge2, bridgeConfig)
     end
 
     local material = bridgeConfig.material or Enum.Material.Grass
@@ -117,32 +104,25 @@ function module.createBridge2(props)
             p0 = platformStart,
             p1 = platformEnd,
             templateName = templateName,
-            parentFolder = parentFolder
+            parentFolder = parentFolder,
+            bridgeConfig = bridgeConfig
         }
     )
 
     if newBridge then
-        local bridgeTop = Utils.getFirstDescendantByName(newBridge, 'Top')
+        -- module.createBridgeWalls(newBridge, bridgeConfig)
 
-        if module.isBridgeTiny(newBridge) then
-            bridgeTop.Transparency = 1
-            newBridge:Destroy()
-        else
-            bridgeTop.Transparency = 0
-            module.createBridgeWalls(newBridge, bridgeConfig)
+        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
-            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
-
-            if straysOnBridges ~= false then
-                SingleStrays.initSingleStrays(
-                    {
-                        parentFolder = newBridge,
-                        blockTemplate = blockTemplate,
-                        char = char or '?'
-                    }
-                )
-            end
+        if straysOnBridges ~= false then
+            SingleStrays.initSingleStrays(
+                {
+                    parentFolder = newBridge,
+                    blockTemplate = blockTemplate,
+                    char = char or '?'
+                }
+            )
         end
     end
     return newBridge
@@ -166,8 +146,9 @@ function module.createBridgeWalls(bridge, bridgeConfig)
 end
 
 function module.isBridgeTiny(bridgeModel)
-    local bridgeTop1 = Utils.getFirstDescendantByName(bridgeModel, 'Top')
-    local bridgeLength = bridgeTop1.Size.Z
+    -- local bridgeTop1 = Utils.getFirstDescendantByName(bridgeModel, 'Top')
+    -- local bridgeLength = bridgeTop1.Size.Z
+    local bridgeLength = bridgeModel.PrimaryPart.Size.Z
 
     local isTiny = bridgeLength < 2
     print('bridgeLength' .. ' - start==================>')
@@ -184,6 +165,8 @@ end
 function module.createBridge(props)
     local templateName = props.templateName
     local parentFolder = props.parentFolder
+    local bridgeConfig = props.bridgeConfig
+
     local p0 = props.p0
     local p1 = props.p1
 
@@ -198,23 +181,26 @@ function module.createBridge(props)
     newBridge:SetPrimaryPartCFrame(CFrame.new(p0, p1) * CFrame.new(0, 0, -distance / 2))
     bridgePart.Size = Vector3.new(bridgePart.Size.X, bridgePart.Size.Y, distance)
 
-    bridgePart.Anchored = true
-    local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
-    local walls = wallFolder:getChildren()
-
-    for _, wall in ipairs(walls) do
-        if distance < 2 then
-        -- wall.Transparency = 1
-        end
-
-        wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
-    end
-
     if module.isBridgeTiny(newBridge) then
         print('destroy')
         newBridge:Destroy()
         return nil
     end
+
+    bridgePart.Anchored = true
+    local wallFolder = Utils.getFirstDescendantByName(newBridge, 'Walls')
+    local walls = wallFolder:getChildren()
+
+    for _, wall in ipairs(walls) do
+        wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
+    end
+    module.createBridgeWalls(newBridge, bridgeConfig)
+
+    -- if module.isBridgeTiny(newBridge) then
+    --     print('destroy')
+    --     newBridge:Destroy()
+    --     return nil
+    -- end
 
     return newBridge
 end
