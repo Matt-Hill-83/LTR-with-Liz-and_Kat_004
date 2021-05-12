@@ -147,7 +147,7 @@ module.wallProps_default = {
     shortWallProps = {
         -- Transparency = 1,
         Transparency = 0,
-        BrickColor = BrickColor.new('Bright blue'),
+        BrickColor = BrickColor.new('Alder'),
         Material = Enum.Material.Cobblestone,
         CanCollide = true
     }

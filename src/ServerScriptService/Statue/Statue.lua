@@ -1,6 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
 
+local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local InitWord = require(Sss.Source.Statue.InitWord)
 local LetterGem = require(Sss.Source.LetterGem.LetterGem)
@@ -26,7 +27,18 @@ local function initStatue(positionerModel, statusDef)
     end
 
     newStatueScene.Parent = positioner.Parent
-    newStatueScene.PrimaryPart.CFrame = positioner.CFrame
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = positioner,
+            childModel = newStatueScene,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(0, -1, 0),
+                useChildNearEdge = Vector3.new(0, -1, 0),
+                offsetAdder = Vector3.new(0, 0, 0)
+            }
+        }
+    )
     newStatueScene.PrimaryPart.Anchored = true
 
     local sentencePositioner = Utils.getFirstDescendantByName(newStatueScene, 'SentencePositioner')
@@ -65,11 +77,8 @@ local function initStatue(positionerModel, statusDef)
 
     local offsetX = sentenceLength / 2
     local currentWordPosition = {value = -letterWidth}
-
     local hexLetterGem = Utils.getFromTemplates('HexLetterGem')
-
     local wordFolder = Utils.getOrCreateFolder({name = 'WordFolder', parent = base})
-
     for wordIndex, word in ipairs(sentence) do
         local wordProps = {
             letterBlockTemplate = letterBlockTemplate,
@@ -85,40 +94,43 @@ local function initStatue(positionerModel, statusDef)
         }
         local newWordObj = InitWord.initWord(wordProps)
         local wordModel = newWordObj.word
-        local newGem = hexLetterGem:Clone()
 
-        newGem.Parent = wordFolder
+        if false then
+            local newGem = hexLetterGem:Clone()
 
-        local gemPart = newGem.PrimaryPart
-        gemPart.Anchored = true
+            newGem.Parent = wordFolder
 
-        LetterUtils.createPropOnLetterBlock(
-            {
-                letterBlock = gemPart,
-                propName = 'ParentStatue',
-                initialValue = newStatueScene.Name,
-                propType = 'StringValue'
-            }
-        )
+            local gemPart = newGem.PrimaryPart
+            gemPart.Anchored = true
 
-        local orientation, size = wordModel:GetBoundingBox()
+            LetterUtils.createPropOnLetterBlock(
+                {
+                    letterBlock = gemPart,
+                    propName = 'ParentStatue',
+                    initialValue = newStatueScene.Name,
+                    propType = 'StringValue'
+                }
+            )
 
-        local offsetY = -(gemPart.Size.Y / 2 + letterWidth / 2)
-        gemPart.CFrame = orientation + Vector3.new(0, offsetY, 0)
+            local orientation, size = wordModel:GetBoundingBox()
+
+            local offsetY = -(gemPart.Size.Y / 2 + letterWidth / 2)
+            gemPart.CFrame = orientation + Vector3.new(0, offsetY, 0)
+        end
 
         local template = Utils.getFromTemplates('Stray_normal')
 
-        LetterGem.initLetterGem(
-            {
-                letterBlock = gemPart,
-                char = word,
-                templateName = 'Stray_normal',
-                template = template,
-                letterBlockType = 'StatueGem'
-            }
-        )
+        -- LetterGem.initLetterGem(
+        --     {
+        --         letterBlock = gemPart,
+        --         char = word,
+        --         templateName = 'Stray_normal',
+        --         template = template,
+        --         letterBlockType = 'StatueGem'
+        --     }
+        -- )
 
-        gemPart.Touched:Connect(Utils.onTouchHuman(gemPart, GemUtils.partTouched))
+        -- gemPart.Touched:Connect(Utils.onTouchHuman(gemPart, GemUtils.partTouched))
     end
 
     return newStatueScene
@@ -131,6 +143,8 @@ local function initStatues(props)
     for statueIndex, positionerModel in ipairs(statuePositioners) do
         local statusDef = statusDefs[(statueIndex % #statusDefs) + 1]
         module.initStatue(positionerModel, statusDef)
+
+        positionerModel:Destroy()
     end
 end
 

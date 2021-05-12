@@ -95,10 +95,12 @@ local r006 = {
         return {{{word = 'CAT', target = 1, found = 0}}}
     end
 }
+
 local r007 = {
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     invisiWallProps = tallWalls
 }
+
 local r008 = {
     hexGearConfigs = {
         {
@@ -107,32 +109,25 @@ local r008 = {
                 '',
                 '',
                 'FOX',
-                'BOX',
-                'LOX'
+                'FOX',
+                'FOX'
             }
         }
     },
     -- invisiWallProps = tallWalls,
-    hexIslandConfigs = {invisiWallProps = tallWalls},
+    -- hexIslandConfigs = {invisiWallProps = tallWalls},
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     strayRegions = {
         {
-            words = {'FOX', 'BOX', 'LOX'},
+            words = {'FOX'},
             -- maxLetters = 6
             useArea = true
         }
     },
     getTargetWords = function()
-        return {
-            {
-                {word = 'FOX', target = 1, found = 0},
-                {word = 'BOX', target = 1, found = 0},
-                {word = 'LOX', target = 1, found = 0}
-            }
-        }
+        return {{{word = 'FOX', target = 1, found = 0}}}
     end
 }
-
 local regions = {
     r001 = r001,
     r002 = r002,

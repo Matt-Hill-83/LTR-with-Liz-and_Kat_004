@@ -29,6 +29,8 @@ local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 
+local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+
 local module = {}
 
 function module.initSheepSounds()
@@ -207,6 +209,16 @@ local function addRemoteObjects()
 
         if strayLetterBlocks then
             StrayLetterBlocks.initStraysInRegions({parentFolder = region, levelConfig = config})
+            local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+            local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+
+            SingleStrays.initSingleStrays(
+                {
+                    parentFolder = region,
+                    blockTemplate = blockTemplate,
+                    char = nil
+                }
+            )
         end
 
         if junction4 then

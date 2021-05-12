@@ -46,6 +46,8 @@ function module.initJunctions(props)
             templateName = bridgeTemplate
         }
     )
+    --
+    --
     local positioners = Utils.getDescendantsByName(hexIslandFolderBox, positionerName)
 
     for _, positioner in ipairs(positioners) do
@@ -73,13 +75,13 @@ function module.initJunctions(props)
 
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-        SingleStrays.initSingleStrays(
-            {
-                parentFolder = positioner.Parent,
-                blockTemplate = blockTemplate,
-                char = nil
-            }
-        )
+        -- SingleStrays.initSingleStrays(
+        --     {
+        --         parentFolder = positioner.Parent,
+        --         blockTemplate = blockTemplate,
+        --         char = nil
+        --     }
+        -- )
 
         local wallPositioners = Utils.getDescendantsByName(newHex, 'WallPositioner')
 

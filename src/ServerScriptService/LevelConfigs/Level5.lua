@@ -7,12 +7,12 @@ local module = {}
 
 local tallWalls = Constants.tallWalls
 
-local r001 = {
+local r007 = {
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     invisiWallProps = tallWalls
 }
 
-local r002 = {
+local r008 = {
     hexGearConfigs = {
         {
             words = {
@@ -26,7 +26,7 @@ local r002 = {
         }
     },
     -- invisiWallProps = tallWalls,
-    hexIslandConfigs = {invisiWallProps = tallWalls},
+    -- hexIslandConfigs = {invisiWallProps = tallWalls},
     bridgeConfigs = {{invisiWallProps = tallWalls, straysOnBridges = false}},
     strayRegions = {
         {
@@ -41,8 +41,8 @@ local r002 = {
 }
 
 local regions = {
-    r001 = r001,
-    r002 = r002
+    r007 = r007,
+    r008 = r008
 }
 
 Configs.addDefaults(regions)
