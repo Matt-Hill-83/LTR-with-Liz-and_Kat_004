@@ -77,7 +77,8 @@ function module.createBridge2(props)
 
     local material = bridgeConfig.material
     if bridge1 then
-        if material then
+        if false then
+            -- if material then
             module.convertToTerrain(bridge1, material)
         else
             local top = Utils.getFirstDescendantByName(bridge1, 'Top')
@@ -98,10 +99,11 @@ function module.createBridge2(props)
     )
 
     if bridge2 then
-        if material then
+        if false then
+            -- if material then
             module.convertToTerrain(bridge2, material)
         else
-            local top = Utils.getFirstDescendantByName(bridge1, 'Top')
+            local top = Utils.getFirstDescendantByName(bridge2, 'Top')
             top.BrickColor = BrickColor.new('Alder')
             top.Material = 'Concrete'
         end
