@@ -160,7 +160,7 @@ function module.createBridge(props)
     local distance = (p0 - p1).Magnitude
 
     -- Don't make tiny bridges
-    if distance < 2 then
+    if distance < 1 then
         return nil
     end
 
