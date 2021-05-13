@@ -280,8 +280,6 @@ local function addRemoteObjects()
         {parentFolder = level, tag = 'LetterGrabberPositioner', templateName = 'GrabberReplicatorTemplate_001'}
     )
 
-    Terrain.initTerrain({parentFolder = workspace})
-
     ConfigRemoteEvents.initRemoteEvents()
     if theater then
         Theater.initTheaters({parentFolder = level})
@@ -299,12 +297,14 @@ local function addRemoteObjects()
         BlockDash.addConveyors({levelConfig = config, parentFolder = region})
     end
 
-    -- Do this last after everything has been created/deleted
-    ConfigGame.configGame({levelConfig = levelConfig})
-
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
     UnicornStore.initUnicornStore({parentFolder = blockDash})
+
+    Terrain.initTerrain({parentFolder = workspace})
+    Terrain.initAir({parentFolder = workspace})
+
+    ConfigGame.configGame({levelConfig = levelConfig})
 end
 
 module.addRemoteObjects = addRemoteObjects

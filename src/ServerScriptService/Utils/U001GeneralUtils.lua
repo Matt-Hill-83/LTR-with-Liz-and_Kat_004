@@ -296,6 +296,7 @@ function module.hideItemAndChildren2(props)
 end
 
 function module.convertItemAndChildrenToTerrain(props)
+    print('convertItemAndChildrenToTerrain==============================>>>')
     local parent = props.parent
     local ignoreKids = props.ignoreKids
     local canCollide = props.canCollide or false
@@ -306,6 +307,7 @@ function module.convertItemAndChildrenToTerrain(props)
             if part:IsA('WedgePart') then
                 game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
             elseif part.Shape == Enum.PartType.Ball then
+                print('fill ball =========================++>>>>>>>')
                 game.Workspace.Terrain:FillBall(part.Position, part.Size.X / 2, material)
             elseif part.Shape == Enum.PartType.Cylinder then
                 local height = part.Size.X
@@ -330,11 +332,12 @@ function module.convertItemAndChildrenToTerrain(props)
 end
 
 function module.convertItemTerrain(props)
-    local canCollide = props.canCollide or false
+    print('convertItemTerrain----------------------------------------->>>')
+    -- local canCollide = props.canCollide or false
     local material = props.material
     local part = props.part
 
-    if part:IsA('BasePart') and part.CanCollide == true then
+    if part:IsA('BasePart') then
         if part:IsA('WedgePart') then
             game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
         elseif part.Shape == Enum.PartType.Ball then
@@ -348,8 +351,8 @@ function module.convertItemTerrain(props)
             game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
         end
 
-        part.Transparency = 1
-        part.CanCollide = canCollide
+    -- part.Transparency = 1
+    -- part.CanCollide = canCollide
     end
 end
 

@@ -37,10 +37,10 @@ function module.getPointAlongLine2(p0, p1, dist)
 end
 
 function module.convertToTerrain(bridge, material)
-    local top = Utils.getFirstDescendantByName(bridge, 'Top')
-    if top then
-        Utils.convertItemTerrain({material = material, part = top})
-    end
+    -- local top = Utils.getFirstDescendantByName(bridge, 'Top')
+    -- if top then
+    --     Utils.convertItemTerrain({material = material, part = top})
+    -- end
 end
 
 function module.createBridge2(props)
