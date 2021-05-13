@@ -110,15 +110,36 @@ local numRegions = 10
 local regionNumberStart = 10
 local numWordsPerRegion = 3
 
--- Autogenerate the regions
-for i = 1, numRegions do
-    local regionName = 'r0' .. (i - 1) + regionNumberStart
+function module.getWordSet(props)
+    local numWordsPerRegion2 = props.numWordsPerRegion
+    local index = props.index
 
-    local startIndex = (i * 3) - 2
-    local endIndex = startIndex + numWordsPerRegion - 1
+    local startIndex = (index * 3) - 2
+    local endIndex = startIndex + numWordsPerRegion2 - 1
     local wordSet = {table.unpack(Words.allWords, startIndex, endIndex)}
 
-    local mod = (i + 2) % 3
+    return wordSet
+end
+
+-- Autogenerate the regions
+for index = 1, numRegions do
+    local regionName = 'r0' .. (index - 1) + regionNumberStart
+
+    local wordSet =
+        module.getWordSet(
+        {
+            numWordsPerRegion = numWordsPerRegion,
+            index = index
+        }
+    )
+
+    -- local startIndex = (index * 3) - 2
+    -- local endIndex = startIndex + numWordsPerRegion - 1
+    -- local wordSet = {table.unpack(Words.allWords, startIndex, endIndex)}
+
+    print('wordSet' .. ' - start')
+    print(wordSet)
+    local mod = (index + 2) % 3
     local statueConfig = statueConfigs[mod + 1]
 
     local targetWords = {}
