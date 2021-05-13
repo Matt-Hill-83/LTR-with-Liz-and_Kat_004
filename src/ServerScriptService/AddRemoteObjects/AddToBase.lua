@@ -202,7 +202,6 @@ local function addRemoteObjects()
 
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
-    -- Terrain.initTerrainAfter({parentFolder = workspace, prefix = 'T-'})
 
     ConfigGame.configGame({levelConfig = levelConfig})
 end

@@ -42,31 +42,4 @@ function module.initTerrain(props)
     end
 end
 
--- function module.initTerrainAfter(props)
---     local parentFolder = props.parentFolder
---     local materials = Enum.Material:GetEnumItems()
---     for _, material in ipairs(materials) do
---         local tagName = 'T2-' .. material.Name
-
---         if material.Name ~= 'Air' then
---             local parts = Utils.getByTagInParent({parent = parentFolder, tag = tagName})
---             for _, part in ipairs(parts) do
---                 if module.shouldConvertPart(part) then
---                     Utils.convertItemAndChildrenToTerrain({parent = part, material = material, ignoreKids = true})
---                     module.tagConvertedPart(part, tagName2)
---                 end
---             end
---         end
---     end
-
---     -- Do air last, for subtracting terrain
---     local airParts = Utils.getByTagInParent({parent = parentFolder, tag = 'T2-Air'})
---     for _, part in ipairs(airParts) do
---         if module.shouldConvertPart(part) then
---             Utils.convertItemAndChildrenToTerrain({parent = part, material = Enum.Material.Air, ignoreKids = true})
---             module.tagConvertedPart(part, tagName2)
---         end
---     end
--- end
-
 return module
