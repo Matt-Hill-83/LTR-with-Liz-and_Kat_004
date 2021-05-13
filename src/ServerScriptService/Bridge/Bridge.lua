@@ -62,7 +62,6 @@ function module.createBridge2(props)
         {
             p0 = p0,
             p1 = platformStart,
-            -- templateName = templateName,
             bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
@@ -80,7 +79,6 @@ function module.createBridge2(props)
         {
             p0 = platformEnd,
             p1 = p1,
-            -- templateName = templateName,
             bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
@@ -93,17 +91,19 @@ function module.createBridge2(props)
         bridgeTop2.Material = 'Concrete'
     end
 
-    local material = bridgeConfig.material or Enum.Material.Grass
+    local material = bridgeConfig.material
+    -- local material = bridgeConfig.material or Enum.Material.Grass
 
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
-    -- Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+    if material then
+        Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
+        Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+    end
 
     local newBridge =
         module.createBridge(
         {
             p0 = platformStart,
             p1 = platformEnd,
-            -- templateName = templateName,
             bridgeTemplate = bridgeTemplate,
             parentFolder = parentFolder,
             bridgeConfig = bridgeConfig
@@ -236,7 +236,6 @@ function module.initBridges_64(props)
                 {
                     p0 = rod.Attachment0.Parent.Position,
                     p1 = rod.Attachment1.Parent.Position,
-                    -- templateName = templateName,
                     bridgeTemplate = bridgeTemplate,
                     parentFolder = parentFolder,
                     char = char,

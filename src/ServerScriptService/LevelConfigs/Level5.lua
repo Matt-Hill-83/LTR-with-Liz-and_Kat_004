@@ -9,6 +9,7 @@ local r007 = {
     bridgeConfigs = {
         invisiWallProps = tallWalls,
         straysOnBridges = false,
+        material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
     invisiWallProps = tallWalls
@@ -32,6 +33,7 @@ local r008 = {
     bridgeConfigs = {
         invisiWallProps = tallWalls,
         straysOnBridges = false,
+        material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
     strayRegions = {
