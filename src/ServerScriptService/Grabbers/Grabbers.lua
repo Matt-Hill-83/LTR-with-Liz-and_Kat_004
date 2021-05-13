@@ -47,8 +47,6 @@ function module.initGrabbers3(props)
     local templateName = props.templateName
     local positioners = props.positioners
     local regionConfig = props.regionConfig
-    print('regionConfig' .. ' - start')
-    print(regionConfig)
 
     local grabbers = {}
 
@@ -63,13 +61,12 @@ function module.initGrabbers3(props)
     end
 
     for positionerIndex, positioner in ipairs(positioners) do
-        local wordFromConfig = 'ZZZ'
+        local word = positioner.Name
 
         if regionConfig and regionConfig.wordSet then
-            wordFromConfig = regionConfig.wordSet[positionerIndex] or regionConfig.wordSet[1]
+            local wordFromConfig = regionConfig.wordSet[positionerIndex] or regionConfig.wordSet[1]
+            word = positioner.Name == '???' and wordFromConfig or word
         end
-
-        local word = positioner.Name == '???' and wordFromConfig or positioner.Name
 
         local grabbersConfig = {
             word = word,

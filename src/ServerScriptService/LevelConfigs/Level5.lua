@@ -30,6 +30,9 @@ local r008 = {
     hexGearConfigs = {
         {
             words = {
+                '',
+                '',
+                '',
                 'FOX',
                 'FOX',
                 'FOX'
