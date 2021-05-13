@@ -21,6 +21,23 @@ function module.initTerrain(props)
     end
 end
 
+function module.initTerrainAfter(props)
+    local parentFolder = props.parentFolder
+    local materials = Enum.Material:GetEnumItems()
+
+    for _, material in ipairs(materials) do
+        local tagName = 'T2-' .. material.Name
+
+        if material.Name ~= 'Air' then
+            local parts = Utils.getByTagInParent({parent = parentFolder, tag = tagName})
+
+            for _, part in ipairs(parts) do
+                Utils.convertItemAndChildrenToTerrain({parent = part, material = material, ignoreKids = true})
+            end
+        end
+    end
+end
+
 function module.initAir(props)
     local parentFolder = props.parentFolder
 

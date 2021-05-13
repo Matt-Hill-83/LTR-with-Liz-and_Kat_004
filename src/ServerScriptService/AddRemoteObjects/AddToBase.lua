@@ -303,6 +303,7 @@ local function addRemoteObjects()
 
     Terrain.initTerrain({parentFolder = workspace})
     Terrain.initAir({parentFolder = workspace})
+    Terrain.initTerrainAfter({parentFolder = workspace})
 
     ConfigGame.configGame({levelConfig = levelConfig})
 end

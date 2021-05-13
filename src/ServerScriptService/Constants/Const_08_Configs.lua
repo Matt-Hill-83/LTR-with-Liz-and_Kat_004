@@ -5,7 +5,6 @@ local Words = require(Sss.Source.Constants.Const_07_Words)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local bridges = {
-    -- default = 'Bridge_32_002',
     default = 'Bridge_32',
     thick = 'Bridge_32_002'
 }
