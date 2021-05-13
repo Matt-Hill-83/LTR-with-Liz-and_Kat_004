@@ -133,12 +133,6 @@ for index = 1, numRegions do
         }
     )
 
-    -- local startIndex = (index * 3) - 2
-    -- local endIndex = startIndex + numWordsPerRegion - 1
-    -- local wordSet = {table.unpack(Words.allWords, startIndex, endIndex)}
-
-    print('wordSet' .. ' - start')
-    print(wordSet)
     local mod = (index + 2) % 3
     local statueConfig = statueConfigs[mod + 1]
 
