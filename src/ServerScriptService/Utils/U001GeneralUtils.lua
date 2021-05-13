@@ -295,7 +295,7 @@ function module.hideItemAndChildren2(props)
     return hiddenParts
 end
 
-local function convertItemAndChildrenToTerrain(props)
+function module.convertItemAndChildrenToTerrain(props)
     local parent = props.parent
     local ignoreKids = props.ignoreKids
     local canCollide = props.canCollide or false
@@ -326,6 +326,30 @@ local function convertItemAndChildrenToTerrain(props)
         for i, item in ipairs(children) do
             convert(item)
         end
+    end
+end
+
+function module.convertItemTerrain(props)
+    local canCollide = props.canCollide or false
+    local material = props.material
+    local part = props.part
+
+    if part:IsA('BasePart') and part.CanCollide == true then
+        if part:IsA('WedgePart') then
+            game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
+        elseif part.Shape == Enum.PartType.Ball then
+            game.Workspace.Terrain:FillBall(part.Position, part.Size.X / 2, material)
+        elseif part.Shape == Enum.PartType.Cylinder then
+            local height = part.Size.X
+            local radius = part.Size.Z / 2
+            local newCFrame = part.CFrame * CFrame.Angles(0, 0, math.rad(90))
+            game.Workspace.Terrain:FillCylinder(newCFrame, height, radius, material)
+        else
+            game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
+        end
+
+        part.Transparency = 1
+        part.CanCollide = canCollide
     end
 end
 
@@ -1094,7 +1118,6 @@ end
 
 module.addcfv3 = addcfv3
 module.addPadding = addPadding
--- module.cloneModel = cloneModel
 module.enableChildWelds = enableChildWelds
 module.genRandom = genRandom
 module.getDescendantsByName = getDescendantsByName
@@ -1118,7 +1141,6 @@ module.tablelength = tablelength
 module.tableToString = tableToString
 module.onTouchBlock = onTouchBlock
 module.getActiveTool = getActiveTool
-module.convertItemAndChildrenToTerrain = convertItemAndChildrenToTerrain
 
 module.unhideHideItems2 = unhideHideItems2
 

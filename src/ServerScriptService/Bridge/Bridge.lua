@@ -36,6 +36,13 @@ function module.getPointAlongLine2(p0, p1, dist)
     return pNew
 end
 
+function module.convertToTerrain(bridge, material)
+    local top = Utils.getFirstDescendantByName(bridge, 'Top')
+    if top then
+        Utils.convertItemTerrain({material = material, part = top})
+    end
+end
+
 function module.createBridge2(props)
     local bridgeTemplate = props.bridgeTemplate
     local parentFolder = props.parentFolder
@@ -68,10 +75,15 @@ function module.createBridge2(props)
         }
     )
 
+    local material = bridgeConfig.material
     if bridge1 then
-        local bridgeTop1 = Utils.getFirstDescendantByName(bridge1, 'Top')
-        bridgeTop1.BrickColor = BrickColor.new('Alder')
-        bridgeTop1.Material = 'Concrete'
+        if material then
+            module.convertToTerrain(bridge1, material)
+        else
+            local top = Utils.getFirstDescendantByName(bridge1, 'Top')
+            top.BrickColor = BrickColor.new('Alder')
+            top.Material = 'Concrete'
+        end
     end
 
     local bridge2 =
@@ -86,17 +98,13 @@ function module.createBridge2(props)
     )
 
     if bridge2 then
-        local bridgeTop2 = Utils.getFirstDescendantByName(bridge2, 'Top')
-        bridgeTop2.BrickColor = BrickColor.new('Alder')
-        bridgeTop2.Material = 'Concrete'
-    end
-
-    local material = bridgeConfig.material
-    -- local material = bridgeConfig.material or Enum.Material.Grass
-
-    if material then
-        Utils.convertItemAndChildrenToTerrain({parent = bridge1, material = material, ignoreKids = false})
-        Utils.convertItemAndChildrenToTerrain({parent = bridge2, material = material, ignoreKids = false})
+        if material then
+            module.convertToTerrain(bridge2, material)
+        else
+            local top = Utils.getFirstDescendantByName(bridge1, 'Top')
+            top.BrickColor = BrickColor.new('Alder')
+            top.Material = 'Concrete'
+        end
     end
 
     local newBridge =
@@ -153,8 +161,6 @@ function module.createBridge(props)
     if distance < 2 then
         return nil
     end
-
-    -- local bridgeTemplate = Utils.getFromTemplates(templateName)
 
     local newBridge = bridgeTemplate:Clone()
     newBridge.Parent = parentFolder
@@ -221,7 +227,7 @@ function module.initBridges_64(props)
 
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
-        local bridgeConfig = bridgeConfigs[1] or {}
+        local bridgeConfig = bridgeConfigs or {}
 
         local rodValid = module.rodIsValid(rod)
 
