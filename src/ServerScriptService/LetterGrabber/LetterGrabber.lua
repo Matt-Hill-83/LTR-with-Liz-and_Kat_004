@@ -187,7 +187,7 @@ function module.initLetterGrabber(props)
     local templateName = props.templateName
     local word = props.word
 
-    templateName = templateName or 'GrabberReplicatorTemplate_001'
+    -- templateName = templateName or 'GrabberReplicatorTemplate_001'
     local template = Utils.getFromTemplates(templateName)
 
     local newReplicator = template:Clone()
@@ -197,7 +197,7 @@ function module.initLetterGrabber(props)
         newReplicator.Parent = parentFolder
     end
 
-    local newReplicatorPart = newReplicator.PrimaryPart
+    -- local newReplicatorPart = newReplicator.PrimaryPart
 
     letterGrabber.Name = letterGrabber.Name .. '-' .. word
 

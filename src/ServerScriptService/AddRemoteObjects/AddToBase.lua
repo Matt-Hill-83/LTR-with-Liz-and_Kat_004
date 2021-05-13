@@ -23,7 +23,7 @@ local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local Terrain = require(Sss.Source.Terrain.Terrain)
-local TestArea = require(Sss.Source.TestArea.TestArea)
+-- local TestArea = require(Sss.Source.TestArea.TestArea)
 local Theater = require(Sss.Source.Theater.Theater)
 local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
@@ -197,18 +197,18 @@ local function addRemoteObjects()
 
     -- for regionIndex, region in ipairs({}) do
     for regionIndex, region in ipairs(regions) do
-        local config = levelConfig.regions[region.Name] or levelConfig.regions['r001']
+        local regionConfig = levelConfig.regions[region.Name] or levelConfig.regions['r001']
 
         if cardSwap then
-            CardSwap.initCardSwaps({parentFolder = region, levelConfig = config, regionIndex = regionIndex})
+            CardSwap.initCardSwaps({parentFolder = region, levelConfig = regionConfig, regionIndex = regionIndex})
         end
 
         if petBox then
-            PetBox.initPetBox({parentFolder = region, levelConfig = config})
+            PetBox.initPetBox({parentFolder = region, levelConfig = regionConfig})
         end
 
         if strayLetterBlocks then
-            StrayLetterBlocks.initStraysInRegions({parentFolder = region, levelConfig = config})
+            StrayLetterBlocks.initStraysInRegions({parentFolder = region, levelConfig = regionConfig})
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
@@ -225,7 +225,7 @@ local function addRemoteObjects()
             Junction4.initJunctions(
                 {
                     parentFolder = region,
-                    levelConfig = config,
+                    levelConfig = regionConfig,
                     hexTemplate = 'Hex_32_32_v1',
                     positionerName = 'Hex_32_32_pos_v2',
                     regionIndex = regionIndex
@@ -237,7 +237,7 @@ local function addRemoteObjects()
                 HexGear.initHexGears(
                     {
                         parentFolder = region,
-                        levelConfig = config,
+                        levelConfig = regionConfig,
                         -- templateName = 'LevelPortal-004',
                         templateName = 'LevelPortal-003',
                         positionerTag = 'Hex_32',
@@ -247,7 +247,7 @@ local function addRemoteObjects()
             -- HexGear.initHexGears(
             --     {
             --         parentFolder = region,
-            --         levelConfig = config,
+            --         levelConfig = regionConfig,
             --         templateName = 'LevelPortal-004',
             --         positionerTag = 'Positioner-Trophy-001'
             --     }
@@ -256,45 +256,55 @@ local function addRemoteObjects()
         end
 
         if statueGate then
-            StatueGate.initStatueGates({parentFolder = region, levelConfig = config})
+            StatueGate.initStatueGates({parentFolder = region, levelConfig = regionConfig})
         end
         if grabbers then
-            Grabbers.initGrabbers2({levelConfig = config, parentFolder = region})
+            Grabbers.initGrabbers2({levelConfig = regionConfig, parentFolder = region})
         end
         if letterGrabber then
-            LetterGrabber.initGrabberSwaps({levelConfig = config, parentFolder = region})
+            LetterGrabber.initGrabberSwaps({levelConfig = regionConfig, parentFolder = region})
         end
         if entrance then
             Entrance.initRunFasts(region)
         end
-        LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = config})
-        AccessoryGiver.initAccessoryGivers({parentFolder = region, levelConfig = config})
+        LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = regionConfig})
+        AccessoryGiver.initAccessoryGivers({parentFolder = region, levelConfig = regionConfig})
+
+        -- TestArea.configTestArea({parentFolder = level})
+
+        Grabbers.initGrabbers3(
+            {
+                levelConfig = regionConfig,
+                parentFolder = region,
+                tag = 'LetterGrabberPositioner3',
+                templateName = 'GrabberReplicatorTemplate_003'
+            }
+        )
+        Grabbers.initGrabbers3(
+            {
+                levelConfig = regionConfig,
+                parentFolder = region,
+                tag = 'LetterGrabberPositioner',
+                templateName = 'GrabberReplicatorTemplate_001'
+            }
+        )
     end
-
-    TestArea.configTestArea({parentFolder = level})
-
-    Grabbers.initGrabbers3(
-        {parentFolder = level, tag = 'LetterGrabberPositioner3', templateName = 'GrabberReplicatorTemplate_003'}
-    )
-    Grabbers.initGrabbers3(
-        {parentFolder = level, tag = 'LetterGrabberPositioner', templateName = 'GrabberReplicatorTemplate_001'}
-    )
 
     ConfigRemoteEvents.initRemoteEvents()
     if theater then
         Theater.initTheaters({parentFolder = level})
     end
     for _, region in ipairs(regions) do
-        local config = levelConfig.regions[region.Name]
+        local regionConfig = levelConfig.regions[region.Name]
 
         VendingMachine2.initVendingMachine_002(
-            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = config}
+            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = regionConfig}
         )
     end
 
     for _, region in ipairs(regions) do
-        local config = levelConfig.regions[region.Name]
-        BlockDash.addConveyors({levelConfig = config, parentFolder = region})
+        local regionConfig = levelConfig.regions[region.Name]
+        BlockDash.addConveyors({levelConfig = regionConfig, parentFolder = region})
     end
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')

@@ -83,8 +83,10 @@ function module.getRegionTemplate(props)
     local strayRegionWords = props.strayRegionWords
     local targetWords = props.targetWords
     local statueConfigs2 = props.statueConfigs
+    local wordSet = props.wordSet
 
     local regionTemplate = {
+        wordSet = wordSet,
         hexGearConfigs = hexGearWords,
         bridgeConfigs = {
             invisiWallProps = tallWalls,
@@ -124,6 +126,7 @@ for i = 1, numRegions do
     local props = {
         hexGearWords = {{words = Utils.concatArray({'', '', ''}, wordSet)}},
         strayRegionWords = wordSet,
+        wordSet = wordSet,
         targetWords = targetWords,
         statueConfigs = {statueConfig}
     }

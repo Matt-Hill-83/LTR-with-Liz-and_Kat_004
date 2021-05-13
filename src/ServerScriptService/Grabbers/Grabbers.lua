@@ -33,7 +33,6 @@ function module.initGrabbers2(props)
     for _, positioner in ipairs(positioners) do
         local grabbersConfig = {
             word = word,
-            -- word = positioner.Name,
             parentFolder = parentFolder,
             positioner = positioner
         }
@@ -47,18 +46,13 @@ function module.initGrabbers3(props)
     local tag = props.tag
     local templateName = props.templateName
     local positioners = props.positioners
+    local levelConfig = props.levelConfig
+    print('levelConfig' .. ' - start')
+    print(levelConfig)
 
     local grabbers = {}
 
-    if not templateName then
-        templateName = 'GrabberReplicatorTemplate_001'
-    end
-
     if not positioners then
-        if not tag then
-            tag = 'LetterGrabberPositioner'
-        end
-
         positioners =
             Utils.getByTagInParent(
             {
@@ -68,9 +62,17 @@ function module.initGrabbers3(props)
         )
     end
 
-    for _, positioner in ipairs(positioners) do
+    for positionerIndex, positioner in ipairs(positioners) do
+        local wordFromConfig = 'ZZZ'
+
+        if levelConfig and levelConfig.wordSet then
+            wordFromConfig = levelConfig.wordSet[positionerIndex] or levelConfig.wordSet[1]
+        end
+
+        local word = positioner.Name == '???' and wordFromConfig or positioner.Name
+
         local grabbersConfig = {
-            word = positioner.Name,
+            word = word,
             parentFolder = parentFolder,
             positioner = positioner,
             templateName = templateName
