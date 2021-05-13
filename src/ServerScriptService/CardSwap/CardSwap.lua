@@ -18,7 +18,7 @@ end
 
 function module.initCardSwaps(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
 
     local db = false
 
@@ -29,7 +29,7 @@ function module.initCardSwaps(props)
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
-                    local targetWords = levelConfig.getTargetWords()[itemNum] or levelConfig.getTargetWords()[1]
+                    local targetWords = regionConfig.getTargetWords()[itemNum] or regionConfig.getTargetWords()[1]
 
                     -- check to see if they already have that card
                     local gameState = PlayerStatManager.getGameState(player)

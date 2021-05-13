@@ -12,9 +12,9 @@ function module.initHexGears(props)
     local positionerTag = props.positionerTag
     local offsetAngle = props.offsetAngle
 
-    local levelConfig = props.levelConfig
-    local hexGearConfigs = levelConfig.hexGearConfigs
-    local positioners = levelConfig.positioners
+    local regionConfig = props.regionConfig
+    local hexGearConfigs = regionConfig.hexGearConfigs
+    local positioners = regionConfig.positioners
 
     local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = 'HexGear_001'})
     Utils.sortListByObjectKey(hexGears, 'Name')

@@ -100,10 +100,10 @@ function module.addBlockDash(conveyorConfig, islandIndex)
 end
 
 function module.addConveyors(props)
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local parentFolder = props.parentFolder
 
-    local conveyorConfigs = levelConfig.conveyorConfigs
+    local conveyorConfigs = regionConfig.conveyorConfigs
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
 
     local islandPositioners = Utils.getByTagInParent({parent = parentFolder, tag = 'IslandPositioner'})

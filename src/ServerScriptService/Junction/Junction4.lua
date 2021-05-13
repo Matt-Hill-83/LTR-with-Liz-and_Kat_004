@@ -19,8 +19,8 @@ function module.initJunctions(props)
     local positionerName = props.positionerName
     local hexTemplate = props.hexTemplate
 
-    local levelConfig = props.levelConfig
-    local hexConfigs = levelConfig.hexIslandConfigs
+    local regionConfig = props.regionConfig
+    local hexConfigs = regionConfig.hexIslandConfigs
 
     local template = Utils.getFromTemplates(hexTemplate)
     if not hexConfigs then
@@ -36,7 +36,7 @@ function module.initJunctions(props)
     Utils.sortListByObjectKey(hexIslandFolders, 'Name')
 
     -- create bridges
-    local bridgeConfigs = levelConfig.bridgeConfigs or {}
+    local bridgeConfigs = regionConfig.bridgeConfigs or {}
     local bridgeTemplateName = bridgeConfigs.bridgeTemplateName
     bridgeTemplateName = bridgeTemplateName or Configs.bridges.default
 
@@ -44,7 +44,7 @@ function module.initJunctions(props)
         {
             parentFolder = hexIslandFolderBox,
             bridgeConfigs = bridgeConfigs,
-            levelConfig = levelConfig,
+            regionConfig = regionConfig,
             templateName = bridgeTemplateName
         }
     )
@@ -95,7 +95,7 @@ function module.initJunctions(props)
 
         local function getWallProps(wall)
             local invisiWallProps =
-                hexConfigs.invisiWallProps or levelConfig.invisiWallProps or Configs.wallProps_default
+                hexConfigs.invisiWallProps or regionConfig.invisiWallProps or Configs.wallProps_default
             invisiWallProps.part = wall
             return invisiWallProps
         end

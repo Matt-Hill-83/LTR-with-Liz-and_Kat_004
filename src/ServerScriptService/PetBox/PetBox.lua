@@ -9,7 +9,7 @@ local PetService = require(Sss.Source.PetService.PetService)
 local module = {}
 
 function module.initPetBox(props)
-    local levelConfig = props.levelConfig or {}
+    local regionConfig = props.regionConfig or {}
     local parentFolder = props.parentFolder
 
     local petBox = Utils.getFirstDescendantByName(parentFolder, 'PetBox')
@@ -74,7 +74,7 @@ function module.initPetBox(props)
     end
 
     VendingMachine.initVendingMachine_002(
-        {tag = 'M-VendingMachine_002', parentFolder = petBox, levelConfig = levelConfig, onComplete = onComplete}
+        {tag = 'M-VendingMachine_002', parentFolder = petBox, regionConfig = regionConfig, onComplete = onComplete}
     )
 end
 

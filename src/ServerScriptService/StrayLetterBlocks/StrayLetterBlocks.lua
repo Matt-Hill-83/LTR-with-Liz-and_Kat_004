@@ -45,7 +45,7 @@ end
 
 function module.initStraysInRegions(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
     Utils.sortListByObjectKey(strayRegions, 'Name')
 
@@ -67,8 +67,8 @@ function module.initStraysInRegions(props)
 
         local isHoverStray = CS:HasTag(region, 'StrayRegion-Hover')
 
-        if levelConfig.strayRegions and levelConfig.strayRegions[regionIndex] then
-            local config = levelConfig.strayRegions[regionIndex]
+        if regionConfig.strayRegions and regionConfig.strayRegions[regionIndex] then
+            local config = regionConfig.strayRegions[regionIndex]
 
             blockTemplate = config.blockTemplate
             words = config.words or defaultWords

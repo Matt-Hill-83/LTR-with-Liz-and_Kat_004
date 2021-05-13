@@ -9,9 +9,9 @@ local Replicator = require(Sss.Source.BlockDash.Replicator)
 local module = {}
 
 function module.initStatueGates(props)
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local parentFolder = props.parentFolder
-    local hexConfigs = levelConfig.hexIslandConfigs
+    local hexConfigs = regionConfig.hexIslandConfigs
 
     local hexConfig = hexConfigs and hexConfigs[1] or nil
 

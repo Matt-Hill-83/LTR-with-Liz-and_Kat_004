@@ -11,7 +11,7 @@ local module = {}
 
 function module.initVendingMachine_002(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local onComplete = props.onComplete
     local tag = props.tag
 
@@ -22,10 +22,10 @@ function module.initVendingMachine_002(props)
 
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
-        if not levelConfig or not levelConfig.getTargetWords then
+        if not regionConfig or not regionConfig.getTargetWords then
             return
         end
-        local signTargetWords = levelConfig.getTargetWords()[vendingMachineIndex]
+        local signTargetWords = regionConfig.getTargetWords()[vendingMachineIndex]
 
         local mainFrame = Utils.getFirstDescendantByName(SGUI, 'MainFrame')
         local newFrame = mainFrame:Clone()
@@ -43,7 +43,7 @@ function module.initVendingMachine_002(props)
             {
                 sgui = sgui,
                 targetWords = signTargetWords,
-                levelConfig = levelConfig,
+                regionConfig = regionConfig,
                 displayHeight = displayHeight,
                 mainFramePosition = mainFramePosition,
                 hideCounter = true

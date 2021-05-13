@@ -11,9 +11,9 @@ local module = {}
 
 function module.initLetterOrbiter(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
 
-    local orbiterConfigs = levelConfig.orbiterConfigs
+    local orbiterConfigs = regionConfig.orbiterConfigs
 
     if not orbiterConfigs then
         return

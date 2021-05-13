@@ -9,19 +9,19 @@ local module = {}
 -- this seems like a temporary thing to init some grabbers easily
 function module.initGrabbers2(props)
     local parentFolder = props.parentFolder
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
 
-    if not levelConfig.strayRegions then
+    if not regionConfig.strayRegions then
         return
     end
-    if not levelConfig.strayRegions[1] then
+    if not regionConfig.strayRegions[1] then
         return
     end
-    if not levelConfig.strayRegions[1]['words'] then
+    if not regionConfig.strayRegions[1]['words'] then
         return
     end
 
-    local word = levelConfig.strayRegions[1]['words'][1]
+    local word = regionConfig.strayRegions[1]['words'][1]
     local positioners =
         Utils.getByTagInParent(
         {
@@ -46,9 +46,9 @@ function module.initGrabbers3(props)
     local tag = props.tag
     local templateName = props.templateName
     local positioners = props.positioners
-    local levelConfig = props.levelConfig
-    print('levelConfig' .. ' - start')
-    print(levelConfig)
+    local regionConfig = props.regionConfig
+    print('regionConfig' .. ' - start')
+    print(regionConfig)
 
     local grabbers = {}
 
@@ -65,8 +65,8 @@ function module.initGrabbers3(props)
     for positionerIndex, positioner in ipairs(positioners) do
         local wordFromConfig = 'ZZZ'
 
-        if levelConfig and levelConfig.wordSet then
-            wordFromConfig = levelConfig.wordSet[positionerIndex] or levelConfig.wordSet[1]
+        if regionConfig and regionConfig.wordSet then
+            wordFromConfig = regionConfig.wordSet[positionerIndex] or regionConfig.wordSet[1]
         end
 
         local word = positioner.Name == '???' and wordFromConfig or positioner.Name
@@ -85,13 +85,13 @@ function module.initGrabbers3(props)
 end
 
 function module.getLetterMatrix(props)
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local numRods = props.numRods
 
-    if not levelConfig.getTargetWords then
+    if not regionConfig.getTargetWords then
         return {}
     end
-    local signTargetWords = levelConfig.getTargetWords()[1]
+    local signTargetWords = regionConfig.getTargetWords()[1]
     local words = {}
     for _, word in ipairs(signTargetWords) do
         table.insert(words, word.word)

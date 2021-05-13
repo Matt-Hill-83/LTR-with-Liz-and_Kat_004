@@ -200,15 +200,15 @@ local function addRemoteObjects()
         local regionConfig = levelConfig.regions[region.Name] or levelConfig.regions['r001']
 
         if cardSwap then
-            CardSwap.initCardSwaps({parentFolder = region, levelConfig = regionConfig, regionIndex = regionIndex})
+            CardSwap.initCardSwaps({parentFolder = region, regionConfig = regionConfig, regionIndex = regionIndex})
         end
 
         if petBox then
-            PetBox.initPetBox({parentFolder = region, levelConfig = regionConfig})
+            PetBox.initPetBox({parentFolder = region, regionConfig = regionConfig})
         end
 
         if strayLetterBlocks then
-            StrayLetterBlocks.initStraysInRegions({parentFolder = region, levelConfig = regionConfig})
+            StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
             local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
             local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
@@ -225,7 +225,7 @@ local function addRemoteObjects()
             Junction4.initJunctions(
                 {
                     parentFolder = region,
-                    levelConfig = regionConfig,
+                    regionConfig = regionConfig,
                     hexTemplate = 'Hex_32_32_v1',
                     positionerName = 'Hex_32_32_pos_v2',
                     regionIndex = regionIndex
@@ -237,7 +237,7 @@ local function addRemoteObjects()
                 HexGear.initHexGears(
                     {
                         parentFolder = region,
-                        levelConfig = regionConfig,
+                        regionConfig = regionConfig,
                         -- templateName = 'LevelPortal-004',
                         templateName = 'LevelPortal-003',
                         positionerTag = 'Hex_32',
@@ -247,7 +247,7 @@ local function addRemoteObjects()
             -- HexGear.initHexGears(
             --     {
             --         parentFolder = region,
-            --         levelConfig = regionConfig,
+            --         regionConfig = regionConfig,
             --         templateName = 'LevelPortal-004',
             --         positionerTag = 'Positioner-Trophy-001'
             --     }
@@ -256,25 +256,25 @@ local function addRemoteObjects()
         end
 
         if statueGate then
-            StatueGate.initStatueGates({parentFolder = region, levelConfig = regionConfig})
+            StatueGate.initStatueGates({parentFolder = region, regionConfig = regionConfig})
         end
         if grabbers then
-            Grabbers.initGrabbers2({levelConfig = regionConfig, parentFolder = region})
+            Grabbers.initGrabbers2({regionConfig = regionConfig, parentFolder = region})
         end
         if letterGrabber then
-            LetterGrabber.initGrabberSwaps({levelConfig = regionConfig, parentFolder = region})
+            LetterGrabber.initGrabberSwaps({regionConfig = regionConfig, parentFolder = region})
         end
         if entrance then
             Entrance.initRunFasts(region)
         end
-        LetterOrbiter.initLetterOrbiter({parentFolder = region, levelConfig = regionConfig})
-        AccessoryGiver.initAccessoryGivers({parentFolder = region, levelConfig = regionConfig})
+        LetterOrbiter.initLetterOrbiter({parentFolder = region, regionConfig = regionConfig})
+        AccessoryGiver.initAccessoryGivers({parentFolder = region, regionConfig = regionConfig})
 
         -- TestArea.configTestArea({parentFolder = level})
 
         Grabbers.initGrabbers3(
             {
-                levelConfig = regionConfig,
+                regionConfig = regionConfig,
                 parentFolder = region,
                 tag = 'LetterGrabberPositioner3',
                 templateName = 'GrabberReplicatorTemplate_003'
@@ -282,7 +282,7 @@ local function addRemoteObjects()
         )
         Grabbers.initGrabbers3(
             {
-                levelConfig = regionConfig,
+                regionConfig = regionConfig,
                 parentFolder = region,
                 tag = 'LetterGrabberPositioner',
                 templateName = 'GrabberReplicatorTemplate_001'
@@ -298,13 +298,13 @@ local function addRemoteObjects()
         local regionConfig = levelConfig.regions[region.Name]
 
         VendingMachine2.initVendingMachine_002(
-            {tag = 'M-VendingMachine-003', parentFolder = region, levelConfig = regionConfig}
+            {tag = 'M-VendingMachine-003', parentFolder = region, regionConfig = regionConfig}
         )
     end
 
     for _, region in ipairs(regions) do
         local regionConfig = levelConfig.regions[region.Name]
-        BlockDash.addConveyors({levelConfig = regionConfig, parentFolder = region})
+        BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
     end
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')

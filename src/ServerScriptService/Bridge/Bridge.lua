@@ -212,7 +212,7 @@ end
 function module.initBridges_64(props)
     local parentFolder = props.parentFolder
     local bridgeConfigs = props.bridgeConfigs
-    local levelConfig = props.levelConfig
+    local regionConfig = props.regionConfig
     local templateName = props.templateName or 'Bridge'
 
     local rods =
@@ -225,7 +225,7 @@ function module.initBridges_64(props)
 
     Utils.sortListByObjectKey(rods, 'Name')
 
-    local letterMatrix = Grabbers.getLetterMatrix({levelConfig = levelConfig, numRods = #rods})
+    local letterMatrix = Grabbers.getLetterMatrix({regionConfig = regionConfig, numRods = #rods})
 
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
