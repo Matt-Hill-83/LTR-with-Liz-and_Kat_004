@@ -47,8 +47,6 @@ function module.createBridge2(props)
     local bridgeTop = Utils.getFirstDescendantByName(bridgeTemplate, 'Top')
     local offsetY = 15 - bridgeTop.Size.Y / 2
 
-    -- local offsetY = 15
-    -- local offsetY = 12
     local p0 = props.p0 + Vector3.new(0, offsetY, 0)
     local p1 = props.p1 + Vector3.new(0, offsetY, 0)
 
