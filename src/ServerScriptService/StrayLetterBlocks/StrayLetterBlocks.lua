@@ -71,11 +71,7 @@ function module.initStraysInRegions(props)
             local config = levelConfig.strayRegions[regionIndex]
 
             blockTemplate = config.blockTemplate
-
             words = config.words or defaultWords
-
-            print('config.useArea' .. ' - start')
-            print(config.useArea)
 
             local useArea = config.useArea or defaultWords
 

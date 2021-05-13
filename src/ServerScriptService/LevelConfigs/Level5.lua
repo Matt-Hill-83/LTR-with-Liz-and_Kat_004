@@ -1,5 +1,6 @@
 local Sss = game:GetService('ServerScriptService')
 
+local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Configs = require(Sss.Source.Constants.Const_08_Configs)
 local Words = require(Sss.Source.Constants.Const_07_Words)
 local module = {}
@@ -56,34 +57,8 @@ local r008 = {
 local regions = {
     r007 = r007,
     r008 = r008,
-    r009 = r008,
-    r010 = r008,
-    r011 = r008,
-    r012 = r008
+    r009 = r008
 }
-
-function module.getRegionTemplate(props)
-    local hexGearWords = props.hexGearWords
-    local strayRegionWords = props.strayRegionWords
-    local targetWords = props.targetWords
-    local statueConfigs = props.targetWords
-
-    local regionTemplate = {
-        hexGearConfigs = hexGearWords,
-        bridgeConfigs = {
-            invisiWallProps = tallWalls,
-            straysOnBridges = false,
-            bridgeTemplateName = Configs.bridges.default
-        },
-        strayRegions = {{words = strayRegionWords}},
-        statueConfigs = statueConfigs,
-        getTargetWords = function()
-            return {targetWords}
-        end
-    }
-
-    return regionTemplate
-end
 
 local statueConfigs = {
     Liz = {
@@ -103,30 +78,60 @@ local statueConfigs = {
     }
 }
 
-local numRegions = 50
-for i = 10, numRegions do
-    local mod = i % #statueConfigs
+function module.getRegionTemplate(props)
+    local hexGearWords = props.hexGearWords
+    local strayRegionWords = props.strayRegionWords
+    local targetWords = props.targetWords
+    local statueConfigs2 = props.statueConfigs
 
-    print('mod' .. ' - start')
-    print(mod)
+    local regionTemplate = {
+        hexGearConfigs = hexGearWords,
+        bridgeConfigs = {
+            invisiWallProps = tallWalls,
+            straysOnBridges = false,
+            bridgeTemplateName = Configs.bridges.default
+        },
+        strayRegions = {{words = strayRegionWords}},
+        statueConfigs = statueConfigs2,
+        getTargetWords = function()
+            return {targetWords}
+        end
+    }
 
+    return regionTemplate
+end
+
+local numRegions = 10
+local regionNumberStart = 10
+local numWordsPerRegion = 3
+
+-- Autogenerate the regions
+for i = 1, numRegions do
+    local regionName = 'r0' .. (i - 1) + regionNumberStart
+
+    local startIndex = (i * 3) - 2
+    local endIndex = startIndex + numWordsPerRegion - 1
+    local wordSet = {table.unpack(Words.allWords, startIndex, endIndex)}
+
+    local mod = (i + 2) % 3
     local statueConfig = statueConfigs[mod + 1]
 
-    local regionName = 'r0' .. i
+    local targetWords = {}
+    for _, word in ipairs(wordSet) do
+        table.insert(targetWords, {word = word, target = 1, found = 0})
+    end
 
     local props = {
-        hexGearWords = {{words = {'CAT', 'BAT', 'HAT'}}},
-        strayRegionWords = {'MAT'},
-        targetWords = {{word = 'HAT', target = 1, found = 0}},
+        hexGearWords = {{words = Utils.concatArray({'', '', ''}, wordSet)}},
+        strayRegionWords = wordSet,
+        targetWords = targetWords,
         statueConfigs = {statueConfig}
     }
-    local region = module.getRegionTemplate(props)
 
+    local region = module.getRegionTemplate(props)
     regions[regionName] = region
 end
 
-print('regions' .. ' - start')
-print(regions)
 module.regions = regions
 Configs.addDefaults(regions)
 
