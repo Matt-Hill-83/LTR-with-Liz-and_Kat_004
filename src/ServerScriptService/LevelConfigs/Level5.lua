@@ -134,9 +134,11 @@ function module.autoCreateRegions(props)
     end
 end
 
-module.autoCreateRegions({numRegions = 2, numWordsPerRegion = 1, numEachWord = 1})
-module.autoCreateRegions({numRegions = 1, numWordsPerRegion = 1, numEachWord = 2})
-module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 3, numEachWord = 1})
+module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 1, numEachWord = 1})
+module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 1, numEachWord = 1})
+-- module.autoCreateRegions({numRegions = 2, numWordsPerRegion = 1, numEachWord = 1})
+-- module.autoCreateRegions({numRegions = 1, numWordsPerRegion = 1, numEachWord = 2})
+-- module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 3, numEachWord = 1})
 
 module.regions = regions
 Configs.addDefaults(regions)
