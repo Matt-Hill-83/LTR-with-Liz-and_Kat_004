@@ -118,7 +118,6 @@ local function playWordSound(word)
             if (soundId) then
                 local sound = Instance.new('Sound', workspace)
                 sound.SoundId = 'rbxassetid://' .. soundId
-                -- sound.EmitterSize = 5
                 sound.Looped = false
                 if not sound.IsPlaying then
                     sound:Play()
@@ -138,9 +137,6 @@ function module.getUniqueLettersFromWords(words)
             dict[letter] = true
         end
     end
-
-    print('dict' .. ' - start')
-    print(dict)
 
     local uniqueLettersFromWords = {}
     for k, v in pairs(dict) do
@@ -422,12 +418,9 @@ function module.applyStyleFromTemplate(props)
     end
 
     if not template then
-        print('no template --------------------------------------------------->>>>>>')
         local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
         template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
     end
-    -- print('template' .. ' - start')
-    -- print(template)
     Utils.mergeTables(targetLetterBlock, blockProps)
 
     local label = Utils.getFirstDescendantByName(template, 'BlockChar')

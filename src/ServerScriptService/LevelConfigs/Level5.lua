@@ -83,8 +83,6 @@ function module.getRegionTemplate(props)
     local orbiterConfigs = {}
 
     local uniqueLettersFromWords = LetterUtils.getUniqueLettersFromWords(wordSet)
-    print('uniqueLettersFromWords' .. ' - start')
-    print(uniqueLettersFromWords)
 
     for letterIndex, letter in ipairs(uniqueLettersFromWords) do
         local polarity = letterIndex % 2 == 0 and 1 or -1
@@ -169,23 +167,9 @@ function module.autoCreateRegions(props)
     end
 end
 
-module.autoCreateRegions(
-    {
-        numRegions = 3,
-        numWordsPerRegion = 1,
-        numEachWord = 1
-    }
-)
-module.autoCreateRegions(
-    {
-        numRegions = 10,
-        numWordsPerRegion = 3,
-        numEachWord = 3
-    }
-)
-
-print('regions' .. ' - start')
-print(regions)
+module.autoCreateRegions({numRegions = 2, numWordsPerRegion = 1, numEachWord = 1})
+module.autoCreateRegions({numRegions = 1, numWordsPerRegion = 1, numEachWord = 2})
+module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 3, numEachWord = 1})
 
 module.regions = regions
 Configs.addDefaults(regions)

@@ -59,7 +59,7 @@ function module.initJunctions(props)
         CS:AddTag(newHex, 'Hex_32')
         newHex.Name = positioner.Parent.Name
 
-        local freeParts = Utils.freeAnchoredParts({item = newHex})
+        -- local freeParts = Utils.freeAnchoredParts({item = newHex})
 
         local positionerPart = positioner.PrimaryPart
 
@@ -107,7 +107,7 @@ function module.initJunctions(props)
 
         positioner:Destroy()
 
-        Utils.anchorFreedParts(freeParts)
+        -- Utils.anchorFreedParts(freeParts)
         -- local material = hexConfig.material or Enum.Material.Grass
         -- Utils.convertItemAndChildrenToTerrain({parent = newHex, material = material, ignoreKids = false})
     end
