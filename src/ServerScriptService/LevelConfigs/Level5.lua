@@ -145,11 +145,21 @@ end
 
 module.autoCreateRegions(
     {
+        numRegions = 3,
+        numWordsPerRegion = 1,
+        numEachWord = 1
+    }
+)
+module.autoCreateRegions(
+    {
         numRegions = 10,
         numWordsPerRegion = 3,
         numEachWord = 3
     }
 )
+
+print('regions' .. ' - start')
+print(regions)
 
 module.regions = regions
 Configs.addDefaults(regions)
