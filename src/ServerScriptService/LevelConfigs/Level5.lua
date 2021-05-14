@@ -5,6 +5,7 @@ local Configs = require(Sss.Source.Constants.Const_08_Configs)
 local Words = require(Sss.Source.Constants.Const_07_Words)
 local module = {}
 
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local tallWalls = Configs.tallWalls
 
 local r007 = {
@@ -49,9 +50,9 @@ local r008 = {
 }
 
 local regions = {
-    r007 = r007,
-    r008 = r008,
-    r009 = r008
+    r007 = r007
+    -- r008 = r008,
+    -- r009 = r008
 }
 
 local statueConfigs = {
@@ -79,6 +80,30 @@ function module.getRegionTemplate(props)
     local statueConfigs2 = props.statueConfigs
     local wordSet = props.wordSet
 
+    local orbiterConfigs = {}
+
+    local uniqueLettersFromWords = LetterUtils.getUniqueLettersFromWords(wordSet)
+    print('uniqueLettersFromWords' .. ' - start')
+    print(uniqueLettersFromWords)
+
+    for letterIndex, letter in ipairs(uniqueLettersFromWords) do
+        local polarity = letterIndex % 2 == 0 and 1 or -1
+
+        local orbiterConfig = {
+            -- words = {'CAT', 'CAT', 'CAT'},
+            numBlocks = 12,
+            angularVelocity = 0.8 * polarity,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = letter,
+            discHeight = 1
+        }
+
+        table.insert(orbiterConfigs, orbiterConfig)
+    end
+
     local regionTemplate = {
         wordSet = wordSet,
         hexGearConfigs = hexGearWords,
@@ -89,6 +114,7 @@ function module.getRegionTemplate(props)
         },
         strayRegions = {{words = strayRegionWords}},
         statueConfigs = statueConfigs2,
+        orbiterConfigs = orbiterConfigs,
         getTargetWords = function()
             return {targetWords}
         end

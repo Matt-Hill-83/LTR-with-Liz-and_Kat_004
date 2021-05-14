@@ -84,11 +84,24 @@ local module = {
     words08 = words08
 }
 
+local test = {
+    words01,
+    words02,
+    words03,
+    words04,
+    words05,
+    words06,
+    words07,
+    words08
+}
+
 local allWords = {}
-for _, group in pairs(module) do
+for _, group in ipairs(test) do
     allWords = Utils.concatArray(allWords, group)
 end
 
+print('allWords' .. ' - start')
+print(allWords)
 module.allWords = allWords
 
 return module

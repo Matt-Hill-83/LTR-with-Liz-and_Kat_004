@@ -129,6 +129,29 @@ local function playWordSound(word)
     return closure
 end
 
+function module.getUniqueLettersFromWords(words)
+    local dict = {}
+
+    for _, word in ipairs(words) do
+        for letterIndex = 1, #word do
+            local letter = string.sub(word, letterIndex, letterIndex)
+            dict[letter] = true
+        end
+    end
+
+    print('dict' .. ' - start')
+    print(dict)
+
+    local uniqueLettersFromWords = {}
+    for k, v in pairs(dict) do
+        if dict[k] == true then
+            table.insert(uniqueLettersFromWords, k)
+        end
+    end
+
+    return uniqueLettersFromWords
+end
+
 local function getLettersNotInWords(words)
     local allLetters = Const3.allLetters
 
