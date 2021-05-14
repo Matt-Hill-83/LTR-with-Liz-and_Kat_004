@@ -171,7 +171,6 @@ local function addRemoteObjects()
     Utils.sortListByObjectKey(regions, 'Name')
 
     local enabledItems = Constants.enabledItems
-
     local theater = enabledItems.theater
 
     for regionIndex, region in ipairs(regions) do
@@ -189,19 +188,17 @@ local function addRemoteObjects()
         VendingMachine2.initVendingMachine_002(
             {tag = 'M-VendingMachine-003', parentFolder = region, regionConfig = regionConfig}
         )
+        BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
+        Terrain.initTerrain({parentFolder = region, prefix = 'T-'})
+        Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
     end
 
-    for _, region in ipairs(regions) do
-        local regionConfig = levelConfig.regions[region.Name]
-        BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
-    end
+    Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
+    Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
     UnicornStore.initUnicornStore({parentFolder = blockDash})
-
-    Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
-    Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
 
     ConfigGame.configGame({levelConfig = levelConfig})
 end

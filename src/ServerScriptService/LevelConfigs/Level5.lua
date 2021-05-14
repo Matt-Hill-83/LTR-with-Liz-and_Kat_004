@@ -7,15 +7,6 @@ local module = {}
 
 local tallWalls = Configs.tallWalls
 
--- 'words01',
--- 'words02',
--- 'words03',
--- 'words04',
--- 'words05',
--- 'words06',
--- 'words07',
--- 'words08',
-
 local r007 = {
     bridgeConfigs = {
         -- invisiWallProps = tallWalls,
@@ -106,10 +97,6 @@ function module.getRegionTemplate(props)
     return regionTemplate
 end
 
-local numRegions = 10
-local regionNumberStart = 10
-local numWordsPerRegion = 3
-
 function module.getWordSet(props)
     local numWordsPerRegion2 = props.numWordsPerRegion
     local index = props.index
@@ -121,37 +108,48 @@ function module.getWordSet(props)
     return wordSet
 end
 
--- Autogenerate the regions
-for index = 1, numRegions do
-    local regionName = 'r0' .. (index - 1) + regionNumberStart
+local regionNumberStart = 10
+module.regionNum = regionNumberStart
 
-    local wordSet =
-        module.getWordSet(
-        {
-            numWordsPerRegion = numWordsPerRegion,
-            index = index
+function module.autoCreateRegions(props)
+    local numRegions = props.numRegions
+    local numWordsPerRegion = props.numWordsPerRegion
+    local numEachWord = props.numEachWord
+
+    for index = 1, numRegions do
+        local regionName = 'r0' .. module.regionNum
+        module.regionNum = module.regionNum + 1
+
+        local wordSet = module.getWordSet({numWordsPerRegion = numWordsPerRegion, index = index})
+
+        local mod = (index + 2) % 3
+        local statueConfig = statueConfigs[mod + 1]
+
+        local targetWords = {}
+        for _, word in ipairs(wordSet) do
+            table.insert(targetWords, {word = word, target = numEachWord, found = 0})
+        end
+
+        local props2 = {
+            hexGearWords = {{words = Utils.concatArray({'', '', ''}, wordSet)}},
+            strayRegionWords = wordSet,
+            wordSet = wordSet,
+            targetWords = targetWords,
+            statueConfigs = {statueConfig}
         }
-    )
 
-    local mod = (index + 2) % 3
-    local statueConfig = statueConfigs[mod + 1]
-
-    local targetWords = {}
-    for _, word in ipairs(wordSet) do
-        table.insert(targetWords, {word = word, target = 1, found = 0})
+        local region = module.getRegionTemplate(props2)
+        regions[regionName] = region
     end
-
-    local props = {
-        hexGearWords = {{words = Utils.concatArray({'', '', ''}, wordSet)}},
-        strayRegionWords = wordSet,
-        wordSet = wordSet,
-        targetWords = targetWords,
-        statueConfigs = {statueConfig}
-    }
-
-    local region = module.getRegionTemplate(props)
-    regions[regionName] = region
 end
+
+module.autoCreateRegions(
+    {
+        numRegions = 10,
+        numWordsPerRegion = 3,
+        numEachWord = 3
+    }
+)
 
 module.regions = regions
 Configs.addDefaults(regions)
