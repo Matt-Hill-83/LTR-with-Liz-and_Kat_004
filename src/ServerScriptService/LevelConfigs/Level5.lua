@@ -18,41 +18,8 @@ local r007 = {
     -- invisiWallProps = tallWalls
 }
 
-local r008 = {
-    hexGearConfigs = {
-        {
-            words = {
-                '',
-                '',
-                '',
-                'FOX',
-                'FOX',
-                'FOX'
-            }
-        }
-    },
-    bridgeConfigs = {
-        -- invisiWallProps = tallWalls,
-        straysOnBridges = false,
-        material = Enum.Material.Grass,
-        bridgeTemplateName = Configs.bridges.default
-    },
-    strayRegions = {
-        {
-            words = {'FOX'},
-            -- maxLetters = 6
-            useArea = true
-        }
-    },
-    getTargetWords = function()
-        return {{{word = 'FOX', target = 1, found = 0}}}
-    end
-}
-
 local regions = {
     r007 = r007
-    -- r008 = r008,
-    -- r009 = r008
 }
 
 local statueConfigs = {

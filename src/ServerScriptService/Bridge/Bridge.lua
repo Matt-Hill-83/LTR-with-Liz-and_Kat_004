@@ -179,6 +179,12 @@ function module.createBridge(props)
         wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
     end
     module.createBridgeWalls(newBridge, bridgeConfig)
+    local cutter = Utils.getFirstDescendantByName(newBridge, 'Cutter')
+
+    -- extend the cutter so it pushes through tiny bridge sections and junctions
+    if cutter then
+        cutter.Size = Vector3.new(cutter.Size.X, cutter.Size.Y, cutter.Size.Z + 12)
+    end
 
     return newBridge
 end
