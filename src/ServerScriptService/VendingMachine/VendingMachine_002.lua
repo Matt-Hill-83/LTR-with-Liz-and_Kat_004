@@ -61,6 +61,11 @@ function module.initVendingMachine_002(props)
         local function hitBoxTouched(touchedBlock, player)
             local gameState = PlayerStatManager.getGameState(player)
             local targetWords = gameState.targetWords
+
+            if not gameState then
+                return
+            end
+
             local gateOpened = false
 
             local cardComplete = true

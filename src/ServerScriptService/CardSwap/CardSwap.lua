@@ -33,6 +33,9 @@ function module.initCardSwaps(props)
 
                     -- check to see if they already have that card
                     local gameState = PlayerStatManager.getGameState(player)
+                    if not gameState then
+                        return
+                    end
 
                     local serial1 = module.serializeTargetWords(targetWords)
                     local serial2 = module.serializeTargetWords(gameState.targetWords)

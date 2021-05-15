@@ -93,6 +93,9 @@ local function getSessionData(player)
 end
 
 local function getGameState(player)
+    if not player then
+        return
+    end
     return gameState[nameStub .. player.UserId]
 end
 

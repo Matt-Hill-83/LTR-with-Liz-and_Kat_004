@@ -153,8 +153,8 @@ local dummy01 = {
         },
         Kat = {
             sentence = {'NOT', 'A', 'CAT'},
-            character = 'katScared',
-            songId = '6342102168'
+            character = 'katScared'
+            -- songId = '6342102168'
         },
         Troll = {
             sentence = {'TROLL', 'NEED', 'GOLD'},
