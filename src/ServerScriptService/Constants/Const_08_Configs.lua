@@ -166,7 +166,7 @@ local dummy01 = {
 
 local bridgeConfigs_default = {
     {
-        invisiWallProps = module.tallWalls,
+        -- invisiWallProps = module.tallWalls,
         straysOnBridges = false,
         bridgeTemplateName = module.bridges.default
     }

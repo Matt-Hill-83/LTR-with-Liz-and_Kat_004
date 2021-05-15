@@ -278,6 +278,10 @@ function module.donGrabberAccessory(player, grabberConfig)
     grabberConfig = grabberConfig or {}
     local word = grabberConfig.word or 'ZZZ'
 
+    if not player then
+        return
+    end
+
     local character = player.Character or player.CharacterAdded:Wait()
     local kids = character:GetChildren()
 

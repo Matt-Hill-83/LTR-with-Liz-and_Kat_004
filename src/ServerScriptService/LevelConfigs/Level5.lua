@@ -73,7 +73,7 @@ function module.getRegionTemplate(props)
         wordSet = wordSet,
         hexGearConfigs = hexGearWords,
         bridgeConfigs = {
-            invisiWallProps = tallWalls,
+            -- invisiWallProps = tallWalls,
             straysOnBridges = false,
             bridgeTemplateName = Configs.bridges.default
         },
