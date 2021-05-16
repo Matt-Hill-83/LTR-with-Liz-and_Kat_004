@@ -191,10 +191,12 @@ local function addRemoteObjects()
         BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
         Terrain.initTerrain({parentFolder = region, prefix = 'T-'})
         Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
+        Terrain.initTerrain({parentFolder = region, prefix = 'T9-'})
     end
 
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
+    Terrain.initTerrain({parentFolder = workspace, prefix = 'T9-'})
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()

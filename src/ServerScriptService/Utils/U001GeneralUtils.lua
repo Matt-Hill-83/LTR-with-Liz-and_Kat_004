@@ -309,7 +309,7 @@ function module.convertItemAndChildrenToTerrain(props)
                 game.Workspace.Terrain:FillBall(part.Position, part.Size.X / 2, material)
             elseif part.Shape == Enum.PartType.Cylinder then
                 local height = part.Size.X
-                local radius = part.Size.Z / 2
+                local radius = math.min(part.Size.Z, part.Size.Y) / 2
                 local newCFrame = part.CFrame * CFrame.Angles(0, 0, math.rad(90))
                 game.Workspace.Terrain:FillCylinder(newCFrame, height, radius, material)
             else
