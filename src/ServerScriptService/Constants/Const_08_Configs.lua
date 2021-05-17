@@ -145,18 +145,20 @@ local dummy01 = {
     -- invisiWallProps = tallWalls,
     material = Enum.Material.Glacier,
     statueConfigs = {
-        Liz = {
+        {
+            name = 'Liz',
             sentence = {'I', 'SEE', 'A', 'CAT'},
             character = 'lizHappy',
-            -- songId = '6342102168',
-            keyColor = Colors.colors.yellow
+            songId = '6342102168'
         },
-        Kat = {
+        {
+            name = 'Kat',
             sentence = {'NOT', 'A', 'CAT'},
-            character = 'katScared'
-            -- songId = '6342102168'
+            character = 'katScared',
+            songId = '6342102168'
         },
-        Troll = {
+        {
+            name = 'Troll',
             sentence = {'TROLL', 'NEED', 'GOLD'},
             character = 'babyTroll04',
             songId = '6338745550'

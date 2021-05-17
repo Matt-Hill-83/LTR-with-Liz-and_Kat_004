@@ -20,11 +20,13 @@ function module.initStatueGates(props)
 
         if statueConfigs then
             local statueGates = Utils.getByTagInParent({parent = parentFolder, tag = 'StatueGate'})
-            for _, gate in ipairs(statueGates) do
+            for gateIndex, gate in ipairs(statueGates) do
                 local statuePositioners = Utils.getByTagInParent({parent = gate, tag = 'StatuePositioner'})
                 for _, statuePositioner in ipairs(statuePositioners) do
-                    local statueName = statuePositioner.Name
-                    local config = statueConfigs[statueName] or {}
+                    -- local statueName = statuePositioner.Name
+
+                    local config = statueConfigs[gateIndex] or statueConfigs[1]
+                    -- local config = statueConfigs[statueName] or {}
                     Statue.initStatue(statuePositioner, config)
 
                     local keyPositioners = Utils.getByTagInParent({parent = gate, tag = 'KeyPositioner-Key'})
