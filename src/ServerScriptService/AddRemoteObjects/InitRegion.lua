@@ -11,6 +11,7 @@ local HexGear = require(Sss.Source.HexGear.HexGear)
 local Junction4 = require(Sss.Source.Junction.Junction4)
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
+local LocalTeleporter = require(Sss.Source.LocalTeleporter.LocalTeleporter)
 
 local PetBox = require(Sss.Source.PetBox.PetBox)
 
@@ -36,6 +37,8 @@ function module.initRegion(region, regionConfig, regionIndex)
     if cardSwap then
         CardSwap.initCardSwaps({parentFolder = region, regionConfig = regionConfig, regionIndex = regionIndex})
     end
+
+    LocalTeleporter.initLocalTeleporter({parentFolder = region, regionConfig = regionConfig})
 
     if petBox then
         PetBox.initPetBox({parentFolder = region, regionConfig = regionConfig})

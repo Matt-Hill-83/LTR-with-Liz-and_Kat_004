@@ -178,16 +178,15 @@ local function addRemoteObjects()
         InitRegion.initRegion(region, regionConfig, regionIndex)
     end
 
-    ConfigRemoteEvents.initRemoteEvents()
-    if theater then
-        Theater.initTheaters({parentFolder = level})
-    end
     for _, region in ipairs(regions) do
         local regionConfig = levelConfig.regions[region.Name]
-
         VendingMachine2.initVendingMachine_002(
             {tag = 'M-VendingMachine-003', parentFolder = region, regionConfig = regionConfig}
         )
+    end
+
+    for _, region in ipairs(regions) do
+        local regionConfig = levelConfig.regions[region.Name]
         BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
         Terrain.initTerrain({parentFolder = region, prefix = 'T-'})
         Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
@@ -197,6 +196,12 @@ local function addRemoteObjects()
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T9-'})
+
+    if theater then
+        Theater.initTheaters({parentFolder = level})
+    end
+
+    ConfigRemoteEvents.initRemoteEvents()
 
     local islandTemplate = Utils.getFromTemplates('IslandTemplate')
     islandTemplate:Destroy()
