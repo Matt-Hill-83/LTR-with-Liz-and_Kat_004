@@ -10,12 +10,12 @@ local tallWalls = Configs.tallWalls
 
 local r007 = {
     bridgeConfigs = {
-        -- invisiWallProps = tallWalls,
+        invisiWallProps = tallWalls,
         straysOnBridges = false,
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
-    }
-    -- invisiWallProps = tallWalls
+    },
+    invisiWallProps = tallWalls
 }
 
 local r008 = {
