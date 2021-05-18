@@ -18,6 +18,8 @@ function module.initLocalTeleporter(props)
     local parentFolder = props.parentFolder
 
     local teleporterTop = Utils.getFirstDescendantByName(parentFolder, 'TeleporterTop')
+    print('teleporterTop' .. ' - start')
+    print(teleporterTop)
 
     if not teleporterTop then
         return
@@ -29,9 +31,24 @@ function module.initLocalTeleporter(props)
         return
     end
 
-    local teleporterBottoms = Utils.getDescendantsByName(parentFolder, 'TeleporterBottom_002')
-    for _, TeleporterBottom in ipairs(teleporterBottoms) do
-        local touchPadBottom = Utils.getFirstDescendantByName(TeleporterBottom, 'pad')
+    local teleporterBottoms =
+        Utils.getInstancesByNameStub(
+        {
+            nameStub = 'TeleporterBottom',
+            parent = parentFolder
+        }
+    )
+
+    print('teleporterBottoms' .. ' - start')
+    print('teleporterBottoms' .. ' - start')
+    print('teleporterBottoms' .. ' - start')
+    print('teleporterBottoms' .. ' - start')
+    print(teleporterBottoms)
+    -- local teleporterBottoms = Utils.getDescendantsByName(parentFolder, 'TeleporterBottom_002')
+    for _, teleporterBottom in ipairs(teleporterBottoms) do
+        print('teleporterBottom' .. ' - start')
+        print(teleporterBottom)
+        local touchPadBottom = Utils.getFirstDescendantByName(teleporterBottom, 'pad')
 
         if touchPadBottom then
             local function teleport(props)
