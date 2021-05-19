@@ -55,6 +55,7 @@ local function initStatue(positionerModel, statusDef)
         soundEmitter.Sound.SoundId = 'rbxassetid://' .. songId
         soundEmitter.Sound.Playing = true
         soundEmitter.Sound.Looped = true
+        soundEmitter.Sound.Volume = 0.5
     end
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')

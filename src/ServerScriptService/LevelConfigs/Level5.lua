@@ -116,6 +116,7 @@ end
 
 local regionNumberStart = 10
 module.regionNum = regionNumberStart
+module.wordIndex = 1
 
 function module.autoCreateRegions(props)
     local numRegions = props.numRegions
@@ -127,9 +128,11 @@ function module.autoCreateRegions(props)
         local regionName = 'r0' .. module.regionNum
         module.regionNum = module.regionNum + 1
 
-        local wordSet = module.getWordSet({numWordsPerRegion = numWordsPerRegion, index = index, wordList = wordList})
+        local wordSet =
+            module.getWordSet({numWordsPerRegion = numWordsPerRegion, index = module.wordIndex, wordList = wordList})
+        module.wordIndex = module.wordIndex + 1
 
-        local mod = (index + 2) % 3
+        local mod = (index + 2) % #statueConfigs
         local statueConfig = statueConfigs[mod + 1]
 
         local targetWords = {}
@@ -152,15 +155,7 @@ end
 
 local wordList = Words.allWords
 
-module.autoCreateRegions(
-    {
-        numRegions = 10,
-        numWordsPerRegion = 1,
-        numEachWord = 1,
-        wordList = wordList
-    }
-)
-
+-- Get a pet
 module.autoCreateRegions(
     {
         numRegions = 1,
@@ -169,19 +164,29 @@ module.autoCreateRegions(
         wordList = wordList
     }
 )
-
--- module.autoCreateRegions(
---     {
---         numRegions = 1,
---         numWordsPerRegion = 8,
---         numEachWord = 1,
---         wordList = {table.unpack(wordList, 1, 9)}
---     }
--- )
-
+-- Dome home
 module.autoCreateRegions(
     {
-        numRegions = 10,
+        numRegions = 1,
+        numWordsPerRegion = 1,
+        numEachWord = 1,
+        wordList = wordList
+    }
+)
+-- Dog Collar
+module.autoCreateRegions(
+    {
+        numRegions = 1,
+        numWordsPerRegion = 3,
+        numEachWord = 1,
+        wordList = wordList
+    }
+)
+
+-- the rest
+module.autoCreateRegions(
+    {
+        numRegions = 20,
         numWordsPerRegion = 1,
         numEachWord = 1,
         wordList = wordList
@@ -192,8 +197,6 @@ module.autoCreateRegions(
 -- module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 3, numEachWord = 1})
 
 module.regions = regions
-print('regions' .. ' - start')
-print(regions)
 Configs.addDefaults(regions)
 
 return module
