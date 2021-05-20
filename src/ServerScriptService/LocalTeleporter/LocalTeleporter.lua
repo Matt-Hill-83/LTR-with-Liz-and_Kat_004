@@ -37,50 +37,51 @@ function module.initLocalTeleporter(props)
         }
     )
 
-    -- local teleporterBottoms = Utils.getDescendantsByName(parentFolder, 'TeleporterBottom_002')
     for _, teleporterBottom in ipairs(teleporterBottoms) do
-        local touchPadBottom = Utils.getFirstDescendantByName(teleporterBottom, 'pad')
+        local touchPadBottoms = Utils.getDescendantsByName(teleporterBottom, 'pad')
 
-        if touchPadBottom then
-            local function teleport(props)
-                local player = props.player
-                local justTeleported = player:findFirstChild('JustTeleported')
+        for _, touchPadBottom in ipairs(touchPadBottoms) do
+            if touchPadBottom then
+                local function teleport(props)
+                    local player = props.player
+                    local justTeleported = player:findFirstChild('JustTeleported')
 
-                if not justTeleported then
-                    -- player.Character:MoveTo(touchPadTop.Position + Vector3.new(0, -16, 0))
+                    if not justTeleported then
+                        -- player.Character:MoveTo(touchPadTop.Position + Vector3.new(0, -16, 0))
 
-                    Utils3.setCFrameFromDesiredEdgeOffset2(
-                        {
-                            parent = touchPadTop,
-                            childModel = player.Character,
-                            offsetConfig = {
-                                useParentNearEdge = Vector3.new(0, 0, 0),
-                                useChildNearEdge = Vector3.new(0, 0, 0),
-                                offsetAdder = Vector3.new(0, 4, 0)
+                        Utils3.setCFrameFromDesiredEdgeOffset2(
+                            {
+                                parent = touchPadTop,
+                                childModel = player.Character,
+                                offsetConfig = {
+                                    useParentNearEdge = Vector3.new(0, 0, 0),
+                                    useChildNearEdge = Vector3.new(0, 0, 0),
+                                    offsetAdder = Vector3.new(0, 4, 0)
+                                }
                             }
+                        )
+                        -- player.Character:MoveTo(touchPadTop.CFrame.p + Vector3.new(0, -16, 0))
+                        local t = Instance.new('Weld')
+                        t.Name = 'JustTeleported'
+                        t.Parent = player
+                        delay(
+                            1.5,
+                            function()
+                                t:Destroy()
+                            end
+                        )
+                    end
+                end
+
+                touchPadBottom.Touched:Connect(
+                    Utils.onTouchHuman2(
+                        {
+                            touchedBlock = touchPadBottom,
+                            callBack = teleport
                         }
                     )
-                    -- player.Character:MoveTo(touchPadTop.CFrame.p + Vector3.new(0, -16, 0))
-                    local t = Instance.new('Weld')
-                    t.Name = 'JustTeleported'
-                    t.Parent = player
-                    delay(
-                        1.5,
-                        function()
-                            t:Destroy()
-                        end
-                    )
-                end
-            end
-
-            touchPadBottom.Touched:Connect(
-                Utils.onTouchHuman2(
-                    {
-                        touchedBlock = touchPadBottom,
-                        callBack = teleport
-                    }
                 )
-            )
+            end
         end
     end
 end
