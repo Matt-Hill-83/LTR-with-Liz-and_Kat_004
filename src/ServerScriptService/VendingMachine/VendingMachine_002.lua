@@ -3,6 +3,7 @@ local SGUI = game:GetService('StarterGui')
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+local AddModelFromPositioner = require(Sss.Source.AddModelFromPositioner.AddModelFromPositioner)
 
 local RenderWordGrid = require(Sss.Source.Utils.RenderWordGrid_S)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
@@ -13,9 +14,32 @@ function module.initVendingMachine_002(props)
     local parentFolder = props.parentFolder
     local regionConfig = props.regionConfig
     local onComplete = props.onComplete
-    local tag = props.tag
+    -- local tag = props.tag
 
-    local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
+    local vendingMachines = {}
+    local positioners = Utils.getDescendantsByName(parentFolder, 'VendingMachinePositioner')
+    Utils.sortListByObjectKey(positioners, 'Name')
+
+    for _, positioner in ipairs(positioners) do
+        local newVendingMachine =
+            AddModelFromPositioner.addModel(
+            {
+                parentFolder = parentFolder,
+                templateName = 'Orbiter_003',
+                positionerModel = positioners,
+                offsetConfig = {
+                    useParentNearEdge = Vector3.new(0, 0, 0),
+                    useChildNearEdge = Vector3.new(0, 0, 0),
+                    offsetAdder = Vector3.new(0, 0, 0)
+                }
+            }
+        )
+        table.insert(newVendingMachine, newVendingMachine)
+        newVendingMachine.Name = newVendingMachine.Name .. 'yyyy'
+        positioner:Destroy()
+    end
+
+    -- local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
