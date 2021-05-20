@@ -13,6 +13,9 @@ function module.initHexGears(props)
     local offsetAngle = props.offsetAngle
 
     local regionConfig = props.regionConfig
+    if not regionConfig then
+        return
+    end
     local hexGearConfigs = regionConfig.hexGearConfigs
     local positioners = regionConfig.positioners
 
