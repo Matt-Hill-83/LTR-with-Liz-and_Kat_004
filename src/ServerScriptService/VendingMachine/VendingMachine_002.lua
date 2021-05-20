@@ -17,7 +17,9 @@ function module.initVendingMachine_002(props)
     -- local tag = props.tag
 
     local vendingMachines = {}
-    local positioners = Utils.getDescendantsByName(parentFolder, 'VendingMachinePositioner')
+    local positioners = Utils.getDescendantsByName(parentFolder, 'VendingMachinePositioner_001') or {}
+    print('positioners' .. ' - start')
+    print(positioners)
     Utils.sortListByObjectKey(positioners, 'Name')
 
     for _, positioner in ipairs(positioners) do
@@ -25,8 +27,8 @@ function module.initVendingMachine_002(props)
             AddModelFromPositioner.addModel(
             {
                 parentFolder = parentFolder,
-                templateName = 'Orbiter_003',
-                positionerModel = positioners,
+                templateName = 'VendingMachine_004',
+                positionerModel = positioner,
                 offsetConfig = {
                     useParentNearEdge = Vector3.new(0, 0, 0),
                     useChildNearEdge = Vector3.new(0, 0, 0),
@@ -34,7 +36,7 @@ function module.initVendingMachine_002(props)
                 }
             }
         )
-        table.insert(newVendingMachine, newVendingMachine)
+        table.insert(vendingMachines, newVendingMachine)
         newVendingMachine.Name = newVendingMachine.Name .. 'yyyy'
         positioner:Destroy()
     end

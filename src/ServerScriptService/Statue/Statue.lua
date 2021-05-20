@@ -50,6 +50,7 @@ local function initStatue(positionerModel, statusDef)
 
     local wordLetters = {}
 
+    positioner:Destroy()
     if songId then
         local soundEmitter = Utils.getFirstDescendantByName(newStatueScene, 'StatueSong')
         soundEmitter.Sound.SoundId = 'rbxassetid://' .. songId
@@ -137,19 +138,19 @@ local function initStatue(positionerModel, statusDef)
     return newStatueScene
 end
 
-local function initStatues(props)
-    local statusDefs = props.statusDefs
-    local statuePositioners = CS:GetTagged('StatuePositioner')
+-- local function initStatues(props)
+--     local statusDefs = props.statusDefs
+--     local statuePositioners = CS:GetTagged('StatuePositioner')
 
-    for statueIndex, positionerModel in ipairs(statuePositioners) do
-        local statusDef = statusDefs[(statueIndex % #statusDefs) + 1]
-        module.initStatue(positionerModel, statusDef)
+--     for statueIndex, positionerModel in ipairs(statuePositioners) do
+--         local statusDef = statusDefs[(statueIndex % #statusDefs) + 1]
+--         module.initStatue(positionerModel, statusDef)
 
-        positionerModel:Destroy()
-    end
-end
+--         positionerModel:Destroy()
+--     end
+-- end
 
-module.initStatues = initStatues
+-- module.initStatues = initStatues
 module.initStatue = initStatue
 
 return module
