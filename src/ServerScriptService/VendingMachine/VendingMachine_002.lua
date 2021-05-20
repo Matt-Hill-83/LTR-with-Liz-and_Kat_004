@@ -14,12 +14,9 @@ function module.initVendingMachine_002(props)
     local parentFolder = props.parentFolder
     local regionConfig = props.regionConfig
     local onComplete = props.onComplete
-    -- local tag = props.tag
 
     local vendingMachines = {}
     local positioners = Utils.getDescendantsByName(parentFolder, 'VendingMachinePositioner_001') or {}
-    print('positioners' .. ' - start')
-    print(positioners)
     Utils.sortListByObjectKey(positioners, 'Name')
 
     for _, positioner in ipairs(positioners) do
