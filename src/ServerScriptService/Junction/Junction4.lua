@@ -5,11 +5,8 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local Configs = require(Sss.Source.Constants.Const_08_Configs)
-
 local Bridge = require(Sss.Source.Bridge.Bridge)
-
 local InvisiWall = require(Sss.Source.InvisiWall.InvisiWall2)
-
 local Constants = require(Sss.Source.Constants.Constants)
 
 local module = {}
@@ -20,6 +17,9 @@ function module.initJunctions(props)
     local hexTemplate = props.hexTemplate
 
     local regionConfig = props.regionConfig
+    if not regionConfig then
+        return
+    end
     local hexConfigs = regionConfig.hexIslandConfigs
 
     local template = Utils.getFromTemplates(hexTemplate)
