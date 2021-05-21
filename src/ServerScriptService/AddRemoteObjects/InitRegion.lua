@@ -18,6 +18,7 @@ local PetBox = require(Sss.Source.PetBox.PetBox)
 local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
+local SwapForPackages = require(Sss.Source.SwapForPackages.SwapForPackages)
 
 local module = {}
 
@@ -33,6 +34,8 @@ function module.initRegion(region, regionConfig, regionIndex)
     local grabbers = enabledItems.grabbers
     local letterGrabber = enabledItems.letterGrabber
     local entrance = enabledItems.entrance
+
+    SwapForPackages.initSwapForPackages({parentFolder = region, regionConfig = regionConfig})
 
     if cardSwap then
         CardSwap.initCardSwaps({parentFolder = region, regionConfig = regionConfig, regionIndex = regionIndex})

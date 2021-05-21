@@ -1,5 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
 local CS = game:GetService('CollectionService')
+local RS = game:GetService('ReplicatedStorage')
+
 local Players = game:GetService('Players')
 local HttpService = game:GetService('HttpService')
 
@@ -1008,6 +1010,11 @@ end
 function module.getFromTemplates(name)
     local myStuff = workspace.MyStuff
     local myTemplates = myStuff.MyTemplates
+    return module.getFirstDescendantByName(myTemplates, name)
+end
+
+function module.getFromRepStorage(name)
+    local myTemplates = RS.MyTemplates
     return module.getFirstDescendantByName(myTemplates, name)
 end
 
