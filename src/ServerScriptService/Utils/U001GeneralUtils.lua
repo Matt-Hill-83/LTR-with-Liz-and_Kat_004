@@ -333,30 +333,6 @@ function module.convertItemAndChildrenToTerrain(props)
     end
 end
 
-function module.convertItemTerrain(props)
-    -- local canCollide = props.canCollide or false
-    local material = props.material
-    local part = props.part
-
-    if part:IsA('BasePart') then
-        if part:IsA('WedgePart') then
-            game.Workspace.Terrain:FillWedge(part.CFrame, part.Size, material)
-        elseif part.Shape == Enum.PartType.Ball then
-            game.Workspace.Terrain:FillBall(part.Position, part.Size.X / 2, material)
-        elseif part.Shape == Enum.PartType.Cylinder then
-            local height = part.Size.X
-            local radius = part.Size.Z / 2
-            local newCFrame = part.CFrame * CFrame.Angles(0, 0, math.rad(90))
-            game.Workspace.Terrain:FillCylinder(newCFrame, height, radius, material)
-        else
-            game.Workspace.Terrain:FillBlock(part.CFrame, part.Size, material)
-        end
-
-    -- part.Transparency = 1
-    -- part.CanCollide = canCollide
-    end
-end
-
 local function hideFrontLabels(parent)
     local hiddenParts = {}
 
