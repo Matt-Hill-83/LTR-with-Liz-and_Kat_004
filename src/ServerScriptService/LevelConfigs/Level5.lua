@@ -18,7 +18,7 @@ local r007 = {
     invisiWallProps = tallWalls
 }
 
-local r008 = {
+local r100 = {
     bridgeConfigs = {
         -- invisiWallProps = tallWalls,
         straysOnBridges = false,
@@ -30,7 +30,7 @@ local r008 = {
 
 local regions = {
     r007 = r007,
-    r008 = r008
+    r100 = r100
 }
 
 local statueConfigs = {
