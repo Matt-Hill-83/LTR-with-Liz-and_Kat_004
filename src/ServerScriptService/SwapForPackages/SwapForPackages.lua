@@ -26,7 +26,7 @@ function module.initSwapForPackages(props)
     }
 
     for _, config in ipairs(configs) do
-        local template = Utils.getFromTemplates(config.packageName)
+        local template = Utils.getFromRepStorage(config.packageName)
         local oldParts = Utils.getDescendantsByName(parentFolder, config.name)
         for _, oldPart in ipairs(oldParts) do
             local newPart = template:Clone()
