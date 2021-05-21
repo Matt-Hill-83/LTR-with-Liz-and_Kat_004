@@ -34,6 +34,8 @@ function module.initTerrain(props)
 
     -- Do air last, for subtracting terrain
     local airParts = Utils.getByTagInParent({parent = parentFolder, tag = prefix .. 'Air'})
+    print('airParts' .. ' - start')
+    print(airParts)
     for _, part in ipairs(airParts) do
         if module.shouldConvertPart(part) then
             Utils.convertItemAndChildrenToTerrain({parent = part, material = Enum.Material.Air, ignoreKids = true})
