@@ -1,8 +1,6 @@
 local Sss = game:GetService('ServerScriptService')
 
-local Colors = require(Sss.Source.Constants.Const_02_Colors)
 local Words = require(Sss.Source.Constants.Const_07_Words)
-local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local bridges = {
     default = 'Bridge_32',

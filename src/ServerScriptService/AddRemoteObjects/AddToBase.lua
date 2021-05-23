@@ -18,6 +18,8 @@ local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
 local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local InitRegion = require(Sss.Source.AddRemoteObjects.InitRegion)
+local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
+local Words = require(Sss.Source.Constants.Const_07_Words)
 
 local module = {}
 
@@ -85,6 +87,14 @@ function module.initAnimalSounds2()
         end
     end
 end
+
+local function resetMyStores(word)
+    local player = {UserId = '304010153'}
+    WordScoreDB.updateWordStore({player = player, word = word, adder = 1, value = 1})
+    --
+end
+
+-- Player_304010153
 
 local function addRemoteObjects()
     local placeId = game.PlaceId
@@ -208,6 +218,11 @@ local function addRemoteObjects()
     UnicornStore.initUnicornStore({parentFolder = blockDash})
 
     ConfigGame.configGame({levelConfig = levelConfig})
+
+    local words = Words.allWords
+    -- for _, word in ipairs(words) do
+    --     resetMyStores(word)
+    -- end
 end
 
 module.addRemoteObjects = addRemoteObjects
