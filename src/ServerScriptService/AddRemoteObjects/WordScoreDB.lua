@@ -10,18 +10,14 @@ function module.updateWordStore(props)
     local word = props.word
     local adder = props.adder
     local value = props.value
-    print('updateWordStore===========================>>>' .. word)
 
     local newStore = DataStoreService:GetOrderedDataStore(word)
 
     local userId = player.UserId
-    print('userId' .. ' - start')
-    print(userId)
     local success, newExperience =
         pcall(
         function()
             if value then
-                print('SetAsync' .. ' - start----------------')
                 return newStore:SetAsync(userId, value)
             else
                 return newStore:IncrementAsync(userId, adder)
