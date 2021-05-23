@@ -96,7 +96,8 @@ function module.initStraysInRegions(props)
             {
                 -- blockTemplate = blockTemplate,
                 parentFolder = parentFolder,
-                maxLetters = maxLetters,
+                -- maxLetters = maxLetters,
+                maxLetters = 10,
                 numBlocks = 0,
                 -- numBlocks = math.floor(requiredLetters * randomLetterMultiplier),
                 words = words,

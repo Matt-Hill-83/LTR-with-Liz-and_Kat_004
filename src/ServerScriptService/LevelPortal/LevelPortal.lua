@@ -36,10 +36,18 @@ function module.refreshBoard(dataStore, portal, delaySec)
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
 
     local winnerScoreSign = Utils.getFirstDescendantByName(portal, 'WinnerScore')
-    local winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
+    local winnerScoreTextLabel = {}
 
+    if winnerScoreSign then
+        winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
+    else
+        return
+    end
     local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
-    local winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
+    local winnerNameTextLabel = {}
+    if winnerNameSign then
+        winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
+    end
 
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')

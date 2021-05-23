@@ -30,6 +30,8 @@ local r100 = {
 
 local regions = {
     r007 = r007,
+    r008 = r007,
+    r009 = r007,
     r100 = r100
 }
 
@@ -158,7 +160,7 @@ local wordList = Words.allWords
 -- Get a pet
 module.autoCreateRegions(
     {
-        numRegions = 1,
+        numRegions = 20,
         numWordsPerRegion = 1,
         numEachWord = 1,
         wordList = wordList
@@ -169,15 +171,6 @@ module.autoCreateRegions(
     {
         numRegions = 1,
         numWordsPerRegion = 1,
-        numEachWord = 1,
-        wordList = wordList
-    }
-)
--- Dog Collar
-module.autoCreateRegions(
-    {
-        numRegions = 1,
-        numWordsPerRegion = 3,
         numEachWord = 1,
         wordList = wordList
     }
