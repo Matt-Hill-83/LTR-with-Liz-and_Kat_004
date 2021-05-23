@@ -99,8 +99,10 @@ Rocket.Touched:connect(OnTouched)
 --TODO: Remove when Touched correctly fires for parts spawned within other parts
 local partClone = Rocket:Clone()
 partClone:ClearAllChildren()
-partClone.Transparency = 1
+-- partClone.Transparency = 1
 --partClone.Anchored = true --NOTE: DOES NOT WORK if part is anchored!
 DebrisService:AddItem(partClone, 0.1)
 partClone.Parent = workspace
 partClone.Touched:connect(OnTouched)
+
+return {}

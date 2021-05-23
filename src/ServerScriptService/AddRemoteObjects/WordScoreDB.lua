@@ -21,8 +21,12 @@ function module.updateWordStore(props)
     )
 
     if success then
-        local refreshFunc = Constants.portals[word]['refreshFunc']
-        refreshFunc(newStore)
+        if Constants.portals[word] then
+            local refreshFunc = Constants.portals[word]['refreshFunc']
+            if refreshFunc then
+                refreshFunc(newStore)
+            end
+        end
     end
 end
 
