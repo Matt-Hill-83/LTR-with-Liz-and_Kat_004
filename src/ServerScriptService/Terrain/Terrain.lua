@@ -37,7 +37,7 @@ function module.initTerrain(props)
     local airParts = Utils.getByTagInParent({parent = parentFolder, tag = prefix .. 'Air'})
     for _, part in ipairs(airParts) do
         if module.shouldConvertPart(part) then
-            -- wait()
+            wait()
             Utils.convertItemAndChildrenToTerrain({parent = part, material = Enum.Material.Air, ignoreKids = true})
             module.tagConvertedPart(part, tagName2)
         end

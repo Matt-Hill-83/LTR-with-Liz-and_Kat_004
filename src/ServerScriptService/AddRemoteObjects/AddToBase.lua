@@ -94,15 +94,13 @@ local function resetMyStores(word)
     --
 end
 
+-- me
 -- Player_304010153
 
 local function addRemoteObjects()
     local placeId = game.PlaceId
     local levelDefs = LevelConfigs.levelDefs or {}
     local isStartPlace = Utils.isStartPlace()
-
-    module.initAnimalSounds()
-    module.initAnimalSounds2()
 
     local myStuff = workspace.MyStuff
 
@@ -123,6 +121,9 @@ local function addRemoteObjects()
     end
     ConfigGame.preRunConfig({levelConfig = levelConfig})
     PlayerStatManager.init()
+
+    module.initAnimalSounds()
+    module.initAnimalSounds2()
 
     -- This place loads the map list for the other places
     -- Other places have a TP that sends them to the next place in the TP list
