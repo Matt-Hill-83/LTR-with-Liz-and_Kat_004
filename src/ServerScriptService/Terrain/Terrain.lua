@@ -46,8 +46,3 @@ function module.initTerrain(props)
 end
 
 return module
-
--- mud
--- 15, 130, 255
--- sandstone
--- 156, 115, 169
