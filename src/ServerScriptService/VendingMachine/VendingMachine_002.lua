@@ -14,9 +14,10 @@ function module.initVendingMachine_002(props)
     local parentFolder = props.parentFolder
     local regionConfig = props.regionConfig
     local onComplete = props.onComplete
+    local positionerName = props.positionerName
 
     local vendingMachines = {}
-    local positioners = Utils.getDescendantsByName(parentFolder, 'VendingMachinePositioner_001') or {}
+    local positioners = Utils.getDescendantsByName(parentFolder, positionerName) or {}
     Utils.sortListByObjectKey(positioners, 'Name')
 
     for _, positioner in ipairs(positioners) do
@@ -38,11 +39,9 @@ function module.initVendingMachine_002(props)
         positioner:Destroy()
     end
 
-    -- local vendingMachines = Utils.getByTagInParent({parent = parentFolder, tag = tag})
     for vendingMachineIndex, vendingMachine in ipairs(vendingMachines) do
         local guiPart = Utils.getFirstDescendantByName(vendingMachine, 'GuiPart')
         local hitBox = Utils.getFirstDescendantByName(vendingMachine, 'HitBox')
-
         local sgui = Utils.getFirstDescendantByName(vendingMachine, 'GuiVend')
 
         if not regionConfig or not regionConfig.getTargetWords then

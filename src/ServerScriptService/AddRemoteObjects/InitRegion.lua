@@ -48,7 +48,7 @@ function module.initRegion(region, regionConfig, regionIndex)
     end
 
     if strayLetterBlocks then
-        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+        -- StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 

@@ -192,7 +192,11 @@ local function addRemoteObjects()
     for _, region in ipairs(regions) do
         local regionConfig = levelConfig.regions[region.Name]
         VendingMachine2.initVendingMachine_002(
-            {tag = 'M-VendingMachine-003', parentFolder = region, regionConfig = regionConfig}
+            {
+                positionerName = 'VendingMachinePositioner_001',
+                parentFolder = region,
+                regionConfig = regionConfig
+            }
         )
     end
 

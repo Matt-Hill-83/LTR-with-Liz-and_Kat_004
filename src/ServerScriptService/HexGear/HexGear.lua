@@ -17,7 +17,6 @@ function module.initHexGears(props)
         return
     end
     local hexGearConfigs = regionConfig.hexGearConfigs
-    local positioners = regionConfig.positioners
 
     local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = 'HexGear_001'})
     Utils.sortListByObjectKey(hexGears, 'Name')
@@ -27,7 +26,9 @@ function module.initHexGears(props)
     end
 
     for hexIndex, hexGear in ipairs(hexGears) do
-        if hexGearConfigs[hexIndex] then
+        local positioners = regionConfig.positioners or nil
+        if hexGearConfigs[1] then
+            -- if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
 
             if not positioners then
@@ -45,7 +46,7 @@ function module.initHexGears(props)
                 positioners = filteredHexes
             end
 
-            -- for i, hex in ipairs(test) do
+            Utils.sortListByObjectKey(positioners, 'Name')
             for i, hex in ipairs(positioners) do
                 local partToPositionTo = hex.PrimaryPart
                 local newPositioner = partToPositionTo:Clone()

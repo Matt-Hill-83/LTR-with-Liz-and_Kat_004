@@ -74,7 +74,12 @@ function module.initPetBox(props)
     end
 
     VendingMachine.initVendingMachine_002(
-        {tag = 'M-VendingMachine_002', parentFolder = petBox, regionConfig = regionConfig, onComplete = onComplete}
+        {
+            positionerName = 'VendingMachinePositioner_002',
+            parentFolder = petBox,
+            regionConfig = regionConfig,
+            onComplete = onComplete
+        }
     )
 end
 
