@@ -15,6 +15,52 @@ local r007 = {
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
+    orbiterConfigs = {
+        {
+            -- words = {'AT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'AT',
+            discHeight = 1
+        },
+        {
+            -- words = {'AT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'AN',
+            discHeight = 1
+        },
+        {
+            -- words = {'BAT'},
+            numBlocks = 12,
+            angularVelocity = -0.7,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'B',
+            discHeight = 1
+        },
+        {
+            -- words = {'BAT'},
+            numBlocks = 12,
+            angularVelocity = -0.7,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'R',
+            discHeight = 1
+        }
+    },
     invisiWallProps = tallWalls
 }
 

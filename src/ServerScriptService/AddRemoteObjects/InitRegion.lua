@@ -48,7 +48,7 @@ function module.initRegion(region, regionConfig, regionIndex)
     end
 
     if strayLetterBlocks then
-        -- StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
@@ -81,7 +81,19 @@ function module.initRegion(region, regionConfig, regionIndex)
                     -- templateName = 'LevelPortal-004',
                     templateName = 'LevelPortal-003',
                     positionerTag = 'Hex_32',
+                    hexGearTag = 'HexGear_001',
                     offsetAngle = CFrame.Angles(0, math.rad(-30), 0)
+                }
+            )
+            HexGear.initHexGears(
+                {
+                    parentFolder = region,
+                    regionConfig = regionConfig,
+                    -- templateName = 'LevelPortal-004',
+                    templateName = 'LevelPortal-003',
+                    positionerTag = 'Hex_32',
+                    hexGearTag = 'HexGear_003',
+                    offsetAngle = CFrame.Angles(0, math.rad(-90), 0)
                 }
             )
         -- HexGear.initHexGears(

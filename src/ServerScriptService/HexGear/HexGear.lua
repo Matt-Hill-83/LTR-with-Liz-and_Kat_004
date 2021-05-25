@@ -10,6 +10,7 @@ function module.initHexGears(props)
     local parentFolder = props.parentFolder
     local templateName = props.templateName
     local positionerTag = props.positionerTag
+    local hexGearTag = props.hexGearTag
     local offsetAngle = props.offsetAngle
 
     local regionConfig = props.regionConfig
@@ -18,17 +19,18 @@ function module.initHexGears(props)
     end
     local hexGearConfigs = regionConfig.hexGearConfigs
 
-    local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = 'HexGear_001'})
+    local hexGears = Utils.getByTagInParent({parent = parentFolder, tag = hexGearTag})
     Utils.sortListByObjectKey(hexGears, 'Name')
 
     if not hexGearConfigs then
         return
     end
 
+    print('hexGearTag' .. ' - start===============>>')
+    print(hexGearTag)
     for hexIndex, hexGear in ipairs(hexGears) do
         local positioners = regionConfig.positioners or nil
         if hexGearConfigs[1] then
-            -- if hexGearConfigs[hexIndex] then
             local config = hexGearConfigs[hexIndex] or hexGearConfigs[1]
 
             if not positioners then
