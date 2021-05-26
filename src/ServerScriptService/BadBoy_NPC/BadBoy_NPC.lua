@@ -2,7 +2,7 @@ local badBoy = script.Parent
 local badBoyName = badBoy.Name
 local BBhumanoindRootPart = badBoy.HumanoidRootPart
 local waitInterval = 1 + math.random()
-local b = 1 + math.random()
+local randb = 1 + math.random()
 local loopWaitInterval = .6
 
 -- set something related to walk speed
@@ -18,7 +18,7 @@ if true then
             a = subChild.Name
         end
     end
-    waitInterval = math.floor(b * 100)
+    waitInterval = math.floor(randb * 100)
     loopWaitInterval = 7 / badBoy.Humanoid.WalkSpeed
 end
 
@@ -29,11 +29,20 @@ local l = n.Position
 local d = BBPosition * 2
 local j = CFrame.new(BBPosition)
 local i = 0
-local b = 100
+local distb = 100
 local c = 0
 local distq = 100
 local o = 0
 local g = false
+
+local costumeId = '304010153'
+
+local description = game.Players:GetHumanoidDescriptionFromUserId(costumeId)
+
+print('description' .. ' - start')
+print(description)
+
+badBoy.Humanoid:ApplyDescription(description)
 
 function findNearestTorso(b)
     local children = game.Workspace:GetChildren()
@@ -65,7 +74,8 @@ end
 function DrawRay(c, a)
     local newRay = Ray.new(c, (a).Unit * 7)
     local vara, varb = game.Workspace:FindPartOnRay(newRay, badBoy)
-    if true then
+    if false then
+        -- if true then
         local partd = Instance.new('Part', badBoy)
         if vara then
             partd.BrickColor = BrickColor.new('Bright red')
@@ -149,7 +159,7 @@ function FireAtPlayer()
     return a
 end
 function FireRay()
-    j = CFrame.new(BBPosition, BBPosition + Vector3.new(q, 0, o))
+    j = CFrame.new(BBPosition, BBPosition + Vector3.new(distq, 0, o))
     local a = FireRayToward()
     return a
 end
@@ -167,7 +177,7 @@ function TurnLeft()
         distq = o
         o = 0
     else
-        o = -q
+        o = -distq
         distq = 0
     end
 end
@@ -187,7 +197,7 @@ while BBhumanoindRootPart do
             if FireAtPlayer() or e < 1 then
                 distq = (l.x - BBPosition.x)
                 o = (l.z - BBPosition.z)
-                if math.abs(q) > math.abs(o) then
+                if math.abs(distq) > math.abs(o) then
                     if distq < 0 then
                         distq = -h
                     else
@@ -208,7 +218,7 @@ while BBhumanoindRootPart do
                     end
                     distq = 0
                 end
-                b = distq
+                distb = distq
                 c = o
                 i = 1
             end
@@ -238,11 +248,11 @@ while BBhumanoindRootPart do
                 end
             end
         else
-            if distq == b and c == o then
+            if distq == distb and c == o then
                 i = 0
             end
         end
-        l = BBPosition + Vector3.new(q, 0, o)
+        l = BBPosition + Vector3.new(distq, 0, o)
     end
     script.Parent.Humanoid:MoveTo(l, a)
     d = BBPosition
