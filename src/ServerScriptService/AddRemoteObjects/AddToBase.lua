@@ -225,7 +225,6 @@ local function addRemoteObjects()
     ConfigGame.configGame({levelConfig = levelConfig})
 
     TestArea.configTestArea({parentFolder = level})
-    -- TestArea.configTestArea({parentFolder = workspace})
 
     local words = Words.allWords
     -- for _, word in ipairs(words) do
