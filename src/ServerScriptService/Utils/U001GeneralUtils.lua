@@ -11,6 +11,10 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.arraySubset(arr, startIndex, endIndex)
+    return {table.unpack(arr, startIndex, endIndex)}
+end
+
 function module.concatArray(a, b)
     local result = {table.unpack(a)}
     table.move(b, 1, #b, #result + 1, result)

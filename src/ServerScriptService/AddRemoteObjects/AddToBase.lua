@@ -225,9 +225,9 @@ local function addRemoteObjects()
     ConfigGame.configGame({levelConfig = levelConfig})
 
     local words = Words.allWords
-    -- for _, word in ipairs(words) do
-    --     resetMyStores(word)
-    -- end
+    for _, word in ipairs(words) do
+        resetMyStores(word)
+    end
 end
 
 module.addRemoteObjects = addRemoteObjects

@@ -8,6 +8,24 @@ local module = {}
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local tallWalls = Configs.tallWalls
 
+local test = Utils.arraySubset(Words.allWords, 1, 3)
+print('test' .. ' - st----------------art')
+print(test)
+
+local numStatuesPerHex = 24
+local numHexes = 3
+
+local hexGearConfigs = {}
+for i = 0, numHexes do
+    local startIndex = i * numStatuesPerHex
+    local endIndex = (i + 1) * numStatuesPerHex + 1
+    local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
+    print('words' .. ' - start--------------------------')
+    print(words)
+    local newConfig = {words = words}
+    table.insert(hexGearConfigs, newConfig)
+end
+
 local r007 = {
     bridgeConfigs = {
         invisiWallProps = tallWalls,
@@ -61,7 +79,13 @@ local r007 = {
             discHeight = 1
         }
     },
-    invisiWallProps = tallWalls
+    invisiWallProps = tallWalls,
+    hexGearConfigs = hexGearConfigs
+    -- hexGearWords = {
+    --     {words = Utils.arraySubset(Words.allWords, 1, 3)},
+    --     {words = Utils.arraySubset(Words.allWords, 1, 3)},
+    --     {words = Utils.arraySubset(Words.allWords, 1, 3)}
+    -- }
 }
 
 local r100 = {
@@ -70,6 +94,52 @@ local r100 = {
         straysOnBridges = false,
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
+    },
+    orbiterConfigs = {
+        {
+            -- words = {'AT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'AT',
+            discHeight = 1
+        },
+        {
+            -- words = {'AT'},
+            numBlocks = 12,
+            angularVelocity = 0.8,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'AN',
+            discHeight = 1
+        },
+        {
+            -- words = {'BAT'},
+            numBlocks = 12,
+            angularVelocity = -0.7,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'B',
+            discHeight = 1
+        },
+        {
+            -- words = {'BAT'},
+            numBlocks = 12,
+            angularVelocity = -0.7,
+            -- diameter = 32,
+            discTransparency = 1,
+            collideDisc = false,
+            collideBlock = false,
+            singleWord = 'R',
+            discHeight = 1
+        }
     }
     -- invisiWallProps = tallWalls
 }

@@ -26,8 +26,6 @@ function module.initHexGears(props)
         return
     end
 
-    print('hexGearTag' .. ' - start===============>>')
-    print(hexGearTag)
     for hexIndex, hexGear in ipairs(hexGears) do
         local positioners = regionConfig.positioners or nil
         if hexGearConfigs[1] then
