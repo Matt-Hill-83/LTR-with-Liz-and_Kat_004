@@ -304,14 +304,8 @@ function module.configGame(props)
 end
 
 function module.preRunConfig(props)
-    print('preRunConfig')
-    print('preRunConfig')
-    print('preRunConfig')
-    print('preRunConfig')
     local taggedPartsDestroy = CS:GetTagged('DestroyBeforeRun')
     for _, item in ipairs(taggedPartsDestroy) do
-        print('item.Name' .. ' - start')
-        print(item.Name)
         item:Destroy()
     end
 

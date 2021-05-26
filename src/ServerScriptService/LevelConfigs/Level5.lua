@@ -27,11 +27,8 @@ local chars = 'ATNPGDMYBCDFHIJLRSWZ'
 
 for i = 1, numOrbiters do
     local char = chars:sub(i, i)
-
     local polarity = i % 2 == 0 and 1 or -1
 
-    print('char' .. ' - start')
-    print(char)
     local newConfig = {
         -- words = {'AT'},
         numBlocks = 12,
@@ -44,6 +41,18 @@ for i = 1, numOrbiters do
         discHeight = 1
     }
     table.insert(orbiterConfigs2, newConfig)
+    local newConfig2 = {
+        -- words = {'AT'},
+        numBlocks = 12,
+        angularVelocity = 0.8 * polarity,
+        -- diameter = 32,
+        discTransparency = 1,
+        collideDisc = false,
+        collideBlock = false,
+        singleWord = 'SAT',
+        discHeight = 1
+    }
+    table.insert(orbiterConfigs2, newConfig2)
 end
 
 local r007 = {
