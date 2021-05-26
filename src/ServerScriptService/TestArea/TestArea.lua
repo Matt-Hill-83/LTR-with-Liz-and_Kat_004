@@ -17,6 +17,10 @@ function module.initTeleporter(part, nextLevelId)
     local teleportPart = part
 
     local function onPartTouch(otherPart)
+        print('onPartTouch')
+        print('onPartTouch')
+        print('onPartTouch')
+        print('onPartTouch')
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
         if player then
@@ -38,7 +42,7 @@ end
 function module.configTestArea(props)
     local parentFolder = props.parentFolder
 
-    local testArea = Utils.getFirstDescendantByName(parentFolder, 'TestArea')
+    local testArea = Utils.getFirstDescendantByName(parentFolder, 'ToNextLevel')
     if testArea then
         local telepad = Utils.getFirstDescendantByName(testArea, 'Telepad')
 

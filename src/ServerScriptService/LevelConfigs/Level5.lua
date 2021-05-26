@@ -20,20 +20,22 @@ for i = 0, numHexes do
     table.insert(hexGearConfigs, newConfig)
 end
 
-local numOrbiters = 8
-local orbiterConfigs = {}
+local numOrbiters = 24
+local orbiterConfigs2 = {}
 
 local chars = 'ATNPGDMYBCDFHIJLRSWZ'
 
 for i = 1, numOrbiters do
     local char = chars:sub(i, i)
 
+    local polarity = i % 2 == 0 and 1 or -1
+
     print('char' .. ' - start')
     print(char)
     local newConfig = {
         -- words = {'AT'},
         numBlocks = 12,
-        angularVelocity = 0.8,
+        angularVelocity = 0.8 * polarity,
         -- diameter = 32,
         discTransparency = 1,
         collideDisc = false,
@@ -41,7 +43,7 @@ for i = 1, numOrbiters do
         singleWord = char,
         discHeight = 1
     }
-    table.insert(orbiterConfigs, newConfig)
+    table.insert(orbiterConfigs2, newConfig)
 end
 
 local r007 = {
@@ -51,7 +53,7 @@ local r007 = {
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
-    orbiterConfigs = orbiterConfigs,
+    orbiterConfigs = orbiterConfigs2,
     xxxorbiterConfigs = {
         {
             -- words = {'AT'},
@@ -162,6 +164,7 @@ local regions = {
     r007 = r007,
     r008 = r007,
     r009 = r007,
+    r099 = r100,
     r100 = r100
 }
 

@@ -12,7 +12,7 @@ local ConfigGame = require(Sss.Source.AddRemoteObjects.ConfigGame)
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 
 local Terrain = require(Sss.Source.Terrain.Terrain)
--- local TestArea = require(Sss.Source.TestArea.TestArea)
+local TestArea = require(Sss.Source.TestArea.TestArea)
 local Theater = require(Sss.Source.Theater.Theater)
 local UnicornStore = require(Sss.Source.UnicornStore.UnicornStore)
 local UniIsland = require(Sss.Source.UniIsland.UniIsland)
@@ -224,10 +224,13 @@ local function addRemoteObjects()
 
     ConfigGame.configGame({levelConfig = levelConfig})
 
+    TestArea.configTestArea({parentFolder = level})
+    -- TestArea.configTestArea({parentFolder = workspace})
+
     local words = Words.allWords
-    for _, word in ipairs(words) do
-        resetMyStores(word)
-    end
+    -- for _, word in ipairs(words) do
+    --     resetMyStores(word)
+    -- end
 end
 
 module.addRemoteObjects = addRemoteObjects

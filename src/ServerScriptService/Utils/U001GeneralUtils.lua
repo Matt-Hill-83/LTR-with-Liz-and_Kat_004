@@ -11,6 +11,25 @@ local Const4 = require(Sss.Source.Constants.Const_04_Characters)
 
 local module = {}
 
+function module.replaceTerrainInPart(part, materialToReplace, replacementMaterial)
+    local function CreateRegion3FromLocAndSize(Position, Size)
+        local SizeOffset = Size / 2
+        local Point1 = Position - SizeOffset
+        local Point2 = Position + SizeOffset
+        return Region3.new(Point1, Point2)
+    end
+
+    local region = CreateRegion3FromLocAndSize(part.Position, part.Size)
+
+    -- local min = Vector3.new(-20, -20, -20)
+    -- local max = Vector3.new(20, 20, 20)
+    -- local materialToReplace = Enum.Material.Grass
+    -- local replacementMaterial = Enum.Material.Asphalt
+
+    workspace.Terrain:ReplaceMaterial(region, 4, materialToReplace, replacementMaterial)
+    -- workspace.Terrain:ReplaceMaterial(Region3.new(min, max), 4, materialToReplace, replacementMaterial)
+end
+
 function module.arraySubset(arr, startIndex, endIndex)
     return {table.unpack(arr, startIndex, endIndex)}
 end
