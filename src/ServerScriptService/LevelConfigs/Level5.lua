@@ -8,7 +8,7 @@ local module = {}
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local tallWalls = Configs.tallWalls
 
-local numStatuesPerHex = 24
+local numStatuesPerHex = 18
 local numHexes = 3
 
 local hexGearConfigs = {}
@@ -23,7 +23,7 @@ end
 local numOrbiters = 24
 local orbiterConfigs2 = {}
 
-local chars = 'ATNPGDMYBCDFHIJLRSWZ'
+local chars = 'ATNPGDMBCDFHIJLRSZ'
 
 for i = 1, numOrbiters do
     local char = chars:sub(i, i)
