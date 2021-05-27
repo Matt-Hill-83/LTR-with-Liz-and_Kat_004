@@ -11,6 +11,13 @@ local Players = game:GetService('Players')
 local module = {}
 
 function module.initTeleporter(part, nextLevelId)
+    print('initTeleporter')
+    print('initTeleporter')
+    print('initTeleporter')
+
+    print('part' .. ' - start')
+    print(part)
+
     if not part then
         return
     end
