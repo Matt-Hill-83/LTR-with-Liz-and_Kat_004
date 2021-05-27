@@ -11,23 +11,12 @@ local Players = game:GetService('Players')
 local module = {}
 
 function module.initTeleporter(part, nextLevelId)
-    print('initTeleporter')
-    print('initTeleporter')
-    print('initTeleporter')
-
-    print('part' .. ' - start')
-    print(part)
-
     if not part then
         return
     end
     local teleportPart = part
 
     local function onPartTouch(otherPart)
-        print('onPartTouch')
-        print('onPartTouch')
-        print('onPartTouch')
-        print('onPartTouch')
         -- Get player from character
         local player = Players:GetPlayerFromCharacter(otherPart.Parent)
         if player then
