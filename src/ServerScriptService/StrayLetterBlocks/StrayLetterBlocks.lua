@@ -44,7 +44,7 @@ function module.createStray(char, parentFolder, props)
 end
 
 function module.initStraysInRegions(props)
-    wait()
+    wait(0.001)
     local parentFolder = props.parentFolder
     local regionConfig = props.regionConfig
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})

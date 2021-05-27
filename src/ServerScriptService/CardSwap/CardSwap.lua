@@ -29,11 +29,17 @@ function module.initCardSwaps(props)
                 if humanoid then
                     db = true
                     local player = Utils.getPlayerFromHumanoid(humanoid)
+
+                    if not player then
+                        db = false
+                        return
+                    end
                     local targetWords = regionConfig.getTargetWords()[itemNum] or regionConfig.getTargetWords()[1]
 
                     -- check to see if they already have that card
                     local gameState = PlayerStatManager.getGameState(player)
                     if not gameState then
+                        db = false
                         return
                     end
 

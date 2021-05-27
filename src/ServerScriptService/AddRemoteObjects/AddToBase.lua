@@ -227,8 +227,6 @@ local function addRemoteObjects()
     TestArea.configTestArea({parentFolder = level})
 
     local words = Words.allWords
-    print('words' .. ' - start')
-    print(words)
     -- for _, word in ipairs(words) do
     --     print('word' .. ' - start')
     --     print(word)

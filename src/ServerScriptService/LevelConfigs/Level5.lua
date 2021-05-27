@@ -129,7 +129,7 @@ local r100 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'AT',
+            singleWord = 'W',
             discHeight = 1
         },
         {
@@ -140,7 +140,7 @@ local r100 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'AN',
+            singleWord = 'I',
             discHeight = 1
         },
         {
@@ -151,21 +151,13 @@ local r100 = {
             discTransparency = 1,
             collideDisc = false,
             collideBlock = false,
-            singleWord = 'B',
-            discHeight = 1
-        },
-        {
-            -- words = {'BAT'},
-            numBlocks = 12,
-            angularVelocity = -0.7,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'R',
+            singleWord = 'N',
             discHeight = 1
         }
-    }
+    },
+    getTargetWords = function()
+        return {{{word = 'WIN', target = 1, found = 0}}}
+    end
     -- invisiWallProps = tallWalls
 }
 
@@ -327,9 +319,6 @@ module.autoCreateRegions(
         wordList = wordList
     }
 )
--- module.autoCreateRegions({numRegions = 2, numWordsPerRegion = 1, numEachWord = 1})
--- module.autoCreateRegions({numRegions = 1, numWordsPerRegion = 1, numEachWord = 2})
--- module.autoCreateRegions({numRegions = 10, numWordsPerRegion = 3, numEachWord = 1})
 
 module.regions = regions
 Configs.addDefaults(regions)
