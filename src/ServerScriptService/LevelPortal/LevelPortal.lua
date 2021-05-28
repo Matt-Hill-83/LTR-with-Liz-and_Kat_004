@@ -23,21 +23,15 @@ function module.setHumanoid(userId, statue)
         end
     )
 
-    pcall(
-        function()
-            local Track = statue.Humanoid:LoadAnimation(statue.Idle)
-            Track:Play()
-        end
-    )
+    -- pcall(
+    --     function()
+    --         local Track = statue.Humanoid:LoadAnimation(statue.Idle)
+    --         Track:Play()
+    --     end
+    -- )
 end
 
 function module.refreshBoard(dataStore, portal, delaySec)
-    print('refreshBoard--------------------------')
-    print('portal' .. ' - start')
-    print(portal)
-    print('delaySec' .. ' - start')
-    print(delaySec)
-
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
 
@@ -45,16 +39,7 @@ function module.refreshBoard(dataStore, portal, delaySec)
     local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
     local winnerScoreTextLabel = {}
 
-    -- if winnerScoreSign then
-    --     winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
-    -- else
-    --     return
-    -- end
-
     local winnerNameTextLabel = {}
-    -- if winnerNameSign then
-    --     winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
-    -- end
 
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
