@@ -8,7 +8,8 @@ local module = {}
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local tallWalls = Configs.tallWalls
 
-local numStatuesPerHex = 18
+local numStatuesPerHex = 9
+-- local numStatuesPerHex = 18
 local numHexes = 3
 
 local hexGearConfigs = {}
