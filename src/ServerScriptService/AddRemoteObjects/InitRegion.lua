@@ -47,9 +47,13 @@ function module.initRegion(region, regionConfig, regionIndex)
         PetBox.initPetBox({parentFolder = region, regionConfig = regionConfig})
     end
 
-    if false then
-        -- if strayLetterBlocks then
-        StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+    -- if false then
+    if strayLetterBlocks then
+        local function func()
+            StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+        end
+
+        delay(5, func)
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 

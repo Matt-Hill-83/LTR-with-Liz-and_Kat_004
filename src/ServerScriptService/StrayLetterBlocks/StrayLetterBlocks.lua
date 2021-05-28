@@ -114,16 +114,10 @@ function module.initStraysInRegions(props)
         for _, stray in ipairs(strays) do
             stray.CanCollide = true
             if isHoverStray then
-                -- puck's arent' workign right.  somehow the thrustblock is in a different location
-                -- puck's arent' workign right.  somehow the thrustblock is in a different location
-                -- puck's arent' workign right.  somehow the thrustblock is in a different location
-                -- puck's arent' workign right.  somehow the thrustblock is in a different location
                 local hoverPuck = hoverPuckTemplate:Clone()
                 hoverPuck.Parent = stray
-                -- hoverPuck.Parent = stray.Parent
                 local hoverPuckPart = hoverPuck.PrimaryPart
 
-                -- hoverPuckPart.Name = 'kkkk'
                 hoverPuckPart.Anchored = false
 
                 Utils3.setCFrameFromDesiredEdgeOffset2(
@@ -137,18 +131,6 @@ function module.initStraysInRegions(props)
                         }
                     }
                 )
-                -- hoverPuckPart.CFrame =
-                --     Utils3.setCFrameFromDesiredEdgeOffset(
-                --     {
-                --         parent = stray,
-                --         child = hoverPuckPart,
-                --         offsetConfig = {
-                --             useParentNearEdge = Vector3.new(0, -1, 0),
-                --             useChildNearEdge = Vector3.new(0, -1, 0),
-                --             offsetAdder = nil
-                --         }
-                --     }
-                -- )
 
                 local weld = Instance.new('WeldConstraint')
                 weld.Name = 'WeldConstraint-hoverPuck-888'
@@ -158,7 +140,13 @@ function module.initStraysInRegions(props)
 
                 stray.Massless = true
                 stray.Name = stray.Name .. '777'
-                hoverPuck.Dummy:Destroy()
+                pcall(
+                    function()
+                        if hoverPuck.Dummy then
+                            hoverPuck.Dummy:Destroy()
+                        end
+                    end
+                )
             else
                 function module.initPuck(puck)
                     local thrust = Instance.new('BodyThrust', puck)
