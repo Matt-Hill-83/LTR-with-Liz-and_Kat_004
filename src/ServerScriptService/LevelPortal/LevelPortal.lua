@@ -32,31 +32,18 @@ function module.setHumanoid(userId, statue)
 end
 
 function module.refreshBoard(dataStore, portal, delaySec)
+    print('refreshBoard--------------------------')
+    print('portal' .. ' - start')
+    print(portal)
+    print('delaySec' .. ' - start')
+    print(delaySec)
+
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
 
     local winnerScoreSign = Utils.getFirstDescendantByName(portal, 'WinnerScore')
-    local winnerScoreTextLabel = {}
-
-    if winnerScoreSign then
-        winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
-    else
-        return
-    end
     local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
-    local winnerNameTextLabel = {}
-    if winnerNameSign then
-        winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
-    end
-
-    local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
-    local list = Utils.getFirstDescendantByName(scoreSign, 'List')
-
-    for i, leaderboardRank in pairs(list:GetChildren()) do
-        if leaderboardRank.ClassName == 'Frame' then
-            leaderboardRank:Destroy()
-        end
-    end
+    local winnerScoreTextLabel = {}
 
     local success, errorMsg =
         pcall(
@@ -69,24 +56,43 @@ function module.refreshBoard(dataStore, portal, delaySec)
                 local name = Utils_2.getUsernameFromUserId(id)
                 local statsname = dataStored.value
 
-                local Gui = top:Clone()
-                Gui.PlrName.Text = name
-                Gui.Rank.Text = '#' .. rankInLB
-                Gui.Amount.Text = statsname
-                Gui.Parent = list
+                if winnerScoreSign then
+                    winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
 
-                if Gui.Rank.Text == '#1' then
-                    Gui.Color.Value = Color3.fromRGB(206, 206, 172)
-                    -- statue.Configuration.userId.Value = id
-                    -- statue.Tags.Container.pName.Text = name
-                    module.setHumanoid(id, statue)
-                    winnerNameTextLabel.Text = name
-                    winnerScoreTextLabel.Text = statsname
+                    local winnerNameTextLabel = {}
+                    if winnerNameSign then
+                        winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
+                    end
+
+                    local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
+                    local list = Utils.getFirstDescendantByName(scoreSign, 'List')
+
+                    for i, leaderboardRank in pairs(list:GetChildren()) do
+                        if leaderboardRank.ClassName == 'Frame' then
+                            leaderboardRank:Destroy()
+                        end
+                    end
+                    local Gui = top:Clone()
+                    Gui.PlrName.Text = name
+                    Gui.Rank.Text = '#' .. rankInLB
+                    Gui.Amount.Text = statsname
+                    Gui.Parent = list
+
+                    if Gui.Rank.Text == '#1' then
+                        Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                        -- statue.Configuration.userId.Value = id
+                        -- statue.Tags.Container.pName.Text = name
+                        module.setHumanoid(id, statue)
+                        winnerNameTextLabel.Text = name
+                        winnerScoreTextLabel.Text = statsname
+                    end
                 end
             end
         end
     )
 
+    print('delaySec' .. ' - start')
+    print(delaySec)
     if delaySec then
         delay(delaySec, module.refreshBoardClosure(dataStore, portal, delaySec))
     end
