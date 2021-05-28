@@ -43,6 +43,17 @@ for i = 1, numOrbiters do
     table.insert(orbiterConfigs2, newConfig)
 end
 
+local r006 = {
+    bridgeConfigs = {
+        invisiWallProps = tallWalls,
+        straysOnBridges = false,
+        material = Enum.Material.Grass,
+        bridgeTemplateName = Configs.bridges.default
+    },
+    invisiWallProps = tallWalls
+    -- hexGearConfigs = hexGearConfigs
+}
+
 local r007 = {
     bridgeConfigs = {
         invisiWallProps = tallWalls,
@@ -51,52 +62,6 @@ local r007 = {
         bridgeTemplateName = Configs.bridges.default
     },
     orbiterConfigs = orbiterConfigs2,
-    xxxorbiterConfigs = {
-        {
-            -- words = {'AT'},
-            numBlocks = 12,
-            angularVelocity = 0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'A',
-            discHeight = 1
-        },
-        {
-            -- words = {'AT'},
-            numBlocks = 12,
-            angularVelocity = -0.8,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'B',
-            discHeight = 1
-        },
-        {
-            -- words = {'BAT'},
-            numBlocks = 12,
-            angularVelocity = -0.7,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'C',
-            discHeight = 1
-        },
-        {
-            -- words = {'BAT'},
-            numBlocks = 12,
-            angularVelocity = -0.7,
-            -- diameter = 32,
-            discTransparency = 1,
-            collideDisc = false,
-            collideBlock = false,
-            singleWord = 'D',
-            discHeight = 1
-        }
-    },
     invisiWallProps = tallWalls,
     hexGearConfigs = hexGearConfigs
 }
@@ -150,6 +115,7 @@ local r100 = {
 }
 
 local regions = {
+    r006 = r006,
     r007 = r007,
     r008 = r007,
     r009 = r007,
