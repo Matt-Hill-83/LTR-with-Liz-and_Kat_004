@@ -23,7 +23,7 @@ end
 local numOrbiters = 24
 local orbiterConfigs2 = {}
 
-local chars = 'ATNPGDMBCDFHIJLRSZ'
+local chars = 'ATNPGDMBCDFHIJLRSXYZ'
 
 for i = 1, numOrbiters do
     local char = chars:sub(i, i)
