@@ -36,10 +36,22 @@ function module.refreshBoard(dataStore, portal, delaySec)
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
 
     local winnerScoreSign = Utils.getFirstDescendantByName(portal, 'WinnerScore')
-    local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
     local winnerScoreTextLabel = {}
 
+    if winnerScoreSign then
+        winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
+    else
+        if delaySec then
+            delay(delaySec, module.refreshBoardClosure(dataStore, portal, delaySec))
+        end
+        return
+    end
+
+    local winnerNameSign = Utils.getFirstDescendantByName(portal, 'WinnerName')
     local winnerNameTextLabel = {}
+    if winnerNameSign then
+        winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
+    end
 
     local top = Utils.getFirstDescendantByName(scoreSign, 'Top')
     local list = Utils.getFirstDescendantByName(scoreSign, 'List')
@@ -69,17 +81,11 @@ function module.refreshBoard(dataStore, portal, delaySec)
 
                 if Gui.Rank.Text == '#1' then
                     Gui.Color.Value = Color3.fromRGB(206, 206, 172)
+                    -- statue.Configuration.userId.Value = id
+                    -- statue.Tags.Container.pName.Text = name
                     module.setHumanoid(id, statue)
-
-                    if winnerNameSign then
-                        winnerNameTextLabel = Utils.getFirstDescendantByName(winnerNameSign, 'TextLabel')
-
-                        winnerNameTextLabel.Text = name
-                    end
-                    if winnerScoreSign then
-                        winnerScoreTextLabel = Utils.getFirstDescendantByName(winnerScoreSign, 'TextLabel')
-                        winnerScoreTextLabel.Text = statsname
-                    end
+                    winnerNameTextLabel.Text = name
+                    winnerScoreTextLabel.Text = statsname
                 end
             end
         end
@@ -106,10 +112,14 @@ function module.initDataStore(props)
 
     -- Only set this delay if you want the updating to loop.
     -- updating is also done when upDateWordStore is called.
-    local delayBase = 15
+    local delayBase = 1000
     local delaySec = math.random(delayBase, math.floor(delayBase * 1.5))
+    -- local delaySec = math.random() + math.random(delayBase, math.floor(delayBase * 1.5))
     local startBase = 10
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
+    -- local startSec = math.random() + math.random(startBase, startBase * 1.5)
+
+    -- delay(startSec, module.refreshBoardClosure(dataStore, portal, 5))
     delay(startSec, module.refreshBoardClosure(dataStore, portal, delaySec))
 end
 
