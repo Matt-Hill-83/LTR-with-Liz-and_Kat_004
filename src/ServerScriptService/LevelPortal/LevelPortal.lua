@@ -32,12 +32,6 @@ function module.setHumanoid(userId, statue)
 end
 
 function module.refreshBoard(dataStore, portal, delaySec)
-    print('refreshBoard--------------------------')
-    print('portal' .. ' - start')
-    print(portal)
-    print('delaySec' .. ' - start')
-    print(delaySec)
-
     local statue = Utils.getFirstDescendantByName(portal, 'Statue')
     local scoreSign = Utils.getFirstDescendantByName(portal, 'ScoreSign')
 
@@ -91,8 +85,6 @@ function module.refreshBoard(dataStore, portal, delaySec)
         end
     )
 
-    print('delaySec' .. ' - start')
-    print(delaySec)
     if delaySec then
         delay(delaySec, module.refreshBoardClosure(dataStore, portal, delaySec))
     end
@@ -114,14 +106,11 @@ function module.initDataStore(props)
 
     -- Only set this delay if you want the updating to loop.
     -- updating is also done when upDateWordStore is called.
-    local delayBase = 1000
+    local delayBase = 15
     local delaySec = math.random(delayBase, math.floor(delayBase * 1.5))
-    -- local delaySec = math.random() + math.random(delayBase, math.floor(delayBase * 1.5))
     local startBase = 10
     local startSec = math.random() + math.random(startBase, startBase * 1.5)
-    -- local startSec = math.random() + math.random(startBase, startBase * 1.5)
 
-    -- delay(startSec, module.refreshBoardClosure(dataStore, portal, 5))
     delay(startSec, module.refreshBoardClosure(dataStore, portal, delaySec))
 end
 

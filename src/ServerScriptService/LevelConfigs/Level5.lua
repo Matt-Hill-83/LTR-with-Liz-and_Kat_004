@@ -41,22 +41,7 @@ for i = 1, numOrbiters do
         discHeight = 1
     }
     table.insert(orbiterConfigs2, newConfig)
-    -- local newConfig2 = {
-    --     -- words = {'AT'},
-    --     numBlocks = 12,
-    --     angularVelocity = 0.8 * polarity,
-    --     -- diameter = 32,
-    --     discTransparency = 1,
-    --     collideDisc = false,
-    --     collideBlock = false,
-    --     singleWord = 'SAT',
-    --     discHeight = 1
-    -- }
-    -- table.insert(orbiterConfigs2, newConfig2)
 end
-
-print('orbiterConfigs2' .. ' - start')
-print(orbiterConfigs2)
 
 local r007 = {
     bridgeConfigs = {
