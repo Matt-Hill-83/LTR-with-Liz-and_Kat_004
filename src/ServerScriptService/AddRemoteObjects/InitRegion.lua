@@ -55,7 +55,7 @@ function module.initRegion(region, regionConfig, regionIndex)
             end
         end
 
-        delay(10, func(region, regionConfig))
+        delay(15, func(region, regionConfig))
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 

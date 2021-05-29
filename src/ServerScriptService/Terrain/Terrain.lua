@@ -32,7 +32,7 @@ function module.initTerrain(props)
             end
         end
     end
-    -- wait(0.0005)
+    wait(0.0005)
 
     -- Do air last, for subtracting terrain
     local airParts = Utils.getByTagInParent({parent = parentFolder, tag = prefix .. 'Air'})
