@@ -1,8 +1,8 @@
-local CS = game:GetService("CollectionService")
-local Sss = game:GetService("ServerScriptService")
+local CS = game:GetService('CollectionService')
+local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local remoteEvent = ReplicatedStorage:WaitForChild("ClickBlockRE")
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+local remoteEvent = ReplicatedStorage:WaitForChild('ClickBlockRE')
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 
 local module = {}
@@ -38,18 +38,14 @@ function generateDeadLetters(props)
 end
 
 function initLetterRack(miniGameState)
-    local runTimeLetterFolder = LetterFallUtils.getRunTimeLetterFolder(
-                                    miniGameState)
+    local runTimeLetterFolder = LetterFallUtils.getRunTimeLetterFolder(miniGameState)
     miniGameState.runTimeLetterFolder = runTimeLetterFolder
 
     local letterFallFolder = miniGameState.letterFallFolder
-    local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder,
-                                                            "LetterRackFolder")
-    local letterBlockFolder = Utils.getFromTemplates("LetterBlockTemplates")
-    local letterBlockTemplate = Utils.getFirstDescendantByName(
-                                    letterBlockFolder, "LBRack")
-    local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder,
-                                                            "RackLetterBlockPositioner")
+    local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder, 'LetterRackFolder')
+    local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack')
+    local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
 
     local numRow = 10
     local numCol = 16
@@ -70,12 +66,14 @@ function initLetterRack(miniGameState)
         end
     end
 
-    local deadLetters = generateDeadLetters(
-                            {
+    local deadLetters =
+        generateDeadLetters(
+        {
             numCol = numCol,
             numRow = numRow,
             lettersPerCol = 2
-        })
+        }
+    )
 
     for colIndex = 1, numCol do
         for rowIndex = 1, numRow do
@@ -87,20 +85,22 @@ function initLetterRack(miniGameState)
             LetterFallUtils.applyStyleFromTemplate(
                 {
                     targetLetterBlock = newLetter,
-                    templateName = "LBPurpleLight",
+                    templateName = 'LBPurpleLight',
                     miniGameState = miniGameState
-                })
-            local letterId = "ID--R" .. rowIndex .. "C" .. colIndex
-            local name = "rackLetter-" .. char .. "-" .. letterId
+                }
+            )
+            local letterId = 'ID--R' .. rowIndex .. 'C' .. colIndex
+            local name = 'rackLetter-' .. char .. '-' .. letterId
             newLetter.Name = name
 
-            local isDeadLetter = isDeadLetter(
-                                     {
+            local isDeadLetter =
+                isDeadLetter(
+                {
                     rowIndex = rowIndex,
                     colIndex = colIndex,
                     deadLetters = deadLetters
-
-                })
+                }
+            )
 
             CS:AddTag(newLetter, LetterFallUtils.tagNames.RackLetter)
             if isDeadLetter then
@@ -109,43 +109,26 @@ function initLetterRack(miniGameState)
                 CS:AddTag(newLetter, LetterFallUtils.tagNames.NotDeadLetter)
             end
 
-            LetterFallUtils.applyLetterText(
-                {letterBlock = newLetter, char = char})
+            LetterFallUtils.applyLetterText({letterBlock = newLetter, char = char})
 
             local offsetY = (newLetter.Size.Y - letterPositioner.Size.Y) / 2
 
-            local letterPosX = -newLetter.Size.X * (colIndex - 1) *
-                                   spacingFactorX
-            local letterPosY = newLetter.Size.Y * (rowIndex - 1) *
-                                   spacingFactorY + offsetY
-            newLetter.CFrame = letterPositioner.CFrame *
-                                   CFrame.new(
-                                       Vector3.new(letterPosX, letterPosY, 0))
+            local letterPosX = -newLetter.Size.X * (colIndex - 1) * spacingFactorX
+            local letterPosY = newLetter.Size.Y * (rowIndex - 1) * spacingFactorY + offsetY
+            newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, letterPosY, 0))
 
             newLetter.Parent = runTimeLetterFolder
             newLetter.Anchored = true
         end
     end
 
-    LetterFallUtils.configDeadLetters({
-        parentFolder = runTimeLetterFolder,
-        miniGameState = miniGameState
-    })
+    LetterFallUtils.configDeadLetters(
+        {
+            parentFolder = runTimeLetterFolder,
+            miniGameState = miniGameState
+        }
+    )
 end
-
--- function getRunTimeLetterFolder(miniGameState)
---     local letterFallFolder = miniGameState.letterFallFolder
---     local runtimeFolder = Utils.getOrCreateFolder(
---                               {
---             name = "RunTimeFolder",
---             parent = letterFallFolder
---         })
-
---     return Utils.getOrCreateFolder({
---         name = "RunTimeLetterRackFolder",
---         parent = runtimeFolder
---     })
--- end
 
 module.initLetterRack = initLetterRack
 

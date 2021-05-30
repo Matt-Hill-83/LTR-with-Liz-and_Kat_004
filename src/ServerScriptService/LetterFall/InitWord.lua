@@ -54,7 +54,7 @@ function initWord(props)
 
     local wordNameStub = '-W' .. wordIndex
     newWord.Name = newWord.Name .. 'ssss' .. wordNameStub
-    -- wordBench.Anchored = true
+    wordBench.Anchored = true
 
     letterPositioner.Name = letterPositioner.Name .. wordNameStub
 
@@ -102,7 +102,7 @@ function initWord(props)
 end
 
 function initWords(miniGameState)
-    local letterFallFolder = miniGameState.letterFallFolder
+    -- local letterFallFolder = miniGameState.letterFallFolder
     local wordLetters = miniGameState.wordLetters
 
     -- local putItemsToBeClonedHere = Utils.getFirstDescendantByName(letterFallFolder, 'PutItemsToBeClonedHere')
