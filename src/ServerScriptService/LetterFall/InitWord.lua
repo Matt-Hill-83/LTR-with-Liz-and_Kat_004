@@ -27,34 +27,25 @@ function initWord(props)
 
     newWord.Parent = wordBox.Parent
 
-    Utils.enableChildWelds({part = letterBlockTemplate, enabled = false})
-
     local spacingFactorY = 1.25
     local spacingFactorZ = 1.0
     local wordSpacingY = letterBlockTemplate.Size.Y * spacingFactorY
 
-    wordBench.CFrame = wordBench.CFrame + Vector3.new(0, wordSpacingY * wordIndex, 0)
-
-    --
-    --
-    -- Utils3.setCFrameFromDesiredEdgeOffset2(
-    --     {
-    --         parent = portal.PrimaryPart,
-    --         childModel = portal,
-    --         angles = offsetAngle,
-    --         offsetConfig = {
-    --             useParentNearEdge = Vector3.new(0, 0, 0),
-    --             useChildNearEdge = Vector3.new(0, 0, 0),
-    --             offsetAdder = Vector3.new(0, 0, 0)
-    --         }
-    --     }
-    -- )
-    --
-    --
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = wordBench,
+            childModel = wordBox,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(0, 0, 0),
+                useChildNearEdge = Vector3.new(0, 0, 0),
+                offsetAdder = Vector3.new(0, wordSpacingY * wordIndex, 0)
+            }
+        }
+    )
 
     local wordNameStub = '-W' .. wordIndex
     newWord.Name = newWord.Name .. 'ssss' .. wordNameStub
-    wordBench.Anchored = true
+    -- wordBench.Anchored = true
 
     letterPositioner.Name = letterPositioner.Name .. wordNameStub
 
