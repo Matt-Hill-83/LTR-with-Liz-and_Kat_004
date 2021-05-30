@@ -190,6 +190,9 @@ function module.initLetterGrabber(props)
     -- templateName = templateName or 'GrabberReplicatorTemplate_001'
     local template = Utils.getFromTemplates(templateName)
 
+    if not template then
+        return
+    end
     local newReplicator = template:Clone()
     local letterGrabber = Utils.getFirstDescendantByName(newReplicator, 'LetterGrabber')
 
