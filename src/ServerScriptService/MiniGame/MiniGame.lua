@@ -72,15 +72,11 @@ function module.addMiniGame(props)
         questIndex = questIndex
     }
 
-    -- local miniGame = {}
-
     local clonedLetterFallModel = letterFallTemplate:Clone()
     clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q' .. questIndex .. '-S' .. sceneIndex
-
-    local letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')
-    miniGameState.letterFallFolder = letterFallFolder
-
     clonedLetterFallModel.Parent = parent
+
+    miniGameState.letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
@@ -94,8 +90,6 @@ function module.addMiniGame(props)
         }
     )
 
-    -- module.initLetterFall(miniGameState)
-
     LetterFall.initGameToggle(miniGameState)
     InitLetterRack.initLetterRack(miniGameState)
     InitWord.initWords(miniGameState)
@@ -106,10 +100,8 @@ function module.addMiniGame(props)
             availWords = miniGameState.words
         }
     )
-    -- miniGame = clonedLetterFallModel
 
     return clonedLetterFallModel
-    -- return miniGame
 end
 
 return module
