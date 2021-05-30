@@ -9,16 +9,15 @@ local InitWord = require(Sss.Source.LetterFall.InitWord)
 
 local module = {}
 function module.initLetterFall(miniGameState)
-    LetterFall.initGameToggle(miniGameState)
-    InitLetterRack.initLetterRack(miniGameState)
-    InitWord.initWords(miniGameState)
-
-    LetterFallUtils.styleLetterBlocks(
-        {
-            miniGameState = miniGameState,
-            availWords = miniGameState.words
-        }
-    )
+    -- LetterFall.initGameToggle(miniGameState)
+    -- InitLetterRack.initLetterRack(miniGameState)
+    -- InitWord.initWords(miniGameState)
+    -- LetterFallUtils.styleLetterBlocks(
+    --     {
+    --         miniGameState = miniGameState,
+    --         availWords = miniGameState.words
+    --     }
+    -- )
 end
 
 function module.addMiniGame(props)
@@ -26,7 +25,6 @@ function module.addMiniGame(props)
     local sceneIndex = props.sceneIndex
     local questIndex = props.questIndex
     local words = props.words
-    -- local positionOffset = props.positionOffset or Vector3.new(0, 0, 0)
 
     local letterFallTemplate = Utils.getFromTemplates('LetterFallTemplate')
 
@@ -74,7 +72,7 @@ function module.addMiniGame(props)
         questIndex = questIndex
     }
 
-    local miniGame = {}
+    -- local miniGame = {}
 
     local clonedLetterFallModel = letterFallTemplate:Clone()
     clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q' .. questIndex .. '-S' .. sceneIndex
@@ -96,10 +94,22 @@ function module.addMiniGame(props)
         }
     )
 
-    module.initLetterFall(miniGameState)
-    miniGame = clonedLetterFallModel
+    -- module.initLetterFall(miniGameState)
 
-    return miniGame
+    LetterFall.initGameToggle(miniGameState)
+    InitLetterRack.initLetterRack(miniGameState)
+    InitWord.initWords(miniGameState)
+
+    LetterFallUtils.styleLetterBlocks(
+        {
+            miniGameState = miniGameState,
+            availWords = miniGameState.words
+        }
+    )
+    -- miniGame = clonedLetterFallModel
+
+    return clonedLetterFallModel
+    -- return miniGame
 end
 
 return module
