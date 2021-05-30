@@ -57,13 +57,13 @@ local r006 = {
 
 local r007 = {
     bridgeConfigs = {
-        invisiWallProps = tallWalls,
+        -- invisiWallProps = tallWalls,
         straysOnBridges = false,
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
     orbiterConfigs = orbiterConfigs2,
-    invisiWallProps = tallWalls,
+    -- invisiWallProps = tallWalls,
     hexGearConfigs = hexGearConfigs
 }
 

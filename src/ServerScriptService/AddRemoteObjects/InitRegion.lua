@@ -12,6 +12,7 @@ local Junction4 = require(Sss.Source.Junction.Junction4)
 local LetterGrabber = require(Sss.Source.LetterGrabber.LetterGrabber)
 local LetterOrbiter = require(Sss.Source.LetterOrbiter.LetterOrbiter)
 local LocalTeleporter = require(Sss.Source.LocalTeleporter.LocalTeleporter)
+local MiniGame = require(Sss.Source.MiniGame.MiniGame)
 
 local PetBox = require(Sss.Source.PetBox.PetBox)
 
@@ -34,6 +35,26 @@ function module.initRegion(region, regionConfig, regionIndex)
     local grabbers = enabledItems.grabbers
     local letterGrabber = enabledItems.letterGrabber
     local entrance = enabledItems.entrance
+
+    local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
+
+    for _, letterFallPositioner in ipairs(letterFallPositioners) do
+        local miniGame =
+            MiniGame.addMiniGame(
+            {
+                parent = letterFallPositioner,
+                words = {
+                    'CAT',
+                    'ZZZ',
+                    'XXX'
+                },
+                sceneIndex = 1,
+                questIndex = 1,
+                questTitle = 'test'
+            }
+        )
+        miniGame.PrimaryPart.Anchored = true
+    end
 
     SwapForPackages.initSwapForPackages({parentFolder = region, regionConfig = regionConfig})
 
