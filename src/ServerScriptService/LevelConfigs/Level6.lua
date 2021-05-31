@@ -8,7 +8,6 @@ local module = {}
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 local tallWalls = Configs.tallWalls
 
--- local numStatuesPerHex = 9
 local numStatuesPerHex = 18
 local numHexes = 3
 
@@ -19,6 +18,20 @@ for i = 0, numHexes do
     local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
     local newConfig = {words = words}
     table.insert(hexGearConfigs, newConfig)
+end
+
+local numWordsPerLF = 8
+local numLFs = 6
+
+local lFConfigs = {}
+for i = 0, numLFs do
+    local startIndex = (i * numWordsPerLF) + 1
+    local endIndex = startIndex + numWordsPerLF - 1
+
+    local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
+
+    local newConfig = {words = words}
+    table.insert(lFConfigs, newConfig)
 end
 
 local numOrbiters = 24
@@ -64,7 +77,8 @@ local r007 = {
     },
     orbiterConfigs = orbiterConfigs2,
     -- invisiWallProps = tallWalls,
-    hexGearConfigs = hexGearConfigs
+    hexGearConfigs = hexGearConfigs,
+    letterFallConfigs = lFConfigs
 }
 
 local r008 = {

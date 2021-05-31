@@ -1,6 +1,7 @@
 local Sss = game:GetService('ServerScriptService')
 
 local Words = require(Sss.Source.Constants.Const_07_Words)
+local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 
 local bridges = {
     default = 'Bridge_32',
@@ -172,6 +173,12 @@ local bridgeConfigs_default = {
     }
 }
 
+local letterFallConfigs_default = {
+    {
+        words = Utils.arraySubset(Words.allWords, 1, 9)
+    }
+}
+
 local conveyorConfigs_default = {
     conveyor5Config,
     conveyor2Config,
@@ -189,6 +196,7 @@ function module.addDefaults(regions)
         region.strayRegions = region.strayRegions or strayRegions_default
         region.getTargetWords = region.getTargetWords or getTargetWords_default
         region.bridgeConfigs = region.bridgeConfigs or bridgeConfigs_default
+        region.letterFallConfigs = region.letterFallConfigs or letterFallConfigs_default
     end
 end
 return module

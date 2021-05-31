@@ -38,16 +38,27 @@ function module.initRegion(region, regionConfig, regionIndex)
 
     local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
 
-    for _, letterFallPositioner in ipairs(letterFallPositioners) do
+    for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
+        local words = {'111'}
+        if regionConfig.letterFallConfigs then
+            words = regionConfig.letterFallConfigs[LFIndex]['words']
+            print('words' .. ' - start--------------')
+            print(words)
+        end
+
         local miniGame =
             MiniGame.addMiniGame(
             {
                 parent = letterFallPositioner,
-                words = {
-                    'CAT',
-                    'ZZZ',
-                    'XXX'
-                },
+                words = words,
+                -- words = {
+                --     '111',
+                --     '222',
+                --     '333',
+                --     '444',
+                --     '555',
+                --     '666'
+                -- },
                 sceneIndex = 1,
                 questIndex = 1,
                 questTitle = 'test'

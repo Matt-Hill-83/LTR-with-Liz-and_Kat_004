@@ -508,32 +508,29 @@ function isWordComplete(wordLetters)
 end
 
 function createBalls(miniGameState)
-    if true then
-        local letterFallFolder = miniGameState.letterFallFolder
-        local questIndex = miniGameState.questIndex
+    local letterFallFolder = miniGameState.letterFallFolder
 
-        local rand = Utils.genRandom(1, #Constants2.gemColors)
-        local gemColor = Constants2.gemColors[rand]
+    local rand = Utils.genRandom(1, #Constants2.gemColors)
+    local gemColor = Constants2.gemColors[rand]
 
-        local ball = Utils.getFirstDescendantByName(letterFallFolder, 'GemTemplate')
+    local ball = Utils.getFirstDescendantByName(letterFallFolder, 'GemTemplate')
 
-        local targetGemName = 'Gem-Q-zzzz' .. questIndex
+    local targetGemName = 'Gem-Q-zzzz'
 
-        local balls = {}
-        for count = 1, 8 do
-            local newBall = ball:Clone()
-            local ballPart = newBall.Handle
+    local balls = {}
+    for count = 1, 8 do
+        local newBall = ball:Clone()
+        local ballPart = newBall.Handle
 
-            newBall.Name = targetGemName
-            newBall.Parent = ball.Parent
-            ballPart.CFrame = ballPart.CFrame + Vector3.new(0, 0, 0)
-            ballPart.Color = gemColor
-            Utils.enableChildWelds({part = newBall, enabled = false})
-            table.insert(balls, newBall)
-        end
-
-        ball:Destroy()
+        newBall.Name = targetGemName
+        newBall.Parent = ball.Parent
+        ballPart.CFrame = ballPart.CFrame + Vector3.new(0, 0, 0)
+        ballPart.Color = gemColor
+        Utils.enableChildWelds({part = newBall, enabled = false})
+        table.insert(balls, newBall)
     end
+
+    ball:Destroy()
 end
 
 function configDeadLetters(props)

@@ -11,7 +11,6 @@ local module = {}
 
 function module.addMiniGame(props)
     local parent = props.parent
-    local sceneIndex = props.sceneIndex
     local questIndex = props.questIndex
     local words = props.words
 
@@ -62,7 +61,7 @@ function module.addMiniGame(props)
     }
 
     local clonedLetterFallModel = letterFallTemplate:Clone()
-    clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q' .. questIndex .. '-S' .. sceneIndex
+    clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q'
     clonedLetterFallModel.Parent = parent
 
     miniGameState.letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')

@@ -19,7 +19,7 @@ function initWord(props)
     local wordBox = Utils.getFirstDescendantByName(wordBoxFolder, 'WordBox')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPurpleLight')
+    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPinkPurple')
 
     local wordBoxClone = wordBox:Clone()
     wordBoxClone.Parent = wordBox.Parent
