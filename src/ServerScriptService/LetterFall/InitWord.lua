@@ -28,16 +28,12 @@ function initWord(props)
     wordBoxClone.Name = wordBoxClone.Name .. 'ssss' .. wordNameStub
 
     local wordBench = Utils.getFirstDescendantByName(wordBoxClone, 'WordBench')
-    -- local letterPositioner = Utils.getFirstDescendantByName(wordBoxClone, 'WordLetterBlockPositioner')
+    local letterPositioner = Utils.getFirstDescendantByName(wordBoxClone, 'WordLetterBlockPositioner')
 
     local spacingFactorY = 1.25
     local spacingFactorZ = 1.0
     local wordSpacingY = letterBlockTemplate.Size.Y * spacingFactorY
     local positionY = wordSpacingY * wordIndex
-    print('---------------------------------')
-    print('---------------------------------')
-    print('positionY' .. ' - start----------------')
-    print(positionY)
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
@@ -52,51 +48,30 @@ function initWord(props)
     )
     wordBench.Anchored = true
     wordBench.Transparency = 0
-    local posY = wordBench.Position.Y
-    print('posY' .. ' - start========================>>>')
-    print(posY)
 
-    -- letterPositioner.Name = letterPositioner.Name .. wordNameStub
+    letterPositioner.Name = letterPositioner.Name .. wordNameStub
 
     local lettersInWord = {}
-    while false do
-        for letterIndex = 1, #word do
-            local letterNameStub = wordNameStub .. '-L' .. letterIndex
-            local letter = string.sub(word, letterIndex, letterIndex)
+    for letterIndex = 1, #word do
+        local letterNameStub = wordNameStub .. '-L' .. letterIndex
+        local letter = string.sub(word, letterIndex, letterIndex)
 
-            local newLetter = letterBlockTemplate:Clone()
-            newLetter.Name = 'wordLetter-' .. letterNameStub
+        local newLetter = letterBlockTemplate:Clone()
+        newLetter.Name = 'wordLetter-' .. letterNameStub
 
-            local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorZ
-            print('letterPositionZ' .. ' - start')
-            print(letterPositionZ)
+        local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorZ
 
-            CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
-            LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
+        CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
+        LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
 
-            -- newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(0, 0, letterPositionZ))
+        newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(0, 0, letterPositionZ))
+        newLetter.Parent = wordBoxClone
+        newLetter.Anchored = true
 
-            local newModel = Instance.new('Model')
-            newModel.Parent = wordBoxClone
-            newLetter.Parent = newModel
-
-            Utils3.setCFrameFromDesiredEdgeOffset2(
-                {
-                    parent = wordBench,
-                    childModel = newModel,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 0, 0),
-                        useChildNearEdge = Vector3.new(0, 0, 0),
-                        offsetAdder = Vector3.new(0, 0, letterPositionZ)
-                    }
-                }
-            )
-            newLetter.Anchored = true
-
-            table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
-            table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
-        end
+        table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
+        table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
     end
+
     local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorZ
 
     wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, wordBench.Size.Z)
