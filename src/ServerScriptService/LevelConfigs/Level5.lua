@@ -21,13 +21,15 @@ for i = 0, numHexes do
 end
 
 local numWordsPerLF = 8
-local numLFs = 3
+local numLFs = 6
 
 local lFConfigs = {}
 for i = 0, numLFs do
-    local startIndex = i * numWordsPerLF
-    local endIndex = (i + 1) * numStatuesPerHex + 1
+    local startIndex = (i * numWordsPerLF) + 1
+    local endIndex = startIndex + numWordsPerLF - 1
+
     local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
+
     local newConfig = {words = words}
     table.insert(lFConfigs, newConfig)
 end
