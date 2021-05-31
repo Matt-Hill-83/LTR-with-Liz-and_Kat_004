@@ -21,71 +21,88 @@ function initWord(props)
 
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPurpleLight')
 
-    local newWord = wordBox:Clone()
-    local wordBench = Utils.getFirstDescendantByName(newWord, 'WordBench')
-    local letterPositioner = Utils.getFirstDescendantByName(newWord, 'WordLetterBlockPositioner')
+    local wordBoxClone = wordBox:Clone()
+    wordBoxClone.Parent = wordBox.Parent
 
-    newWord.Parent = wordBox.Parent
+    local wordNameStub = '-W' .. wordIndex
+    wordBoxClone.Name = wordBoxClone.Name .. 'ssss' .. wordNameStub
+
+    local wordBench = Utils.getFirstDescendantByName(wordBoxClone, 'WordBench')
+    -- local letterPositioner = Utils.getFirstDescendantByName(wordBoxClone, 'WordLetterBlockPositioner')
 
     local spacingFactorY = 1.25
     local spacingFactorZ = 1.0
     local wordSpacingY = letterBlockTemplate.Size.Y * spacingFactorY
+    local positionY = wordSpacingY * wordIndex
+    print('---------------------------------')
+    print('---------------------------------')
+    print('positionY' .. ' - start----------------')
+    print(positionY)
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
-            parent = wordBench,
-            childModel = wordBox,
+            parent = wordBox.PrimaryPart,
+            childModel = wordBoxClone,
             offsetConfig = {
                 useParentNearEdge = Vector3.new(0, 0, 0),
                 useChildNearEdge = Vector3.new(0, 0, 0),
-                offsetAdder = Vector3.new(0, wordSpacingY * wordIndex, 0)
+                offsetAdder = Vector3.new(0, positionY, 0)
             }
         }
     )
+    wordBench.Anchored = true
+    wordBench.Transparency = 0
+    local posY = wordBench.Position.Y
+    print('posY' .. ' - start========================>>>')
+    print(posY)
 
-    local wordNameStub = '-W' .. wordIndex
-    newWord.Name = newWord.Name .. 'ssss' .. wordNameStub
-    -- wordBench.Anchored = true
-
-    letterPositioner.Name = letterPositioner.Name .. wordNameStub
+    -- letterPositioner.Name = letterPositioner.Name .. wordNameStub
 
     local lettersInWord = {}
-    for letterIndex = 1, #word do
-        local letterNameStub = wordNameStub .. '-L' .. letterIndex
-        local letter = string.sub(word, letterIndex, letterIndex)
+    while false do
+        for letterIndex = 1, #word do
+            local letterNameStub = wordNameStub .. '-L' .. letterIndex
+            local letter = string.sub(word, letterIndex, letterIndex)
 
-        local newLetter = letterBlockTemplate:Clone()
+            local newLetter = letterBlockTemplate:Clone()
+            newLetter.Name = 'wordLetter-' .. letterNameStub
 
-        newLetter.Name = 'wordLetter-' .. letterNameStub
+            local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorZ
+            print('letterPositionZ' .. ' - start')
+            print(letterPositionZ)
 
-        local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorZ
+            CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
+            LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
 
-        CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
-        LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
+            -- newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(0, 0, letterPositionZ))
 
-        newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(0, 0, letterPositionZ))
-        local weld = Instance.new('WeldConstraint')
-        weld.Name = 'WeldConstraint' .. letterNameStub
-        weld.Parent = wordBench.Parent
-        weld.Part0 = wordBench
-        weld.Part1 = newLetter
+            local newModel = Instance.new('Model')
+            newModel.Parent = wordBoxClone
+            newLetter.Parent = newModel
 
-        -- Do this last to avoid tweening
-        newLetter.Parent = newWord
+            Utils3.setCFrameFromDesiredEdgeOffset2(
+                {
+                    parent = wordBench,
+                    childModel = newModel,
+                    offsetConfig = {
+                        useParentNearEdge = Vector3.new(0, 0, 0),
+                        useChildNearEdge = Vector3.new(0, 0, 0),
+                        offsetAdder = Vector3.new(0, 0, letterPositionZ)
+                    }
+                }
+            )
+            newLetter.Anchored = true
 
-        table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
-        table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
+            table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
+            table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
+        end
     end
     local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorZ
 
-    local wordBenchPosX = wordBench.Position.X
     wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, wordBench.Size.Z)
-    wordBench.Position = Vector3.new(wordBenchPosX, wordBench.Position.Y, wordBench.Position.Z)
-
-    wordBench.Anchored = true
 
     local newWordObj = {
-        word = newWord,
+        word = wordBoxClone,
         letters = lettersInWord,
         wordChars = word
     }
@@ -93,13 +110,7 @@ function initWord(props)
 end
 
 function initWords(miniGameState)
-    -- local letterFallFolder = miniGameState.letterFallFolder
     local wordLetters = miniGameState.wordLetters
-
-    -- local putItemsToBeClonedHere = Utils.getFirstDescendantByName(letterFallFolder, 'PutItemsToBeClonedHere')
-
-    -- Utils.enableChildWelds({part = putItemsToBeClonedHere, enabled = false})
-    -- putItemsToBeClonedHere:Destroy()
 
     for i, letter in ipairs(wordLetters) do
         if letter.instance then

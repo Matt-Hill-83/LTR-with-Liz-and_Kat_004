@@ -64,6 +64,11 @@ function module.setCFrameFromDesiredEdgeOffset2(props)
 
     offsetConfig = offsetConfig or defaultOffsetConfig
 
+    if offsetConfig.offsetAdder and offsetConfig.offsetAdder.Y > 0 then
+        print('offsetConfig.offsetAdder ' .. ' - start++++++++++++++++++++++++')
+        print(offsetConfig.offsetAdder.Y)
+    end
+
     local offset =
         (offsetConfig.useParentNearEdge * parent.Size - offsetConfig.useChildNearEdge * childPP.Size) / 2 +
         (offsetConfig.offsetAdder or defaultOffsetAdder)
