@@ -9,7 +9,6 @@ local Constants2 = require(Sss.Source.Constants.Const_02_Colors)
 local Const_Client = require(RS.Source.Constants.Constants_Client)
 
 local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
-local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 
 local module = {processing = false, initComplete = false}
 
@@ -39,12 +38,10 @@ local function onSelectRackBlock(clickedLetter, miniGameState, player)
     end
     module.processing = true
 
-    -- local sectorFolder = miniGameState.sectorFolder
     local bDRackLetterFolder = miniGameState.bDRackLetterFolder
 
     if not module.initComplete then
         module.initComplete = true
-    --
     end
 
     local isChild = clickedLetter:IsDescendantOf(bDRackLetterFolder)
