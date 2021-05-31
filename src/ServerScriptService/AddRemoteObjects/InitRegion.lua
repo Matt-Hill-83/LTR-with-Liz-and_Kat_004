@@ -37,6 +37,8 @@ function module.initRegion(region, regionConfig, regionIndex)
     local entrance = enabledItems.entrance
 
     local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
+    print('letterFallPositioners' .. ' - start')
+    print(letterFallPositioners)
 
     for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
         local words = {'111'}
@@ -46,25 +48,17 @@ function module.initRegion(region, regionConfig, regionIndex)
             print(words)
         end
 
-        -- local miniGame =
-        --     MiniGame.addMiniGame(
-        --     {
-        --         parent = letterFallPositioner,
-        --         words = words,
-        --         -- words = {
-        --         --     '111',
-        --         --     '222',
-        --         --     '333',
-        --         --     '444',
-        --         --     '555',
-        --         --     '666'
-        --         -- },
-        --         sceneIndex = 1,
-        --         questIndex = 1,
-        --         questTitle = 'test'
-        --     }
-        -- )
-        -- miniGame.PrimaryPart.Anchored = true
+        local miniGame =
+            MiniGame.addMiniGame(
+            {
+                parent = letterFallPositioner,
+                words = words,
+                sceneIndex = 1,
+                questIndex = 1,
+                questTitle = 'test'
+            }
+        )
+        miniGame.PrimaryPart.Anchored = true
     end
 
     SwapForPackages.initSwapForPackages({parentFolder = region, regionConfig = regionConfig})
