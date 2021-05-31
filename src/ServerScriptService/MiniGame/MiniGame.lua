@@ -72,7 +72,7 @@ function module.addMiniGame(props)
             parent = parent,
             childModel = clonedLetterFallModel,
             offsetConfig = {
-                useParentNearEdge = Vector3.new(0, 1, 0),
+                useParentNearEdge = Vector3.new(0, -1, 0),
                 useChildNearEdge = Vector3.new(0, -1, 0)
             }
         }

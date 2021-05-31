@@ -509,7 +509,6 @@ end
 
 function createBalls(miniGameState)
     if true then
-        -- if false then
         local letterFallFolder = miniGameState.letterFallFolder
         local questIndex = miniGameState.questIndex
 
@@ -517,7 +516,6 @@ function createBalls(miniGameState)
         local gemColor = Constants2.gemColors[rand]
 
         local ball = Utils.getFirstDescendantByName(letterFallFolder, 'GemTemplate')
-        -- local gemColor = Constants.gemColors[questIndex]
 
         local targetGemName = 'Gem-Q-zzzz' .. questIndex
 
