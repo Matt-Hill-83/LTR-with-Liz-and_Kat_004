@@ -47,7 +47,6 @@ function initWord(props)
         }
     )
     wordBench.Anchored = true
-    wordBench.Transparency = 0
 
     letterPositioner.Name = letterPositioner.Name .. wordNameStub
 
