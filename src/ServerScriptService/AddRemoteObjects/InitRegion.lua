@@ -36,30 +36,31 @@ function module.initRegion(region, regionConfig, regionIndex)
     local letterGrabber = enabledItems.letterGrabber
     local entrance = enabledItems.entrance
 
-    local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
-    print('letterFallPositioners' .. ' - start')
-    print(letterFallPositioners)
+    -- local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
+    -- print('letterFallPositioners' .. ' - start')
+    -- print(letterFallPositioners)
 
-    for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
-        local words = {'111'}
-        if regionConfig.letterFallConfigs then
-            words = regionConfig.letterFallConfigs[LFIndex]['words']
-            print('words' .. ' - start--------------')
-            print(words)
-        end
+    -- for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
+    --     local words = {'111'}
+    --     if regionConfig.letterFallConfigs then
+    --         words = regionConfig.letterFallConfigs[LFIndex]['words']
+    --         print('words' .. ' - start--------------')
+    --         print(words)
+    --     end
+    --     wait(0.001)
 
-        local miniGame =
-            MiniGame.addMiniGame(
-            {
-                parent = letterFallPositioner,
-                words = words,
-                sceneIndex = 1,
-                questIndex = 1,
-                questTitle = 'test'
-            }
-        )
-        miniGame.PrimaryPart.Anchored = true
-    end
+    --     local miniGame =
+    --         MiniGame.addMiniGame(
+    --         {
+    --             parent = letterFallPositioner,
+    --             words = words,
+    --             sceneIndex = 1,
+    --             questIndex = 1,
+    --             questTitle = 'test'
+    --         }
+    --     )
+    --     miniGame.PrimaryPart.Anchored = true
+    -- end
 
     SwapForPackages.initSwapForPackages({parentFolder = region, regionConfig = regionConfig})
 
@@ -77,7 +78,7 @@ function module.initRegion(region, regionConfig, regionIndex)
     if strayLetterBlocks then
         local function func(region, regionConfig)
             return function()
-                StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+                -- StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
             end
         end
 

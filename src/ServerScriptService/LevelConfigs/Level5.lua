@@ -23,15 +23,26 @@ end
 local numWordsPerLF = 8
 local numLFs = 6
 
-local lFConfigs = {}
-for i = 0, numLFs do
-    local startIndex = (i * numWordsPerLF) + 1
-    local endIndex = startIndex + numWordsPerLF - 1
+local lFConfigs = {
+    {words = Words.words01},
+    {words = Words.words02},
+    {words = Words.words03},
+    {words = Words.words04},
+    {words = Words.words05},
+    {words = Words.words06}
+}
+-- local lFConfigs = {}
 
-    local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
+if false then
+    for i = 0, numLFs do
+        local startIndex = (i * numWordsPerLF) + 1
+        local endIndex = startIndex + numWordsPerLF - 1
 
-    local newConfig = {words = words}
-    table.insert(lFConfigs, newConfig)
+        local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
+
+        local newConfig = {words = words}
+        table.insert(lFConfigs, newConfig)
+    end
 end
 
 local numOrbiters = 24
