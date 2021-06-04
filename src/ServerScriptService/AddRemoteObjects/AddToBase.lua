@@ -206,34 +206,34 @@ local function addRemoteObjects()
         Terrain.initTerrain({parentFolder = region, prefix = 'T9-'})
     end
 
-    for _, region in ipairs(regions) do
-        local regionConfig = levelConfig.regions[region.Name]
-        local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
-        print('letterFallPositioners' .. ' - start')
-        print(letterFallPositioners)
+    -- for _, region in ipairs(regions) do
+    --     local regionConfig = levelConfig.regions[region.Name]
+    --     local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
+    --     print('letterFallPositioners' .. ' - start')
+    --     print(letterFallPositioners)
 
-        for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
-            local words = {'111'}
-            if regionConfig.letterFallConfigs then
-                words = regionConfig.letterFallConfigs[LFIndex]['words']
-                print('words' .. ' - start--------------')
-                print(words)
-            end
-            wait(0.001)
+    --     for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
+    --         local words = {'111'}
+    --         if regionConfig.letterFallConfigs then
+    --             words = regionConfig.letterFallConfigs[LFIndex]['words']
+    --             print('words' .. ' - start--------------')
+    --             print(words)
+    --         end
+    --         wait(0.001)
 
-            local miniGame =
-                MiniGame.addMiniGame(
-                {
-                    parent = letterFallPositioner,
-                    words = words,
-                    sceneIndex = 1,
-                    questIndex = 1,
-                    questTitle = 'test'
-                }
-            )
-            miniGame.PrimaryPart.Anchored = true
-        end
-    end
+    --         local miniGame =
+    --             MiniGame.addMiniGame(
+    --             {
+    --                 parent = letterFallPositioner,
+    --                 words = words,
+    --                 sceneIndex = 1,
+    --                 questIndex = 1,
+    --                 questTitle = 'test'
+    --             }
+    --         )
+    --         miniGame.PrimaryPart.Anchored = true
+    --     end
+    -- end
 
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})

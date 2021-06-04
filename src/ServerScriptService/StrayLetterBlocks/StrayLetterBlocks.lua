@@ -44,7 +44,6 @@ function module.createStray(char, parentFolder, props)
 end
 
 function module.initStraysInRegions(props)
-    wait(0.001)
     local parentFolder = props.parentFolder
     local regionConfig = props.regionConfig
     local strayRegions = Utils.getByTagInParent({parent = parentFolder, tag = 'StrayRegion'})
@@ -61,6 +60,7 @@ function module.initStraysInRegions(props)
     }
 
     for regionIndex, region in ipairs(strayRegions) do
+        wait(0.001)
         local words
         local randomLetterMultiplier = 1
         local maxLetters

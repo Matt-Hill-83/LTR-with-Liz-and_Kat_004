@@ -17,7 +17,7 @@ function module.addMiniGame(props)
     print('words' .. ' - start-----------------------')
     print(words)
 
-    local letterFallTemplate = Utils.getFromTemplates('LetterFallTemplate')
+    local letterFallTemplate = Utils.getFromTemplates('LetterFallTemplate-001')
 
     local allLetters = {
         'A',
