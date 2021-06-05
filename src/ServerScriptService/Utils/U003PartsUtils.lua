@@ -50,10 +50,12 @@ end
 function module.setCFrameFromDesiredEdgeOffset2(props)
     local parent = props.parent
     local childModel = props.childModel
+    local child = props.child
     local offsetConfig = props.offsetConfig
     local angles = props.angles
+    local childIsPart = props.childIsPart
 
-    local childPP = childModel.PrimaryPart
+    local childPP = childModel and childModel.PrimaryPart or child
     local defaultOffsetAdder = Vector3.new(0, 0, 0)
 
     local defaultOffsetConfig = {
@@ -73,9 +75,14 @@ function module.setCFrameFromDesiredEdgeOffset2(props)
     if (angles) then
         output = output * angles
     end
-    childModel:SetPrimaryPartCFrame(output)
 
-    return childModel
+    if childIsPart and child then
+        child.CFrame = output
+    else
+        childModel:SetPrimaryPartCFrame(output)
+    end
+
+    return childModel or child
 end
 
 module.setCFrameFromDesiredEdgeOffset = setCFrameFromDesiredEdgeOffset
