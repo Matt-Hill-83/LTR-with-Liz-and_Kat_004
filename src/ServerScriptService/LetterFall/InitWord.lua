@@ -7,24 +7,13 @@ local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 
 local module = {}
 
-function initWord(props)
-    -- local miniGameState = props.miniGameState
+function module.initWord(props)
     local wordIndex = props.wordIndex
     local word = props.word
     local wordBox = props.wordBox
     local wordLetters = props.wordLetters
+    local letterBlockTemplate = props.letterBlockTemplate
 
-    -- local letterFallFolder = miniGameState.letterFallFolder
-    -- local wordBoxFolder = Utils.getFirstDescendantByName(letterFallFolder, 'WordBoxFolder')
-
-    local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-
-    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPinkPurple')
-
-    -- local wordBoxes = Utils.getDescendantsByName(wordBoxFolder, 'WordBox')
-    -- local wordBench = Utils.getDescendantsByName(wordBoxClone, 'WordBench')
-
-    -- for wbIndex, wordBox in ipairs(wordBoxes) do
     local wordBoxClone = wordBox:Clone()
     wordBoxClone.Parent = wordBox.Parent
 
@@ -108,36 +97,37 @@ function initWords(miniGameState)
     local numWords1 = math.ceil(numWords / 2)
     local numWords2 = numWords - numWords1
 
-    print('numWords1' .. ' - start')
-    print(numWords1)
-    print('numWords2' .. ' - start')
-    print(numWords2)
     local wordGroupSizes = {numWords1, numWords2}
+
+    local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPinkPurple')
 
     local prevFinish = 0
     for wbIndex, wordBox in ipairs(wordBoxes) do
+        local numWords = wordGroupSizes[wbIndex]
+
         local start = prevFinish + 1
-        local finish = prevFinish + wordGroupSizes[wbIndex]
+        local finish = prevFinish + numWords
         prevFinish = finish
 
-        print('start' .. ' - start')
-        print(start)
-        print('prevFinish' .. ' - start')
-        print(prevFinish)
-
         local wordSet = Utils.arraySubset(words, start, finish)
-        print('wordSet' .. ' - start')
-        print(wordSet)
+
+        local rowHeight = 2.1
+        local blockSize = 2
+        local backPlate = Utils.getFirstDescendantByName(wordBox, 'BackPlate')
+        backPlate.Size = Vector3.new(20, rowHeight * numWords, blockSize)
+
         for wordIndex, word in ipairs(wordSet) do
             local wordProps = {
                 -- miniGameState = miniGameState,
                 wordIndex = wordIndex,
                 wordBox = wordBox,
                 wordLetters = wordLetters,
-                word = word
+                word = word,
+                letterBlockTemplate = letterBlockTemplate
             }
 
-            local newWordObj = initWord(wordProps)
+            local newWordObj = module.initWord(wordProps)
             table.insert(miniGameState.renderedWords, newWordObj)
         end
     end
@@ -162,6 +152,6 @@ function getWordFolder(miniGameState)
 end
 
 module.initWords = initWords
-module.initWord = initWord
+-- module.initWord = initWord
 
 return module
