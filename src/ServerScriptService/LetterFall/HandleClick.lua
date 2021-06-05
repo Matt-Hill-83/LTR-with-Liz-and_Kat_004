@@ -134,17 +134,14 @@ function handleBrick(clickedLetter, miniGameState, player)
 
     local foundChar = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
     local targetLetterBlock = nil
-    -- local availWords = {}
 
     if activeWord then
-        -- availWords = {activeWord.wordChars}
         local nextLetterInWord = activeWord.letters[currentLetterIndex].char
         local found = foundChar == nextLetterInWord
         if found then
             targetLetterBlock = activeWord.letters[currentLetterIndex].instance
         end
     else
-        -- availWords = words
         local availLetters =
             LetterFallUtils.getAvailLettersDict(
             {
@@ -180,8 +177,6 @@ function handleBrick(clickedLetter, miniGameState, player)
         )
 
         Utils.hideItemAndChildren({item = clickedLetter, hide = true})
-        -- clickedLetter:Destroy()
-        -- Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
 
         table.insert(miniGameState.foundLetters, LetterFallUtils.getCharFromLetterBlock(clickedLetter))
         table.insert(miniGameState.foundWordLettersBlocks, targetLetterBlock)
@@ -192,19 +187,6 @@ function handleBrick(clickedLetter, miniGameState, player)
 
         if (wordComplete) then
             Utils.playWordSound2(currentWord)
-            -- local wordConfig = Constants.wordConfigs and Constants.wordConfigs[currentWord]
-            -- if wordConfig then
-            --     local soundId = Constants.wordConfigs[currentWord]['soundId']
-            --     if (soundId) then
-            --         local sound = Instance.new('Sound', workspace)
-            --         sound.SoundId = 'rbxassetid://' .. soundId
-            --         -- sound.EmitterSize = 5
-            --         sound.Looped = false
-            --         if not sound.IsPlaying then
-            --             sound:Play()
-            --         end
-            --     end
-            -- end
 
             table.insert(miniGameState.foundWords, currentWord)
 
