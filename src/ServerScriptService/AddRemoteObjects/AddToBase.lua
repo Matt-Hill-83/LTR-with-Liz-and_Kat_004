@@ -20,7 +20,7 @@ local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local InitRegion = require(Sss.Source.AddRemoteObjects.InitRegion)
 local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
 local Words = require(Sss.Source.Constants.Const_07_Words)
-local MiniGame = require(Sss.Source.MiniGame.MiniGame)
+-- local MiniGame = require(Sss.Source.MiniGame.MiniGame)
 
 local module = {}
 

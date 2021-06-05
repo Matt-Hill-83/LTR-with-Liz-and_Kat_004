@@ -206,10 +206,6 @@ function handleBrick(clickedLetter, miniGameState, player)
 
             table.insert(miniGameState.foundWords, currentWord)
 
-            -- for _, lb in ipairs(miniGameState.foundLetters) do
-            --     lb:Destroy()
-            -- end
-
             local templateNameAvailable = LetterFallUtils.letterBlockStyleDefs.word.Available
             for _, lb in ipairs(miniGameState.foundWordLetters) do
                 local template2 = Utils.getFromTemplates(templateNameAvailable)
