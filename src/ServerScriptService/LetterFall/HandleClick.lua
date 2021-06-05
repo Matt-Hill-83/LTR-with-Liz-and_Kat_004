@@ -134,17 +134,17 @@ function handleBrick(clickedLetter, miniGameState, player)
 
     local foundChar = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
     local targetLetterBlock = nil
-    local availWords = {}
+    -- local availWords = {}
 
     if activeWord then
-        availWords = {activeWord.wordChars}
+        -- availWords = {activeWord.wordChars}
         local nextLetterInWord = activeWord.letters[currentLetterIndex].char
         local found = foundChar == nextLetterInWord
         if found then
             targetLetterBlock = activeWord.letters[currentLetterIndex].instance
         end
     else
-        availWords = words
+        -- availWords = words
         local availLetters =
             LetterFallUtils.getAvailLettersDict(
             {
@@ -184,6 +184,7 @@ function handleBrick(clickedLetter, miniGameState, player)
         -- Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
 
         table.insert(miniGameState.foundLetters, LetterFallUtils.getCharFromLetterBlock(clickedLetter))
+        table.insert(miniGameState.foundWordLetters, targetLetterBlock)
 
         local currentWord = table.concat(miniGameState.foundLetters, '')
         local wordComplete = table.find(words, currentWord)
@@ -204,6 +205,24 @@ function handleBrick(clickedLetter, miniGameState, player)
             end
 
             table.insert(miniGameState.foundWords, currentWord)
+
+            -- for _, lb in ipairs(miniGameState.foundLetters) do
+            --     lb:Destroy()
+            -- end
+
+            local templateNameAvailable = LetterFallUtils.letterBlockStyleDefs.word.Available
+            for _, lb in ipairs(miniGameState.foundWordLetters) do
+                local template2 = Utils.getFromTemplates(templateNameAvailable)
+
+                local func = function()
+                    LetterUtils.applyStyleFromTemplate(
+                        {targetLetterBlock = lb, templateName = templateNameAvailable, template = template2}
+                    )
+                end
+
+                delay(2, func)
+            end
+
             miniGameState.foundLetters = {}
             miniGameState.currentLetterIndex = 1
             miniGameState.activeWord = nil
