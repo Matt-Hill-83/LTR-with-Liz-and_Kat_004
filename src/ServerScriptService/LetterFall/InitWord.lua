@@ -31,7 +31,8 @@ function module.initWord(props)
     wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, wordBench.Size.Z)
 
     local backPlate = Utils.getFirstDescendantByName(wordBoxClone, 'BackPlate')
-    backPlate.Size = Vector3.new(wordBench.Size.X + 5, letterBlockTemplate.Size.X, wordBench.Size.Z)
+    local backPlateSizeX = letterBlockTemplate.Size.X + wordBench.Size.X
+    backPlate.Size = Vector3.new(backPlateSizeX, letterBlockTemplate.Size.X * 2, wordBench.Size.Z)
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
@@ -41,7 +42,7 @@ function module.initWord(props)
             offsetConfig = {
                 useParentNearEdge = Vector3.new(-1, -1, -1),
                 useChildNearEdge = Vector3.new(1, 1, 1),
-                offsetAdder = Vector3.new(0, 0, 0)
+                offsetAdder = Vector3.new(0, 0, -letterBlockTemplate.Size.X / 2)
             }
         }
     )
@@ -82,25 +83,16 @@ function module.initWord(props)
                     useParentNearEdge = Vector3.new(0, 1, 0),
                     useChildNearEdge = Vector3.new(0, -1, 0),
                     offsetAdder = Vector3.new(letterPositionZ, 0, 0)
-
-                    -- offsetAdder = Vector3.new(0, 0, letterPositionZ)
                 }
             }
         )
 
-        -- newLetter.CFrame = wordBench.CFrame * CFrame.new(Vector3.new(0, 0, letterPositionZ))
-        -- newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(0, 0, wordBench))
         newLetter.Parent = wordBoxClone
         newLetter.Anchored = true
 
         table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
         table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
     end
-
-    -- local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorZ
-
-    -- wordBench.Size = Vector3.new(wordBench.Size.Z, wordBench.Size.Y, wordBenchSizeX)
-    -- wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, wordBench.Size.Z)
 
     local newWordObj = {
         word = wordBoxClone,
@@ -145,29 +137,8 @@ function initWords(miniGameState)
 
         local wordSet = Utils.arraySubset(words, start, finish)
 
-        local blockSize = 2
-        local longestWord = 3
-        local rowHeight = blockSize * 1.25
-        -- local backPlate = Utils.getFirstDescendantByName(wordBox, 'BackPlate')
-        -- backPlate.Size = Vector3.new(blockSize * longestWord, rowHeight * 1, blockSize)
-        -- backPlate.Position = Vector3.new(blockSize * longestWord, rowHeight * 1, blockSize)
-
-        -- Utils3.setCFrameFromDesiredEdgeOffset2(
-        --     {
-        --         parent = wordBox.PrimaryPart,
-        --         child = backPlate,
-        --         childIsPart = true,
-        --         offsetConfig = {
-        --             useParentNearEdge = Vector3.new(0, 0, 0),
-        --             useChildNearEdge = Vector3.new(0, 0, 0),
-        --             offsetAdder = Vector3.new(0, 0, 0)
-        --         }
-        --     }
-        -- )
-
         for wordIndex, word in ipairs(wordSet) do
             local wordProps = {
-                -- miniGameState = miniGameState,
                 wordIndex = wordIndex,
                 wordBox = wordBox,
                 wordLetters = wordLetters,
@@ -178,6 +149,7 @@ function initWords(miniGameState)
             local newWordObj = module.initWord(wordProps)
             table.insert(miniGameState.renderedWords, newWordObj)
         end
+        wordBox:Destroy()
     end
 end
 
