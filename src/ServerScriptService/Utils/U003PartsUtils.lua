@@ -8,6 +8,7 @@ function tween(props)
     local repeatCount = props.repeatCount or 0
     local delayTime = props.delayTime or 0
     local endPosition = props.endPosition
+    local endSize = props.endSize or part.Size
     local reverses = props.reverses or false
     local easingStyle = props.easingStyle or Enum.EasingStyle.Linear
     local easingDirection = props.easingDirection or Enum.EasingDirection.Out
@@ -15,7 +16,7 @@ function tween(props)
 
     local tweenInfo = TweenInfo.new(time, easingStyle, easingDirection, repeatCount, reverses, delayTime)
 
-    local tween = TweenService:Create(part, tweenInfo, {Position = endPosition})
+    local tween = TweenService:Create(part, tweenInfo, {Position = endPosition, Size = endSize})
 
     tween:Play()
     part.Anchored = anchor

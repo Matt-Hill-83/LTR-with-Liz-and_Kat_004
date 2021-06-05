@@ -4,6 +4,7 @@ local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
@@ -22,30 +23,17 @@ function module.initWord(props)
 
     local wordBench = Utils.getFirstDescendantByName(wordBoxClone, 'WordBench')
 
-    local spacingFactorY = 1.25
-    local spacingFactorZ = 1.0
+    local spacingFactorY = 1.1
+    local spacingFactorX = 1.05
     local wordSpacingY = letterBlockTemplate.Size.Y * spacingFactorY
     local positionY = wordSpacingY * wordIndex
 
-    local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorZ
-    wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, wordBench.Size.Z)
+    local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorX
+    wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, letterBlockTemplate.Size.Z)
 
     local backPlate = Utils.getFirstDescendantByName(wordBoxClone, 'BackPlate')
     local backPlateSizeX = letterBlockTemplate.Size.X + wordBench.Size.X
     backPlate.Size = Vector3.new(backPlateSizeX, letterBlockTemplate.Size.X * 2, wordBench.Size.Z)
-
-    Utils3.setCFrameFromDesiredEdgeOffset2(
-        {
-            parent = wordBox.PrimaryPart,
-            child = backPlate,
-            childIsPart = true,
-            offsetConfig = {
-                useParentNearEdge = Vector3.new(-1, -1, -1),
-                useChildNearEdge = Vector3.new(1, 1, 1),
-                offsetAdder = Vector3.new(0, 0, -letterBlockTemplate.Size.X / 2)
-            }
-        }
-    )
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
@@ -61,15 +49,40 @@ function module.initWord(props)
 
     wordBench.Anchored = true
 
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = wordBoxClone.PrimaryPart,
+            child = backPlate,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(0, 0, 0),
+                useChildNearEdge = Vector3.new(0, 0, 0),
+                offsetAdder = Vector3.new(0, -letterBlockTemplate.Size.X / 2, letterBlockTemplate.Size.X / 3)
+            }
+        }
+    )
+
+    backPlate.Anchored = true
+
     local lettersInWord = {}
+    local templateName = LetterFallUtils.letterBlockStyleDefs.word.Available
+    -- local templateName = 'Stray_available'
+
+    local styleTemplate = Utils.getFromTemplates(templateName)
+
     for letterIndex = 1, #word do
         local letterNameStub = wordNameStub .. '-L' .. letterIndex
         local letter = string.sub(word, letterIndex, letterIndex)
 
         local newLetter = letterBlockTemplate:Clone()
+
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = newLetter, templateName = templateName, template = styleTemplate}
+        )
+
         newLetter.Name = 'wordLetter-' .. letterNameStub
 
-        local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorZ
+        local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorX
 
         CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
         LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
@@ -102,7 +115,7 @@ function module.initWord(props)
     return newWordObj
 end
 
-function initWords(miniGameState)
+function module.initWords(miniGameState)
     local wordLetters = miniGameState.wordLetters
 
     for i, letter in ipairs(wordLetters) do
@@ -122,10 +135,11 @@ function initWords(miniGameState)
     local numWords1 = math.ceil(numWords / 2)
     local numWords2 = numWords - numWords1
 
+    -- local wordGroupSizes = {numWords1, 1, numWords2}
     local wordGroupSizes = {numWords1, numWords2}
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBPinkPurple')
+    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_4_blank')
 
     local prevFinish = 0
     for wbIndex, wordBox in ipairs(wordBoxes) do
@@ -170,7 +184,5 @@ function getWordFolder(miniGameState)
         }
     ))
 end
-
-module.initWords = initWords
 
 return module

@@ -18,7 +18,7 @@ local module = {
 }
 
 module.letterBlockStyleNames = {
-    LBPinkPurple = 'LBPinkPurple',
+    -- LBPinkPurple = 'LBPinkPurple',
     LBPurpleOrange = 'LBPurpleOrange',
     LBPurpleLight = 'LBPurpleLight',
     LBPurpleLight2 = 'LBPurpleLight2',
@@ -32,13 +32,14 @@ module.letterBlockStyleDefs = {
         NotAvailable = module.letterBlockStyleNames.LBPurpleLight,
         Found = module.letterBlockStyleNames.LBPurpleOrange,
         DeadLetter = module.letterBlockStyleNames.LBDeadLetter,
-        --
         FoundBD = module.letterBlockStyleNames.LBPurpleOrange,
         AvailableBD = 'BD_available'
     },
     word = {
         Placeholder = module.letterBlockStyleNames.LBPurpleLight,
-        Found = module.letterBlockStyleNames.LBPurpleOrange
+        -- Found = module.letterBlockStyleNames.LBPurpleOrange,
+        Found = 'Stray_normal',
+        Available = 'Stray_available'
     }
 }
 
@@ -86,31 +87,31 @@ function getAvailWords(miniGameState)
     return availWords
 end
 
-function initLetterBlock(props)
-    local letterBlock = props.letterBlock
-    local char = props.char
-    local templateName = props.templateName
+-- function initLetterBlock(props)
+--     local letterBlock = props.letterBlock
+--     local char = props.char
+--     local templateName = props.templateName
 
-    CS:AddTag(letterBlock, 'BlockDash')
+--     CS:AddTag(letterBlock, 'BlockDash')
 
-    local dummyTextLabel = Instance.new('TextLabel', letterBlock)
-    dummyTextLabel.Name = 'CurrentStyle'
-    dummyTextLabel.Text = 'zzz'
+--     local dummyTextLabel = Instance.new('TextLabel', letterBlock)
+--     dummyTextLabel.Name = 'CurrentStyle'
+--     dummyTextLabel.Text = 'zzz'
 
-    -- apply the letterText, so the letter block retains the char as a property
-    module.applyLetterText({letterBlock = letterBlock, char = char})
-    module.applyLetterImage(letterBlock, char)
-    module.hideBlockText(letterBlock)
+--     -- apply the letterText, so the letter block retains the char as a property
+--     module.applyLetterText({letterBlock = letterBlock, char = char})
+--     -- module.applyLetterImage(letterBlock, char)
+--     module.hideBlockText(letterBlock)
 
-    if templateName then
-        module.applyStyleFromTemplateBD(
-            {
-                targetLetterBlock = letterBlock,
-                templateName = templateName
-            }
-        )
-    end
-end
+--     if templateName then
+--         module.applyStyleFromTemplateBD(
+--             {
+--                 targetLetterBlock = letterBlock,
+--                 templateName = templateName
+--             }
+--         )
+--     end
+-- end
 
 --
 --
@@ -142,25 +143,25 @@ function applyLetterImage(letterBlock, char)
     end
 end
 
-function applyStyleFromTemplateBD(props)
-    local targetLetterBlock = props.targetLetterBlock
-    local templateName = props.templateName
+-- function applyStyleFromTemplateBD(props)
+--     local targetLetterBlock = props.targetLetterBlock
+--     local templateName = props.templateName
 
-    local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
+--     local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-    local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
+--     local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
 
-    targetLetterBlock.Color = template.Color
+--     targetLetterBlock.Color = template.Color
 
-    local label = Utils.getFirstDescendantByName(template, 'BlockChar')
+--     local label = Utils.getFirstDescendantByName(template, 'BlockChar')
 
-    local labelProps = {
-        TextColor3 = label.TextColor3,
-        BorderColor3 = label.BorderColor3,
-        BackgroundColor3 = label.BackgroundColor3
-    }
-    styleLetterBlock(targetLetterBlock, labelProps)
-end
+--     local labelProps = {
+--         TextColor3 = label.TextColor3,
+--         BorderColor3 = label.BorderColor3,
+--         BackgroundColor3 = label.BackgroundColor3
+--     }
+--     styleLetterBlock(targetLetterBlock, labelProps)
+-- end
 
 function applyStyleFromTemplate(props)
     local targetLetterBlock = props.targetLetterBlock
@@ -184,25 +185,21 @@ function applyStyleFromTemplate(props)
     end
 
     local letterBlockTemplateFolder = Utils.getFromTemplates('LetterBlockTemplates')
-
     local template = Utils.getFirstDescendantByName(letterBlockTemplateFolder, templateName)
-
     local isBlockDash = CS:HasTag(targetLetterBlock, 'BlockDash')
 
     if isBlockDash then
-        targetLetterBlock.Color = template.Color
-
-        if templateName == 'BD_available' then
-            targetLetterBlock.CFrame = targetLetterBlock.CFrame * CFrame.new(0, targetLetterBlock.Size.Y, 0)
-            CS:AddTag(targetLetterBlock, 'isLifted')
-        end
-
-        if templateName == 'BD_not_available' then
-            if CS:HasTag(targetLetterBlock, 'isLifted') then
-                targetLetterBlock.CFrame = targetLetterBlock.CFrame * CFrame.new(0, -targetLetterBlock.Size.Y, 0)
-                CS:RemoveTag(targetLetterBlock, 'isLifted')
-            end
-        end
+        -- targetLetterBlock.Color = template.Color
+        -- if templateName == 'BD_available' then
+        --     targetLetterBlock.CFrame = targetLetterBlock.CFrame * CFrame.new(0, targetLetterBlock.Size.Y, 0)
+        --     CS:AddTag(targetLetterBlock, 'isLifted')
+        -- end
+        -- if templateName == 'BD_not_available' then
+        --     if CS:HasTag(targetLetterBlock, 'isLifted') then
+        --         targetLetterBlock.CFrame = targetLetterBlock.CFrame * CFrame.new(0, -targetLetterBlock.Size.Y, 0)
+        --         CS:RemoveTag(targetLetterBlock, 'isLifted')
+        --     end
+        -- end
     else
         local label = Utils.getFirstDescendantByName(template, 'BlockChar')
 
@@ -368,7 +365,7 @@ end
 function styleLetterBlocks(props)
     local miniGameState = props.miniGameState
     local availWords = props.availWords
-    local letterFallFolder = miniGameState.letterFallFolder
+    -- local letterFallFolder = miniGameState.letterFallFolder
 
     local availLetters =
         module.getAvailLettersDict(
@@ -659,11 +656,11 @@ module.getCoordsFromLetterName = getCoordsFromLetterName
 module.filterItemsByTag = filterItemsByTag
 module.createStyledLetterBlock = createStyledLetterBlock
 module.getRunTimeLetterFolder = getRunTimeLetterFolder
-module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
+-- module.applyStyleFromTemplateBD = applyStyleFromTemplateBD
 module.hideBlockImages = hideBlockImages
 module.applyLetterImage = applyLetterImage
 module.hideBlockText = hideBlockText
-module.initLetterBlock = initLetterBlock
+-- module.initLetterBlock = initLetterBlock
 module.styleLetterBlocksBD = styleLetterBlocksBD
 module.getAvailWords = getAvailWords
 module.getRandomLetter = getRandomLetter

@@ -7,13 +7,14 @@ local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 local Constants = require(Sss.Source.Constants.Constants)
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local clickBlockEvent = RS:WaitForChild('ClickBlockRE')
 
 local module = {}
 
 function isDesiredLetter(availLetters, clickedLetter)
-    local textLabel = Utils.getFirstDescendantByName(clickedLetter, 'BlockChar').Text
+    -- local textLabel = Utils.getFirstDescendantByName(clickedLetter, 'BlockChar').Text
     local char = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
     return availLetters[char]
 end
@@ -28,7 +29,7 @@ end
 -- TODO: I'm probably doing this closure wrong
 function initClickHandler(miniGameState)
     -- Gets arguments from EventHandler in StarterPack
-    function brickClickHandler(player, clickedLetter)
+    local function brickClickHandler(player, clickedLetter)
         handleBrick(clickedLetter, miniGameState, player)
     end
 
@@ -38,11 +39,11 @@ end
 function findFirstMatchingLetterBlock(foundChar, miniGameState)
     local matchingLetter = nil
 
-    for wordIndex, word in ipairs(miniGameState.renderedWords) do
+    for _, word in ipairs(miniGameState.renderedWords) do
         if matchingLetter then
             break
         end
-        for letterIndex, letter in ipairs(word.letters) do
+        for _, letter in ipairs(word.letters) do
             if matchingLetter then
                 break
             end
@@ -132,7 +133,7 @@ function handleBrick(clickedLetter, miniGameState, player)
     end
 
     local foundChar = LetterFallUtils.getCharFromLetterBlock(clickedLetter)
-    local targetLetterBlock = nill
+    local targetLetterBlock = nil
     local availWords = {}
 
     if activeWord then
@@ -162,17 +163,25 @@ function handleBrick(clickedLetter, miniGameState, player)
         CS:AddTag(clickedLetter, LetterFallUtils.tagNames.Found)
         CS:RemoveTag(clickedLetter, LetterFallUtils.tagNames.RackLetter)
 
-        local tween =
-            Utils3.tween(
+        Utils3.tween(
             {
                 part = clickedLetter,
                 endPosition = targetLetterBlock.Position,
+                endSize = Vector3.new(4, 4, 4),
                 time = 0.4,
                 anchor = true
             }
         )
 
-        Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
+        local templateNameFound = LetterFallUtils.letterBlockStyleDefs.word.Found
+        local template = Utils.getFromTemplates(templateNameFound)
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = targetLetterBlock, templateName = templateNameFound, template = template}
+        )
+
+        Utils.hideItemAndChildren({item = clickedLetter, hide = true})
+        -- clickedLetter:Destroy()
+        -- Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
 
         table.insert(miniGameState.foundLetters, LetterFallUtils.getCharFromLetterBlock(clickedLetter))
 
@@ -186,7 +195,7 @@ function handleBrick(clickedLetter, miniGameState, player)
                 if (soundId) then
                     local sound = Instance.new('Sound', workspace)
                     sound.SoundId = 'rbxassetid://' .. soundId
-                    sound.EmitterSize = 5
+                    -- sound.EmitterSize = 5
                     sound.Looped = false
                     if not sound.IsPlaying then
                         sound:Play()

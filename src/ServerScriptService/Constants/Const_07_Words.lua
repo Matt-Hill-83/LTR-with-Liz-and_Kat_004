@@ -9,8 +9,8 @@ local words01 = {
     'MAT',
     'PAT',
     'RAT',
-    'SAT',
-    'FAT'
+    'SAT'
+    -- 'FAT'
 }
 local words02 = {
     'CAP',

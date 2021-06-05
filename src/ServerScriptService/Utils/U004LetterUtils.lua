@@ -34,13 +34,13 @@ function module.createRandomLetterMatrix(props)
     return letterMatrix
 end
 
-module.letterBlockStyleNames = {
-    LBPurpleOrange = 'LBPurpleOrange',
-    LBPurpleLight = 'LBPurpleLight',
-    LBPurpleLight2 = 'LBPurpleLight2',
-    LBDarkPurple = 'LBDarkPurple',
-    LBDeadLetter = 'LBDeadLetter'
-}
+-- module.letterBlockStyleNames = {
+--     LBPurpleOrange = 'LBPurpleOrange',
+--     LBPurpleLight = 'LBPurpleLight',
+--     LBPurpleLight2 = 'LBPurpleLight2',
+--     LBDarkPurple = 'LBDarkPurple',
+--     LBDeadLetter = 'LBDeadLetter'
+-- }
 
 module.letterBlockPropNames = {
     Character = 'Character',
@@ -56,18 +56,18 @@ module.letterBlockTypes = {
     TargetLetter = 'TargetLetter'
 }
 
-module.letterBlockStyleDefs = {
-    rack = {
-        Available = module.letterBlockStyleNames.LBPurpleLight2,
-        NotAvailable = module.letterBlockStyleNames.LBPurpleLight,
-        Found = module.letterBlockStyleNames.LBPurpleOrange,
-        DeadLetter = module.letterBlockStyleNames.LBDeadLetter
-    },
-    word = {
-        Placeholder = module.letterBlockStyleNames.LBPurpleLight,
-        Found = module.letterBlockStyleNames.LBPurpleOrange
-    }
-}
+-- module.letterBlockStyleDefs = {
+--     rack = {
+--         Available = module.letterBlockStyleNames.LBPurpleLight2,
+--         NotAvailable = module.letterBlockStyleNames.LBPurpleLight,
+--         Found = module.letterBlockStyleNames.LBPurpleOrange,
+--         DeadLetter = module.letterBlockStyleNames.LBDeadLetter
+--     },
+--     word = {
+--         Placeholder = module.letterBlockStyleNames.LBPurpleLight,
+--         Found = module.letterBlockStyleNames.LBPurpleOrange
+--     }
+-- }
 
 function module.getLetterSet(props)
     local numBlocks = props.numBlocks
