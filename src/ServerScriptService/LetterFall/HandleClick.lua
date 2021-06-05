@@ -184,30 +184,36 @@ function handleBrick(clickedLetter, miniGameState, player)
         -- Utils.hideItemAndChildren({item = targetLetterBlock, hide = true})
 
         table.insert(miniGameState.foundLetters, LetterFallUtils.getCharFromLetterBlock(clickedLetter))
-        table.insert(miniGameState.foundWordLetters, targetLetterBlock)
+        table.insert(miniGameState.foundWordLettersBlocks, targetLetterBlock)
+        table.insert(miniGameState.foundRackLettersBlocks, clickedLetter)
 
         local currentWord = table.concat(miniGameState.foundLetters, '')
         local wordComplete = table.find(words, currentWord)
 
         if (wordComplete) then
-            local wordConfig = Constants.wordConfigs and Constants.wordConfigs[currentWord]
-            if wordConfig then
-                local soundId = Constants.wordConfigs[currentWord]['soundId']
-                if (soundId) then
-                    local sound = Instance.new('Sound', workspace)
-                    sound.SoundId = 'rbxassetid://' .. soundId
-                    -- sound.EmitterSize = 5
-                    sound.Looped = false
-                    if not sound.IsPlaying then
-                        sound:Play()
-                    end
-                end
-            end
+            Utils.playWordSound2(currentWord)
+            -- local wordConfig = Constants.wordConfigs and Constants.wordConfigs[currentWord]
+            -- if wordConfig then
+            --     local soundId = Constants.wordConfigs[currentWord]['soundId']
+            --     if (soundId) then
+            --         local sound = Instance.new('Sound', workspace)
+            --         sound.SoundId = 'rbxassetid://' .. soundId
+            --         -- sound.EmitterSize = 5
+            --         sound.Looped = false
+            --         if not sound.IsPlaying then
+            --             sound:Play()
+            --         end
+            --     end
+            -- end
 
             table.insert(miniGameState.foundWords, currentWord)
 
             local templateNameAvailable = LetterFallUtils.letterBlockStyleDefs.word.Available
-            for _, lb in ipairs(miniGameState.foundWordLetters) do
+            for _, lb in ipairs(miniGameState.foundRackLettersBlocks) do
+                lb:Destroy()
+            end
+
+            for _, lb in ipairs(miniGameState.foundWordLettersBlocks) do
                 local template2 = Utils.getFromTemplates(templateNameAvailable)
 
                 local func = function()
