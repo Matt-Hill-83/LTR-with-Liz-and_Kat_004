@@ -18,6 +18,9 @@ function module.addMiniGame(props)
     print(words)
 
     local letterFallTemplate = Utils.getFromTemplates('LetterFallTemplate-001')
+    if not letterFallTemplate then
+        return
+    end
 
     local allLetters = {
         'A',

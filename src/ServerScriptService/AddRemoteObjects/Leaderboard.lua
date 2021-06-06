@@ -64,6 +64,7 @@ local function updateLeaderboard()
 end
 
 function updateLB()
+    print('updateLB')
     for _, player in pairs(game.Players:GetPlayers()) do
         if player:FindFirstChild('leaderstats') then
             WinsLeaderboard:SetAsync(player.UserId, player.leaderstats.Wins.Value)

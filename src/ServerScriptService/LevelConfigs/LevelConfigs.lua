@@ -33,6 +33,21 @@ module.levelConfigs = {
     Level012,
     Level013
 }
+module.levelConfigs2 = {
+    [1] = Level000,
+    [2] = Level2,
+    [3] = Level3,
+    [4] = Level4,
+    [5] = Level5,
+    [6] = Level6,
+    [7] = Level7,
+    [8] = Level8,
+    [9] = Level009,
+    [10] = Level010,
+    [11] = Level011,
+    [12] = Level012,
+    [13] = Level013
+}
 
 module.levelDefs = {
     -- 8 now has the start place id

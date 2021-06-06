@@ -20,7 +20,6 @@ local VendingMachine2 = require(Sss.Source.VendingMachine.VendingMachine_002)
 local InitRegion = require(Sss.Source.AddRemoteObjects.InitRegion)
 local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
 local Words = require(Sss.Source.Constants.Const_07_Words)
--- local MiniGame = require(Sss.Source.MiniGame.MiniGame)
 
 local module = {}
 
@@ -110,13 +109,13 @@ local function addRemoteObjects()
     local levelIndex = tonumber(levelName)
 
     local levelConfig = nil
-    if isStartPlace then
-        levelConfig = LevelConfigs.levelConfigs[levelIndex]
-        levelConfig.levelIndex = levelIndex
-    else
-        levelConfig = LevelConfigs.levelConfigs[levelIndex]
-        levelConfig.levelIndex = levelIndex
-    end
+    -- if isStartPlace then
+    levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    levelConfig.levelIndex = levelIndex
+    -- else
+    -- levelConfig = LevelConfigs.levelConfigs[levelIndex]
+    -- levelConfig.levelIndex = levelIndex
+    -- end
     ConfigGame.preRunConfig({levelConfig = levelConfig})
     PlayerStatManager.init()
 
@@ -205,35 +204,6 @@ local function addRemoteObjects()
         Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
         Terrain.initTerrain({parentFolder = region, prefix = 'T9-'})
     end
-
-    -- for _, region in ipairs(regions) do
-    --     local regionConfig = levelConfig.regions[region.Name]
-    --     local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
-    --     print('letterFallPositioners' .. ' - start')
-    --     print(letterFallPositioners)
-
-    --     for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
-    --         local words = {'111'}
-    --         if regionConfig.letterFallConfigs then
-    --             words = regionConfig.letterFallConfigs[LFIndex]['words']
-    --             print('words' .. ' - start--------------')
-    --             print(words)
-    --         end
-    --         wait(0.001)
-
-    --         local miniGame =
-    --             MiniGame.addMiniGame(
-    --             {
-    --                 parent = letterFallPositioner,
-    --                 words = words,
-    --                 sceneIndex = 1,
-    --                 questIndex = 1,
-    --                 questTitle = 'test'
-    --             }
-    --         )
-    --         miniGame.PrimaryPart.Anchored = true
-    --     end
-    -- end
 
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
     Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
