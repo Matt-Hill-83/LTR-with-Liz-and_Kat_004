@@ -137,11 +137,11 @@ function module.createBridge2(props)
     return newBridge
 end
 
-function module.createBridgeWalls(bridge, bridgeConfig)
+function module.createBridgeWalls(bridge, invisiWallProps)
     local bridgeTop = Utils.getFirstDescendantByName(bridge, 'Top')
 
     local function getWallProps(wall)
-        local invisiWallProps = bridgeConfig.invisiWallProps or Configs.wallProps_default
+        -- local invisiWallProps = bridgeConfig.invisiWallProps or Configs.wallProps_default
         invisiWallProps.part = wall
         return invisiWallProps
     end
@@ -178,7 +178,55 @@ function module.createBridge(props)
     for _, wall in ipairs(walls) do
         wall.Size = Vector3.new(wall.Size.X, wall.Size.Y, distance)
     end
-    module.createBridgeWalls(newBridge, bridgeConfig)
+
+    local tallWallsThatLookShort = bridgeConfig.tallWallsThatLookShort
+
+    if not tallWallsThatLookShort then
+        local invisiWallProps = bridgeConfig.invisiWallProps or Configs.wallProps_default
+        module.createBridgeWalls(newBridge, invisiWallProps)
+    else
+        local tallWalls = {
+            thickness = 1.1,
+            height = 16,
+            wallProps = {
+                Transparency = 0.9,
+                -- Transparency = 1,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Concrete,
+                CanCollide = true
+            },
+            shortHeight = 1,
+            shortWallProps = {
+                -- Transparency = 1,
+                Transparency = 0,
+                BrickColor = BrickColor.new('Bright blue'),
+                Material = Enum.Material.Cobblestone,
+                CanCollide = true
+            }
+        }
+        local shortWalls = {
+            thickness = 1.1,
+            height = 4,
+            wallProps = {
+                Transparency = 0.8,
+                -- Transparency = 1,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Concrete,
+                CanCollide = true
+            },
+            shortHeight = 1,
+            shortWallProps = {
+                -- Transparency = 1,
+                Transparency = 0,
+                BrickColor = BrickColor.new('Alder'),
+                Material = Enum.Material.Cobblestone,
+                CanCollide = true
+            }
+        }
+        module.createBridgeWalls(newBridge, tallWalls)
+        module.createBridgeWalls(newBridge, shortWalls)
+    end
+
     local cutter = Utils.getFirstDescendantByName(newBridge, 'Cutter')
 
     -- extend the cutter so it pushes through tiny bridge sections and junctions

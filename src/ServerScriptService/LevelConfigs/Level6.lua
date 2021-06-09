@@ -57,20 +57,21 @@ for i = 1, numOrbiters do
     table.insert(orbiterConfigs2, newConfig)
 end
 
-local r006 = {
-    bridgeConfigs = {
-        invisiWallProps = tallWalls,
-        straysOnBridges = false,
-        material = Enum.Material.Grass,
-        bridgeTemplateName = Configs.bridges.default
-    },
-    invisiWallProps = tallWalls
-    -- hexGearConfigs = hexGearConfigs
-}
+-- local r006 = {
+--     bridgeConfigs = {
+--         invisiWallProps = tallWalls,
+--         straysOnBridges = false,
+--         material = Enum.Material.Grass,
+--         bridgeTemplateName = Configs.bridges.default
+--     },
+--     invisiWallProps = tallWalls
+--     -- hexGearConfigs = hexGearConfigs
+-- }
 
 local r007 = {
     bridgeConfigs = {
         -- invisiWallProps = tallWalls,
+        -- tallWallsThatLookShort = true,
         straysOnBridges = false,
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
@@ -142,7 +143,7 @@ local r100 = {
 }
 
 local regions = {
-    r006 = r006,
+    -- r006 = r006,
     r007 = r007,
     r008 = r008,
     r009 = r007,
