@@ -10,8 +10,8 @@ local activeSpawn
 local startPlaceId = '6358192824'
 
 local playAmbient
-playAmbient = false
 playAmbient = true
+playAmbient = false
 
 local enabledItems
 enabledItems = {

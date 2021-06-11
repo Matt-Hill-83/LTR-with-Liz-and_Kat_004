@@ -31,9 +31,13 @@ for i = 0, numLFs do
     local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
 
     local newConfig = {words = words}
+    print('newConfig' .. ' - start')
+    print(newConfig)
     table.insert(lFConfigs, newConfig)
 end
 
+print('lFConfigs' .. ' - start')
+print(lFConfigs)
 local numOrbiters = 24
 local orbiterConfigs2 = {}
 
@@ -57,16 +61,25 @@ for i = 1, numOrbiters do
     table.insert(orbiterConfigs2, newConfig)
 end
 
--- local r006 = {
---     bridgeConfigs = {
---         invisiWallProps = tallWalls,
---         straysOnBridges = false,
---         material = Enum.Material.Grass,
---         bridgeTemplateName = Configs.bridges.default
---     },
---     invisiWallProps = tallWalls
---     -- hexGearConfigs = hexGearConfigs
--- }
+local r006 = {
+    bridgeConfigs = {
+        invisiWallProps = tallWalls,
+        straysOnBridges = false,
+        material = Enum.Material.Grass,
+        bridgeTemplateName = Configs.bridges.default
+    },
+    invisiWallProps = tallWalls,
+    letterFallConfigs = {{words = {'FOX', 'BOX'}}},
+    getTargetWords = function()
+        return {
+            {
+                {word = 'FOX', target = 3, found = 0},
+                {word = 'BOX', target = 3, found = 0}
+            }
+        }
+    end
+    -- hexGearConfigs = hexGearConfigs
+}
 
 local r007 = {
     bridgeConfigs = {
@@ -91,6 +104,7 @@ local r008 = {
     },
     orbiterConfigs = orbiterConfigs2,
     invisiWallProps = tallWalls,
+    letterFallConfigs = {{words = {'FOX', 'BOX'}}},
     hexGearConfigs = hexGearConfigs
 }
 
@@ -143,7 +157,7 @@ local r100 = {
 }
 
 local regions = {
-    -- r006 = r006,
+    r006 = r006,
     r007 = r007,
     r008 = r008,
     r009 = r007,
