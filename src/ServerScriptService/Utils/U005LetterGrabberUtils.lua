@@ -7,7 +7,6 @@ local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local PlayerStatManager = require(Sss.Source.AddRemoteObjects.PlayerStatManager)
 local WordScoreDB = require(Sss.Source.AddRemoteObjects.WordScoreDB)
--- local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
 
 local module = {}
 
@@ -73,14 +72,7 @@ local function styleLetterGrabberBlocks(tool)
     end
 end
 
-function module.wordFound(tool, player)
-    local wordModel = tool.Word
-    local targetWord = wordModel.TargetWord.Value
-
-    module.resetBlocks(tool)
-    module.setActiveLetterGrabberBlock(tool)
-    module.styleLetterGrabberBlocks(tool)
-
+function module.updateScore(player, targetWord)
     local gameState = PlayerStatManager.getGameState(player)
     local targetWords = gameState.targetWords
     if not targetWords then
@@ -103,11 +95,48 @@ function module.wordFound(tool, player)
             wins.Value = wins.Value + 1
 
             WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
-        -- Leaderboard.updateLB()
         end
     end
 
     delay(1, destroyParts)
+end
+
+function module.wordFound(tool, player)
+    local wordModel = tool.Word
+    local targetWord = wordModel.TargetWord.Value
+
+    module.resetBlocks(tool)
+    module.setActiveLetterGrabberBlock(tool)
+    module.styleLetterGrabberBlocks(tool)
+
+    module.updateScore(player, targetWord)
+
+    -- local gameState = PlayerStatManager.getGameState(player)
+    -- local targetWords = gameState.targetWords
+    -- if not targetWords then
+    --     return
+    -- end
+
+    -- local targetWordObj = Utils.getListItemByPropValue(targetWords, 'word', targetWord)
+
+    -- Utils.playWordSound2(targetWord)
+
+    -- if targetWordObj then
+    --     targetWordObj.found = targetWordObj.found + 1
+    -- end
+    -- local updateWordGuiRE = RS:WaitForChild(Const_Client.RemoteEvents.UpdateWordGuiRE)
+    -- updateWordGuiRE:FireClient(player)
+
+    -- local function destroyParts()
+    --     if player:FindFirstChild('leaderstats') then
+    --         local wins = player.leaderstats.Wins
+    --         wins.Value = wins.Value + 1
+
+    --         WordScoreDB.updateWordStore({player = player, word = targetWord, adder = 1})
+    --     end
+    -- end
+
+    -- delay(1, destroyParts)
     --  give gem
     if false then
         local keyTemplate = Utils.getFromTemplates('HexLetterGemTool')

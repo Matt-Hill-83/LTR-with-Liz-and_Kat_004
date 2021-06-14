@@ -63,12 +63,12 @@ end
 
 local r006 = {
     bridgeConfigs = {
-        invisiWallProps = tallWalls,
+        -- invisiWallProps = tallWalls,
         straysOnBridges = false,
         material = Enum.Material.Grass,
         bridgeTemplateName = Configs.bridges.default
     },
-    invisiWallProps = tallWalls,
+    -- invisiWallProps = tallWalls,
     letterFallConfigs = {{words = {'FOX', 'BOX'}}},
     getTargetWords = function()
         return {

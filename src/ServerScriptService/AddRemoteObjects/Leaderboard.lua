@@ -2,14 +2,10 @@ local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local DataStoreService = game:GetService('DataStoreService')
 local WinsLeaderboard = DataStoreService:GetOrderedDataStore('WinsLeaderboard')
-print('WinsLeaderboard' .. ' - start')
-print(WinsLeaderboard)
 
 local module = {}
 
 local function updateLeaderboard()
-    print('updateLeaderboard' .. ' - start--------->>>>ADD REMOTE')
-    print(updateLeaderboard)
     local success, errorMessage =
         pcall(
         function()
@@ -25,8 +21,6 @@ local function updateLeaderboard()
             local WinsPage = Data:GetCurrentPage()
             for Rank, data in ipairs(WinsPage) do
                 local userName = game.Players:GetNameFromUserIdAsync(tonumber(data.key))
-                print('userName' .. ' - start')
-                print(userName)
 
                 local Name = userName
                 local Wins = data.value
@@ -59,12 +53,10 @@ local function updateLeaderboard()
         end
     )
     if not success then
-        print(errorMessage)
     end
 end
 
 function updateLB()
-    print('updateLB')
     for _, player in pairs(game.Players:GetPlayers()) do
         if player:FindFirstChild('leaderstats') then
             WinsLeaderboard:SetAsync(player.UserId, player.leaderstats.Wins.Value)

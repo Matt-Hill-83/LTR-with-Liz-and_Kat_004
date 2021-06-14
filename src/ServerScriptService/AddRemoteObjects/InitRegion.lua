@@ -37,15 +37,11 @@ function module.initRegion(region, regionConfig, regionIndex)
     local entrance = enabledItems.entrance
 
     local letterFallPositioners = Utils.getDescendantsByName(region, 'LetterFallPositioner')
-    print('letterFallPositioners' .. ' - start')
-    print(letterFallPositioners)
 
     for LFIndex, letterFallPositioner in ipairs(letterFallPositioners) do
         local words = {'111'}
         if regionConfig.letterFallConfigs then
             words = regionConfig.letterFallConfigs[LFIndex]['words']
-            print('words' .. ' - start--------------')
-            print(words)
         end
         wait(0.001)
 

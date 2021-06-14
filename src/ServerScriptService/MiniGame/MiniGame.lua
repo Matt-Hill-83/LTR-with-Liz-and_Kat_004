@@ -14,9 +14,6 @@ function module.addMiniGame(props)
     local questIndex = props.questIndex
     local words = props.words
 
-    print('words' .. ' - start-----------------------')
-    print(words)
-
     local letterFallTemplate = Utils.getFromTemplates('LetterFallTemplate-001')
     if not letterFallTemplate then
         return

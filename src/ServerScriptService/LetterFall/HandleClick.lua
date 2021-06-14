@@ -4,6 +4,7 @@ local RS = game:GetService('ReplicatedStorage')
 
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
 local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
+local Utils5 = require(Sss.Source.Utils.U005LetterGrabberUtils)
 local Constants = require(Sss.Source.Constants.Constants)
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 local Leaderboard = require(Sss.Source.AddRemoteObjects.Leaderboard)
@@ -186,6 +187,10 @@ function handleBrick(clickedLetter, miniGameState, player)
         local wordComplete = table.find(words, currentWord)
 
         if (wordComplete) then
+            print('currentWord' .. ' - start')
+            print(currentWord)
+            Utils5.updateScore(player, currentWord)
+
             Utils.playWordSound2(currentWord)
 
             table.insert(miniGameState.foundWords, currentWord)

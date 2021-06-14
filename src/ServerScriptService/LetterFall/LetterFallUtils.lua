@@ -515,15 +515,15 @@ function createBalls(miniGameState)
     local targetGemName = 'Gem-Q-zzzz'
 
     local balls = {}
-    for count = 1, 8 do
+    for ballIndex = 1, 4 do
         local newBall = ball:Clone()
         local ballPart = newBall.Handle
 
         newBall.Name = targetGemName
         newBall.Parent = ball.Parent
-        ballPart.CFrame = ballPart.CFrame + Vector3.new(0, 0, 0)
+        ballPart.CFrame = ballPart.CFrame + Vector3.new(ballIndex * 0, 0, 0)
         ballPart.Color = gemColor
-        Utils.enableChildWelds({part = newBall, enabled = false})
+        -- Utils.enableChildWelds({part = newBall, enabled = false})
         table.insert(balls, newBall)
     end
 

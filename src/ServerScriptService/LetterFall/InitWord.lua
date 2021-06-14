@@ -66,7 +66,6 @@ function module.initWord(props)
 
     local lettersInWord = {}
     local templateName = LetterFallUtils.letterBlockStyleDefs.word.Available
-    -- local templateName = 'Stray_available'
 
     local styleTemplate = Utils.getFromTemplates(templateName)
 
@@ -135,7 +134,6 @@ function module.initWords(miniGameState)
     local numWords1 = math.ceil(numWords / 2)
     local numWords2 = numWords - numWords1
 
-    -- local wordGroupSizes = {numWords1, 1, numWords2}
     local wordGroupSizes = {numWords1, numWords2}
 
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
