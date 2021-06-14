@@ -40,12 +40,12 @@ local words04 = {
     'ZAG'
 }
 local words05 = {
-    'BAD',
-    'DAD',
+    -- 'BAD',
+    -- 'DAD',
     'HAD',
     'MAD',
-    'PAD',
-    'SAD'
+    'PAD'
+    -- 'SAD'
 }
 local words06 = {
     'HAM',

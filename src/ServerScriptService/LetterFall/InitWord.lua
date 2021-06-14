@@ -32,7 +32,7 @@ function module.initWord(props)
     wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, letterBlockTemplate.Size.Z)
 
     local backPlate = Utils.getFirstDescendantByName(wordBoxClone, 'BackPlate')
-    local backPlateSizeX = letterBlockTemplate.Size.X + wordBench.Size.X
+    local backPlateSizeX = (letterBlockTemplate.Size.X / 2) + wordBench.Size.X
     backPlate.Size = Vector3.new(backPlateSizeX, letterBlockTemplate.Size.X * 2, wordBench.Size.Z)
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
