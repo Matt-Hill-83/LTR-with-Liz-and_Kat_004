@@ -70,27 +70,6 @@ function module.initRegion(region, regionConfig, regionIndex)
         PetBox.initPetBox({parentFolder = region, regionConfig = regionConfig})
     end
 
-    -- if false then
-    if strayLetterBlocks then
-        local function func(region, regionConfig)
-            return function()
-                StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
-            end
-        end
-
-        delay(15, func(region, regionConfig))
-        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
-
-        SingleStrays.initSingleStrays(
-            {
-                parentFolder = region,
-                blockTemplate = blockTemplate,
-                char = nil
-            }
-        )
-    end
-
     if junction4 then
         print('regionConfig.hexTemplate32' .. ' - start')
         print(regionConfig.hexTemplate32)
@@ -138,6 +117,28 @@ function module.initRegion(region, regionConfig, regionIndex)
         --     }
         -- )
         end
+    end
+
+    -- if false then
+    if strayLetterBlocks then
+        local function func(region, regionConfig)
+            return function()
+                StrayLetterBlocks.initStraysInRegions({parentFolder = region, regionConfig = regionConfig})
+            end
+        end
+
+        delay(15, func(region, regionConfig))
+        local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
+        local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
+
+    -- SingleStrays.initSingleStrays(
+    --     {
+    --         parentFolder = region,
+    --         blockTemplate = blockTemplate,
+    --         char = 'Z'
+    --         -- char = nil
+    --     }
+    -- )
     end
 
     if statueGate then
