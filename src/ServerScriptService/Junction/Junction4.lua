@@ -94,6 +94,8 @@ function module.initJunctions(props)
         end
 
         local function getWallProps(wall)
+            print('regionConfig.invisiWallProps' .. ' - start')
+            print(regionConfig.invisiWallProps)
             local invisiWallProps =
                 hexConfigs.invisiWallProps or regionConfig.invisiWallProps or Configs.wallProps_default
             invisiWallProps.part = wall

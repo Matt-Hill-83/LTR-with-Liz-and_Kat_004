@@ -90,8 +90,6 @@ function handleBrick(clickedLetter, miniGameState, player)
     end
 
     local activeWord = miniGameState.activeWord
-    print('activeWord' .. ' - start')
-    print(activeWord)
     local currentLetterIndex = miniGameState.currentLetterIndex
     local words = miniGameState.words
 
@@ -187,8 +185,6 @@ function handleBrick(clickedLetter, miniGameState, player)
         local wordComplete = table.find(words, currentWord)
 
         if (wordComplete) then
-            print('currentWord' .. ' - start')
-            print(currentWord)
             Utils5.updateScore(player, currentWord)
 
             Utils.playWordSound2(currentWord)

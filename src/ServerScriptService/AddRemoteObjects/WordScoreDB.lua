@@ -11,9 +11,6 @@ function module.updateWordStore(props)
     local adder = props.adder
     local value = props.value
 
-    print('word' .. ' - start')
-    print(word)
-
     local newStore = DataStoreService:GetOrderedDataStore(word)
 
     local userId = player.UserId

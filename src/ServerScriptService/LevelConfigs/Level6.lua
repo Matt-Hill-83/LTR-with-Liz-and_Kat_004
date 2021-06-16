@@ -31,13 +31,9 @@ for i = 0, numLFs do
     local words = Utils.arraySubset(Words.allWords, startIndex, endIndex)
 
     local newConfig = {words = words}
-    print('newConfig' .. ' - start')
-    print(newConfig)
     table.insert(lFConfigs, newConfig)
 end
 
-print('lFConfigs' .. ' - start')
-print(lFConfigs)
 local numOrbiters = 24
 local orbiterConfigs2 = {}
 

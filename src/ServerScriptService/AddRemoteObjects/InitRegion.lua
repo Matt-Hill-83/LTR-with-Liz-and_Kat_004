@@ -92,11 +92,14 @@ function module.initRegion(region, regionConfig, regionIndex)
     end
 
     if junction4 then
+        print('regionConfig.hexTemplate32' .. ' - start')
+        print(regionConfig.hexTemplate32)
         Junction4.initJunctions(
             {
                 parentFolder = region,
                 regionConfig = regionConfig,
-                hexTemplate = 'Hex_32_32_v1',
+                hexTemplate = regionConfig.hexTemplate32 or 'Hex_32_32_v1',
+                -- hexTemplate = 'Hex_32_32_v1',
                 positionerName = 'Hex_32_32_pos_v2',
                 regionIndex = regionIndex
             }
