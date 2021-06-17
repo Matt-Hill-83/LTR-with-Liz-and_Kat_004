@@ -124,17 +124,14 @@ function module.createBridge2(props)
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_8_blank_bridge')
 
-        print('straysOnBridges' .. ' - start')
-        print(straysOnBridges)
-
         if straysOnBridges ~= false then
-            SingleStrays.initSingleStrays(
-                {
-                    parentFolder = newBridge,
-                    blockTemplate = blockTemplate,
-                    char = char or '?'
-                }
-            )
+        -- SingleStrays.initSingleStrays(
+        --     {
+        --         parentFolder = newBridge,
+        --         blockTemplate = blockTemplate,
+        --         char = char or '?'
+        --     }
+        -- )
         end
     end
     return newBridge
@@ -287,8 +284,6 @@ function module.initBridges_64(props)
     local bridges = {}
     for rodIndex, rod in ipairs(rods) do
         local bridgeConfig = bridgeConfigs or {}
-        -- print('bridgeConfig' .. ' - start')
-        -- print(bridgeConfig)
 
         local rodValid = module.rodIsValid(rod)
 

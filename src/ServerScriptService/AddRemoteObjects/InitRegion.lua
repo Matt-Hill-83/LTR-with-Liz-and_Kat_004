@@ -131,14 +131,14 @@ function module.initRegion(region, regionConfig, regionIndex)
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
-    -- SingleStrays.initSingleStrays(
-    --     {
-    --         parentFolder = region,
-    --         blockTemplate = blockTemplate,
-    --         char = 'Z'
-    --         -- char = nil
-    --     }
-    -- )
+        SingleStrays.initSingleStrays(
+            {
+                parentFolder = region,
+                blockTemplate = blockTemplate,
+                char = 'Z'
+                -- char = nil
+            }
+        )
     end
 
     if statueGate then
