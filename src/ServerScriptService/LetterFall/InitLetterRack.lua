@@ -48,12 +48,18 @@ function initLetterRack(miniGameState)
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack2')
     local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
+    local gemTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'GemModel')
+    print('gemTemplate' .. ' - start')
+    print(gemTemplate)
+    print(gemTemplate.PrimaryPart)
+
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
     local frameLeft = Utils.getFirstDescendantByName(frameFolder, 'Left')
     local frameRight = Utils.getFirstDescendantByName(frameFolder, 'Right')
     local frameBack = Utils.getFirstDescendantByName(frameFolder, 'Back')
     local frameTop = Utils.getFirstDescendantByName(frameFolder, 'Top')
+    local frameFront = Utils.getFirstDescendantByName(frameFolder, 'InvisibleFront')
 
     local numRow = 3
     -- local numRow = 30
@@ -73,6 +79,10 @@ function initLetterRack(miniGameState)
     frameBottom.Size = Vector3.new(rackSizeX, wallThickness, rackSizeZ)
     frameTop.Size = frameBottom.Size
     frameLeft.Size = Vector3.new(rackSizeX, rackSizeY, wallThickness)
+    frameRight.Size = frameLeft.Size
+    frameBack.Size = Vector3.new(wallThickness, rackSizeY, rackSizeZ)
+    frameFront.Size = frameBack.Size
+    frameFront.Transparency = 0.7
 
     local edgeOffset = rackPadding + wallThickness
     Utils3.setCFrameFromDesiredEdgeOffset2(
@@ -87,6 +97,33 @@ function initLetterRack(miniGameState)
             }
         }
     )
+
+    local topOffset = (numRow + 1) * letterHeight * spacingFactorY + 2 * wallThickness
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = frameTop,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(0, 0, 0),
+                useChildNearEdge = Vector3.new(0, 0, 0),
+                offsetAdder = Vector3.new(0, topOffset, 0)
+            }
+        }
+    )
+    -- Utils3.setCFrameFromDesiredEdgeOffset2(
+    --     {
+    --         parent = frameTop,
+    --         childModel = gemTemplate,
+    --         -- childIsPart = false,
+    --         offsetConfig = {
+    --             useParentNearEdge = Vector3.new(0, 0, 0),
+    --             useChildNearEdge = Vector3.new(0, 0, 0),
+    --             offsetAdder = Vector3.new(0, -letterHeight, 0)
+    --         }
+    --     }
+    -- )
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
@@ -122,6 +159,19 @@ function initLetterRack(miniGameState)
             offsetConfig = {
                 useParentNearEdge = Vector3.new(1, -1, 1),
                 useChildNearEdge = Vector3.new(1, -1, 1),
+                offsetAdder = Vector3.new(0, 0, 0)
+            }
+        }
+    )
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = frameFront,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(-1, -1, 1),
+                useChildNearEdge = Vector3.new(-1, -1, 1),
                 offsetAdder = Vector3.new(0, 0, 0)
             }
         }
