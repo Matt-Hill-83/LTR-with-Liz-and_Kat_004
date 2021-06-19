@@ -1,6 +1,7 @@
 local CS = game:GetService('CollectionService')
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
+local Utils3 = require(Sss.Source.Utils.U003PartsUtils)
 
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 
@@ -48,7 +49,8 @@ function initLetterRack(miniGameState)
     local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
 
-    local numRow = 30
+    local numRow = 10
+    -- local numRow = 30
     local numCol = 9
     local spacingFactorX = 1.01
     local spacingFactorY = 1.0
@@ -83,7 +85,19 @@ function initLetterRack(miniGameState)
         local letterHeight = letterBlockTemplate.Size.X
         local letterPosX = -letterHeight * (colIndex - 1) * spacingFactorX
         newPCBase.Size = pCBaseTemplate.Size
-        newPCBase.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, 0, 0))
+        -- newPCBase.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, 0, 0))
+        Utils3.setCFrameFromDesiredEdgeOffset2(
+            {
+                parent = letterPositioner,
+                child = newPCBase,
+                childIsPart = true,
+                offsetConfig = {
+                    useParentNearEdge = Vector3.new(0, -1, 0),
+                    useChildNearEdge = Vector3.new(0, -1, 0),
+                    offsetAdder = Vector3.new(letterPosX, 0, 0)
+                }
+            }
+        )
 
         local pcBaseAtt = newPCBase.Attachment
 
@@ -95,8 +109,6 @@ function initLetterRack(miniGameState)
 
             local newLetterPC = newLetter.PrismaticConstraint
             newLetterPC.Attachment1 = pcBaseAtt
-            -- print('newLetterPC.Attachments' .. ' - start')
-            -- print(newLetterPC.Attachments)
 
             LetterFallUtils.applyStyleFromTemplate(
                 {
@@ -129,7 +141,19 @@ function initLetterRack(miniGameState)
 
             local offsetY = (newLetter.Size.Y - letterPositioner.Size.Y) / 2
             local letterPosY = newLetter.Size.Y * (rowIndex - 1) * spacingFactorY + offsetY
-            newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, letterPosY, 0))
+
+            Utils3.setCFrameFromDesiredEdgeOffset2(
+                {
+                    parent = newPCBase,
+                    child = newLetter,
+                    childIsPart = true,
+                    offsetConfig = {
+                        useParentNearEdge = Vector3.new(0, 1, 0),
+                        useChildNearEdge = Vector3.new(0, -1, 0),
+                        offsetAdder = Vector3.new(0, letterPosY, 0)
+                    }
+                }
+            )
 
             newLetter.Parent = runTimeLetterFolder
             newLetter.Anchored = true
