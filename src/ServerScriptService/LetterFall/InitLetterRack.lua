@@ -1,8 +1,7 @@
 local CS = game:GetService('CollectionService')
 local Sss = game:GetService('ServerScriptService')
 local Utils = require(Sss.Source.Utils.U001GeneralUtils)
-local ReplicatedStorage = game:GetService('ReplicatedStorage')
--- local remoteEvent = ReplicatedStorage:WaitForChild('ClickBlockRE')
+
 local LetterFallUtils = require(Sss.Source.LetterFall.LetterFallUtils)
 
 local module = {}
@@ -44,11 +43,13 @@ function initLetterRack(miniGameState)
     local letterFallFolder = miniGameState.letterFallFolder
     local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder, 'LetterRackFolder')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
-    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack')
-    local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
 
-    local numRow = 10
-    local numCol = 16
+    local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack2')
+    local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
+    local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
+
+    local numRow = 30
+    local numCol = 9
     local spacingFactorX = 1.01
     local spacingFactorY = 1.0
 
@@ -76,11 +77,26 @@ function initLetterRack(miniGameState)
     )
 
     for colIndex = 1, numCol do
+        local newPCBase = pCBaseTemplate:Clone()
+        newPCBase.Parent = pCBaseTemplate.Parent
+
+        local letterHeight = letterBlockTemplate.Size.X
+        local letterPosX = -letterHeight * (colIndex - 1) * spacingFactorX
+        newPCBase.Size = pCBaseTemplate.Size
+        newPCBase.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, 0, 0))
+
+        local pcBaseAtt = newPCBase.Attachment
+
         for rowIndex = 1, numRow do
             local rand = Utils.genRandom(1, #lettersFromWords)
 
             local char = lettersFromWords[rand]
             local newLetter = letterBlockTemplate:Clone()
+
+            local newLetterPC = newLetter.PrismaticConstraint
+            newLetterPC.Attachment1 = pcBaseAtt
+            -- print('newLetterPC.Attachments' .. ' - start')
+            -- print(newLetterPC.Attachments)
 
             LetterFallUtils.applyStyleFromTemplate(
                 {
@@ -90,7 +106,7 @@ function initLetterRack(miniGameState)
                 }
             )
             local letterId = 'ID--R' .. rowIndex .. 'C' .. colIndex
-            local name = 'rackLetter-' .. char .. '-' .. letterId
+            local name = 'rackLetter-' .. char .. '-' .. letterId .. 'zzzzz'
             newLetter.Name = name
 
             local isDeadLetter =
@@ -112,8 +128,6 @@ function initLetterRack(miniGameState)
             LetterFallUtils.applyLetterText({letterBlock = newLetter, char = char})
 
             local offsetY = (newLetter.Size.Y - letterPositioner.Size.Y) / 2
-
-            local letterPosX = -newLetter.Size.X * (colIndex - 1) * spacingFactorX
             local letterPosY = newLetter.Size.Y * (rowIndex - 1) * spacingFactorY + offsetY
             newLetter.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, letterPosY, 0))
 

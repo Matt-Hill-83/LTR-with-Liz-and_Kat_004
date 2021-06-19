@@ -15,16 +15,16 @@ playAmbient = false
 
 local enabledItems
 enabledItems = {
-    cardSwap = true,
-    petBox = true,
-    hexGear = true,
+    -- cardSwap = true,
+    -- petBox = true,
+    -- hexGear = true,
     strayLetterBlocks = true,
-    junction4 = true,
-    statueGate = true,
-    grabbers = true,
-    letterGrabber = true,
+    junction4 = true
+    -- statueGate = true,
+    -- grabbers = true,
+    -- letterGrabber = true,
     -- theater = true,
-    entrance = true
+    -- entrance = true
 }
 
 local getTargetWordsInit = function()

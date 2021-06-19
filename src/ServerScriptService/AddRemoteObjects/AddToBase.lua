@@ -196,19 +196,19 @@ local function addRemoteObjects()
             }
         )
     end
+    if false then
+        for _, region in ipairs(regions) do
+            local regionConfig = levelConfig.regions[region.Name]
+            BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
+            Terrain.initTerrain({parentFolder = region, prefix = 'T-'})
+            Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
+            Terrain.initTerrain({parentFolder = region, prefix = 'T9-'})
+        end
 
-    for _, region in ipairs(regions) do
-        local regionConfig = levelConfig.regions[region.Name]
-        BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})
-        Terrain.initTerrain({parentFolder = region, prefix = 'T-'})
-        Terrain.initTerrain({parentFolder = region, prefix = 'T2-'})
-        Terrain.initTerrain({parentFolder = region, prefix = 'T9-'})
+        Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
+        Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
+        Terrain.initTerrain({parentFolder = workspace, prefix = 'T9-'})
     end
-
-    Terrain.initTerrain({parentFolder = workspace, prefix = 'T-'})
-    Terrain.initTerrain({parentFolder = workspace, prefix = 'T2-'})
-    Terrain.initTerrain({parentFolder = workspace, prefix = 'T9-'})
-
     if theater then
         Theater.initTheaters({parentFolder = level})
     end

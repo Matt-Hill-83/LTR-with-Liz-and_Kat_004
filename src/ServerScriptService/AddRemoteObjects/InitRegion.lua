@@ -20,6 +20,7 @@ local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local SwapForPackages = require(Sss.Source.SwapForPackages.SwapForPackages)
+local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
@@ -128,6 +129,8 @@ function module.initRegion(region, regionConfig, regionIndex)
         end
 
         delay(15, func(region, regionConfig))
+
+        -- local char = LetterUtils.getRandomLetter(lettersNotInWords)
         local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
         local blockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LB_flat')
 
