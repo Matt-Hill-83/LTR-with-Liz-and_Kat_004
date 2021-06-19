@@ -83,9 +83,9 @@ function module.addMiniGame(props)
     )
 
     HandleClick.initClickHandler(miniGameState)
-    LetterFallUtils.createBalls(miniGameState)
     InitLetterRack.initLetterRack(miniGameState)
     InitWord.initWords(miniGameState)
+    LetterFallUtils.createBalls(miniGameState)
 
     LetterFallUtils.styleLetterBlocks(
         {
