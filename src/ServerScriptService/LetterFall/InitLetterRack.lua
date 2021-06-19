@@ -50,32 +50,82 @@ function initLetterRack(miniGameState)
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
-    print('frameBottom' .. ' - start')
-    print(frameBottom)
-    local numRow = 5
+    local frameLeft = Utils.getFirstDescendantByName(frameFolder, 'Left')
+    local frameRight = Utils.getFirstDescendantByName(frameFolder, 'Right')
+    local frameBack = Utils.getFirstDescendantByName(frameFolder, 'Back')
+    local frameTop = Utils.getFirstDescendantByName(frameFolder, 'Top')
+
+    local numRow = 3
     -- local numRow = 30
-    local numCol = 2
+    local numCol = 5
     local spacingFactorX = 1.01
     local spacingFactorY = 1.0
     local rackPadding = 0.2
     local letterHeight = letterBlockTemplate.Size.X
+    local wallThickness = 0.5
 
+    local rackSizeZ =
+        wallThickness * 2 + rackPadding * 2 + (numCol - 1) * spacingFactorX * letterHeight + (letterHeight)
+
+    local rackSizeX = wallThickness * 2 + rackPadding * 2 + letterHeight
+    local rackSizeY = wallThickness * 2 + rackPadding * 2 + (numRow + 1) * letterHeight * spacingFactorY
+
+    frameBottom.Size = Vector3.new(rackSizeX, wallThickness, rackSizeZ)
+    frameTop.Size = frameBottom.Size
+    frameLeft.Size = Vector3.new(rackSizeX, rackSizeY, wallThickness)
+
+    local edgeOffset = rackPadding + wallThickness
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
             parent = frameBottom,
             child = letterPositioner,
             childIsPart = true,
             offsetConfig = {
-                useParentNearEdge = Vector3.new(-1, 1, 1),
-                useChildNearEdge = Vector3.new(-1, -1, 1),
-                offsetAdder = Vector3.new(rackPadding, rackPadding, rackPadding)
+                useParentNearEdge = Vector3.new(-1, 1, -1),
+                useChildNearEdge = Vector3.new(-1, -1, -1),
+                offsetAdder = Vector3.new(edgeOffset, 0, edgeOffset)
             }
         }
     )
 
-    local rackSizeZ = rackPadding * 2 + (numCol - 1) * spacingFactorX + numCol * (letterHeight)
-    local rackSizeX = rackPadding * 2 + (letterHeight)
-    frameBottom.Size = Vector3.new(rackSizeX, 2, rackSizeZ)
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = frameLeft,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(-1, -1, -1),
+                useChildNearEdge = Vector3.new(-1, -1, -1),
+                offsetAdder = Vector3.new(0, 0, 0)
+            }
+        }
+    )
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = frameRight,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(-1, -1, 1),
+                useChildNearEdge = Vector3.new(-1, -1, 1),
+                offsetAdder = Vector3.new(0, 0, 0)
+            }
+        }
+    )
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = frameBack,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(1, -1, 1),
+                useChildNearEdge = Vector3.new(1, -1, 1),
+                offsetAdder = Vector3.new(0, 0, 0)
+            }
+        }
+    )
 
     local lettersFromWords = {}
     for wordIndex, word in ipairs(miniGameState.words) do
@@ -105,7 +155,8 @@ function initLetterRack(miniGameState)
         newPCBase.Parent = pCBaseTemplate.Parent
 
         -- local letterHeight = letterBlockTemplate.Size.X
-        local letterPosZ = -letterHeight * (colIndex - 1) * spacingFactorX
+        local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorX
+        -- local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorX + wallThickness
         newPCBase.Size = pCBaseTemplate.Size
 
         Utils3.setCFrameFromDesiredEdgeOffset2(
