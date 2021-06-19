@@ -48,12 +48,34 @@ function initLetterRack(miniGameState)
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack2')
     local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
-
-    local numRow = 10
+    local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
+    local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
+    print('frameBottom' .. ' - start')
+    print(frameBottom)
+    local numRow = 5
     -- local numRow = 30
-    local numCol = 9
+    local numCol = 2
     local spacingFactorX = 1.01
     local spacingFactorY = 1.0
+    local rackPadding = 0.2
+    local letterHeight = letterBlockTemplate.Size.X
+
+    Utils3.setCFrameFromDesiredEdgeOffset2(
+        {
+            parent = frameBottom,
+            child = letterPositioner,
+            childIsPart = true,
+            offsetConfig = {
+                useParentNearEdge = Vector3.new(-1, 1, 1),
+                useChildNearEdge = Vector3.new(-1, -1, 1),
+                offsetAdder = Vector3.new(rackPadding, rackPadding, rackPadding)
+            }
+        }
+    )
+
+    local rackSizeZ = rackPadding * 2 + (numCol - 1) * spacingFactorX + numCol * (letterHeight)
+    local rackSizeX = rackPadding * 2 + (letterHeight)
+    frameBottom.Size = Vector3.new(rackSizeX, 2, rackSizeZ)
 
     local lettersFromWords = {}
     for wordIndex, word in ipairs(miniGameState.words) do
@@ -82,10 +104,10 @@ function initLetterRack(miniGameState)
         local newPCBase = pCBaseTemplate:Clone()
         newPCBase.Parent = pCBaseTemplate.Parent
 
-        local letterHeight = letterBlockTemplate.Size.X
-        local letterPosX = -letterHeight * (colIndex - 1) * spacingFactorX
+        -- local letterHeight = letterBlockTemplate.Size.X
+        local letterPosZ = -letterHeight * (colIndex - 1) * spacingFactorX
         newPCBase.Size = pCBaseTemplate.Size
-        -- newPCBase.CFrame = letterPositioner.CFrame * CFrame.new(Vector3.new(letterPosX, 0, 0))
+
         Utils3.setCFrameFromDesiredEdgeOffset2(
             {
                 parent = letterPositioner,
@@ -94,7 +116,7 @@ function initLetterRack(miniGameState)
                 offsetConfig = {
                     useParentNearEdge = Vector3.new(0, -1, 0),
                     useChildNearEdge = Vector3.new(0, -1, 0),
-                    offsetAdder = Vector3.new(letterPosX, 0, 0)
+                    offsetAdder = Vector3.new(0, 0, letterPosZ)
                 }
             }
         )
