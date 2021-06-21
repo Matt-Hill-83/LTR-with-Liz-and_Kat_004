@@ -20,7 +20,6 @@ local StatueGate = require(Sss.Source.StatueGate.StatueGate)
 local StrayLetterBlocks = require(Sss.Source.StrayLetterBlocks.StrayLetterBlocks)
 local SingleStrays = require(Sss.Source.SingleStrays.SingleStrays)
 local SwapForPackages = require(Sss.Source.SwapForPackages.SwapForPackages)
-local LetterUtils = require(Sss.Source.Utils.U004LetterUtils)
 
 local module = {}
 
@@ -50,6 +49,7 @@ function module.initRegion(region, regionConfig, regionIndex)
             MiniGame.addMiniGame(
             {
                 parent = letterFallPositioner,
+                positioner = letterFallPositioner,
                 words = words,
                 sceneIndex = 1,
                 questIndex = 1,

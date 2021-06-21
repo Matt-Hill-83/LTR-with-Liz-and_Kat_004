@@ -11,6 +11,7 @@ local module = {}
 
 function module.addMiniGame(props)
     local parent = props.parent
+    local positioner = props.positioner
     local questIndex = props.questIndex
     local words = props.words
 
@@ -67,13 +68,13 @@ function module.addMiniGame(props)
 
     local clonedLetterFallModel = letterFallTemplate:Clone()
     clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q'
-    clonedLetterFallModel.Parent = parent
 
     miniGameState.letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')
+    clonedLetterFallModel.Parent = parent
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
-            parent = parent,
+            parent = positioner,
             childModel = clonedLetterFallModel,
             offsetConfig = {
                 useParentNearEdge = Vector3.new(0, -1, 0),

@@ -107,6 +107,8 @@ local function addRemoteObjects()
 
     local levelName = level.Name
     local levelIndex = tonumber(levelName)
+    print('levelIndex' .. ' - start------------------------------')
+    print(levelIndex)
 
     local levelConfig = nil
     -- if isStartPlace then
@@ -196,7 +198,8 @@ local function addRemoteObjects()
             }
         )
     end
-    if false then
+    -- if false then
+    if true then
         for _, region in ipairs(regions) do
             local regionConfig = levelConfig.regions[region.Name]
             BlockDash.addConveyors({regionConfig = regionConfig, parentFolder = region})

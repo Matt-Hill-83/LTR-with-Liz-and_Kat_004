@@ -78,7 +78,7 @@ local r006 = {
 }
 
 local r007 = {
-    hexTemplate32 = 'Hex_32_32_v1b-thick',
+    -- hexTemplate32 = 'Hex_32_32_v1b-thick',
     bridgeConfigs = {
         invisiWallProps = {
             thickness = 1.1,
@@ -358,5 +358,6 @@ module.autoCreateRegions(
 module.regions = regions
 
 Configs.addDefaults(regions)
+module.initGrabber = false
 
 return module

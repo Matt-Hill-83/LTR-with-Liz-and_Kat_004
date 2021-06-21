@@ -86,7 +86,18 @@ function module.addMeetLizBadge()
 end
 
 function module.configPlayers(props)
-    -- local levelConfig = props.levelConfig
+    local levelConfig = props.levelConfig
+    print('props.levelConfig' .. ' - start')
+    print(props.levelConfig)
+
+    if (levelConfig.initGrabber == nil) then
+        levelConfig.initGrabber = true
+    end
+    print('levelConfig.initGrabber' .. ' - start')
+    print(levelConfig.initGrabber)
+
+    -- local initGrabber = (levelConfig.initGrabber == false) or true
+
     Players.RespawnTime = 0
 
     module.addMeetCreatorBadge()
@@ -105,7 +116,9 @@ function module.configPlayers(props)
             wait(2)
             targetWords = gameState.targetWords
         else
-            LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
+            if initGrabber then
+                LetterGrabber.donGrabberAccessory(player, {grabberTemplateName = 'LetterGrabberAcc', word = 'CAT'})
+            end
 
             targetWords = Constants.getTargetWordsInit()[1]
             gameState.targetWords = targetWords
