@@ -95,7 +95,8 @@ function initLetterRack(miniGameState)
     frameRight.Size = frameLeft.Size
     frameBack.Size = Vector3.new(wallThickness, rackSizeY, rackSizeZ)
     frameFront.Size = frameBack.Size
-    frameFront.Transparency = 0.7
+    frameFront.Transparency = 1
+    -- frameFront.Transparency = 0.7
 
     local edgeOffset = rackPadding + wallThickness
     Utils3.setCFrameFromDesiredEdgeOffset2(
