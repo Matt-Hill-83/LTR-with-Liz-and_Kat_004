@@ -22,6 +22,7 @@ function module.initWord(props)
     wordBoxClone.Name = wordBoxClone.Name .. 'ssss' .. wordNameStub
 
     local wordBench = Utils.getFirstDescendantByName(wordBoxClone, 'WordBench')
+    -- local footerRight = Utils.getFirstDescendantByName(wordBoxClone, 'FooterRight')
 
     local spacingFactorY = 1.1
     local spacingFactorX = 1.05

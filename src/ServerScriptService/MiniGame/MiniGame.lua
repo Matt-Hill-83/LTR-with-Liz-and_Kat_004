@@ -10,7 +10,8 @@ local HandleClick = require(Sss.Source.LetterFall.HandleClick)
 local module = {}
 
 function module.addMiniGame(props)
-    local parent = props.parent
+    local parentFolder = props.parentFolder
+    -- local parent = props.parent
     local positioner = props.positioner
     local questIndex = props.questIndex
     local words = props.words
@@ -63,6 +64,7 @@ function module.addMiniGame(props)
         renderedWords = {},
         wordLetters = {},
         words = words,
+        positioner = positioner,
         questIndex = questIndex
     }
 
@@ -70,7 +72,7 @@ function module.addMiniGame(props)
     clonedLetterFallModel.Name = clonedLetterFallModel.Name .. 'Clone' .. '-Q'
 
     miniGameState.letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')
-    clonedLetterFallModel.Parent = parent
+    clonedLetterFallModel.Parent = parentFolder
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {

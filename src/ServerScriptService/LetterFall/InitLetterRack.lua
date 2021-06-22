@@ -42,6 +42,10 @@ function initLetterRack(miniGameState)
     miniGameState.runTimeLetterFolder = runTimeLetterFolder
 
     local letterFallFolder = miniGameState.letterFallFolder
+    local positioner = miniGameState.positioner
+    print('positioner' .. ' - start=============================')
+    print(positioner)
+
     local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder, 'LetterRackFolder')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
@@ -51,6 +55,16 @@ function initLetterRack(miniGameState)
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
     local gemTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'GemModel')
 
+    --
+    --
+    local letterFallBase = Utils.getFirstDescendantByName(letterFallFolder, 'LetterFallBase')
+    local footerRight = Utils.getFirstDescendantByName(letterFallFolder, 'FooterRight')
+
+    print('letterFallBase' .. ' - start======================')
+    print(letterFallBase)
+    print('footerRight' .. ' - start========================')
+    print(footerRight)
+
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
     local frameLeft = Utils.getFirstDescendantByName(frameFolder, 'Left')
@@ -59,9 +73,10 @@ function initLetterRack(miniGameState)
     local frameTop = Utils.getFirstDescendantByName(frameFolder, 'Top')
     local frameFront = Utils.getFirstDescendantByName(frameFolder, 'InvisibleFront')
 
-    local numRow = 10
-    -- local numRow = 30
-    local numCol = 8
+    local numRow = positioner.Size.Y / 3
+    local numCol = positioner.Size.Z / 3
+    -- local numRow = 10
+    -- local numCol = 8
     local spacingFactorX = 1.01
     local spacingFactorY = 1.0
     local rackPadding = 0.2
@@ -110,6 +125,7 @@ function initLetterRack(miniGameState)
             }
         }
     )
+
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
             parent = frameTop,
@@ -174,6 +190,19 @@ function initLetterRack(miniGameState)
             }
         }
     )
+
+    -- Utils3.setCFrameFromDesiredEdgeOffset2(
+    --     {
+    --         parent = frameBottom,
+    --         child = footerRight,
+    --         childIsPart = true,
+    --         offsetConfig = {
+    --             useParentNearEdge = Vector3.new(-1, 1, 1),
+    --             useChildNearEdge = Vector3.new(-1, -1, -1)
+    --             -- offsetAdder = Vector3.new(10, 10, 100)
+    --         }
+    --     }
+    -- )
 
     local lettersFromWords = {}
     for wordIndex, word in ipairs(miniGameState.words) do

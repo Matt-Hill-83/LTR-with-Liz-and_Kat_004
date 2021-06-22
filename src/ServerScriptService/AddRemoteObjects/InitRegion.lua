@@ -48,7 +48,8 @@ function module.initRegion(region, regionConfig, regionIndex)
         local miniGame =
             MiniGame.addMiniGame(
             {
-                parent = letterFallPositioner,
+                -- parent = letterFallPositioner,
+                parentFolder = region,
                 positioner = letterFallPositioner,
                 words = words,
                 sceneIndex = 1,
