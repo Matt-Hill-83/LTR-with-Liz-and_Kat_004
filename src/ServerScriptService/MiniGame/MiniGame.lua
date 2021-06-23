@@ -73,6 +73,7 @@ function module.addMiniGame(props)
 
     miniGameState.letterFallFolder = Utils.getFirstDescendantByName(clonedLetterFallModel, 'LetterFallFolder')
     clonedLetterFallModel.Parent = parentFolder
+    miniGameState.clonedLetterFallModel = clonedLetterFallModel
 
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {

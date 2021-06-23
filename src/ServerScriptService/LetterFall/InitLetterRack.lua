@@ -43,8 +43,6 @@ function initLetterRack(miniGameState)
 
     local letterFallFolder = miniGameState.letterFallFolder
     local positioner = miniGameState.positioner
-    print('positioner' .. ' - start=============================')
-    print(positioner)
 
     local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder, 'LetterRackFolder')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
@@ -60,11 +58,6 @@ function initLetterRack(miniGameState)
     local letterFallBase = Utils.getFirstDescendantByName(letterFallFolder, 'LetterFallBase')
     local footerRight = Utils.getFirstDescendantByName(letterFallFolder, 'FooterRight')
 
-    print('letterFallBase' .. ' - start======================')
-    print(letterFallBase)
-    print('footerRight' .. ' - start========================')
-    print(footerRight)
-
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
     local frameLeft = Utils.getFirstDescendantByName(frameFolder, 'Left')
@@ -73,18 +66,18 @@ function initLetterRack(miniGameState)
     local frameTop = Utils.getFirstDescendantByName(frameFolder, 'Top')
     local frameFront = Utils.getFirstDescendantByName(frameFolder, 'InvisibleFront')
 
+    -- positioner needs to be an even multiple of 3, b/c I'm too lazy to figure out how to use mod
     local numRow = positioner.Size.Y / 3
     local numCol = positioner.Size.Z / 3
     -- local numRow = 10
     -- local numCol = 8
-    local spacingFactorX = 1.01
-    local spacingFactorY = 1.0
-    local rackPadding = 0.2
+    local spacingFactorZ = 1.02
+    local spacingFactorY = 1.02
+    local rackPadding = 0.4
     local letterHeight = letterBlockTemplate.Size.X
     local wallThickness = 0.5
 
-    local rackSizeZ =
-        wallThickness * 2 + rackPadding * 2 + (numCol - 1) * spacingFactorX * letterHeight + (letterHeight)
+    local rackSizeZ = (wallThickness + rackPadding) * 2 + (numCol - 1) * spacingFactorZ * letterHeight + (letterHeight)
 
     local rackSizeX = wallThickness * 2 + rackPadding * 2 + letterHeight
     local rackSizeY = wallThickness * 2 + rackPadding * 2 + (numRow + 1) * letterHeight * spacingFactorY
@@ -95,10 +88,11 @@ function initLetterRack(miniGameState)
     frameRight.Size = frameLeft.Size
     frameBack.Size = Vector3.new(wallThickness, rackSizeY, rackSizeZ)
     frameFront.Size = frameBack.Size
-    frameFront.Transparency = 1
-    -- frameFront.Transparency = 0.7
+    -- frameFront.Transparency = 1
+    frameFront.Transparency = 0.4
+    frameBack.Transparency = 0.4
 
-    local edgeOffset = rackPadding + wallThickness
+    local edgeOffset = 0.5 * (rackPadding + wallThickness)
     Utils3.setCFrameFromDesiredEdgeOffset2(
         {
             parent = frameBottom,
@@ -107,6 +101,7 @@ function initLetterRack(miniGameState)
             offsetConfig = {
                 useParentNearEdge = Vector3.new(-1, 1, -1),
                 useChildNearEdge = Vector3.new(-1, -1, -1),
+                -- offsetAdder = Vector3.new(0, 0, 0)
                 offsetAdder = Vector3.new(edgeOffset, 0, edgeOffset)
             }
         }
@@ -187,7 +182,7 @@ function initLetterRack(miniGameState)
             offsetConfig = {
                 useParentNearEdge = Vector3.new(-1, -1, 1),
                 useChildNearEdge = Vector3.new(-1, -1, 1),
-                offsetAdder = Vector3.new(0, 0, 0)
+                offsetAdder = Vector3.new(0, letterHeight, 0)
             }
         }
     )
@@ -199,8 +194,8 @@ function initLetterRack(miniGameState)
     --         childIsPart = true,
     --         offsetConfig = {
     --             useParentNearEdge = Vector3.new(-1, 1, 1),
-    --             useChildNearEdge = Vector3.new(-1, -1, -1)
-    --             -- offsetAdder = Vector3.new(10, 10, 100)
+    --             useChildNearEdge = Vector3.new(-1, -1, -1),
+    --             offsetAdder = Vector3.new(10, 10, 100)
     --         }
     --     }
     -- )
@@ -233,9 +228,10 @@ function initLetterRack(miniGameState)
         newPCBase.Parent = pCBaseTemplate.Parent
 
         -- local letterHeight = letterBlockTemplate.Size.X
-        local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorX
-        -- local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorX + wallThickness
-        newPCBase.Size = pCBaseTemplate.Size
+        local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorZ
+        -- local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorZ + wallThickness
+        newPCBase.Size = Vector3.new(letterHeight, 1, letterHeight)
+        -- newPCBase.Size = pCBaseTemplate.Size
 
         Utils3.setCFrameFromDesiredEdgeOffset2(
             {
