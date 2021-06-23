@@ -150,12 +150,14 @@ function module.initWords(miniGameState)
     }
     local offsetConfigs = {
         {
-            useParentNearEdge = Vector3.new(-1, -1, -1),
-            useChildNearEdge = Vector3.new(-1, -1, 1)
+            useParentNearEdge = Vector3.new(0, -1, -1),
+            useChildNearEdge = Vector3.new(0, -1, 1),
+            offsetAdder = Vector3.new(-3, 0, 0)
         },
         {
-            useParentNearEdge = Vector3.new(-1, -1, 1),
-            useChildNearEdge = Vector3.new(-1, -1, -1)
+            useParentNearEdge = Vector3.new(0, -1, 1),
+            useChildNearEdge = Vector3.new(0, -1, -1),
+            offsetAdder = Vector3.new(-3, 0, 0)
         }
     }
 
@@ -177,7 +179,8 @@ function module.initWords(miniGameState)
 
         local wordSetFooter = wordSetFooters[wbIndex]
 
-        wordSetFooter.Size = Vector3.new(wordSetFooter.Size.X, wordSetFooter.Size.Y, 24)
+        local wordSetFooterLength = 16
+        wordSetFooter.Size = Vector3.new(wordSetFooter.Size.X, wordSetFooter.Size.Y, wordSetFooterLength)
 
         local offsetConfig = offsetConfigs[wbIndex]
 
