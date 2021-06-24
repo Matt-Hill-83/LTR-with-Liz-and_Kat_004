@@ -47,7 +47,6 @@ function initLetterRack(miniGameState)
     local letterRackFolder = Utils.getFirstDescendantByName(letterFallFolder, 'LetterRackFolder')
     local letterBlockFolder = Utils.getFromTemplates('LetterBlockTemplates')
 
-    -- local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack2')
     local letterBlockTemplate = Utils.getFirstDescendantByName(letterBlockFolder, 'LBRack_3')
     local letterPositioner = Utils.getFirstDescendantByName(letterRackFolder, 'RackLetterBlockPositioner')
     local pCBaseTemplate = Utils.getFirstDescendantByName(letterRackFolder, 'PCBase')
@@ -55,8 +54,6 @@ function initLetterRack(miniGameState)
 
     --
     --
-    -- local letterFallBase = Utils.getFirstDescendantByName(letterFallFolder, 'LetterFallBase')
-    -- local footerRight = Utils.getFirstDescendantByName(letterFallFolder, 'FooterRight')
 
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
@@ -66,11 +63,8 @@ function initLetterRack(miniGameState)
     local frameTop = Utils.getFirstDescendantByName(frameFolder, 'Top')
     local frameFront = Utils.getFirstDescendantByName(frameFolder, 'InvisibleFront')
 
-    -- positioner needs to be an even multiple of 3, b/c I'm too lazy to figure out how to use mod
     local numRow = positioner.Size.Y / 3
     local numCol = positioner.Size.Z / 3
-    -- local numRow = 10
-    -- local numCol = 8
     local spacingFactorZ = 1.02
     local spacingFactorY = 1.02
     local rackPadding = 0.4
@@ -88,9 +82,7 @@ function initLetterRack(miniGameState)
     frameRight.Size = frameLeft.Size
     frameBack.Size = Vector3.new(wallThickness, rackSizeY, rackSizeZ)
     frameFront.Size = frameBack.Size
-    -- frameFront.Transparency = 1
     frameFront.Transparency = 1
-    -- frameBack.Transparency = 0.4
 
     local edgeOffset = 0.5 * (rackPadding + wallThickness)
     Utils3.setCFrameFromDesiredEdgeOffset2(
@@ -101,7 +93,6 @@ function initLetterRack(miniGameState)
             offsetConfig = {
                 useParentNearEdge = Vector3.new(-1, 1, -1),
                 useChildNearEdge = Vector3.new(-1, -1, -1),
-                -- offsetAdder = Vector3.new(0, 0, 0)
                 offsetAdder = Vector3.new(edgeOffset, 0, edgeOffset)
             }
         }
@@ -126,7 +117,6 @@ function initLetterRack(miniGameState)
         {
             parent = frameTop,
             childModel = gemTemplate,
-            -- childIsPart = false,
             offsetConfig = {
                 useParentNearEdge = Vector3.new(0, 0, 0),
                 useChildNearEdge = Vector3.new(0, 0, 0),
@@ -187,19 +177,6 @@ function initLetterRack(miniGameState)
         }
     )
 
-    -- Utils3.setCFrameFromDesiredEdgeOffset2(
-    --     {
-    --         parent = frameBottom,
-    --         child = footerRight,
-    --         childIsPart = true,
-    --         offsetConfig = {
-    --             useParentNearEdge = Vector3.new(-1, 1, 1),
-    --             useChildNearEdge = Vector3.new(-1, -1, -1),
-    --             offsetAdder = Vector3.new(10, 10, 100)
-    --         }
-    --     }
-    -- )
-
     local lettersFromWords = {}
     for wordIndex, word in ipairs(miniGameState.words) do
         for letterIndex = 1, #word do
@@ -227,11 +204,8 @@ function initLetterRack(miniGameState)
         local newPCBase = pCBaseTemplate:Clone()
         newPCBase.Parent = pCBaseTemplate.Parent
 
-        -- local letterHeight = letterBlockTemplate.Size.X
         local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorZ
-        -- local letterPosZ = letterHeight * (colIndex - 1) * spacingFactorZ + wallThickness
         newPCBase.Size = Vector3.new(letterHeight, 1, letterHeight)
-        -- newPCBase.Size = pCBaseTemplate.Size
 
         Utils3.setCFrameFromDesiredEdgeOffset2(
             {
@@ -313,6 +287,7 @@ function initLetterRack(miniGameState)
             miniGameState = miniGameState
         }
     )
+    pCBaseTemplate:Destroy()
 end
 
 module.initLetterRack = initLetterRack
