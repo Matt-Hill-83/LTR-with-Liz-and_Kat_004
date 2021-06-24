@@ -14,7 +14,6 @@ function module.initWord(props)
     local wordBox = props.wordBox
     local wordLetters = props.wordLetters
     local letterBlockTemplate = props.letterBlockTemplate
-    local clonedLetterFallModel = props.clonedLetterFallModel
     local wordSetFooter = props.wordSetFooter
 
     local wordBoxClone = wordBox:Clone()
@@ -25,89 +24,77 @@ function module.initWord(props)
 
     local wordBench = Utils.getFirstDescendantByName(wordBoxClone, 'WordBench')
 
+    local letterSize = letterBlockTemplate.Size.Y
+
     local spacingFactorY = 1.1
     local spacingFactorX = 1.05
-    local wordSpacingY = letterBlockTemplate.Size.Y * spacingFactorY
+    local wordSpacingY = letterSize * spacingFactorY
     local positionY = wordSpacingY * wordIndex
 
-    local wordBenchSizeX = #word * letterBlockTemplate.Size.X * spacingFactorX
-    wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, letterBlockTemplate.Size.Z)
+    local wordBenchSizeX = #word * letterSize * spacingFactorX
+    wordBench.Size = Vector3.new(wordBenchSizeX, wordBench.Size.Y, letterSize)
 
     local backPlate = Utils.getFirstDescendantByName(wordBoxClone, 'BackPlate')
-    local backPlateSizeX = (letterBlockTemplate.Size.X / 2) + wordBench.Size.X
-    backPlate.Size = Vector3.new(backPlateSizeX, letterBlockTemplate.Size.X * 2, wordBench.Size.Z)
+    local backPlateSizeX = (letterSize / 2) + wordBench.Size.X
+    backPlate.Size = Vector3.new(backPlateSizeX, letterSize * 1.5, wordBench.Size.Z)
 
     wordBench.Position =
         Vector3.new(wordSetFooter.Position.X, wordSetFooter.Position.Y + positionY, wordSetFooter.Position.Z)
-    backPlate.Position = Vector3.new(wordBench.Position.X, wordBench.Position.Y + 0, wordBench.Position.Z)
-    -- backPlate:Destroy()
+    backPlate.Position =
+        Vector3.new(wordBench.Position.X + letterSize / 8, wordBench.Position.Y + letterSize / 2, wordBench.Position.Z)
     wordBench.Anchored = true
-
-    -- Utils3.setCFrameFromDesiredEdgeOffset2(
-    --     {
-    --         parent = wordBench,
-    --         child = backPlate,
-    --         childIsPart = true,
-    --         offsetConfig = {
-    --             useParentNearEdge = Vector3.new(0, 0, 0),
-    --             useChildNearEdge = Vector3.new(0, 0, 0)
-    --             -- offsetAdder = Vector3.new(0, -letterBlockTemplate.Size.X / 2, letterBlockTemplate.Size.X / 3)
-    --         }
-    --     }
-    -- )
-
     backPlate.Anchored = true
 
     local lettersInWord = {}
     local templateName = LetterFallUtils.letterBlockStyleDefs.word.Available
 
     local styleTemplate = Utils.getFromTemplates(templateName)
-    if true then
-        -- if false then
-        for letterIndex = 1, #word do
-            local letterNameStub = wordNameStub .. '-L' .. letterIndex
-            local letter = string.sub(word, letterIndex, letterIndex)
+    -- if true then
+    -- if false then
+    for letterIndex = 1, #word do
+        local letterNameStub = wordNameStub .. '-L' .. letterIndex
+        local letter = string.sub(word, letterIndex, letterIndex)
 
-            local newLetter = letterBlockTemplate:Clone()
+        local newLetter = letterBlockTemplate:Clone()
 
-            LetterUtils.applyStyleFromTemplate(
-                {targetLetterBlock = newLetter, templateName = templateName, template = styleTemplate}
-            )
+        LetterUtils.applyStyleFromTemplate(
+            {targetLetterBlock = newLetter, templateName = templateName, template = styleTemplate}
+        )
 
-            newLetter.Name = 'wordLetter-' .. letterNameStub
+        newLetter.Name = 'wordLetter-' .. letterNameStub
 
-            local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorX
+        local letterPositionZ = newLetter.Size.Z * (letterIndex - 2) * spacingFactorX
 
-            CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
-            LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
+        CS:AddTag(newLetter, LetterFallUtils.tagNames.WordLetter)
+        LetterFallUtils.applyLetterText({letterBlock = newLetter, char = letter})
 
-            Utils3.setCFrameFromDesiredEdgeOffset2(
-                {
-                    parent = wordBench,
-                    child = newLetter,
-                    childIsPart = true,
-                    offsetConfig = {
-                        useParentNearEdge = Vector3.new(0, 1, 0),
-                        useChildNearEdge = Vector3.new(0, -1, 0),
-                        offsetAdder = Vector3.new(letterPositionZ, 0, 0)
-                    }
+        Utils3.setCFrameFromDesiredEdgeOffset2(
+            {
+                parent = wordBench,
+                child = newLetter,
+                childIsPart = true,
+                offsetConfig = {
+                    useParentNearEdge = Vector3.new(0, 1, 0),
+                    useChildNearEdge = Vector3.new(0, -1, 0),
+                    offsetAdder = Vector3.new(letterPositionZ, 0, 0)
                 }
-            )
+            }
+        )
 
-            newLetter.Parent = wordBoxClone
-            newLetter.Anchored = true
+        newLetter.Parent = wordBoxClone
+        newLetter.Anchored = true
 
-            table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
-            table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
-        end
-
-        local newWordObj = {
-            word = wordBoxClone,
-            letters = lettersInWord,
-            wordChars = word
-        }
-        return newWordObj
+        table.insert(wordLetters, {char = letter, found = false, instance = newLetter})
+        table.insert(lettersInWord, {char = letter, found = false, instance = newLetter})
     end
+
+    local newWordObj = {
+        word = wordBoxClone,
+        letters = lettersInWord,
+        wordChars = word
+    }
+    return newWordObj
+    -- end
 end
 
 function module.initWords(miniGameState)
@@ -165,7 +152,6 @@ function module.initWords(miniGameState)
         prevFinish = finish
 
         local wordSet = Utils.arraySubset(words, start, finish)
-
         local wordSetFooter = wordSetFooters[wbIndex]
 
         local wordSetFooterLength = 16

@@ -55,8 +55,8 @@ function initLetterRack(miniGameState)
 
     --
     --
-    local letterFallBase = Utils.getFirstDescendantByName(letterFallFolder, 'LetterFallBase')
-    local footerRight = Utils.getFirstDescendantByName(letterFallFolder, 'FooterRight')
+    -- local letterFallBase = Utils.getFirstDescendantByName(letterFallFolder, 'LetterFallBase')
+    -- local footerRight = Utils.getFirstDescendantByName(letterFallFolder, 'FooterRight')
 
     local frameFolder = Utils.getFirstDescendantByName(letterRackFolder, 'Frame')
     local frameBottom = Utils.getFirstDescendantByName(frameFolder, 'Bottom')
@@ -89,8 +89,8 @@ function initLetterRack(miniGameState)
     frameBack.Size = Vector3.new(wallThickness, rackSizeY, rackSizeZ)
     frameFront.Size = frameBack.Size
     -- frameFront.Transparency = 1
-    frameFront.Transparency = 0.4
-    frameBack.Transparency = 0.4
+    frameFront.Transparency = 1
+    -- frameBack.Transparency = 0.4
 
     local edgeOffset = 0.5 * (rackPadding + wallThickness)
     Utils3.setCFrameFromDesiredEdgeOffset2(
