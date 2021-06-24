@@ -39,20 +39,8 @@ function module.initWord(props)
 
     wordBench.Position =
         Vector3.new(wordSetFooter.Position.X, wordSetFooter.Position.Y + positionY, wordSetFooter.Position.Z)
-    -- backPlate.Position = wordSetFooter.Position
-    backPlate:Destroy()
-    -- Utils3.setCFrameFromDesiredEdgeOffset2(
-    --     {
-    --         parent = wordBox.PrimaryPart,
-    --         childModel = wordBoxClone,
-    --         offsetConfig = {
-    --             useParentNearEdge = Vector3.new(0, 0, 0),
-    --             useChildNearEdge = Vector3.new(0, 0, 0),
-    --             offsetAdder = Vector3.new(0, positionY, 0)
-    --         }
-    --     }
-    -- )
-
+    backPlate.Position = Vector3.new(wordBench.Position.X, wordBench.Position.Y + 0, wordBench.Position.Z)
+    -- backPlate:Destroy()
     wordBench.Anchored = true
 
     -- Utils3.setCFrameFromDesiredEdgeOffset2(
@@ -62,8 +50,8 @@ function module.initWord(props)
     --         childIsPart = true,
     --         offsetConfig = {
     --             useParentNearEdge = Vector3.new(0, 0, 0),
-    --             useChildNearEdge = Vector3.new(0, 0, 0),
-    --             offsetAdder = Vector3.new(0, -letterBlockTemplate.Size.X / 2, letterBlockTemplate.Size.X / 3)
+    --             useChildNearEdge = Vector3.new(0, 0, 0)
+    --             -- offsetAdder = Vector3.new(0, -letterBlockTemplate.Size.X / 2, letterBlockTemplate.Size.X / 3)
     --         }
     --     }
     -- )
@@ -148,6 +136,7 @@ function module.initWords(miniGameState)
         Utils.getFirstDescendantByName(clonedLetterFallModel, 'FooterRight'),
         Utils.getFirstDescendantByName(clonedLetterFallModel, 'FooterLeft')
     }
+
     local offsetConfigs = {
         {
             useParentNearEdge = Vector3.new(0, -1, -1),
